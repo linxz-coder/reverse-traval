@@ -18,10 +18,40 @@ app = Flask(__name__)
 calendar = HolidayCalendar()
 finder = ReverseTravelFinder(calendar)
 job_executor = ThreadPoolExecutor(max_workers=2)
+prewarm_executor = ThreadPoolExecutor(max_workers=1)
 job_lock = threading.Lock()
+prewarm_lock = threading.Lock()
 jobs: dict[str, dict[str, Any]] = {}
+prewarm_state: dict[str, Any] = {
+    "status": "idle",
+    "message": "缓存预热未启动",
+    "updated_at": "",
+}
 JOB_TTL_SECONDS = 6 * 60 * 60
 NEARBY_CITY_WORKERS = 2
+
+PREWARM_MAJOR_CITIES = (
+    "北京", "上海", "广州", "深圳", "杭州", "南京", "苏州", "成都", "重庆", "武汉",
+    "西安", "长沙", "郑州", "天津", "青岛", "厦门", "福州", "宁波", "无锡", "合肥",
+    "济南", "昆明", "贵阳", "南宁", "海口", "三亚", "大连", "沈阳", "哈尔滨", "长春",
+    "石家庄", "太原", "呼和浩特", "兰州", "银川", "西宁", "乌鲁木齐", "拉萨",
+    "东莞", "佛山", "惠州", "珠海", "中山", "江门", "汕尾", "韶关", "肇庆", "河源",
+    "清远", "云浮",
+)
+PREWARM_FILTER_PROFILES = {
+    "default": {
+        "label": "默认条件",
+        "advanced_filter": "all",
+        "pool_filter": "all",
+        "child_facility_filter": "all",
+    },
+    "quality": {
+        "label": "高级+泳池+儿童设施",
+        "advanced_filter": "yes",
+        "pool_filter": "yes",
+        "child_facility_filter": "yes",
+    },
+}
 
 CITY_COORDINATES = {
     "深圳": (22.5431, 114.0579),
@@ -179,9 +209,237 @@ def public_job(job: dict[str, Any]) -> dict[str, Any]:
         data["status_code"] = job["status_code"]
     if job.get("progress"):
         data["progress"] = job["progress"]
+    if job.get("progress_events"):
+        data["progress_events"] = job["progress_events"]
     if job.get("partial_result"):
         data["partial_result"] = job["partial_result"]
     return data
+
+
+def compact_progress_event(progress: dict[str, Any]) -> dict[str, Any]:
+    event = {
+        "time": utc_timestamp(),
+        "stage": progress.get("stage") or "",
+        "message": progress.get("message") or "",
+    }
+    for key in ("percent", "city", "completed", "total"):
+        if progress.get(key) not in ("", None):
+            event[key] = progress[key]
+    inner = progress.get("inner")
+    if isinstance(inner, dict):
+        for key in ("percent", "stage"):
+            if inner.get(key) not in ("", None) and key not in event:
+                event[key] = inner[key]
+    return event
+
+
+def append_job_progress_event(job: dict[str, Any], progress: dict[str, Any]) -> None:
+    event = compact_progress_event(progress)
+    if not event["message"]:
+        return
+    events = list(job.get("progress_events") or [])
+    if events and events[-1].get("message") == event["message"] and events[-1].get("stage") == event["stage"]:
+        events[-1] = event
+    else:
+        events.append(event)
+    job["progress_events"] = events[-12:]
+
+
+def is_local_request() -> bool:
+    return request.remote_addr in {"127.0.0.1", "::1", "localhost"}
+
+
+def normalize_prewarm_profiles(value: Any) -> list[str]:
+    if not value:
+        return ["default"]
+    if isinstance(value, str):
+        items = [item.strip() for item in value.split(",")]
+    elif isinstance(value, list):
+        items = [str(item).strip() for item in value]
+    else:
+        items = []
+    profiles = [item for item in items if item in PREWARM_FILTER_PROFILES]
+    return profiles or ["default"]
+
+
+def prewarm_city_list(preset: str = "major", limit: int | None = None) -> list[str]:
+    if preset != "major":
+        return []
+    cities = list(PREWARM_MAJOR_CITIES)
+    if limit is not None and limit > 0:
+        return cities[:limit]
+    return cities
+
+
+def public_prewarm_state() -> dict[str, Any]:
+    with prewarm_lock:
+        return copy.deepcopy(prewarm_state)
+
+
+def append_prewarm_event(state: dict[str, Any], message: str, **extra: Any) -> None:
+    event = {"time": utc_timestamp(), "message": message}
+    event.update({key: value for key, value in extra.items() if value not in ("", None)})
+    events = list(state.get("events") or [])
+    if events and events[-1].get("message") == message:
+        events[-1] = event
+    else:
+        events.append(event)
+    state["events"] = events[-30:]
+
+
+def update_prewarm_state(message: str, **extra: Any) -> None:
+    with prewarm_lock:
+        prewarm_state["message"] = message
+        prewarm_state["updated_at"] = utc_timestamp()
+        prewarm_state.update(extra)
+        append_prewarm_event(prewarm_state, message, **extra)
+
+
+def run_cache_prewarm(config: dict[str, Any]) -> None:
+    cities = prewarm_city_list(
+        preset=str(config.get("city_preset") or "major"),
+        limit=parse_optional_int(config.get("city_limit"), "预热城市数量"),
+    )
+    profiles = normalize_prewarm_profiles(config.get("profiles"))
+    configured_holidays = config.get("holiday_codes")
+    if isinstance(configured_holidays, str):
+        holiday_codes = [item.strip() for item in configured_holidays.split(",") if item.strip()]
+    elif isinstance(configured_holidays, list):
+        holiday_codes = [str(item).strip() for item in configured_holidays if str(item).strip()]
+    else:
+        holiday_codes = [item["code"] for item in finder.list_holidays()]
+
+    targets = [
+        (city, holiday_code, profile_name)
+        for holiday_code in holiday_codes
+        for city in cities
+        for profile_name in profiles
+    ]
+    total = len(targets)
+    started_at = time.time()
+    success_count = 0
+    cache_hits = 0
+    live_count = 0
+    error_count = 0
+    errors: list[dict[str, str]] = []
+    delay_seconds = parse_optional_int(config.get("delay_seconds"), "预热间隔秒数")
+    if delay_seconds is None:
+        delay_seconds = 1
+
+    with prewarm_lock:
+        prewarm_state.clear()
+        prewarm_state.update(
+            {
+                "status": "running",
+                "message": "缓存预热已开始",
+                "created_at": utc_timestamp(),
+                "updated_at": utc_timestamp(),
+                "total": total,
+                "completed": 0,
+                "success_count": 0,
+                "cache_hits": 0,
+                "live_count": 0,
+                "error_count": 0,
+                "city_count": len(cities),
+                "holiday_count": len(holiday_codes),
+                "profiles": profiles,
+                "events": [],
+                "errors": [],
+            }
+        )
+        append_prewarm_event(prewarm_state, "缓存预热已开始", total=total)
+
+    for index, (city, holiday_code, profile_name) in enumerate(targets, start=1):
+        profile = PREWARM_FILTER_PROFILES[profile_name]
+        label = profile["label"]
+        update_prewarm_state(
+            f"正在预热 {index}/{total}：{city}，{holiday_code}，{label}",
+            current_city=city,
+            current_holiday_code=holiday_code,
+            current_profile=profile_name,
+            completed=index - 1,
+            total=total,
+        )
+
+        def progress_callback(progress: dict[str, Any]) -> None:
+            message = progress.get("message")
+            if message:
+                update_prewarm_state(f"{city}：{message}", completed=index - 1, total=total)
+
+        try:
+            result = finder.find_choices(
+                city=city,
+                holiday_code=holiday_code,
+                min_price=None,
+                max_price=None,
+                advanced_filter=profile["advanced_filter"],
+                pool_filter=profile["pool_filter"],
+                child_facility_filter=profile["child_facility_filter"],
+                use_cache=True,
+                cache_only=False,
+                progress_callback=progress_callback,
+            )
+        except Exception as exc:  # noqa: BLE001
+            error_count += 1
+            errors.append({"city": city, "holiday_code": holiday_code, "profile": profile_name, "error": str(exc)})
+            update_prewarm_state(
+                f"预热失败 {index}/{total}：{city}，{str(exc)}",
+                completed=index,
+                total=total,
+                error_count=error_count,
+                errors=errors[-20:],
+            )
+        else:
+            success_count += 1
+            cache = result.get("cache") or {}
+            if cache.get("hit"):
+                cache_hits += 1
+            elif cache.get("source") == "live":
+                live_count += 1
+            update_prewarm_state(
+                f"已预热 {index}/{total}：{city}，命中 {len(result.get('choices') or [])} 家",
+                completed=index,
+                total=total,
+                success_count=success_count,
+                cache_hits=cache_hits,
+                live_count=live_count,
+                error_count=error_count,
+                errors=errors[-20:],
+            )
+        if delay_seconds > 0 and index < total:
+            time.sleep(delay_seconds)
+
+    elapsed_seconds = round(time.time() - started_at)
+    update_prewarm_state(
+        f"缓存预热完成：成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
+        status="succeeded",
+        completed=total,
+        total=total,
+        success_count=success_count,
+        cache_hits=cache_hits,
+        live_count=live_count,
+        error_count=error_count,
+        elapsed_seconds=elapsed_seconds,
+        errors=errors[-20:],
+    )
+
+
+def start_cache_prewarm(config: dict[str, Any]) -> tuple[dict[str, Any], int]:
+    with prewarm_lock:
+        if prewarm_state.get("status") == "running":
+            return copy.deepcopy(prewarm_state), 202
+        prewarm_state.clear()
+        prewarm_state.update(
+            {
+                "status": "queued",
+                "message": "缓存预热已排队",
+                "created_at": utc_timestamp(),
+                "updated_at": utc_timestamp(),
+                "events": [{"time": utc_timestamp(), "message": "缓存预热已排队"}],
+            }
+        )
+    prewarm_executor.submit(run_cache_prewarm, copy.deepcopy(config))
+    return public_prewarm_state(), 202
 
 
 def update_job_progress(job_id: str, progress: dict[str, Any]) -> None:
@@ -192,6 +450,7 @@ def update_job_progress(job_id: str, progress: dict[str, Any]) -> None:
         if not job:
             return
         job["progress"] = progress_data
+        append_job_progress_event(job, progress_data)
         if partial_result is not None:
             job["partial_result"] = partial_result
         job["updated_at"] = utc_timestamp()
@@ -480,6 +739,7 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
             return
         job["status"] = "running"
         job["progress"] = {"stage": "running", "message": "查询任务已开始。"}
+        append_job_progress_event(job, job["progress"])
         job["updated_at"] = utc_timestamp()
         job["updated_ts"] = time.time()
 
@@ -503,10 +763,12 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
             job["result"] = result
             job["partial_result"] = result
             job["progress"] = {"stage": "succeeded", "message": "查询完成。", "percent": 100}
+            append_job_progress_event(job, job["progress"])
         else:
             job["status"] = "failed"
             job["error"] = result.get("error") or "查询失败"
             job["progress"] = {"stage": "failed", "message": job["error"]}
+            append_job_progress_event(job, job["progress"])
 
 
 def start_background_job(kind: str, payload: dict[str, Any]):
@@ -524,6 +786,7 @@ def start_background_job(kind: str, payload: dict[str, Any]):
         "result": None,
         "partial_result": None,
         "progress": {"stage": "queued", "message": "查询任务已创建，正在等待执行。"},
+        "progress_events": [{"time": utc_timestamp(), "stage": "queued", "message": "查询任务已创建，正在等待执行。"}],
         "error": "",
         "status_code": None,
     }
@@ -628,6 +891,25 @@ def get_job(job_id: str):
         return jsonify({"error": "查询任务不存在或已过期"}), 404
     status_code = 200 if job.get("status") != "failed" else int(job.get("status_code") or 500)
     return jsonify(public_job(job)), status_code
+
+
+@app.get("/api/admin/prewarm/status")
+def cache_prewarm_status():
+    if not is_local_request():
+        return jsonify({"error": "缓存预热状态仅允许本机查看"}), 403
+    return jsonify(public_prewarm_state())
+
+
+@app.post("/api/admin/prewarm/start")
+def cache_prewarm_start():
+    if not is_local_request():
+        return jsonify({"error": "缓存预热仅允许本机启动"}), 403
+    payload = request.get_json(silent=True) or {}
+    try:
+        state, status_code = start_cache_prewarm(payload)
+    except ReverseTravelFinderError as exc:
+        return jsonify({"error": str(exc)}), 400
+    return jsonify(state), status_code
 
 
 if __name__ == "__main__":

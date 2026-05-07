@@ -303,6 +303,51 @@
         gap: 12px;
         font-size: 14px;
       }
+      .progress-panel {
+        margin-top: 10px;
+        padding: 12px;
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow-soft);
+      }
+      .progress-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+        color: #36445a;
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .progress-meta {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .progress-list {
+        display: grid;
+        gap: 6px;
+      }
+      .progress-item {
+        display: grid;
+        grid-template-columns: 9px minmax(0, 1fr);
+        gap: 8px;
+        align-items: start;
+        color: #43536a;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .progress-item::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        margin-top: 5px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 3px rgba(15, 139, 141, 0.1);
+      }
       .error {
         margin-top: 12px;
         color: var(--bad);
@@ -775,6 +820,13 @@
         <span id="status-text">正在查询 Trip.com 酒店价格...</span>
         <strong id="elapsed">00:00</strong>
       </div>
+      <div class="progress-panel hidden" id="progress-panel">
+        <div class="progress-head">
+          <span>查询过程</span>
+          <span class="progress-meta" id="progress-meta"></span>
+        </div>
+        <div class="progress-list" id="progress-list"></div>
+      </div>
       <div class="error hidden" id="error-box"></div>
 
       <section class="result hidden" id="result">
@@ -830,6 +882,9 @@
       const statusBox = document.getElementById("status-box");
       const statusText = document.getElementById("status-text");
       const elapsed = document.getElementById("elapsed");
+      const progressPanel = document.getElementById("progress-panel");
+      const progressList = document.getElementById("progress-list");
+      const progressMeta = document.getElementById("progress-meta");
       const result = document.getElementById("result");
       const summary = document.getElementById("summary");
       const areaRecommendations = document.getElementById("area-recommendations");
@@ -876,6 +931,9 @@
         }
         startedAt = Date.now();
         lastProgressMessage = "";
+        progressList.innerHTML = "";
+        progressMeta.textContent = "";
+        progressPanel.classList.remove("hidden");
         statusText.textContent = loadingMessage(0);
         updateElapsed();
         timer = window.setInterval(updateElapsed, 1000);
@@ -1000,6 +1058,18 @@
         renderSummary(data);
         renderChoices();
         result.classList.remove("hidden");
+      }
+
+      function renderProgressEvents(events) {
+        const items = (events || []).slice(-8);
+        if (!items.length) return;
+        progressMeta.textContent = `${items.length} 条`;
+        progressList.innerHTML = items.map((event) => {
+          const percent = Number(event.percent || 0);
+          const progressText = percent ? `（${percent}%）` : "";
+          return `<div class="progress-item"><span>${esc(event.message)}${esc(progressText)}</span></div>`;
+        }).join("");
+        progressPanel.classList.remove("hidden");
       }
 
       function formatDuration(seconds) {
@@ -1158,6 +1228,9 @@
             const percent = Number(data.progress.percent || 0);
             lastProgressMessage = percent ? `${data.progress.message}（${percent}%）` : data.progress.message;
             statusText.textContent = lastProgressMessage;
+          }
+          if (data.progress_events) {
+            renderProgressEvents(data.progress_events);
           }
           if (data.partial_result && typeof options.onProgress === "function") {
             const partial = data.partial_result;

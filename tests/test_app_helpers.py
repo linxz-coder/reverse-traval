@@ -81,6 +81,7 @@ def test_background_search_job_returns_result(monkeypatch):
 
     assert data["status"] == "succeeded"
     assert data["progress"]["stage"] == "succeeded"
+    assert any(event["message"] == "正在测试后台进度" for event in data["progress_events"])
     assert data["result"]["city"] == "广州"
     assert data["result"]["choices"][0]["hotel_name"] == "测试酒店"
 
@@ -144,3 +145,48 @@ def test_nearby_search_reports_partial_progress(monkeypatch):
     assert [item["recommend_city"] for item in result["choices"]] == ["汕尾", "惠州"]
     assert any(event.get("partial_result") for event in events)
     assert any(event.get("completed") == 2 for event in events)
+
+
+def test_cache_prewarm_background_state(monkeypatch):
+    def fake_find_choices(**kwargs):
+        progress_callback = kwargs.get("progress_callback")
+        if progress_callback:
+            progress_callback({"stage": "fake", "message": "正在预热测试缓存", "percent": 40})
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [{"hotel_id": "1", "hotel_name": "预热酒店"}],
+            "cache": {"source": "live", "hit": False},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    with app_module.prewarm_lock:
+        app_module.prewarm_state.clear()
+        app_module.prewarm_state.update({"status": "idle", "message": "测试前空闲"})
+
+    state, status_code = app_module.start_cache_prewarm(
+        {
+            "city_limit": "1",
+            "holiday_codes": ["2026-06-19::端午节"],
+            "profiles": ["default"],
+            "delay_seconds": "0",
+        }
+    )
+
+    assert status_code == 202
+    assert state["status"] in {"queued", "running", "succeeded"}
+    final_state = None
+    for _ in range(50):
+        final_state = app_module.public_prewarm_state()
+        if final_state.get("status") == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert final_state["status"] == "succeeded"
+    assert final_state["total"] == 1
+    assert final_state["success_count"] == 1
+    assert any("正在预热测试缓存" in event["message"] for event in final_state["events"])
