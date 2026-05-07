@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>反向旅游好选择</title>
+    <style>
+      :root {
+        --bg: #f3f5f8;
+        --panel: #fff;
+        --panel-2: #f8fafc;
+        --line: #d7dde6;
+        --line-soft: #e7ebf0;
+        --text: #151923;
+        --muted: #657386;
+        --primary: #1456d9;
+        --primary-dark: #0d3f9e;
+        --good: #117a45;
+        --good-bg: #e9f7ef;
+        --warn: #9a5b00;
+        --warn-bg: #fff4d7;
+        --bad: #b42318;
+        --bad-bg: #fff1f0;
+        --shadow: 0 12px 28px rgba(20, 32, 50, 0.08);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, #eef3fa 0, #f7f8fa 260px, var(--bg) 100%);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+      }
+      a { color: var(--primary); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .page {
+        width: min(1280px, 100%);
+        margin: 0 auto;
+        padding: 24px 18px 44px;
+      }
+      .topbar {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.2;
+      }
+      .sub {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .health {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--good);
+        box-shadow: 0 0 0 4px rgba(17, 122, 69, 0.12);
+      }
+      .toolbar, .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+      .toolbar {
+        display: grid;
+        grid-template-columns: minmax(130px, 0.9fr) minmax(250px, 1.5fr) repeat(5, minmax(118px, 0.75fr)) auto;
+        gap: 12px;
+        padding: 14px;
+        align-items: end;
+      }
+      .nearby-toolbar {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: minmax(180px, 0.9fr) auto auto minmax(220px, 1.5fr);
+        gap: 12px;
+        align-items: end;
+        padding: 12px 14px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+      label {
+        display: grid;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      input, select, button {
+        width: 100%;
+        height: 42px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        padding: 0 12px;
+        background: #fff;
+        color: var(--text);
+        font-size: 14px;
+      }
+      input:focus, select:focus {
+        outline: 2px solid rgba(20, 86, 217, 0.16);
+        border-color: var(--primary);
+      }
+      .cache-option {
+        grid-column: span 2;
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel-2);
+        color: var(--text);
+        cursor: pointer;
+      }
+      .cache-option input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        padding: 0;
+        margin: 0;
+        accent-color: var(--primary);
+        flex: 0 0 auto;
+      }
+      .cache-option strong {
+        display: block;
+        font-size: 13px;
+        line-height: 1.25;
+      }
+      .cache-option small {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+      button {
+        border: 0;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 0 18px;
+        min-width: 116px;
+      }
+      button:hover { background: var(--primary-dark); }
+      button:disabled { opacity: 0.76; cursor: wait; }
+      .secondary-btn {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: #405066;
+      }
+      .secondary-btn:hover {
+        background: #f3f6fb;
+        color: var(--primary);
+      }
+      .nearby-hint {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+        align-self: center;
+      }
+      .spinner {
+        display: none;
+        width: 14px;
+        height: 14px;
+        margin-right: 8px;
+        border: 2px solid rgba(255,255,255,0.42);
+        border-top-color: #fff;
+        border-radius: 999px;
+        vertical-align: -2px;
+        animation: spin 0.8s linear infinite;
+      }
+      button.loading .spinner { display: inline-block; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .notice {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 12px;
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .quickbar {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip-btn, .seg-btn {
+        width: auto;
+        height: 32px;
+        min-width: 0;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: #405066;
+        padding: 0 10px;
+        font-size: 13px;
+        font-weight: 700;
+        box-shadow: none;
+      }
+      .chip-btn:hover, .seg-btn:hover {
+        background: #f3f6fb;
+        color: var(--primary);
+      }
+      .chip-btn.active, .seg-btn.active {
+        border-color: var(--primary);
+        background: #eef4ff;
+        color: var(--primary);
+      }
+      .status {
+        margin-top: 12px;
+        border: 1px solid #b8cdfa;
+        background: #eef4ff;
+        color: #214784;
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 14px;
+      }
+      .error {
+        margin-top: 12px;
+        color: var(--bad);
+        background: var(--bad-bg);
+        border: 1px solid #ffd0cc;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 14px;
+      }
+      .hidden { display: none !important; }
+      .result {
+        margin-top: 18px;
+        display: grid;
+        gap: 14px;
+      }
+      .panel { overflow: hidden; }
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--line-soft);
+      }
+      .stat {
+        background: var(--panel);
+        padding: 14px;
+        min-height: 76px;
+      }
+      .stat .k {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      .stat .v {
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.25;
+      }
+      .area-panel {
+        padding: 14px;
+      }
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        margin: 0;
+        font-size: 16px;
+      }
+      .section-meta {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .area-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .area-card {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fff;
+        padding: 12px;
+      }
+      .area-name {
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        line-height: 1.35;
+      }
+      .area-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+      .area-hotels {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+      .table-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line-soft);
+        background: var(--panel-2);
+      }
+      .table-title {
+        margin: 0;
+        font-size: 15px;
+      }
+      .table-tools {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .table-meta {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .segmented {
+        display: inline-flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .table-wrap { overflow-x: auto; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 920px;
+      }
+      th, td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line-soft);
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+      }
+      th {
+        color: var(--muted);
+        background: #fbfcfe;
+        font-size: 12px;
+        font-weight: 700;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      tbody tr:hover { background: #fbfdff; }
+      .hotel-name {
+        font-weight: 800;
+        margin-bottom: 5px;
+        line-height: 1.35;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+      .price-main {
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1.25;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        height: 24px;
+        padding: 0 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        background: #eef2f7;
+        color: #415064;
+        margin: 3px 6px 3px 0;
+      }
+      .diff {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 84px;
+        height: 30px;
+        padding: 0 10px;
+        border-radius: 999px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .diff.good { background: var(--good-bg); color: var(--good); }
+      .diff.warn { background: var(--warn-bg); color: var(--warn); }
+      .diff.bad { background: var(--bad-bg); color: var(--bad); }
+      .empty {
+        padding: 24px 14px;
+        color: var(--muted);
+        text-align: center;
+      }
+      @media (max-width: 1040px) {
+        .toolbar { grid-template-columns: 1fr 1fr; }
+        .nearby-toolbar { grid-template-columns: 1fr 1fr; }
+        button { min-width: 0; }
+        .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .area-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 720px) {
+        .page { padding: 18px 12px 34px; }
+        .topbar { display: block; }
+        .health { margin-top: 10px; }
+        h1 { font-size: 24px; }
+        .toolbar, .nearby-toolbar, .summary, .area-grid { grid-template-columns: 1fr; }
+        .notice, .status, .table-head, .table-tools, .section-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .table-wrap { overflow: visible; }
+        table {
+          min-width: 0;
+          display: block;
+        }
+        thead { display: none; }
+        tbody, tr, td { display: block; width: 100%; }
+        tr {
+          border-bottom: 8px solid var(--bg);
+          background: #fff;
+        }
+        td {
+          border-bottom: 1px solid var(--line-soft);
+          padding: 10px 12px;
+        }
+        td::before {
+          content: attr(data-label);
+          display: block;
+          color: var(--muted);
+          font-size: 12px;
+          font-weight: 700;
+          margin-bottom: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div>
+          <h1>反向旅游好选择</h1>
+          <p class="sub">按可选酒店条件筛选，比较大床房/双床房每晚含税均价。</p>
+        </div>
+        <div class="health"><span class="dot"></span><span>本地服务运行中</span></div>
+      </header>
+
+      <form class="toolbar" id="search-form">
+        <label>
+          城市
+          <input name="city" value="深圳" placeholder="例如：深圳" required />
+        </label>
+        <label>
+          法定假期
+          <select name="holiday_code" id="holiday-select" required></select>
+        </label>
+        <label>
+          最低每晚含税
+          <input name="min_price" type="number" min="0" placeholder="不限" />
+        </label>
+        <label>
+          最高每晚含税
+          <input name="max_price" type="number" min="0" placeholder="不限" />
+        </label>
+        <label>
+          高级酒店
+          <select name="advanced_filter">
+            <option value="all" selected>全部</option>
+            <option value="yes">是</option>
+            <option value="no">否</option>
+          </select>
+        </label>
+        <label>
+          有游泳池
+          <select name="pool_filter">
+            <option value="all" selected>全部</option>
+            <option value="yes">是</option>
+            <option value="no">否</option>
+          </select>
+        </label>
+        <label>
+          儿童设施
+          <select name="child_facility_filter">
+            <option value="all" selected>全部</option>
+            <option value="yes">是</option>
+            <option value="no">否</option>
+          </select>
+        </label>
+        <label class="cache-option" title="取消后会重新访问 Trip.com，通常需要 2-5 分钟。">
+          <input id="use-cache" name="use_cache" type="checkbox" value="true" checked />
+          <span>
+            <strong>优先显示缓存结果</strong>
+            <small>24 小时内同条件缓存可跨用户共用；取消后新搜索，通常 2-5 分钟。</small>
+          </span>
+        </label>
+        <button id="submit-btn" type="submit"><span class="spinner"></span><span id="submit-text">开始筛选</span></button>
+      </form>
+
+      <form class="nearby-toolbar" id="nearby-form">
+        <label>
+          所在城市
+          <select id="origin-city" name="origin_city">
+            <option value="深圳" selected>深圳</option>
+            <option value="广州">广州</option>
+            <option value="东莞">东莞</option>
+            <option value="惠州">惠州</option>
+            <option value="汕尾">汕尾</option>
+            <option value="珠海">珠海</option>
+            <option value="中山">中山</option>
+            <option value="佛山">佛山</option>
+            <option value="江门">江门</option>
+            <option value="肇庆">肇庆</option>
+            <option value="河源">河源</option>
+            <option value="韶关">韶关</option>
+            <option value="清远">清远</option>
+            <option value="云浮">云浮</option>
+          </select>
+        </label>
+        <button class="secondary-btn" id="geo-btn" type="button">用当前位置</button>
+        <button id="nearby-submit-btn" type="submit"><span class="spinner"></span><span id="nearby-submit-text">推荐附近</span></button>
+        <div class="nearby-hint" id="nearby-hint">按所在城市推荐周边城市酒店；默认只显示 24 小时内同条件缓存，取消缓存后会逐城新搜索。</div>
+      </form>
+
+      <div class="notice">
+        <span>筛选口径：假期每晚均价不高于未来代表时段每晚均价 +100 元。</span>
+        <span>高级/泳池/儿童设施默认全部；儿童设施使用 Trip.com 儿童乐园等官方筛选。</span>
+      </div>
+      <div class="quickbar" aria-label="价格快捷筛选">
+        <button class="chip-btn" type="button" data-price-range="">不限</button>
+        <button class="chip-btn" type="button" data-price-range="0-500">500 以下</button>
+        <button class="chip-btn" type="button" data-price-range="500-800">500-800</button>
+        <button class="chip-btn" type="button" data-price-range="800-1200">800-1200</button>
+        <button class="chip-btn" type="button" data-price-range="1200-">1200 以上</button>
+      </div>
+      <div class="status hidden" id="status-box">
+        <span id="status-text">正在查询 Trip.com 酒店价格...</span>
+        <strong id="elapsed">00:00</strong>
+      </div>
+      <div class="error hidden" id="error-box"></div>
+
+      <section class="result hidden" id="result">
+        <div class="panel summary" id="summary"></div>
+        <div class="panel area-panel">
+          <div class="section-head">
+            <h2 class="section-title">推荐旅游区域</h2>
+            <div class="section-meta" id="area-meta"></div>
+          </div>
+          <div class="area-grid" id="area-recommendations"></div>
+        </div>
+        <div class="panel">
+          <div class="table-head">
+            <h2 class="table-title">反向旅游好选择</h2>
+            <div class="table-tools">
+              <div class="segmented" id="view-filter" aria-label="结果筛选">
+                <button class="seg-btn active" type="button" data-view="all">全部</button>
+                <button class="seg-btn" type="button" data-view="lower">假期更低</button>
+                <button class="seg-btn" type="button" data-view="slight">略高可接受</button>
+              </div>
+              <div class="table-meta" id="table-meta"></div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>酒店</th>
+                  <th>假期每晚含税</th>
+                  <th>代表时段每晚含税</th>
+                  <th>每晚差额</th>
+                </tr>
+              </thead>
+              <tbody id="choices-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const holidaySelect = document.getElementById("holiday-select");
+      const form = document.getElementById("search-form");
+      const nearbyForm = document.getElementById("nearby-form");
+      const submitBtn = document.getElementById("submit-btn");
+      const submitText = document.getElementById("submit-text");
+      const nearbySubmitBtn = document.getElementById("nearby-submit-btn");
+      const nearbySubmitText = document.getElementById("nearby-submit-text");
+      const geoBtn = document.getElementById("geo-btn");
+      const originCity = document.getElementById("origin-city");
+      const nearbyHint = document.getElementById("nearby-hint");
+      const errorBox = document.getElementById("error-box");
+      const statusBox = document.getElementById("status-box");
+      const statusText = document.getElementById("status-text");
+      const elapsed = document.getElementById("elapsed");
+      const result = document.getElementById("result");
+      const summary = document.getElementById("summary");
+      const areaRecommendations = document.getElementById("area-recommendations");
+      const areaMeta = document.getElementById("area-meta");
+      const tableMeta = document.getElementById("table-meta");
+      const choicesBody = document.getElementById("choices-body");
+      const viewFilter = document.getElementById("view-filter");
+      const useCacheInput = document.getElementById("use-cache");
+      const priceButtons = Array.from(document.querySelectorAll("[data-price-range]"));
+      let timer = null;
+      let startedAt = 0;
+      let lastChoices = [];
+      let lastServerAreas = [];
+      let lastComparisonCount = 0;
+      let lastQuerySeconds = 0;
+      let lastCacheInfo = null;
+      let currentUseCache = true;
+      let currentRequestKind = "single";
+      let activeView = "all";
+
+      function esc(text) {
+        return String(text || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function setLoading(active) {
+        submitBtn.disabled = active;
+        nearbySubmitBtn.disabled = active;
+        geoBtn.disabled = active;
+        submitBtn.classList.toggle("loading", active && currentRequestKind === "single");
+        nearbySubmitBtn.classList.toggle("loading", active && currentRequestKind === "nearby");
+        submitText.textContent = active && currentRequestKind === "single" ? "筛选中" : "开始筛选";
+        nearbySubmitText.textContent = active && currentRequestKind === "nearby" ? "推荐中" : "推荐附近";
+        statusBox.classList.toggle("hidden", !active);
+        if (!active) {
+          window.clearInterval(timer);
+          timer = null;
+          return;
+        }
+        startedAt = Date.now();
+        statusText.textContent = loadingMessage(0);
+        updateElapsed();
+        timer = window.setInterval(updateElapsed, 1000);
+      }
+
+      function loadingMessage(seconds) {
+        if (currentRequestKind === "nearby") {
+          if (currentUseCache) {
+            return "正在读取附近城市缓存；没有缓存的城市会在结果中提示。";
+          }
+          return seconds > 45 ? "正在逐城比较附近城市价格，可能需要 5-15 分钟..." : "正在逐城新搜索附近城市，可能需要 5-15 分钟...";
+        }
+        if (currentUseCache) {
+          return "正在读取缓存；没有可用缓存时会提示新搜索。";
+        }
+        return seconds > 45 ? "正在比较多个代表日期的含税均价..." : "正在进行新搜索，通常需要 2-5 分钟...";
+      }
+
+      function updateElapsed() {
+        const seconds = Math.max(0, Math.floor((Date.now() - startedAt) / 1000));
+        const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
+        const ss = String(seconds % 60).padStart(2, "0");
+        elapsed.textContent = `${mm}:${ss}`;
+        statusText.textContent = loadingMessage(seconds);
+        if (seconds > 120) {
+          statusText.textContent = "正在补全酒店中文名和整理结果...";
+        }
+      }
+
+      function diffClass(value) {
+        const n = Number(value || 0);
+        if (n <= 0) return "good";
+        if (n <= 100) return "warn";
+        return "bad";
+      }
+
+      function renderSummary(data) {
+        if (data.origin_city) {
+          summary.innerHTML = `
+            <div class="stat"><div class="k">所在城市</div><div class="v">${esc(data.origin_city)}</div></div>
+            <div class="stat"><div class="k">附近城市</div><div class="v">${esc((data.nearby_cities || []).join("、"))}</div></div>
+            <div class="stat"><div class="k">命中酒店</div><div class="v">${esc((data.choices || []).length)} 家</div></div>
+            <div class="stat"><div class="k">推荐区域</div><div class="v">${esc((data.area_recommendations || []).length)} 个</div></div>
+          `;
+        } else {
+          summary.innerHTML = `
+            <div class="stat"><div class="k">城市</div><div class="v">${esc(data.city)}</div></div>
+            <div class="stat"><div class="k">假期</div><div class="v">${esc(data.holiday.name)}</div></div>
+            <div class="stat"><div class="k">入住时段</div><div class="v">${esc(data.holiday.check_in)} 至 ${esc(data.holiday.check_out)}</div></div>
+            <div class="stat"><div class="k">推荐区域</div><div class="v">${esc((data.area_recommendations || []).length)} 个</div></div>
+          `;
+        }
+        lastComparisonCount = (data.comparison_windows || []).length;
+      }
+
+      function visibleChoices() {
+        if (activeView === "lower") {
+          return lastChoices.filter((item) => Number(item.price_diff_nightly || 0) <= 0);
+        }
+        if (activeView === "slight") {
+          return lastChoices.filter((item) => {
+            const diff = Number(item.price_diff_nightly || 0);
+            return diff > 0 && diff <= 100;
+          });
+        }
+        return lastChoices;
+      }
+
+      function renderChoices() {
+        const items = visibleChoices();
+        const cacheText = formatCacheInfo(lastCacheInfo);
+        tableMeta.textContent = `${items.length}/${lastChoices.length} 家，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}`;
+        renderAreas(items);
+        if (!items.length) {
+          choicesBody.innerHTML = `<tr><td class="empty" colspan="4">当前条件下没有找到“反向旅游好选择”。</td></tr>`;
+          return;
+        }
+        choicesBody.innerHTML = items.map((item) => `
+          <tr>
+            <td data-label="酒店">
+              <div class="hotel-name">${esc(item.hotel_name)}</div>
+              ${item.hotel_original_name && item.hotel_original_name !== item.hotel_name ? `<div class="muted">原名：${esc(item.hotel_original_name)}</div>` : ""}
+              <div>
+                <span class="pill">${esc(item.room_type_label)}</span>
+                ${item.recommend_city ? `<span class="pill">${esc(item.recommend_city)}</span>` : ""}
+                ${item.area_name ? `<span class="pill">${esc(item.area_name)}</span>` : ""}
+                ${item.hotel_name_source ? `<span class="pill">${esc(item.hotel_name_source)}</span>` : ""}
+              </div>
+              <div class="muted">${esc(item.holiday_room_name)}</div>
+              <div><a href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">打开 Trip.com 详情</a></div>
+            </td>
+            <td data-label="假期每晚含税">
+              <div class="price-main">${esc(item.holiday_avg_nightly_tax_total_price)}</div>
+              <div class="muted">房价参考：${esc(item.holiday_room_price)}</div>
+              <div class="muted">整段含税：${esc(item.holiday_tax_total_price)}</div>
+            </td>
+            <td data-label="代表时段每晚含税">
+              <div class="price-main">${esc(item.comparison_average_nightly_tax_total_price)}</div>
+              <div class="muted">样本数：${esc(item.comparison_sample_count)}</div>
+              <div class="muted">最低样本：${esc(item.comparison_lowest_nightly_tax_total_price)}</div>
+              <div class="muted">${esc(item.comparison_lowest_check_in)} 至 ${esc(item.comparison_lowest_check_out)}</div>
+            </td>
+            <td data-label="每晚差额">
+              <span class="diff ${diffClass(item.price_diff_nightly)}">${esc(item.price_diff_nightly_text)}</span>
+            </td>
+          </tr>
+        `).join("");
+      }
+
+      function formatDuration(seconds) {
+        const mm = Math.floor(seconds / 60);
+        const ss = String(seconds % 60).padStart(2, "0");
+        return mm ? `${mm}分${ss}秒` : `${ss}秒`;
+      }
+
+      function formatAge(seconds) {
+        const value = Number(seconds || 0);
+        if (value < 60) return "刚刚";
+        if (value < 3600) return `${Math.floor(value / 60)}分钟前`;
+        return `${Math.floor(value / 3600)}小时前`;
+      }
+
+      function formatCacheInfo(cache) {
+        if (!cache) return "";
+        if (cache.summary_label) return cache.summary_label;
+        if (cache.hit) {
+          return `缓存命中：${cache.source_label || "缓存"} ${formatAge(cache.age_seconds)}`;
+        }
+        return "实时查询";
+      }
+
+      function renderAreas(items) {
+        const areas = activeView === "all" && lastServerAreas.length
+          ? lastServerAreas
+          : buildAreasFromChoices(items);
+        areaMeta.textContent = areas.length ? `优先显示命中酒店更集中、降价更多的片区` : "暂无可推荐片区";
+        areaRecommendations.innerHTML = areas.length
+          ? areas.map((area) => `
+            <article class="area-card">
+              <div class="area-name">${esc(area.area_name)}</div>
+              <div class="area-stats">
+                <span class="pill">${esc(area.hotel_count)} 家酒店</span>
+                <span class="pill">${esc(area.lower_price_hotel_count)} 家更低</span>
+                <span class="pill">${esc(area.average_holiday_nightly_tax_total_price)}/晚</span>
+                <span class="diff ${diffClass(area.average_price_diff_nightly)}">${esc(area.average_price_diff_nightly_text)}</span>
+              </div>
+              <div class="area-hotels">${esc(area.reason || "")}</div>
+              <div class="area-hotels">${esc((area.representative_hotels || []).slice(0, 3).join("、"))}</div>
+            </article>
+          `).join("")
+          : `<div class="empty">当前条件下暂无推荐旅游区域。</div>`;
+      }
+
+      function buildAreasFromChoices(items) {
+        const groups = new Map();
+        for (const item of items) {
+          const name = item.area_name || "";
+          if (!name || isGenericAreaName(name)) continue;
+          if (!groups.has(name)) {
+            groups.set(name, {
+              area_name: name,
+              hotel_count: 0,
+              lower_price_hotel_count: 0,
+              slightly_higher_hotel_count: 0,
+              holiday_values: [],
+              diff_values: [],
+              representative_hotels: [],
+            });
+          }
+          const group = groups.get(name);
+          const diff = Number(item.price_diff_nightly || 0);
+          group.hotel_count += 1;
+          if (diff <= 0) group.lower_price_hotel_count += 1;
+          else group.slightly_higher_hotel_count += 1;
+          group.holiday_values.push(Number(item.holiday_avg_nightly_tax_total_value || 0));
+          group.diff_values.push(diff);
+          if (group.representative_hotels.length < 4) {
+            group.representative_hotels.push(item.hotel_name || item.hotel_original_name || "");
+          }
+        }
+        let areas = Array.from(groups.values()).map((group) => {
+          const avgHoliday = Math.round(group.holiday_values.reduce((sum, value) => sum + value, 0) / Math.max(1, group.holiday_values.length));
+          const avgDiff = Math.round(group.diff_values.reduce((sum, value) => sum + value, 0) / Math.max(1, group.diff_values.length));
+          return {
+            ...group,
+            lower_price_ratio: group.lower_price_hotel_count / Math.max(1, group.hotel_count),
+            average_holiday_nightly_tax_total_value: avgHoliday,
+            average_holiday_nightly_tax_total_price: `CNY ${avgHoliday}`,
+            average_price_diff_nightly: avgDiff,
+            average_price_diff_nightly_text: avgDiff > 0 ? `+CNY ${avgDiff}` : `CNY ${avgDiff}`,
+            reason: areaReason(group.hotel_count, group.lower_price_hotel_count, avgDiff),
+          };
+        });
+        return areas.sort((a, b) =>
+          (b.lower_price_ratio - a.lower_price_ratio) ||
+          (b.lower_price_hotel_count - a.lower_price_hotel_count) ||
+          (b.hotel_count - a.hotel_count) ||
+          (a.average_price_diff_nightly - b.average_price_diff_nightly) ||
+          (a.average_holiday_nightly_tax_total_value - b.average_holiday_nightly_tax_total_value)
+        ).slice(0, 8);
+      }
+
+      function isGenericAreaName(name) {
+        return String(name || "").includes("热门酒店片区") || String(name || "").includes("区域待确认");
+      }
+
+      function areaReason(hotelCount, lowerCount) {
+        if (lowerCount === hotelCount) return `${hotelCount} 家命中酒店假期价格不高于平日代表均价。`;
+        if (lowerCount) return `${lowerCount} 家酒店假期更低，整体涨幅可控。`;
+        return `${hotelCount} 家酒店假期涨幅不超过 100 元/晚。`;
+      }
+
+      async function loadHolidays() {
+        const resp = await fetch("/api/holidays");
+        const data = await resp.json();
+        if (!resp.ok) {
+          throw new Error(data.error || "假期列表加载失败");
+        }
+        holidaySelect.innerHTML = data.holidays
+          .map((item) => `<option value="${esc(item.code)}">${esc(item.label)}</option>`)
+          .join("");
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        errorBox.classList.add("hidden");
+        result.classList.add("hidden");
+        const payload = Object.fromEntries(new FormData(form).entries());
+        currentRequestKind = "single";
+        currentUseCache = useCacheInput.checked;
+        payload.use_cache = currentUseCache ? "true" : "false";
+        payload.cache_only = currentUseCache ? "true" : "false";
+        setLoading(true);
+
+        try {
+          const resp = await fetch("/api/search", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const data = await resp.json();
+          if (!resp.ok) {
+            throw new Error(data.error || "查询失败");
+          }
+
+          lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
+          lastChoices = data.choices || [];
+          lastServerAreas = data.area_recommendations || [];
+          lastCacheInfo = data.cache || null;
+          activeView = "all";
+          viewFilter.querySelectorAll("[data-view]").forEach((button) => {
+            button.classList.toggle("active", button.dataset.view === activeView);
+          });
+          renderSummary(data);
+          renderChoices();
+          result.classList.remove("hidden");
+        } catch (error) {
+          errorBox.textContent = error.message || "查询失败";
+          errorBox.classList.remove("hidden");
+        } finally {
+          setLoading(false);
+        }
+      });
+
+      nearbyForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        errorBox.classList.add("hidden");
+        result.classList.add("hidden");
+        const payload = Object.fromEntries(new FormData(form).entries());
+        payload.origin_city = originCity.value;
+        payload.nearby_limit = "4";
+        currentRequestKind = "nearby";
+        currentUseCache = useCacheInput.checked;
+        payload.use_cache = currentUseCache ? "true" : "false";
+        payload.cache_only = currentUseCache ? "true" : "false";
+        setLoading(true);
+
+        try {
+          const resp = await fetch("/api/nearby-search", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const data = await resp.json();
+          if (!resp.ok) {
+            throw new Error(data.error || "附近推荐失败");
+          }
+
+          lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
+          lastChoices = data.choices || [];
+          lastServerAreas = data.area_recommendations || [];
+          lastCacheInfo = data.cache || null;
+          activeView = "all";
+          viewFilter.querySelectorAll("[data-view]").forEach((button) => {
+            button.classList.toggle("active", button.dataset.view === activeView);
+          });
+          renderSummary(data);
+          renderChoices();
+          result.classList.remove("hidden");
+        } catch (error) {
+          errorBox.textContent = error.message || "附近推荐失败";
+          errorBox.classList.remove("hidden");
+        } finally {
+          setLoading(false);
+        }
+      });
+
+      geoBtn.addEventListener("click", () => {
+        errorBox.classList.add("hidden");
+        if (!navigator.geolocation) {
+          errorBox.textContent = "当前浏览器不支持读取位置，请手动选择所在城市。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        geoBtn.disabled = true;
+        nearbyHint.textContent = "正在读取当前位置...";
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          try {
+            const resp = await fetch("/api/resolve-location", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                lat: position.coords.latitude,
+                lon: position.coords.longitude,
+              }),
+            });
+            const data = await resp.json();
+            if (!resp.ok) {
+              throw new Error(data.error || "定位失败");
+            }
+            originCity.value = data.city;
+            nearbyHint.textContent = `已按当前位置识别为 ${data.city}，可点击“推荐附近”。`;
+          } catch (error) {
+            errorBox.textContent = error.message || "定位失败，请手动选择所在城市。";
+            errorBox.classList.remove("hidden");
+            nearbyHint.textContent = "定位失败，可手动选择所在城市。";
+          } finally {
+            geoBtn.disabled = false;
+          }
+        }, () => {
+          geoBtn.disabled = false;
+          nearbyHint.textContent = "无法读取位置，可手动选择所在城市。";
+          errorBox.textContent = "浏览器没有授权当前位置，请手动选择所在城市。";
+          errorBox.classList.remove("hidden");
+        }, { timeout: 8000, maximumAge: 10 * 60 * 1000 });
+      });
+
+      loadHolidays().catch((error) => {
+        errorBox.textContent = error.message || "假期列表加载失败";
+        errorBox.classList.remove("hidden");
+      });
+
+      priceButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const [min, max] = button.dataset.priceRange.split("-");
+          form.elements.min_price.value = min || "";
+          form.elements.max_price.value = max || "";
+          priceButtons.forEach((item) => item.classList.toggle("active", item === button));
+        });
+      });
+
+      viewFilter.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-view]");
+        if (!button) return;
+        activeView = button.dataset.view;
+        viewFilter.querySelectorAll("[data-view]").forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+        renderChoices();
+      });
+    </script>
+  </body>
+</html>
