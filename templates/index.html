@@ -1111,6 +1111,40 @@
         return data;
       }
 
+      function sleep(ms) {
+        return new Promise((resolve) => window.setTimeout(resolve, ms));
+      }
+
+      async function runAsyncJob(startUrl, payload, fallbackMessage) {
+        const startResp = await fetch(startUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const startData = await readJsonResponse(startResp, fallbackMessage);
+        const pollUrl = startData.poll_url || `/api/jobs/${startData.job_id}`;
+        let pollInterval = Number(startData.poll_interval_ms || 2000);
+        if (!pollUrl || !startData.job_id) {
+          throw new Error(`${fallbackMessage}：查询任务创建失败。`);
+        }
+
+        const maxWaitMs = 30 * 60 * 1000;
+        const started = Date.now();
+        while (Date.now() - started < maxWaitMs) {
+          await sleep(pollInterval);
+          const resp = await fetch(pollUrl, { cache: "no-store" });
+          const data = await readJsonResponse(resp, fallbackMessage);
+          if (data.status === "succeeded") {
+            return data.result;
+          }
+          if (data.status === "failed") {
+            throw new Error(data.error || fallbackMessage);
+          }
+          pollInterval = Math.min(5000, Math.max(1500, pollInterval));
+        }
+        throw new Error(`${fallbackMessage}：查询超过 30 分钟仍未完成，请稍后重试。`);
+      }
+
       async function loadHolidays() {
         const resp = await fetch("/api/holidays");
         const data = await readJsonResponse(resp, "假期列表加载失败");
@@ -1131,12 +1165,7 @@
         setLoading(true);
 
         try {
-          const resp = await fetch("/api/search", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-          const data = await readJsonResponse(resp, "查询失败");
+          const data = await runAsyncJob("/api/search/start", payload, "查询失败");
 
           lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
           lastChoices = data.choices || [];
@@ -1171,12 +1200,7 @@
         setLoading(true);
 
         try {
-          const resp = await fetch("/api/nearby-search", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-          const data = await readJsonResponse(resp, "附近推荐失败");
+          const data = await runAsyncJob("/api/nearby-search/start", payload, "附近推荐失败");
 
           lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
           lastChoices = data.choices || [];

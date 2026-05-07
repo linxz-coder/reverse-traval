@@ -2,6 +2,11 @@ from __future__ import annotations
 
 import copy
 import math
+import threading
+import time
+import uuid
+from concurrent.futures import ThreadPoolExecutor
+from typing import Any
 
 from flask import Flask, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
@@ -12,6 +17,10 @@ from reverse_travel import ReverseTravelFinder, ReverseTravelFinderError
 app = Flask(__name__)
 calendar = HolidayCalendar()
 finder = ReverseTravelFinder(calendar)
+job_executor = ThreadPoolExecutor(max_workers=2)
+job_lock = threading.Lock()
+jobs: dict[str, dict[str, Any]] = {}
+JOB_TTL_SECONDS = 6 * 60 * 60
 
 CITY_COORDINATES = {
     "深圳": (22.5431, 114.0579),
@@ -141,63 +150,38 @@ def request_price_filters(payload: dict) -> tuple[int | None, int | None]:
     )
 
 
-@app.errorhandler(HTTPException)
-def api_http_error(exc: HTTPException):
-    if request.path.startswith("/api/"):
-        return jsonify({"error": exc.description or exc.name}), exc.code or 500
-    return exc
+def utc_timestamp() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
-@app.errorhandler(Exception)
-def api_unhandled_error(exc: Exception):
-    if request.path.startswith("/api/"):
-        return jsonify({"error": f"服务异常: {exc}"}), 500
-    raise exc
+def cleanup_jobs() -> None:
+    cutoff = time.time() - JOB_TTL_SECONDS
+    with job_lock:
+        stale = [job_id for job_id, job in jobs.items() if float(job.get("updated_ts") or 0) < cutoff]
+        for job_id in stale:
+            jobs.pop(job_id, None)
 
 
-@app.get("/")
-def index():
-    return render_template("index.html")
+def public_job(job: dict[str, Any]) -> dict[str, Any]:
+    data = {
+        "job_id": job["job_id"],
+        "kind": job["kind"],
+        "status": job["status"],
+        "created_at": job["created_at"],
+        "updated_at": job["updated_at"],
+    }
+    if job.get("result") is not None:
+        data["result"] = job["result"]
+    if job.get("error"):
+        data["error"] = job["error"]
+    if job.get("status_code"):
+        data["status_code"] = job["status_code"]
+    return data
 
 
-@app.get("/api/holidays")
-def holidays():
-    try:
-        items = finder.list_holidays()
-    except HolidayCalendarError as exc:
-        return jsonify({"error": str(exc)}), 500
-    return jsonify({"holidays": items})
-
-
-@app.get("/api/nearby-cities")
-def nearby_cities():
-    return jsonify(
-        {
-            "cities": sorted(CITY_COORDINATES),
-            "nearby": {city: list(values) for city, values in NEARBY_CITY_GROUPS.items()},
-        }
-    )
-
-
-@app.post("/api/resolve-location")
-def resolve_location():
-    payload = request.get_json(silent=True) or {}
-    try:
-        lat = float(payload.get("lat"))
-        lon = float(payload.get("lon"))
-    except (TypeError, ValueError):
-        return jsonify({"error": "无法读取当前位置坐标"}), 400
-    city = nearest_supported_city(lat, lon)
-    return jsonify({"city": city, "lat": lat, "lon": lon})
-
-
-@app.post("/api/search")
-def search():
-    payload = request.get_json(silent=True) or {}
+def search_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
     city = (payload.get("city") or "").strip()
     holiday_code = (payload.get("holiday_code") or "").strip()
-    min_price = payload.get("min_price")
-    max_price = payload.get("max_price")
     advanced_filter = payload.get("advanced_filter")
     pool_filter = payload.get("pool_filter")
     child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
@@ -205,14 +189,10 @@ def search():
     cache_only = parse_bool(payload.get("cache_only"), default=False)
 
     if not city or not holiday_code:
-        return jsonify({"error": "city 和 holiday_code 不能为空"}), 400
+        return {"error": "city 和 holiday_code 不能为空"}, 400
 
     try:
         min_price_int, max_price_int = request_price_filters(payload)
-    except ReverseTravelFinderError as exc:
-        return jsonify({"error": str(exc)}), 400
-
-    try:
         result = finder.find_choices(
             city=city,
             holiday_code=holiday_code,
@@ -225,16 +205,13 @@ def search():
             cache_only=cache_only,
         )
     except (HolidayCalendarError, ReverseTravelFinderError) as exc:
-        return jsonify({"error": str(exc)}), 400
+        return {"error": str(exc)}, 400
     except Exception as exc:  # pragma: no cover
-        return jsonify({"error": f"查询失败: {exc}"}), 500
+        return {"error": f"查询失败: {exc}"}, 500
+    return result, 200
 
-    return jsonify(result)
 
-
-@app.post("/api/nearby-search")
-def nearby_search():
-    payload = request.get_json(silent=True) or {}
+def nearby_search_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
     holiday_code = (payload.get("holiday_code") or "").strip()
     origin_city = normalize_city(payload.get("origin_city") or payload.get("city"))
     advanced_filter = payload.get("advanced_filter")
@@ -247,9 +224,9 @@ def nearby_search():
         try:
             origin_city = nearest_supported_city(float(payload.get("lat")), float(payload.get("lon")))
         except (TypeError, ValueError):
-            return jsonify({"error": "请选择所在城市，或允许浏览器读取当前位置"}), 400
+            return {"error": "请选择所在城市，或允许浏览器读取当前位置"}, 400
     if not holiday_code:
-        return jsonify({"error": "holiday_code 不能为空"}), 400
+        return {"error": "holiday_code 不能为空"}, 400
 
     try:
         min_price_int, max_price_int = request_price_filters(payload)
@@ -260,11 +237,11 @@ def nearby_search():
             child_facility_filter,
         ).to_response()
     except ReverseTravelFinderError as exc:
-        return jsonify({"error": str(exc)}), 400
+        return {"error": str(exc)}, 400
 
     target_cities = nearby_cities_for(origin_city, limit=limit)
     if not target_cities:
-        return jsonify({"error": "暂时没有配置该城市的附近推荐城市"}), 400
+        return {"error": "暂时没有配置该城市的附近推荐城市"}, 400
 
     city_results = []
     all_choices = []
@@ -360,7 +337,155 @@ def nearby_search():
             "age_seconds": 0,
         },
     }
-    return jsonify(response)
+    return response, 200
+
+
+def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
+    with job_lock:
+        job = jobs.get(job_id)
+        if not job:
+            return
+        job["status"] = "running"
+        job["updated_at"] = utc_timestamp()
+        job["updated_ts"] = time.time()
+
+    if kind == "search":
+        result, status_code = search_result_from_payload(payload)
+    else:
+        result, status_code = nearby_search_result_from_payload(payload)
+
+    with job_lock:
+        job = jobs.get(job_id)
+        if not job:
+            return
+        job["updated_at"] = utc_timestamp()
+        job["updated_ts"] = time.time()
+        job["status_code"] = status_code
+        if status_code == 200:
+            job["status"] = "succeeded"
+            job["result"] = result
+        else:
+            job["status"] = "failed"
+            job["error"] = result.get("error") or "查询失败"
+
+
+def start_background_job(kind: str, payload: dict[str, Any]):
+    cleanup_jobs()
+    now = time.time()
+    job_id = uuid.uuid4().hex
+    job = {
+        "job_id": job_id,
+        "kind": kind,
+        "status": "queued",
+        "created_at": utc_timestamp(),
+        "updated_at": utc_timestamp(),
+        "created_ts": now,
+        "updated_ts": now,
+        "result": None,
+        "error": "",
+        "status_code": None,
+    }
+    with job_lock:
+        jobs[job_id] = job
+    job_executor.submit(run_job, job_id, kind, copy.deepcopy(payload))
+    return (
+        jsonify(
+            {
+                "job_id": job_id,
+                "status": "queued",
+                "poll_url": f"/api/jobs/{job_id}",
+                "poll_interval_ms": 2000,
+            }
+        ),
+        202,
+    )
+
+
+@app.errorhandler(HTTPException)
+def api_http_error(exc: HTTPException):
+    if request.path.startswith("/api/"):
+        return jsonify({"error": exc.description or exc.name}), exc.code or 500
+    return exc
+
+
+@app.errorhandler(Exception)
+def api_unhandled_error(exc: Exception):
+    if request.path.startswith("/api/"):
+        return jsonify({"error": f"服务异常: {exc}"}), 500
+    raise exc
+
+
+@app.get("/")
+def index():
+    return render_template("index.html")
+
+
+@app.get("/api/holidays")
+def holidays():
+    try:
+        items = finder.list_holidays()
+    except HolidayCalendarError as exc:
+        return jsonify({"error": str(exc)}), 500
+    return jsonify({"holidays": items})
+
+
+@app.get("/api/nearby-cities")
+def nearby_cities():
+    return jsonify(
+        {
+            "cities": sorted(CITY_COORDINATES),
+            "nearby": {city: list(values) for city, values in NEARBY_CITY_GROUPS.items()},
+        }
+    )
+
+
+@app.post("/api/resolve-location")
+def resolve_location():
+    payload = request.get_json(silent=True) or {}
+    try:
+        lat = float(payload.get("lat"))
+        lon = float(payload.get("lon"))
+    except (TypeError, ValueError):
+        return jsonify({"error": "无法读取当前位置坐标"}), 400
+    city = nearest_supported_city(lat, lon)
+    return jsonify({"city": city, "lat": lat, "lon": lon})
+
+
+@app.post("/api/search")
+def search():
+    payload = request.get_json(silent=True) or {}
+    result, status_code = search_result_from_payload(payload)
+    return jsonify(result), status_code
+
+
+@app.post("/api/search/start")
+def search_start():
+    payload = request.get_json(silent=True) or {}
+    return start_background_job("search", payload)
+
+
+@app.post("/api/nearby-search")
+def nearby_search():
+    payload = request.get_json(silent=True) or {}
+    result, status_code = nearby_search_result_from_payload(payload)
+    return jsonify(result), status_code
+
+
+@app.post("/api/nearby-search/start")
+def nearby_search_start():
+    payload = request.get_json(silent=True) or {}
+    return start_background_job("nearby", payload)
+
+
+@app.get("/api/jobs/<job_id>")
+def get_job(job_id: str):
+    cleanup_jobs()
+    with job_lock:
+        job = copy.deepcopy(jobs.get(job_id))
+    if not job:
+        return jsonify({"error": "查询任务不存在或已过期"}), 404
+    status_code = 200 if job.get("status") != "failed" else int(job.get("status_code") or 500)
+    return jsonify(public_job(job)), status_code
 
 
 if __name__ == "__main__":
