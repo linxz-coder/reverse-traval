@@ -427,8 +427,6 @@ class ReverseTravelFinder:
                     self._search_cache_meta[cache_key] = {
                         "created_at": float(disk_record["created_at"]),
                     }
-            elif cache_only:
-                raise ReverseTravelFinderError("当前条件没有可用缓存；请取消勾选“优先显示缓存结果”后发起新搜索。")
             else:
                 base_result = self._find_choices_base(
                     city=city,

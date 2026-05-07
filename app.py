@@ -187,7 +187,7 @@ def search():
     pool_filter = payload.get("pool_filter")
     child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
     use_cache = parse_bool(payload.get("use_cache"), default=True)
-    cache_only = parse_bool(payload.get("cache_only"), default=use_cache)
+    cache_only = parse_bool(payload.get("cache_only"), default=False)
 
     if not city or not holiday_code:
         return jsonify({"error": "city 和 holiday_code 不能为空"}), 400
@@ -226,7 +226,7 @@ def nearby_search():
     pool_filter = payload.get("pool_filter")
     child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
     use_cache = parse_bool(payload.get("use_cache"), default=True)
-    cache_only = parse_bool(payload.get("cache_only"), default=use_cache)
+    cache_only = parse_bool(payload.get("cache_only"), default=False)
 
     if not origin_city:
         try:

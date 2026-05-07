@@ -842,12 +842,10 @@ def test_find_choices_uses_memory_and_disk_cache(tmp_path):
     assert third["cache"]["hit"] is True
     assert len(third["choices"]) == 2
 
-    try:
-        restarted.find_choices("广州", "2026-05-01::劳动节", None, None, "yes", "yes", "all", cache_only=True)
-    except ReverseTravelFinderError as exc:
-        assert "没有可用缓存" in str(exc)
-    else:
-        raise AssertionError("cache_only should reject uncached searches")
+    fallback = restarted.find_choices("广州", "2026-05-01::劳动节", None, None, "yes", "yes", "all", cache_only=True)
+    assert restarted.calls == 1
+    assert fallback["cache"]["source"] == "live"
+    assert fallback["cache"]["hit"] is False
 
 
 def test_city_and_hotel_name_cache_persist(tmp_path):

@@ -665,11 +665,11 @@
             <option value="no">否</option>
           </select>
         </label>
-        <label class="cache-option" title="取消后会重新访问 Trip.com，通常需要 2-5 分钟。">
+        <label class="cache-option" title="有缓存先显示；没有缓存会自动新搜索，通常需要 2-5 分钟。">
           <input id="use-cache" name="use_cache" type="checkbox" value="true" checked />
           <span>
             <strong>优先显示缓存结果</strong>
-            <small>24 小时内同条件缓存可跨用户共用；取消后新搜索，通常 2-5 分钟。</small>
+            <small>24 小时内同条件缓存可跨用户共用；没有缓存会自动新搜索。</small>
           </span>
         </label>
         <button id="submit-btn" type="submit"><span class="spinner"></span><span id="submit-text">开始筛选</span></button>
@@ -697,7 +697,7 @@
         </label>
         <button class="secondary-btn" id="geo-btn" type="button">用当前位置</button>
         <button id="nearby-submit-btn" type="submit"><span class="spinner"></span><span id="nearby-submit-text">推荐附近</span></button>
-        <div class="nearby-hint" id="nearby-hint">按所在城市推荐周边城市酒店；默认只显示 24 小时内同条件缓存，取消缓存后会逐城新搜索。</div>
+        <div class="nearby-hint" id="nearby-hint">按所在城市推荐周边城市酒店；默认优先使用 24 小时内同条件缓存，没有缓存会自动逐城新搜索。</div>
       </form>
 
       <div class="notice">
@@ -822,12 +822,12 @@
       function loadingMessage(seconds) {
         if (currentRequestKind === "nearby") {
           if (currentUseCache) {
-            return "正在读取附近城市缓存；没有缓存的城市会在结果中提示。";
+            return "正在读取附近城市缓存；没有缓存会自动逐城新搜索。";
           }
           return seconds > 45 ? "正在逐城比较附近城市价格，可能需要 5-15 分钟..." : "正在逐城新搜索附近城市，可能需要 5-15 分钟...";
         }
         if (currentUseCache) {
-          return "正在读取缓存；没有可用缓存时会提示新搜索。";
+          return "正在读取缓存；如未命中会自动新搜索。";
         }
         return seconds > 45 ? "正在比较多个代表日期的含税均价..." : "正在进行新搜索，通常需要 2-5 分钟...";
       }
@@ -1045,7 +1045,7 @@
         currentRequestKind = "single";
         currentUseCache = useCacheInput.checked;
         payload.use_cache = currentUseCache ? "true" : "false";
-        payload.cache_only = currentUseCache ? "true" : "false";
+        payload.cache_only = "false";
         setLoading(true);
 
         try {
@@ -1088,7 +1088,7 @@
         currentRequestKind = "nearby";
         currentUseCache = useCacheInput.checked;
         payload.use_cache = currentUseCache ? "true" : "false";
-        payload.cache_only = currentUseCache ? "true" : "false";
+        payload.cache_only = "false";
         setLoading(true);
 
         try {
