@@ -31,6 +31,19 @@ http://127.0.0.1:5012
 python3 -m pytest -q
 ```
 
+## 本机公网上线
+
+项目包含 macOS `launchd` 配置：
+
+- `deploy/launchd/com.linxz.reverse-traval.app.plist`
+- `deploy/launchd/com.linxz.reverse-traval.tunnel.plist`
+
+当前部署方式是本机 Flask 服务加 Cloudflare Quick Tunnel。公网地址由 `cloudflared` 生成，日志位置：
+
+```text
+.cache/cloudflared.err.log
+```
+
 ## 说明
 
 酒店数据来自 Trip.com 页面与接口结果。实时搜索可能需要数分钟；同条件查询会写入本地缓存，便于其他用户直接复用。
