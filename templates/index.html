@@ -846,6 +846,7 @@
       let lastComparisonCount = 0;
       let lastQuerySeconds = 0;
       let lastCacheInfo = null;
+      let lastProgressMessage = "";
       let currentUseCache = true;
       let currentRequestKind = "single";
       let activeView = "all";
@@ -874,6 +875,7 @@
           return;
         }
         startedAt = Date.now();
+        lastProgressMessage = "";
         statusText.textContent = loadingMessage(0);
         updateElapsed();
         timer = window.setInterval(updateElapsed, 1000);
@@ -897,8 +899,8 @@
         const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
         const ss = String(seconds % 60).padStart(2, "0");
         elapsed.textContent = `${mm}:${ss}`;
-        statusText.textContent = loadingMessage(seconds);
-        if (seconds > 120) {
+        statusText.textContent = lastProgressMessage || loadingMessage(seconds);
+        if (seconds > 120 && !lastProgressMessage) {
           statusText.textContent = "正在补全酒店中文名和整理结果...";
         }
       }
@@ -981,6 +983,23 @@
             </td>
           </tr>
         `).join("");
+      }
+
+      function resetViewMode() {
+        activeView = "all";
+        viewFilter.querySelectorAll("[data-view]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.view === activeView);
+        });
+      }
+
+      function applyResultData(data) {
+        lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
+        lastChoices = data.choices || [];
+        lastServerAreas = data.area_recommendations || [];
+        lastCacheInfo = data.cache || null;
+        renderSummary(data);
+        renderChoices();
+        result.classList.remove("hidden");
       }
 
       function formatDuration(seconds) {
@@ -1115,7 +1134,7 @@
         return new Promise((resolve) => window.setTimeout(resolve, ms));
       }
 
-      async function runAsyncJob(startUrl, payload, fallbackMessage) {
+      async function runAsyncJob(startUrl, payload, fallbackMessage, options = {}) {
         const startResp = await fetch(startUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -1130,10 +1149,24 @@
 
         const maxWaitMs = 30 * 60 * 1000;
         const started = Date.now();
+        let partialKey = "";
         while (Date.now() - started < maxWaitMs) {
           await sleep(pollInterval);
           const resp = await fetch(pollUrl, { cache: "no-store" });
           const data = await readJsonResponse(resp, fallbackMessage);
+          if (data.progress && data.progress.message) {
+            const percent = Number(data.progress.percent || 0);
+            lastProgressMessage = percent ? `${data.progress.message}（${percent}%）` : data.progress.message;
+            statusText.textContent = lastProgressMessage;
+          }
+          if (data.partial_result && typeof options.onProgress === "function") {
+            const partial = data.partial_result;
+            const key = `${(partial.choices || []).length}:${(partial.city_results || []).length}:${partial.cache?.summary_label || ""}`;
+            if (key !== partialKey) {
+              partialKey = key;
+              options.onProgress(partial, data);
+            }
+          }
           if (data.status === "succeeded") {
             return data.result;
           }
@@ -1165,19 +1198,9 @@
         setLoading(true);
 
         try {
+          resetViewMode();
           const data = await runAsyncJob("/api/search/start", payload, "查询失败");
-
-          lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
-          lastChoices = data.choices || [];
-          lastServerAreas = data.area_recommendations || [];
-          lastCacheInfo = data.cache || null;
-          activeView = "all";
-          viewFilter.querySelectorAll("[data-view]").forEach((button) => {
-            button.classList.toggle("active", button.dataset.view === activeView);
-          });
-          renderSummary(data);
-          renderChoices();
-          result.classList.remove("hidden");
+          applyResultData(data);
         } catch (error) {
           errorBox.textContent = error.message || "查询失败";
           errorBox.classList.remove("hidden");
@@ -1200,19 +1223,11 @@
         setLoading(true);
 
         try {
-          const data = await runAsyncJob("/api/nearby-search/start", payload, "附近推荐失败");
-
-          lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
-          lastChoices = data.choices || [];
-          lastServerAreas = data.area_recommendations || [];
-          lastCacheInfo = data.cache || null;
-          activeView = "all";
-          viewFilter.querySelectorAll("[data-view]").forEach((button) => {
-            button.classList.toggle("active", button.dataset.view === activeView);
+          resetViewMode();
+          const data = await runAsyncJob("/api/nearby-search/start", payload, "附近推荐失败", {
+            onProgress: (partial) => applyResultData(partial),
           });
-          renderSummary(data);
-          renderChoices();
-          result.classList.remove("hidden");
+          applyResultData(data);
         } catch (error) {
           errorBox.textContent = error.message || "附近推荐失败";
           errorBox.classList.remove("hidden");

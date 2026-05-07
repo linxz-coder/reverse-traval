@@ -31,6 +31,9 @@ def test_api_errors_return_json():
 
 def test_background_search_job_returns_result(monkeypatch):
     def fake_find_choices(**kwargs):
+        progress_callback = kwargs.get("progress_callback")
+        if progress_callback:
+            progress_callback({"stage": "fake", "message": "正在测试后台进度", "percent": 55})
         return {
             "city": kwargs["city"],
             "holiday": {
@@ -77,5 +80,67 @@ def test_background_search_job_returns_result(monkeypatch):
         time.sleep(0.02)
 
     assert data["status"] == "succeeded"
+    assert data["progress"]["stage"] == "succeeded"
     assert data["result"]["city"] == "广州"
     assert data["result"]["choices"][0]["hotel_name"] == "测试酒店"
+
+
+def test_nearby_search_reports_partial_progress(monkeypatch):
+    def fake_find_choices(**kwargs):
+        progress_callback = kwargs.get("progress_callback")
+        if progress_callback:
+            progress_callback({"stage": "fake_city", "message": "正在抓取测试城市", "percent": 50})
+        city = kwargs["city"]
+        return {
+            "city": city,
+            "holiday": {
+                "code": kwargs["holiday_code"],
+                "name": "端午节",
+                "check_in": "2026-06-19",
+                "check_out": "2026-06-21",
+                "days": 3,
+            },
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [{"check_in": "2026-06-22", "check_out": "2026-06-25"}],
+            "area_recommendations": [
+                {
+                    "area_name": f"{city}测试片区",
+                    "hotel_count": 1,
+                    "lower_price_hotel_count": 1,
+                    "lower_price_ratio": 1,
+                    "average_price_diff_nightly": -10,
+                    "average_holiday_nightly_tax_total_value": 500,
+                }
+            ],
+            "choices": [
+                {
+                    "hotel_id": city,
+                    "hotel_name": f"{city}测试酒店",
+                    "holiday_avg_nightly_tax_total_value": 500,
+                    "price_diff_nightly": -10,
+                }
+            ],
+            "cache": {"source": "live", "hit": False},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    events = []
+
+    result, status_code = app_module.nearby_search_result_from_payload(
+        {
+            "origin_city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "nearby_limit": "2",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+        },
+        progress_callback=events.append,
+    )
+
+    assert status_code == 200
+    assert result["nearby_cities"] == ["汕尾", "惠州"]
+    assert [item["recommend_city"] for item in result["choices"]] == ["汕尾", "惠州"]
+    assert any(event.get("partial_result") for event in events)
+    assert any(event.get("completed") == 2 for event in events)

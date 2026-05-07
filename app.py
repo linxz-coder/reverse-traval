@@ -5,8 +5,8 @@ import math
 import threading
 import time
 import uuid
-from concurrent.futures import ThreadPoolExecutor
-from typing import Any
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Any, Callable
 
 from flask import Flask, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
@@ -21,6 +21,7 @@ job_executor = ThreadPoolExecutor(max_workers=2)
 job_lock = threading.Lock()
 jobs: dict[str, dict[str, Any]] = {}
 JOB_TTL_SECONDS = 6 * 60 * 60
+NEARBY_CITY_WORKERS = 2
 
 CITY_COORDINATES = {
     "深圳": (22.5431, 114.0579),
@@ -176,10 +177,31 @@ def public_job(job: dict[str, Any]) -> dict[str, Any]:
         data["error"] = job["error"]
     if job.get("status_code"):
         data["status_code"] = job["status_code"]
+    if job.get("progress"):
+        data["progress"] = job["progress"]
+    if job.get("partial_result"):
+        data["partial_result"] = job["partial_result"]
     return data
 
 
-def search_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
+def update_job_progress(job_id: str, progress: dict[str, Any]) -> None:
+    progress_data = copy.deepcopy(progress)
+    partial_result = progress_data.pop("partial_result", None)
+    with job_lock:
+        job = jobs.get(job_id)
+        if not job:
+            return
+        job["progress"] = progress_data
+        if partial_result is not None:
+            job["partial_result"] = partial_result
+        job["updated_at"] = utc_timestamp()
+        job["updated_ts"] = time.time()
+
+
+def search_result_from_payload(
+    payload: dict,
+    progress_callback: Callable[[dict[str, Any]], None] | None = None,
+) -> tuple[dict[str, Any], int]:
     city = (payload.get("city") or "").strip()
     holiday_code = (payload.get("holiday_code") or "").strip()
     advanced_filter = payload.get("advanced_filter")
@@ -203,6 +225,7 @@ def search_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
             child_facility_filter=child_facility_filter,
             use_cache=use_cache,
             cache_only=cache_only,
+            progress_callback=progress_callback,
         )
     except (HolidayCalendarError, ReverseTravelFinderError) as exc:
         return {"error": str(exc)}, 400
@@ -211,7 +234,69 @@ def search_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
     return result, 200
 
 
-def nearby_search_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
+def build_nearby_response(
+    *,
+    origin_city: str,
+    target_cities: list[str],
+    holiday_code: str,
+    min_price_int: int | None,
+    max_price_int: int | None,
+    feature_filters_response: dict[str, Any],
+    first_success: dict[str, Any] | None,
+    city_results: list[dict[str, Any]],
+    cache_hits: int,
+    live_count: int,
+    error_count: int,
+) -> dict[str, Any]:
+    order = {city: index for index, city in enumerate(target_cities)}
+    ordered_city_results = sorted(city_results, key=lambda item: order.get(item.get("city") or "", 999))
+    all_choices: list[dict[str, Any]] = []
+    all_areas: list[dict[str, Any]] = []
+    for item in ordered_city_results:
+        all_choices.extend(copy.deepcopy(item.get("choices") or []))
+        all_areas.extend(copy.deepcopy(item.get("area_recommendations") or []))
+
+    all_choices.sort(
+        key=lambda item: (
+            int(item.get("price_diff_nightly") or 0),
+            int(item.get("holiday_avg_nightly_tax_total_value") or 0),
+        )
+    )
+    all_areas.sort(
+        key=lambda item: (
+            -float(item.get("lower_price_ratio") or 0),
+            -int(item.get("lower_price_hotel_count") or 0),
+            -int(item.get("hotel_count") or 0),
+            int(item.get("average_price_diff_nightly") or 0),
+            int(item.get("average_holiday_nightly_tax_total_value") or 0),
+        )
+    )
+
+    return {
+        "city": f"{origin_city}周边",
+        "origin_city": origin_city,
+        "nearby_cities": target_cities,
+        "holiday": (first_success or {}).get("holiday") or holiday_meta(holiday_code),
+        "price_filter": {"min_price": min_price_int, "max_price": max_price_int},
+        "feature_filters": (first_success or {}).get("feature_filters") or feature_filters_response,
+        "comparison_windows": (first_success or {}).get("comparison_windows") or [],
+        "area_recommendations": all_areas[:10],
+        "choices": all_choices,
+        "city_results": ordered_city_results,
+        "cache": {
+            "summary_label": f"附近推荐：{cache_hits} 城缓存，{live_count} 城新搜索，{error_count} 城无结果",
+            "hit": cache_hits > 0,
+            "source": "nearby",
+            "source_label": "附近推荐",
+            "age_seconds": 0,
+        },
+    }
+
+
+def nearby_search_result_from_payload(
+    payload: dict,
+    progress_callback: Callable[[dict[str, Any]], None] | None = None,
+) -> tuple[dict[str, Any], int]:
     holiday_code = (payload.get("holiday_code") or "").strip()
     origin_city = normalize_city(payload.get("origin_city") or payload.get("city"))
     advanced_filter = payload.get("advanced_filter")
@@ -243,100 +328,148 @@ def nearby_search_result_from_payload(payload: dict) -> tuple[dict[str, Any], in
     if not target_cities:
         return {"error": "暂时没有配置该城市的附近推荐城市"}, 400
 
-    city_results = []
-    all_choices = []
-    all_areas = []
+    city_results: list[dict[str, Any]] = []
     first_success = None
     cache_hits = 0
     live_count = 0
     error_count = 0
+    done_count = 0
 
-    for city in target_cities:
-        try:
-            result = finder.find_choices(
-                city=city,
-                holiday_code=holiday_code,
-                min_price=min_price_int,
-                max_price=max_price_int,
-                advanced_filter=advanced_filter,
-                pool_filter=pool_filter,
-                child_facility_filter=child_facility_filter,
-                use_cache=use_cache,
-                cache_only=cache_only,
-            )
-        except (HolidayCalendarError, ReverseTravelFinderError) as exc:
-            error_count += 1
-            city_results.append({"city": city, "error": str(exc), "choices": [], "area_recommendations": []})
-            continue
+    def emit_nearby_progress(message: str, stage: str = "nearby", **extra: Any) -> None:
+        if progress_callback is None:
+            return
+        progress_callback({"stage": stage, "message": message, **extra})
 
-        if first_success is None:
-            first_success = result
+    def search_city(city: str) -> dict[str, Any]:
+        def city_progress(progress: dict[str, Any]) -> None:
+            message = progress.get("message") or "正在查询..."
+            emit_nearby_progress(f"{city}：{message}", "nearby_city", city=city, inner=progress)
+
+        result = finder.find_choices(
+            city=city,
+            holiday_code=holiday_code,
+            min_price=min_price_int,
+            max_price=max_price_int,
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+            use_cache=use_cache,
+            cache_only=cache_only,
+            progress_callback=city_progress,
+        )
+
         cache = result.get("cache") or {}
-        if cache.get("hit"):
-            cache_hits += 1
-        elif cache.get("source") == "live":
-            live_count += 1
-
         city_choices = []
         for item in result.get("choices") or []:
             choice = copy.deepcopy(item)
             choice["recommend_city"] = city
             city_choices.append(choice)
-            all_choices.append(choice)
 
         city_areas = []
         for area in result.get("area_recommendations") or []:
             area_item = copy.deepcopy(area)
             area_item["recommend_city"] = city
             city_areas.append(area_item)
-            all_areas.append(area_item)
 
-        city_results.append(
-            {
+        return {
+            "city": city,
+            "result": result,
+            "cache": cache,
+            "city_result": {
                 "city": city,
                 "result_city": result.get("city") or city,
                 "cache": cache,
                 "choice_count": len(city_choices),
                 "area_recommendations": city_areas,
                 "choices": city_choices,
-            }
-        )
+            },
+        }
 
-    all_choices.sort(
-        key=lambda item: (
-            int(item.get("price_diff_nightly") or 0),
-            int(item.get("holiday_avg_nightly_tax_total_value") or 0),
-        )
-    )
-    all_areas.sort(
-        key=lambda item: (
-            -float(item.get("lower_price_ratio") or 0),
-            -int(item.get("lower_price_hotel_count") or 0),
-            -int(item.get("hotel_count") or 0),
-            int(item.get("average_price_diff_nightly") or 0),
-            int(item.get("average_holiday_nightly_tax_total_value") or 0),
-        )
+    emit_nearby_progress(
+        f"正在并发搜索 {len(target_cities)} 个附近城市，最多同时搜索 {min(NEARBY_CITY_WORKERS, len(target_cities))} 个城市...",
+        "nearby_start",
+        completed=0,
+        total=len(target_cities),
     )
 
-    response = {
-        "city": f"{origin_city}周边",
-        "origin_city": origin_city,
-        "nearby_cities": target_cities,
-        "holiday": (first_success or {}).get("holiday") or holiday_meta(holiday_code),
-        "price_filter": {"min_price": min_price_int, "max_price": max_price_int},
-        "feature_filters": (first_success or {}).get("feature_filters") or feature_filters_response,
-        "comparison_windows": (first_success or {}).get("comparison_windows") or [],
-        "area_recommendations": all_areas[:10],
-        "choices": all_choices,
-        "city_results": city_results,
-        "cache": {
-            "summary_label": f"附近推荐：{cache_hits} 城缓存，{live_count} 城新搜索，{error_count} 城无结果",
-            "hit": cache_hits > 0,
-            "source": "nearby",
-            "source_label": "附近推荐",
-            "age_seconds": 0,
-        },
-    }
+    with ThreadPoolExecutor(max_workers=min(NEARBY_CITY_WORKERS, len(target_cities))) as executor:
+        future_map = {executor.submit(search_city, city): city for city in target_cities}
+        for future in as_completed(future_map):
+            city = future_map[future]
+            try:
+                city_payload = future.result()
+            except (HolidayCalendarError, ReverseTravelFinderError) as exc:
+                error_count += 1
+                city_results.append({"city": city, "error": str(exc), "choices": [], "area_recommendations": []})
+                done_count += 1
+                partial = build_nearby_response(
+                    origin_city=origin_city,
+                    target_cities=target_cities,
+                    holiday_code=holiday_code,
+                    min_price_int=min_price_int,
+                    max_price_int=max_price_int,
+                    feature_filters_response=feature_filters_response,
+                    first_success=first_success,
+                    city_results=city_results,
+                    cache_hits=cache_hits,
+                    live_count=live_count,
+                    error_count=error_count,
+                )
+                emit_nearby_progress(
+                    f"已完成 {done_count}/{len(target_cities)} 个城市，{city} 无结果：{exc}",
+                    "nearby_progress",
+                    completed=done_count,
+                    total=len(target_cities),
+                    partial_result=partial,
+                )
+                continue
+
+            result = city_payload["result"]
+            if first_success is None:
+                first_success = result
+            cache = city_payload["cache"]
+            if cache.get("hit"):
+                cache_hits += 1
+            elif cache.get("source") == "live":
+                live_count += 1
+
+            city_results.append(city_payload["city_result"])
+            done_count += 1
+
+            partial = build_nearby_response(
+                origin_city=origin_city,
+                target_cities=target_cities,
+                holiday_code=holiday_code,
+                min_price_int=min_price_int,
+                max_price_int=max_price_int,
+                feature_filters_response=feature_filters_response,
+                first_success=first_success,
+                city_results=city_results,
+                cache_hits=cache_hits,
+                live_count=live_count,
+                error_count=error_count,
+            )
+            emit_nearby_progress(
+                f"已完成 {done_count}/{len(target_cities)} 个城市：{city} 命中 {city_payload['city_result']['choice_count']} 家酒店。",
+                "nearby_progress",
+                completed=done_count,
+                total=len(target_cities),
+                partial_result=partial,
+            )
+
+    response = build_nearby_response(
+        origin_city=origin_city,
+        target_cities=target_cities,
+        holiday_code=holiday_code,
+        min_price_int=min_price_int,
+        max_price_int=max_price_int,
+        feature_filters_response=feature_filters_response,
+        first_success=first_success,
+        city_results=city_results,
+        cache_hits=cache_hits,
+        live_count=live_count,
+        error_count=error_count,
+    )
     return response, 200
 
 
@@ -346,13 +479,17 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
         if not job:
             return
         job["status"] = "running"
+        job["progress"] = {"stage": "running", "message": "查询任务已开始。"}
         job["updated_at"] = utc_timestamp()
         job["updated_ts"] = time.time()
 
+    def progress_callback(progress: dict[str, Any]) -> None:
+        update_job_progress(job_id, progress)
+
     if kind == "search":
-        result, status_code = search_result_from_payload(payload)
+        result, status_code = search_result_from_payload(payload, progress_callback=progress_callback)
     else:
-        result, status_code = nearby_search_result_from_payload(payload)
+        result, status_code = nearby_search_result_from_payload(payload, progress_callback=progress_callback)
 
     with job_lock:
         job = jobs.get(job_id)
@@ -364,9 +501,12 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
         if status_code == 200:
             job["status"] = "succeeded"
             job["result"] = result
+            job["partial_result"] = result
+            job["progress"] = {"stage": "succeeded", "message": "查询完成。", "percent": 100}
         else:
             job["status"] = "failed"
             job["error"] = result.get("error") or "查询失败"
+            job["progress"] = {"stage": "failed", "message": job["error"]}
 
 
 def start_background_job(kind: str, payload: dict[str, Any]):
@@ -382,6 +522,8 @@ def start_background_job(kind: str, payload: dict[str, Any]):
         "created_ts": now,
         "updated_ts": now,
         "result": None,
+        "partial_result": None,
+        "progress": {"stage": "queued", "message": "查询任务已创建，正在等待执行。"},
         "error": "",
         "status_code": None,
     }

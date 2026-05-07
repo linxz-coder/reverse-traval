@@ -13,7 +13,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 from urllib.parse import urlencode, urljoin, urlparse, parse_qs
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -45,6 +45,7 @@ STABLE_SCROLL_ROUNDS = 6
 COMPARE_PAGE_BATCH_SIZE = 4
 CHINESE_NAME_WORKERS = 8
 FEATURE_VERIFY_WORKERS = 8
+BROWSER_SESSION_LIMIT = 2
 SUPPLEMENT_MIN_CHOICES = 8
 SUPPLEMENT_HOTEL_LIST_LIMIT = 40
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
@@ -214,7 +215,7 @@ class ReverseTravelFinder:
         self.calendar = calendar
         self.cache_dir = Path(cache_dir) if cache_dir is not None else CACHE_DIR
         self.search_cache_ttl_seconds = search_cache_ttl_seconds
-        self._browser_lock = threading.Lock()
+        self._browser_semaphore = threading.BoundedSemaphore(BROWSER_SESSION_LIMIT)
         self._cache_lock = threading.Lock()
         self._search_cache: dict[tuple[str, ...], dict[str, Any]] = {}
         self._search_cache_meta: dict[tuple[str, ...], dict[str, Any]] = {}
@@ -385,6 +386,7 @@ class ReverseTravelFinder:
         child_facility_filter: str | None = "all",
         use_cache: bool = True,
         cache_only: bool = False,
+        progress_callback: Callable[[dict[str, Any]], None] | None = None,
     ) -> dict[str, Any]:
         feature_filters = self._normalize_feature_filters(
             advanced_filter=advanced_filter,
@@ -402,10 +404,11 @@ class ReverseTravelFinder:
                 cached = None
                 cached_meta = None
         if not use_cache:
-            base_result = self._find_choices_base(
+            base_result = self._call_find_choices_base(
                 city=city,
                 holiday_code=holiday_code,
                 feature_filters=feature_filters,
+                progress_callback=progress_callback,
             )
             created_at = time.time()
             with self._cache_lock:
@@ -428,10 +431,11 @@ class ReverseTravelFinder:
                         "created_at": float(disk_record["created_at"]),
                     }
             else:
-                base_result = self._find_choices_base(
+                base_result = self._call_find_choices_base(
                     city=city,
                     holiday_code=holiday_code,
                     feature_filters=feature_filters,
+                    progress_callback=progress_callback,
                 )
                 created_at = time.time()
                 with self._cache_lock:
@@ -462,15 +466,52 @@ class ReverseTravelFinder:
         base_result["cache"] = cache_info
         return base_result
 
-    def _find_choices_base(self, city: str, holiday_code: str, feature_filters: FeatureFilters) -> dict[str, Any]:
+    def _call_find_choices_base(
+        self,
+        city: str,
+        holiday_code: str,
+        feature_filters: FeatureFilters,
+        progress_callback: Callable[[dict[str, Any]], None] | None,
+    ) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {
+            "city": city,
+            "holiday_code": holiday_code,
+            "feature_filters": feature_filters,
+        }
+        if progress_callback is not None:
+            kwargs["progress_callback"] = progress_callback
+        return self._find_choices_base(**kwargs)
+
+    def _emit_progress(
+        self,
+        progress_callback: Callable[[dict[str, Any]], None] | None,
+        message: str,
+        stage: str,
+        **extra: Any,
+    ) -> None:
+        if progress_callback is None:
+            return
+        payload = {"stage": stage, "message": message}
+        payload.update(extra)
+        progress_callback(payload)
+
+    def _find_choices_base(
+        self,
+        city: str,
+        holiday_code: str,
+        feature_filters: FeatureFilters,
+        progress_callback: Callable[[dict[str, Any]], None] | None = None,
+    ) -> dict[str, Any]:
+        self._emit_progress(progress_callback, "正在准备节假日和对比日期...", "prepare", percent=5)
         holiday = self._get_holiday(holiday_code)
         compare_windows = self._build_compare_windows(holiday)
         if not compare_windows:
             raise ReverseTravelFinderError("未来一个月内没有可比较的非法定假期时间段。")
 
+        self._emit_progress(progress_callback, "正在识别城市和 Trip.com 搜索范围...", "resolve_city", percent=10)
         city_candidate = self._resolve_city(city)
 
-        with self._browser_lock:
+        with self._browser_semaphore:
             with sync_playwright() as playwright:
                 browser = playwright.chromium.launch(
                     headless=True,
@@ -498,6 +539,12 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 except PlaywrightTimeoutError:
                     pass
 
+                self._emit_progress(
+                    progress_callback,
+                    f"正在抓取{city_candidate.city_name}假期酒店列表...",
+                    "holiday_hotels",
+                    percent=18,
+                )
                 holiday_hotels = self._fetch_hotel_list(
                     city_candidate=city_candidate,
                     check_in=holiday.start,
@@ -511,6 +558,14 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     browser.close()
                     raise ReverseTravelFinderError("没有抓到该城市在假期时段的酒店列表。")
 
+                self._emit_progress(
+                    progress_callback,
+                    f"已抓到假期酒店 {len(holiday_hotels)} 家，正在抓取 {len(compare_windows)} 个平日代表时段...",
+                    "comparison_hotels",
+                    percent=36,
+                    hotel_count=len(holiday_hotels),
+                    comparison_total=len(compare_windows),
+                )
                 page.close()
                 comparison_hotels = self._fetch_hotel_lists_parallel(
                     city_candidate=city_candidate,
@@ -523,6 +578,13 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
                 choices = self._build_choices_from_hotels(city_candidate, holiday, holiday_hotels, comparison_map)
                 if len(choices) < SUPPLEMENT_MIN_CHOICES:
+                    self._emit_progress(
+                        progress_callback,
+                        "正在补充重点片区酒店，避免漏掉符合条件的酒店...",
+                        "supplemental_hotels",
+                        percent=62,
+                        choice_count=len(choices),
+                    )
                     supplemental_holiday_hotels, supplemental_comparison_hotels = self._fetch_supplemental_hotel_lists(
                         city_query=city,
                         city_candidate=city_candidate,
@@ -548,8 +610,23 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 browser.close()
 
         choices.sort(key=lambda item: (item["price_diff_nightly"], item["holiday_avg_nightly_tax_total_value"]))
+        self._emit_progress(
+            progress_callback,
+            f"已完成价格对比，正在核验 {len(choices)} 家候选酒店设施...",
+            "verify_features",
+            percent=78,
+            choice_count=len(choices),
+        )
         choices = self._filter_choices_by_verified_features(choices, feature_filters)
+        self._emit_progress(
+            progress_callback,
+            f"设施核验后保留 {len(choices)} 家，正在补全中文酒店名...",
+            "chinese_names",
+            percent=88,
+            choice_count=len(choices),
+        )
         self._enrich_choices_with_chinese_hotel_names(choices)
+        self._emit_progress(progress_callback, "正在整理推荐区域和最终结果...", "finalize", percent=96)
         self._refresh_choice_area_names(choices, city_candidate.city_name)
         area_recommendations = self._build_area_recommendations(choices, city_candidate.city_name)
 
