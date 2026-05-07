@@ -1,0 +1,26 @@
+{
+  "output_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo",
+  "images": [
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/01-city-holiday.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/02-room-price.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/03-smart-filters.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/04-area-first.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/05-hotel-list.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/06-shantou-case.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/07-nearby.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/08-fast-cache.png",
+    "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/09-global-cities.png"
+  ],
+  "raw_screenshots": "/Users/linxiaozhong/development/reverse-travel-good-choice/exports/promo/raw",
+  "data_summary": {
+    "shenzhen_choices": 90,
+    "shantou_choices": 72,
+    "nearby_choices": 17,
+    "nearby_areas": 6,
+    "bangkok_choices": 64,
+    "kuala_lumpur_choices": 68,
+    "chicago_choices": 12,
+    "paris_choices": 20,
+    "global_collage": "09-global-cities.png"
+  }
+}
