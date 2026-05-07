@@ -665,11 +665,10 @@
             <option value="no">否</option>
           </select>
         </label>
-        <label class="cache-option" title="有缓存先显示；没有缓存会自动新搜索，通常需要 2-5 分钟。">
+        <label class="cache-option" title="优先显示缓存结果">
           <input id="use-cache" name="use_cache" type="checkbox" value="true" checked />
           <span>
             <strong>优先显示缓存结果</strong>
-            <small>24 小时内同条件缓存可跨用户共用；没有缓存会自动新搜索。</small>
           </span>
         </label>
         <button id="submit-btn" type="submit"><span class="spinner"></span><span id="submit-text">开始筛选</span></button>
@@ -697,12 +696,11 @@
         </label>
         <button class="secondary-btn" id="geo-btn" type="button">用当前位置</button>
         <button id="nearby-submit-btn" type="submit"><span class="spinner"></span><span id="nearby-submit-text">推荐附近</span></button>
-        <div class="nearby-hint" id="nearby-hint">按所在城市推荐周边城市酒店；默认优先使用 24 小时内同条件缓存，没有缓存会自动逐城新搜索。</div>
+        <div class="nearby-hint" id="nearby-hint"></div>
       </form>
 
       <div class="notice">
         <span>筛选口径：假期每晚均价不高于未来代表时段每晚均价 +100 元。</span>
-        <span>高级/泳池/儿童设施默认全部；儿童设施使用 Trip.com 儿童乐园等官方筛选。</span>
       </div>
       <div class="quickbar" aria-label="价格快捷筛选">
         <button class="chip-btn" type="button" data-price-range="">不限</button>
@@ -1026,12 +1024,34 @@
         return `${hotelCount} 家酒店假期涨幅不超过 100 元/晚。`;
       }
 
+      async function readJsonResponse(resp, fallbackMessage) {
+        const contentType = resp.headers.get("content-type") || "";
+        const text = await resp.text();
+        const trimmed = text.trim();
+        const looksJson = contentType.includes("application/json") || trimmed.startsWith("{") || trimmed.startsWith("[");
+        let data = null;
+        if (looksJson) {
+          try {
+            data = trimmed ? JSON.parse(trimmed) : {};
+          } catch (error) {
+            throw new Error(`${fallbackMessage}：服务返回格式异常，请稍后重试。`);
+          }
+        } else {
+          if ([502, 503, 504, 522, 524].includes(resp.status)) {
+            throw new Error(`${fallbackMessage}：查询时间较长，公网隧道返回超时，请稍后重试或缩小条件。`);
+          }
+          const plain = trimmed.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").slice(0, 120);
+          throw new Error(`${fallbackMessage}：服务返回异常${resp.status ? `（${resp.status}）` : ""}${plain ? `，${plain}` : ""}`);
+        }
+        if (!resp.ok) {
+          throw new Error(data.error || `${fallbackMessage}（${resp.status}）`);
+        }
+        return data;
+      }
+
       async function loadHolidays() {
         const resp = await fetch("/api/holidays");
-        const data = await resp.json();
-        if (!resp.ok) {
-          throw new Error(data.error || "假期列表加载失败");
-        }
+        const data = await readJsonResponse(resp, "假期列表加载失败");
         holidaySelect.innerHTML = data.holidays
           .map((item) => `<option value="${esc(item.code)}">${esc(item.label)}</option>`)
           .join("");
@@ -1054,10 +1074,7 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
           });
-          const data = await resp.json();
-          if (!resp.ok) {
-            throw new Error(data.error || "查询失败");
-          }
+          const data = await readJsonResponse(resp, "查询失败");
 
           lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
           lastChoices = data.choices || [];
@@ -1097,10 +1114,7 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
           });
-          const data = await resp.json();
-          if (!resp.ok) {
-            throw new Error(data.error || "附近推荐失败");
-          }
+          const data = await readJsonResponse(resp, "附近推荐失败");
 
           lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
           lastChoices = data.choices || [];
@@ -1140,10 +1154,7 @@
                 lon: position.coords.longitude,
               }),
             });
-            const data = await resp.json();
-            if (!resp.ok) {
-              throw new Error(data.error || "定位失败");
-            }
+            const data = await readJsonResponse(resp, "定位失败");
             originCity.value = data.city;
             nearbyHint.textContent = `已按当前位置识别为 ${data.city}，可点击“推荐附近”。`;
           } catch (error) {

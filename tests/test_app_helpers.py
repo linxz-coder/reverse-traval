@@ -1,3 +1,4 @@
+from app import app as flask_app
 from app import nearest_supported_city, nearby_cities_for, normalize_city, parse_bool
 
 
@@ -13,3 +14,13 @@ def test_parse_bool_accepts_form_values():
     assert parse_bool("on") is True
     assert parse_bool("false") is False
     assert parse_bool(None, default=False) is False
+
+
+def test_api_errors_return_json():
+    client = flask_app.test_client()
+
+    response = client.get("/api/not-found")
+
+    assert response.status_code == 404
+    assert response.is_json
+    assert response.get_json()["error"]

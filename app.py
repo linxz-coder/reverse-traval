@@ -4,6 +4,7 @@ import copy
 import math
 
 from flask import Flask, jsonify, render_template, request
+from werkzeug.exceptions import HTTPException
 
 from holiday_helper import HolidayCalendar, HolidayCalendarError
 from reverse_travel import ReverseTravelFinder, ReverseTravelFinderError
@@ -138,6 +139,20 @@ def request_price_filters(payload: dict) -> tuple[int | None, int | None]:
         parse_optional_int(payload.get("min_price"), "最低每晚含税"),
         parse_optional_int(payload.get("max_price"), "最高每晚含税"),
     )
+
+
+@app.errorhandler(HTTPException)
+def api_http_error(exc: HTTPException):
+    if request.path.startswith("/api/"):
+        return jsonify({"error": exc.description or exc.name}), exc.code or 500
+    return exc
+
+
+@app.errorhandler(Exception)
+def api_unhandled_error(exc: Exception):
+    if request.path.startswith("/api/"):
+        return jsonify({"error": f"服务异常: {exc}"}), 500
+    raise exc
 
 
 @app.get("/")
