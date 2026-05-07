@@ -216,6 +216,41 @@ def test_infer_area_name_is_city_specific():
         area_text="World Exhibition & Convention Center",
     ) == "Shanghai区域待确认"
     assert finder._infer_area_name(
+        city_name="Bangkok",
+        hotel_name="Sheraton Grande Sukhumvit Bangkok",
+        area_text="Sukhumvit | Near Asok Metro Station",
+    ) == "曼谷素坤逸片区"
+    assert finder._infer_area_name(
+        city_name="吉隆坡",
+        hotel_name="Aloft Kuala Lumpur Sentral",
+        area_text="KL Sentral | Near Parkson KL Sentral",
+    ) == "吉隆坡中央车站片区"
+    assert finder._infer_area_name(
+        city_name="Chicago",
+        hotel_name="Residence Inn Chicago Downtown/Loop",
+        area_text="",
+    ) == "芝加哥Loop片区"
+    assert finder._infer_area_name(
+        city_name="Paris",
+        hotel_name="Mercure Paris Montmartre Sacre Coeur",
+        area_text="",
+    ) == "巴黎蒙马特片区"
+    assert finder._infer_area_name(
+        city_name="London",
+        hotel_name="Example Hotel",
+        area_text="London City Centre | Near British Museum",
+    ) == "伦敦市中心片区"
+    assert finder._infer_area_name(
+        city_name="Singapore",
+        hotel_name="Example Hotel",
+        area_text="Orchard Road | Near ION Orchard",
+    ) == "新加坡乌节路片区"
+    assert finder._infer_area_name(
+        city_name="Rome",
+        hotel_name="Example Hotel",
+        area_text="Trastevere | Near Piazza di Santa Maria",
+    ) == "罗马Trastevere片区"
+    assert finder._infer_area_name(
         city_name="Huizhou",
         hotel_name="Hampton by Hilton Huizhou Zhongkai Hi-Tech Zone",
         area_text="Zhongkai TCL Technology Building",
@@ -752,6 +787,72 @@ def test_build_area_recommendations_removes_generic_area_names():
     assert len(recommendations) >= 3
     assert all("热门酒店片区" not in item["area_name"] for item in recommendations)
     assert all("区域待确认" not in item["area_name"] for item in recommendations)
+
+
+def test_build_area_recommendations_supports_global_city_areas():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "",
+                "area_hint": "Sukhumvit | Near Asok Metro Station",
+                "hotel_name": "Sheraton Grande Sukhumvit Bangkok",
+                "hotel_original_name": "Sheraton Grande Sukhumvit Bangkok",
+                "holiday_avg_nightly_tax_total_value": 1356,
+                "price_diff_nightly": -2,
+                "room_type_label": "大床房",
+            },
+            {
+                "area_name": "",
+                "area_hint": "Riverside | Near Asiatique Sky",
+                "hotel_name": "Ibis Bangkok Riverside",
+                "hotel_original_name": "Ibis Bangkok Riverside",
+                "holiday_avg_nightly_tax_total_value": 454,
+                "price_diff_nightly": 35,
+                "room_type_label": "大床房",
+            },
+            {
+                "area_name": "",
+                "area_hint": "Pratunam Market | Near Central World",
+                "hotel_name": "Centara Watergate Pavilion Hotel Bangkok",
+                "hotel_original_name": "Centara Watergate Pavilion Hotel Bangkok",
+                "holiday_avg_nightly_tax_total_value": 390,
+                "price_diff_nightly": 4,
+                "room_type_label": "双床房",
+            },
+        ],
+        "Bangkok",
+    )
+
+    assert {item["area_name"] for item in recommendations[:3]} == {
+        "曼谷素坤逸片区",
+        "曼谷湄南河畔片区",
+        "曼谷水门片区",
+    }
+
+
+def test_build_area_recommendations_fills_common_global_city_defaults():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "",
+                "area_hint": "",
+                "hotel_name": "Example London Hotel",
+                "hotel_original_name": "Example London Hotel",
+                "holiday_avg_nightly_tax_total_value": 1200,
+                "price_diff_nightly": 0,
+                "room_type_label": "大床房",
+            }
+        ],
+        "London",
+    )
+
+    assert [item["area_name"] for item in recommendations[:3]] == [
+        "伦敦西区片区",
+        "伦敦市中心片区",
+        "伦敦国王十字片区",
+    ]
 
 
 def test_refresh_choice_area_names_hides_unresolved_generic_area():

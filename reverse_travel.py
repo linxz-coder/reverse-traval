@@ -117,6 +117,239 @@ CITY_DEFAULT_AREA_NAMES = {
     "珠海": ("珠海横琴长隆片区", "珠海情侣路香洲片区", "珠海拱北口岸片区", "珠海金湾航空新城片区", "珠海唐家湾片区"),
     "韶关": ("韶关丹霞山片区", "韶关南华寺曹溪片区", "韶关乳源大峡谷片区", "韶关市区片区", "韶关南雄片区"),
     "汕尾": ("汕尾金町湾片区", "汕尾红海湾片区", "汕尾海丰片区", "汕尾陆丰片区", "汕尾市区片区"),
+    "曼谷": ("曼谷素坤逸片区", "曼谷暹罗片区", "曼谷湄南河畔片区", "曼谷是隆沙吞片区", "曼谷水门片区"),
+    "吉隆坡": ("吉隆坡武吉免登片区", "吉隆坡KLCC片区", "吉隆坡中央车站片区", "吉隆坡谷中城片区", "吉隆坡白沙罗片区"),
+    "芝加哥": ("芝加哥Loop片区", "芝加哥河北片区", "芝加哥壮丽大道片区", "芝加哥奥黑尔机场片区", "芝加哥橡树溪片区"),
+    "巴黎": ("巴黎蒙马特片区", "巴黎拉德芳斯片区", "巴黎歌剧院片区", "巴黎香榭丽舍片区", "巴黎埃菲尔铁塔片区"),
+    "伦敦": ("伦敦西区片区", "伦敦市中心片区", "伦敦国王十字片区", "伦敦金丝雀码头片区", "伦敦希思罗机场片区"),
+    "东京": ("东京新宿片区", "东京银座片区", "东京上野浅草片区", "东京涩谷片区", "东京东京站片区"),
+    "大阪": ("大阪心斋桥难波片区", "大阪梅田片区", "大阪环球影城片区", "大阪天王寺片区", "大阪关西机场片区"),
+    "首尔": ("首尔明洞片区", "首尔弘大片区", "首尔江南片区", "首尔东大门片区", "首尔仁寺洞片区"),
+    "新加坡": ("新加坡乌节路片区", "新加坡滨海湾片区", "新加坡圣淘沙片区", "新加坡牛车水片区", "新加坡樟宜机场片区"),
+    "纽约": ("纽约时代广场片区", "纽约中城片区", "纽约下城金融区片区", "纽约布鲁克林片区", "纽约中央公园片区"),
+    "洛杉矶": ("洛杉矶好莱坞片区", "洛杉矶市中心片区", "洛杉矶圣莫尼卡片区", "洛杉矶国际机场片区", "洛杉矶比佛利山片区"),
+    "旧金山": ("旧金山联合广场片区", "旧金山渔人码头片区", "旧金山金融区片区", "旧金山机场片区", "旧金山南湾片区"),
+    "悉尼": ("悉尼达令港片区", "悉尼环形码头片区", "悉尼CBD片区", "悉尼邦迪海滩片区", "悉尼机场片区"),
+    "墨尔本": ("墨尔本CBD片区", "墨尔本南岸片区", "墨尔本圣基尔达片区", "墨尔本卡尔顿片区", "墨尔本机场片区"),
+    "迪拜": ("迪拜市中心片区", "迪拜码头片区", "迪拜棕榈岛片区", "迪拜德拉片区", "迪拜机场片区"),
+}
+GLOBAL_CITY_ALIASES = {
+    "bangkok": "曼谷",
+    "曼谷": "曼谷",
+    "kuala lumpur": "吉隆坡",
+    "吉隆坡": "吉隆坡",
+    "chicago": "芝加哥",
+    "芝加哥": "芝加哥",
+    "paris": "巴黎",
+    "巴黎": "巴黎",
+    "london": "伦敦",
+    "伦敦": "伦敦",
+    "tokyo": "东京",
+    "东京": "东京",
+    "東京": "东京",
+    "osaka": "大阪",
+    "大阪": "大阪",
+    "seoul": "首尔",
+    "首尔": "首尔",
+    "首爾": "首尔",
+    "singapore": "新加坡",
+    "新加坡": "新加坡",
+    "new york": "纽约",
+    "纽约": "纽约",
+    "紐約": "纽约",
+    "los angeles": "洛杉矶",
+    "洛杉矶": "洛杉矶",
+    "洛杉磯": "洛杉矶",
+    "san francisco": "旧金山",
+    "旧金山": "旧金山",
+    "舊金山": "旧金山",
+    "sydney": "悉尼",
+    "悉尼": "悉尼",
+    "melbourne": "墨尔本",
+    "墨尔本": "墨尔本",
+    "dubai": "迪拜",
+    "迪拜": "迪拜",
+    "rome": "罗马",
+    "罗马": "罗马",
+    "羅馬": "罗马",
+    "barcelona": "巴塞罗那",
+    "巴塞罗那": "巴塞罗那",
+    "巴塞隆拿": "巴塞罗那",
+    "madrid": "马德里",
+    "马德里": "马德里",
+    "馬德里": "马德里",
+    "amsterdam": "阿姆斯特丹",
+    "阿姆斯特丹": "阿姆斯特丹",
+    "berlin": "柏林",
+    "柏林": "柏林",
+    "munich": "慕尼黑",
+    "慕尼黑": "慕尼黑",
+    "frankfurt": "法兰克福",
+    "法兰克福": "法兰克福",
+    "法蘭克福": "法兰克福",
+    "zurich": "苏黎世",
+    "苏黎世": "苏黎世",
+    "蘇黎世": "苏黎世",
+    "milan": "米兰",
+    "米兰": "米兰",
+    "米蘭": "米兰",
+    "venice": "威尼斯",
+    "威尼斯": "威尼斯",
+    "istanbul": "伊斯坦布尔",
+    "伊斯坦布尔": "伊斯坦布尔",
+    "伊斯坦堡": "伊斯坦布尔",
+    "phuket": "普吉岛",
+    "普吉岛": "普吉岛",
+    "普吉島": "普吉岛",
+    "bali": "巴厘岛",
+    "巴厘岛": "巴厘岛",
+    "峇里岛": "巴厘岛",
+    "峇里島": "巴厘岛",
+    "hanoi": "河内",
+    "河内": "河内",
+    "河內": "河内",
+    "ho chi minh": "胡志明市",
+    "ho chi minh city": "胡志明市",
+    "胡志明市": "胡志明市",
+    "chiang mai": "清迈",
+    "清迈": "清迈",
+    "清邁": "清迈",
+}
+GLOBAL_CITY_STRIP_TOKENS: dict[str, set[str]] = {}
+for _alias, _label in GLOBAL_CITY_ALIASES.items():
+    GLOBAL_CITY_STRIP_TOKENS.setdefault(_label, set()).update({_alias, _label})
+GLOBAL_AREA_PATTERNS = {
+    "曼谷": [
+        (("sukhumvit", "asok", "phrom phong", "emquartier", "emsphere", "素坤逸"), "曼谷素坤逸片区"),
+        (("pratunam", "ratchaprarop", "水门", "水門"), "曼谷水门片区"),
+        (("siam", "central world", "mbk", "暹罗", "暹羅"), "曼谷暹罗片区"),
+        (("riverside", "chao phraya", "asiatique", "charoen krung", "湄南河", "河畔"), "曼谷湄南河畔片区"),
+        (("silom", "sathorn", "surawong", "surawongse", "patpong", "是隆", "沙吞"), "曼谷是隆沙吞片区"),
+        (("chidlom", "ploenchit", "wireless road", "奇隆"), "曼谷齐隆片区"),
+        (("ratchada", "ratchadaphisek", "huai khwang"), "曼谷拉差达片区"),
+        (("suvarnabhumi", "bkk airport", "素万那普", "素萬那普"), "曼谷素万那普机场片区"),
+        (("old town", "chinatown", "yaowarat", "唐人街", "老城"), "曼谷老城唐人街片区"),
+    ],
+    "吉隆坡": [
+        (("bukit bintang", "pavilion kuala lumpur", "武吉免登"), "吉隆坡武吉免登片区"),
+        (("klcc", "petronas", "suria klcc", "双子塔", "雙子塔"), "吉隆坡KLCC片区"),
+        (("kl sentral", "kuala lumpur sentral", "central station", "中央车站", "中央車站"), "吉隆坡中央车站片区"),
+        (("mid valley", "the gardens", "谷中城"), "吉隆坡谷中城片区"),
+        (("petaling jaya", "八打灵", "八打靈"), "八打灵再也片区"),
+        (("damansara", "白沙罗", "白沙羅"), "吉隆坡白沙罗片区"),
+        (("bangsar", "孟沙"), "吉隆坡孟沙片区"),
+        (("chow kit", "秋杰"), "吉隆坡秋杰片区"),
+        (("chinatown", "china town", "petaling street", "茨厂街", "唐人街"), "吉隆坡唐人街片区"),
+        (("cheras", "maluri", "陈秀莲", "陳秀蓮"), "吉隆坡蕉赖片区"),
+    ],
+    "芝加哥": [
+        (("loop", "downtown/loop", "downtown chicago", "millennium park", "theater district"), "芝加哥Loop片区"),
+        (("river north", "north river", "河北", "河畔北"), "芝加哥河北片区"),
+        (("magnificent mile", "mag mile", "壮丽大道", "壯麗大道"), "芝加哥壮丽大道片区"),
+        (("o'hare", "ohare", "ord", "奥黑尔", "奧黑爾"), "芝加哥奥黑尔机场片区"),
+        (("oak brook", "oakbrook", "橡树溪", "橡樹溪"), "芝加哥橡树溪片区"),
+        (("west loop", "fulton market"), "芝加哥西Loop片区"),
+        (("lincoln park", "林肯公园", "林肯公園"), "芝加哥林肯公园片区"),
+        (("navy pier", "海军码头", "海軍碼頭"), "芝加哥海军码头片区"),
+    ],
+    "巴黎": [
+        (("montmartre", "sacre coeur", "sacré-coeur", "蒙马特", "蒙馬特", "圣心", "聖心"), "巴黎蒙马特片区"),
+        (("la defense", "la défense", "defense", "défense", "拉德芳斯"), "巴黎拉德芳斯片区"),
+        (("opera", "opéra", "galeries lafayette", "歌剧院", "歌劇院"), "巴黎歌剧院片区"),
+        (("champs-elysees", "champs-élysées", "elysees", "香榭丽舍", "香榭麗舍"), "巴黎香榭丽舍片区"),
+        (("eiffel", "tour eiffel", "埃菲尔", "艾菲尔", "鐵塔"), "巴黎埃菲尔铁塔片区"),
+        (("latin quarter", "quartier latin", "拉丁区", "拉丁區"), "巴黎拉丁区片区"),
+        (("saint germain", "saint-germain", "圣日耳曼", "聖日耳曼"), "巴黎圣日耳曼片区"),
+        (("montparnasse", "蒙帕纳斯", "蒙帕納斯"), "巴黎蒙帕纳斯片区"),
+        (("creteil", "créteil", "克雷泰尔", "克雷泰爾"), "巴黎克雷泰尔片区"),
+        (("suresnes", "叙雷纳", "敍雷納"), "巴黎叙雷纳片区"),
+        (("louvre", "卢浮宫", "羅浮宮"), "巴黎卢浮宫片区"),
+    ],
+    "伦敦": [
+        (("west end", "soho", "covent garden", "leicester square", "西区", "蘇豪", "科文特花园"), "伦敦西区片区"),
+        (("city centre", "city center", "central london", "downtown"), "伦敦市中心片区"),
+        (("king's cross", "kings cross", "st pancras", "国王十字", "國王十字"), "伦敦国王十字片区"),
+        (("canary wharf", "docklands", "金丝雀码头", "金絲雀碼頭"), "伦敦金丝雀码头片区"),
+        (("heathrow", "lhr", "希思罗", "希斯路"), "伦敦希思罗机场片区"),
+        (("paddington", "帕丁顿", "柏灵顿"), "伦敦帕丁顿片区"),
+        (("kensington", "切尔西", "切爾西"), "伦敦肯辛顿切尔西片区"),
+    ],
+    "东京": [
+        (("shinjuku", "新宿"), "东京新宿片区"),
+        (("ginza", "银座", "銀座"), "东京银座片区"),
+        (("ueno", "asakusa", "上野", "浅草", "淺草"), "东京上野浅草片区"),
+        (("shibuya", "涩谷", "澀谷"), "东京涩谷片区"),
+        (("tokyo station", "marunouchi", "东京站", "東京站", "丸之内", "丸之內"), "东京东京站片区"),
+        (("odaiba", "台场", "台場"), "东京台场片区"),
+        (("haneda", "羽田"), "东京羽田机场片区"),
+    ],
+    "大阪": [
+        (("shinsaibashi", "namba", "dotonbori", "心斋桥", "心齋橋", "难波", "難波", "道顿堀", "道頓堀"), "大阪心斋桥难波片区"),
+        (("umeda", "梅田"), "大阪梅田片区"),
+        (("universal studios", "usj", "环球影城", "環球影城"), "大阪环球影城片区"),
+        (("tennoji", "天王寺"), "大阪天王寺片区"),
+        (("kansai airport", "kix", "关西机场", "關西機場"), "大阪关西机场片区"),
+    ],
+    "首尔": [
+        (("myeongdong", "明洞"), "首尔明洞片区"),
+        (("hongdae", "弘大"), "首尔弘大片区"),
+        (("gangnam", "江南"), "首尔江南片区"),
+        (("dongdaemun", "东大门", "東大門"), "首尔东大门片区"),
+        (("insadong", "仁寺洞"), "首尔仁寺洞片区"),
+        (("itaewon", "梨泰院"), "首尔梨泰院片区"),
+    ],
+    "新加坡": [
+        (("orchard", "乌节", "烏節"), "新加坡乌节路片区"),
+        (("marina bay", "滨海湾", "濱海灣"), "新加坡滨海湾片区"),
+        (("sentosa", "圣淘沙", "聖淘沙"), "新加坡圣淘沙片区"),
+        (("chinatown", "牛车水", "牛車水", "唐人街"), "新加坡牛车水片区"),
+        (("changi", "樟宜"), "新加坡樟宜机场片区"),
+        (("bugis", "武吉士"), "新加坡武吉士片区"),
+        (("little india", "小印度"), "新加坡小印度片区"),
+    ],
+    "纽约": [
+        (("times square", "时代广场", "時代廣場"), "纽约时代广场片区"),
+        (("midtown", "曼哈顿中城", "曼哈頓中城"), "纽约中城片区"),
+        (("financial district", "wall street", "downtown manhattan", "金融区", "金融區", "华尔街", "華爾街"), "纽约下城金融区片区"),
+        (("brooklyn", "布鲁克林", "布魯克林"), "纽约布鲁克林片区"),
+        (("central park", "中央公园", "中央公園"), "纽约中央公园片区"),
+        (("jfk", "kennedy airport", "肯尼迪"), "纽约肯尼迪机场片区"),
+    ],
+    "洛杉矶": [
+        (("hollywood", "好莱坞", "荷里活"), "洛杉矶好莱坞片区"),
+        (("downtown", "dtla", "市中心"), "洛杉矶市中心片区"),
+        (("santa monica", "圣莫尼卡", "聖莫尼卡"), "洛杉矶圣莫尼卡片区"),
+        (("lax", "los angeles international airport", "洛杉矶国际机场", "洛杉磯國際機場"), "洛杉矶国际机场片区"),
+        (("beverly hills", "比佛利", "比弗利"), "洛杉矶比佛利山片区"),
+    ],
+    "旧金山": [
+        (("union square", "联合广场", "聯合廣場"), "旧金山联合广场片区"),
+        (("fisherman's wharf", "fishermans wharf", "渔人码头", "漁人碼頭"), "旧金山渔人码头片区"),
+        (("financial district", "金融区", "金融區"), "旧金山金融区片区"),
+        (("sfo", "san francisco airport", "旧金山机场", "舊金山機場"), "旧金山机场片区"),
+        (("south san francisco", "南旧金山", "南舊金山"), "旧金山南湾片区"),
+    ],
+    "悉尼": [
+        (("darling harbour", "darling harbor", "达令港", "達令港"), "悉尼达令港片区"),
+        (("circular quay", "the rocks", "环形码头", "環形碼頭", "岩石区"), "悉尼环形码头片区"),
+        (("cbd", "city centre", "city center", "市中心"), "悉尼CBD片区"),
+        (("bondi", "邦迪"), "悉尼邦迪海滩片区"),
+        (("sydney airport", "syd", "悉尼机场", "悉尼機場"), "悉尼机场片区"),
+    ],
+    "墨尔本": [
+        (("cbd", "city centre", "city center", "市中心"), "墨尔本CBD片区"),
+        (("southbank", "south bank", "南岸"), "墨尔本南岸片区"),
+        (("st kilda", "saint kilda", "圣基尔达", "聖基爾達"), "墨尔本圣基尔达片区"),
+        (("carlton", "卡尔顿", "卡爾頓"), "墨尔本卡尔顿片区"),
+        (("melbourne airport", "tullamarine", "墨尔本机场", "墨爾本機場"), "墨尔本机场片区"),
+    ],
+    "迪拜": [
+        (("downtown dubai", "burj khalifa", "dubai mall", "哈利法塔", "迪拜购物中心", "迪拜購物中心"), "迪拜市中心片区"),
+        (("dubai marina", "jbr", "迪拜码头", "迪拜碼頭"), "迪拜码头片区"),
+        (("palm jumeirah", "朱美拉棕榈", "朱美拉棕櫚", "棕榈岛", "棕櫚島"), "迪拜棕榈岛片区"),
+        (("deira", "德拉"), "迪拜德拉片区"),
+        (("dubai airport", "dxb", "迪拜机场", "迪拜機場"), "迪拜机场片区"),
+    ],
 }
 CITY_ID_LABELS = {
     "31": "珠海",
@@ -461,6 +694,7 @@ class ReverseTravelFinder:
 
         base_result["price_filter"] = {"min_price": min_price, "max_price": max_price}
         base_result["feature_filters"] = feature_filters.to_response()
+        self._refresh_choice_area_names(filtered_choices, base_result["city"])
         base_result["choices"] = filtered_choices
         base_result["area_recommendations"] = self._build_area_recommendations(filtered_choices, base_result["city"])
         base_result["cache"] = cache_info
@@ -1650,7 +1884,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     def _infer_area_name(self, city_name: str, hotel_name: str, area_text: str) -> str:
         text = " ".join([city_name or "", hotel_name or "", area_text or ""]).lower()
         city = city_name or ""
-        normalized_city = self._normalize_city_label(city)
+        normalized_city = self._area_city_label(city)
         city_patterns: dict[str, list[tuple[tuple[str, ...], str]]] = {
             "深圳": [
                 (("wecc", "world exhibition", "international convention and exhibition", "international exhibition", "国际会展", "國際會展", "會展中心", "会展中心"), "深圳国际会展中心片区"),
@@ -1830,7 +2064,95 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if any(keyword.lower() in text for keyword in keywords):
                 return area_name
 
+        global_area = self._infer_global_area_name(
+            city_name=normalized_city,
+            hotel_name=hotel_name,
+            area_text=area_text,
+        )
+        if global_area:
+            return global_area
+
         return f"{normalized_city}区域待确认" if normalized_city else "区域待确认"
+
+    def _area_city_label(self, city_name: str) -> str:
+        normalized = self._normalize_city_label(city_name)
+        lowered = (normalized or city_name or "").strip().lower()
+        raw_lowered = (city_name or "").strip().lower()
+        for key, label in GLOBAL_CITY_ALIASES.items():
+            if key in lowered or key in raw_lowered or key in (city_name or ""):
+                return label
+        return normalized
+
+    def _infer_global_area_name(self, city_name: str, hotel_name: str, area_text: str) -> str:
+        city_label = self._area_city_label(city_name)
+        text = " ".join([city_name or "", hotel_name or "", area_text or ""]).lower()
+        for keywords, area_name in GLOBAL_AREA_PATTERNS.get(city_label, []):
+            if any(keyword.lower() in text for keyword in keywords):
+                return area_name
+
+        for candidate in self._generic_area_candidates(area_text):
+            cleaned = self._clean_generic_area_candidate(candidate, city_label, hotel_name)
+            if cleaned:
+                return self._format_generic_area_name(city_label, cleaned)
+        return ""
+
+    def _generic_area_candidates(self, area_text: str) -> list[str]:
+        if not area_text:
+            return []
+        normalized = re.sub(r"\s+", " ", html.unescape(str(area_text))).strip()
+        normalized = re.sub(r"\bnear\b", "| Near", normalized, flags=re.IGNORECASE)
+        pieces = re.split(r"\||•|·|,|;|\n", normalized)
+        candidates: list[str] = []
+        for piece in pieces:
+            value = piece.strip(" -")
+            if not value:
+                continue
+            value = re.sub(r"^near\s+", "", value, flags=re.IGNORECASE).strip(" -")
+            candidates.append(value)
+        return candidates
+
+    def _clean_generic_area_candidate(self, value: str, city_label: str, hotel_name: str = "") -> str:
+        text = re.sub(r"\s+", " ", value or "").strip(" -")
+        if not text:
+            return ""
+        hotel_lower = (hotel_name or "").lower()
+        if hotel_lower and (text.lower() in hotel_lower or hotel_lower in text.lower()):
+            return ""
+        if re.search(r"\b(city centre|city center|downtown)\b", text, flags=re.IGNORECASE):
+            return "市中心"
+        text = re.sub(r"\b(near|metro station|station|airport|hotel|resort|apartment|mall)\b.*$", "", text, flags=re.IGNORECASE).strip(" -")
+        for token in GLOBAL_CITY_STRIP_TOKENS.get(city_label, set()):
+            if re.search(r"[\u3400-\u9fff]", token):
+                text = text.replace(token, "")
+            else:
+                text = re.sub(rf"\b{re.escape(token)}\b", "", text, flags=re.IGNORECASE)
+        text = text.strip(" -")
+        if city_label:
+            text = text.replace(city_label, "").strip(" -")
+        text = re.sub(r"\d+.*$", "", text).strip(" -")
+        if re.search(
+            r"\b(hilton|marriott|sheraton|ibis|mercure|sofitel|aloft|wyndham|days|westin|kasa|pullman|adagio|peninsula|fairfield|residence inn|four points|best western)\b",
+            text,
+            flags=re.IGNORECASE,
+        ):
+            return ""
+        if not text or len(text) > 34:
+            return ""
+        if re.search(r"\b(road|street|avenue|alley|soi|jalan|lorong|place|center|centre)\b", text, flags=re.IGNORECASE):
+            return ""
+        if re.search(r"^[A-Za-z][A-Za-z\s'&.-]{2,}$", text):
+            return text.title().replace(" Kl ", " KL ").replace(" Klia ", "KLIA ")
+        if re.search(r"[\u3400-\u9fff]", text):
+            return text
+        return ""
+
+    def _format_generic_area_name(self, city_label: str, area_label: str) -> str:
+        area = area_label.strip()
+        if not area:
+            return ""
+        if city_label and not area.startswith(city_label):
+            return f"{city_label}{area}片区"
+        return f"{area}片区"
 
     def _normalize_city_label(self, city_name: str) -> str:
         text = (city_name or "").strip().lower()
@@ -2174,7 +2496,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     ) -> list[dict[str, Any]]:
         if not choices or len(recommendations) >= 3:
             return recommendations
-        city_label = self._normalize_city_label(city_name)
+        city_label = self._area_city_label(city_name)
         defaults = CITY_DEFAULT_AREA_NAMES.get(city_label, ())
         if not defaults:
             return recommendations

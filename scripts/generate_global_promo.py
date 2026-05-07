@@ -47,7 +47,7 @@ def capture_city_screenshots() -> None:
             page.select_option('select[name="child_facility_filter"]', "all")
             page.click("#submit-btn")
             page.wait_for_selector("#result:not(.hidden)", timeout=90000)
-            page.locator("#result").scroll_into_view_if_needed()
+            page.locator(".area-panel").scroll_into_view_if_needed()
             page.wait_for_timeout(300)
             page.screenshot(path=str(RAW_DIR / filename), full_page=False)
             page.close()
