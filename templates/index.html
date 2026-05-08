@@ -47,6 +47,30 @@
         font-weight: 700;
       }
       a:hover { text-decoration: underline; }
+      .contact-author {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        max-width: calc(100vw - 32px);
+        padding: 8px 10px;
+        border: 1px solid rgba(22, 87, 216, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.2;
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(10px);
+      }
+      .contact-author strong {
+        color: var(--primary);
+        font-weight: 700;
+        overflow-wrap: anywhere;
+      }
       .page {
         width: min(1280px, 100%);
         margin: 0 auto;
@@ -642,6 +666,12 @@
         .table-meta {
           line-height: 1.45;
         }
+        .contact-author {
+          right: 10px;
+          bottom: 10px;
+          padding: 7px 9px;
+          font-size: 11px;
+        }
         .table-wrap { overflow: visible; }
         table {
           min-width: 0;
@@ -719,6 +749,10 @@
     </style>
   </head>
   <body>
+    <a class="contact-author" href="mailto:lxz@underfitting.com" aria-label="联系作者 lxz@underfitting.com">
+      <span>联系作者</span>
+      <strong>lxz@underfitting.com</strong>
+    </a>
     <main class="page">
       <header class="topbar">
         <div>
