@@ -649,6 +649,16 @@ def test_enhance_hotel_name_data_prefers_domestic_simplified_source(tmp_path, mo
     assert result["hotel_name_refresh"]["domestic_hits"] == 1
 
 
+def test_domestic_hotel_name_rejects_generic_short_name():
+    finder = ReverseTravelFinder(StubCalendar())
+
+    assert finder._is_reliable_domestic_hotel_name("酒店", "深圳光明虹橋希爾頓花園酒店") is False
+    assert finder._extract_domestic_simplified_hotel_name(
+        '"hotelName":"酒店"',
+        "深圳光明虹橋希爾頓花園酒店",
+    ) == ""
+
+
 def test_build_detail_url_from_ids_and_reject_invalid_detail_url():
     finder = ReverseTravelFinder(StubCalendar())
     assert finder._to_zh_detail_url("https://www.trip.com") == ""

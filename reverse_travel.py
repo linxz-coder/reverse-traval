@@ -4093,6 +4093,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     def _is_reliable_domestic_hotel_name(self, value: str, fallback_name: str = "") -> bool:
         if not self._is_reliable_chinese_hotel_name(value):
             return False
+        chinese_chars = re.findall(r"[\u3400-\u9fff]", value)
+        if len(chinese_chars) < 4:
+            return False
+        if value.strip() in {"酒店", "宾馆", "住宿", "酒店民宿", "国内酒店", "海外酒店"}:
+            return False
         if any(token in value for token in ("携程", "去哪儿", "飞猪", "酒店预订", "宾馆预订", "价格查询", "Trip.com")):
             return False
         fallback = self._to_simplified_chinese(fallback_name)
