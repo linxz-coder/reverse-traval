@@ -35,6 +35,7 @@ JOB_WORKERS = env_int("REVERSE_TRAVEL_JOB_WORKERS", 2, min_value=1, max_value=4)
 NEARBY_CITY_WORKERS = env_int("REVERSE_TRAVEL_NEARBY_CITY_WORKERS", 2, min_value=1, max_value=4)
 
 job_executor = ThreadPoolExecutor(max_workers=JOB_WORKERS)
+refresh_executor = ThreadPoolExecutor(max_workers=2)
 prewarm_executor = ThreadPoolExecutor(max_workers=1)
 job_lock = threading.Lock()
 prewarm_lock = threading.Lock()
@@ -950,7 +951,8 @@ def start_background_job(kind: str, payload: dict[str, Any]):
     }
     with job_lock:
         jobs[job_id] = job
-    job_executor.submit(run_job, job_id, kind, copy.deepcopy(payload))
+    executor = refresh_executor if kind in {"areas", "hotel_names"} else job_executor
+    executor.submit(run_job, job_id, kind, copy.deepcopy(payload))
     return (
         jsonify(
             {
