@@ -51,6 +51,8 @@ runuser -u "${APP_USER}" -- env PLAYWRIGHT_BROWSERS_PATH="${APP_DIR}/.cache/ms-p
 runuser -u "${APP_USER}" -- mkdir -p "${APP_DIR}/.cache" "${APP_DIR}/exports"
 
 install -m 0644 "${APP_DIR}/deploy/linux/reverse-traval.service" /etc/systemd/system/reverse-traval.service
+install -m 0644 "${APP_DIR}/deploy/linux/reverse-traval-prewarm.service" /etc/systemd/system/reverse-traval-prewarm.service
+install -m 0644 "${APP_DIR}/deploy/linux/reverse-traval-prewarm.timer" /etc/systemd/system/reverse-traval-prewarm.timer
 sed "s/server_name hotel\\.underfitting\\.com;/server_name ${DOMAIN};/" \
   "${APP_DIR}/deploy/linux/nginx-hotel.underfitting.com.conf" \
   > /etc/nginx/sites-available/reverse-traval.conf
@@ -60,9 +62,11 @@ rm -f /etc/nginx/sites-enabled/default
 systemctl daemon-reload
 systemctl enable reverse-traval
 systemctl restart reverse-traval
+systemctl enable --now reverse-traval-prewarm.timer
 
 nginx -t
 systemctl enable nginx
 systemctl restart nginx
 
 systemctl --no-pager --full status reverse-traval
+systemctl --no-pager --full status reverse-traval-prewarm.timer

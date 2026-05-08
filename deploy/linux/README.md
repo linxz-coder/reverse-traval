@@ -19,6 +19,7 @@ The app runs behind Nginx:
 - App: `127.0.0.1:5012`
 - Public domain: `hotel.underfitting.com`
 - Service: `reverse-traval`
+- Nightly cache prewarm timer: `reverse-traval-prewarm.timer`
 
 Useful commands:
 
@@ -26,6 +27,8 @@ Useful commands:
 systemctl status reverse-traval
 journalctl -u reverse-traval -f
 systemctl restart reverse-traval
+systemctl status reverse-traval-prewarm.timer
+journalctl -u reverse-traval-prewarm.service -n 80
 nginx -t
 systemctl reload nginx
 ```

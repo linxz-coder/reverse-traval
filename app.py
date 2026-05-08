@@ -372,6 +372,27 @@ def prewarm_city_list(preset: str = "major", limit: int | None = None) -> list[s
     return cities
 
 
+def normalize_prewarm_city_list(value: Any) -> list[str]:
+    if not value:
+        return []
+    if isinstance(value, str):
+        items = [item.strip() for item in value.split(",")]
+    elif isinstance(value, list):
+        items = [str(item).strip() for item in value]
+    else:
+        items = []
+
+    cities: list[str] = []
+    seen: set[str] = set()
+    for item in items:
+        city = normalize_city(item)
+        if not city or city in seen:
+            continue
+        cities.append(city)
+        seen.add(city)
+    return cities
+
+
 def public_prewarm_state() -> dict[str, Any]:
     with prewarm_lock:
         return copy.deepcopy(prewarm_state)
@@ -397,10 +418,12 @@ def update_prewarm_state(message: str, **extra: Any) -> None:
 
 
 def run_cache_prewarm(config: dict[str, Any]) -> None:
-    cities = prewarm_city_list(
-        preset=str(config.get("city_preset") or "major"),
-        limit=parse_optional_int(config.get("city_limit"), "预热城市数量"),
-    )
+    cities = normalize_prewarm_city_list(config.get("cities"))
+    if not cities:
+        cities = prewarm_city_list(
+            preset=str(config.get("city_preset") or "major"),
+            limit=parse_optional_int(config.get("city_limit"), "预热城市数量"),
+        )
     profiles = normalize_prewarm_profiles(config.get("profiles"))
     configured_holidays = config.get("holiday_codes")
     if isinstance(configured_holidays, str):

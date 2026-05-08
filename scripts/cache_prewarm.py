@@ -28,6 +28,7 @@ def main() -> None:
     parser.add_argument("--status", action="store_true")
     parser.add_argument("--watch", action="store_true")
     parser.add_argument("--city-limit", type=int, default=None)
+    parser.add_argument("--cities", default="")
     parser.add_argument("--profiles", default="default")
     parser.add_argument("--holiday-code", action="append", dest="holiday_codes")
     parser.add_argument("--delay-seconds", type=int, default=1)
@@ -45,6 +46,8 @@ def main() -> None:
     }
     if args.city_limit:
         payload["city_limit"] = str(args.city_limit)
+    if args.cities:
+        payload["cities"] = [item.strip() for item in args.cities.split(",") if item.strip()]
     if args.holiday_codes:
         payload["holiday_codes"] = args.holiday_codes
 

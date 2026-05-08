@@ -1,0 +1,12 @@
+[Unit]
+Description=Start reverse travel nightly cache prewarm
+After=reverse-traval.service
+Wants=reverse-traval.service
+
+[Service]
+Type=oneshot
+User=reverse_travel
+Group=reverse_travel
+WorkingDirectory=/opt/reverse-traval
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/reverse-traval/.venv/bin/python /opt/reverse-traval/scripts/nightly_prewarm.py --batch-size 6 --holiday-count 3 --profiles default,quality --delay-seconds 90
