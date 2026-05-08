@@ -862,6 +862,15 @@ def test_enhance_area_data_normalizes_mixed_language_area_names():
         "Chicago",
         [
             {
+                "area_name": "深圳福田中心区",
+                "recommend_city": "深圳",
+                "hotel_name": "Shenzhen Futian Hotel",
+                "hotel_original_name": "Shenzhen Futian Hotel",
+                "holiday_avg_nightly_tax_total_value": 1100,
+                "price_diff_nightly": -5,
+                "room_type_label": "大床房",
+            },
+            {
                 "area_name": "芝加哥Loop片区",
                 "hotel_name": "Loop Hotel",
                 "hotel_original_name": "Loop Hotel",
@@ -891,6 +900,7 @@ def test_enhance_area_data_normalizes_mixed_language_area_names():
     )
 
     area_names = [item["area_name"] for item in result["choices"]]
+    assert "深圳福田中心片区" in area_names
     assert "芝加哥卢普片区" in area_names
     assert "罗马特拉斯提弗列片区" in area_names
     assert "" in area_names
