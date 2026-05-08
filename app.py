@@ -732,6 +732,20 @@ def nearby_search_result_from_payload(
     return response, 200
 
 
+def area_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
+    city = (payload.get("city") or payload.get("origin_city") or "").strip()
+    choices = payload.get("choices") or []
+    if not city:
+        return {"error": "city 不能为空"}, 400
+    if not isinstance(choices, list):
+        return {"error": "choices 必须是列表"}, 400
+    try:
+        result = finder.enhance_area_data(city, choices)
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"区域规范化失败: {exc}"}, 500
+    return result, 200
+
+
 def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
     with job_lock:
         job = jobs.get(job_id)
@@ -748,8 +762,11 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
 
     if kind == "search":
         result, status_code = search_result_from_payload(payload, progress_callback=progress_callback)
-    else:
+    elif kind == "nearby":
         result, status_code = nearby_search_result_from_payload(payload, progress_callback=progress_callback)
+    else:
+        update_job_progress(job_id, {"stage": "areas", "message": "正在规范化推荐旅游区域。", "percent": 40})
+        result, status_code = area_result_from_payload(payload)
 
     with job_lock:
         job = jobs.get(job_id)
@@ -880,6 +897,12 @@ def nearby_search():
 def nearby_search_start():
     payload = request.get_json(silent=True) or {}
     return start_background_job("nearby", payload)
+
+
+@app.post("/api/areas/start")
+def areas_start():
+    payload = request.get_json(silent=True) or {}
+    return start_background_job("areas", payload)
 
 
 @app.get("/api/jobs/<job_id>")

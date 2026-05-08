@@ -147,6 +147,38 @@ def test_nearby_search_reports_partial_progress(monkeypatch):
     assert any(event.get("completed") == 2 for event in events)
 
 
+def test_area_refresh_job_returns_normalized_choices(monkeypatch):
+    def fake_enhance_area_data(city, choices):
+        return {
+            "city": city,
+            "choices": [{**choices[0], "area_name": "芝加哥卢普片区"}],
+            "area_recommendations": [{"area_name": "芝加哥卢普片区", "hotel_count": 1}],
+            "area_refresh": {"status": "succeeded", "source": "local"},
+        }
+
+    monkeypatch.setattr(app_module.finder, "enhance_area_data", fake_enhance_area_data)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/areas/start",
+        json={"city": "Chicago", "choices": [{"hotel_name": "Loop Hotel", "area_name": "芝加哥Loop片区"}]},
+    )
+
+    assert response.status_code == 202
+    poll_url = response.get_json()["poll_url"]
+    data = None
+    for _ in range(50):
+        poll_response = client.get(poll_url)
+        assert poll_response.is_json
+        data = poll_response.get_json()
+        if data["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert data["status"] == "succeeded"
+    assert data["result"]["choices"][0]["area_name"] == "芝加哥卢普片区"
+
+
 def test_cache_prewarm_background_state(monkeypatch):
     def fake_find_choices(**kwargs):
         progress_callback = kwargs.get("progress_callback")

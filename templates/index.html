@@ -937,6 +937,8 @@
       let lastQuerySeconds = 0;
       let lastCacheInfo = null;
       let lastProgressMessage = "";
+      let lastAreaRefreshMeta = "";
+      let areaRefreshToken = 0;
       let currentUseCache = true;
       let currentRequestKind = "single";
       let activeView = "all";
@@ -1085,14 +1087,44 @@
         });
       }
 
-      function applyResultData(data) {
+      function applyResultData(data, options = {}) {
         lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
         lastChoices = data.choices || [];
         lastServerAreas = data.area_recommendations || [];
         lastCacheInfo = data.cache || null;
+        lastAreaRefreshMeta = "";
         renderSummary(data);
         renderChoices();
         result.classList.remove("hidden");
+        if (options.refreshAreas !== false) {
+          startAreaRefresh(data);
+        }
+      }
+
+      function startAreaRefresh(data) {
+        if (!data || !(data.choices || []).length) return;
+        const token = ++areaRefreshToken;
+        lastAreaRefreshMeta = "酒店结果已显示，正在后台规范化推荐区域...";
+        renderAreas(visibleChoices());
+        runSilentJob("/api/areas/start", {
+          city: data.city || "",
+          origin_city: data.origin_city || "",
+          choices: data.choices || [],
+          area_recommendations: data.area_recommendations || [],
+        }, "区域规范化失败").then((areaData) => {
+          if (token !== areaRefreshToken) return;
+          lastChoices = areaData.choices || lastChoices;
+          lastServerAreas = areaData.area_recommendations || lastServerAreas;
+          const refresh = areaData.area_refresh || {};
+          lastAreaRefreshMeta = refresh.source === "geonames"
+            ? "区域已用 GeoNames 和本地规则规范化"
+            : "区域已按中文片区规则规范化";
+          renderChoices();
+        }).catch(() => {
+          if (token !== areaRefreshToken) return;
+          lastAreaRefreshMeta = "";
+          renderAreas(visibleChoices());
+        });
       }
 
       function renderProgressEvents(events) {
@@ -1133,7 +1165,7 @@
         const areas = activeView === "all" && lastServerAreas.length
           ? lastServerAreas
           : buildAreasFromChoices(items);
-        areaMeta.textContent = areas.length ? `优先显示命中酒店更集中、降价更多的片区` : "暂无可推荐片区";
+        areaMeta.textContent = lastAreaRefreshMeta || (areas.length ? `优先显示命中酒店更集中、降价更多的片区` : "暂无可推荐片区");
         areaRecommendations.innerHTML = areas.length
           ? areas.map((area) => `
             <article class="area-card">
@@ -1286,6 +1318,25 @@
         throw new Error(`${fallbackMessage}：查询超过 30 分钟仍未完成，请稍后重试。`);
       }
 
+      async function runSilentJob(startUrl, payload, fallbackMessage, maxWaitMs = 180000) {
+        const startResp = await fetch(startUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const startData = await readJsonResponse(startResp, fallbackMessage);
+        const pollUrl = startData.poll_url || `/api/jobs/${startData.job_id}`;
+        const started = Date.now();
+        while (Date.now() - started < maxWaitMs) {
+          await sleep(1800);
+          const resp = await fetch(pollUrl, { cache: "no-store" });
+          const data = await readJsonResponse(resp, fallbackMessage);
+          if (data.status === "succeeded") return data.result;
+          if (data.status === "failed") throw new Error(data.error || fallbackMessage);
+        }
+        throw new Error(`${fallbackMessage}：后台任务暂未完成。`);
+      }
+
       async function loadHolidays() {
         const resp = await fetch("/api/holidays");
         const data = await readJsonResponse(resp, "假期列表加载失败");
@@ -1298,6 +1349,8 @@
         event.preventDefault();
         errorBox.classList.add("hidden");
         result.classList.add("hidden");
+        areaRefreshToken += 1;
+        lastAreaRefreshMeta = "";
         const payload = Object.fromEntries(new FormData(form).entries());
         currentRequestKind = "single";
         currentUseCache = useCacheInput.checked;
@@ -1321,6 +1374,8 @@
         event.preventDefault();
         errorBox.classList.add("hidden");
         result.classList.add("hidden");
+        areaRefreshToken += 1;
+        lastAreaRefreshMeta = "";
         const payload = Object.fromEntries(new FormData(form).entries());
         payload.origin_city = originCity.value;
         payload.nearby_limit = "4";
@@ -1333,7 +1388,7 @@
         try {
           resetViewMode();
           const data = await runAsyncJob("/api/nearby-search/start", payload, "附近推荐失败", {
-            onProgress: (partial) => applyResultData(partial),
+            onProgress: (partial) => applyResultData(partial, { refreshAreas: false }),
           });
           applyResultData(data);
         } catch (error) {

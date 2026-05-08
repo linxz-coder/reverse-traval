@@ -5,6 +5,7 @@ import copy
 import hashlib
 import html
 import json
+import os
 import random
 import re
 import threading
@@ -118,8 +119,8 @@ CITY_DEFAULT_AREA_NAMES = {
     "韶关": ("韶关丹霞山片区", "韶关南华寺曹溪片区", "韶关乳源大峡谷片区", "韶关市区片区", "韶关南雄片区"),
     "汕尾": ("汕尾金町湾片区", "汕尾红海湾片区", "汕尾海丰片区", "汕尾陆丰片区", "汕尾市区片区"),
     "曼谷": ("曼谷素坤逸片区", "曼谷暹罗片区", "曼谷湄南河畔片区", "曼谷是隆沙吞片区", "曼谷水门片区"),
-    "吉隆坡": ("吉隆坡武吉免登片区", "吉隆坡KLCC片区", "吉隆坡中央车站片区", "吉隆坡谷中城片区", "吉隆坡白沙罗片区"),
-    "芝加哥": ("芝加哥Loop片区", "芝加哥河北片区", "芝加哥壮丽大道片区", "芝加哥奥黑尔机场片区", "芝加哥橡树溪片区"),
+    "吉隆坡": ("吉隆坡武吉免登片区", "吉隆坡城中城片区", "吉隆坡中央车站片区", "吉隆坡谷中城片区", "吉隆坡白沙罗片区"),
+    "芝加哥": ("芝加哥卢普片区", "芝加哥河北片区", "芝加哥壮丽大道片区", "芝加哥奥黑尔机场片区", "芝加哥橡树溪片区"),
     "巴黎": ("巴黎蒙马特片区", "巴黎拉德芳斯片区", "巴黎歌剧院片区", "巴黎香榭丽舍片区", "巴黎埃菲尔铁塔片区"),
     "伦敦": ("伦敦西区片区", "伦敦市中心片区", "伦敦国王十字片区", "伦敦金丝雀码头片区", "伦敦希思罗机场片区"),
     "东京": ("东京新宿片区", "东京银座片区", "东京上野浅草片区", "东京涩谷片区", "东京东京站片区"),
@@ -129,8 +130,8 @@ CITY_DEFAULT_AREA_NAMES = {
     "纽约": ("纽约时代广场片区", "纽约中城片区", "纽约下城金融区片区", "纽约布鲁克林片区", "纽约中央公园片区"),
     "洛杉矶": ("洛杉矶好莱坞片区", "洛杉矶市中心片区", "洛杉矶圣莫尼卡片区", "洛杉矶国际机场片区", "洛杉矶比佛利山片区"),
     "旧金山": ("旧金山联合广场片区", "旧金山渔人码头片区", "旧金山金融区片区", "旧金山机场片区", "旧金山南湾片区"),
-    "悉尼": ("悉尼达令港片区", "悉尼环形码头片区", "悉尼CBD片区", "悉尼邦迪海滩片区", "悉尼机场片区"),
-    "墨尔本": ("墨尔本CBD片区", "墨尔本南岸片区", "墨尔本圣基尔达片区", "墨尔本卡尔顿片区", "墨尔本机场片区"),
+    "悉尼": ("悉尼达令港片区", "悉尼环形码头片区", "悉尼中央商务区片区", "悉尼邦迪海滩片区", "悉尼机场片区"),
+    "墨尔本": ("墨尔本中央商务区片区", "墨尔本南岸片区", "墨尔本圣基尔达片区", "墨尔本卡尔顿片区", "墨尔本机场片区"),
     "迪拜": ("迪拜市中心片区", "迪拜码头片区", "迪拜棕榈岛片区", "迪拜德拉片区", "迪拜机场片区"),
 }
 GLOBAL_CITY_ALIASES = {
@@ -232,7 +233,7 @@ GLOBAL_AREA_PATTERNS = {
     ],
     "吉隆坡": [
         (("bukit bintang", "pavilion kuala lumpur", "武吉免登"), "吉隆坡武吉免登片区"),
-        (("klcc", "petronas", "suria klcc", "双子塔", "雙子塔"), "吉隆坡KLCC片区"),
+        (("klcc", "petronas", "suria klcc", "双子塔", "雙子塔"), "吉隆坡城中城片区"),
         (("kl sentral", "kuala lumpur sentral", "central station", "中央车站", "中央車站"), "吉隆坡中央车站片区"),
         (("mid valley", "the gardens", "谷中城"), "吉隆坡谷中城片区"),
         (("petaling jaya", "八打灵", "八打靈"), "八打灵再也片区"),
@@ -243,12 +244,12 @@ GLOBAL_AREA_PATTERNS = {
         (("cheras", "maluri", "陈秀莲", "陳秀蓮"), "吉隆坡蕉赖片区"),
     ],
     "芝加哥": [
-        (("loop", "downtown/loop", "downtown chicago", "millennium park", "theater district"), "芝加哥Loop片区"),
+        (("loop", "downtown/loop", "downtown chicago", "millennium park", "theater district"), "芝加哥卢普片区"),
         (("river north", "north river", "河北", "河畔北"), "芝加哥河北片区"),
         (("magnificent mile", "mag mile", "壮丽大道", "壯麗大道"), "芝加哥壮丽大道片区"),
         (("o'hare", "ohare", "ord", "奥黑尔", "奧黑爾"), "芝加哥奥黑尔机场片区"),
         (("oak brook", "oakbrook", "橡树溪", "橡樹溪"), "芝加哥橡树溪片区"),
-        (("west loop", "fulton market"), "芝加哥西Loop片区"),
+        (("west loop", "fulton market"), "芝加哥西卢普片区"),
         (("lincoln park", "林肯公园", "林肯公園"), "芝加哥林肯公园片区"),
         (("navy pier", "海军码头", "海軍碼頭"), "芝加哥海军码头片区"),
     ],
@@ -332,12 +333,12 @@ GLOBAL_AREA_PATTERNS = {
     "悉尼": [
         (("darling harbour", "darling harbor", "达令港", "達令港"), "悉尼达令港片区"),
         (("circular quay", "the rocks", "环形码头", "環形碼頭", "岩石区"), "悉尼环形码头片区"),
-        (("cbd", "city centre", "city center", "市中心"), "悉尼CBD片区"),
+        (("cbd", "city centre", "city center", "市中心"), "悉尼中央商务区片区"),
         (("bondi", "邦迪"), "悉尼邦迪海滩片区"),
         (("sydney airport", "syd", "悉尼机场", "悉尼機場"), "悉尼机场片区"),
     ],
     "墨尔本": [
-        (("cbd", "city centre", "city center", "市中心"), "墨尔本CBD片区"),
+        (("cbd", "city centre", "city center", "市中心"), "墨尔本中央商务区片区"),
         (("southbank", "south bank", "南岸"), "墨尔本南岸片区"),
         (("st kilda", "saint kilda", "圣基尔达", "聖基爾達"), "墨尔本圣基尔达片区"),
         (("carlton", "卡尔顿", "卡爾頓"), "墨尔本卡尔顿片区"),
@@ -350,6 +351,31 @@ GLOBAL_AREA_PATTERNS = {
         (("deira", "德拉"), "迪拜德拉片区"),
         (("dubai airport", "dxb", "迪拜机场", "迪拜機場"), "迪拜机场片区"),
     ],
+}
+AREA_NAME_REPLACEMENTS = {
+    "吉隆坡KLCC片区": "吉隆坡城中城片区",
+    "芝加哥Loop片区": "芝加哥卢普片区",
+    "芝加哥西Loop片区": "芝加哥西卢普片区",
+    "悉尼CBD片区": "悉尼中央商务区片区",
+    "墨尔本CBD片区": "墨尔本中央商务区片区",
+    "罗马Trastevere片区": "罗马特拉斯提弗列片区",
+}
+AREA_CANDIDATE_TRANSLATIONS = {
+    "klcc": "城中城",
+    "loop": "卢普",
+    "west loop": "西卢普",
+    "cbd": "中央商务区",
+    "downtown": "市中心",
+    "city centre": "市中心",
+    "city center": "市中心",
+    "trastevere": "特拉斯提弗列",
+    "fulton market": "富尔顿市场",
+    "river north": "河北",
+    "magnificent mile": "壮丽大道",
+    "midtown": "中城",
+    "times square": "时代广场",
+    "financial district": "金融区",
+    "central business district": "中央商务区",
 }
 CITY_ID_LABELS = {
     "31": "珠海",
@@ -455,6 +481,8 @@ class ReverseTravelFinder:
         self._city_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._city_cache_path())
         self._hotel_name_cache: dict[str, dict[str, str]] = self._load_cache_items(self._hotel_name_cache_path())
         self._hotel_feature_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._hotel_feature_cache_path())
+        self.geonames_username = os.environ.get("GEONAMES_USERNAME", "").strip()
+        self._geonames_area_cache: dict[tuple[float, float, str], str] = {}
 
     def list_holidays(self) -> list[dict[str, Any]]:
         holidays = self.calendar.get_upcoming_holidays()
@@ -1772,22 +1800,59 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 area_text=area_hint,
             )
             feature_flags = self._extract_api_feature_flags(row)
-            items.append(
-                {
-                    "hotel_id": hotel_id,
-                    "hotel_name": hotel_name,
-                    "detail_href": "",
-                    "room_name": room_name,
-                    "room_price_text": room_price_text,
-                    "tax_total_text": tax_total_text,
-                    "area_name": area_name,
-                    "area_hint": area_hint,
-                    "area_source": "Trip.com 位置",
-                    **feature_flags,
-                    "_source": "api",
-                }
-            )
+            item = {
+                "hotel_id": hotel_id,
+                "hotel_name": hotel_name,
+                "detail_href": "",
+                "room_name": room_name,
+                "room_price_text": room_price_text,
+                "tax_total_text": tax_total_text,
+                "area_name": area_name,
+                "area_hint": area_hint,
+                "area_source": "Trip.com 位置",
+                **feature_flags,
+                "_source": "api",
+            }
+            coordinates = self._extract_coordinates(row)
+            if coordinates:
+                item["latitude"], item["longitude"] = coordinates
+            items.append(item)
         return items
+
+    def _extract_coordinates(self, value: Any) -> tuple[float, float] | None:
+        found: list[tuple[float, float]] = []
+
+        def coerce_number(raw: Any) -> float | None:
+            if raw in ("", None):
+                return None
+            if isinstance(raw, (int, float)):
+                return float(raw)
+            match = re.search(r"-?\d+(?:\.\d+)?", str(raw))
+            return float(match.group(0)) if match else None
+
+        def visit(node: Any) -> None:
+            if found:
+                return
+            if isinstance(node, dict):
+                lat_value = None
+                lon_value = None
+                for key, child in node.items():
+                    lowered = str(key).lower()
+                    if "lat" in lowered and "relation" not in lowered:
+                        lat_value = coerce_number(child)
+                    if any(token in lowered for token in ("lng", "lon", "longitude")):
+                        lon_value = coerce_number(child)
+                if lat_value is not None and lon_value is not None and -90 <= lat_value <= 90 and -180 <= lon_value <= 180:
+                    found.append((lat_value, lon_value))
+                    return
+                for child in node.values():
+                    visit(child)
+            elif isinstance(node, list):
+                for child in node:
+                    visit(child)
+
+        visit(value)
+        return found[0] if found else None
 
     def _extract_api_feature_flags(self, row: dict[str, Any]) -> dict[str, bool | None]:
         text = json.dumps(row, ensure_ascii=False).lower()
@@ -2140,8 +2205,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             return ""
         if re.search(r"\b(road|street|avenue|alley|soi|jalan|lorong|place|center|centre)\b", text, flags=re.IGNORECASE):
             return ""
+        translated = self._translate_area_candidate(text)
+        if translated:
+            return translated
         if re.search(r"^[A-Za-z][A-Za-z\s'&.-]{2,}$", text):
-            return text.title().replace(" Kl ", " KL ").replace(" Klia ", "KLIA ")
+            return ""
         if re.search(r"[\u3400-\u9fff]", text):
             return text
         return ""
@@ -2153,6 +2221,81 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         if city_label and not area.startswith(city_label):
             return f"{city_label}{area}片区"
         return f"{area}片区"
+
+    def _translate_area_candidate(self, value: str) -> str:
+        lowered = re.sub(r"\s+", " ", (value or "").strip().lower())
+        if not lowered:
+            return ""
+        if lowered in AREA_CANDIDATE_TRANSLATIONS:
+            return AREA_CANDIDATE_TRANSLATIONS[lowered]
+        for token, translated in sorted(AREA_CANDIDATE_TRANSLATIONS.items(), key=lambda item: len(item[0]), reverse=True):
+            if re.search(rf"\b{re.escape(token)}\b", lowered):
+                return translated
+        return ""
+
+    def _normalize_area_display_name(self, area_name: str, city_name: str = "") -> str:
+        text = re.sub(r"\s+", " ", str(area_name or "")).strip()
+        if not text or self._is_generic_area_name(text):
+            return ""
+        text = AREA_NAME_REPLACEMENTS.get(text, text)
+        city_label = self._area_city_label(city_name or text)
+        for token, translated in sorted(AREA_CANDIDATE_TRANSLATIONS.items(), key=lambda item: len(item[0]), reverse=True):
+            text = re.sub(rf"\b{re.escape(token)}\b", translated, text, flags=re.IGNORECASE)
+        text = AREA_NAME_REPLACEMENTS.get(text, text)
+        text = re.sub(r"片区片区$", "片区", text)
+        if re.search(r"[A-Za-z]", text):
+            return ""
+        if not text.endswith("片区"):
+            text = f"{text}片区"
+        if city_label and text == f"{city_label}片区":
+            return ""
+        return text
+
+    def _geonames_area_name(self, lat: Any, lon: Any, city_name: str) -> str:
+        if not self.geonames_username:
+            return ""
+        try:
+            lat_value = round(float(lat), 5)
+            lon_value = round(float(lon), 5)
+        except (TypeError, ValueError):
+            return ""
+        city_label = self._area_city_label(city_name)
+        cache_key = (lat_value, lon_value, city_label)
+        if cache_key in self._geonames_area_cache:
+            return self._geonames_area_cache[cache_key]
+
+        def read_service(path: str, params: dict[str, Any]) -> dict[str, Any]:
+            query = urlencode({**params, "username": self.geonames_username})
+            req = Request(f"https://secure.geonames.org/{path}?{query}", headers={"User-Agent": UA})
+            with urlopen(req, timeout=2.5) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+
+        candidates: list[str] = []
+        service_params = {"lat": lat_value, "lng": lon_value, "lang": "zh", "style": "SHORT"}
+        try:
+            data = read_service("neighbourhoodJSON", service_params)
+            neighbourhood = data.get("neighbourhood") if isinstance(data, dict) else None
+            if isinstance(neighbourhood, dict):
+                candidates.append(str(neighbourhood.get("name") or ""))
+        except (OSError, HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+            pass
+        try:
+            data = read_service("findNearbyJSON", {**service_params, "radius": 5, "maxRows": 5})
+            rows = data.get("geonames") if isinstance(data, dict) else None
+            if isinstance(rows, list):
+                for row in rows:
+                    if isinstance(row, dict):
+                        candidates.append(str(row.get("name") or row.get("toponymName") or ""))
+        except (OSError, HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+            pass
+
+        for candidate in candidates:
+            cleaned = self._normalize_area_display_name(self._format_generic_area_name(city_label, candidate), city_label)
+            if cleaned and city_label not in cleaned.replace(f"{city_label}", "", 1):
+                self._geonames_area_cache[cache_key] = cleaned
+                return cleaned
+        self._geonames_area_cache[cache_key] = ""
+        return ""
 
     def _normalize_city_label(self, city_name: str) -> str:
         text = (city_name or "").strip().lower()
@@ -2395,11 +2538,16 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         lowered = (text or "").lower()
         return any(keyword.lower() in lowered for keyword in keywords)
 
-    def _build_area_recommendations(self, choices: list[dict[str, Any]], city_name: str) -> list[dict[str, Any]]:
+    def _build_area_recommendations(
+        self,
+        choices: list[dict[str, Any]],
+        city_name: str,
+        include_defaults: bool = True,
+    ) -> list[dict[str, Any]]:
         groups: dict[str, dict[str, Any]] = {}
         for item in choices:
             area_name = self._choice_area_name(item, city_name)
-            if self._is_generic_area_name(area_name):
+            if not area_name or self._is_generic_area_name(area_name):
                 continue
             group = groups.setdefault(
                 area_name,
@@ -2460,7 +2608,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 item["average_holiday_nightly_tax_total_value"],
             )
         )
-        recommendations = self._add_default_area_recommendations(recommendations, city_name, choices)
+        if include_defaults:
+            recommendations = self._add_default_area_recommendations(recommendations, city_name, choices)
         return recommendations[:8]
 
     def _is_generic_area_name(self, area_name: str) -> bool:
@@ -2468,11 +2617,12 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         return "热门酒店片区" in text or "区域待确认" in text
 
     def _choice_area_name(self, item: dict[str, Any], city_name: str) -> str:
+        choice_city = str(item.get("recommend_city") or city_name or "")
         raw_area = str(item.get("area_name") or "").strip()
         if raw_area and not self._is_generic_area_name(raw_area):
-            return raw_area
-        return self._infer_area_name(
-            city_name=city_name,
+            return self._normalize_area_display_name(raw_area, choice_city)
+        inferred = self._infer_area_name(
+            city_name=choice_city,
             hotel_name=" ".join(
                 str(value or "")
                 for value in (
@@ -2482,11 +2632,47 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             ),
             area_text=str(item.get("area_hint") or ""),
         )
+        return self._normalize_area_display_name(inferred, choice_city)
 
     def _refresh_choice_area_names(self, choices: list[dict[str, Any]], city_name: str) -> None:
         for item in choices:
             area_name = self._choice_area_name(item, city_name)
-            item["area_name"] = "" if self._is_generic_area_name(area_name) else area_name
+            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else area_name
+
+    def enhance_area_data(self, city_name: str, choices: list[dict[str, Any]]) -> dict[str, Any]:
+        enhanced_choices = copy.deepcopy(choices or [])
+        geonames_lookups = 0
+        geonames_hits = 0
+        for item in enhanced_choices:
+            choice_city = str(item.get("recommend_city") or city_name or "")
+            area_name = ""
+            if geonames_lookups < 8 and item.get("latitude") not in ("", None) and item.get("longitude") not in ("", None):
+                geonames_lookups += 1
+                area_name = self._geonames_area_name(item.get("latitude"), item.get("longitude"), choice_city)
+                if area_name:
+                    geonames_hits += 1
+                    item["area_source"] = "GeoNames"
+            if not area_name:
+                area_name = self._choice_area_name(item, choice_city)
+                if area_name:
+                    item["area_source"] = "区域规范化"
+            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else area_name
+
+        recommendations = self._build_area_recommendations(enhanced_choices, city_name, include_defaults=False)
+        if not recommendations:
+            recommendations = self._build_area_recommendations(enhanced_choices, city_name, include_defaults=True)
+        return {
+            "city": city_name,
+            "choices": enhanced_choices,
+            "area_recommendations": recommendations,
+            "area_refresh": {
+                "status": "succeeded",
+                "source": "geonames" if geonames_hits else "local",
+                "geonames_enabled": bool(self.geonames_username),
+                "geonames_lookups": geonames_lookups,
+                "geonames_hits": geonames_hits,
+            },
+        }
 
     def _add_default_area_recommendations(
         self,
