@@ -1,0 +1,18 @@
+[Unit]
+Description=Reverse Travel Good Choice Flask app
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=reverse_travel
+Group=reverse_travel
+WorkingDirectory=/opt/reverse-traval
+Environment=PYTHONUNBUFFERED=1
+Environment=PLAYWRIGHT_BROWSERS_PATH=/opt/reverse-traval/.cache/ms-playwright
+ExecStart=/opt/reverse-traval/.venv/bin/gunicorn --bind 127.0.0.1:5012 --workers 1 --threads 4 --timeout 240 app:app
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
