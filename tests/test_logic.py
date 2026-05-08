@@ -951,6 +951,116 @@ def test_choice_area_name_falls_back_when_cached_area_is_mixed_language():
     assert area_name == "上海静安寺片区"
 
 
+def test_build_area_recommendations_supports_common_global_city_samples():
+    finder = ReverseTravelFinder(StubCalendar())
+    samples = {
+        "São Paulo": [
+            "Avenida Paulista | Near MASP",
+            "Jardins | Near Oscar Freire Street",
+            "Itaim Bibi | Near Faria Lima",
+        ],
+        "Moscow": [
+            "Tverskoy | Near Bolshoi Theatre",
+            "Arbat | Near Arbat Street",
+            "Moscow City | Near Afimall",
+        ],
+        "Dubai": [
+            "Downtown Dubai | Near Dubai Mall",
+            "Dubai Marina | Near JBR",
+            "Palm Jumeirah | Near Atlantis",
+        ],
+        "Berlin": [
+            "Mitte | Near Museum Island",
+            "Alexanderplatz | Near TV Tower",
+            "Charlottenburg | Near Zoo Berlin",
+        ],
+        "Singapore": [
+            "Marina Bay | Near Gardens by the Bay",
+            "Orchard Road | Near ION Orchard",
+            "Sentosa | Near Universal Studios Singapore",
+        ],
+        "Hong Kong": [
+            "Tsim Sha Tsui | Near Harbour City",
+            "Central | Near IFC",
+            "Causeway Bay | Near Times Square",
+        ],
+        "Macau": [
+            "Cotai | Near The Venetian Macao",
+            "Macau Peninsula | Near Senado Square",
+            "Taipa | Near Taipa Village",
+        ],
+        "Las Vegas": [
+            "The Strip | Near Bellagio",
+            "Downtown Las Vegas | Near Fremont Street",
+            "Summerlin | Near Red Rock Casino",
+        ],
+    }
+
+    for city, hints in samples.items():
+        choices = [
+            {
+                "area_name": "",
+                "area_hint": hint,
+                "hotel_name": f"{city} Example Hotel {index}",
+                "hotel_original_name": f"{city} Example Hotel {index}",
+                "holiday_avg_nightly_tax_total_value": 500 + index * 50,
+                "price_diff_nightly": index * 10 - 10,
+                "room_type_label": "大床房",
+            }
+            for index, hint in enumerate(hints, start=1)
+        ]
+        recommendations = finder._build_area_recommendations(choices, city)
+        area_names = [item["area_name"] for item in recommendations[:3]]
+
+        assert len(area_names) >= 3, city
+        assert all(not re.search(r"[A-Za-z]", name) for name in area_names), (city, area_names)
+        assert all("区域待确认" not in name for name in area_names), (city, area_names)
+
+
+def test_build_area_recommendations_has_coordinate_fallback_for_any_city():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "",
+                "area_hint": "",
+                "hotel_name": "测试城一号酒店",
+                "holiday_avg_nightly_tax_total_value": 500,
+                "price_diff_nightly": -20,
+                "room_type_label": "大床房",
+                "latitude": 30.0,
+                "longitude": 120.0,
+            },
+            {
+                "area_name": "",
+                "area_hint": "",
+                "hotel_name": "测试城二号酒店",
+                "holiday_avg_nightly_tax_total_value": 600,
+                "price_diff_nightly": 10,
+                "room_type_label": "双床房",
+                "latitude": 30.12,
+                "longitude": 120.12,
+            },
+            {
+                "area_name": "",
+                "area_hint": "",
+                "hotel_name": "测试城三号酒店",
+                "holiday_avg_nightly_tax_total_value": 550,
+                "price_diff_nightly": 20,
+                "room_type_label": "大床房",
+                "latitude": 29.88,
+                "longitude": 119.86,
+            },
+        ],
+        "测试城",
+    )
+
+    area_names = [item["area_name"] for item in recommendations[:3]]
+    assert len(area_names) == 3
+    assert all(name.startswith("测试城") for name in area_names)
+    assert all(not re.search(r"[A-Za-z]", name) for name in area_names)
+
+
 def test_enhance_area_data_normalizes_mixed_language_area_names():
     finder = ReverseTravelFinder(StubCalendar())
     result = finder.enhance_area_data(
