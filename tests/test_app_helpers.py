@@ -10,6 +10,22 @@ def test_nearby_city_helpers_resolve_manual_and_location():
     assert nearest_supported_city(22.54, 114.05) == "深圳"
     assert nearby_cities_for("深圳", limit=4) == ["汕尾", "惠州", "广州", "东莞"]
     assert nearby_cities_for("珠海", limit=2) == ["中山", "江门"]
+    assert nearby_cities_for("苏州", limit=4)
+    assert "苏州" not in nearby_cities_for("苏州", limit=4)
+    assert nearby_cities_for("北京", limit=2) == ["天津", "廊坊"]
+
+
+def test_nearby_city_api_returns_national_province_city_options():
+    client = flask_app.test_client()
+
+    response = client.get("/api/nearby-cities")
+
+    assert response.status_code == 200
+    data = response.get_json()
+    province_map = {item["province"]: item["cities"] for item in data["province_cities"]}
+    assert "深圳" in province_map["广东"]
+    assert "苏州" in province_map["江苏"]
+    assert "北京" in province_map["北京"]
 
 
 def test_parse_bool_accepts_form_values():

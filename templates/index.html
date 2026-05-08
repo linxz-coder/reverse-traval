@@ -155,7 +155,7 @@
       .nearby-toolbar {
         margin-top: 12px;
         display: grid;
-        grid-template-columns: minmax(180px, 0.9fr) auto auto minmax(220px, 1.5fr);
+        grid-template-columns: minmax(180px, 0.9fr) minmax(150px, 0.8fr) auto auto minmax(220px, 1.5fr);
         gap: 12px;
         align-items: end;
         padding: 14px 16px;
@@ -818,26 +818,15 @@
 
       <form class="nearby-toolbar" id="nearby-form">
         <label>
-          所在城市
-          <select id="origin-city" name="origin_city">
-            <option value="深圳" selected>深圳</option>
-            <option value="广州">广州</option>
-            <option value="东莞">东莞</option>
-            <option value="惠州">惠州</option>
-            <option value="汕尾">汕尾</option>
-            <option value="珠海">珠海</option>
-            <option value="中山">中山</option>
-            <option value="佛山">佛山</option>
-            <option value="江门">江门</option>
-            <option value="肇庆">肇庆</option>
-            <option value="河源">河源</option>
-            <option value="韶关">韶关</option>
-            <option value="清远">清远</option>
-            <option value="云浮">云浮</option>
-          </select>
+          按所在城市推荐
+          <select id="origin-province" name="origin_province"></select>
+        </label>
+        <label>
+          城市
+          <select id="origin-city" name="origin_city"></select>
         </label>
         <button class="secondary-btn" id="geo-btn" type="button">用当前位置</button>
-        <button id="nearby-submit-btn" type="submit"><span class="spinner"></span><span id="nearby-submit-text">推荐附近</span></button>
+        <button id="nearby-submit-btn" type="submit"><span class="spinner"></span><span id="nearby-submit-text">按所在城市推荐</span></button>
         <div class="nearby-hint" id="nearby-hint"></div>
       </form>
 
@@ -911,6 +900,7 @@
       const nearbySubmitBtn = document.getElementById("nearby-submit-btn");
       const nearbySubmitText = document.getElementById("nearby-submit-text");
       const geoBtn = document.getElementById("geo-btn");
+      const originProvince = document.getElementById("origin-province");
       const originCity = document.getElementById("origin-city");
       const nearbyHint = document.getElementById("nearby-hint");
       const errorBox = document.getElementById("error-box");
@@ -942,6 +932,7 @@
       let currentUseCache = true;
       let currentRequestKind = "single";
       let activeView = "all";
+      const provinceCityOptions = {{ province_city_options|tojson }};
 
       function esc(text) {
         return String(text || "")
@@ -952,6 +943,36 @@
           .replaceAll("'", "&#039;");
       }
 
+      function initOriginCitySelector() {
+        originProvince.innerHTML = provinceCityOptions.map((item) =>
+          `<option value="${esc(item.province)}">${esc(item.province)}</option>`
+        ).join("");
+        setOriginCity("深圳");
+        originProvince.addEventListener("change", () => {
+          populateOriginCities(originProvince.value);
+        });
+      }
+
+      function populateOriginCities(province, selectedCity = "") {
+        const provinceItem = provinceCityOptions.find((item) => item.province === province) || provinceCityOptions[0];
+        const cities = provinceItem ? provinceItem.cities : [];
+        originCity.innerHTML = cities.map((city) =>
+          `<option value="${esc(city)}">${esc(city)}</option>`
+        ).join("");
+        const nextCity = cities.includes(selectedCity) ? selectedCity : (cities[0] || "");
+        if (nextCity) originCity.value = nextCity;
+      }
+
+      function setOriginCity(city) {
+        const normalizedCity = String(city || "").trim();
+        const provinceItem = provinceCityOptions.find((item) => (item.cities || []).includes(normalizedCity));
+        const fallbackProvince = provinceCityOptions.find((item) => item.province === "广东") || provinceCityOptions[0];
+        const nextProvince = provinceItem || fallbackProvince;
+        if (!nextProvince) return;
+        originProvince.value = nextProvince.province;
+        populateOriginCities(nextProvince.province, provinceItem ? normalizedCity : "深圳");
+      }
+
       function setLoading(active) {
         submitBtn.disabled = active;
         nearbySubmitBtn.disabled = active;
@@ -959,7 +980,7 @@
         submitBtn.classList.toggle("loading", active && currentRequestKind === "single");
         nearbySubmitBtn.classList.toggle("loading", active && currentRequestKind === "nearby");
         submitText.textContent = active && currentRequestKind === "single" ? "筛选中" : "开始筛选";
-        nearbySubmitText.textContent = active && currentRequestKind === "nearby" ? "推荐中" : "推荐附近";
+        nearbySubmitText.textContent = active && currentRequestKind === "nearby" ? "推荐中" : "按所在城市推荐";
         statusBox.classList.toggle("hidden", !active);
         if (!active) {
           window.clearInterval(timer);
@@ -1010,7 +1031,7 @@
       function renderSummary(data) {
         if (data.origin_city) {
           summary.innerHTML = `
-            <div class="stat"><div class="k">所在城市</div><div class="v">${esc(data.origin_city)}</div></div>
+            <div class="stat"><div class="k">按所在城市推荐</div><div class="v">${esc(data.origin_city)}</div></div>
             <div class="stat"><div class="k">附近城市</div><div class="v">${esc((data.nearby_cities || []).join("、"))}</div></div>
             <div class="stat"><div class="k">命中酒店</div><div class="v">${esc((data.choices || []).length)} 家</div></div>
             <div class="stat"><div class="k">推荐区域</div><div class="v">${esc((data.area_recommendations || []).length)} 个</div></div>
@@ -1419,8 +1440,8 @@
               }),
             });
             const data = await readJsonResponse(resp, "定位失败");
-            originCity.value = data.city;
-            nearbyHint.textContent = `已按当前位置识别为 ${data.city}，可点击“推荐附近”。`;
+            setOriginCity(data.city);
+            nearbyHint.textContent = `已按当前位置识别为 ${data.city}，可点击“按所在城市推荐”。`;
           } catch (error) {
             errorBox.textContent = error.message || "定位失败，请手动选择所在城市。";
             errorBox.classList.remove("hidden");
@@ -1435,6 +1456,8 @@
           errorBox.classList.remove("hidden");
         }, { timeout: 8000, maximumAge: 10 * 60 * 1000 });
       });
+
+      initOriginCitySelector();
 
       loadHolidays().catch((error) => {
         errorBox.textContent = error.message || "假期列表加载失败";
