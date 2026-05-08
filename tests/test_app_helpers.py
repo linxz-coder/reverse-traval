@@ -195,6 +195,37 @@ def test_area_refresh_job_returns_normalized_choices(monkeypatch):
     assert data["result"]["choices"][0]["area_name"] == "芝加哥卢普片区"
 
 
+def test_hotel_name_refresh_job_returns_simplified_choices(monkeypatch):
+    def fake_enhance_hotel_name_data(city, choices):
+        return {
+            "city": city,
+            "choices": [{**choices[0], "hotel_name": "深圳光明虹桥希尔顿花园酒店"}],
+            "hotel_name_refresh": {"status": "succeeded", "source": "domestic", "domestic_hits": 1},
+        }
+
+    monkeypatch.setattr(app_module.finder, "enhance_hotel_name_data", fake_enhance_hotel_name_data)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/hotel-names/start",
+        json={"city": "深圳", "choices": [{"hotel_name": "深圳光明虹橋希爾頓花園酒店"}]},
+    )
+
+    assert response.status_code == 202
+    poll_url = response.get_json()["poll_url"]
+    data = None
+    for _ in range(50):
+        poll_response = client.get(poll_url)
+        assert poll_response.is_json
+        data = poll_response.get_json()
+        if data["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert data["status"] == "succeeded"
+    assert data["result"]["choices"][0]["hotel_name"] == "深圳光明虹桥希尔顿花园酒店"
+
+
 def test_cache_prewarm_background_state(monkeypatch):
     def fake_find_choices(**kwargs):
         progress_callback = kwargs.get("progress_callback")

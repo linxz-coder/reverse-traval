@@ -607,6 +607,48 @@ def test_extract_trip_hk_chinese_hotel_name():
     assert finder._extract_trip_hk_chinese_hotel_name(body) == "深圳東海朗廷酒店"
 
 
+def test_simplified_hotel_name_search_fields_keep_traditional_display_without_source():
+    finder = ReverseTravelFinder(StubCalendar())
+    choice = {"hotel_id": "1", "hotel_name": "深圳光明虹橋希爾頓花園酒店"}
+
+    finder._apply_cached_hotel_names_to_choices([choice])
+
+    assert choice["hotel_name"] == "深圳光明虹橋希爾頓花園酒店"
+    assert choice["hotel_name_simplified"] == "深圳光明虹桥希尔顿花园酒店"
+    assert "光明虹桥希尔顿花园酒店" in choice["hotel_search_name"]
+
+
+def test_enhance_hotel_name_data_prefers_domestic_simplified_source(tmp_path, monkeypatch):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+
+    def fake_fetch(detail_url, fallback_name):
+        assert "hotelId=777" in detail_url
+        assert fallback_name == "深圳光明虹橋希爾頓花園酒店"
+        return {"hotel_name": "深圳光明虹桥希尔顿花园酒店", "source": "携程酒店"}
+
+    monkeypatch.setattr(finder, "_fetch_domestic_simplified_hotel_name", fake_fetch)
+
+    result = finder.enhance_hotel_name_data(
+        "深圳",
+        [
+            {
+                "hotel_id": "777",
+                "hotel_name": "深圳光明虹橋希爾頓花園酒店",
+                "hotel_original_name": "深圳光明虹橋希爾頓花園酒店",
+                "detail_url": "https://www.trip.com/hotels/detail/?cityId=30&hotelId=777",
+                "room_type": "king",
+            }
+        ],
+    )
+
+    choice = result["choices"][0]
+    assert choice["hotel_name"] == "深圳光明虹桥希尔顿花园酒店"
+    assert choice["hotel_original_name"] == "深圳光明虹橋希爾頓花園酒店"
+    assert choice["hotel_name_source"] == "携程酒店"
+    assert "深圳光明虹桥希尔顿花园酒店" in choice["hotel_search_name"]
+    assert result["hotel_name_refresh"]["domestic_hits"] == 1
+
+
 def test_build_detail_url_from_ids_and_reject_invalid_detail_url():
     finder = ReverseTravelFinder(StubCalendar())
     assert finder._to_zh_detail_url("https://www.trip.com") == ""

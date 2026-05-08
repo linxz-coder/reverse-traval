@@ -24,10 +24,88 @@ from playwright.sync_api import sync_playwright
 
 from holiday_helper import HolidayCalendar, HolidayCalendarError, HolidayRange
 
+try:  # Optional dependency; a local fallback keeps tests and deploys resilient.
+    from opencc import OpenCC
+except ImportError:  # pragma: no cover
+    OpenCC = None  # type: ignore[assignment]
+
 UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
 )
+
+try:
+    OPENCC_T2S = OpenCC("t2s") if OpenCC is not None else None
+except Exception:  # pragma: no cover
+    OPENCC_T2S = None
+
+T2S_PHRASE_REPLACEMENTS = {
+    "希爾頓花園酒店": "希尔顿花园酒店",
+    "皇冠假日酒店": "皇冠假日酒店",
+    "洲際酒店": "洲际酒店",
+    "凱悅酒店": "凯悦酒店",
+    "格蘭雲天": "格兰云天",
+    "維也納酒店": "维也纳酒店",
+    "萬豪酒店": "万豪酒店",
+    "喜來登酒店": "喜来登酒店",
+    "朗廷酒店": "朗廷酒店",
+    "廣州增城": "广州增城",
+    "深圳國際會展中心": "深圳国际会展中心",
+    "光明虹橋": "光明虹桥",
+}
+T2S_CHAR_MAP = str.maketrans(
+    {
+        "廣": "广", "東": "东", "門": "门", "雲": "云", "國": "国", "際": "际", "會": "会",
+        "灣": "湾", "橋": "桥", "園": "园", "華": "华", "凱": "凯", "悅": "悦", "爾": "尔",
+        "頓": "顿", "維": "维", "納": "纳", "蘭": "兰", "瀾": "澜", "麗": "丽", "貝": "贝",
+        "濱": "滨", "樓": "楼", "閣": "阁", "館": "馆", "莊": "庄", "龍": "龙", "寧": "宁",
+        "蘇": "苏", "滬": "沪", "縣": "县", "區": "区", "內": "内", "陽": "阳", "陰": "阴",
+        "長": "长", "慶": "庆", "達": "达", "連": "连", "遼": "辽", "瀋": "沈", "濟": "济",
+        "鄭": "郑", "漢": "汉", "貴": "贵", "樂": "乐", "兒": "儿", "親": "亲", "雙": "双",
+        "張": "张", "灣": "湾", "萬": "万", "與": "与", "裏": "里", "裡": "里", "臺": "台",
+        "臺": "台", "島": "岛", "飯": "饭", "體": "体", "號": "号", "廣": "广", "衛": "卫",
+        "潔": "洁", "寶": "宝", "緣": "缘", "錦": "锦", "匯": "汇", "恆": "恒", "榮": "荣",
+        "業": "业", "廈": "厦", "廳": "厅", "庫": "库", "營": "营", "適": "适", "選": "选",
+        "鄰": "邻", "韓": "韩", "歐": "欧", "羅": "罗", "倫": "伦", "紐": "纽", "舊": "旧",
+        "聖": "圣", "爺": "爷", "鬆": "松", "鬧": "闹", "豐": "丰", "齋": "斋", "齊": "齐",
+        "淺": "浅", "澀": "涩", "環": "环", "購": "购", "碼": "码", "棕": "棕", "櫚": "榈",
+        "壯": "壮", "劇": "剧", "鐵": "铁", "盧": "卢", "奧": "奥", "馬": "马", "特": "特",
+        "強": "强", "現": "现", "藝": "艺", "廠": "厂", "產": "产", "發": "发", "黃": "黄",
+    }
+)
+
+ENGLISH_HOTEL_BRAND_ALIASES = (
+    ("hilton garden inn", "希尔顿花园酒店"),
+    ("crowne plaza", "皇冠假日酒店"),
+    ("intercontinental", "洲际酒店"),
+    ("hyatt regency", "凯悦酒店"),
+    ("grand skylight", "格兰云天酒店"),
+    ("mercure", "美爵酒店"),
+    ("even hotel", "逸衡酒店"),
+    ("langham", "朗廷酒店"),
+    ("vienna hotel", "维也纳酒店"),
+    ("marriott", "万豪酒店"),
+    ("sheraton", "喜来登酒店"),
+    ("westin", "威斯汀酒店"),
+    ("holiday inn", "假日酒店"),
+    ("hampton by hilton", "希尔顿欢朋酒店"),
+    ("hilton", "希尔顿酒店"),
+)
+ENGLISH_PLACE_ALIASES = (
+    ("shenzhen", "深圳"),
+    ("guangzhou", "广州"),
+    ("dongguan", "东莞"),
+    ("huizhou", "惠州"),
+    ("zhongshan", "中山"),
+    ("guangming", "光明"),
+    ("hongqiao", "虹桥"),
+    ("guanlan", "观澜"),
+    ("zengcheng", "增城"),
+    ("world exhibition", "国际会展中心"),
+    ("wecc", "国际会展中心"),
+)
+SIMPLIFIED_HOTEL_NAME_SOURCES = {"携程酒店", "去哪儿酒店", "飞猪酒店", "Trip.com 简体"}
+DOMESTIC_NAME_RECHECK_SECONDS = 30 * 24 * 60 * 60
 
 
 def _env_int(name: str, default: int, *, min_value: int = 1, max_value: int = 16) -> int:
@@ -58,6 +136,7 @@ SCROLL_WAIT_MS = 2200
 STABLE_SCROLL_ROUNDS = 6
 COMPARE_PAGE_BATCH_SIZE = 4
 CHINESE_NAME_WORKERS = 8
+DOMESTIC_NAME_WORKERS = 5
 FEATURE_VERIFY_WORKERS = 8
 BROWSER_SESSION_LIMIT = 2
 LIVE_SEARCH_LIMIT = _env_int("REVERSE_TRAVEL_LIVE_SEARCH_LIMIT", 2, min_value=1, max_value=4)
@@ -660,7 +739,7 @@ class ReverseTravelFinder:
         self._search_cache: dict[tuple[str, ...], dict[str, Any]] = {}
         self._search_cache_meta: dict[tuple[str, ...], dict[str, Any]] = {}
         self._city_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._city_cache_path())
-        self._hotel_name_cache: dict[str, dict[str, str]] = self._load_cache_items(self._hotel_name_cache_path())
+        self._hotel_name_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._hotel_name_cache_path())
         self._hotel_feature_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._hotel_feature_cache_path())
         self.geonames_username = os.environ.get("GEONAMES_USERNAME", "").strip()
         self._geonames_area_cache: dict[tuple[float, float, str], str] = {}
@@ -678,6 +757,122 @@ class ReverseTravelFinder:
             }
             for item in holidays
         ]
+
+    def _to_simplified_chinese(self, value: str) -> str:
+        text = str(value or "")
+        if not text:
+            return ""
+        if OPENCC_T2S is not None:
+            try:
+                return OPENCC_T2S.convert(text)
+            except Exception:  # pragma: no cover
+                pass
+        for traditional, simplified in T2S_PHRASE_REPLACEMENTS.items():
+            text = text.replace(traditional, simplified)
+        return text.translate(T2S_CHAR_MAP)
+
+    def _english_hotel_aliases(self, value: str) -> list[str]:
+        text = re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
+        if not text:
+            return []
+        places = [label for token, label in ENGLISH_PLACE_ALIASES if token in text]
+        brands = [label for token, label in ENGLISH_HOTEL_BRAND_ALIASES if token in text]
+        aliases: list[str] = []
+        if places and brands:
+            aliases.append("".join(places[:3] + brands[:1]))
+        aliases.extend(places)
+        aliases.extend(brands)
+        return self._unique_text_values(aliases)
+
+    def _unique_text_values(self, values: list[str] | tuple[str, ...]) -> list[str]:
+        result: list[str] = []
+        seen: set[str] = set()
+        for value in values:
+            text = str(value or "").strip()
+            if not text or text in seen:
+                continue
+            result.append(text)
+            seen.add(text)
+        return result
+
+    def _add_choice_search_names(self, item: dict[str, Any]) -> None:
+        display_name = str(item.get("hotel_name") or "").strip()
+        original_name = str(item.get("hotel_original_name") or "").strip()
+        existing_aliases = item.get("hotel_name_aliases") or []
+        if isinstance(existing_aliases, str):
+            existing_aliases = [existing_aliases]
+        names = self._unique_text_values(
+            [
+                display_name,
+                original_name,
+                str(item.get("hotel_name_simplified") or "").strip(),
+                *(str(value or "").strip() for value in existing_aliases if value),
+            ]
+        )
+        simplified_names = self._unique_text_values([self._to_simplified_chinese(name) for name in names])
+        english_aliases: list[str] = []
+        for name in names:
+            english_aliases.extend(self._english_hotel_aliases(name))
+        aliases = self._unique_text_values([*existing_aliases, *english_aliases, *simplified_names])
+
+        if display_name:
+            simplified_display = self._to_simplified_chinese(display_name)
+            if simplified_display and simplified_display != display_name:
+                item["hotel_name_simplified"] = simplified_display
+            elif aliases:
+                item["hotel_name_simplified"] = aliases[0]
+
+        item["hotel_name_aliases"] = [
+            alias
+            for alias in aliases
+            if alias not in {display_name, original_name, item.get("hotel_name_simplified")}
+        ][:12]
+        search_values = self._unique_text_values(
+            [
+                display_name,
+                original_name,
+                str(item.get("hotel_name_simplified") or ""),
+                *item["hotel_name_aliases"],
+                str(item.get("area_name") or ""),
+                str(item.get("area_hint") or ""),
+                str(item.get("recommend_city") or ""),
+            ]
+        )
+        item["hotel_search_name"] = " ".join(self._to_simplified_chinese(value).lower() for value in search_values)
+
+    def _add_choice_search_names_to_choices(self, choices: list[dict[str, Any]]) -> None:
+        for item in choices:
+            self._add_choice_search_names(item)
+
+    def _apply_hotel_name_record_to_choice(self, item: dict[str, Any], record: dict[str, Any]) -> None:
+        if not isinstance(record, dict):
+            self._add_choice_search_names(item)
+            return
+        name = str(record.get("hotel_name") or "").strip()
+        source = str(record.get("source") or "").strip()
+        if name:
+            current_name = str(item.get("hotel_name") or "").strip()
+            original_name = str(item.get("hotel_original_name") or "").strip()
+            if current_name and not original_name:
+                item["hotel_original_name"] = current_name
+            item["hotel_name"] = name
+            if source:
+                item["hotel_name_source"] = source
+        if record.get("hotel_name_simplified"):
+            item["hotel_name_simplified"] = str(record.get("hotel_name_simplified") or "").strip()
+        aliases = record.get("hotel_name_aliases")
+        if aliases:
+            item["hotel_name_aliases"] = aliases if isinstance(aliases, list) else [str(aliases)]
+        self._add_choice_search_names(item)
+
+    def _apply_cached_hotel_names_to_choices(self, choices: list[dict[str, Any]]) -> None:
+        for item in choices:
+            hotel_id = str(item.get("hotel_id") or "")
+            cached: dict[str, Any] = {}
+            if hotel_id:
+                with self._cache_lock:
+                    cached = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {})
+            self._apply_hotel_name_record_to_choice(item, cached)
 
     def _city_cache_path(self) -> Path:
         return self.cache_dir / "city_cache.json"
@@ -903,6 +1098,7 @@ class ReverseTravelFinder:
 
         base_result["price_filter"] = {"min_price": min_price, "max_price": max_price}
         base_result["feature_filters"] = feature_filters.to_response()
+        self._apply_cached_hotel_names_to_choices(filtered_choices)
         self._refresh_choice_area_names(filtered_choices, base_result["city"])
         base_result["choices"] = filtered_choices
         base_result["area_recommendations"] = self._build_area_recommendations(filtered_choices, base_result["city"])
@@ -3547,6 +3743,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         value = future.result()
                     except Exception:
                         value = {}
+                    if value:
+                        value = self._hotel_name_record_with_search_fields(value)
                     with self._cache_lock:
                         self._hotel_name_cache[hotel_id] = value
                     cache_changed = True
@@ -3558,11 +3756,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if not hotel_id:
                 continue
             with self._cache_lock:
-                cached = self._hotel_name_cache.get(hotel_id) or {}
-            name = cached.get("hotel_name") or ""
-            if name:
-                item["hotel_name"] = name
-                item["hotel_name_source"] = cached.get("source") or "Trip.com HK"
+                cached = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {})
+            self._apply_hotel_name_record_to_choice(item, cached)
 
     def _filter_choices_by_verified_features(
         self,
@@ -3733,6 +3928,190 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         if re.search(r"3-star|2-star|3\s+star|2\s+star|三星|二星|三钻|二钻|三鑽|二鑽|经济型|經濟型", text):
             return False
         return None
+
+    def enhance_hotel_name_data(self, city_name: str, choices: list[dict[str, Any]]) -> dict[str, Any]:
+        enhanced_choices = copy.deepcopy(choices or [])
+        lookup_targets: dict[str, tuple[str, str]] = {}
+        for item in enhanced_choices:
+            hotel_id = str(item.get("hotel_id") or "")
+            with self._cache_lock:
+                cached = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {}) if hotel_id else {}
+            self._apply_hotel_name_record_to_choice(item, cached)
+            if not hotel_id or not item.get("detail_url"):
+                continue
+            if not self._should_lookup_domestic_hotel_name(cached):
+                continue
+            lookup_targets.setdefault(
+                hotel_id,
+                (
+                    str(item.get("detail_url") or ""),
+                    str(item.get("hotel_name") or item.get("hotel_original_name") or ""),
+                ),
+            )
+
+        changed = False
+        domestic_hits = 0
+        checked_at = time.time()
+        if lookup_targets:
+            max_workers = min(DOMESTIC_NAME_WORKERS, len(lookup_targets))
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                future_map = {
+                    executor.submit(self._fetch_domestic_simplified_hotel_name, detail_url, fallback_name): hotel_id
+                    for hotel_id, (detail_url, fallback_name) in lookup_targets.items()
+                    if detail_url
+                }
+                for future in as_completed(future_map):
+                    hotel_id = future_map[future]
+                    try:
+                        record = future.result()
+                    except Exception:
+                        record = {}
+                    with self._cache_lock:
+                        current = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {})
+                        if record:
+                            self._hotel_name_cache[hotel_id] = self._hotel_name_record_with_search_fields(
+                                {**current, **record, "domestic_checked_at": checked_at}
+                            )
+                            domestic_hits += 1
+                        else:
+                            current["domestic_checked_at"] = checked_at
+                            self._hotel_name_cache[hotel_id] = self._hotel_name_record_with_search_fields(current)
+                        changed = True
+        if changed:
+            self._save_hotel_name_cache()
+
+        self._apply_cached_hotel_names_to_choices(enhanced_choices)
+        return {
+            "city": city_name,
+            "choices": enhanced_choices,
+            "hotel_name_refresh": {
+                "status": "succeeded",
+                "source": "domestic" if domestic_hits else "local",
+                "lookup_count": len(lookup_targets),
+                "domestic_hits": domestic_hits,
+            },
+        }
+
+    def _should_lookup_domestic_hotel_name(self, record: dict[str, Any]) -> bool:
+        source = str((record or {}).get("source") or "")
+        if source in SIMPLIFIED_HOTEL_NAME_SOURCES:
+            return False
+        try:
+            checked_at = float((record or {}).get("domestic_checked_at") or 0)
+        except (TypeError, ValueError):
+            checked_at = 0
+        return not checked_at or time.time() - checked_at > DOMESTIC_NAME_RECHECK_SECONDS
+
+    def _hotel_name_record_with_search_fields(self, record: dict[str, Any]) -> dict[str, Any]:
+        data = copy.deepcopy(record or {})
+        name = str(data.get("hotel_name") or "").strip()
+        simplified = self._to_simplified_chinese(str(data.get("hotel_name_simplified") or name or "").strip())
+        aliases = data.get("hotel_name_aliases") or []
+        if isinstance(aliases, str):
+            aliases = [aliases]
+        english_aliases = self._english_hotel_aliases(name)
+        data["hotel_name_simplified"] = simplified
+        data["hotel_name_aliases"] = self._unique_text_values([*aliases, *english_aliases, simplified])[:12]
+        return data
+
+    def _fetch_domestic_simplified_hotel_name(self, detail_url: str, fallback_name: str = "") -> dict[str, Any]:
+        targets = [
+            (self._to_ctrip_detail_url(detail_url), "携程酒店"),
+            (self._to_zh_detail_url(detail_url), "Trip.com 简体"),
+        ]
+        for target_url, source in targets:
+            if not target_url:
+                continue
+            req = Request(
+                target_url,
+                headers={
+                    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    "accept-language": "zh-CN,zh;q=0.9,en;q=0.5",
+                    "user-agent": UA,
+                },
+            )
+            try:
+                with urlopen(req, timeout=10) as resp:
+                    body = resp.read(2_000_000).decode("utf-8", errors="ignore")
+            except (HTTPError, URLError, TimeoutError, OSError):
+                continue
+            name = self._extract_domestic_simplified_hotel_name(body, fallback_name)
+            if not name:
+                continue
+            return self._hotel_name_record_with_search_fields({"hotel_name": name, "source": source})
+        return {}
+
+    def _to_ctrip_detail_url(self, detail_url: str) -> str:
+        hotel_id, city_id, query = self._detail_url_ids_and_query(detail_url)
+        if not hotel_id:
+            return ""
+        params: dict[str, Any] = {
+            "hotelId": hotel_id,
+            "adult": 2,
+            "children": 0,
+            "curr": "CNY",
+        }
+        if city_id:
+            params["cityId"] = city_id
+        for source_key, target_key in (("checkIn", "checkIn"), ("checkOut", "checkOut")):
+            values = query.get(source_key) or query.get(source_key.lower())
+            if values:
+                params[target_key] = values[0]
+        return "https://hotels.ctrip.com/hotels/detail/?" + urlencode(params)
+
+    def _detail_url_ids_and_query(self, detail_url: str) -> tuple[str, str, dict[str, list[str]]]:
+        if not detail_url:
+            return "", "", {}
+        query = parse_qs(urlparse(detail_url).query, keep_blank_values=True)
+        hotel_id = (query.get("hotelId") or query.get("hotelid") or [""])[0]
+        city_id = (query.get("cityId") or query.get("city") or query.get("cityid") or [""])[0]
+        return str(hotel_id or "").strip(), str(city_id or "").strip(), query
+
+    def _extract_domestic_simplified_hotel_name(self, body: str, fallback_name: str = "") -> str:
+        decoded = html.unescape(body or "")
+        patterns = [
+            r'\\"hotelName\\"\s*:\s*\\"([^"\\]+)\\"',
+            r'"hotelName"\s*:\s*"([^"]+)"',
+            r'\\"nameLocale\\"\s*:\s*\\"([^"\\]+)\\"',
+            r'"nameLocale"\s*:\s*"([^"]+)"',
+            r'property=["\']og:title["\']\s+content=["\']([^"\']+)["\']',
+            r'<h1[^>]*>([^<]+)</h1>',
+            r'<title>([^<]+?)(?:预订|价格|,|-|_).*?</title>',
+            r'\\"name\\"\s*:\s*\\"([^"\\(]+)(?:\\([^"\\)]*\\))?\\"',
+            r'"name"\s*:\s*"([^"\\(]+)(?:\([^"\\)]*\))?"',
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, decoded, flags=re.IGNORECASE | re.DOTALL)
+            if not match:
+                continue
+            name = self._clean_chinese_hotel_name(match.group(1))
+            name = self._to_simplified_chinese(name)
+            if self._is_reliable_domestic_hotel_name(name, fallback_name):
+                return name
+        return ""
+
+    def _is_reliable_domestic_hotel_name(self, value: str, fallback_name: str = "") -> bool:
+        if not self._is_reliable_chinese_hotel_name(value):
+            return False
+        if any(token in value for token in ("携程", "去哪儿", "飞猪", "酒店预订", "宾馆预订", "价格查询", "Trip.com")):
+            return False
+        fallback = self._to_simplified_chinese(fallback_name)
+        if not fallback:
+            return True
+        if re.search(r"[\u3400-\u9fff]", fallback):
+            return self._name_similarity(value, fallback) >= 0.35
+        aliases = self._english_hotel_aliases(fallback_name)
+        if not aliases:
+            return True
+        simplified_aliases = [self._to_simplified_chinese(alias) for alias in aliases]
+        return any(alias and (alias in value or self._name_similarity(value, alias) >= 0.45) for alias in simplified_aliases)
+
+    def _name_similarity(self, left: str, right: str) -> float:
+        left_chars = set(re.sub(r"[^\u3400-\u9fffA-Za-z0-9]", "", self._to_simplified_chinese(left).lower()))
+        right_chars = set(re.sub(r"[^\u3400-\u9fffA-Za-z0-9]", "", self._to_simplified_chinese(right).lower()))
+        if not left_chars or not right_chars:
+            return 0.0
+        return len(left_chars & right_chars) / max(1, min(len(left_chars), len(right_chars)))
 
     def _fetch_trip_hk_chinese_hotel_name(self, detail_url: str) -> dict[str, str]:
         hk_url = self._to_trip_hk_detail_url(detail_url)

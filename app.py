@@ -870,6 +870,20 @@ def area_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
     return result, 200
 
 
+def hotel_name_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
+    city = (payload.get("city") or payload.get("origin_city") or "").strip()
+    choices = payload.get("choices") or []
+    if not city:
+        return {"error": "city 不能为空"}, 400
+    if not isinstance(choices, list):
+        return {"error": "choices 必须是列表"}, 400
+    try:
+        result = finder.enhance_hotel_name_data(city, choices)
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"酒店名刷新失败: {exc}"}, 500
+    return result, 200
+
+
 def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
     with job_lock:
         job = jobs.get(job_id)
@@ -888,6 +902,9 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
         result, status_code = search_result_from_payload(payload, progress_callback=progress_callback)
     elif kind == "nearby":
         result, status_code = nearby_search_result_from_payload(payload, progress_callback=progress_callback)
+    elif kind == "hotel_names":
+        update_job_progress(job_id, {"stage": "hotel_names", "message": "正在后台匹配简体中文酒店名。", "percent": 40})
+        result, status_code = hotel_name_result_from_payload(payload)
     else:
         update_job_progress(job_id, {"stage": "areas", "message": "正在规范化推荐旅游区域。", "percent": 40})
         result, status_code = area_result_from_payload(payload)
@@ -1028,6 +1045,12 @@ def nearby_search_start():
 def areas_start():
     payload = request.get_json(silent=True) or {}
     return start_background_job("areas", payload)
+
+
+@app.post("/api/hotel-names/start")
+def hotel_names_start():
+    payload = request.get_json(silent=True) or {}
+    return start_background_job("hotel_names", payload)
 
 
 @app.get("/api/jobs/<job_id>")
