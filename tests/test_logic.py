@@ -215,7 +215,7 @@ def test_infer_area_name_is_city_specific():
         city_name="Shanghai",
         hotel_name="Shenzhen World Exhibition Hotel",
         area_text="World Exhibition & Convention Center",
-    ) == "Shanghai区域待确认"
+    ) == "上海区域待确认"
     assert finder._infer_area_name(
         city_name="Bangkok",
         hotel_name="Sheraton Grande Sukhumvit Bangkok",
@@ -856,6 +856,101 @@ def test_build_area_recommendations_fills_common_global_city_defaults():
     ]
 
 
+def test_build_area_recommendations_derives_areas_from_hotel_names():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "",
+                "area_hint": "",
+                "hotel_name": "上海明天廣場JW萬豪酒店",
+                "hotel_original_name": "JW Marriott Hotel Shanghai at Tomorrow Square",
+                "holiday_avg_nightly_tax_total_value": 1200,
+                "price_diff_nightly": -20,
+                "room_type_label": "大床房",
+            },
+            {
+                "area_name": "",
+                "area_hint": "",
+                "hotel_name": "上海徐家匯萬豪萬楓酒店",
+                "hotel_original_name": "Fairfield by Marriott ShanghaiXuhui Center",
+                "holiday_avg_nightly_tax_total_value": 600,
+                "price_diff_nightly": 10,
+                "room_type_label": "双床房",
+            },
+            {
+                "area_name": "",
+                "area_hint": "",
+                "hotel_name": "宜必思酒店（上海新國際博覽中心芳甸路地鐵站店）",
+                "hotel_original_name": "Ibis Hotel Shanghai New International Expo Center",
+                "holiday_avg_nightly_tax_total_value": 500,
+                "price_diff_nightly": 15,
+                "room_type_label": "大床房",
+            },
+        ],
+        "上海",
+    )
+
+    area_names = {item["area_name"] for item in recommendations[:3]}
+    assert {"上海明天广场片区", "上海徐家汇片区", "上海新国际博览中心片区"} <= area_names
+    assert all(not re.search(r"[A-Za-z]", name) for name in area_names)
+
+
+def test_build_area_recommendations_derives_trip_position_areas_for_global_city():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "",
+                "area_hint": "JW Marriott Hotel Jakarta Jl. DR. Ide Anak Agung Kuningan | Near Singapore Airlines, South Jakarta",
+                "hotel_name": "雅加達JW萬豪酒店",
+                "hotel_original_name": "JW Marriott Hotel Jakarta",
+                "holiday_avg_nightly_tax_total_value": 900,
+                "price_diff_nightly": -5,
+                "room_type_label": "大床房",
+            },
+            {
+                "area_name": "",
+                "area_hint": "Grand Sahid Jaya CBD Sudirman | Near Setiabudi Astra Metro Station, Central Jakarta",
+                "hotel_name": "中央商務區大薩希德亞",
+                "hotel_original_name": "Grand Sahid Jaya CBD",
+                "holiday_avg_nightly_tax_total_value": 650,
+                "price_diff_nightly": 20,
+                "room_type_label": "双床房",
+            },
+            {
+                "area_name": "",
+                "area_hint": "Aloft Jakarta Wahid Hasyim Thamrin | Near Stasiun Gondangdia, Central Jakarta",
+                "hotel_name": "雅加達瓦希德哈斯伊姆雅樂軒酒店",
+                "hotel_original_name": "Aloft Jakarta Wahid Hasyim",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": 25,
+                "room_type_label": "大床房",
+            },
+        ],
+        "雅加達",
+    )
+
+    area_names = {item["area_name"] for item in recommendations[:3]}
+    assert {"雅加达库宁安片区", "雅加达苏迪曼片区", "雅加达坦林片区"} <= area_names
+    assert all(not re.search(r"[A-Za-z]", name) for name in area_names)
+
+
+def test_choice_area_name_falls_back_when_cached_area_is_mixed_language():
+    finder = ReverseTravelFinder(StubCalendar())
+    area_name = finder._choice_area_name(
+        {
+            "area_name": "ShanghaiJing'An Shangri-La片区",
+            "hotel_name": "上海靜安寺南京西路珍寶NOA諾岸酒店",
+            "hotel_original_name": "THE TREASURY NOA Hotel Shanghai Jing'an Temple",
+            "area_hint": "",
+        },
+        "上海",
+    )
+
+    assert area_name == "上海静安寺片区"
+
+
 def test_enhance_area_data_normalizes_mixed_language_area_names():
     finder = ReverseTravelFinder(StubCalendar())
     result = finder.enhance_area_data(
@@ -903,7 +998,7 @@ def test_enhance_area_data_normalizes_mixed_language_area_names():
     assert "深圳福田中心片区" in area_names
     assert "芝加哥卢普片区" in area_names
     assert "罗马特拉斯提弗列片区" in area_names
-    assert "" in area_names
+    assert "巴黎拉丁区片区" in area_names
     assert all(not re.search(r"[A-Za-z]", name) for name in area_names if name)
 
 

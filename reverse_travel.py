@@ -135,6 +135,14 @@ CITY_DEFAULT_AREA_NAMES = {
     "迪拜": ("迪拜市中心片区", "迪拜码头片区", "迪拜棕榈岛片区", "迪拜德拉片区", "迪拜机场片区"),
 }
 GLOBAL_CITY_ALIASES = {
+    "shanghai": "上海",
+    "上海": "上海",
+    "suzhou": "苏州",
+    "苏州": "苏州",
+    "蘇州": "苏州",
+    "jakarta": "雅加达",
+    "雅加达": "雅加达",
+    "雅加達": "雅加达",
     "bangkok": "曼谷",
     "曼谷": "曼谷",
     "kuala lumpur": "吉隆坡",
@@ -364,12 +372,73 @@ AREA_NAME_REPLACEMENTS = {
 }
 AREA_CANDIDATE_TRANSLATIONS = {
     "klcc": "城中城",
+    "kuala lumpur city centre": "城中城",
+    "kuala lumpur city center": "城中城",
+    "petronas twin towers": "城中城",
+    "bukit bintang": "武吉免登",
+    "pavilion kuala lumpur": "武吉免登",
+    "kl sentral": "中央车站",
+    "kuala lumpur sentral": "中央车站",
+    "mid valley city": "谷中城",
+    "mid valley": "谷中城",
+    "china town": "唐人街",
+    "chinatown": "唐人街",
+    "petaling street": "唐人街",
+    "damansara": "白沙罗",
+    "mutiara damansara": "白沙罗",
+    "petaling jaya": "八打灵再也",
+    "pj state": "八打灵再也",
+    "bangsar south": "孟沙南",
+    "bangsar": "孟沙",
+    "chow kit": "秋杰",
+    "golden triangle": "金三角",
+    "pudu": "富都",
+    "cheras": "蕉赖",
+    "chan sow lin": "蕉赖",
+    "sudirman": "苏迪曼",
+    "senayan": "史纳延",
+    "kuningan": "库宁安",
+    "mega kuningan": "库宁安",
+    "thamrin": "坦林",
+    "gajah mada": "加查马达",
+    "kemayoran": "马腰兰",
+    "pantai indah kapuk": "潘泰因达卡普克",
+    "pik avenue": "潘泰因达卡普克",
+    "pondok indah": "蓬多克英达",
+    "kemang": "克芒",
+    "blok m": "布洛克艾姆",
+    "central park": "中央公园",
+    "monas": "独立广场",
+    "south jakarta": "雅加达南区",
+    "central jakarta": "雅加达中区",
+    "west jakarta": "雅加达西区",
+    "north jakarta": "雅加达北区",
     "loop": "卢普",
     "west loop": "西卢普",
     "cbd": "中央商务区",
     "downtown": "市中心",
     "city centre": "市中心",
     "city center": "市中心",
+    "people's square": "人民广场",
+    "people square": "人民广场",
+    "jing'an": "静安寺",
+    "jing an": "静安寺",
+    "pudong": "浦东",
+    "lujiazui": "陆家嘴",
+    "xujiahui": "徐家汇",
+    "the bund": "外滩",
+    "bund": "外滩",
+    "nanjing road": "南京路",
+    "suzhou bay": "苏州湾",
+    "jinji lake": "金鸡湖",
+    "gusu district": "姑苏",
+    "high-tech zone": "高新区",
+    "sip": "工业园区",
+    "suzhou industrial park": "工业园区",
+    "dushu lake": "独墅湖",
+    "guanqian street": "观前街",
+    "shantang street": "山塘街",
+    "pingjiang road": "平江路",
     "trastevere": "特拉斯提弗列",
     "fulton market": "富尔顿市场",
     "river north": "河北",
@@ -2157,7 +2226,13 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if any(keyword.lower() in text for keyword in keywords):
                 return area_name
 
-        for candidate in self._generic_area_candidates(area_text):
+        candidates = self._generic_area_candidates(area_text)
+        candidates.extend(self._hotel_name_area_candidates(hotel_name))
+        seen: set[str] = set()
+        for candidate in candidates:
+            if candidate in seen:
+                continue
+            seen.add(candidate)
             cleaned = self._clean_generic_area_candidate(candidate, city_label, hotel_name)
             if cleaned:
                 return self._format_generic_area_name(city_label, cleaned)
@@ -2170,25 +2245,162 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         normalized = re.sub(r"\bnear\b", "| Near", normalized, flags=re.IGNORECASE)
         pieces = re.split(r"\||•|·|,|;|\n", normalized)
         candidates: list[str] = []
+        seen: set[str] = set()
+
+        def add_candidate(raw_value: str) -> None:
+            value = raw_value.strip(" -")
+            if not value or value in seen:
+                return
+            seen.add(value)
+            candidates.append(value)
+            if not re.search(r"[A-Za-z]", value):
+                return
+            words = re.findall(r"[A-Za-z][A-Za-z'&.-]*", value)
+            words = [word for word in words if len(word) > 1 and word.lower() not in {"near", "the", "and"}]
+            for size in (3, 2, 1):
+                if len(words) < size:
+                    continue
+                tail = " ".join(words[-size:])
+                if tail and tail not in seen:
+                    seen.add(tail)
+                    candidates.append(tail)
+
         for piece in pieces:
             value = piece.strip(" -")
             if not value:
                 continue
             value = re.sub(r"^near\s+", "", value, flags=re.IGNORECASE).strip(" -")
-            candidates.append(value)
+            add_candidate(value)
         return candidates
+
+    def _hotel_name_area_candidates(self, hotel_name: str) -> list[str]:
+        if not hotel_name:
+            return []
+        normalized = re.sub(r"\s+", " ", html.unescape(str(hotel_name))).strip()
+        if not normalized:
+            return []
+        candidates: list[str] = []
+        seen: set[str] = set()
+
+        def add_candidate(raw_value: str) -> None:
+            value = raw_value.strip(" -")
+            if len(value) < 2 or value in seen:
+                return
+            seen.add(value)
+            candidates.append(value)
+
+        for phrase in self._chinese_area_phrases(normalized):
+            add_candidate(phrase)
+
+        for match in re.finditer(r"[（(【\[]([^）)】\]]{2,80})[）)】\]]", normalized):
+            add_candidate(match.group(1))
+
+        for piece in re.split(r"\||•|·|,|;|/|\n", normalized):
+            piece = piece.strip()
+            if not piece:
+                continue
+            for phrase in self._chinese_area_phrases(piece):
+                add_candidate(phrase)
+            if re.search(r"[\u3400-\u9fff]", piece):
+                add_candidate(piece)
+        return candidates
+
+    def _chinese_area_phrases(self, text: str) -> list[str]:
+        normalized = self._normalize_area_chinese_chars(text)
+        suffixes = (
+            "新国际博览中心",
+            "国际博览中心",
+            "博览中心",
+            "会展中心",
+            "高铁北站",
+            "高铁站",
+            "火车站",
+            "机场",
+            "人民广场",
+            "万达广场",
+            "广场",
+            "步行街",
+            "商业区",
+            "开发区",
+            "高新区",
+            "新区",
+            "工业园区",
+            "园区",
+            "风景区",
+            "度假区",
+            "古镇",
+            "古城",
+            "老街",
+            "大学城",
+            "科技园",
+            "产业园",
+            "口岸",
+            "码头",
+            "外滩",
+            "陆家嘴",
+            "南京路",
+            "徐家汇",
+            "静安寺",
+            "新天地",
+            "田子坊",
+            "金鸡湖",
+            "阳澄湖",
+            "独墅湖",
+            "太湖",
+            "苏州湾",
+            "山塘街",
+            "平江路",
+            "观前街",
+            "拙政园",
+            "留园",
+            "同里",
+            "周庄",
+            "姑苏",
+            "普陀",
+            "浦东",
+            "浦西",
+            "宝山",
+            "松江",
+            "闵行",
+            "青浦",
+            "嘉定",
+            "吴中",
+            "相城",
+            "常熟",
+            "昆山",
+            "吴江",
+        )
+        suffix_pattern = "|".join(re.escape(item) for item in sorted(suffixes, key=len, reverse=True))
+        pattern = rf"[\u3400-\u9fff]{{0,14}}(?:{suffix_pattern})"
+        phrases: list[str] = []
+        seen: set[str] = set()
+        sorted_suffixes = sorted(suffixes, key=len, reverse=True)
+        for match in re.finditer(pattern, normalized):
+            phrase = match.group(0)
+            if phrase not in seen:
+                seen.add(phrase)
+                phrases.append(phrase)
+            for suffix in sorted_suffixes:
+                if phrase.endswith(suffix) and suffix != phrase and suffix not in seen:
+                    seen.add(suffix)
+                    phrases.append(suffix)
+                    break
+        return phrases
 
     def _clean_generic_area_candidate(self, value: str, city_label: str, hotel_name: str = "") -> str:
         text = re.sub(r"\s+", " ", value or "").strip(" -")
         if not text:
             return ""
         hotel_lower = (hotel_name or "").lower()
-        if hotel_lower and (text.lower() in hotel_lower or hotel_lower in text.lower()):
+        if hotel_lower and hotel_lower in text.lower():
             return ""
+        translated = self._translate_area_candidate(text)
+        if translated:
+            return translated
         if re.search(r"\b(city centre|city center|downtown)\b", text, flags=re.IGNORECASE):
             return "市中心"
         text = re.sub(r"\b(near|metro station|station|airport|hotel|resort|apartment|mall)\b.*$", "", text, flags=re.IGNORECASE).strip(" -")
-        for token in GLOBAL_CITY_STRIP_TOKENS.get(city_label, set()):
+        for token in self._city_area_strip_tokens(city_label):
             if re.search(r"[\u3400-\u9fff]", token):
                 text = text.replace(token, "")
             else:
@@ -2197,6 +2409,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         if city_label:
             text = text.replace(city_label, "").strip(" -")
         text = re.sub(r"\d+.*$", "", text).strip(" -")
+        translated = self._translate_area_candidate(text)
+        if translated:
+            return translated
+        if re.search(r"[\u3400-\u9fff]", text):
+            return self._clean_chinese_area_candidate(text, city_label)
         if re.search(
             r"\b(hilton|marriott|sheraton|ibis|mercure|sofitel|aloft|wyndham|days|westin|kasa|pullman|adagio|peninsula|fairfield|residence inn|four points|best western)\b",
             text,
@@ -2207,14 +2424,127 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             return ""
         if re.search(r"\b(road|street|avenue|alley|soi|jalan|lorong|place|center|centre)\b", text, flags=re.IGNORECASE):
             return ""
-        translated = self._translate_area_candidate(text)
-        if translated:
-            return translated
         if re.search(r"^[A-Za-z][A-Za-z\s'&.-]{2,}$", text):
             return ""
-        if re.search(r"[\u3400-\u9fff]", text):
-            return text
         return ""
+
+    def _clean_chinese_area_candidate(self, value: str, city_label: str) -> str:
+        original = self._normalize_area_chinese_chars(value)
+        text = re.sub(r"\s+", "", original).strip(" -")
+        if not text:
+            return ""
+        for token in self._city_area_strip_tokens(city_label):
+            normalized_token = self._normalize_area_chinese_chars(token)
+            if re.search(r"[\u3400-\u9fff]", normalized_token):
+                text = re.sub(rf"^{re.escape(normalized_token)}市?", "", text)
+                text = re.sub(rf"{re.escape(normalized_token)}市?$", "", text)
+        if len(text) <= 1 and city_label and original.startswith(city_label):
+            text = original
+        text = re.sub(r"^(近|邻近|靠近|位于|坐落于)", "", text)
+        text = re.sub(r"地铁站.*$", "", text)
+        text = re.sub(r"地铁.*$", "", text)
+        text = re.sub(r"(地铁站|地鐵站|公交站|巴士站|站店|店)$", "", text)
+        text = re.sub(r"(附近|周边|周邊)$", "", text)
+        brand_pattern = (
+            r"JW|AC|NOA|"
+            r"希尔顿|希爾頓|万豪|萬豪|万楓|萬楓|喜来登|喜來登|丽思|麗思|"
+            r"香格里拉|智选假日|智選假日|皇冠假日|洲际|洲際|假日|凯悦|凱悦|凱悅|"
+            r"美居|温德姆|溫德姆|雅高|铂尔曼|鉑爾曼|宜必思|亚朵|亞朵|桔子|"
+            r"维也纳|維也納|汉庭|漢庭|如家|锦江|錦江|全季|美仑|美侖|"
+            r"诺富特|諾富特|丽呈|麗呈|开元|開元|君亭|瑞贝庭|瑞貝庭|欢朋|歡朋|"
+            r"绿地|綠地|万达|萬達|波特曼"
+        )
+        parts = re.split(brand_pattern, text, maxsplit=1, flags=re.IGNORECASE)
+        if parts and parts[0].strip():
+            text = parts[0].strip()
+        elif re.search(brand_pattern, text, flags=re.IGNORECASE):
+            return ""
+        text = re.split(r"酒店|大酒店|饭店|飯店|宾馆|賓館|公寓|民宿|客栈|客棧|旅馆|旅館", text, maxsplit=1)[0]
+        text = text.strip(" -")
+        if text.endswith("片区"):
+            text = text[:-2]
+        if not text or len(text) <= 1 or len(text) > 18:
+            return ""
+        if text in {"城市", "酒店", "饭店", "大酒店", "市区", "市中心"}:
+            return "市中心" if text in {"市区", "市中心"} else ""
+        if re.search(r"[A-Za-z]", text):
+            translated = self._translate_area_candidate(text)
+            return translated
+        return text
+
+    def _normalize_area_chinese_chars(self, text: str) -> str:
+        replacements = {
+            "蘇": "苏",
+            "灣": "湾",
+            "達": "达",
+            "萬": "万",
+            "網": "网",
+            "綠": "绿",
+            "環": "环",
+            "寶": "宝",
+            "長": "长",
+            "壽": "寿",
+            "夢": "梦",
+            "裡": "里",
+            "鄉": "乡",
+            "臨": "临",
+            "納": "纳",
+            "術": "术",
+            "學": "学",
+            "龍": "龙",
+            "門": "门",
+            "國": "国",
+            "際": "际",
+            "會": "会",
+            "覽": "览",
+            "鐵": "铁",
+            "車": "车",
+            "廣": "广",
+            "場": "场",
+            "業": "业",
+            "區": "区",
+            "開": "开",
+            "發": "发",
+            "園": "园",
+            "風": "风",
+            "鎮": "镇",
+            "碼": "码",
+            "灘": "滩",
+            "陸": "陆",
+            "匯": "汇",
+            "靜": "静",
+            "雞": "鸡",
+            "陽": "阳",
+            "獨": "独",
+            "觀": "观",
+            "廟": "庙",
+            "縣": "县",
+            "閔": "闵",
+            "吳": "吴",
+            "飯": "饭",
+            "賓": "宾",
+            "棧": "栈",
+            "館": "馆",
+            "諾": "诺",
+            "麗": "丽",
+            "鉑": "铂",
+            "爾": "尔",
+            "凱": "凯",
+            "悅": "悦",
+            "亞": "亚",
+            "維": "维",
+            "漢": "汉",
+            "歡": "欢",
+            "園": "园",
+            "師": "师",
+        }
+        return "".join(replacements.get(char, char) for char in str(text or ""))
+
+    def _city_area_strip_tokens(self, city_label: str) -> set[str]:
+        tokens = set(GLOBAL_CITY_STRIP_TOKENS.get(city_label, set()))
+        if city_label:
+            tokens.add(city_label)
+        return tokens
 
     def _format_generic_area_name(self, city_label: str, area_label: str) -> str:
         area = area_label.strip()
@@ -2237,6 +2567,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
     def _normalize_area_display_name(self, area_name: str, city_name: str = "") -> str:
         text = re.sub(r"\s+", " ", str(area_name or "")).strip()
+        text = self._normalize_area_chinese_chars(text)
         if not text or self._is_generic_area_name(text):
             return ""
         text = AREA_NAME_REPLACEMENTS.get(text, text)
@@ -2301,6 +2632,12 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
     def _normalize_city_label(self, city_name: str) -> str:
         text = (city_name or "").strip().lower()
+        if "shanghai" in text or "上海" in city_name:
+            return "上海"
+        if "suzhou" in text or "苏州" in city_name or "蘇州" in city_name:
+            return "苏州"
+        if "jakarta" in text or "雅加达" in city_name or "雅加達" in city_name:
+            return "雅加达"
         if "shenzhen" in text or "深圳" in city_name:
             return "深圳"
         if "guangzhou" in text or "广州" in city_name or "廣州" in city_name:
@@ -2622,7 +2959,9 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         choice_city = str(item.get("recommend_city") or city_name or "")
         raw_area = str(item.get("area_name") or "").strip()
         if raw_area and not self._is_generic_area_name(raw_area):
-            return self._normalize_area_display_name(raw_area, choice_city)
+            normalized_raw_area = self._normalize_area_display_name(raw_area, choice_city)
+            if normalized_raw_area:
+                return normalized_raw_area
         inferred = self._infer_area_name(
             city_name=choice_city,
             hotel_name=" ".join(
@@ -2632,7 +2971,13 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     item.get("hotel_name"),
                 )
             ),
-            area_text=str(item.get("area_hint") or ""),
+            area_text=" ".join(
+                str(value or "")
+                for value in (
+                    item.get("area_hint"),
+                    raw_area,
+                )
+            ),
         )
         return self._normalize_area_display_name(inferred, choice_city)
 
