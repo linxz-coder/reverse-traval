@@ -40,15 +40,15 @@ fi
 
 chown -R "${APP_USER}:${APP_USER}" "${APP_DIR}"
 
-sudo -u "${APP_USER}" python3 -m venv "${APP_DIR}/.venv"
-sudo -u "${APP_USER}" "${APP_DIR}/.venv/bin/python" -m pip install --upgrade pip
-sudo -u "${APP_USER}" "${APP_DIR}/.venv/bin/python" -m pip install -r "${APP_DIR}/requirements.txt"
+runuser -u "${APP_USER}" -- python3 -m venv "${APP_DIR}/.venv"
+runuser -u "${APP_USER}" -- "${APP_DIR}/.venv/bin/python" -m pip install --upgrade pip
+runuser -u "${APP_USER}" -- "${APP_DIR}/.venv/bin/python" -m pip install -r "${APP_DIR}/requirements.txt"
 
 "${APP_DIR}/.venv/bin/python" -m playwright install-deps chromium
-sudo -u "${APP_USER}" env PLAYWRIGHT_BROWSERS_PATH="${APP_DIR}/.cache/ms-playwright" \
+runuser -u "${APP_USER}" -- env PLAYWRIGHT_BROWSERS_PATH="${APP_DIR}/.cache/ms-playwright" \
   "${APP_DIR}/.venv/bin/python" -m playwright install chromium
 
-sudo -u "${APP_USER}" mkdir -p "${APP_DIR}/.cache" "${APP_DIR}/exports"
+runuser -u "${APP_USER}" -- mkdir -p "${APP_DIR}/.cache" "${APP_DIR}/exports"
 
 install -m 0644 "${APP_DIR}/deploy/linux/reverse-traval.service" /etc/systemd/system/reverse-traval.service
 sed "s/server_name hotel\\.underfitting\\.com;/server_name ${DOMAIN};/" \
