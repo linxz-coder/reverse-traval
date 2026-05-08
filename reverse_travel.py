@@ -28,6 +28,19 @@ UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
 )
+
+
+def _env_int(name: str, default: int, *, min_value: int = 1, max_value: int = 16) -> int:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        return default
+    return max(min_value, min(max_value, value))
+
+
 HOTEL_LIST_LIMIT = 120
 QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v27"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
@@ -47,6 +60,7 @@ COMPARE_PAGE_BATCH_SIZE = 4
 CHINESE_NAME_WORKERS = 8
 FEATURE_VERIFY_WORKERS = 8
 BROWSER_SESSION_LIMIT = 2
+LIVE_SEARCH_LIMIT = _env_int("REVERSE_TRAVEL_LIVE_SEARCH_LIMIT", 2, min_value=1, max_value=4)
 SUPPLEMENT_MIN_CHOICES = 8
 SUPPLEMENT_HOTEL_LIST_LIMIT = 40
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
@@ -640,6 +654,7 @@ class ReverseTravelFinder:
         self.calendar = calendar
         self.cache_dir = Path(cache_dir) if cache_dir is not None else CACHE_DIR
         self.search_cache_ttl_seconds = search_cache_ttl_seconds
+        self._live_search_semaphore = threading.BoundedSemaphore(LIVE_SEARCH_LIMIT)
         self._browser_semaphore = threading.BoundedSemaphore(BROWSER_SESSION_LIMIT)
         self._cache_lock = threading.Lock()
         self._search_cache: dict[tuple[str, ...], dict[str, Any]] = {}
@@ -908,7 +923,19 @@ class ReverseTravelFinder:
         }
         if progress_callback is not None:
             kwargs["progress_callback"] = progress_callback
-        return self._find_choices_base(**kwargs)
+        acquired = self._live_search_semaphore.acquire(blocking=False)
+        if not acquired:
+            self._emit_progress(
+                progress_callback,
+                "服务器正在排队执行新搜索，前面还有实时搜索任务。",
+                "queued_live_search",
+                percent=3,
+            )
+            self._live_search_semaphore.acquire()
+        try:
+            return self._find_choices_base(**kwargs)
+        finally:
+            self._live_search_semaphore.release()
 
     def _emit_progress(
         self,

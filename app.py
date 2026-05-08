@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import math
+import os
 import threading
 import time
 import uuid
@@ -17,7 +18,23 @@ from reverse_travel import ReverseTravelFinder, ReverseTravelFinderError
 app = Flask(__name__)
 calendar = HolidayCalendar()
 finder = ReverseTravelFinder(calendar)
-job_executor = ThreadPoolExecutor(max_workers=2)
+
+
+def env_int(name: str, default: int, *, min_value: int = 1, max_value: int = 16) -> int:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        return default
+    return max(min_value, min(max_value, value))
+
+
+JOB_WORKERS = env_int("REVERSE_TRAVEL_JOB_WORKERS", 2, min_value=1, max_value=4)
+NEARBY_CITY_WORKERS = env_int("REVERSE_TRAVEL_NEARBY_CITY_WORKERS", 2, min_value=1, max_value=4)
+
+job_executor = ThreadPoolExecutor(max_workers=JOB_WORKERS)
 prewarm_executor = ThreadPoolExecutor(max_workers=1)
 job_lock = threading.Lock()
 prewarm_lock = threading.Lock()
@@ -28,7 +45,6 @@ prewarm_state: dict[str, Any] = {
     "updated_at": "",
 }
 JOB_TTL_SECONDS = 6 * 60 * 60
-NEARBY_CITY_WORKERS = 2
 
 PREWARM_MAJOR_CITIES = (
     "北京", "上海", "广州", "深圳", "杭州", "南京", "苏州", "成都", "重庆", "武汉",
