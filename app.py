@@ -769,6 +769,45 @@ def cached_search_result_from_payload(payload: dict) -> tuple[dict[str, Any] | N
     return result, 200 if result is not None else 404
 
 
+def stale_search_result_from_payload(payload: dict) -> tuple[dict[str, Any] | None, int]:
+    if not parse_bool(payload.get("use_cache"), default=True):
+        return None, 404
+
+    city = (payload.get("city") or "").strip()
+    holiday_code = (payload.get("holiday_code") or "").strip()
+    advanced_filter = payload.get("advanced_filter")
+    pool_filter = payload.get("pool_filter")
+    child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+
+    if not city or not holiday_code:
+        return {"error": "city 和 holiday_code 不能为空"}, 400
+
+    try:
+        min_price_int, max_price_int = request_price_filters(payload)
+        result = finder.find_stale_cached_choices(
+            city=city,
+            holiday_code=holiday_code,
+            min_price=min_price_int,
+            max_price=max_price_int,
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+    except (HolidayCalendarError, ReverseTravelFinderError) as exc:
+        return {"error": str(exc)}, 400
+    except Exception as exc:  # pragma: no cover
+        return {"error": f"读取旧缓存失败: {exc}"}, 500
+    if result is not None:
+        result["partial"] = {
+            "stage": "stale_cache_preview",
+            "message": "先显示旧缓存结果，后台正在刷新最新价格。",
+            "preliminary": True,
+            "displayed_choice_count": len(result.get("choices") or []),
+            "total_choice_count": len(result.get("choices") or []),
+        }
+    return result, 200 if result is not None else 404
+
+
 def build_nearby_city_result(city: str, result: dict[str, Any]) -> dict[str, Any]:
     cache = result.get("cache") or {}
     city_choices = []
@@ -1125,6 +1164,12 @@ def cached_result_for_job_start(kind: str, payload: dict[str, Any]) -> tuple[dic
     return None, 404
 
 
+def stale_result_for_job_start(kind: str, payload: dict[str, Any]) -> tuple[dict[str, Any] | None, int]:
+    if kind == "search":
+        return stale_search_result_from_payload(payload)
+    return None, 404
+
+
 def job_start_payload(job: dict[str, Any], *, reused: bool = False, cache_hit: bool = False) -> dict[str, Any]:
     payload = {
         "job_id": job["job_id"],
@@ -1253,7 +1298,16 @@ def start_background_job(kind: str, payload: dict[str, Any]):
     if cached_status_code not in {200, 404}:
         return jsonify(cached_result or {"error": "缓存读取失败"}), cached_status_code
 
+    stale_result, stale_status_code = stale_result_for_job_start(kind, payload)
+    if stale_status_code not in {200, 404}:
+        return jsonify(stale_result or {"error": "旧缓存读取失败"}), stale_status_code
+
     job_id = uuid.uuid4().hex
+    initial_progress = (
+        {"stage": "stale_cache_preview", "message": "已先显示旧缓存，正在后台刷新最新价格。", "percent": 8}
+        if stale_result is not None
+        else {"stage": "queued", "message": "查询任务已创建，正在等待执行。"}
+    )
     job = {
         "job_id": job_id,
         "kind": kind,
@@ -1265,9 +1319,9 @@ def start_background_job(kind: str, payload: dict[str, Any]):
         "updated_ts": now,
         "payload": copy.deepcopy(payload),
         "result": None,
-        "partial_result": None,
-        "progress": {"stage": "queued", "message": "查询任务已创建，正在等待执行。"},
-        "progress_events": [{"time": utc_timestamp(), "stage": "queued", "message": "查询任务已创建，正在等待执行。"}],
+        "partial_result": stale_result,
+        "progress": initial_progress,
+        "progress_events": [{"time": utc_timestamp(), **initial_progress}],
         "error": "",
         "status_code": None,
     }

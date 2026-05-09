@@ -994,6 +994,7 @@
       let lastAreaRefreshMeta = "";
       let lastResultMeta = "";
       let lastHotelNameMeta = "";
+      let lastTotalChoiceCount = 0;
       let areaRefreshToken = 0;
       let hotelNameRefreshToken = 0;
       let currentUseCache = true;
@@ -1214,7 +1215,11 @@
           ? `，搜索「${resultSearchInput.value.trim()}」`
           : "";
         const stageText = [lastResultMeta, lastHotelNameMeta].filter(Boolean).join("，");
-        tableMeta.textContent = `${items.length}/${lastChoices.length} 家，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${stageText ? `，${stageText}` : ""}${searchText}`;
+        const totalChoiceCount = Math.max(lastTotalChoiceCount || 0, lastChoices.length);
+        const countText = totalChoiceCount > lastChoices.length
+          ? `${items.length}/${lastChoices.length} 家（已找到 ${totalChoiceCount} 家，逐步显示）`
+          : `${items.length}/${lastChoices.length} 家`;
+        tableMeta.textContent = `${countText}，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${stageText ? `，${stageText}` : ""}${searchText}`;
         renderAreas(items);
         if (!items.length) {
           choicesBody.innerHTML = `<tr><td class="empty" colspan="4">${resultSearchQuery ? "结果里没有匹配的酒店。" : "当前条件下没有找到“反向旅游好选择”。"}</td></tr>`;
@@ -1266,6 +1271,7 @@
         lastChoices = data.choices || [];
         lastServerAreas = data.area_recommendations || [];
         lastCacheInfo = data.cache || null;
+        lastTotalChoiceCount = Number(data.partial?.total_choice_count || lastChoices.length || 0);
         lastResultMeta = data.partial?.preliminary
           ? (data.partial.message || "酒店在逐步显示中，最终结果会继续刷新")
           : "";
@@ -1487,6 +1493,9 @@
           .join("|");
         return [
           partial.partial?.stage || data.progress?.stage || "",
+          partial.partial?.total_choice_count || "",
+          partial.partial?.displayed_choice_count || "",
+          partial.partial?.scanned_hotel_limit || "",
           choices.length,
           (partial.city_results || []).length,
           partial.cache?.summary_label || "",

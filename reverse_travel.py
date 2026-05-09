@@ -119,10 +119,17 @@ def _env_int(name: str, default: int, *, min_value: int = 1, max_value: int = 16
     return max(min_value, min(max_value, value))
 
 
-HOTEL_LIST_LIMIT = 120
+HOTEL_LIST_LIMIT = _env_int("REVERSE_TRAVEL_HOTEL_LIST_LIMIT", 120, min_value=80, max_value=240)
+DEEP_HOTEL_LIST_LIMIT = _env_int(
+    "REVERSE_TRAVEL_DEEP_HOTEL_LIST_LIMIT",
+    180,
+    min_value=HOTEL_LIST_LIMIT,
+    max_value=360,
+)
 QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v27"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 SEARCH_CACHE_TTL_SECONDS = 24 * 60 * 60
+STALE_SEARCH_CACHE_TTL_SECONDS = 7 * 24 * 60 * 60
 CITY_CACHE_TTL_SECONDS = 30 * 24 * 60 * 60
 DEFAULT_LIST_FILTERS = "29~1*29*1~2*2,17~1*17*1*2,80~0~1*80*0*2"
 ADVANCED_YES_FILTERS = ("16~4*16*4*4", "16~5*16*5*5")
@@ -142,7 +149,7 @@ BROWSER_SESSION_LIMIT = 2
 LIVE_SEARCH_LIMIT = _env_int("REVERSE_TRAVEL_LIVE_SEARCH_LIMIT", 2, min_value=1, max_value=4)
 SUPPLEMENT_MIN_CHOICES = 8
 SUPPLEMENT_HOTEL_LIST_LIMIT = 40
-PARTIAL_RESULT_LIMIT = 50
+PARTIAL_RESULT_LIMIT = _env_int("REVERSE_TRAVEL_PARTIAL_RESULT_LIMIT", 100, min_value=40, max_value=200)
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
 CITY_SUPPLEMENT_KEYWORDS = {
     "广州": (
@@ -937,8 +944,9 @@ class ReverseTravelFinder:
             return False
         return created_at > 0 and time.time() - created_at <= ttl_seconds
 
-    def _load_search_cache(self, cache_key: tuple[str, ...]) -> dict[str, Any] | None:
-        if self.search_cache_ttl_seconds <= 0:
+    def _load_search_cache(self, cache_key: tuple[str, ...], ttl_seconds: int | None = None) -> dict[str, Any] | None:
+        effective_ttl = self.search_cache_ttl_seconds if ttl_seconds is None else ttl_seconds
+        if effective_ttl <= 0:
             return None
         record = self._read_json_file(self._search_cache_path(cache_key))
         if not isinstance(record, dict) or record.get("cache_key") != list(cache_key):
@@ -947,7 +955,7 @@ class ReverseTravelFinder:
             created_at = float(record.get("created_at") or 0)
         except (TypeError, ValueError):
             return None
-        if not self._is_cache_meta_fresh({"created_at": created_at}, self.search_cache_ttl_seconds):
+        if not self._is_cache_meta_fresh({"created_at": created_at}, effective_ttl):
             return None
         result = record.get("result")
         if not isinstance(result, dict):
@@ -990,6 +998,25 @@ class ReverseTravelFinder:
             self._build_cache_info(source="disk", created_at=created_at, hit=True),
         )
 
+    def _get_stale_cached_search_base(
+        self,
+        cache_key: tuple[str, ...],
+    ) -> tuple[dict[str, Any], dict[str, Any]] | None:
+        if STALE_SEARCH_CACHE_TTL_SECONDS <= self.search_cache_ttl_seconds:
+            return None
+        disk_record = self._load_search_cache(cache_key, ttl_seconds=STALE_SEARCH_CACHE_TTL_SECONDS)
+        if disk_record is None:
+            return None
+
+        created_at = float(disk_record["created_at"])
+        if self._is_cache_meta_fresh({"created_at": created_at}, self.search_cache_ttl_seconds):
+            return None
+
+        cache_info = self._build_cache_info(source="stale_disk", created_at=created_at, hit=True)
+        cache_info["stale"] = True
+        cache_info["summary_label"] = "先显示旧缓存，正在后台刷新最新价格"
+        return copy.deepcopy(disk_record["result"]), cache_info
+
     def _store_search_cache(self, cache_key: tuple[str, ...], base_result: dict[str, Any], created_at: float) -> None:
         if self.search_cache_ttl_seconds <= 0:
             return
@@ -1009,7 +1036,12 @@ class ReverseTravelFinder:
         return {
             "hit": hit,
             "source": source,
-            "source_label": {"live": "实时查询", "memory": "内存缓存", "disk": "本地缓存"}.get(source, source),
+            "source_label": {
+                "live": "实时查询",
+                "memory": "内存缓存",
+                "disk": "本地缓存",
+                "stale_disk": "旧缓存",
+            }.get(source, source),
             "created_at": self._format_timestamp(created_at),
             "age_seconds": age_seconds,
             "ttl_seconds": self.search_cache_ttl_seconds,
@@ -1163,6 +1195,34 @@ class ReverseTravelFinder:
             cache_info=cache_info,
         )
 
+    def find_stale_cached_choices(
+        self,
+        city: str,
+        holiday_code: str,
+        min_price: int | None,
+        max_price: int | None,
+        advanced_filter: str | None = "all",
+        pool_filter: str | None = "all",
+        child_facility_filter: str | None = "all",
+    ) -> dict[str, Any] | None:
+        feature_filters = self._normalize_feature_filters(
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+        cache_key = self._search_cache_key(city, holiday_code, feature_filters)
+        cached_result = self._get_stale_cached_search_base(cache_key)
+        if cached_result is None:
+            return None
+        base_result, cache_info = cached_result
+        return self._finalize_choices_result(
+            base_result,
+            min_price=min_price,
+            max_price=max_price,
+            feature_filters=feature_filters,
+            cache_info=cache_info,
+        )
+
     def _call_find_choices_base(
         self,
         city: str,
@@ -1223,6 +1283,8 @@ class ReverseTravelFinder:
         choices: list[dict[str, Any]],
         partial_stage: str | None = None,
         partial_message: str = "",
+        total_choice_count: int | None = None,
+        scanned_hotel_limit: int | None = None,
     ) -> dict[str, Any]:
         payload_choices = copy.deepcopy(choices)
         self._apply_cached_hotel_names_to_choices(payload_choices)
@@ -1247,7 +1309,11 @@ class ReverseTravelFinder:
                 "stage": partial_stage,
                 "message": partial_message,
                 "preliminary": True,
+                "displayed_choice_count": len(payload_choices),
+                "total_choice_count": total_choice_count if total_choice_count is not None else len(payload_choices),
             }
+            if scanned_hotel_limit is not None:
+                result["partial"]["scanned_hotel_limit"] = scanned_hotel_limit
             result["cache"] = {
                 "hit": False,
                 "source": "live_partial",
@@ -1268,6 +1334,7 @@ class ReverseTravelFinder:
         compare_windows = self._build_compare_windows(holiday)
         if not compare_windows:
             raise ReverseTravelFinderError("未来一个月内没有可比较的非法定假期时间段。")
+        scanned_hotel_limit = HOTEL_LIST_LIMIT
 
         self._emit_progress(progress_callback, "正在识别城市和 Trip.com 搜索范围...", "resolve_city", percent=10)
         city_candidate = self._resolve_city(city)
@@ -1279,6 +1346,7 @@ class ReverseTravelFinder:
             message: str,
             percent: int,
             source_choices: list[dict[str, Any]],
+            scanned_hotel_limit: int | None = None,
             **extra: Any,
         ) -> None:
             if progress_callback is None or not source_choices:
@@ -1298,6 +1366,8 @@ class ReverseTravelFinder:
                 choices=preview_choices,
                 partial_stage=stage,
                 partial_message=message,
+                total_choice_count=len(source_choices),
+                scanned_hotel_limit=scanned_hotel_limit,
             )
             self._emit_progress(
                 progress_callback,
@@ -1389,6 +1459,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         message=f"已完成 {completed_windows}/{total_windows} 个代表时段，先展示部分价格匹配酒店。",
                         percent=min(74, 42 + round(28 * completed_windows / max(1, total_windows))),
                         source_choices=preview_choices,
+                        scanned_hotel_limit=HOTEL_LIST_LIMIT,
                         completed=completed_windows,
                         total=total_windows,
                     )
@@ -1440,7 +1511,155 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                                 message=f"重点片区补充后已找到 {len(choices)} 家候选酒店，先展示当前结果。",
                                 percent=74,
                                 source_choices=choices,
+                                scanned_hotel_limit=HOTEL_LIST_LIMIT,
                             )
+
+                if required_feature_keys and choices:
+                    self._emit_progress(
+                        progress_callback,
+                        f"首批已找到 {len(choices)} 家候选酒店，正在先核验一版筛选结果...",
+                        "initial_verify_features",
+                        percent=75,
+                        choice_count=len(choices),
+                    )
+                    initial_verified_choices = self._filter_choices_by_verified_features(
+                        copy.deepcopy(choices),
+                        feature_filters,
+                    )
+                    initial_verified_choices.sort(
+                        key=lambda item: (
+                            item["price_diff_nightly"],
+                            item["holiday_avg_nightly_tax_total_value"],
+                        )
+                    )
+                    emit_partial_choices(
+                        stage="initial_verified_preview",
+                        message=f"首批设施核验后保留 {len(initial_verified_choices)} 家酒店，深扫更多酒店会继续更新。",
+                        percent=77,
+                        source_choices=initial_verified_choices,
+                        scanned_hotel_limit=HOTEL_LIST_LIMIT,
+                    )
+
+                if self._should_run_deep_hotel_search(holiday_hotels, comparison_hotels, HOTEL_LIST_LIMIT):
+                    self._emit_progress(
+                        progress_callback,
+                        f"首批 {HOTEL_LIST_LIMIT} 家酒店已完成，正在深扫更多酒店，最多覆盖 {DEEP_HOTEL_LIST_LIMIT} 家...",
+                        "deep_holiday_hotels",
+                        percent=78,
+                        choice_count=len(choices),
+                        scanned_hotel_limit=HOTEL_LIST_LIMIT,
+                        deep_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
+                    )
+                    try:
+                        deep_page = context.new_page()
+                        try:
+                            deep_holiday_hotels = self._fetch_hotel_list(
+                                city_candidate=city_candidate,
+                                check_in=holiday.start,
+                                check_out=holiday.check_out,
+                                limit=DEEP_HOTEL_LIST_LIMIT,
+                                page=deep_page,
+                                feature_filters=feature_filters,
+                            )
+                        finally:
+                            try:
+                                deep_page.close()
+                            except Exception:
+                                pass
+
+                        if deep_holiday_hotels:
+                            holiday_hotels = self._merge_hotel_lists(holiday_hotels, deep_holiday_hotels)
+                            self._emit_progress(
+                                progress_callback,
+                                f"深扫假期酒店后已覆盖 {len(holiday_hotels)} 家，正在补齐代表时段价格...",
+                                "deep_comparison_hotels",
+                                percent=80,
+                                hotel_count=len(holiday_hotels),
+                                deep_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
+                            )
+
+                            def deep_comparison_batch_callback(
+                                current_deep_comparison_hotels: dict[str, list[dict[str, Any]]],
+                                completed_windows: int,
+                                total_windows: int,
+                            ) -> None:
+                                combined_comparison_hotels = self._merge_comparison_hotel_maps(
+                                    comparison_hotels,
+                                    current_deep_comparison_hotels,
+                                )
+                                comparison_map = self._build_comparison_map(
+                                    combined_comparison_hotels,
+                                    compare_windows,
+                                    holiday.days,
+                                )
+                                preview_choices = self._build_choices_from_hotels(
+                                    city_candidate,
+                                    holiday,
+                                    holiday_hotels,
+                                    comparison_map,
+                                )
+                                if required_feature_keys:
+                                    self._emit_progress(
+                                        progress_callback,
+                                        f"深扫已完成 {completed_windows}/{total_windows} 个代表时段，当前候选 {len(preview_choices)} 家。",
+                                        "deep_pricing_progress",
+                                        percent=min(84, 80 + round(4 * completed_windows / max(1, total_windows))),
+                                        choice_count=len(preview_choices),
+                                        completed=completed_windows,
+                                        total=total_windows,
+                                        deep_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
+                                    )
+                                    return
+                                emit_partial_choices(
+                                    stage="deep_pricing_preview",
+                                    message=f"深扫已完成 {completed_windows}/{total_windows} 个代表时段，目前找到 {len(preview_choices)} 家候选酒店。",
+                                    percent=min(84, 80 + round(4 * completed_windows / max(1, total_windows))),
+                                    source_choices=preview_choices,
+                                    scanned_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
+                                    completed=completed_windows,
+                                    total=total_windows,
+                                )
+
+                            deep_comparison_hotels = self._fetch_hotel_lists_parallel(
+                                city_candidate=city_candidate,
+                                windows=compare_windows,
+                                limit=DEEP_HOTEL_LIST_LIMIT,
+                                context=context,
+                                feature_filters=feature_filters,
+                                batch_callback=deep_comparison_batch_callback,
+                            )
+                            comparison_hotels = self._merge_comparison_hotel_maps(
+                                comparison_hotels,
+                                deep_comparison_hotels,
+                            )
+                            scanned_hotel_limit = DEEP_HOTEL_LIST_LIMIT
+                            comparison_map = self._build_comparison_map(
+                                comparison_hotels,
+                                compare_windows,
+                                holiday.days,
+                            )
+                            choices = self._build_choices_from_hotels(
+                                city_candidate,
+                                holiday,
+                                holiday_hotels,
+                                comparison_map,
+                            )
+                            if not required_feature_keys:
+                                emit_partial_choices(
+                                    stage="deep_pricing_complete",
+                                    message=f"深扫完成，已找到 {len(choices)} 家候选酒店，正在做最终核验和排序。",
+                                    percent=85,
+                                    source_choices=choices,
+                                    scanned_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
+                                )
+                    except Exception as exc:  # noqa: BLE001
+                        self._emit_progress(
+                            progress_callback,
+                            f"深扫暂未完成，继续使用首批结果：{exc}",
+                            "deep_search_skipped",
+                            percent=84,
+                            choice_count=len(choices),
+                        )
                 browser.close()
 
         choices.sort(key=lambda item: (item["price_diff_nightly"], item["holiday_avg_nightly_tax_total_value"]))
@@ -1448,7 +1667,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             progress_callback,
             f"已完成价格对比，正在核验 {len(choices)} 家候选酒店设施...",
             "verify_features",
-            percent=78,
+            percent=86,
             choice_count=len(choices),
         )
         choices = self._filter_choices_by_verified_features(choices, feature_filters)
@@ -1456,14 +1675,15 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         emit_partial_choices(
             stage="verified_preview",
             message=f"设施核验后保留 {len(choices)} 家酒店，先展示核验后的结果。",
-            percent=86,
+            percent=90,
             source_choices=choices,
+            scanned_hotel_limit=scanned_hotel_limit,
         )
         self._emit_progress(
             progress_callback,
             f"设施核验后保留 {len(choices)} 家，正在读取已缓存的中文酒店名...",
             "cached_chinese_names",
-            percent=88,
+            percent=92,
             choice_count=len(choices),
         )
         self._apply_cached_hotel_names_to_choices(choices)
@@ -1472,6 +1692,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             message="酒店结果已显示，简体中文酒店名会在后台继续匹配更新。",
             percent=94,
             source_choices=choices,
+            scanned_hotel_limit=scanned_hotel_limit,
         )
         self._emit_progress(progress_callback, "正在整理推荐区域和最终结果...", "finalize", percent=96)
         self._refresh_choice_area_names(choices, city_candidate.city_name)
@@ -2027,6 +2248,28 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if current is None or self._prefer_hotel_item(item, current):
                 merged[key] = item
         return list(merged.values())
+
+    def _merge_comparison_hotel_maps(
+        self,
+        primary: dict[str, list[dict[str, Any]]],
+        supplemental: dict[str, list[dict[str, Any]]],
+    ) -> dict[str, list[dict[str, Any]]]:
+        merged = {key: copy.deepcopy(value) for key, value in primary.items()}
+        for key, hotels in supplemental.items():
+            merged[key] = self._merge_hotel_lists(merged.get(key, []), hotels)
+        return merged
+
+    def _should_run_deep_hotel_search(
+        self,
+        holiday_hotels: list[dict[str, Any]],
+        comparison_hotels: dict[str, list[dict[str, Any]]],
+        current_limit: int,
+    ) -> bool:
+        if DEEP_HOTEL_LIST_LIMIT <= current_limit:
+            return False
+        if len(holiday_hotels) >= current_limit:
+            return True
+        return any(len(hotels) >= current_limit for hotels in comparison_hotels.values())
 
     def _hotel_merge_key(self, item: dict[str, Any]) -> str:
         hotel_id = str(item.get("hotel_id") or "").strip()

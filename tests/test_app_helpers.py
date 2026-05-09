@@ -338,6 +338,73 @@ def test_background_search_partial_result_is_price_filtered(monkeypatch):
     assert data["status"] == "succeeded"
 
 
+def test_background_search_start_shows_stale_cache_preview(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    release = threading.Event()
+
+    def fake_cached_choices(**kwargs):
+        return None
+
+    def fake_stale_cached_choices(**kwargs):
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [{"hotel_id": "1", "hotel_name": "旧缓存酒店"}],
+            "cache": {"source": "stale_disk", "hit": True, "stale": True},
+        }
+
+    def fake_find_choices(**kwargs):
+        release.wait(timeout=2)
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [{"hotel_id": "2", "hotel_name": "最新酒店"}],
+            "cache": {"source": "live", "hit": False},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_cached_choices", fake_cached_choices)
+    monkeypatch.setattr(app_module.finder, "find_stale_cached_choices", fake_stale_cached_choices)
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/search/start",
+        json={
+            "city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+            "use_cache": "true",
+        },
+    )
+
+    assert response.status_code == 202
+    data = response.get_json()
+    assert data["partial_result"]["partial"]["stage"] == "stale_cache_preview"
+    assert data["partial_result"]["choices"][0]["hotel_name"] == "旧缓存酒店"
+
+    release.set()
+    final = None
+    for _ in range(50):
+        final = client.get(data["poll_url"]).get_json()
+        if final["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+    assert final["result"]["choices"][0]["hotel_name"] == "最新酒店"
+
+
 def test_nearby_search_reports_partial_progress(monkeypatch):
     def fake_find_choices(**kwargs):
         progress_callback = kwargs.get("progress_callback")

@@ -1275,6 +1275,69 @@ def test_find_choices_uses_memory_and_disk_cache(tmp_path):
     assert fallback["cache"]["hit"] is False
 
 
+def test_find_stale_cached_choices_returns_preview_after_fresh_ttl(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path, search_cache_ttl_seconds=60)
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._search_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    created_at = dt.datetime.now().timestamp() - 2 * 60 * 60
+    finder._store_search_cache(
+        cache_key,
+        {
+            "city": "深圳",
+            "holiday": {
+                "code": "2026-05-01::劳动节",
+                "name": "劳动节",
+                "check_in": "2026-05-01",
+                "check_out": "2026-05-04",
+                "days": 3,
+            },
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": feature_filters.to_response(),
+            "comparison_windows": [{"check_in": "2026-05-04", "check_out": "2026-05-07"}],
+            "area_recommendations": [],
+            "choices": [
+                {
+                    "hotel_id": "1",
+                    "hotel_name": "深圳旧缓存酒店",
+                    "area_name": "深圳国际会展中心片区",
+                    "holiday_avg_nightly_tax_total_value": 500,
+                    "price_diff_nightly": -20,
+                    "room_type_label": "大床房",
+                }
+            ],
+        },
+        created_at,
+    )
+
+    assert finder.find_cached_choices("深圳", "2026-05-01::劳动节", None, None, "all", "all", "all") is None
+    stale = finder.find_stale_cached_choices("深圳", "2026-05-01::劳动节", None, None, "all", "all", "all")
+
+    assert stale is not None
+    assert stale["cache"]["source"] == "stale_disk"
+    assert stale["cache"]["stale"] is True
+    assert stale["choices"][0]["hotel_name"] == "深圳旧缓存酒店"
+
+
+def test_deep_hotel_search_runs_only_when_initial_list_hits_limit():
+    finder = ReverseTravelFinder(StubCalendar())
+
+    assert finder._should_run_deep_hotel_search(
+        [{"hotel_id": str(index), "room_name": "King Room"} for index in range(120)],
+        {},
+        120,
+    )
+    assert finder._should_run_deep_hotel_search(
+        [{"hotel_id": "1", "room_name": "King Room"}],
+        {"2026-05-04": [{"hotel_id": str(index), "room_name": "King Room"} for index in range(120)]},
+        120,
+    )
+    assert not finder._should_run_deep_hotel_search(
+        [{"hotel_id": "1", "room_name": "King Room"}],
+        {"2026-05-04": [{"hotel_id": "1", "room_name": "King Room"}]},
+        120,
+    )
+
+
 def test_city_and_hotel_name_cache_persist(tmp_path):
     finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
     candidate = CityCandidate(
