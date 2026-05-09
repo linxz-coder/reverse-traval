@@ -1461,15 +1461,15 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         )
         self._emit_progress(
             progress_callback,
-            f"设施核验后保留 {len(choices)} 家，正在补全中文酒店名...",
-            "chinese_names",
+            f"设施核验后保留 {len(choices)} 家，正在读取已缓存的中文酒店名...",
+            "cached_chinese_names",
             percent=88,
             choice_count=len(choices),
         )
-        self._enrich_choices_with_chinese_hotel_names(choices)
+        self._apply_cached_hotel_names_to_choices(choices)
         emit_partial_choices(
-            stage="names_preview",
-            message="酒店结果已显示，正在整理推荐区域和最终排序。",
+            stage="cached_names_preview",
+            message="酒店结果已显示，简体中文酒店名会在后台继续匹配更新。",
             percent=94,
             source_choices=choices,
         )

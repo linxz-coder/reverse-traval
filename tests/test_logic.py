@@ -1,4 +1,5 @@
 import datetime as dt
+import inspect
 import re
 
 from holiday_helper import HolidayRange
@@ -616,6 +617,13 @@ def test_simplified_hotel_name_search_fields_keep_traditional_display_without_so
     assert choice["hotel_name"] == "深圳光明虹橋希爾頓花園酒店"
     assert choice["hotel_name_simplified"] == "深圳光明虹桥希尔顿花园酒店"
     assert "光明虹桥希尔顿花园酒店" in choice["hotel_search_name"]
+
+
+def test_live_search_uses_cached_hotel_names_without_blocking_enrichment():
+    source = inspect.getsource(ReverseTravelFinder._find_choices_base)
+
+    assert "_apply_cached_hotel_names_to_choices(choices)" in source
+    assert "_enrich_choices_with_chinese_hotel_names(choices)" not in source
 
 
 def test_enhance_hotel_name_data_prefers_domestic_simplified_source(tmp_path, monkeypatch):
