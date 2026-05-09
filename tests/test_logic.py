@@ -519,7 +519,7 @@ def test_keyword_supplement_uses_city_specific_area_search():
     assert "Hyatt+Regency+Guangzhou+Zengcheng" in url
 
 
-def test_initial_advanced_keywords_prioritize_shenzhen_key_areas():
+def test_advanced_priority_keywords_prioritize_shenzhen_key_areas():
     finder = ReverseTravelFinder(StubCalendar())
     city = CityCandidate(
         city_id=30,
@@ -532,18 +532,28 @@ def test_initial_advanced_keywords_prioritize_shenzhen_key_areas():
         search_coordinate="NORMAL_22.543096_114.057865_0",
     )
 
-    keywords = finder._initial_advanced_supplement_keywords("深圳", city)
+    keywords = finder._advanced_priority_keywords("深圳", city)
 
     assert keywords[:2] == ["深圳光明酒店", "深圳龙华酒店"]
     assert all("希尔顿" not in keyword and "美爵" not in keyword for keyword in keywords)
 
 
-def test_initial_advanced_supplement_enabled_for_all_and_yes():
+def test_advanced_coverage_prioritizes_key_areas_after_first_result():
     finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
 
-    assert finder._should_run_initial_advanced_supplement(FeatureFilters())
-    assert finder._should_run_initial_advanced_supplement(FeatureFilters(advanced="yes"))
-    assert not finder._should_run_initial_advanced_supplement(FeatureFilters(advanced="no"))
+    plan = finder._advanced_priority_coverage_plan("深圳", city, [])
+
+    assert [item["keyword"] for item in plan[:2]] == ["深圳光明酒店", "深圳龙华酒店"]
 
 
 def test_city_coverage_supplement_plan_uses_missing_district_keywords():
@@ -1076,7 +1086,7 @@ def test_advanced_priority_coverage_uses_advanced_list_without_forcing_final_fil
     assert ("verify", FeatureFilters(), 1) in calls
 
 
-def test_initial_advanced_fetch_uses_custom_limit_and_filters(monkeypatch):
+def test_supplemental_fetch_uses_custom_limit_and_filters(monkeypatch):
     finder = ReverseTravelFinder(StubCalendar())
     city = CityCandidate(
         city_id=30,
@@ -1159,13 +1169,12 @@ def test_initial_advanced_fetch_uses_custom_limit_and_filters(monkeypatch):
     ]
 
 
-def test_first_visible_pricing_preview_waits_for_initial_advanced_supplement():
+def test_first_visible_pricing_preview_is_not_blocked_by_advanced_supplement():
     source = inspect.getsource(ReverseTravelFinder._find_choices_base)
 
-    assert "delay_pricing_preview = self._should_run_initial_advanced_supplement(feature_filters)" in source
-    assert "or delay_pricing_preview" in source
-    assert "initial_advanced_preview" in source
-    assert "四星级以上重点片区" in source
+    assert "delay_pricing_preview" not in source
+    assert "initial_advanced_preview" not in source
+    assert 'stage="pricing_preview"' in source
 
 
 def test_merge_hotel_lists_keeps_room_types_and_lower_price():

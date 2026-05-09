@@ -156,16 +156,10 @@ ADVANCED_COVERAGE_HOTEL_LIST_LIMIT = _env_int(
     min_value=SUPPLEMENT_HOTEL_LIST_LIMIT,
     max_value=120,
 )
-INITIAL_ADVANCED_SUPPLEMENT_HOTEL_LIST_LIMIT = _env_int(
-    "REVERSE_TRAVEL_INITIAL_ADVANCED_SUPPLEMENT_HOTEL_LIST_LIMIT",
-    120,
-    min_value=SUPPLEMENT_HOTEL_LIST_LIMIT,
-    max_value=ADVANCED_COVERAGE_HOTEL_LIST_LIMIT,
-)
 PARTIAL_RESULT_LIMIT = _env_int("REVERSE_TRAVEL_PARTIAL_RESULT_LIMIT", 100, min_value=40, max_value=200)
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
-MAX_INITIAL_ADVANCED_SUPPLEMENT_CANDIDATES = _env_int(
-    "REVERSE_TRAVEL_INITIAL_ADVANCED_CANDIDATES",
+MAX_ADVANCED_PRIORITY_AREA_CANDIDATES = _env_int(
+    "REVERSE_TRAVEL_ADVANCED_PRIORITY_AREA_CANDIDATES",
     2,
     min_value=0,
     max_value=4,
@@ -232,7 +226,7 @@ CITY_SUPPLEMENT_KEYWORDS = {
         "海丰酒店",
     ),
 }
-CITY_INITIAL_ADVANCED_KEYWORDS = {
+CITY_ADVANCED_PRIORITY_KEYWORDS = {
     "深圳": (
         "光明酒店",
         "龙华酒店",
@@ -1702,11 +1696,10 @@ class ReverseTravelFinder:
 
         advanced_priority_plan: list[dict[str, str]] = []
         if feature_filters.advanced in {"all", "yes"}:
-            advanced_priority_plan = self._city_coverage_supplement_plan(
+            advanced_priority_plan = self._advanced_priority_coverage_plan(
                 city,
                 city_candidate,
                 base_choices,
-                skip_covered=False,
             )
         initial_coverage_plan = self._city_coverage_supplement_plan(city, city_candidate, base_choices)
         if not advanced_priority_plan and not initial_coverage_plan:
@@ -2068,7 +2061,6 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         self._emit_progress(progress_callback, "正在识别城市和 Trip.com 搜索范围...", "resolve_city", percent=10)
         city_candidate = self._resolve_city(city)
         required_feature_keys = self._required_feature_keys(feature_filters)
-        delay_pricing_preview = self._should_run_initial_advanced_supplement(feature_filters)
 
         def emit_partial_choices(
             *,
@@ -2171,7 +2163,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     completed_windows: int,
                     total_windows: int,
                 ) -> None:
-                    if progress_callback is None or required_feature_keys or delay_pricing_preview:
+                    if progress_callback is None or required_feature_keys:
                         return
                     comparison_map = self._build_comparison_map(
                         current_comparison_hotels,
@@ -2205,139 +2197,6 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
                 comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
                 choices = self._build_choices_from_hotels(city_candidate, holiday, holiday_hotels, comparison_map)
-
-                if self._should_run_initial_advanced_supplement(feature_filters):
-                    advanced_list_filters = self._initial_advanced_list_filters(feature_filters)
-                    advanced_holiday_hotels: list[dict[str, Any]] = []
-                    advanced_comparison_hotels: dict[str, list[dict[str, Any]]] = {}
-                    try:
-                        if feature_filters.advanced == "all":
-                            self._emit_progress(
-                                progress_callback,
-                                "正在优先补充四星级以上酒店主列表，首批结果会先覆盖高级酒店...",
-                                "initial_advanced_hotels",
-                                percent=60,
-                                choice_count=len(choices),
-                                scanned_hotel_limit=HOTEL_LIST_LIMIT,
-                            )
-                            advanced_page = context.new_page()
-                            try:
-                                city_advanced_hotels = self._fetch_hotel_list(
-                                    city_candidate=city_candidate,
-                                    check_in=holiday.start,
-                                    check_out=holiday.check_out,
-                                    limit=INITIAL_ADVANCED_SUPPLEMENT_HOTEL_LIST_LIMIT,
-                                    page=advanced_page,
-                                    feature_filters=advanced_list_filters,
-                                )
-                            finally:
-                                try:
-                                    advanced_page.close()
-                                except Exception:
-                                    pass
-                            if city_advanced_hotels:
-                                advanced_holiday_hotels = self._merge_hotel_lists(
-                                    advanced_holiday_hotels,
-                                    city_advanced_hotels,
-                                )
-                                self._emit_progress(
-                                    progress_callback,
-                                    f"已抓到四星级以上酒店 {len(city_advanced_hotels)} 家，正在补齐平日价格...",
-                                    "initial_advanced_comparison",
-                                    percent=64,
-                                    hotel_count=len(city_advanced_hotels),
-                                )
-                                city_advanced_comparison_hotels = self._fetch_hotel_lists_parallel(
-                                    city_candidate=city_candidate,
-                                    windows=compare_windows,
-                                    limit=INITIAL_ADVANCED_SUPPLEMENT_HOTEL_LIST_LIMIT,
-                                    context=context,
-                                    feature_filters=advanced_list_filters,
-                                )
-                                advanced_comparison_hotels = self._merge_comparison_hotel_maps(
-                                    advanced_comparison_hotels,
-                                    city_advanced_comparison_hotels,
-                                )
-
-                        advanced_keywords = self._initial_advanced_supplement_keywords(city, city_candidate)
-                        if advanced_keywords:
-                            self._emit_progress(
-                                progress_callback,
-                                "正在补充四星级以上重点片区，避免高级酒店被城市总榜漏掉...",
-                                "initial_advanced_area_hotels",
-                                percent=68,
-                                choice_count=len(choices),
-                                keyword_count=len(advanced_keywords),
-                            )
-
-                            def initial_advanced_candidate_callback(
-                                candidate: HotelKeywordCandidate,
-                                index: int,
-                                total: int,
-                            ) -> None:
-                                self._emit_progress(
-                                    progress_callback,
-                                    f"正在优先补充 {candidate.title} 的四星级以上酒店（{index}/{total}）...",
-                                    "initial_advanced_area_hotels",
-                                    percent=min(74, 68 + round(6 * (index - 1) / max(1, total))),
-                                    completed=index - 1,
-                                    total=total,
-                                )
-
-                            area_holiday_hotels, area_comparison_hotels = self._fetch_supplemental_hotel_lists(
-                                city_query=city,
-                                city_candidate=city_candidate,
-                                holiday=holiday,
-                                compare_windows=compare_windows,
-                                context=context,
-                                feature_filters=advanced_list_filters,
-                                keywords=advanced_keywords,
-                                max_candidates=MAX_INITIAL_ADVANCED_SUPPLEMENT_CANDIDATES,
-                                hotel_list_limit=INITIAL_ADVANCED_SUPPLEMENT_HOTEL_LIST_LIMIT,
-                                candidate_callback=initial_advanced_candidate_callback,
-                            )
-                            advanced_holiday_hotels = self._merge_hotel_lists(
-                                advanced_holiday_hotels,
-                                area_holiday_hotels,
-                            )
-                            advanced_comparison_hotels = self._merge_comparison_hotel_maps(
-                                advanced_comparison_hotels,
-                                area_comparison_hotels,
-                            )
-
-                        if advanced_holiday_hotels:
-                            holiday_hotels = self._merge_hotel_lists(holiday_hotels, advanced_holiday_hotels)
-                            comparison_hotels = self._merge_comparison_hotel_maps(
-                                comparison_hotels,
-                                advanced_comparison_hotels,
-                            )
-                            comparison_map = self._build_comparison_map(
-                                comparison_hotels,
-                                compare_windows,
-                                holiday.days,
-                            )
-                            choices = self._build_choices_from_hotels(
-                                city_candidate,
-                                holiday,
-                                holiday_hotels,
-                                comparison_map,
-                            )
-                            if not required_feature_keys:
-                                emit_partial_choices(
-                                    stage="initial_advanced_preview",
-                                    message=f"已优先合并四星级以上酒店，当前找到 {len(choices)} 家候选酒店。",
-                                    percent=76,
-                                    source_choices=choices,
-                                    scanned_hotel_limit=INITIAL_ADVANCED_SUPPLEMENT_HOTEL_LIST_LIMIT,
-                                )
-                    except Exception as exc:  # noqa: BLE001
-                        self._emit_progress(
-                            progress_callback,
-                            f"四星级以上优先补充暂未完成，先继续使用基础结果：{exc}",
-                            "initial_advanced_skipped",
-                            percent=75,
-                            choice_count=len(choices),
-                        )
 
                 if len(choices) < SUPPLEMENT_MIN_CHOICES:
                     self._emit_progress(
@@ -2994,26 +2853,16 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             keywords.append(keyword)
         return keywords
 
-    def _should_run_initial_advanced_supplement(self, feature_filters: FeatureFilters) -> bool:
-        return feature_filters.advanced in {"all", "yes"} and INITIAL_ADVANCED_SUPPLEMENT_HOTEL_LIST_LIMIT > 0
-
-    def _initial_advanced_list_filters(self, feature_filters: FeatureFilters) -> FeatureFilters:
-        return FeatureFilters(
-            advanced="yes",
-            pool=feature_filters.pool,
-            child_facility=feature_filters.child_facility,
-        )
-
-    def _initial_advanced_supplement_keywords(
+    def _advanced_priority_keywords(
         self,
         city_query: str,
         city_candidate: CityCandidate,
     ) -> list[str]:
-        if MAX_INITIAL_ADVANCED_SUPPLEMENT_CANDIDATES <= 0:
+        if MAX_ADVANCED_PRIORITY_AREA_CANDIDATES <= 0:
             return []
 
         city_label = self._normalize_city_label(city_candidate.city_name or city_query)
-        seeds = CITY_INITIAL_ADVANCED_KEYWORDS.get(city_label)
+        seeds = CITY_ADVANCED_PRIORITY_KEYWORDS.get(city_label)
         if seeds is None:
             seeds = CITY_SUPPLEMENT_KEYWORDS.get(city_label, ())
 
@@ -3032,7 +2881,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     continue
                 seen.add(keyword)
                 keywords.append(keyword)
-                if len(keywords) >= MAX_INITIAL_ADVANCED_SUPPLEMENT_CANDIDATES:
+                if len(keywords) >= MAX_ADVANCED_PRIORITY_AREA_CANDIDATES:
                     return keywords
 
         for item in self._city_coverage_supplement_plan(city_query, city_candidate, [], skip_covered=False):
@@ -3041,9 +2890,36 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 continue
             seen.add(keyword)
             keywords.append(keyword)
-            if len(keywords) >= MAX_INITIAL_ADVANCED_SUPPLEMENT_CANDIDATES:
+            if len(keywords) >= MAX_ADVANCED_PRIORITY_AREA_CANDIDATES:
                 break
         return keywords
+
+    def _advanced_priority_coverage_plan(
+        self,
+        city_query: str,
+        city_candidate: CityCandidate,
+        choices: list[dict[str, Any]],
+    ) -> list[dict[str, str]]:
+        plan = self._city_coverage_supplement_plan(city_query, city_candidate, choices, skip_covered=False)
+        if not plan:
+            return []
+
+        priority_keywords = [
+            self._to_simplified_chinese(keyword).lower()
+            for keyword in self._advanced_priority_keywords(city_query, city_candidate)
+        ]
+        if not priority_keywords:
+            return plan
+
+        priority_index = {keyword: index for index, keyword in enumerate(priority_keywords)}
+        ordered_plan = sorted(
+            enumerate(plan),
+            key=lambda pair: (
+                priority_index.get(self._to_simplified_chinese(pair[1]["keyword"]).lower(), len(priority_index)),
+                pair[0],
+            ),
+        )
+        return [item for _, item in ordered_plan]
 
     def _city_coverage_supplement_plan(
         self,
