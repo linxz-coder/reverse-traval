@@ -5,6 +5,7 @@ import re
 from holiday_helper import HolidayRange
 from reverse_travel import (
     CityCandidate,
+    CITY_COVERAGE_AREA_KEYWORDS,
     FeatureFilters,
     HotelKeywordCandidate,
     ReverseTravelFinder,
@@ -479,7 +480,7 @@ def test_outside_search_city_filter_detects_huizhou_for_shanwei():
     )
 
 
-def test_keyword_supplement_uses_city_specific_hotel_search():
+def test_keyword_supplement_uses_city_specific_area_search():
     finder = ReverseTravelFinder(StubCalendar())
     city = CityCandidate(
         city_id=32,
@@ -500,7 +501,7 @@ def test_keyword_supplement_uses_city_specific_hotel_search():
         search_coordinate="NORMAL_23.14911_113.610375_2",
     )
 
-    assert finder._supplement_keywords("广州", city)[0] == "广州增城凯悦酒店"
+    assert finder._supplement_keywords("广州", city)[0] == "广州增城酒店"
     url = finder._build_keyword_list_url(
         city,
         candidate,
@@ -512,6 +513,108 @@ def test_keyword_supplement_uses_city_specific_hotel_search():
     assert "searchType=H" in url
     assert "searchValue=31~78218905%2A31%2A78218905%2A1" in url
     assert "Hyatt+Regency+Guangzhou+Zengcheng" in url
+
+
+def test_city_coverage_supplement_plan_uses_missing_district_keywords():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
+    choices = [
+        {"hotel_name": "深圳福田CBD逸扉酒店", "area_name": "深圳福田中心片区"},
+        {"hotel_name": "深圳南山假日酒店", "area_name": "深圳南山片区"},
+    ]
+
+    plan = finder._city_coverage_supplement_plan("深圳", city, choices)
+    keywords = [item["keyword"] for item in plan]
+
+    assert "深圳福田酒店" not in keywords
+    assert "深圳南山酒店" not in keywords
+    assert "深圳光明酒店" in keywords
+    assert "深圳罗湖酒店" in keywords
+    assert len(CITY_COVERAGE_AREA_KEYWORDS["深圳"]) >= 11
+    assert all("希尔顿" not in seed and "皇冠假日" not in seed for _, seed, _ in CITY_COVERAGE_AREA_KEYWORDS["深圳"])
+
+
+def test_city_coverage_supplement_plan_treats_alias_area_as_covered():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
+
+    plan = finder._city_coverage_supplement_plan(
+        "深圳",
+        city,
+        [{"hotel_name": "深圳光明温德姆至尊酒店", "area_name": "光明虹桥公园片区"}],
+    )
+
+    assert "深圳光明酒店" not in [item["keyword"] for item in plan]
+
+
+def test_district_keyword_candidate_builds_district_list_url():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
+
+    candidate = finder._hotel_keyword_candidate_from_result(
+        {
+            "resultType": "D",
+            "city": {"currentLocaleName": "深圳", "enusName": "Shenzhen", "geoCode": 30},
+            "item": {
+                "data": {
+                    "filterID": "9|207",
+                    "title": "福田區",
+                    "value": "207",
+                },
+                "extra": {"formattedCoordinateInfo": "22.5222930908|114.0550231934|2"},
+            },
+        },
+        city,
+    )
+
+    assert candidate == HotelKeywordCandidate(
+        hotel_id="207",
+        title="福田區",
+        filter_id="9|207",
+        lat=22.5222930908,
+        lon=114.0550231934,
+        search_coordinate="NORMAL_22.5222930908_114.0550231934_2",
+        search_type="D",
+        district_id=207,
+    )
+    url = finder._build_keyword_list_url(
+        city,
+        candidate,
+        dt.date(2026, 6, 19),
+        dt.date(2026, 6, 22),
+        FeatureFilters(),
+    )
+
+    assert "searchType=D" in url
+    assert "districtId=207" in url
+    assert "searchValue=9~207%2A9%2A207%2A1" in url
 
 
 def test_hotel_keyword_candidate_from_result_keeps_same_city():

@@ -126,7 +126,7 @@ DEEP_HOTEL_LIST_LIMIT = _env_int(
     min_value=HOTEL_LIST_LIMIT,
     max_value=360,
 )
-QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v27"
+QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v28"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 SEARCH_CACHE_TTL_SECONDS = 24 * 60 * 60
 STALE_SEARCH_CACHE_TTL_SECONDS = 7 * 24 * 60 * 60
@@ -151,16 +151,22 @@ SUPPLEMENT_MIN_CHOICES = 8
 SUPPLEMENT_HOTEL_LIST_LIMIT = 40
 PARTIAL_RESULT_LIMIT = _env_int("REVERSE_TRAVEL_PARTIAL_RESULT_LIMIT", 100, min_value=40, max_value=200)
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
+MAX_COVERAGE_KEYWORD_CANDIDATES = _env_int(
+    "REVERSE_TRAVEL_COVERAGE_KEYWORD_CANDIDATES",
+    12,
+    min_value=0,
+    max_value=40,
+)
 CITY_SUPPLEMENT_KEYWORDS = {
     "广州": (
-        "增城凯悦酒店",
         "增城酒店",
         "琶洲酒店",
+        "黄埔酒店",
     ),
     "深圳": (
-        "国际会展中心皇冠假日酒店",
-        "国际会展中心洲际酒店",
-        "光明美爵酒店",
+        "国际会展中心酒店",
+        "光明酒店",
+        "观澜酒店",
     ),
     "东莞": (
         "松山湖酒店",
@@ -205,6 +211,34 @@ CITY_SUPPLEMENT_KEYWORDS = {
         "金町湾酒店",
         "红海湾酒店",
         "海丰酒店",
+    ),
+}
+CITY_COVERAGE_AREA_KEYWORDS: dict[str, tuple[tuple[str, str, tuple[str, ...]], ...]] = {
+    "深圳": (
+        ("深圳福田片区", "福田酒店", ("福田", "futian")),
+        ("深圳罗湖片区", "罗湖酒店", ("罗湖", "羅湖", "luohu")),
+        ("深圳南山片区", "南山酒店", ("南山", "nanshan")),
+        ("深圳盐田片区", "盐田酒店", ("盐田", "鹽田", "yantian")),
+        ("深圳宝安片区", "宝安酒店", ("宝安", "寶安", "baoan", "bao'an")),
+        ("深圳龙岗片区", "龙岗酒店", ("龙岗", "龍崗", "longgang")),
+        ("深圳龙华片区", "龙华酒店", ("龙华", "龍華", "longhua")),
+        ("深圳坪山片区", "坪山酒店", ("坪山", "pingshan")),
+        ("光明虹桥公园片区", "光明酒店", ("光明", "虹桥", "虹橋", "guangming", "hongqiao")),
+        ("深圳大鹏片区", "大鹏酒店", ("大鹏", "大鵬", "dapeng")),
+        ("深汕合作区片区", "深汕特别合作区酒店", ("深汕", "shenshan")),
+    ),
+    "广州": (
+        ("广州越秀片区", "越秀酒店", ("越秀", "yuexiu")),
+        ("广州荔湾片区", "荔湾酒店", ("荔湾", "荔灣", "liwan")),
+        ("广州海珠片区", "海珠酒店", ("海珠", "haizhu")),
+        ("广州天河片区", "天河酒店", ("天河", "tianhe")),
+        ("广州白云片区", "白云酒店", ("白云", "白雲", "baiyun")),
+        ("广州黄埔片区", "黄埔酒店", ("黄埔", "黃埔", "huangpu")),
+        ("广州番禺片区", "番禺酒店", ("番禺", "panyu")),
+        ("广州花都片区", "花都酒店", ("花都", "huadu")),
+        ("广州南沙片区", "南沙酒店", ("南沙", "nansha")),
+        ("广州从化片区", "从化酒店", ("从化", "從化", "conghua")),
+        ("广州增城片区", "增城酒店", ("增城", "zengcheng")),
     ),
 }
 CITY_DEFAULT_AREA_NAMES = {
@@ -696,6 +730,8 @@ class HotelKeywordCandidate:
     lat: float
     lon: float
     search_coordinate: str
+    search_type: str = "H"
+    district_id: int = 0
 
 
 @dataclass(frozen=True)
@@ -1660,6 +1696,70 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                             percent=84,
                             choice_count=len(choices),
                         )
+
+                coverage_plan = self._city_coverage_supplement_plan(city, city_candidate, choices)
+                if coverage_plan:
+                    area_names = [item["area_name"] for item in coverage_plan]
+                    area_preview = "、".join(area_names[:6])
+                    if len(area_names) > 6:
+                        area_preview = f"{area_preview}等 {len(area_names)} 个片区"
+                    self._emit_progress(
+                        progress_callback,
+                        f"正在按行政区补充覆盖：{area_preview}...",
+                        "coverage_hotels",
+                        percent=85,
+                        choice_count=len(choices),
+                        coverage_area_count=len(area_names),
+                    )
+
+                    def coverage_candidate_callback(
+                        candidate: HotelKeywordCandidate,
+                        completed: int,
+                        total: int,
+                    ) -> None:
+                        self._emit_progress(
+                            progress_callback,
+                            f"正在补充 {candidate.title} 范围酒店（{completed}/{total}）...",
+                            "coverage_hotels",
+                            percent=85,
+                            choice_count=len(choices),
+                            completed=completed,
+                            total=total,
+                        )
+
+                    coverage_holiday_hotels, coverage_comparison_hotels = self._fetch_supplemental_hotel_lists(
+                        city_query=city,
+                        city_candidate=city_candidate,
+                        holiday=holiday,
+                        compare_windows=compare_windows,
+                        context=context,
+                        feature_filters=feature_filters,
+                        keywords=[item["keyword"] for item in coverage_plan],
+                        max_candidates=MAX_COVERAGE_KEYWORD_CANDIDATES,
+                        candidate_callback=coverage_candidate_callback,
+                    )
+                    if coverage_holiday_hotels:
+                        holiday_hotels = self._merge_hotel_lists(holiday_hotels, coverage_holiday_hotels)
+                        for key, hotels in coverage_comparison_hotels.items():
+                            comparison_hotels[key] = self._merge_hotel_lists(
+                                comparison_hotels.get(key, []),
+                                hotels,
+                            )
+                        comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
+                        choices = self._build_choices_from_hotels(
+                            city_candidate,
+                            holiday,
+                            holiday_hotels,
+                            comparison_map,
+                        )
+                        if not required_feature_keys:
+                            emit_partial_choices(
+                                stage="coverage_preview",
+                                message=f"行政区覆盖补充后已找到 {len(choices)} 家候选酒店，先展示当前结果。",
+                                percent=85,
+                                source_choices=choices,
+                                scanned_hotel_limit=scanned_hotel_limit,
+                            )
                 browser.close()
 
         choices.sort(key=lambda item: (item["price_diff_nightly"], item["holiday_avg_nightly_tax_total_value"]))
@@ -2025,11 +2125,21 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         compare_windows: list[dict[str, dt.date]],
         context,
         feature_filters: FeatureFilters,
+        keywords: list[str] | tuple[str, ...] | None = None,
+        max_candidates: int = MAX_SUPPLEMENT_KEYWORD_CANDIDATES,
+        candidate_callback: Callable[[HotelKeywordCandidate, int, int], None] | None = None,
     ) -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]:
-        candidates = self._resolve_hotel_keyword_candidates(city_query, city_candidate)
+        candidates = self._resolve_hotel_keyword_candidates(
+            city_query,
+            city_candidate,
+            keywords=keywords,
+            max_candidates=max_candidates,
+        )
         holiday_hotels: list[dict[str, Any]] = []
         comparison_hotels: dict[str, list[dict[str, Any]]] = {}
-        for candidate in candidates:
+        for index, candidate in enumerate(candidates, start=1):
+            if candidate_callback is not None:
+                candidate_callback(candidate, index, len(candidates))
             page = context.new_page()
             try:
                 candidate_holiday_hotels = self._fetch_hotel_list(
@@ -2065,22 +2175,28 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         self,
         city_query: str,
         city_candidate: CityCandidate,
+        keywords: list[str] | tuple[str, ...] | None = None,
+        max_candidates: int = MAX_SUPPLEMENT_KEYWORD_CANDIDATES,
     ) -> list[HotelKeywordCandidate]:
+        if max_candidates <= 0:
+            return []
         candidates: list[HotelKeywordCandidate] = []
         seen_ids: set[str] = set()
-        for keyword in self._supplement_keywords(city_query, city_candidate):
+        keyword_list = list(keywords) if keywords is not None else self._supplement_keywords(city_query, city_candidate)
+        for keyword in keyword_list:
             try:
                 results = self._keyword_search_results(keyword)
             except (HTTPError, URLError, TimeoutError, OSError, json.JSONDecodeError):
                 continue
             for item in results:
                 candidate = self._hotel_keyword_candidate_from_result(item, city_candidate)
-                if candidate is None or candidate.hotel_id in seen_ids:
+                candidate_key = f"{candidate.search_type}:{candidate.hotel_id}" if candidate is not None else ""
+                if candidate is None or candidate_key in seen_ids:
                     continue
-                seen_ids.add(candidate.hotel_id)
+                seen_ids.add(candidate_key)
                 candidates.append(candidate)
                 break
-            if len(candidates) >= MAX_SUPPLEMENT_KEYWORD_CANDIDATES:
+            if len(candidates) >= max_candidates:
                 break
         return candidates
 
@@ -2102,6 +2218,81 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             seen.add(keyword)
             keywords.append(keyword)
         return keywords
+
+    def _city_coverage_supplement_plan(
+        self,
+        city_query: str,
+        city_candidate: CityCandidate,
+        choices: list[dict[str, Any]],
+    ) -> list[dict[str, str]]:
+        city_label = self._normalize_city_label(city_candidate.city_name or city_query)
+        area_configs = CITY_COVERAGE_AREA_KEYWORDS.get(city_label, ())
+        if not area_configs:
+            return []
+
+        plan: list[dict[str, str]] = []
+        for area_name, seed, aliases in area_configs:
+            if self._choices_include_coverage_area(choices, city_candidate.city_name, area_name, aliases):
+                continue
+            keyword = self._prefixed_city_keyword(city_query, city_label, seed)
+            if keyword:
+                plan.append({"area_name": area_name, "keyword": keyword})
+        deduped: list[dict[str, str]] = []
+        seen_keywords: set[str] = set()
+        for item in plan:
+            keyword_key = self._to_simplified_chinese(item["keyword"]).lower()
+            if keyword_key in seen_keywords:
+                continue
+            seen_keywords.add(keyword_key)
+            deduped.append(item)
+        return deduped
+
+    def _prefixed_city_keyword(self, city_query: str, city_label: str, seed: str) -> str:
+        seed = str(seed or "").strip()
+        if not seed:
+            return ""
+        prefixes = [item for item in (city_query.strip(), city_label) if item]
+        simplified_seed = self._to_simplified_chinese(seed).lower()
+        if any(simplified_seed.startswith(self._to_simplified_chinese(prefix).lower()) for prefix in prefixes):
+            return seed
+        return f"{prefixes[0] if prefixes else city_label}{seed}"
+
+    def _choices_include_coverage_area(
+        self,
+        choices: list[dict[str, Any]],
+        city_name: str,
+        area_name: str,
+        aliases: tuple[str, ...],
+    ) -> bool:
+        target = self._to_simplified_chinese(area_name)
+        for item in choices:
+            choice_area = self._choice_area_name(item, city_name)
+            simplified_area = self._to_simplified_chinese(choice_area)
+            if simplified_area == target:
+                return True
+            haystack = self._coverage_area_haystack(item, city_name, simplified_area)
+            if any(self._coverage_alias_matches(haystack, alias) for alias in aliases):
+                return True
+        return False
+
+    def _coverage_area_haystack(self, item: dict[str, Any], city_name: str, area_name: str) -> str:
+        values = [
+            area_name,
+            city_name,
+            item.get("recommend_city"),
+            item.get("area_hint"),
+            item.get("hotel_original_name"),
+            item.get("hotel_name"),
+            item.get("hotel_search_name"),
+        ]
+        text = " ".join(str(value or "") for value in values)
+        return self._to_simplified_chinese(text).lower()
+
+    def _coverage_alias_matches(self, haystack: str, alias: str) -> bool:
+        normalized_alias = self._to_simplified_chinese(str(alias or "")).lower().strip()
+        if not normalized_alias:
+            return False
+        return normalized_alias in haystack
 
     def _keyword_search_results(self, keyword: str) -> list[dict[str, Any]]:
         trace_id = self._trace_id()
@@ -2185,7 +2376,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         item: dict[str, Any],
         city_candidate: CityCandidate,
     ) -> HotelKeywordCandidate | None:
-        if item.get("resultType") != "H":
+        result_type = str(item.get("resultType") or "").strip().upper()
+        if result_type not in {"H", "D", "Z", "LM"}:
             return None
         result_city = item.get("city") or {}
         try:
@@ -2203,18 +2395,36 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
         item_data = ((item.get("item") or {}).get("data") or {})
         title = str(item_data.get("title") or item.get("word") or item.get("name") or "").strip()
-        hotel_id = str(item_data.get("value") or item.get("code") or "").strip()
-        if not title or not hotel_id:
+        filter_id = str(item_data.get("filterID") or "").strip()
+        candidate_id = self._keyword_candidate_id(item_data, item, filter_id)
+        if not title or not candidate_id:
             return None
         lat, lon, search_coordinate = self._hotel_keyword_coordinate(item, city_candidate)
         return HotelKeywordCandidate(
-            hotel_id=hotel_id,
+            hotel_id=candidate_id,
             title=title,
-            filter_id=str(item_data.get("filterID") or f"31|{hotel_id}"),
+            filter_id=filter_id or f"31|{candidate_id}",
             lat=lat,
             lon=lon,
             search_coordinate=search_coordinate,
+            search_type=result_type,
+            district_id=self._keyword_candidate_district_id(result_type, candidate_id),
         )
+
+    def _keyword_candidate_id(self, item_data: dict[str, Any], item: dict[str, Any], filter_id: str) -> str:
+        raw_value = str(item_data.get("value") or item.get("code") or "").strip()
+        filter_value = filter_id.split("|", 1)[1].strip() if "|" in filter_id else ""
+        if filter_value and (not raw_value or "|" in raw_value or not raw_value.isdigit()):
+            return filter_value
+        return raw_value or filter_value
+
+    def _keyword_candidate_district_id(self, result_type: str, candidate_id: str) -> int:
+        if result_type != "D":
+            return 0
+        try:
+            return int(candidate_id)
+        except (TypeError, ValueError):
+            return 0
 
     def _hotel_keyword_coordinate(
         self,
@@ -4812,17 +5022,18 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     ) -> str:
         feature_filters = feature_filters or FeatureFilters()
         filter_type = keyword_candidate.filter_id.split("|", 1)[0] or "31"
+        search_type = keyword_candidate.search_type or "H"
         params = {
             "city": city_candidate.city_id,
             "cityName": city_candidate.city_name,
             "provinceId": city_candidate.province_id,
             "countryId": city_candidate.country_id,
-            "districtId": 0,
+            "districtId": keyword_candidate.district_id if search_type == "D" else 0,
             "checkin": check_in.strftime("%Y/%m/%d"),
             "checkout": check_out.strftime("%Y/%m/%d"),
             "lat": keyword_candidate.lat,
             "lon": keyword_candidate.lon,
-            "searchType": "H",
+            "searchType": search_type,
             "searchWord": keyword_candidate.title,
             "searchValue": (
                 f"{keyword_candidate.filter_id}*{filter_type}*{keyword_candidate.hotel_id}*1".replace("|", "~")
