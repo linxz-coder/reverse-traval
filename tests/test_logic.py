@@ -1,6 +1,7 @@
 import datetime as dt
 import inspect
 import re
+from urllib.parse import parse_qs, urlparse
 
 from holiday_helper import HolidayRange
 from reverse_travel import (
@@ -616,6 +617,70 @@ def test_major_city_coverage_configs_generate_admin_district_keywords():
         assert expected_keywords <= keywords
 
 
+def test_guangdong_city_coverage_configs_include_all_prefecture_cities():
+    guangdong_cities = {
+        "广州", "深圳", "珠海", "汕头", "佛山", "韶关", "河源", "梅州", "惠州", "汕尾", "东莞",
+        "中山", "江门", "阳江", "湛江", "茂名", "肇庆", "清远", "潮州", "揭阳", "云浮",
+    }
+
+    assert guangdong_cities <= set(CITY_COVERAGE_AREA_KEYWORDS)
+
+
+def test_guangdong_city_coverage_configs_include_key_county_level_areas():
+    samples = {
+        "汕头": {"汕头南澳县酒店", "汕头潮阳区酒店"},
+        "韶关": {"韶关乳源酒店", "韶关乐昌市酒店"},
+        "河源": {"河源源城区酒店", "河源龙川县酒店"},
+        "梅州": {"梅州梅县区酒店", "梅州兴宁市酒店"},
+        "汕尾": {"汕尾海丰县酒店", "汕尾陆丰市酒店"},
+        "江门": {"江门新会区酒店", "江门鹤山市酒店"},
+        "阳江": {"阳江阳春市酒店", "阳江阳西县酒店"},
+        "湛江": {"湛江赤坎区酒店", "湛江徐闻县酒店"},
+        "茂名": {"茂名电白区酒店", "茂名信宜市酒店"},
+        "肇庆": {"肇庆端州区酒店", "肇庆德庆县酒店"},
+        "清远": {"清远清新区酒店", "清远连南酒店"},
+        "潮州": {"潮州湘桥区酒店", "潮州饶平县酒店"},
+        "揭阳": {"揭阳榕城区酒店", "揭阳普宁市酒店"},
+        "云浮": {"云浮云安区酒店", "云浮罗定市酒店"},
+    }
+
+    for city_name, expected_keywords in samples.items():
+        city = CityCandidate(
+            city_id=1,
+            city_name=city_name,
+            province_id=1,
+            country_id=1,
+            lat=0,
+            lon=0,
+            filter_id="19|1",
+            search_coordinate="NORMAL_0_0_0",
+        )
+        keywords = {
+            item["keyword"]
+            for item in ReverseTravelFinder(StubCalendar())._city_coverage_supplement_plan(city_name, city, [])
+        }
+        assert expected_keywords <= keywords
+
+
+def test_town_and_street_coverage_uses_readable_area_names_and_keywords():
+    dongguan_configs = CITY_COVERAGE_AREA_KEYWORDS["东莞"]
+    zhongshan_configs = CITY_COVERAGE_AREA_KEYWORDS["中山"]
+
+    assert ("东莞莞城片区", "莞城酒店", ("莞城街道", "莞城")) in dongguan_configs
+    assert ("东莞石龙片区", "石龙酒店", ("石龙镇", "石龙")) in dongguan_configs
+    assert ("中山东区片区", "东区酒店", ("东区街道", "东区")) in zhongshan_configs
+    assert ("中山小榄片区", "小榄酒店", ("小榄镇", "小榄")) in zhongshan_configs
+
+
+def test_autonomous_county_coverage_uses_short_searchable_names():
+    shaoguan_configs = CITY_COVERAGE_AREA_KEYWORDS["韶关"]
+    qingyuan_configs = CITY_COVERAGE_AREA_KEYWORDS["清远"]
+
+    assert ("韶关乳源片区", "乳源酒店", ("乳源瑶族自治县", "乳源")) in shaoguan_configs
+    assert ("清远连山片区", "连山酒店", ("连山壮族瑶族自治县", "连山")) in qingyuan_configs
+    assert ("清远连南片区", "连南酒店", ("连南瑶族自治县", "连南")) in qingyuan_configs
+
+
 def test_major_city_coverage_skips_districts_already_seen_in_results():
     finder = ReverseTravelFinder(StubCalendar())
     city = CityCandidate(
@@ -751,6 +816,111 @@ def test_hotel_keyword_candidate_from_result_keeps_same_city():
         lon=113.610375,
         search_coordinate="NORMAL_23.14911_113.610375_2",
     )
+
+
+def test_child_city_keyword_candidate_belongs_to_parent_coverage_city():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=62,
+        city_name="湛江",
+        province_id=23,
+        country_id=1,
+        lat=21.270708,
+        lon=110.359377,
+        filter_id="19|62",
+        search_coordinate="NORMAL_21.270708_110.359377_0",
+    )
+
+    candidate = finder._hotel_keyword_candidate_from_result(
+        {
+            "resultType": "CT",
+            "code": "21100",
+            "city": {"currentLocaleName": "徐聞", "enusName": "Xuwen", "geoCode": 21100},
+            "item": {
+                "data": {
+                    "filterID": "19|21100",
+                    "title": "徐聞",
+                    "value": "21100",
+                },
+                "extra": {"formattedCoordinateInfo": "20.326083|110.175718|2"},
+            },
+        },
+        city,
+    )
+
+    assert candidate == HotelKeywordCandidate(
+        hotel_id="21100",
+        title="徐聞",
+        filter_id="19|21100",
+        lat=20.326083,
+        lon=110.175718,
+        search_coordinate="NORMAL_20.326083_110.175718_2",
+        search_type="CT",
+    )
+
+
+def test_child_city_keyword_candidate_builds_child_city_list_url():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=62,
+        city_name="湛江",
+        province_id=23,
+        country_id=1,
+        lat=21.270708,
+        lon=110.359377,
+        filter_id="19|62",
+        search_coordinate="NORMAL_21.270708_110.359377_0",
+    )
+    candidate = HotelKeywordCandidate(
+        hotel_id="21100",
+        title="徐聞",
+        filter_id="19|21100",
+        lat=20.326083,
+        lon=110.175718,
+        search_coordinate="NORMAL_20.326083_110.175718_2",
+        search_type="CT",
+    )
+
+    url = finder._build_keyword_list_url(
+        city,
+        candidate,
+        dt.date(2026, 6, 19),
+        dt.date(2026, 6, 22),
+        FeatureFilters(),
+    )
+    params = parse_qs(urlparse(url).query)
+
+    assert params["city"] == ["21100"]
+    assert params["cityName"] == ["徐聞"]
+    assert params["searchType"] == ["CT"]
+    assert params["searchValue"] == ["19~21100*19*21100*1"]
+    assert params["districtId"] == ["0"]
+
+
+def test_child_city_keyword_candidate_rejects_unrelated_city():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=62,
+        city_name="湛江",
+        province_id=23,
+        country_id=1,
+        lat=21.270708,
+        lon=110.359377,
+        filter_id="19|62",
+        search_coordinate="NORMAL_21.270708_110.359377_0",
+    )
+
+    candidate = finder._hotel_keyword_candidate_from_result(
+        {
+            "resultType": "CT",
+            "code": "4",
+            "city": {"currentLocaleName": "大連", "enusName": "Dalian", "geoCode": 4},
+            "item": {"data": {"filterID": "19|4", "title": "大連", "value": "4"}},
+        },
+        city,
+    )
+
+    assert candidate is None
 
 
 def test_merge_hotel_lists_keeps_room_types_and_lower_price():
