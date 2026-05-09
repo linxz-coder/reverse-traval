@@ -565,6 +565,24 @@ def test_city_coverage_supplement_plan_treats_alias_area_as_covered():
     assert "深圳光明酒店" not in [item["keyword"] for item in plan]
 
 
+def test_city_coverage_supplement_plan_uses_chinese_prefix_for_english_city_query():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="Shenzhen",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
+
+    plan = finder._city_coverage_supplement_plan("Shenzhen", city, [])
+
+    assert plan[0]["keyword"] == "深圳福田酒店"
+
+
 def test_district_keyword_candidate_builds_district_list_url():
     finder = ReverseTravelFinder(StubCalendar())
     city = CityCandidate(

@@ -2255,7 +2255,10 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         simplified_seed = self._to_simplified_chinese(seed).lower()
         if any(simplified_seed.startswith(self._to_simplified_chinese(prefix).lower()) for prefix in prefixes):
             return seed
-        return f"{prefixes[0] if prefixes else city_label}{seed}"
+        prefix = prefixes[0] if prefixes else city_label
+        if re.search(r"[\u3400-\u9fff]", seed) and city_label and not re.search(r"[\u3400-\u9fff]", prefix):
+            prefix = city_label
+        return f"{prefix}{seed}"
 
     def _choices_include_coverage_area(
         self,
