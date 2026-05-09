@@ -518,6 +518,33 @@ def test_keyword_supplement_uses_city_specific_area_search():
     assert "Hyatt+Regency+Guangzhou+Zengcheng" in url
 
 
+def test_initial_advanced_keywords_prioritize_shenzhen_key_areas():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
+
+    keywords = finder._initial_advanced_supplement_keywords("深圳", city)
+
+    assert keywords[:2] == ["深圳光明酒店", "深圳龙华酒店"]
+    assert all("希尔顿" not in keyword and "美爵" not in keyword for keyword in keywords)
+
+
+def test_initial_advanced_supplement_enabled_for_all_and_yes():
+    finder = ReverseTravelFinder(StubCalendar())
+
+    assert finder._should_run_initial_advanced_supplement(FeatureFilters())
+    assert finder._should_run_initial_advanced_supplement(FeatureFilters(advanced="yes"))
+    assert not finder._should_run_initial_advanced_supplement(FeatureFilters(advanced="no"))
+
+
 def test_city_coverage_supplement_plan_uses_missing_district_keywords():
     finder = ReverseTravelFinder(StubCalendar())
     city = CityCandidate(
@@ -1046,6 +1073,98 @@ def test_advanced_priority_coverage_uses_advanced_list_without_forcing_final_fil
     assert ("holiday", FeatureFilters(advanced="yes"), 60) in calls
     assert ("comparison", FeatureFilters(advanced="yes"), 60) in calls
     assert ("verify", FeatureFilters(), 1) in calls
+
+
+def test_initial_advanced_fetch_uses_custom_limit_and_filters(monkeypatch):
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
+    holiday = HolidayRange(
+        code="2026-05-01::劳动节",
+        name="劳动节",
+        start=dt.date(2026, 5, 1),
+        end=dt.date(2026, 5, 3),
+        days=3,
+    )
+    candidate = HotelKeywordCandidate(
+        hotel_id="104151",
+        title="光明新区",
+        filter_id="9|104151",
+        lat=22.74,
+        lon=113.95,
+        search_coordinate="NORMAL_22.74_113.95_2",
+        search_type="D",
+        district_id=104151,
+    )
+    calls = []
+    hotel = {
+        "hotel_id": "1",
+        "hotel_name": "深圳光明测试高级酒店",
+        "detail_url": "",
+        "room_name": "Superior King Room",
+        "room_price_text": "CNY 300",
+        "tax_total_text": "Total price: CNY 900",
+        "tax_total_value": 900,
+    }
+
+    class FakePage:
+        def close(self):
+            pass
+
+    class FakeContext:
+        def new_page(self):
+            return FakePage()
+
+    def fake_resolve(*_args, **_kwargs):
+        return [candidate]
+
+    def fake_fetch_hotel_list(**kwargs):
+        calls.append(("holiday", kwargs["feature_filters"], kwargs["limit"]))
+        return [hotel]
+
+    def fake_fetch_parallel(**kwargs):
+        calls.append(("comparison", kwargs["feature_filters"], kwargs["limit"]))
+        return {"2026-05-04": [hotel]}
+
+    monkeypatch.setattr(finder, "_resolve_hotel_keyword_candidates", fake_resolve)
+    monkeypatch.setattr(finder, "_fetch_hotel_list", fake_fetch_hotel_list)
+    monkeypatch.setattr(finder, "_fetch_hotel_lists_parallel", fake_fetch_parallel)
+
+    holiday_hotels, comparison_hotels = finder._fetch_supplemental_hotel_lists(
+        city_query="深圳",
+        city_candidate=city,
+        holiday=holiday,
+        compare_windows=[{"check_in": dt.date(2026, 5, 4), "check_out": dt.date(2026, 5, 7)}],
+        context=FakeContext(),
+        feature_filters=FeatureFilters(advanced="yes"),
+        keywords=["深圳光明酒店"],
+        max_candidates=1,
+        hotel_list_limit=77,
+    )
+
+    assert holiday_hotels == [hotel]
+    assert comparison_hotels == {"2026-05-04": [hotel]}
+    assert calls == [
+        ("holiday", FeatureFilters(advanced="yes"), 77),
+        ("comparison", FeatureFilters(advanced="yes"), 77),
+    ]
+
+
+def test_first_visible_pricing_preview_waits_for_initial_advanced_supplement():
+    source = inspect.getsource(ReverseTravelFinder._find_choices_base)
+
+    assert "delay_pricing_preview = self._should_run_initial_advanced_supplement(feature_filters)" in source
+    assert "or delay_pricing_preview" in source
+    assert "initial_advanced_preview" in source
+    assert "四星级以上重点片区" in source
 
 
 def test_merge_hotel_lists_keeps_room_types_and_lower_price():
