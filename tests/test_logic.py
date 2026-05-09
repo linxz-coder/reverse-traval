@@ -1528,7 +1528,7 @@ def test_normalize_hotel_api_items_uses_total_tax_price():
     ]
 
 
-def test_build_area_recommendations_prioritizes_discount_areas():
+def test_build_area_recommendations_prioritizes_hotel_count():
     finder = ReverseTravelFinder(StubCalendar())
     recommendations = finder._build_area_recommendations(
         [
@@ -1553,6 +1553,13 @@ def test_build_area_recommendations_prioritizes_discount_areas():
                 "price_diff_nightly": 80,
                 "room_type_label": "大床房",
             },
+            {
+                "area_name": "深圳前海片区",
+                "hotel_name": "深圳前海测试酒店",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -90,
+                "room_type_label": "大床房",
+            },
         ],
         "深圳",
     )
@@ -1561,6 +1568,7 @@ def test_build_area_recommendations_prioritizes_discount_areas():
     assert recommendations[0]["hotel_count"] == 2
     assert recommendations[0]["lower_price_hotel_count"] == 1
     assert recommendations[0]["average_price_diff_nightly_text"] == "CNY -25"
+    assert recommendations[1]["area_name"] == "深圳前海片区"
 
 
 def test_build_area_recommendations_returns_all_area_groups():

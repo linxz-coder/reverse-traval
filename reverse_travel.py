@@ -4691,9 +4691,9 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
         recommendations.sort(
             key=lambda item: (
-                -item["lower_price_ratio"],
-                -item["lower_price_hotel_count"],
                 -item["hotel_count"],
+                -item["lower_price_hotel_count"],
+                -item["lower_price_ratio"],
                 item["average_price_diff_nightly"],
                 item["average_holiday_nightly_tax_total_value"],
             )
