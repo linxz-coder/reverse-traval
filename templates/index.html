@@ -1466,7 +1466,23 @@
         return new Promise((resolve) => window.setTimeout(resolve, ms));
       }
 
+      function partialResultKey(partial, data) {
+        const choices = partial.choices || [];
+        const identity = choices
+          .slice(0, 12)
+          .map((item) => `${item.hotel_id || ""}:${item.room_type || ""}:${item.price_diff_nightly || ""}`)
+          .join("|");
+        return [
+          partial.partial?.stage || data.progress?.stage || "",
+          choices.length,
+          (partial.city_results || []).length,
+          partial.cache?.summary_label || "",
+          identity,
+        ].join(":");
+      }
+
       async function runAsyncJob(startUrl, payload, fallbackMessage, options = {}) {
+        let partialKey = "";
         const startResp = await fetch(startUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -1484,6 +1500,10 @@
         if (startData.status === "succeeded" && startData.result) {
           return startData.result;
         }
+        if (startData.partial_result && typeof options.onProgress === "function") {
+          partialKey = partialResultKey(startData.partial_result, startData);
+          options.onProgress(startData.partial_result, startData);
+        }
         const pollUrl = startData.poll_url || `/api/jobs/${startData.job_id}`;
         let pollInterval = Number(startData.poll_interval_ms || 2000);
         if (!pollUrl || !startData.job_id) {
@@ -1492,7 +1512,6 @@
 
         const maxWaitMs = 30 * 60 * 1000;
         const started = Date.now();
-        let partialKey = "";
         while (Date.now() - started < maxWaitMs) {
           await sleep(pollInterval);
           const resp = await fetch(pollUrl, { cache: "no-store" });
@@ -1507,7 +1526,7 @@
           }
           if (data.partial_result && typeof options.onProgress === "function") {
             const partial = data.partial_result;
-            const key = `${(partial.choices || []).length}:${(partial.city_results || []).length}:${partial.cache?.summary_label || ""}`;
+            const key = partialResultKey(partial, data);
             if (key !== partialKey) {
               partialKey = key;
               options.onProgress(partial, data);
@@ -1570,7 +1589,9 @@
 
         try {
           resetViewMode();
-          const data = await runAsyncJob("/api/search/start", payload, "查询失败");
+          const data = await runAsyncJob("/api/search/start", payload, "查询失败", {
+            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: false }),
+          });
           applyResultData(data);
         } catch (error) {
           errorBox.textContent = error.message || "查询失败";

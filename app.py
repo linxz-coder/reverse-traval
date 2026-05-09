@@ -285,6 +285,28 @@ def request_price_filters(payload: dict) -> tuple[int | None, int | None]:
     )
 
 
+def apply_price_filter_to_result(
+    result: dict[str, Any],
+    min_price: int | None,
+    max_price: int | None,
+) -> dict[str, Any]:
+    filtered = copy.deepcopy(result)
+    choices: list[dict[str, Any]] = []
+    for item in filtered.get("choices") or []:
+        value = int(item.get("holiday_avg_nightly_tax_total_value") or 0)
+        if min_price is not None and value < min_price:
+            continue
+        if max_price is not None and value > max_price:
+            continue
+        choices.append(item)
+    filtered["choices"] = choices
+    filtered["price_filter"] = {"min_price": min_price, "max_price": max_price}
+    city_name = filtered.get("city") or filtered.get("origin_city") or ""
+    if city_name:
+        filtered["area_recommendations"] = finder._build_area_recommendations(choices, city_name)
+    return filtered
+
+
 def canonical_optional_int(value: Any) -> str:
     if value in ("", None):
         return ""
@@ -684,6 +706,19 @@ def search_result_from_payload(
 
     try:
         min_price_int, max_price_int = request_price_filters(payload)
+        def emit_progress(progress: dict[str, Any]) -> None:
+            if progress_callback is None:
+                return
+            progress_data = copy.deepcopy(progress)
+            partial_result = progress_data.get("partial_result")
+            if isinstance(partial_result, dict):
+                progress_data["partial_result"] = apply_price_filter_to_result(
+                    partial_result,
+                    min_price_int,
+                    max_price_int,
+                )
+            progress_callback(progress_data)
+
         result = finder.find_choices(
             city=city,
             holiday_code=holiday_code,
@@ -694,7 +729,7 @@ def search_result_from_payload(
             child_facility_filter=child_facility_filter,
             use_cache=use_cache,
             cache_only=cache_only,
-            progress_callback=progress_callback,
+            progress_callback=emit_progress if progress_callback is not None else None,
         )
     except (HolidayCalendarError, ReverseTravelFinderError) as exc:
         return {"error": str(exc)}, 400

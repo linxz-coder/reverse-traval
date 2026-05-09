@@ -142,6 +142,7 @@ BROWSER_SESSION_LIMIT = 2
 LIVE_SEARCH_LIMIT = _env_int("REVERSE_TRAVEL_LIVE_SEARCH_LIMIT", 2, min_value=1, max_value=4)
 SUPPLEMENT_MIN_CHOICES = 8
 SUPPLEMENT_HOTEL_LIST_LIMIT = 40
+PARTIAL_RESULT_LIMIT = 50
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
 CITY_SUPPLEMENT_KEYWORDS = {
     "广州": (
@@ -1203,6 +1204,58 @@ class ReverseTravelFinder:
         payload.update(extra)
         progress_callback(payload)
 
+    def _comparison_windows_response(self, compare_windows: list[dict[str, dt.date]]) -> list[dict[str, str]]:
+        return [
+            {
+                "check_in": item["check_in"].isoformat(),
+                "check_out": item["check_out"].isoformat(),
+            }
+            for item in compare_windows
+        ]
+
+    def _live_choices_result_payload(
+        self,
+        *,
+        city_name: str,
+        holiday: HolidayRange,
+        feature_filters: FeatureFilters,
+        compare_windows: list[dict[str, dt.date]],
+        choices: list[dict[str, Any]],
+        partial_stage: str | None = None,
+        partial_message: str = "",
+    ) -> dict[str, Any]:
+        payload_choices = copy.deepcopy(choices)
+        self._apply_cached_hotel_names_to_choices(payload_choices)
+        self._refresh_choice_area_names(payload_choices, city_name)
+        result = {
+            "city": city_name,
+            "holiday": {
+                "code": holiday.code,
+                "name": holiday.name,
+                "check_in": holiday.start.isoformat(),
+                "check_out": holiday.check_out.isoformat(),
+                "days": holiday.days,
+            },
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": feature_filters.to_response(),
+            "comparison_windows": self._comparison_windows_response(compare_windows),
+            "area_recommendations": self._build_area_recommendations(payload_choices, city_name),
+            "choices": payload_choices,
+        }
+        if partial_stage:
+            result["partial"] = {
+                "stage": partial_stage,
+                "message": partial_message,
+                "preliminary": True,
+            }
+            result["cache"] = {
+                "hit": False,
+                "source": "live_partial",
+                "source_label": "实时查询中",
+                "age_seconds": 0,
+            }
+        return result
+
     def _find_choices_base(
         self,
         city: str,
@@ -1218,6 +1271,43 @@ class ReverseTravelFinder:
 
         self._emit_progress(progress_callback, "正在识别城市和 Trip.com 搜索范围...", "resolve_city", percent=10)
         city_candidate = self._resolve_city(city)
+        required_feature_keys = self._required_feature_keys(feature_filters)
+
+        def emit_partial_choices(
+            *,
+            stage: str,
+            message: str,
+            percent: int,
+            source_choices: list[dict[str, Any]],
+            **extra: Any,
+        ) -> None:
+            if progress_callback is None or not source_choices:
+                return
+            preview_choices = sorted(
+                copy.deepcopy(source_choices),
+                key=lambda item: (
+                    int(item.get("price_diff_nightly") or 0),
+                    int(item.get("holiday_avg_nightly_tax_total_value") or 0),
+                ),
+            )[:PARTIAL_RESULT_LIMIT]
+            partial_result = self._live_choices_result_payload(
+                city_name=city_candidate.city_name,
+                holiday=holiday,
+                feature_filters=feature_filters,
+                compare_windows=compare_windows,
+                choices=preview_choices,
+                partial_stage=stage,
+                partial_message=message,
+            )
+            self._emit_progress(
+                progress_callback,
+                message,
+                stage,
+                percent=percent,
+                choice_count=len(source_choices),
+                partial_result=partial_result,
+                **extra,
+            )
 
         with self._browser_semaphore:
             with sync_playwright() as playwright:
@@ -1275,12 +1365,41 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     comparison_total=len(compare_windows),
                 )
                 page.close()
+
+                def comparison_batch_callback(
+                    current_comparison_hotels: dict[str, list[dict[str, Any]]],
+                    completed_windows: int,
+                    total_windows: int,
+                ) -> None:
+                    if progress_callback is None or required_feature_keys:
+                        return
+                    comparison_map = self._build_comparison_map(
+                        current_comparison_hotels,
+                        compare_windows,
+                        holiday.days,
+                    )
+                    preview_choices = self._build_choices_from_hotels(
+                        city_candidate,
+                        holiday,
+                        holiday_hotels,
+                        comparison_map,
+                    )
+                    emit_partial_choices(
+                        stage="pricing_preview",
+                        message=f"已完成 {completed_windows}/{total_windows} 个代表时段，先展示部分价格匹配酒店。",
+                        percent=min(74, 42 + round(28 * completed_windows / max(1, total_windows))),
+                        source_choices=preview_choices,
+                        completed=completed_windows,
+                        total=total_windows,
+                    )
+
                 comparison_hotels = self._fetch_hotel_lists_parallel(
                     city_candidate=city_candidate,
                     windows=compare_windows,
                     limit=HOTEL_LIST_LIMIT,
                     context=context,
                     feature_filters=feature_filters,
+                    batch_callback=comparison_batch_callback,
                 )
 
                 comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
@@ -1315,6 +1434,13 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                             holiday_hotels,
                             comparison_map,
                         )
+                        if not required_feature_keys:
+                            emit_partial_choices(
+                                stage="supplemental_preview",
+                                message=f"重点片区补充后已找到 {len(choices)} 家候选酒店，先展示当前结果。",
+                                percent=74,
+                                source_choices=choices,
+                            )
                 browser.close()
 
         choices.sort(key=lambda item: (item["price_diff_nightly"], item["holiday_avg_nightly_tax_total_value"]))
@@ -1326,6 +1452,13 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             choice_count=len(choices),
         )
         choices = self._filter_choices_by_verified_features(choices, feature_filters)
+        choices.sort(key=lambda item: (item["price_diff_nightly"], item["holiday_avg_nightly_tax_total_value"]))
+        emit_partial_choices(
+            stage="verified_preview",
+            message=f"设施核验后保留 {len(choices)} 家酒店，先展示核验后的结果。",
+            percent=86,
+            source_choices=choices,
+        )
         self._emit_progress(
             progress_callback,
             f"设施核验后保留 {len(choices)} 家，正在补全中文酒店名...",
@@ -1334,6 +1467,12 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             choice_count=len(choices),
         )
         self._enrich_choices_with_chinese_hotel_names(choices)
+        emit_partial_choices(
+            stage="names_preview",
+            message="酒店结果已显示，正在整理推荐区域和最终排序。",
+            percent=94,
+            source_choices=choices,
+        )
         self._emit_progress(progress_callback, "正在整理推荐区域和最终结果...", "finalize", percent=96)
         self._refresh_choice_area_names(choices, city_candidate.city_name)
         area_recommendations = self._build_area_recommendations(choices, city_candidate.city_name)
@@ -1349,13 +1488,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             },
             "price_filter": {"min_price": None, "max_price": None},
             "feature_filters": feature_filters.to_response(),
-            "comparison_windows": [
-                {
-                    "check_in": item["check_in"].isoformat(),
-                    "check_out": item["check_out"].isoformat(),
-                }
-                for item in compare_windows
-            ],
+            "comparison_windows": self._comparison_windows_response(compare_windows),
             "area_recommendations": area_recommendations,
             "choices": choices,
         }
@@ -1971,6 +2104,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         context,
         feature_filters: FeatureFilters,
         keyword_candidate: HotelKeywordCandidate | None = None,
+        batch_callback: Callable[[dict[str, list[dict[str, Any]]], int, int], None] | None = None,
     ) -> dict[str, list[dict[str, Any]]]:
         results: dict[str, list[dict[str, Any]]] = {}
         for batch in self._chunked(windows, COMPARE_PAGE_BATCH_SIZE):
@@ -2027,6 +2161,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         check_out=state["check_out"],
                         feature_filters=state["feature_filters"],
                     )
+                if batch_callback is not None:
+                    batch_callback(copy.deepcopy(results), len(results), len(windows))
             finally:
                 for state in states:
                     try:

@@ -233,6 +233,111 @@ def test_background_search_start_returns_cached_result_immediately(monkeypatch):
     assert client.get(data["poll_url"]).get_json()["status"] == "succeeded"
 
 
+def test_background_search_partial_result_is_price_filtered(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    started = threading.Event()
+    release = threading.Event()
+
+    def fake_cached_choices(**kwargs):
+        return None
+
+    def fake_find_choices(**kwargs):
+        progress_callback = kwargs.get("progress_callback")
+        if progress_callback:
+            progress_callback(
+                {
+                    "stage": "pricing_preview",
+                    "message": "先展示部分结果",
+                    "percent": 60,
+                    "partial_result": {
+                        "city": kwargs["city"],
+                        "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+                        "price_filter": {"min_price": None, "max_price": None},
+                        "feature_filters": {},
+                        "comparison_windows": [],
+                        "area_recommendations": [],
+                        "choices": [
+                            {
+                                "hotel_id": "1",
+                                "hotel_name": "价格内酒店",
+                                "area_name": "测试片区",
+                                "holiday_avg_nightly_tax_total_value": 700,
+                                "holiday_avg_nightly_tax_total_price": "CNY 700",
+                                "price_diff_nightly": -10,
+                                "price_diff_nightly_text": "CNY -10",
+                                "room_type_label": "大床房",
+                            },
+                            {
+                                "hotel_id": "2",
+                                "hotel_name": "价格外酒店",
+                                "area_name": "测试片区",
+                                "holiday_avg_nightly_tax_total_value": 900,
+                                "holiday_avg_nightly_tax_total_price": "CNY 900",
+                                "price_diff_nightly": -20,
+                                "price_diff_nightly_text": "CNY -20",
+                                "room_type_label": "双床房",
+                            },
+                        ],
+                    },
+                }
+            )
+        started.set()
+        release.wait(timeout=2)
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [{"hotel_id": "1", "hotel_name": "价格内酒店"}],
+            "cache": {"source": "live", "hit": False},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_cached_choices", fake_cached_choices)
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/search/start",
+        json={
+            "city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "min_price": "600",
+            "max_price": "800",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+            "use_cache": "true",
+        },
+    )
+    assert response.status_code == 202
+    start_data = response.get_json()
+    assert started.wait(timeout=2)
+
+    partial = None
+    for _ in range(50):
+        data = client.get(start_data["poll_url"]).get_json()
+        partial = data.get("partial_result")
+        if partial:
+            break
+        time.sleep(0.02)
+
+    release.set()
+    assert partial["price_filter"] == {"min_price": 600, "max_price": 800}
+    assert [item["hotel_name"] for item in partial["choices"]] == ["价格内酒店"]
+
+    for _ in range(50):
+        data = client.get(start_data["poll_url"]).get_json()
+        if data["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+    assert data["status"] == "succeeded"
+
+
 def test_nearby_search_reports_partial_progress(monkeypatch):
     def fake_find_choices(**kwargs):
         progress_callback = kwargs.get("progress_callback")
