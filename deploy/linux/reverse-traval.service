@@ -10,7 +10,7 @@ Group=reverse_travel
 WorkingDirectory=/opt/reverse-traval
 Environment=PYTHONUNBUFFERED=1
 Environment=PLAYWRIGHT_BROWSERS_PATH=/opt/reverse-traval/.cache/ms-playwright
-Environment=REVERSE_TRAVEL_LIVE_SEARCH_LIMIT=2
+Environment=REVERSE_TRAVEL_LIVE_SEARCH_LIMIT=1
 Environment=REVERSE_TRAVEL_NEARBY_CITY_WORKERS=1
 ExecStart=/opt/reverse-traval/.venv/bin/gunicorn --bind 127.0.0.1:5012 --workers 1 --threads 4 --timeout 240 app:app
 Restart=always

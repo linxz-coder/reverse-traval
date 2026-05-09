@@ -442,6 +442,21 @@
         background: linear-gradient(180deg, #fff, #fbfcfe);
         padding: 12px;
         box-shadow: var(--shadow-soft);
+        cursor: pointer;
+        text-align: left;
+        transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+      }
+      .area-card:hover,
+      .area-card:focus {
+        border-color: rgba(22, 87, 216, 0.45);
+        box-shadow: 0 8px 18px rgba(22, 87, 216, 0.12);
+        outline: none;
+        transform: translateY(-1px);
+      }
+      .area-card.active {
+        border-color: var(--primary);
+        background: linear-gradient(180deg, #f7fbff, #edf4ff);
+        box-shadow: 0 0 0 3px rgba(22, 87, 216, 0.12), var(--shadow-soft);
       }
       .area-name {
         font-size: 16px;
@@ -1001,6 +1016,7 @@
       let currentRequestKind = "single";
       let activeView = "all";
       let resultSearchQuery = "";
+      let activeAreaFilter = null;
       const provinceCityOptions = {{ province_city_options|tojson }};
 
       function esc(text) {
@@ -1192,7 +1208,18 @@
         lastComparisonCount = (data.comparison_windows || []).length;
       }
 
-      function visibleChoices() {
+      function areaFilterKey(areaName, recommendCity = "") {
+        return `${normalizeSearchText(areaName)}::${normalizeSearchText(recommendCity)}`;
+      }
+
+      function matchesActiveArea(item) {
+        if (!activeAreaFilter) return true;
+        const itemArea = normalizeSearchText(item.area_name || "");
+        const itemCity = normalizeSearchText(item.recommend_city || "");
+        return itemArea === activeAreaFilter.area && (!activeAreaFilter.city || itemCity === activeAreaFilter.city);
+      }
+
+      function visibleChoices(options = {}) {
         let items = lastChoices;
         if (activeView === "lower") {
           items = items.filter((item) => Number(item.price_diff_nightly || 0) <= 0);
@@ -1205,6 +1232,9 @@
         if (resultSearchQuery) {
           items = items.filter((item) => choiceSearchText(item).includes(resultSearchQuery));
         }
+        if (!options.ignoreAreaFilter) {
+          items = items.filter(matchesActiveArea);
+        }
         return items;
       }
 
@@ -1214,15 +1244,16 @@
         const searchText = resultSearchQuery && resultSearchInput.value.trim()
           ? `，搜索「${resultSearchInput.value.trim()}」`
           : "";
+        const areaText = activeAreaFilter ? `，片区「${activeAreaFilter.label}」` : "";
         const stageText = [lastResultMeta, lastHotelNameMeta].filter(Boolean).join("，");
         const totalChoiceCount = Math.max(lastTotalChoiceCount || 0, lastChoices.length);
         const countText = totalChoiceCount > lastChoices.length
           ? `${items.length}/${lastChoices.length} 家（已找到 ${totalChoiceCount} 家，逐步显示）`
           : `${items.length}/${lastChoices.length} 家`;
-        tableMeta.textContent = `${countText}，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${stageText ? `，${stageText}` : ""}${searchText}`;
-        renderAreas(items);
+        tableMeta.textContent = `${countText}，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${stageText ? `，${stageText}` : ""}${areaText}${searchText}`;
+        renderAreas(visibleChoices({ ignoreAreaFilter: true }));
         if (!items.length) {
-          choicesBody.innerHTML = `<tr><td class="empty" colspan="4">${resultSearchQuery ? "结果里没有匹配的酒店。" : "当前条件下没有找到“反向旅游好选择”。"}</td></tr>`;
+          choicesBody.innerHTML = `<tr><td class="empty" colspan="4">${activeAreaFilter ? "该片区下没有匹配当前筛选的酒店。" : (resultSearchQuery ? "结果里没有匹配的酒店。" : "当前条件下没有找到“反向旅游好选择”。")}</td></tr>`;
           return;
         }
         choicesBody.innerHTML = items.map((item) => `
@@ -1260,6 +1291,7 @@
       function resetViewMode() {
         activeView = "all";
         resultSearchQuery = "";
+        activeAreaFilter = null;
         if (resultSearchInput) resultSearchInput.value = "";
         viewFilter.querySelectorAll("[data-view]").forEach((button) => {
           button.classList.toggle("active", button.dataset.view === activeView);
@@ -1291,7 +1323,7 @@
         if (!data || !(data.choices || []).length) return;
         const token = ++areaRefreshToken;
         lastAreaRefreshMeta = "酒店结果已显示，正在后台规范化推荐区域...";
-        renderAreas(visibleChoices());
+        renderAreas(visibleChoices({ ignoreAreaFilter: true }));
         runSilentJob("/api/areas/start", {
           city: data.city || "",
           origin_city: data.origin_city || "",
@@ -1309,7 +1341,7 @@
         }).catch(() => {
           if (token !== areaRefreshToken) return;
           lastAreaRefreshMeta = "";
-          renderAreas(visibleChoices());
+          renderAreas(visibleChoices({ ignoreAreaFilter: true }));
         });
       }
 
@@ -1379,21 +1411,29 @@
         const areas = activeView === "all" && !resultSearchQuery && lastServerAreas.length
           ? lastServerAreas
           : buildAreasFromChoices(items);
-        areaMeta.textContent = lastAreaRefreshMeta || (areas.length ? `优先显示命中酒店更集中、降价更多的片区` : "暂无可推荐片区");
+        areaMeta.textContent = activeAreaFilter
+          ? `已筛选 ${activeAreaFilter.label}，再次点击该片区可取消`
+          : (lastAreaRefreshMeta || (areas.length ? `优先显示命中酒店更集中、降价更多的片区` : "暂无可推荐片区"));
         areaRecommendations.innerHTML = areas.length
-          ? areas.map((area) => `
-            <article class="area-card">
+          ? areas.map((area) => {
+            const key = areaFilterKey(area.area_name || "", area.recommend_city || "");
+            const active = activeAreaFilter && key === activeAreaFilter.key;
+            const cityLabel = area.recommend_city ? `${area.recommend_city} · ` : "";
+            return `
+            <article class="area-card${active ? " active" : ""}" role="button" tabindex="0" data-area-key="${esc(key)}" data-area-name="${esc(area.area_name)}" data-recommend-city="${esc(area.recommend_city || "")}" aria-pressed="${active ? "true" : "false"}" title="查看该片区酒店">
               <div class="area-name">${esc(area.area_name)}</div>
               <div class="area-stats">
+                ${area.recommend_city ? `<span class="pill">${esc(area.recommend_city)}</span>` : ""}
                 <span class="pill">${esc(area.hotel_count)} 家酒店</span>
                 <span class="pill">${esc(area.lower_price_hotel_count)} 家更低</span>
                 <span class="pill">${esc(area.average_holiday_nightly_tax_total_price)}/晚</span>
                 <span class="diff ${diffClass(area.average_price_diff_nightly)}">${esc(area.average_price_diff_nightly_text)}</span>
               </div>
               <div class="area-hotels">${esc(area.reason || "")}</div>
-              <div class="area-hotels">${esc((area.representative_hotels || []).slice(0, 3).join("、"))}</div>
+              <div class="area-hotels">${esc(cityLabel)}${esc((area.representative_hotels || []).slice(0, 3).join("、"))}</div>
             </article>
-          `).join("")
+          `;
+          }).join("")
           : `<div class="empty">当前条件下暂无推荐旅游区域。</div>`;
       }
 
@@ -1402,9 +1442,12 @@
         for (const item of items) {
           const name = item.area_name || "";
           if (!name || isGenericAreaName(name)) continue;
-          if (!groups.has(name)) {
-            groups.set(name, {
+          const recommendCity = item.recommend_city || "";
+          const key = areaFilterKey(name, recommendCity);
+          if (!groups.has(key)) {
+            groups.set(key, {
               area_name: name,
+              recommend_city: recommendCity,
               hotel_count: 0,
               lower_price_hotel_count: 0,
               slightly_higher_hotel_count: 0,
@@ -1413,7 +1456,7 @@
               representative_hotels: [],
             });
           }
-          const group = groups.get(name);
+          const group = groups.get(key);
           const diff = Number(item.price_diff_nightly || 0);
           group.hotel_count += 1;
           if (diff <= 0) group.lower_price_hotel_count += 1;
@@ -1454,6 +1497,24 @@
         if (lowerCount === hotelCount) return `${hotelCount} 家命中酒店假期价格不高于平日代表均价。`;
         if (lowerCount) return `${lowerCount} 家酒店假期更低，整体涨幅可控。`;
         return `${hotelCount} 家酒店假期涨幅不超过 100 元/晚。`;
+      }
+
+      function selectAreaCard(card) {
+        const areaName = card.dataset.areaName || "";
+        const recommendCity = card.dataset.recommendCity || "";
+        const key = card.dataset.areaKey || areaFilterKey(areaName, recommendCity);
+        if (activeAreaFilter && activeAreaFilter.key === key) {
+          activeAreaFilter = null;
+        } else {
+          activeAreaFilter = {
+            key,
+            area: normalizeSearchText(areaName),
+            city: normalizeSearchText(recommendCity),
+            label: recommendCity ? `${recommendCity} · ${areaName}` : areaName,
+          };
+        }
+        renderChoices();
+        choicesBody.closest(".panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
       async function readJsonResponse(resp, fallbackMessage) {
@@ -1718,6 +1779,20 @@
           item.classList.toggle("active", item === button);
         });
         renderChoices();
+      });
+
+      areaRecommendations.addEventListener("click", (event) => {
+        const card = event.target.closest(".area-card");
+        if (!card) return;
+        selectAreaCard(card);
+      });
+
+      areaRecommendations.addEventListener("keydown", (event) => {
+        if (!["Enter", " "].includes(event.key)) return;
+        const card = event.target.closest(".area-card");
+        if (!card) return;
+        event.preventDefault();
+        selectAreaCard(card);
       });
 
       resultSearchInput.addEventListener("input", () => {
