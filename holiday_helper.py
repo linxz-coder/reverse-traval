@@ -51,17 +51,25 @@ class HolidayCalendar:
         self._cache_lock = threading.Lock()
         self._direct_opener = build_opener(ProxyHandler({}))
 
-    def get_upcoming_holidays(self, days_ahead: int = 260) -> list[HolidayRange]:
-        today = dt.date.today()
+    def get_upcoming_holidays(self, days_ahead: int = 260, today: dt.date | None = None) -> list[HolidayRange]:
+        today = today or dt.date.today()
         if today.year == 2026:
-            items = []
-            for name, start, end in OFFICIAL_2026_HOLIDAYS:
-                if end < today:
-                    continue
-                code = f"{start.isoformat()}::{name}"
-                items.append(HolidayRange(code=code, name=name, start=start, end=end, days=(end - start).days + 1))
-            return items
+            official_items = self._official_2026_upcoming_holidays(today)
+            if official_items:
+                return official_items
 
+        return self._fetch_upcoming_holidays_from_api(today=today, days_ahead=days_ahead)
+
+    def _official_2026_upcoming_holidays(self, today: dt.date) -> list[HolidayRange]:
+        items = []
+        for name, start, end in OFFICIAL_2026_HOLIDAYS:
+            if end < today:
+                continue
+            code = f"{start.isoformat()}::{name}"
+            items.append(HolidayRange(code=code, name=name, start=start, end=end, days=(end - start).days + 1))
+        return items
+
+    def _fetch_upcoming_holidays_from_api(self, *, today: dt.date, days_ahead: int) -> list[HolidayRange]:
         target_days = [today + dt.timedelta(days=offset) for offset in range(days_ahead + 1)]
         rows: list[tuple[dt.date, dict[str, Any]]] = []
         with ThreadPoolExecutor(max_workers=8) as executor:
