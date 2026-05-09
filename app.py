@@ -1156,6 +1156,40 @@ def hotel_name_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
     return result, 200
 
 
+def coverage_result_from_payload(
+    payload: dict,
+    progress_callback: Callable[[dict[str, Any]], None] | None = None,
+) -> tuple[dict[str, Any], int]:
+    city = (payload.get("city") or "").strip()
+    holiday_code = (payload.get("holiday_code") or "").strip()
+    choices = payload.get("choices") or []
+    advanced_filter = payload.get("advanced_filter")
+    pool_filter = payload.get("pool_filter")
+    child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+    if not city or not holiday_code:
+        return {"error": "city 和 holiday_code 不能为空"}, 400
+    if not isinstance(choices, list):
+        return {"error": "choices 必须是列表"}, 400
+    try:
+        min_price_int, max_price_int = request_price_filters(payload)
+        result = finder.supplement_coverage_choices(
+            city=city,
+            holiday_code=holiday_code,
+            choices=choices,
+            min_price=min_price_int,
+            max_price=max_price_int,
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+            progress_callback=progress_callback,
+        )
+    except (HolidayCalendarError, ReverseTravelFinderError) as exc:
+        return {"error": str(exc)}, 400
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"行政区补充失败: {exc}"}, 500
+    return result, 200
+
+
 def cached_result_for_job_start(kind: str, payload: dict[str, Any]) -> tuple[dict[str, Any] | None, int]:
     if kind == "search":
         return cached_search_result_from_payload(payload)
@@ -1236,6 +1270,9 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
         result, status_code = search_result_from_payload(payload, progress_callback=progress_callback)
     elif kind == "nearby":
         result, status_code = nearby_search_result_from_payload(payload, progress_callback=progress_callback)
+    elif kind == "coverage":
+        update_job_progress(job_id, {"stage": "coverage", "message": "基础结果已显示，正在后台补充缺失行政区。", "percent": 5})
+        result, status_code = coverage_result_from_payload(payload, progress_callback=progress_callback)
     elif kind == "hotel_names":
         update_job_progress(job_id, {"stage": "hotel_names", "message": "正在后台匹配简体中文酒店名。", "percent": 40})
         result, status_code = hotel_name_result_from_payload(payload)
@@ -1421,6 +1458,12 @@ def areas_start():
 def hotel_names_start():
     payload = request.get_json(silent=True) or {}
     return start_background_job("hotel_names", payload)
+
+
+@app.post("/api/coverage/start")
+def coverage_start():
+    payload = request.get_json(silent=True) or {}
+    return start_background_job("coverage", payload)
 
 
 @app.get("/api/jobs/<job_id>")

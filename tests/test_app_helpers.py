@@ -529,6 +529,74 @@ def test_hotel_name_refresh_job_returns_simplified_choices(monkeypatch):
     assert data["result"]["choices"][0]["hotel_name"] == "深圳光明虹桥希尔顿花园酒店"
 
 
+def test_coverage_refresh_job_reports_partial_result(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    def fake_supplement_coverage_choices(**kwargs):
+        progress_callback = kwargs.get("progress_callback")
+        partial = {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [{"area_name": "北京朝阳片区"}],
+            "choices": [
+                *kwargs["choices"],
+                {"hotel_id": "2", "hotel_name": "北京朝阳补充酒店", "room_type": "king"},
+            ],
+            "coverage_supplement": {"status": "running", "message": "已补充朝阳区", "completed": 1, "total": 2},
+        }
+        if progress_callback:
+            progress_callback({
+                "stage": "coverage_preview",
+                "message": "已补充朝阳区",
+                "percent": 55,
+                "partial_result": partial,
+            })
+        return {
+            **partial,
+            "coverage_supplement": {"status": "succeeded", "message": "行政区补充完成", "completed": 2, "total": 2},
+        }
+
+    monkeypatch.setattr(app_module.finder, "supplement_coverage_choices", fake_supplement_coverage_choices)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/coverage/start",
+        json={
+            "city": "北京",
+            "holiday_code": "2026-06-19::端午节",
+            "choices": [{"hotel_id": "1", "hotel_name": "北京已有酒店", "room_type": "king"}],
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+        },
+    )
+
+    assert response.status_code == 202
+    poll_url = response.get_json()["poll_url"]
+    data = None
+    saw_partial = False
+    for _ in range(50):
+        poll_response = client.get(poll_url)
+        assert poll_response.is_json
+        data = poll_response.get_json()
+        partial = data.get("partial_result") or {}
+        if any(choice.get("hotel_id") == "2" for choice in partial.get("choices") or []):
+            saw_partial = True
+        if data["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert saw_partial
+    assert data["status"] == "succeeded"
+    assert data["result"]["coverage_supplement"]["status"] == "succeeded"
+    assert any(choice["hotel_name"] == "北京朝阳补充酒店" for choice in data["result"]["choices"])
+
+
 def test_cache_prewarm_background_state(monkeypatch):
     def fake_find_choices(**kwargs):
         progress_callback = kwargs.get("progress_callback")

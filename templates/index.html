@@ -1012,6 +1012,7 @@
       let lastTotalChoiceCount = 0;
       let areaRefreshToken = 0;
       let hotelNameRefreshToken = 0;
+      let coverageRefreshToken = 0;
       let currentUseCache = true;
       let currentRequestKind = "single";
       let activeView = "all";
@@ -1092,8 +1093,15 @@
         if (!Array.isArray(updatedChoices) || !updatedChoices.length) return;
         const byKey = new Map(lastChoices.map((item, index) => [choiceKey(item, index), item]));
         updatedChoices.forEach((updated, index) => {
-          const existing = byKey.get(choiceKey(updated, index)) || lastChoices[index];
-          if (!existing) return;
+          const key = choiceKey(updated, index);
+          const existing = byKey.get(key);
+          if (!existing && Array.isArray(fields)) return;
+          if (!existing) {
+            const appended = { ...updated };
+            lastChoices.push(appended);
+            byKey.set(key, appended);
+            return;
+          }
           if (Array.isArray(fields)) {
             fields.forEach((field) => {
               if (Object.prototype.hasOwnProperty.call(updated, field)) existing[field] = updated[field];
@@ -1317,6 +1325,57 @@
         if (options.refreshAreas !== false) {
           startAreaRefresh(data);
         }
+        if (options.refreshCoverage !== false) {
+          startCoverageRefresh(data);
+        }
+      }
+
+      function coveragePayloadFromResult(data) {
+        const filters = data.feature_filters || {};
+        const priceFilter = data.price_filter || {};
+        return {
+          city: data.city || "",
+          holiday_code: data.holiday?.code || "",
+          min_price: priceFilter.min_price ?? "",
+          max_price: priceFilter.max_price ?? "",
+          advanced_filter: filters.advanced?.value || "all",
+          pool_filter: filters.pool?.value || "all",
+          child_facility_filter: filters.child_facility?.value || "all",
+          choices: data.choices || [],
+        };
+      }
+
+      function mergeCoverageResult(data, token) {
+        if (token !== coverageRefreshToken || !data) return;
+        mergeChoiceUpdates(data.choices || []);
+        lastChoices.sort((a, b) =>
+          Number(a.price_diff_nightly || 0) - Number(b.price_diff_nightly || 0)
+          || Number(a.holiday_avg_nightly_tax_total_value || 0) - Number(b.holiday_avg_nightly_tax_total_value || 0)
+        );
+        lastServerAreas = data.area_recommendations || lastServerAreas;
+        lastTotalChoiceCount = Math.max(lastTotalChoiceCount || 0, lastChoices.length);
+        const supplement = data.coverage_supplement || {};
+        if (supplement.message) lastResultMeta = supplement.message;
+        renderSummary({ ...data, choices: lastChoices, area_recommendations: lastServerAreas });
+        renderChoices();
+      }
+
+      function startCoverageRefresh(data) {
+        if (!data || !(data.choices || []).length || data.city_results) return;
+        const payload = coveragePayloadFromResult(data);
+        if (!payload.city || !payload.holiday_code) return;
+        const token = ++coverageRefreshToken;
+        lastResultMeta = "基础结果已显示，正在后台按行政区补充遗漏酒店...";
+        renderChoices();
+        runAsyncJob("/api/coverage/start", payload, "行政区补充失败", {
+          onProgress: (partial) => mergeCoverageResult(partial, token),
+        }).then((coverageData) => {
+          mergeCoverageResult(coverageData, token);
+        }).catch(() => {
+          if (token !== coverageRefreshToken) return;
+          lastResultMeta = "";
+          renderChoices();
+        });
       }
 
       function startAreaRefresh(data) {
@@ -1667,6 +1726,7 @@
         result.classList.add("hidden");
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
+        coverageRefreshToken += 1;
         lastAreaRefreshMeta = "";
         lastResultMeta = "";
         lastHotelNameMeta = "";
@@ -1680,7 +1740,7 @@
         try {
           resetViewMode();
           const data = await runAsyncJob("/api/search/start", payload, "查询失败", {
-            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: false }),
+            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: false, refreshCoverage: false }),
           });
           applyResultData(data);
         } catch (error) {
@@ -1697,6 +1757,7 @@
         result.classList.add("hidden");
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
+        coverageRefreshToken += 1;
         lastAreaRefreshMeta = "";
         lastResultMeta = "";
         lastHotelNameMeta = "";
@@ -1712,7 +1773,7 @@
         try {
           resetViewMode();
           const data = await runAsyncJob("/api/nearby-search/start", payload, "附近推荐失败", {
-            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: false }),
+            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: false, refreshCoverage: false }),
           });
           applyResultData(data);
         } catch (error) {

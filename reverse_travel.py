@@ -126,7 +126,7 @@ DEEP_HOTEL_LIST_LIMIT = _env_int(
     min_value=HOTEL_LIST_LIMIT,
     max_value=360,
 )
-QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v29"
+QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v30"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 SEARCH_CACHE_TTL_SECONDS = 24 * 60 * 60
 STALE_SEARCH_CACHE_TTL_SECONDS = 7 * 24 * 60 * 60
@@ -1501,6 +1501,302 @@ class ReverseTravelFinder:
             }
         return result
 
+    def supplement_coverage_choices(
+        self,
+        *,
+        city: str,
+        holiday_code: str,
+        choices: list[dict[str, Any]],
+        min_price: int | None,
+        max_price: int | None,
+        advanced_filter: str | None = "all",
+        pool_filter: str | None = "all",
+        child_facility_filter: str | None = "all",
+        progress_callback: Callable[[dict[str, Any]], None] | None = None,
+    ) -> dict[str, Any]:
+        feature_filters = self._normalize_feature_filters(
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+        holiday = self._get_holiday(holiday_code)
+        compare_windows = self._build_compare_windows(holiday)
+        if not compare_windows:
+            raise ReverseTravelFinderError("未来一个月内没有可比较的非法定假期时间段。")
+
+        city_candidate = self._resolve_city(city)
+        base_choices = self._filter_choices_by_price(copy.deepcopy(choices), min_price, max_price)
+        self._apply_cached_hotel_names_to_choices(base_choices)
+        self._refresh_choice_area_names(base_choices, city_candidate.city_name)
+        base_choices.sort(key=self._choice_sort_key)
+
+        coverage_plan = self._city_coverage_supplement_plan(city, city_candidate, base_choices)
+        if not coverage_plan:
+            result = self._coverage_result_payload(
+                city_name=city_candidate.city_name,
+                holiday=holiday,
+                feature_filters=feature_filters,
+                compare_windows=compare_windows,
+                choices=base_choices,
+                min_price=min_price,
+                max_price=max_price,
+                status="skipped",
+                message="当前结果已覆盖主要行政区。",
+            )
+            self._emit_progress(
+                progress_callback,
+                "当前结果已覆盖主要行政区。",
+                "coverage_skipped",
+                percent=100,
+                partial_result=result,
+            )
+            return result
+
+        area_names = [item["area_name"] for item in coverage_plan]
+        area_preview = "、".join(area_names[:6])
+        if len(area_names) > 6:
+            area_preview = f"{area_preview}等 {len(area_names)} 个片区"
+        self._emit_progress(
+            progress_callback,
+            f"已显示基础结果，正在后台按行政区补充：{area_preview}...",
+            "coverage_start",
+            percent=5,
+            coverage_area_count=len(area_names),
+        )
+
+        coverage_choices: list[dict[str, Any]] = []
+        with self._browser_semaphore:
+            with sync_playwright() as playwright:
+                browser = playwright.chromium.launch(
+                    headless=True,
+                    args=["--disable-blink-features=AutomationControlled"],
+                )
+                context = browser.new_context(
+                    user_agent=UA,
+                    locale="zh-CN",
+                    timezone_id="Asia/Shanghai",
+                    viewport={"width": 1440, "height": 1400},
+                    service_workers="block",
+                )
+                context.route("**/*", self._route_lightweight_resources)
+                context.add_init_script(
+                    """
+Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+Object.defineProperty(navigator, 'languages', { get: () => ['zh-CN', 'zh', 'en'] });
+Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
+                    """
+                )
+                try:
+                    candidates = self._resolve_hotel_keyword_candidates(
+                        city,
+                        city_candidate,
+                        keywords=[item["keyword"] for item in coverage_plan],
+                        max_candidates=MAX_COVERAGE_KEYWORD_CANDIDATES,
+                    )
+                    total = len(candidates)
+                    for index, candidate in enumerate(candidates, start=1):
+                        self._emit_progress(
+                            progress_callback,
+                            f"正在后台补充 {candidate.title} 范围酒店（{index}/{total}）...",
+                            "coverage_hotels",
+                            percent=min(92, 10 + round(82 * (index - 1) / max(1, total))),
+                            completed=index - 1,
+                            total=total,
+                        )
+                        candidate_choices = self._coverage_choices_for_candidate(
+                            city_candidate=city_candidate,
+                            holiday=holiday,
+                            compare_windows=compare_windows,
+                            context=context,
+                            feature_filters=feature_filters,
+                            candidate=candidate,
+                        )
+                        candidate_choices = self._filter_choices_by_price(candidate_choices, min_price, max_price)
+                        if candidate_choices:
+                            coverage_choices = self._merge_choice_lists(coverage_choices, candidate_choices)
+                            merged_choices = self._merge_choice_lists(base_choices, coverage_choices)
+                            merged_choices.sort(key=self._choice_sort_key)
+                            result = self._coverage_result_payload(
+                                city_name=city_candidate.city_name,
+                                holiday=holiday,
+                                feature_filters=feature_filters,
+                                compare_windows=compare_windows,
+                                choices=merged_choices,
+                                min_price=min_price,
+                                max_price=max_price,
+                                status="running",
+                                message=f"已补充 {candidate.title}，酒店结果会继续增加。",
+                                completed=index,
+                                total=total,
+                            )
+                            self._emit_progress(
+                                progress_callback,
+                                f"已补充 {candidate.title}，当前共 {len(merged_choices)} 家候选酒店。",
+                                "coverage_preview",
+                                percent=min(95, 10 + round(82 * index / max(1, total))),
+                                completed=index,
+                                total=total,
+                                choice_count=len(merged_choices),
+                                partial_result=result,
+                            )
+                finally:
+                    browser.close()
+
+        final_choices = self._merge_choice_lists(base_choices, coverage_choices)
+        final_choices.sort(key=self._choice_sort_key)
+        result = self._coverage_result_payload(
+            city_name=city_candidate.city_name,
+            holiday=holiday,
+            feature_filters=feature_filters,
+            compare_windows=compare_windows,
+            choices=final_choices,
+            min_price=min_price,
+            max_price=max_price,
+            status="succeeded",
+            message=f"行政区补充完成，新增 {max(0, len(final_choices) - len(base_choices))} 家候选酒店。",
+            completed=len(coverage_plan),
+            total=len(coverage_plan),
+        )
+        self._emit_progress(
+            progress_callback,
+            result["coverage_supplement"]["message"],
+            "coverage_succeeded",
+            percent=100,
+            choice_count=len(final_choices),
+            partial_result=result,
+        )
+        return result
+
+    def _coverage_choices_for_candidate(
+        self,
+        *,
+        city_candidate: CityCandidate,
+        holiday: HolidayRange,
+        compare_windows: list[dict[str, dt.date]],
+        context,
+        feature_filters: FeatureFilters,
+        candidate: HotelKeywordCandidate,
+    ) -> list[dict[str, Any]]:
+        page = context.new_page()
+        try:
+            holiday_hotels = self._fetch_hotel_list(
+                city_candidate=city_candidate,
+                check_in=holiday.start,
+                check_out=holiday.check_out,
+                limit=SUPPLEMENT_HOTEL_LIST_LIMIT,
+                page=page,
+                feature_filters=feature_filters,
+                keyword_candidate=candidate,
+            )
+        finally:
+            try:
+                page.close()
+            except Exception:
+                pass
+        if not holiday_hotels:
+            return []
+        comparison_hotels = self._fetch_hotel_lists_parallel(
+            city_candidate=city_candidate,
+            windows=compare_windows,
+            limit=SUPPLEMENT_HOTEL_LIST_LIMIT,
+            context=context,
+            feature_filters=feature_filters,
+            keyword_candidate=candidate,
+        )
+        comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
+        choices = self._build_choices_from_hotels(city_candidate, holiday, holiday_hotels, comparison_map)
+        choices = self._filter_choices_by_verified_features(choices, feature_filters)
+        self._apply_cached_hotel_names_to_choices(choices)
+        self._refresh_choice_area_names(choices, city_candidate.city_name)
+        choices.sort(key=self._choice_sort_key)
+        return choices
+
+    def _coverage_result_payload(
+        self,
+        *,
+        city_name: str,
+        holiday: HolidayRange,
+        feature_filters: FeatureFilters,
+        compare_windows: list[dict[str, dt.date]],
+        choices: list[dict[str, Any]],
+        min_price: int | None,
+        max_price: int | None,
+        status: str,
+        message: str,
+        completed: int = 0,
+        total: int = 0,
+    ) -> dict[str, Any]:
+        payload_choices = copy.deepcopy(choices)
+        self._add_choice_search_names_to_choices(payload_choices)
+        self._refresh_choice_area_names(payload_choices, city_name)
+        return {
+            "city": city_name,
+            "holiday": {
+                "code": holiday.code,
+                "name": holiday.name,
+                "check_in": holiday.start.isoformat(),
+                "check_out": holiday.check_out.isoformat(),
+                "days": holiday.days,
+            },
+            "price_filter": {"min_price": min_price, "max_price": max_price},
+            "feature_filters": feature_filters.to_response(),
+            "comparison_windows": self._comparison_windows_response(compare_windows),
+            "area_recommendations": self._build_area_recommendations(payload_choices, city_name),
+            "choices": payload_choices,
+            "coverage_supplement": {
+                "status": status,
+                "message": message,
+                "completed": completed,
+                "total": total,
+            },
+        }
+
+    def _filter_choices_by_price(
+        self,
+        choices: list[dict[str, Any]],
+        min_price: int | None,
+        max_price: int | None,
+    ) -> list[dict[str, Any]]:
+        filtered: list[dict[str, Any]] = []
+        for item in choices:
+            value = int(item.get("holiday_avg_nightly_tax_total_value") or 0)
+            if min_price is not None and value < min_price:
+                continue
+            if max_price is not None and value > max_price:
+                continue
+            filtered.append(item)
+        return filtered
+
+    def _choice_sort_key(self, item: dict[str, Any]) -> tuple[int, int]:
+        return (
+            int(item.get("price_diff_nightly") or 0),
+            int(item.get("holiday_avg_nightly_tax_total_value") or 0),
+        )
+
+    def _choice_merge_key(self, item: dict[str, Any], fallback_index: int = 0) -> str:
+        hotel_id = str(item.get("hotel_id") or "").strip()
+        room_type = str(item.get("room_type") or "").strip()
+        recommend_city = str(item.get("recommend_city") or "").strip()
+        if hotel_id:
+            return f"{recommend_city}:{hotel_id}:{room_type}"
+        detail_url = str(item.get("detail_url") or "").strip()
+        if detail_url:
+            return f"{recommend_city}:{detail_url}:{room_type}"
+        return f"{recommend_city}:{item.get('hotel_name') or fallback_index}:{room_type}"
+
+    def _merge_choice_lists(
+        self,
+        primary: list[dict[str, Any]],
+        supplemental: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        merged: dict[str, dict[str, Any]] = {}
+        for index, item in enumerate([*primary, *supplemental]):
+            key = self._choice_merge_key(item, index)
+            current = merged.get(key)
+            if current is None or self._choice_sort_key(item) < self._choice_sort_key(current):
+                merged[key] = copy.deepcopy(item)
+        return list(merged.values())
+
     def _find_choices_base(
         self,
         city: str,
@@ -1840,69 +2136,6 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                             choice_count=len(choices),
                         )
 
-                coverage_plan = self._city_coverage_supplement_plan(city, city_candidate, choices)
-                if coverage_plan:
-                    area_names = [item["area_name"] for item in coverage_plan]
-                    area_preview = "、".join(area_names[:6])
-                    if len(area_names) > 6:
-                        area_preview = f"{area_preview}等 {len(area_names)} 个片区"
-                    self._emit_progress(
-                        progress_callback,
-                        f"正在按行政区补充覆盖：{area_preview}...",
-                        "coverage_hotels",
-                        percent=85,
-                        choice_count=len(choices),
-                        coverage_area_count=len(area_names),
-                    )
-
-                    def coverage_candidate_callback(
-                        candidate: HotelKeywordCandidate,
-                        completed: int,
-                        total: int,
-                    ) -> None:
-                        self._emit_progress(
-                            progress_callback,
-                            f"正在补充 {candidate.title} 范围酒店（{completed}/{total}）...",
-                            "coverage_hotels",
-                            percent=85,
-                            choice_count=len(choices),
-                            completed=completed,
-                            total=total,
-                        )
-
-                    coverage_holiday_hotels, coverage_comparison_hotels = self._fetch_supplemental_hotel_lists(
-                        city_query=city,
-                        city_candidate=city_candidate,
-                        holiday=holiday,
-                        compare_windows=compare_windows,
-                        context=context,
-                        feature_filters=feature_filters,
-                        keywords=[item["keyword"] for item in coverage_plan],
-                        max_candidates=MAX_COVERAGE_KEYWORD_CANDIDATES,
-                        candidate_callback=coverage_candidate_callback,
-                    )
-                    if coverage_holiday_hotels:
-                        holiday_hotels = self._merge_hotel_lists(holiday_hotels, coverage_holiday_hotels)
-                        for key, hotels in coverage_comparison_hotels.items():
-                            comparison_hotels[key] = self._merge_hotel_lists(
-                                comparison_hotels.get(key, []),
-                                hotels,
-                            )
-                        comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
-                        choices = self._build_choices_from_hotels(
-                            city_candidate,
-                            holiday,
-                            holiday_hotels,
-                            comparison_map,
-                        )
-                        if not required_feature_keys:
-                            emit_partial_choices(
-                                stage="coverage_preview",
-                                message=f"行政区覆盖补充后已找到 {len(choices)} 家候选酒店，先展示当前结果。",
-                                percent=85,
-                                source_choices=choices,
-                                scanned_hotel_limit=scanned_hotel_limit,
-                            )
                 browser.close()
 
         choices.sort(key=lambda item: (item["price_diff_nightly"], item["holiday_avg_nightly_tax_total_value"]))
