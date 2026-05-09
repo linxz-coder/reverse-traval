@@ -127,7 +127,7 @@ DEEP_HOTEL_LIST_LIMIT = _env_int(
     min_value=HOTEL_LIST_LIMIT,
     max_value=360,
 )
-QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v30"
+QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v31"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 SEARCH_CACHE_TTL_SECONDS = 24 * 60 * 60
 STALE_SEARCH_CACHE_TTL_SECONDS = 7 * 24 * 60 * 60
@@ -150,6 +150,12 @@ BROWSER_SESSION_LIMIT = 2
 LIVE_SEARCH_LIMIT = _env_int("REVERSE_TRAVEL_LIVE_SEARCH_LIMIT", 2, min_value=1, max_value=4)
 SUPPLEMENT_MIN_CHOICES = 8
 SUPPLEMENT_HOTEL_LIST_LIMIT = 40
+ADVANCED_COVERAGE_HOTEL_LIST_LIMIT = _env_int(
+    "REVERSE_TRAVEL_ADVANCED_COVERAGE_HOTEL_LIST_LIMIT",
+    120,
+    min_value=SUPPLEMENT_HOTEL_LIST_LIMIT,
+    max_value=120,
+)
 PARTIAL_RESULT_LIMIT = _env_int("REVERSE_TRAVEL_PARTIAL_RESULT_LIMIT", 100, min_value=40, max_value=200)
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
 MAX_COVERAGE_KEYWORD_CANDIDATES = _env_int(
@@ -1592,8 +1598,16 @@ class ReverseTravelFinder:
         self._refresh_choice_area_names(base_choices, city_candidate.city_name)
         base_choices.sort(key=self._choice_sort_key)
 
-        coverage_plan = self._city_coverage_supplement_plan(city, city_candidate, base_choices)
-        if not coverage_plan:
+        advanced_priority_plan: list[dict[str, str]] = []
+        if feature_filters.advanced in {"all", "yes"}:
+            advanced_priority_plan = self._city_coverage_supplement_plan(
+                city,
+                city_candidate,
+                base_choices,
+                skip_covered=False,
+            )
+        initial_coverage_plan = self._city_coverage_supplement_plan(city, city_candidate, base_choices)
+        if not advanced_priority_plan and not initial_coverage_plan:
             result = self._coverage_result_payload(
                 city_name=city_candidate.city_name,
                 holiday=holiday,
@@ -1614,19 +1628,111 @@ class ReverseTravelFinder:
             )
             return result
 
-        area_names = [item["area_name"] for item in coverage_plan]
+        area_names = [item["area_name"] for item in (advanced_priority_plan or initial_coverage_plan)]
         area_preview = "、".join(area_names[:6])
         if len(area_names) > 6:
             area_preview = f"{area_preview}等 {len(area_names)} 个片区"
+        start_message = (
+            f"已显示基础结果，正在优先按行政区补充四星以上酒店：{area_preview}..."
+            if advanced_priority_plan
+            else f"已显示基础结果，正在后台按行政区补充：{area_preview}..."
+        )
         self._emit_progress(
             progress_callback,
-            f"已显示基础结果，正在后台按行政区补充：{area_preview}...",
+            start_message,
             "coverage_start",
             percent=5,
             coverage_area_count=len(area_names),
         )
 
         coverage_choices: list[dict[str, Any]] = []
+        completed_total = 0
+        planned_total = len(advanced_priority_plan) if advanced_priority_plan else len(initial_coverage_plan)
+
+        def emit_coverage_preview(
+            *,
+            candidate: HotelKeywordCandidate,
+            completed: int,
+            total: int,
+            status: str = "running",
+        ) -> None:
+            merged_choices = self._merge_choice_lists(base_choices, coverage_choices)
+            merged_choices.sort(key=self._choice_sort_key)
+            result = self._coverage_result_payload(
+                city_name=city_candidate.city_name,
+                holiday=holiday,
+                feature_filters=feature_filters,
+                compare_windows=compare_windows,
+                choices=merged_choices,
+                min_price=min_price,
+                max_price=max_price,
+                status=status,
+                message=f"已补充 {candidate.title}，酒店结果会继续增加。",
+                completed=completed,
+                total=total,
+            )
+            self._emit_progress(
+                progress_callback,
+                f"已补充 {candidate.title}，当前共 {len(merged_choices)} 家候选酒店。",
+                "coverage_preview",
+                percent=min(95, 8 + round(87 * completed / max(1, total))),
+                completed=completed,
+                total=total,
+                choice_count=len(merged_choices),
+                partial_result=result,
+            )
+
+        def run_coverage_plan(
+            *,
+            context,
+            plan: list[dict[str, str]],
+            list_feature_filters: FeatureFilters,
+            verify_feature_filters: FeatureFilters,
+            hotel_list_limit: int,
+            stage_prefix: str,
+            label: str,
+        ) -> int:
+            if not plan:
+                return 0
+            candidates = self._resolve_hotel_keyword_candidates(
+                city,
+                city_candidate,
+                keywords=[item["keyword"] for item in plan],
+                max_candidates=MAX_COVERAGE_KEYWORD_CANDIDATES,
+            )
+            total = len(candidates)
+            local_completed = 0
+            for index, candidate in enumerate(candidates, start=1):
+                overall_completed = completed_total + index - 1
+                self._emit_progress(
+                    progress_callback,
+                    f"正在{label} {candidate.title} 范围酒店（{index}/{total}）...",
+                    f"{stage_prefix}_hotels",
+                    percent=min(92, 8 + round(87 * overall_completed / max(1, planned_total))),
+                    completed=overall_completed,
+                    total=planned_total,
+                )
+                candidate_choices = self._coverage_choices_for_candidate(
+                    city_candidate=city_candidate,
+                    holiday=holiday,
+                    compare_windows=compare_windows,
+                    context=context,
+                    feature_filters=verify_feature_filters,
+                    candidate=candidate,
+                    list_feature_filters=list_feature_filters,
+                    hotel_list_limit=hotel_list_limit,
+                )
+                candidate_choices = self._filter_choices_by_price(candidate_choices, min_price, max_price)
+                if candidate_choices:
+                    coverage_choices[:] = self._merge_choice_lists(coverage_choices, candidate_choices)
+                    emit_coverage_preview(
+                        candidate=candidate,
+                        completed=completed_total + index,
+                        total=planned_total,
+                    )
+                local_completed = index
+            return local_completed
+
         with self._browser_semaphore:
             with sync_playwright() as playwright:
                 browser = playwright.chromium.launch(
@@ -1649,58 +1755,39 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     """
                 )
                 try:
-                    candidates = self._resolve_hotel_keyword_candidates(
-                        city,
-                        city_candidate,
-                        keywords=[item["keyword"] for item in coverage_plan],
-                        max_candidates=MAX_COVERAGE_KEYWORD_CANDIDATES,
-                    )
-                    total = len(candidates)
-                    for index, candidate in enumerate(candidates, start=1):
-                        self._emit_progress(
-                            progress_callback,
-                            f"正在后台补充 {candidate.title} 范围酒店（{index}/{total}）...",
-                            "coverage_hotels",
-                            percent=min(92, 10 + round(82 * (index - 1) / max(1, total))),
-                            completed=index - 1,
-                            total=total,
+                    if advanced_priority_plan:
+                        advanced_list_filters = FeatureFilters(
+                            advanced="yes",
+                            pool=feature_filters.pool,
+                            child_facility=feature_filters.child_facility,
                         )
-                        candidate_choices = self._coverage_choices_for_candidate(
-                            city_candidate=city_candidate,
-                            holiday=holiday,
-                            compare_windows=compare_windows,
+                        completed_total += run_coverage_plan(
                             context=context,
-                            feature_filters=feature_filters,
-                            candidate=candidate,
+                            plan=advanced_priority_plan,
+                            list_feature_filters=advanced_list_filters,
+                            verify_feature_filters=feature_filters,
+                            hotel_list_limit=ADVANCED_COVERAGE_HOTEL_LIST_LIMIT,
+                            stage_prefix="advanced_coverage",
+                            label="优先补充四星以上",
                         )
-                        candidate_choices = self._filter_choices_by_price(candidate_choices, min_price, max_price)
-                        if candidate_choices:
-                            coverage_choices = self._merge_choice_lists(coverage_choices, candidate_choices)
-                            merged_choices = self._merge_choice_lists(base_choices, coverage_choices)
-                            merged_choices.sort(key=self._choice_sort_key)
-                            result = self._coverage_result_payload(
-                                city_name=city_candidate.city_name,
-                                holiday=holiday,
-                                feature_filters=feature_filters,
-                                compare_windows=compare_windows,
-                                choices=merged_choices,
-                                min_price=min_price,
-                                max_price=max_price,
-                                status="running",
-                                message=f"已补充 {candidate.title}，酒店结果会继续增加。",
-                                completed=index,
-                                total=total,
-                            )
-                            self._emit_progress(
-                                progress_callback,
-                                f"已补充 {candidate.title}，当前共 {len(merged_choices)} 家候选酒店。",
-                                "coverage_preview",
-                                percent=min(95, 10 + round(82 * index / max(1, total))),
-                                completed=index,
-                                total=total,
-                                choice_count=len(merged_choices),
-                                partial_result=result,
-                            )
+
+                    current_choices = self._merge_choice_lists(base_choices, coverage_choices)
+                    coverage_plan = (
+                        []
+                        if feature_filters.advanced == "yes"
+                        else self._city_coverage_supplement_plan(city, city_candidate, current_choices)
+                    )
+                    planned_total = completed_total + len(coverage_plan)
+                    if coverage_plan:
+                        completed_total += run_coverage_plan(
+                            context=context,
+                            plan=coverage_plan,
+                            list_feature_filters=feature_filters,
+                            verify_feature_filters=feature_filters,
+                            hotel_list_limit=SUPPLEMENT_HOTEL_LIST_LIMIT,
+                            stage_prefix="coverage",
+                            label="后台补充",
+                        )
                 finally:
                     browser.close()
 
@@ -1716,8 +1803,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             max_price=max_price,
             status="succeeded",
             message=f"行政区补充完成，新增 {max(0, len(final_choices) - len(base_choices))} 家候选酒店。",
-            completed=len(coverage_plan),
-            total=len(coverage_plan),
+            completed=completed_total,
+            total=planned_total,
         )
         self._emit_progress(
             progress_callback,
@@ -1738,16 +1825,19 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         context,
         feature_filters: FeatureFilters,
         candidate: HotelKeywordCandidate,
+        list_feature_filters: FeatureFilters | None = None,
+        hotel_list_limit: int = SUPPLEMENT_HOTEL_LIST_LIMIT,
     ) -> list[dict[str, Any]]:
+        list_feature_filters = list_feature_filters or feature_filters
         page = context.new_page()
         try:
             holiday_hotels = self._fetch_hotel_list(
                 city_candidate=city_candidate,
                 check_in=holiday.start,
                 check_out=holiday.check_out,
-                limit=SUPPLEMENT_HOTEL_LIST_LIMIT,
+                limit=hotel_list_limit,
                 page=page,
-                feature_filters=feature_filters,
+                feature_filters=list_feature_filters,
                 keyword_candidate=candidate,
             )
         finally:
@@ -1760,9 +1850,9 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         comparison_hotels = self._fetch_hotel_lists_parallel(
             city_candidate=city_candidate,
             windows=compare_windows,
-            limit=SUPPLEMENT_HOTEL_LIST_LIMIT,
+            limit=hotel_list_limit,
             context=context,
-            feature_filters=feature_filters,
+            feature_filters=list_feature_filters,
             keyword_candidate=candidate,
         )
         comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
@@ -2259,39 +2349,43 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         nights: int,
     ) -> dict[str, dict[str, Any]]:
         comparison_map: dict[str, dict[str, Any]] = {}
+
+        def add_sample(key: str, hotel: dict[str, Any], room_type: str, nightly_value: int, window: dict[str, dt.date]) -> None:
+            current = comparison_map.get(key)
+            if not current:
+                comparison_map[key] = {
+                    "hotel_id": hotel["hotel_id"],
+                    "hotel_name": hotel["hotel_name"],
+                    "room_type": room_type,
+                    "nightly_values": [nightly_value],
+                    "sample_count": 1,
+                    "lowest_sample": {
+                        **hotel,
+                        "nightly_tax_total_value": nightly_value,
+                        "window_check_in": window["check_in"].isoformat(),
+                        "window_check_out": window["check_out"].isoformat(),
+                    },
+                }
+                return
+            current["nightly_values"].append(nightly_value)
+            current["sample_count"] += 1
+            if nightly_value < current["lowest_sample"]["nightly_tax_total_value"]:
+                current["lowest_sample"] = {
+                    **hotel,
+                    "nightly_tax_total_value": nightly_value,
+                    "window_check_in": window["check_in"].isoformat(),
+                    "window_check_out": window["check_out"].isoformat(),
+                }
+
         for window in compare_windows:
             hotels = comparison_hotels.get(window["check_in"].isoformat(), [])
             for hotel in hotels:
                 room_type = self._classify_room_type(hotel["room_name"])
                 if room_type == "unknown":
                     continue
-                key = f"{hotel['hotel_id']}::{room_type}"
                 nightly_value = self._nightly_value(hotel["tax_total_value"], nights)
-                current = comparison_map.get(key)
-                if not current:
-                    comparison_map[key] = {
-                        "hotel_id": hotel["hotel_id"],
-                        "hotel_name": hotel["hotel_name"],
-                        "room_type": room_type,
-                        "nightly_values": [nightly_value],
-                        "sample_count": 1,
-                        "lowest_sample": {
-                            **hotel,
-                            "nightly_tax_total_value": nightly_value,
-                            "window_check_in": window["check_in"].isoformat(),
-                            "window_check_out": window["check_out"].isoformat(),
-                        },
-                    }
-                    continue
-                current["nightly_values"].append(nightly_value)
-                current["sample_count"] += 1
-                if nightly_value < current["lowest_sample"]["nightly_tax_total_value"]:
-                    current["lowest_sample"] = {
-                        **hotel,
-                        "nightly_tax_total_value": nightly_value,
-                        "window_check_in": window["check_in"].isoformat(),
-                        "window_check_out": window["check_out"].isoformat(),
-                    }
+                add_sample(f"{hotel['hotel_id']}::{room_type}", hotel, room_type, nightly_value, window)
+                add_sample(f"{hotel['hotel_id']}::__any", hotel, "__any", nightly_value, window)
         return comparison_map
 
     def _build_choices_from_hotels(
@@ -2308,6 +2402,10 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 continue
             holiday_nightly_value = self._nightly_value(hotel["tax_total_value"], holiday.days)
             comparison = comparison_map.get(f"{hotel['hotel_id']}::{room_type}")
+            comparison_room_type_fallback = False
+            if not comparison:
+                comparison = comparison_map.get(f"{hotel['hotel_id']}::__any")
+                comparison_room_type_fallback = comparison is not None
             if not comparison:
                 continue
             average_nightly_value = round(sum(comparison["nightly_values"]) / comparison["sample_count"])
@@ -2354,6 +2452,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     "comparison_average_nightly_tax_total_value": average_nightly_value,
                     "comparison_sample_count": comparison["sample_count"],
                     "comparison_lowest_room_name": self._localize_room_name(lowest_sample["room_name"]),
+                    "comparison_room_type_fallback": comparison_room_type_fallback,
                     "comparison_lowest_room_price": lowest_sample["room_price_text"],
                     "comparison_lowest_tax_total_price": lowest_sample["tax_total_text"],
                     "comparison_lowest_tax_total_value": lowest_sample["tax_total_value"],
@@ -2662,6 +2761,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         city_query: str,
         city_candidate: CityCandidate,
         choices: list[dict[str, Any]],
+        skip_covered: bool = True,
     ) -> list[dict[str, str]]:
         city_label = self._normalize_city_label(city_candidate.city_name or city_query)
         area_configs = CITY_COVERAGE_AREA_KEYWORDS.get(city_label, ())
@@ -2670,7 +2770,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
         plan: list[dict[str, str]] = []
         for area_name, seed, aliases in area_configs:
-            if self._choices_include_coverage_area(choices, city_candidate.city_name, area_name, aliases):
+            if skip_covered and self._choices_include_coverage_area(choices, city_candidate.city_name, area_name, aliases):
                 continue
             keyword = self._prefixed_city_keyword(city_query, city_label, seed)
             if keyword:
@@ -5376,6 +5476,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         twin_patterns = [
             r"\btwin\b",
             r"\b2\s*beds?\b",
+            r"\b2[-\s]*beds?\b",
+            r"\btwo[-\s]*beds?\b",
             r"\btwo\s*beds?\b",
             r"双床",
             r"两张床",

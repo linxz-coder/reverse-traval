@@ -568,6 +568,29 @@ def test_city_coverage_supplement_plan_treats_alias_area_as_covered():
     assert "深圳光明酒店" not in [item["keyword"] for item in plan]
 
 
+def test_city_coverage_supplement_plan_can_force_covered_areas_for_advanced_priority():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=0,
+        lon=0,
+        filter_id="19|30",
+        search_coordinate="NORMAL_0_0_0",
+    )
+
+    plan = finder._city_coverage_supplement_plan(
+        "深圳",
+        city,
+        [{"hotel_name": "深圳光明温德姆至尊酒店", "area_name": "光明虹桥公园片区"}],
+        skip_covered=False,
+    )
+
+    assert "深圳光明酒店" in [item["keyword"] for item in plan]
+
+
 def test_city_coverage_supplement_plan_uses_chinese_prefix_for_english_city_query():
     finder = ReverseTravelFinder(StubCalendar())
     city = CityCandidate(
@@ -923,6 +946,108 @@ def test_child_city_keyword_candidate_rejects_unrelated_city():
     assert candidate is None
 
 
+def test_advanced_priority_coverage_uses_advanced_list_without_forcing_final_filter(monkeypatch):
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543096,
+        lon=114.057865,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543096_114.057865_0",
+    )
+    holiday = HolidayRange(
+        code="2026-05-01::劳动节",
+        name="劳动节",
+        start=dt.date(2026, 5, 1),
+        end=dt.date(2026, 5, 3),
+        days=3,
+    )
+    candidate = HotelKeywordCandidate(
+        hotel_id="104151",
+        title="光明新区",
+        filter_id="9|104151",
+        lat=22.74,
+        lon=113.95,
+        search_coordinate="NORMAL_22.74_113.95_2",
+        search_type="D",
+        district_id=104151,
+    )
+    calls = []
+
+    class FakePage:
+        def close(self):
+            pass
+
+    class FakeContext:
+        def new_page(self):
+            return FakePage()
+
+    def fake_fetch_hotel_list(**kwargs):
+        calls.append(("holiday", kwargs["feature_filters"], kwargs["limit"]))
+        return [
+            {
+                "hotel_id": "1",
+                "hotel_name": "深圳光明测试高级酒店",
+                "detail_url": "",
+                "room_name": "Superior 2-bed Room",
+                "room_price_text": "CNY 300",
+                "tax_total_text": "Total price: CNY 900",
+                "tax_total_value": 900,
+                "area_name": "光明虹桥公园片区",
+                "area_hint": "Guangming",
+            }
+        ]
+
+    def fake_fetch_parallel(**kwargs):
+        calls.append(("comparison", kwargs["feature_filters"], kwargs["limit"]))
+        return {"2026-05-04": []}
+
+    def fake_build_comparison_map(_hotels, _windows, _nights):
+        return {
+            "1::twin": {
+                "sample_count": 1,
+                "nightly_values": [320],
+                "lowest_sample": {
+                    "room_name": "Superior 2-bed Room",
+                    "room_price_text": "CNY 320",
+                    "tax_total_text": "Total price: CNY 960",
+                    "tax_total_value": 960,
+                    "nightly_tax_total_value": 320,
+                    "window_check_in": "2026-05-04",
+                    "window_check_out": "2026-05-07",
+                },
+            }
+        }
+
+    def fake_verify(choices, feature_filters):
+        calls.append(("verify", feature_filters, len(choices)))
+        return choices
+
+    monkeypatch.setattr(finder, "_fetch_hotel_list", fake_fetch_hotel_list)
+    monkeypatch.setattr(finder, "_fetch_hotel_lists_parallel", fake_fetch_parallel)
+    monkeypatch.setattr(finder, "_build_comparison_map", fake_build_comparison_map)
+    monkeypatch.setattr(finder, "_filter_choices_by_verified_features", fake_verify)
+
+    choices = finder._coverage_choices_for_candidate(
+        city_candidate=city,
+        holiday=holiday,
+        compare_windows=[{"check_in": dt.date(2026, 5, 4), "check_out": dt.date(2026, 5, 7)}],
+        context=FakeContext(),
+        feature_filters=FeatureFilters(),
+        candidate=candidate,
+        list_feature_filters=FeatureFilters(advanced="yes"),
+        hotel_list_limit=60,
+    )
+
+    assert choices[0]["room_type"] == "twin"
+    assert ("holiday", FeatureFilters(advanced="yes"), 60) in calls
+    assert ("comparison", FeatureFilters(advanced="yes"), 60) in calls
+    assert ("verify", FeatureFilters(), 1) in calls
+
+
 def test_merge_hotel_lists_keeps_room_types_and_lower_price():
     finder = ReverseTravelFinder(StubCalendar())
     merged = finder._merge_hotel_lists(
@@ -962,7 +1087,66 @@ def test_classify_room_type():
     assert finder._classify_room_type("Guestroom (Double bed)") == "king"
     assert finder._classify_room_type("Superior Twin Room") == "twin"
     assert finder._classify_room_type("Selected Deluxe Room (2 beds)") == "twin"
+    assert finder._classify_room_type("Superior 2-bed Room") == "twin"
     assert finder._classify_room_type("Deluxe Room") == "unknown"
+
+
+def test_build_choices_can_use_same_hotel_room_type_fallback_for_comparison():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=0,
+        lon=0,
+        filter_id="19|30",
+        search_coordinate="NORMAL_0_0_0",
+    )
+    holiday = HolidayRange(
+        code="2026-05-01::劳动节",
+        name="劳动节",
+        start=dt.date(2026, 5, 1),
+        end=dt.date(2026, 5, 3),
+        days=3,
+    )
+    comparison_map = finder._build_comparison_map(
+        {
+            "2026-05-04": [
+                {
+                    "hotel_id": "114853991",
+                    "hotel_name": "Hilton Garden Inn Shenzhen Guangming Hongqiao Park",
+                    "room_name": "Twin Guest Room",
+                    "room_price_text": "CNY 430",
+                    "tax_total_text": "Total price: CNY 1,290",
+                    "tax_total_value": 1290,
+                }
+            ]
+        },
+        [{"check_in": dt.date(2026, 5, 4), "check_out": dt.date(2026, 5, 7)}],
+        3,
+    )
+
+    choices = finder._build_choices_from_hotels(
+        city,
+        holiday,
+        [
+            {
+                "hotel_id": "114853991",
+                "hotel_name": "Hilton Garden Inn Shenzhen Guangming Hongqiao Park",
+                "detail_url": "",
+                "room_name": "King Guest Room",
+                "room_price_text": "CNY 435",
+                "tax_total_text": "Total price: CNY 1,306",
+                "tax_total_value": 1306,
+            }
+        ],
+        comparison_map,
+    )
+
+    assert choices[0]["hotel_id"] == "114853991"
+    assert choices[0]["room_type"] == "king"
+    assert choices[0]["comparison_room_type_fallback"] is True
 
 
 def test_extract_trip_hk_chinese_hotel_name():
