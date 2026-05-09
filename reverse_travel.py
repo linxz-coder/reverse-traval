@@ -126,7 +126,7 @@ DEEP_HOTEL_LIST_LIMIT = _env_int(
     min_value=HOTEL_LIST_LIMIT,
     max_value=360,
 )
-QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v28"
+QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v29"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 SEARCH_CACHE_TTL_SECONDS = 24 * 60 * 60
 STALE_SEARCH_CACHE_TTL_SECONDS = 7 * 24 * 60 * 60
@@ -153,9 +153,9 @@ PARTIAL_RESULT_LIMIT = _env_int("REVERSE_TRAVEL_PARTIAL_RESULT_LIMIT", 100, min_
 MAX_SUPPLEMENT_KEYWORD_CANDIDATES = 2
 MAX_COVERAGE_KEYWORD_CANDIDATES = _env_int(
     "REVERSE_TRAVEL_COVERAGE_KEYWORD_CANDIDATES",
-    12,
+    16,
     min_value=0,
-    max_value=40,
+    max_value=60,
 )
 CITY_SUPPLEMENT_KEYWORDS = {
     "广州": (
@@ -213,6 +213,145 @@ CITY_SUPPLEMENT_KEYWORDS = {
         "海丰酒店",
     ),
 }
+
+
+def _coverage_area_display_base(area_name: str) -> str:
+    text = str(area_name or "").strip()
+    for suffix in ("特别行政区", "新区", "自治县", "区", "市"):
+        if text.endswith(suffix) and len(text) > len(suffix):
+            return text[: -len(suffix)]
+    return text
+
+
+def _coverage_area_label(city_label: str, area_name: str) -> str:
+    base = _coverage_area_display_base(area_name)
+    if not base:
+        return ""
+    if city_label and not base.startswith(city_label):
+        return f"{city_label}{base}片区"
+    return f"{base}片区"
+
+
+def _coverage_area_aliases(area_name: str) -> tuple[str, ...]:
+    text = str(area_name or "").strip()
+    base = _coverage_area_display_base(text)
+    aliases = [text, base]
+    for suffix in ("特别行政区", "新区", "自治县", "区", "县", "市"):
+        if text.endswith(suffix) and len(text) > len(suffix):
+            aliases.append(text[: -len(suffix)])
+    return tuple(dict.fromkeys(alias for alias in aliases if alias))
+
+
+def _coverage_area_configs(
+    city_label: str,
+    area_items: tuple[str | tuple[str, str, tuple[str, ...]], ...],
+) -> tuple[tuple[str, str, tuple[str, ...]], ...]:
+    configs: list[tuple[str, str, tuple[str, ...]]] = []
+    for item in area_items:
+        if isinstance(item, tuple):
+            configs.append(item)
+            continue
+        area_name = str(item or "").strip()
+        if not area_name:
+            continue
+        configs.append((
+            _coverage_area_label(city_label, area_name),
+            f"{area_name}酒店",
+            _coverage_area_aliases(area_name),
+        ))
+    return tuple(configs)
+
+
+MAJOR_CITY_COVERAGE_DISTRICTS: dict[str, tuple[str | tuple[str, str, tuple[str, ...]], ...]] = {
+    "北京": (
+        "东城区", "西城区", "朝阳区", "丰台区", "石景山区", "海淀区", "门头沟区", "房山区",
+        "通州区", "顺义区", "昌平区", "大兴区", "怀柔区", "平谷区", "密云区", "延庆区",
+    ),
+    "上海": (
+        "黄浦区", "徐汇区", "长宁区", "静安区", "普陀区", "虹口区", "杨浦区", "闵行区",
+        "宝山区", "嘉定区", "浦东新区", "金山区", "松江区", "青浦区", "奉贤区", "崇明区",
+    ),
+    "天津": (
+        "和平区", "河东区", "河西区", "南开区", "河北区", "红桥区", "东丽区", "西青区",
+        "津南区", "北辰区", "武清区", "宝坻区", "滨海新区", "宁河区", "静海区", "蓟州区",
+    ),
+    "重庆": (
+        "渝中区", "江北区", "南岸区", "沙坪坝区", "九龙坡区", "渝北区", "北碚区", "巴南区",
+        "大渡口区", "江津区", "万州区", "武隆区", "南川区", "永川区", "长寿区", "合川区",
+    ),
+    "成都": (
+        "锦江区", "青羊区", "金牛区", "武侯区", "成华区", "高新区", "天府新区", "龙泉驿区",
+        "新都区", "温江区", "双流区", "郫都区", "新津区", "都江堰市", "简阳市", "青白江区",
+    ),
+    "杭州": (
+        "上城区", "拱墅区", "西湖区", "滨江区", "萧山区", "余杭区", "临平区", "钱塘区",
+        "富阳区", "临安区", "桐庐县", "淳安县", "建德市",
+    ),
+    "南京": (
+        "玄武区", "秦淮区", "建邺区", "鼓楼区", "浦口区", "栖霞区", "雨花台区", "江宁区",
+        "六合区", "溧水区", "高淳区",
+    ),
+    "苏州": (
+        "姑苏区", "吴中区", "相城区", "虎丘区", "吴江区",
+        ("苏州工业园区片区", "工业园区酒店", ("工业园区", "苏州工业园区", "金鸡湖", "sip")),
+        "常熟市", "张家港市", "昆山市", "太仓市",
+    ),
+    "武汉": (
+        "江岸区", "江汉区", "硚口区", "汉阳区", "武昌区", "青山区", "洪山区", "东西湖区",
+        "汉南区", "蔡甸区", "江夏区", "黄陂区", "新洲区",
+        ("武汉东湖高新区片区", "东湖高新区酒店", ("东湖高新区", "光谷", "guanggu")),
+    ),
+    "西安": (
+        "新城区", "碑林区", "莲湖区", "灞桥区", "未央区", "雁塔区", "阎良区", "临潼区",
+        "长安区", "高陵区", "鄠邑区", "蓝田县", "周至县",
+        ("西安西咸新区片区", "西咸新区酒店", ("西咸新区", "沣东", "沣西")),
+    ),
+    "长沙": ("芙蓉区", "天心区", "岳麓区", "开福区", "雨花区", "望城区", "长沙县", "浏阳市", "宁乡市"),
+    "郑州": (
+        "中原区", "二七区", "管城回族区", "金水区", "上街区", "惠济区",
+        ("郑州郑东新区片区", "郑东新区酒店", ("郑东新区", "cbd")),
+        "高新区", "经开区", "巩义市", "荥阳市", "新密市", "新郑市", "登封市", "中牟县",
+    ),
+    "青岛": ("市南区", "市北区", "李沧区", "崂山区", "黄岛区", "城阳区", "即墨区", "胶州市", "平度市", "莱西市"),
+    "济南": ("历下区", "市中区", "槐荫区", "天桥区", "历城区", "长清区", "章丘区", "济阳区", "莱芜区", "钢城区", "平阴县", "商河县"),
+    "厦门": ("思明区", "海沧区", "湖里区", "集美区", "同安区", "翔安区"),
+    "福州": ("鼓楼区", "台江区", "仓山区", "马尾区", "晋安区", "长乐区", "闽侯县", "连江县", "罗源县", "闽清县", "永泰县", "平潭县", "福清市"),
+    "宁波": ("海曙区", "江北区", "北仑区", "镇海区", "鄞州区", "奉化区", "象山县", "宁海县", "余姚市", "慈溪市"),
+    "合肥": ("瑶海区", "庐阳区", "蜀山区", "包河区", "肥东县", "肥西县", "长丰县", "庐江县", "巢湖市", "高新区", "经开区", "滨湖新区"),
+    "昆明": ("五华区", "盘龙区", "官渡区", "西山区", "东川区", "呈贡区", "晋宁区", "富民县", "宜良县", "石林县", "嵩明县", "安宁市"),
+    "三亚": ("海棠区", "吉阳区", "天涯区", "崖州区"),
+    "佛山": ("禅城区", "南海区", "顺德区", "高明区", "三水区"),
+    "珠海": ("香洲区", "金湾区", "斗门区", ("珠海横琴片区", "横琴酒店", ("横琴", "长隆", "横琴粤澳深度合作区"))),
+    "惠州": ("惠城区", "惠阳区", "惠东县", "博罗县", "龙门县", ("惠州仲恺片区", "仲恺酒店", ("仲恺", "陈江")), ("惠州大亚湾片区", "大亚湾酒店", ("大亚湾", "澳头"))),
+    "中山": ("石岐区", "东区", "西区", "南区", "小榄镇", "古镇镇", "三乡镇", "坦洲镇", "火炬开发区"),
+    "东莞": (
+        "莞城区", "东城区", "南城区", "万江区", "虎门镇", "长安镇", "厚街镇", "常平镇",
+        "塘厦镇", "凤岗镇", "松山湖", "大朗镇", "寮步镇", "大岭山镇", "麻涌镇", "清溪镇",
+    ),
+}
+DOMESTIC_CITY_ALIASES: tuple[tuple[str, str], ...] = (
+    ("beijing", "北京"), ("北京市", "北京"), ("北京", "北京"),
+    ("shanghai", "上海"), ("上海市", "上海"), ("上海", "上海"),
+    ("tianjin", "天津"), ("天津市", "天津"), ("天津", "天津"),
+    ("chongqing", "重庆"), ("重庆市", "重庆"), ("重庆", "重庆"), ("重慶", "重庆"),
+    ("chengdu", "成都"), ("成都市", "成都"), ("成都", "成都"),
+    ("hangzhou", "杭州"), ("杭州市", "杭州"), ("杭州", "杭州"),
+    ("nanjing", "南京"), ("南京市", "南京"), ("南京", "南京"),
+    ("suzhou", "苏州"), ("苏州市", "苏州"), ("苏州", "苏州"), ("蘇州", "苏州"),
+    ("wuhan", "武汉"), ("武汉市", "武汉"), ("武汉", "武汉"), ("武漢", "武汉"),
+    ("xian", "西安"), ("xi an", "西安"), ("xi'an", "西安"), ("西安市", "西安"), ("西安", "西安"),
+    ("changsha", "长沙"), ("长沙市", "长沙"), ("长沙", "长沙"), ("長沙", "长沙"),
+    ("zhengzhou", "郑州"), ("郑州市", "郑州"), ("郑州", "郑州"), ("鄭州", "郑州"),
+    ("qingdao", "青岛"), ("青岛市", "青岛"), ("青岛", "青岛"), ("青島", "青岛"),
+    ("jinan", "济南"), ("济南市", "济南"), ("济南", "济南"), ("濟南", "济南"),
+    ("xiamen", "厦门"), ("厦门市", "厦门"), ("厦门", "厦门"), ("廈門", "厦门"),
+    ("fuzhou", "福州"), ("福州市", "福州"), ("福州", "福州"),
+    ("ningbo", "宁波"), ("宁波市", "宁波"), ("宁波", "宁波"), ("寧波", "宁波"),
+    ("hefei", "合肥"), ("合肥市", "合肥"), ("合肥", "合肥"),
+    ("kunming", "昆明"), ("昆明市", "昆明"), ("昆明", "昆明"),
+    ("sanya", "三亚"), ("三亚市", "三亚"), ("三亚", "三亚"), ("三亞", "三亚"),
+    ("foshan", "佛山"), ("佛山市", "佛山"), ("佛山", "佛山"),
+)
 CITY_COVERAGE_AREA_KEYWORDS: dict[str, tuple[tuple[str, str, tuple[str, ...]], ...]] = {
     "深圳": (
         ("深圳福田片区", "福田酒店", ("福田", "futian")),
@@ -240,6 +379,10 @@ CITY_COVERAGE_AREA_KEYWORDS: dict[str, tuple[tuple[str, str, tuple[str, ...]], .
         ("广州从化片区", "从化酒店", ("从化", "從化", "conghua")),
         ("广州增城片区", "增城酒店", ("增城", "zengcheng")),
     ),
+    **{
+        city_label: _coverage_area_configs(city_label, districts)
+        for city_label, districts in MAJOR_CITY_COVERAGE_DISTRICTS.items()
+    },
 }
 CITY_DEFAULT_AREA_NAMES = {
     "深圳": ("深圳国际会展中心片区", "光明虹桥公园片区", "深圳观澜片区", "深圳南山片区"),
@@ -3632,6 +3775,10 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
     def _normalize_city_label(self, city_name: str) -> str:
         text = (city_name or "").strip().lower()
+        simplified_city = self._to_simplified_chinese(city_name)
+        for alias, label in DOMESTIC_CITY_ALIASES:
+            if self._city_alias_matches(text, simplified_city, alias):
+                return label
         if "shanghai" in text or "上海" in city_name:
             return "上海"
         if "suzhou" in text or "苏州" in city_name or "蘇州" in city_name:
@@ -3838,6 +3985,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         ):
             return "惠州"
         return (city_name or "").strip()
+
+    def _city_alias_matches(self, lowered_city: str, simplified_city: str, alias: str) -> bool:
+        if re.search(r"[a-z]", alias):
+            return re.search(rf"(?<![a-z]){re.escape(alias)}(?![a-z])", lowered_city) is not None
+        return alias in simplified_city
 
     def _is_outside_search_city(
         self,

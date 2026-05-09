@@ -8,6 +8,8 @@ from reverse_travel import (
     CITY_COVERAGE_AREA_KEYWORDS,
     FeatureFilters,
     HotelKeywordCandidate,
+    MAJOR_CITY_COVERAGE_DISTRICTS,
+    MAX_COVERAGE_KEYWORD_CANDIDATES,
     ReverseTravelFinder,
     ReverseTravelFinderError,
 )
@@ -581,6 +583,82 @@ def test_city_coverage_supplement_plan_uses_chinese_prefix_for_english_city_quer
     plan = finder._city_coverage_supplement_plan("Shenzhen", city, [])
 
     assert plan[0]["keyword"] == "深圳福田酒店"
+
+
+def test_major_city_coverage_configs_generate_admin_district_keywords():
+    finder = ReverseTravelFinder(StubCalendar())
+
+    samples = {
+        "北京": {"北京朝阳区酒店", "北京海淀区酒店"},
+        "上海": {"上海浦东新区酒店", "上海静安区酒店"},
+        "成都": {"成都武侯区酒店", "成都天府新区酒店"},
+        "杭州": {"杭州西湖区酒店", "杭州萧山区酒店"},
+        "南京": {"南京鼓楼区酒店", "南京江宁区酒店"},
+        "武汉": {"武汉武昌区酒店", "武汉东湖高新区酒店"},
+        "西安": {"西安雁塔区酒店", "西安西咸新区酒店"},
+        "苏州": {"苏州姑苏区酒店", "苏州工业园区酒店"},
+        "佛山": {"佛山顺德区酒店", "佛山南海区酒店"},
+    }
+
+    for city_name, expected_keywords in samples.items():
+        city = CityCandidate(
+            city_id=1,
+            city_name=city_name,
+            province_id=1,
+            country_id=1,
+            lat=0,
+            lon=0,
+            filter_id="19|1",
+            search_coordinate="NORMAL_0_0_0",
+        )
+        plan = finder._city_coverage_supplement_plan(city_name, city, [])
+        keywords = {item["keyword"] for item in plan}
+        assert expected_keywords <= keywords
+
+
+def test_major_city_coverage_skips_districts_already_seen_in_results():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=1,
+        city_name="北京",
+        province_id=1,
+        country_id=1,
+        lat=0,
+        lon=0,
+        filter_id="19|1",
+        search_coordinate="NORMAL_0_0_0",
+    )
+
+    plan = finder._city_coverage_supplement_plan(
+        "北京",
+        city,
+        [{"hotel_name": "北京朝阳国贸酒店", "area_hint": "朝阳区 国贸 CBD"}],
+    )
+
+    assert "北京朝阳区酒店" not in {item["keyword"] for item in plan}
+
+
+def test_major_city_coverage_configs_are_bounded_and_not_hotel_branded():
+    brand_tokens = ("希尔顿", "皇冠假日", "凯悦", "万豪", "洲际")
+
+    assert {"北京", "上海", "成都", "杭州", "南京", "武汉", "西安", "苏州"} <= set(
+        MAJOR_CITY_COVERAGE_DISTRICTS
+    )
+    for city_name, configs in CITY_COVERAGE_AREA_KEYWORDS.items():
+        if city_name in MAJOR_CITY_COVERAGE_DISTRICTS:
+            assert len(configs) <= MAX_COVERAGE_KEYWORD_CANDIDATES
+        assert all(not any(token in seed for token in brand_tokens) for _, seed, _ in configs)
+
+
+def test_normalize_city_label_supports_major_city_aliases():
+    finder = ReverseTravelFinder(StubCalendar())
+
+    assert finder._normalize_city_label("Beijing") == "北京"
+    assert finder._normalize_city_label("北京市") == "北京"
+    assert finder._normalize_city_label("Chengdu") == "成都"
+    assert finder._normalize_city_label("上海市") == "上海"
+    assert finder._normalize_city_label("Xian") == "西安"
+    assert finder._normalize_city_label("Xianggang") == "Xianggang"
 
 
 def test_district_keyword_candidate_builds_district_list_url():
