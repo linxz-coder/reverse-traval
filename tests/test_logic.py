@@ -1,6 +1,7 @@
 import datetime as dt
 import inspect
 import re
+from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 from holiday_helper import HolidayRange
@@ -1280,15 +1281,77 @@ def test_extract_trip_hk_chinese_hotel_name():
     assert finder._extract_trip_hk_chinese_hotel_name(body) == "深圳東海朗廷酒店"
 
 
-def test_simplified_hotel_name_search_fields_keep_traditional_display_without_source():
+def test_simplified_hotel_name_fallback_updates_traditional_display():
     finder = ReverseTravelFinder(StubCalendar())
     choice = {"hotel_id": "1", "hotel_name": "深圳光明虹橋希爾頓花園酒店"}
 
     finder._apply_cached_hotel_names_to_choices([choice])
 
-    assert choice["hotel_name"] == "深圳光明虹橋希爾頓花園酒店"
+    assert choice["hotel_name"] == "深圳光明虹桥希尔顿花园酒店"
+    assert choice["hotel_original_name"] == "深圳光明虹橋希爾頓花園酒店"
     assert choice["hotel_name_simplified"] == "深圳光明虹桥希尔顿花园酒店"
     assert "光明虹桥希尔顿花园酒店" in choice["hotel_search_name"]
+
+
+def test_cached_trip_hk_hotel_name_displays_as_simplified(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+    finder._hotel_name_cache["1"] = {"hotel_name": "深圳東海朗廷酒店", "source": "Trip.com HK"}
+    choice = {"hotel_id": "1", "hotel_name": "The Langham, Shenzhen"}
+
+    finder._apply_cached_hotel_names_to_choices([choice])
+
+    assert choice["hotel_name"] == "深圳东海朗廷酒店"
+    assert choice["hotel_original_name"] == "The Langham, Shenzhen"
+    assert choice["hotel_name_source"] == "Trip.com HK"
+
+
+def test_coverage_payload_applies_cached_simplified_hotel_names(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+    finder._hotel_name_cache["777"] = {
+        "hotel_name": "深圳光明虹橋希爾頓花園酒店",
+        "source": "Trip.com HK",
+    }
+    holiday = HolidayRange(
+        code="2026-05-01::劳动节",
+        name="劳动节",
+        start=dt.date(2026, 5, 1),
+        end=dt.date(2026, 5, 3),
+        days=3,
+    )
+
+    result = finder._coverage_result_payload(
+        city_name="深圳",
+        holiday=holiday,
+        feature_filters=FeatureFilters(),
+        compare_windows=[{"check_in": dt.date(2026, 5, 4), "check_out": dt.date(2026, 5, 7)}],
+        choices=[
+            {
+                "hotel_id": "777",
+                "hotel_name": "Hilton Garden Inn Shenzhen Guangming Hongqiao Park",
+                "room_type": "king",
+                "room_type_label": "大床房",
+                "area_name": "光明虹桥公园片区",
+                "holiday_avg_nightly_tax_total_value": 435,
+                "price_diff_nightly": 5,
+            }
+        ],
+        min_price=None,
+        max_price=None,
+        status="succeeded",
+        message="行政区补充完成",
+    )
+
+    choice = result["choices"][0]
+    assert choice["hotel_name"] == "深圳光明虹桥希尔顿花园酒店"
+    assert choice["hotel_original_name"] == "Hilton Garden Inn Shenzhen Guangming Hongqiao Park"
+    assert result["area_recommendations"][0]["representative_hotels"][0] == "深圳光明虹桥希尔顿花园酒店"
+
+
+def test_coverage_merge_triggers_final_hotel_name_refresh():
+    source = (Path(__file__).resolve().parents[1] / "templates" / "index.html").read_text()
+
+    assert 'if (supplement.status === "succeeded")' in source
+    assert "startHotelNameRefresh({ ...data, choices: lastChoices" in source
 
 
 def test_live_search_uses_cached_hotel_names_without_blocking_enrichment():
@@ -1303,7 +1366,7 @@ def test_enhance_hotel_name_data_prefers_domestic_simplified_source(tmp_path, mo
 
     def fake_fetch(detail_url, fallback_name):
         assert "hotelId=777" in detail_url
-        assert fallback_name == "深圳光明虹橋希爾頓花園酒店"
+        assert fallback_name == "深圳光明虹桥希尔顿花园酒店"
         return {"hotel_name": "深圳光明虹桥希尔顿花园酒店", "source": "携程酒店"}
 
     monkeypatch.setattr(finder, "_fetch_domestic_simplified_hotel_name", fake_fetch)

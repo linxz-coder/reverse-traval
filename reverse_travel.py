@@ -1121,9 +1121,40 @@ class ReverseTravelFinder:
             seen.add(text)
         return result
 
+    def _contains_chinese_text(self, value: str) -> bool:
+        return bool(re.search(r"[\u3400-\u9fff]", str(value or "")))
+
     def _add_choice_search_names(self, item: dict[str, Any]) -> None:
         display_name = str(item.get("hotel_name") or "").strip()
         original_name = str(item.get("hotel_original_name") or "").strip()
+        simplified_display = self._to_simplified_chinese(display_name)
+        if (
+            display_name
+            and simplified_display
+            and simplified_display != display_name
+            and self._contains_chinese_text(simplified_display)
+        ):
+            if not original_name:
+                item["hotel_original_name"] = display_name
+                original_name = display_name
+            item["hotel_name"] = simplified_display
+            item["hotel_name_simplified"] = simplified_display
+            display_name = simplified_display
+
+        simplified_candidate = self._to_simplified_chinese(str(item.get("hotel_name_simplified") or "").strip())
+        if (
+            simplified_candidate
+            and self._contains_chinese_text(simplified_candidate)
+            and str(item.get("hotel_name_source") or "").strip()
+            and not self._contains_chinese_text(display_name)
+        ):
+            if display_name and not original_name:
+                item["hotel_original_name"] = display_name
+                original_name = display_name
+            item["hotel_name"] = simplified_candidate
+            item["hotel_name_simplified"] = simplified_candidate
+            display_name = simplified_candidate
+
         existing_aliases = item.get("hotel_name_aliases") or []
         if isinstance(existing_aliases, str):
             existing_aliases = [existing_aliases]
@@ -1950,7 +1981,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         total: int = 0,
     ) -> dict[str, Any]:
         payload_choices = copy.deepcopy(choices)
-        self._add_choice_search_names_to_choices(payload_choices)
+        self._apply_cached_hotel_names_to_choices(payload_choices)
         self._refresh_choice_area_names(payload_choices, city_name)
         return {
             "city": city_name,
@@ -5517,6 +5548,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         targets = [
             (self._to_ctrip_detail_url(detail_url), "携程酒店"),
             (self._to_zh_detail_url(detail_url), "Trip.com 简体"),
+            (self._to_trip_hk_detail_url(detail_url), "Trip.com HK"),
         ]
         for target_url, source in targets:
             if not target_url:

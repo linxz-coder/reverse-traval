@@ -1294,7 +1294,7 @@
         choicesBody.innerHTML = items.map((item) => `
           <tr>
             <td data-label="酒店">
-              <div class="hotel-name">${esc(item.hotel_name)}</div>
+              <div class="hotel-name">${esc(simplifyChineseText(item.hotel_name))}</div>
               ${item.hotel_original_name && item.hotel_original_name !== item.hotel_name ? `<div class="muted">原名：${esc(item.hotel_original_name)}</div>` : ""}
               <div>
                 <span class="pill">${esc(item.room_type_label)}</span>
@@ -1386,6 +1386,9 @@
         if (supplement.message) lastResultMeta = supplement.message;
         renderSummary({ ...data, choices: lastChoices, area_recommendations: lastServerAreas });
         renderChoices();
+        if (supplement.status === "succeeded") {
+          startHotelNameRefresh({ ...data, choices: lastChoices, area_recommendations: lastServerAreas });
+        }
       }
 
       function startCoverageRefresh(data) {
