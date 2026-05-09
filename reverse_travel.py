@@ -953,6 +953,42 @@ class ReverseTravelFinder:
             return None
         return {"created_at": created_at, "result": result}
 
+    def _search_cache_key(self, city: str, holiday_code: str, feature_filters: FeatureFilters) -> tuple[str, ...]:
+        return (QUERY_PROFILE, city.strip().lower(), holiday_code, *feature_filters.cache_parts())
+
+    def _get_cached_search_base(self, cache_key: tuple[str, ...]) -> tuple[dict[str, Any], dict[str, Any]] | None:
+        with self._cache_lock:
+            cached = self._search_cache.get(cache_key)
+            cached_meta = self._search_cache_meta.get(cache_key)
+            if cached is not None and not self._is_cache_meta_fresh(cached_meta, self.search_cache_ttl_seconds):
+                self._search_cache.pop(cache_key, None)
+                self._search_cache_meta.pop(cache_key, None)
+                cached = None
+                cached_meta = None
+            if cached is not None:
+                return (
+                    copy.deepcopy(cached),
+                    self._build_cache_info(
+                        source="memory",
+                        created_at=float((cached_meta or {}).get("created_at") or time.time()),
+                        hit=True,
+                    ),
+                )
+
+        disk_record = self._load_search_cache(cache_key)
+        if disk_record is None:
+            return None
+
+        base_result = copy.deepcopy(disk_record["result"])
+        created_at = float(disk_record["created_at"])
+        with self._cache_lock:
+            self._search_cache[cache_key] = copy.deepcopy(base_result)
+            self._search_cache_meta[cache_key] = {"created_at": created_at}
+        return (
+            base_result,
+            self._build_cache_info(source="disk", created_at=created_at, hit=True),
+        )
+
     def _store_search_cache(self, cache_key: tuple[str, ...], base_result: dict[str, Any], created_at: float) -> None:
         if self.search_cache_ttl_seconds <= 0:
             return
@@ -984,6 +1020,33 @@ class ReverseTravelFinder:
             return dt.datetime.fromtimestamp(timestamp).astimezone().isoformat(timespec="seconds")
         except (OSError, OverflowError, ValueError):
             return ""
+
+    def _finalize_choices_result(
+        self,
+        base_result: dict[str, Any],
+        *,
+        min_price: int | None,
+        max_price: int | None,
+        feature_filters: FeatureFilters,
+        cache_info: dict[str, Any],
+    ) -> dict[str, Any]:
+        result = copy.deepcopy(base_result)
+        filtered_choices: list[dict[str, Any]] = []
+        for hotel in result["choices"]:
+            if min_price is not None and hotel["holiday_avg_nightly_tax_total_value"] < min_price:
+                continue
+            if max_price is not None and hotel["holiday_avg_nightly_tax_total_value"] > max_price:
+                continue
+            filtered_choices.append(hotel)
+
+        result["price_filter"] = {"min_price": min_price, "max_price": max_price}
+        result["feature_filters"] = feature_filters.to_response()
+        self._apply_cached_hotel_names_to_choices(filtered_choices)
+        self._refresh_choice_area_names(filtered_choices, result["city"])
+        result["choices"] = filtered_choices
+        result["area_recommendations"] = self._build_area_recommendations(filtered_choices, result["city"])
+        result["cache"] = cache_info
+        return result
 
     def _load_cached_city_candidate(self, cache_key: str) -> CityCandidate | None:
         if not cache_key:
@@ -1030,16 +1093,8 @@ class ReverseTravelFinder:
             pool_filter=pool_filter,
             child_facility_filter=child_facility_filter,
         )
-        cache_key = (QUERY_PROFILE, city.strip().lower(), holiday_code, *feature_filters.cache_parts())
+        cache_key = self._search_cache_key(city, holiday_code, feature_filters)
         cache_info: dict[str, Any] | None = None
-        with self._cache_lock:
-            cached = self._search_cache.get(cache_key)
-            cached_meta = self._search_cache_meta.get(cache_key)
-            if cached is not None and not self._is_cache_meta_fresh(cached_meta, self.search_cache_ttl_seconds):
-                self._search_cache.pop(cache_key, None)
-                self._search_cache_meta.pop(cache_key, None)
-                cached = None
-                cached_meta = None
         if not use_cache:
             base_result = self._call_find_choices_base(
                 city=city,
@@ -1053,20 +1108,10 @@ class ReverseTravelFinder:
                 self._search_cache_meta[cache_key] = {"created_at": created_at}
             self._store_search_cache(cache_key, base_result, created_at)
             cache_info = self._build_cache_info(source="live", created_at=created_at, hit=False)
-        elif cached is None:
-            disk_record = self._load_search_cache(cache_key)
-            if disk_record is not None:
-                base_result = copy.deepcopy(disk_record["result"])
-                cache_info = self._build_cache_info(
-                    source="disk",
-                    created_at=float(disk_record["created_at"]),
-                    hit=True,
-                )
-                with self._cache_lock:
-                    self._search_cache[cache_key] = copy.deepcopy(base_result)
-                    self._search_cache_meta[cache_key] = {
-                        "created_at": float(disk_record["created_at"]),
-                    }
+        else:
+            cached_result = self._get_cached_search_base(cache_key)
+            if cached_result is not None:
+                base_result, cache_info = cached_result
             else:
                 base_result = self._call_find_choices_base(
                     city=city,
@@ -1080,30 +1125,42 @@ class ReverseTravelFinder:
                     self._search_cache_meta[cache_key] = {"created_at": created_at}
                 self._store_search_cache(cache_key, base_result, created_at)
                 cache_info = self._build_cache_info(source="live", created_at=created_at, hit=False)
-        else:
-            base_result = copy.deepcopy(cached)
-            cache_info = self._build_cache_info(
-                source="memory",
-                created_at=float((cached_meta or {}).get("created_at") or time.time()),
-                hit=True,
-            )
 
-        filtered_choices: list[dict[str, Any]] = []
-        for hotel in base_result["choices"]:
-            if min_price is not None and hotel["holiday_avg_nightly_tax_total_value"] < min_price:
-                continue
-            if max_price is not None and hotel["holiday_avg_nightly_tax_total_value"] > max_price:
-                continue
-            filtered_choices.append(hotel)
+        return self._finalize_choices_result(
+            base_result,
+            min_price=min_price,
+            max_price=max_price,
+            feature_filters=feature_filters,
+            cache_info=cache_info,
+        )
 
-        base_result["price_filter"] = {"min_price": min_price, "max_price": max_price}
-        base_result["feature_filters"] = feature_filters.to_response()
-        self._apply_cached_hotel_names_to_choices(filtered_choices)
-        self._refresh_choice_area_names(filtered_choices, base_result["city"])
-        base_result["choices"] = filtered_choices
-        base_result["area_recommendations"] = self._build_area_recommendations(filtered_choices, base_result["city"])
-        base_result["cache"] = cache_info
-        return base_result
+    def find_cached_choices(
+        self,
+        city: str,
+        holiday_code: str,
+        min_price: int | None,
+        max_price: int | None,
+        advanced_filter: str | None = "all",
+        pool_filter: str | None = "all",
+        child_facility_filter: str | None = "all",
+    ) -> dict[str, Any] | None:
+        feature_filters = self._normalize_feature_filters(
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+        cache_key = self._search_cache_key(city, holiday_code, feature_filters)
+        cached_result = self._get_cached_search_base(cache_key)
+        if cached_result is None:
+            return None
+        base_result, cache_info = cached_result
+        return self._finalize_choices_result(
+            base_result,
+            min_price=min_price,
+            max_price=max_price,
+            feature_filters=feature_filters,
+            cache_info=cache_info,
+        )
 
     def _call_find_choices_base(
         self,

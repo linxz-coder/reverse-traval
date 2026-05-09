@@ -1,3 +1,4 @@
+import threading
 import time
 
 import app as app_module
@@ -46,6 +47,13 @@ def test_api_errors_return_json():
 
 
 def test_background_search_job_returns_result(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    def fake_cached_choices(**kwargs):
+        return None
+
     def fake_find_choices(**kwargs):
         progress_callback = kwargs.get("progress_callback")
         if progress_callback:
@@ -67,6 +75,7 @@ def test_background_search_job_returns_result(monkeypatch):
             "cache": {"source": "live", "hit": False},
         }
 
+    monkeypatch.setattr(app_module.finder, "find_cached_choices", fake_cached_choices)
     monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
     client = flask_app.test_client()
 
@@ -100,6 +109,128 @@ def test_background_search_job_returns_result(monkeypatch):
     assert any(event["message"] == "正在测试后台进度" for event in data["progress_events"])
     assert data["result"]["city"] == "广州"
     assert data["result"]["choices"][0]["hotel_name"] == "测试酒店"
+
+
+def test_background_search_start_reuses_running_same_condition(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    started = threading.Event()
+    release = threading.Event()
+    calls = 0
+
+    def fake_cached_choices(**kwargs):
+        return None
+
+    def fake_find_choices(**kwargs):
+        nonlocal calls
+        calls += 1
+        started.set()
+        release.wait(timeout=2)
+        return {
+            "city": kwargs["city"],
+            "holiday": {
+                "code": kwargs["holiday_code"],
+                "name": "端午节",
+                "check_in": "2026-06-19",
+                "check_out": "2026-06-21",
+                "days": 3,
+            },
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [{"hotel_id": "1", "hotel_name": "复用任务酒店"}],
+            "cache": {"source": "live", "hit": False},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_cached_choices", fake_cached_choices)
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    client = flask_app.test_client()
+    payload = {
+        "city": "深圳",
+        "holiday_code": "2026-06-19::端午节",
+        "min_price": "",
+        "max_price": "",
+        "advanced_filter": "yes",
+        "pool_filter": "yes",
+        "child_facility_filter": "all",
+        "use_cache": "true",
+    }
+
+    first = client.post("/api/search/start", json=payload)
+    assert first.status_code == 202
+    assert started.wait(timeout=2)
+    second = client.post("/api/search/start", json=payload)
+    second_data = second.get_json()
+    assert second.status_code == 202
+    assert second_data["job_id"] == first.get_json()["job_id"]
+    assert second_data["reused"] is True
+
+    release.set()
+    final = None
+    for _ in range(50):
+        poll_response = client.get(second_data["poll_url"])
+        final = poll_response.get_json()
+        if final["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert final["status"] == "succeeded"
+    assert calls == 1
+
+
+def test_background_search_start_returns_cached_result_immediately(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    def fake_cached_choices(**kwargs):
+        return {
+            "city": kwargs["city"],
+            "holiday": {
+                "code": kwargs["holiday_code"],
+                "name": "端午节",
+                "check_in": "2026-06-19",
+                "check_out": "2026-06-21",
+                "days": 3,
+            },
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [{"hotel_id": "1", "hotel_name": "缓存酒店"}],
+            "cache": {"source": "memory", "hit": True},
+        }
+
+    def fake_find_choices(**kwargs):
+        raise AssertionError("cached start should not run live search")
+
+    monkeypatch.setattr(app_module.finder, "find_cached_choices", fake_cached_choices)
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/search/start",
+        json={
+            "city": "广州",
+            "holiday_code": "2026-06-19::端午节",
+            "min_price": "",
+            "max_price": "",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+            "use_cache": "true",
+        },
+    )
+
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["status"] == "succeeded"
+    assert data["cache_hit"] is True
+    assert data["result"]["choices"][0]["hotel_name"] == "缓存酒店"
+    assert client.get(data["poll_url"]).get_json()["status"] == "succeeded"
 
 
 def test_nearby_search_reports_partial_progress(monkeypatch):

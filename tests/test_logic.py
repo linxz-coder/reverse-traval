@@ -1252,6 +1252,15 @@ def test_find_choices_uses_memory_and_disk_cache(tmp_path):
     assert third["cache"]["hit"] is True
     assert len(third["choices"]) == 2
 
+    cached_only = restarted.find_cached_choices("深圳", "2026-05-01::劳动节", None, 600, "yes", "yes", "all")
+    assert restarted.calls == 0
+    assert cached_only["cache"]["source"] == "memory"
+    assert cached_only["cache"]["hit"] is True
+    assert [item["hotel_id"] for item in cached_only["choices"]] == ["1"]
+
+    assert restarted.find_cached_choices("广州", "2026-05-01::劳动节", None, None, "yes", "yes", "all") is None
+    assert restarted.calls == 0
+
     fallback = restarted.find_choices("广州", "2026-05-01::劳动节", None, None, "yes", "yes", "all", cache_only=True)
     assert restarted.calls == 1
     assert fallback["cache"]["source"] == "live"

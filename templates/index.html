@@ -1473,6 +1473,17 @@
           body: JSON.stringify(payload),
         });
         const startData = await readJsonResponse(startResp, fallbackMessage);
+        if (startData.progress_events) {
+          renderProgressEvents(startData.progress_events);
+        }
+        if (startData.progress && startData.progress.message) {
+          const percent = Number(startData.progress.percent || 0);
+          lastProgressMessage = percent ? `${startData.progress.message}（${percent}%）` : startData.progress.message;
+          statusText.textContent = lastProgressMessage;
+        }
+        if (startData.status === "succeeded" && startData.result) {
+          return startData.result;
+        }
         const pollUrl = startData.poll_url || `/api/jobs/${startData.job_id}`;
         let pollInterval = Number(startData.poll_interval_ms || 2000);
         if (!pollUrl || !startData.job_id) {
@@ -1520,6 +1531,9 @@
           body: JSON.stringify(payload),
         });
         const startData = await readJsonResponse(startResp, fallbackMessage);
+        if (startData.status === "succeeded" && startData.result) {
+          return startData.result;
+        }
         const pollUrl = startData.poll_url || `/api/jobs/${startData.job_id}`;
         const started = Date.now();
         while (Date.now() - started < maxWaitMs) {

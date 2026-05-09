@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import json
 import math
 import os
 import threading
@@ -40,6 +41,7 @@ prewarm_executor = ThreadPoolExecutor(max_workers=1)
 job_lock = threading.Lock()
 prewarm_lock = threading.Lock()
 jobs: dict[str, dict[str, Any]] = {}
+job_signature_index: dict[str, str] = {}
 prewarm_state: dict[str, Any] = {
     "status": "idle",
     "message": "缓存预热未启动",
@@ -283,6 +285,56 @@ def request_price_filters(payload: dict) -> tuple[int | None, int | None]:
     )
 
 
+def canonical_optional_int(value: Any) -> str:
+    if value in ("", None):
+        return ""
+    try:
+        return str(int(value))
+    except (TypeError, ValueError):
+        return str(value).strip()
+
+
+def canonical_tri_state(value: Any) -> str:
+    try:
+        return finder._normalize_tri_state(str(value) if value is not None else None, "筛选项")
+    except ReverseTravelFinderError:
+        return str(value or "all").strip().lower()
+
+
+def canonical_job_signature(kind: str, payload: dict[str, Any]) -> str | None:
+    if kind not in {"search", "nearby"}:
+        return None
+
+    holiday_code = str(payload.get("holiday_code") or "").strip()
+    child_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+    base: dict[str, Any] = {
+        "version": 1,
+        "kind": kind,
+        "holiday_code": holiday_code,
+        "min_price": canonical_optional_int(payload.get("min_price")),
+        "max_price": canonical_optional_int(payload.get("max_price")),
+        "advanced_filter": canonical_tri_state(payload.get("advanced_filter")),
+        "pool_filter": canonical_tri_state(payload.get("pool_filter")),
+        "child_facility_filter": canonical_tri_state(child_filter),
+        "use_cache": parse_bool(payload.get("use_cache"), default=True),
+        "cache_only": parse_bool(payload.get("cache_only"), default=False),
+    }
+    if kind == "search":
+        raw_city = str(payload.get("city") or "").strip()
+        base["city"] = normalize_city(raw_city) or raw_city
+    else:
+        origin_city = normalize_city(payload.get("origin_city") or payload.get("city"))
+        if not origin_city:
+            try:
+                origin_city = nearest_supported_city(float(payload.get("lat")), float(payload.get("lon")))
+            except (TypeError, ValueError):
+                origin_city = ""
+        base["origin_city"] = origin_city
+        base["nearby_limit"] = canonical_optional_int(payload.get("nearby_limit") or 4)
+
+    return json.dumps(base, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
 def utc_timestamp() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
@@ -292,7 +344,10 @@ def cleanup_jobs() -> None:
     with job_lock:
         stale = [job_id for job_id, job in jobs.items() if float(job.get("updated_ts") or 0) < cutoff]
         for job_id in stale:
-            jobs.pop(job_id, None)
+            job = jobs.pop(job_id, None)
+            signature = (job or {}).get("signature")
+            if signature and job_signature_index.get(signature) == job_id:
+                job_signature_index.pop(signature, None)
 
 
 def public_job(job: dict[str, Any]) -> dict[str, Any]:
@@ -618,6 +673,66 @@ def search_result_from_payload(
     return result, 200
 
 
+def cached_search_result_from_payload(payload: dict) -> tuple[dict[str, Any] | None, int]:
+    if not parse_bool(payload.get("use_cache"), default=True):
+        return None, 404
+
+    city = (payload.get("city") or "").strip()
+    holiday_code = (payload.get("holiday_code") or "").strip()
+    advanced_filter = payload.get("advanced_filter")
+    pool_filter = payload.get("pool_filter")
+    child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+
+    if not city or not holiday_code:
+        return {"error": "city 和 holiday_code 不能为空"}, 400
+
+    try:
+        min_price_int, max_price_int = request_price_filters(payload)
+        result = finder.find_cached_choices(
+            city=city,
+            holiday_code=holiday_code,
+            min_price=min_price_int,
+            max_price=max_price_int,
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+    except (HolidayCalendarError, ReverseTravelFinderError) as exc:
+        return {"error": str(exc)}, 400
+    except Exception as exc:  # pragma: no cover
+        return {"error": f"读取缓存失败: {exc}"}, 500
+    return result, 200 if result is not None else 404
+
+
+def build_nearby_city_result(city: str, result: dict[str, Any]) -> dict[str, Any]:
+    cache = result.get("cache") or {}
+    city_choices = []
+    for item in result.get("choices") or []:
+        choice = copy.deepcopy(item)
+        choice["recommend_city"] = city
+        city_choices.append(choice)
+
+    city_areas = []
+    for area in result.get("area_recommendations") or []:
+        area_item = copy.deepcopy(area)
+        area_item["recommend_city"] = city
+        city_areas.append(area_item)
+
+    return {
+        "city": city,
+        "result": result,
+        "cache": cache,
+        "city_result": {
+            "city": city,
+            "result_city": result.get("city") or city,
+            "cache": cache,
+            "choice_count": len(city_choices),
+            "area_recommendations": city_areas,
+            "choices": city_choices,
+        },
+    }
+
+
 def build_nearby_response(
     *,
     origin_city: str,
@@ -675,6 +790,83 @@ def build_nearby_response(
             "age_seconds": 0,
         },
     }
+
+
+def cached_nearby_search_result_from_payload(payload: dict) -> tuple[dict[str, Any] | None, int]:
+    if not parse_bool(payload.get("use_cache"), default=True):
+        return None, 404
+
+    holiday_code = (payload.get("holiday_code") or "").strip()
+    origin_city = normalize_city(payload.get("origin_city") or payload.get("city"))
+    advanced_filter = payload.get("advanced_filter")
+    pool_filter = payload.get("pool_filter")
+    child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+
+    if not origin_city:
+        try:
+            origin_city = nearest_supported_city(float(payload.get("lat")), float(payload.get("lon")))
+        except (TypeError, ValueError):
+            return {"error": "请选择所在城市，或允许浏览器读取当前位置"}, 400
+    if not holiday_code:
+        return {"error": "holiday_code 不能为空"}, 400
+
+    try:
+        min_price_int, max_price_int = request_price_filters(payload)
+        limit = parse_optional_int(payload.get("nearby_limit"), "附近城市数量") or 4
+        feature_filters_response = finder._normalize_feature_filters(
+            advanced_filter,
+            pool_filter,
+            child_facility_filter,
+        ).to_response()
+    except ReverseTravelFinderError as exc:
+        return {"error": str(exc)}, 400
+
+    target_cities = nearby_cities_for(origin_city, limit=limit)
+    if not target_cities:
+        return {"error": "暂时没有配置该城市的附近推荐城市"}, 400
+
+    city_results: list[dict[str, Any]] = []
+    first_success = None
+    cache_hits = 0
+    for city in target_cities:
+        try:
+            result = finder.find_cached_choices(
+                city=city,
+                holiday_code=holiday_code,
+                min_price=min_price_int,
+                max_price=max_price_int,
+                advanced_filter=advanced_filter,
+                pool_filter=pool_filter,
+                child_facility_filter=child_facility_filter,
+            )
+        except (HolidayCalendarError, ReverseTravelFinderError) as exc:
+            return {"error": str(exc)}, 400
+        except Exception as exc:  # pragma: no cover
+            return {"error": f"读取缓存失败: {exc}"}, 500
+        if result is None:
+            return None, 404
+        if first_success is None:
+            first_success = result
+        if (result.get("cache") or {}).get("hit"):
+            cache_hits += 1
+        city_results.append(build_nearby_city_result(city, result)["city_result"])
+
+    return (
+        build_nearby_response(
+            origin_city=origin_city,
+            target_cities=target_cities,
+            holiday_code=holiday_code,
+            min_price_int=min_price_int,
+            max_price_int=max_price_int,
+            feature_filters_response=feature_filters_response,
+            first_success=first_success,
+            city_results=city_results,
+            cache_hits=cache_hits,
+            live_count=0,
+            error_count=0,
+        ),
+        200,
+    )
 
 
 def nearby_search_result_from_payload(
@@ -742,32 +934,7 @@ def nearby_search_result_from_payload(
             progress_callback=city_progress,
         )
 
-        cache = result.get("cache") or {}
-        city_choices = []
-        for item in result.get("choices") or []:
-            choice = copy.deepcopy(item)
-            choice["recommend_city"] = city
-            city_choices.append(choice)
-
-        city_areas = []
-        for area in result.get("area_recommendations") or []:
-            area_item = copy.deepcopy(area)
-            area_item["recommend_city"] = city
-            city_areas.append(area_item)
-
-        return {
-            "city": city,
-            "result": result,
-            "cache": cache,
-            "city_result": {
-                "city": city,
-                "result_city": result.get("city") or city,
-                "cache": cache,
-                "choice_count": len(city_choices),
-                "area_recommendations": city_areas,
-                "choices": city_choices,
-            },
-        }
+        return build_nearby_city_result(city, result)
 
     emit_nearby_progress(
         f"正在并发搜索 {len(target_cities)} 个附近城市，最多同时搜索 {min(NEARBY_CITY_WORKERS, len(target_cities))} 个城市...",
@@ -885,6 +1052,62 @@ def hotel_name_result_from_payload(payload: dict) -> tuple[dict[str, Any], int]:
     return result, 200
 
 
+def cached_result_for_job_start(kind: str, payload: dict[str, Any]) -> tuple[dict[str, Any] | None, int]:
+    if kind == "search":
+        return cached_search_result_from_payload(payload)
+    if kind == "nearby":
+        return cached_nearby_search_result_from_payload(payload)
+    return None, 404
+
+
+def job_start_payload(job: dict[str, Any], *, reused: bool = False, cache_hit: bool = False) -> dict[str, Any]:
+    payload = {
+        "job_id": job["job_id"],
+        "status": job["status"],
+        "poll_url": f"/api/jobs/{job['job_id']}",
+        "poll_interval_ms": 1500 if job.get("status") == "succeeded" else 2000,
+        "reused": reused,
+        "cache_hit": cache_hit,
+    }
+    if job.get("progress"):
+        payload["progress"] = job["progress"]
+    if job.get("progress_events"):
+        payload["progress_events"] = job["progress_events"]
+    if job.get("partial_result") is not None:
+        payload["partial_result"] = job["partial_result"]
+    if job.get("result") is not None:
+        payload["result"] = job["result"]
+    return payload
+
+
+def create_completed_job(kind: str, payload: dict[str, Any], result: dict[str, Any], signature: str | None) -> dict[str, Any]:
+    now = time.time()
+    job_id = uuid.uuid4().hex
+    message = "已命中缓存，直接返回结果。"
+    job = {
+        "job_id": job_id,
+        "kind": kind,
+        "signature": signature,
+        "status": "succeeded",
+        "created_at": utc_timestamp(),
+        "updated_at": utc_timestamp(),
+        "created_ts": now,
+        "updated_ts": now,
+        "payload": copy.deepcopy(payload),
+        "result": result,
+        "partial_result": result,
+        "progress": {"stage": "cache_hit", "message": message, "percent": 100},
+        "progress_events": [{"time": utc_timestamp(), "stage": "cache_hit", "message": message, "percent": 100}],
+        "error": "",
+        "status_code": 200,
+    }
+    with job_lock:
+        jobs[job_id] = job
+        if signature:
+            job_signature_index[signature] = job_id
+    return job
+
+
 def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
     with job_lock:
         job = jobs.get(job_id)
@@ -928,20 +1151,54 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
             job["error"] = result.get("error") or "查询失败"
             job["progress"] = {"stage": "failed", "message": job["error"]}
             append_job_progress_event(job, job["progress"])
+            signature = job.get("signature")
+            if signature and job_signature_index.get(signature) == job_id:
+                job_signature_index.pop(signature, None)
 
 
 def start_background_job(kind: str, payload: dict[str, Any]):
     cleanup_jobs()
     now = time.time()
+    signature = canonical_job_signature(kind, payload)
+    allow_completed_reuse = parse_bool(payload.get("use_cache"), default=True)
+
+    if signature:
+        with job_lock:
+            existing_id = job_signature_index.get(signature)
+            existing_job = jobs.get(existing_id or "")
+            if existing_job and (
+                existing_job.get("status") in {"queued", "running"}
+                or (allow_completed_reuse and existing_job.get("status") == "succeeded")
+            ):
+                if existing_job.get("status") in {"queued", "running"}:
+                    append_job_progress_event(
+                        existing_job,
+                        {"stage": "deduped", "message": "已复用同条件查询任务，等待同一份结果。"},
+                    )
+                    existing_job["updated_at"] = utc_timestamp()
+                    existing_job["updated_ts"] = time.time()
+                reused_job = copy.deepcopy(existing_job)
+                status_code = 200 if reused_job.get("status") == "succeeded" else 202
+                return jsonify(job_start_payload(reused_job, reused=True)), status_code
+
+    cached_result, cached_status_code = cached_result_for_job_start(kind, payload)
+    if cached_status_code == 200 and cached_result is not None:
+        job = create_completed_job(kind, payload, cached_result, signature)
+        return jsonify(job_start_payload(job, cache_hit=True)), 200
+    if cached_status_code not in {200, 404}:
+        return jsonify(cached_result or {"error": "缓存读取失败"}), cached_status_code
+
     job_id = uuid.uuid4().hex
     job = {
         "job_id": job_id,
         "kind": kind,
+        "signature": signature,
         "status": "queued",
         "created_at": utc_timestamp(),
         "updated_at": utc_timestamp(),
         "created_ts": now,
         "updated_ts": now,
+        "payload": copy.deepcopy(payload),
         "result": None,
         "partial_result": None,
         "progress": {"stage": "queued", "message": "查询任务已创建，正在等待执行。"},
@@ -951,19 +1208,11 @@ def start_background_job(kind: str, payload: dict[str, Any]):
     }
     with job_lock:
         jobs[job_id] = job
+        if signature:
+            job_signature_index[signature] = job_id
     executor = refresh_executor if kind in {"areas", "hotel_names"} else job_executor
     executor.submit(run_job, job_id, kind, copy.deepcopy(payload))
-    return (
-        jsonify(
-            {
-                "job_id": job_id,
-                "status": "queued",
-                "poll_url": f"/api/jobs/{job_id}",
-                "poll_interval_ms": 2000,
-            }
-        ),
-        202,
-    )
+    return jsonify(job_start_payload(job)), 202
 
 
 @app.errorhandler(HTTPException)
