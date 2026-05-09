@@ -1416,21 +1416,25 @@
           : (lastAreaRefreshMeta || (areas.length ? `优先显示命中酒店更集中、降价更多的片区` : "暂无可推荐片区"));
         areaRecommendations.innerHTML = areas.length
           ? areas.map((area) => {
-            const key = areaFilterKey(area.area_name || "", area.recommend_city || "");
+            const areaName = simplifyChineseText(area.area_name || "");
+            const recommendCity = simplifyChineseText(area.recommend_city || "");
+            const reason = simplifyChineseText(area.reason || "");
+            const representativeHotels = (area.representative_hotels || []).map((name) => simplifyChineseText(name));
+            const key = areaFilterKey(areaName, recommendCity);
             const active = activeAreaFilter && key === activeAreaFilter.key;
-            const cityLabel = area.recommend_city ? `${area.recommend_city} · ` : "";
+            const cityLabel = recommendCity ? `${recommendCity} · ` : "";
             return `
-            <article class="area-card${active ? " active" : ""}" role="button" tabindex="0" data-area-key="${esc(key)}" data-area-name="${esc(area.area_name)}" data-recommend-city="${esc(area.recommend_city || "")}" aria-pressed="${active ? "true" : "false"}" title="查看该片区酒店">
-              <div class="area-name">${esc(area.area_name)}</div>
+            <article class="area-card${active ? " active" : ""}" role="button" tabindex="0" data-area-key="${esc(key)}" data-area-name="${esc(areaName)}" data-recommend-city="${esc(recommendCity)}" aria-pressed="${active ? "true" : "false"}" title="查看该片区酒店">
+              <div class="area-name">${esc(areaName)}</div>
               <div class="area-stats">
-                ${area.recommend_city ? `<span class="pill">${esc(area.recommend_city)}</span>` : ""}
+                ${recommendCity ? `<span class="pill">${esc(recommendCity)}</span>` : ""}
                 <span class="pill">${esc(area.hotel_count)} 家酒店</span>
                 <span class="pill">${esc(area.lower_price_hotel_count)} 家更低</span>
                 <span class="pill">${esc(area.average_holiday_nightly_tax_total_price)}/晚</span>
                 <span class="diff ${diffClass(area.average_price_diff_nightly)}">${esc(area.average_price_diff_nightly_text)}</span>
               </div>
-              <div class="area-hotels">${esc(area.reason || "")}</div>
-              <div class="area-hotels">${esc(cityLabel)}${esc((area.representative_hotels || []).slice(0, 3).join("、"))}</div>
+              <div class="area-hotels">${esc(reason)}</div>
+              <div class="area-hotels">${esc(cityLabel)}${esc(representativeHotels.slice(0, 3).join("、"))}</div>
             </article>
           `;
           }).join("")
@@ -1442,11 +1446,12 @@
         for (const item of items) {
           const name = item.area_name || "";
           if (!name || isGenericAreaName(name)) continue;
-          const recommendCity = item.recommend_city || "";
-          const key = areaFilterKey(name, recommendCity);
+          const areaName = simplifyChineseText(name);
+          const recommendCity = simplifyChineseText(item.recommend_city || "");
+          const key = areaFilterKey(areaName, recommendCity);
           if (!groups.has(key)) {
             groups.set(key, {
-              area_name: name,
+              area_name: areaName,
               recommend_city: recommendCity,
               hotel_count: 0,
               lower_price_hotel_count: 0,

@@ -819,6 +819,25 @@ def test_build_area_recommendations_prioritizes_discount_areas():
     assert recommendations[0]["average_price_diff_nightly_text"] == "CNY -25"
 
 
+def test_area_recommendations_convert_traditional_chinese_to_simplified():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "深圳國際會展中心片區",
+                "hotel_name": "深圳國際會展中心皇冠假日酒店",
+                "holiday_avg_nightly_tax_total_value": 619,
+                "price_diff_nightly": -20,
+                "room_type_label": "大床房",
+            }
+        ],
+        "深圳",
+    )
+
+    assert recommendations[0]["area_name"] == "深圳国际会展中心片区"
+    assert recommendations[0]["representative_hotels"] == ["深圳国际会展中心皇冠假日酒店"]
+
+
 def test_build_area_recommendations_removes_generic_area_names():
     finder = ReverseTravelFinder(StubCalendar())
     recommendations = finder._build_area_recommendations(

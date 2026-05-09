@@ -3326,6 +3326,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     def _normalize_area_display_name(self, area_name: str, city_name: str = "") -> str:
         text = re.sub(r"\s+", " ", str(area_name or "")).strip()
         text = self._normalize_area_chinese_chars(text)
+        text = self._to_simplified_chinese(text)
         if not text or self._is_generic_area_name(text):
             return ""
         text = AREA_NAME_REPLACEMENTS.get(text, text)
@@ -3346,7 +3347,29 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             text = f"{text}片区"
         if city_label and text == f"{city_label}片区":
             return ""
-        return text
+        return self._to_simplified_chinese(text)
+
+    def _simplify_area_recommendation(self, item: dict[str, Any]) -> dict[str, Any]:
+        simplified = copy.deepcopy(item)
+        for key in ("area_name", "reason"):
+            if key in simplified:
+                simplified[key] = self._to_simplified_chinese(str(simplified.get(key) or ""))
+        if isinstance(simplified.get("representative_hotels"), list):
+            simplified["representative_hotels"] = [
+                self._to_simplified_chinese(str(name or ""))
+                for name in simplified["representative_hotels"]
+                if str(name or "").strip()
+            ]
+        if isinstance(simplified.get("room_type_labels"), list):
+            simplified["room_type_labels"] = [
+                self._to_simplified_chinese(str(label or ""))
+                for label in simplified["room_type_labels"]
+                if str(label or "").strip()
+            ]
+        return simplified
+
+    def _simplify_area_recommendations(self, recommendations: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        return [self._simplify_area_recommendation(item) for item in recommendations]
 
     def _geonames_area_name(self, lat: Any, lon: Any, city_name: str) -> str:
         if not self.geonames_username:
@@ -3730,7 +3753,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         )
         if include_defaults:
             recommendations = self._add_default_area_recommendations(recommendations, city_name, choices)
-        return recommendations[:8]
+        return self._simplify_area_recommendations(recommendations[:8])
 
     def _is_generic_area_name(self, area_name: str) -> bool:
         text = area_name or ""
@@ -3835,7 +3858,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             area_name = self._choice_area_name(item, city_name)
             if not area_name or self._is_generic_area_name(area_name):
                 area_name = self._coordinate_area_name(item, city_name, coordinate_centers)
-            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else area_name
+            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else self._to_simplified_chinese(area_name)
 
     def enhance_area_data(self, city_name: str, choices: list[dict[str, Any]]) -> dict[str, Any]:
         enhanced_choices = copy.deepcopy(choices or [])
@@ -3859,7 +3882,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 area_name = self._coordinate_area_name(item, choice_city, coordinate_centers)
                 if area_name:
                     item["area_source"] = "酒店坐标"
-            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else area_name
+            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else self._to_simplified_chinese(area_name)
 
         recommendations = self._build_area_recommendations(enhanced_choices, city_name, include_defaults=False)
         if not recommendations:
