@@ -1188,6 +1188,25 @@ def test_build_area_recommendations_prioritizes_discount_areas():
     assert recommendations[0]["average_price_diff_nightly_text"] == "CNY -25"
 
 
+def test_build_area_recommendations_returns_all_area_groups():
+    finder = ReverseTravelFinder(StubCalendar())
+    choices = [
+        {
+            "area_name": f"深圳测试{i}片区",
+            "hotel_name": f"深圳测试{i}酒店",
+            "holiday_avg_nightly_tax_total_value": 500 + i,
+            "price_diff_nightly": -i,
+            "room_type_label": "大床房",
+        }
+        for i in range(1, 12)
+    ]
+
+    recommendations = finder._build_area_recommendations(choices, "深圳")
+
+    assert len(recommendations) == 11
+    assert {item["area_name"] for item in recommendations} == {f"深圳测试{i}片区" for i in range(1, 12)}
+
+
 def test_area_recommendations_convert_traditional_chinese_to_simplified():
     finder = ReverseTravelFinder(StubCalendar())
     recommendations = finder._build_area_recommendations(

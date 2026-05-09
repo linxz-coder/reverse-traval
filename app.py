@@ -883,7 +883,7 @@ def build_nearby_response(
         "price_filter": {"min_price": min_price_int, "max_price": max_price_int},
         "feature_filters": (first_success or {}).get("feature_filters") or feature_filters_response,
         "comparison_windows": (first_success or {}).get("comparison_windows") or [],
-        "area_recommendations": all_areas[:10],
+        "area_recommendations": all_areas,
         "choices": all_choices,
         "city_results": ordered_city_results,
         "cache": {

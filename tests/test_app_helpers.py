@@ -466,6 +466,51 @@ def test_nearby_search_reports_partial_progress(monkeypatch):
     assert any(event.get("completed") == 2 for event in events)
 
 
+def test_nearby_response_keeps_all_area_recommendations():
+    area_recommendations = [
+        {
+            "area_name": f"城市测试{i}片区",
+            "hotel_count": 1,
+            "lower_price_hotel_count": 1,
+            "lower_price_ratio": 1,
+            "average_price_diff_nightly": -i,
+            "average_holiday_nightly_tax_total_value": 500 + i,
+        }
+        for i in range(1, 13)
+    ]
+
+    result = app_module.build_nearby_response(
+        origin_city="深圳",
+        target_cities=["惠州"],
+        holiday_code="2026-06-19::端午节",
+        min_price_int=None,
+        max_price_int=None,
+        feature_filters_response={},
+        first_success={"holiday": {"code": "2026-06-19::端午节", "name": "端午节"}},
+        city_results=[{"city": "惠州", "choices": [], "area_recommendations": area_recommendations}],
+        cache_hits=0,
+        live_count=1,
+        error_count=0,
+    )
+
+    assert len(result["area_recommendations"]) == 12
+    assert {item["area_name"] for item in result["area_recommendations"]} == {
+        f"城市测试{i}片区" for i in range(1, 13)
+    }
+
+
+def test_frontend_area_panel_has_collapsed_full_area_toggle():
+    client = flask_app.test_client()
+
+    response = client.get("/")
+    html = response.get_data(as_text=True)
+
+    assert response.status_code == 200
+    assert "const AREA_COLLAPSED_LIMIT = 8" in html
+    assert 'data-area-toggle="more"' in html
+    assert "activeAreaFilter && !visible.some" in html
+
+
 def test_area_refresh_job_returns_normalized_choices(monkeypatch):
     def fake_enhance_area_data(city, choices):
         return {

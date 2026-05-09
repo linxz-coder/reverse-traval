@@ -4435,7 +4435,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         )
         if include_defaults:
             recommendations = self._add_default_area_recommendations(recommendations, city_name, choices)
-        return self._simplify_area_recommendations(recommendations[:8])
+        return self._simplify_area_recommendations(recommendations)
 
     def _is_generic_area_name(self, area_name: str) -> bool:
         text = area_name or ""

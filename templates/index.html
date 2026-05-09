@@ -458,6 +458,27 @@
         background: linear-gradient(180deg, #f7fbff, #edf4ff);
         box-shadow: 0 0 0 3px rgba(22, 87, 216, 0.12), var(--shadow-soft);
       }
+      .area-more-card {
+        min-height: 128px;
+        display: grid;
+        place-items: center;
+        gap: 6px;
+        background: linear-gradient(180deg, #f7fbff, #edf4ff);
+        border-style: dashed;
+        color: var(--primary);
+      }
+      .area-more-dots {
+        font-size: 30px;
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+      .area-more-text {
+        color: #405066;
+        font-size: 12px;
+        font-weight: 800;
+        text-align: center;
+      }
       .area-name {
         font-size: 16px;
         font-weight: 800;
@@ -1018,6 +1039,8 @@
       let activeView = "all";
       let resultSearchQuery = "";
       let activeAreaFilter = null;
+      let areaListExpanded = false;
+      const AREA_COLLAPSED_LIMIT = 8;
       const provinceCityOptions = {{ province_city_options|tojson }};
 
       function esc(text) {
@@ -1198,19 +1221,23 @@
       }
 
       function renderSummary(data) {
+        const areaCount = mergeAreaLists(
+          data.area_recommendations || [],
+          buildAreasFromChoices(data.choices || [])
+        ).length;
         if (data.origin_city) {
           summary.innerHTML = `
             <div class="stat"><div class="k">按所在城市推荐</div><div class="v">${esc(data.origin_city)}</div></div>
             <div class="stat"><div class="k">附近城市</div><div class="v">${esc((data.nearby_cities || []).join("、"))}</div></div>
             <div class="stat"><div class="k">命中酒店</div><div class="v">${esc((data.choices || []).length)} 家</div></div>
-            <div class="stat"><div class="k">推荐区域</div><div class="v">${esc((data.area_recommendations || []).length)} 个</div></div>
+            <div class="stat"><div class="k">推荐区域</div><div class="v">${esc(areaCount)} 个</div></div>
           `;
         } else {
           summary.innerHTML = `
             <div class="stat"><div class="k">城市</div><div class="v">${esc(data.city)}</div></div>
             <div class="stat"><div class="k">假期</div><div class="v">${esc(data.holiday.name)}</div></div>
             <div class="stat"><div class="k">入住时段</div><div class="v">${esc(data.holiday.check_in)} 至 ${esc(data.holiday.check_out)}</div></div>
-            <div class="stat"><div class="k">推荐区域</div><div class="v">${esc((data.area_recommendations || []).length)} 个</div></div>
+            <div class="stat"><div class="k">推荐区域</div><div class="v">${esc(areaCount)} 个</div></div>
           `;
         }
         lastComparisonCount = (data.comparison_windows || []).length;
@@ -1300,6 +1327,7 @@
         activeView = "all";
         resultSearchQuery = "";
         activeAreaFilter = null;
+        areaListExpanded = false;
         if (resultSearchInput) resultSearchInput.value = "";
         viewFilter.querySelectorAll("[data-view]").forEach((button) => {
           button.classList.toggle("active", button.dataset.view === activeView);
@@ -1466,15 +1494,70 @@
         return "实时查询";
       }
 
+      function areaCardKey(area) {
+        return areaFilterKey(
+          simplifyChineseText(area.area_name || ""),
+          simplifyChineseText(area.recommend_city || "")
+        );
+      }
+
+      function mergeAreaLists(primaryAreas, fallbackAreas) {
+        const merged = [];
+        const seen = new Set();
+        for (const area of [...(primaryAreas || []), ...(fallbackAreas || [])]) {
+          const areaName = simplifyChineseText(area.area_name || "");
+          if (!areaName || isGenericAreaName(areaName)) continue;
+          const recommendCity = simplifyChineseText(area.recommend_city || "");
+          const key = areaFilterKey(areaName, recommendCity);
+          if (seen.has(key)) continue;
+          seen.add(key);
+          merged.push({ ...area, area_name: areaName, recommend_city: recommendCity });
+        }
+        return merged;
+      }
+
+      function displayAreasForState(areas) {
+        if (areaListExpanded || areas.length <= AREA_COLLAPSED_LIMIT) {
+          return { visibleAreas: areas, hiddenCount: 0, showToggle: areas.length > AREA_COLLAPSED_LIMIT };
+        }
+        const visible = areas.slice(0, AREA_COLLAPSED_LIMIT);
+        if (activeAreaFilter && !visible.some((area) => areaCardKey(area) === activeAreaFilter.key)) {
+          const activeArea = areas.find((area) => areaCardKey(area) === activeAreaFilter.key);
+          if (activeArea) {
+            const activeKey = areaCardKey(activeArea);
+            const rest = visible.filter((area) => areaCardKey(area) !== activeKey).slice(0, AREA_COLLAPSED_LIMIT - 1);
+            return {
+              visibleAreas: [activeArea, ...rest],
+              hiddenCount: Math.max(0, areas.length - AREA_COLLAPSED_LIMIT),
+              showToggle: true,
+            };
+          }
+        }
+        return {
+          visibleAreas: visible,
+          hiddenCount: areas.length - visible.length,
+          showToggle: true,
+        };
+      }
+
       function renderAreas(items) {
+        const builtAreas = buildAreasFromChoices(items);
         const areas = activeView === "all" && !resultSearchQuery && lastServerAreas.length
-          ? lastServerAreas
-          : buildAreasFromChoices(items);
+          ? mergeAreaLists(lastServerAreas, builtAreas)
+          : builtAreas;
+        const { visibleAreas, hiddenCount, showToggle } = displayAreasForState(areas);
         areaMeta.textContent = activeAreaFilter
           ? `已筛选 ${activeAreaFilter.label}，再次点击该片区可取消`
-          : (lastAreaRefreshMeta || (areas.length ? `优先显示命中酒店更集中、降价更多的片区` : "暂无可推荐片区"));
-        areaRecommendations.innerHTML = areas.length
-          ? areas.map((area) => {
+          : (lastAreaRefreshMeta || (areas.length
+            ? (areaListExpanded && areas.length > AREA_COLLAPSED_LIMIT
+              ? `已显示全部 ${areas.length} 个片区`
+              : (hiddenCount ? `显示 ${visibleAreas.length}/${areas.length} 个片区，点击省略号查看全部` : `优先显示命中酒店更集中、降价更多的片区`))
+            : "暂无可推荐片区"));
+        if (!areas.length) {
+          areaRecommendations.innerHTML = `<div class="empty">当前条件下暂无推荐旅游区域。</div>`;
+          return;
+        }
+        const areaCards = visibleAreas.map((area) => {
             const areaName = simplifyChineseText(area.area_name || "");
             const recommendCity = simplifyChineseText(area.recommend_city || "");
             const reason = simplifyChineseText(area.reason || "");
@@ -1496,8 +1579,18 @@
               <div class="area-hotels">${esc(cityLabel)}${esc(representativeHotels.slice(0, 3).join("、"))}</div>
             </article>
           `;
-          }).join("")
-          : `<div class="empty">当前条件下暂无推荐旅游区域。</div>`;
+          });
+        if (showToggle) {
+          const toggleText = areaListExpanded ? "收起片区" : `还有 ${hiddenCount} 个片区`;
+          const toggleTitle = areaListExpanded ? "收起推荐片区" : "查看全部推荐片区";
+          areaCards.push(`
+            <article class="area-card area-more-card" role="button" tabindex="0" data-area-toggle="more" aria-expanded="${areaListExpanded ? "true" : "false"}" title="${esc(toggleTitle)}">
+              <div class="area-more-dots">...</div>
+              <div class="area-more-text">${esc(toggleText)}</div>
+            </article>
+          `);
+        }
+        areaRecommendations.innerHTML = areaCards.join("");
       }
 
       function buildAreasFromChoices(items) {
@@ -1550,7 +1643,7 @@
           (b.hotel_count - a.hotel_count) ||
           (a.average_price_diff_nightly - b.average_price_diff_nightly) ||
           (a.average_holiday_nightly_tax_total_value - b.average_holiday_nightly_tax_total_value)
-        ).slice(0, 8);
+        );
       }
 
       function isGenericAreaName(name) {
@@ -1848,6 +1941,12 @@
       });
 
       areaRecommendations.addEventListener("click", (event) => {
+        const toggle = event.target.closest("[data-area-toggle]");
+        if (toggle) {
+          areaListExpanded = !areaListExpanded;
+          renderChoices();
+          return;
+        }
         const card = event.target.closest(".area-card");
         if (!card) return;
         selectAreaCard(card);
@@ -1855,9 +1954,15 @@
 
       areaRecommendations.addEventListener("keydown", (event) => {
         if (!["Enter", " "].includes(event.key)) return;
+        event.preventDefault();
+        const toggle = event.target.closest("[data-area-toggle]");
+        if (toggle) {
+          areaListExpanded = !areaListExpanded;
+          renderChoices();
+          return;
+        }
         const card = event.target.closest(".area-card");
         if (!card) return;
-        event.preventDefault();
         selectAreaCard(card);
       });
 
