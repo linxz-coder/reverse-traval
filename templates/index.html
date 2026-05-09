@@ -992,6 +992,8 @@
       let lastCacheInfo = null;
       let lastProgressMessage = "";
       let lastAreaRefreshMeta = "";
+      let lastResultMeta = "";
+      let lastHotelNameMeta = "";
       let areaRefreshToken = 0;
       let hotelNameRefreshToken = 0;
       let currentUseCache = true;
@@ -1211,7 +1213,8 @@
         const searchText = resultSearchQuery && resultSearchInput.value.trim()
           ? `，搜索「${resultSearchInput.value.trim()}」`
           : "";
-        tableMeta.textContent = `${items.length}/${lastChoices.length} 家，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${searchText}`;
+        const stageText = [lastResultMeta, lastHotelNameMeta].filter(Boolean).join("，");
+        tableMeta.textContent = `${items.length}/${lastChoices.length} 家，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${stageText ? `，${stageText}` : ""}${searchText}`;
         renderAreas(items);
         if (!items.length) {
           choicesBody.innerHTML = `<tr><td class="empty" colspan="4">${resultSearchQuery ? "结果里没有匹配的酒店。" : "当前条件下没有找到“反向旅游好选择”。"}</td></tr>`;
@@ -1263,6 +1266,9 @@
         lastChoices = data.choices || [];
         lastServerAreas = data.area_recommendations || [];
         lastCacheInfo = data.cache || null;
+        lastResultMeta = data.partial?.preliminary
+          ? (data.partial.message || "酒店在逐步显示中，最终结果会继续刷新")
+          : "";
         lastAreaRefreshMeta = "";
         renderSummary(data);
         renderChoices();
@@ -1304,6 +1310,8 @@
       function startHotelNameRefresh(data) {
         if (!data || !(data.choices || []).length) return;
         const token = ++hotelNameRefreshToken;
+        lastHotelNameMeta = "正在匹配简体中文酒店名...";
+        renderChoices();
         runSilentJob("/api/hotel-names/start", {
           city: data.city || "",
           origin_city: data.origin_city || "",
@@ -1318,8 +1326,13 @@
             "hotel_name_aliases",
             "hotel_search_name",
           ]);
+          lastHotelNameMeta = "酒店名已更新为可匹配到的简体中文";
           renderChoices();
-        }).catch(() => {});
+        }).catch(() => {
+          if (token !== hotelNameRefreshToken) return;
+          lastHotelNameMeta = "";
+          renderChoices();
+        });
       }
 
       function renderProgressEvents(events) {
@@ -1580,6 +1593,8 @@
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
         lastAreaRefreshMeta = "";
+        lastResultMeta = "";
+        lastHotelNameMeta = "";
         const payload = Object.fromEntries(new FormData(form).entries());
         currentRequestKind = "single";
         currentUseCache = useCacheInput.checked;
@@ -1608,6 +1623,8 @@
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
         lastAreaRefreshMeta = "";
+        lastResultMeta = "";
+        lastHotelNameMeta = "";
         const payload = Object.fromEntries(new FormData(form).entries());
         payload.origin_city = originCity.value;
         payload.nearby_limit = "4";
