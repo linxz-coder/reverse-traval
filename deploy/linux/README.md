@@ -20,6 +20,10 @@ The app runs behind Nginx:
 - Public domain: `hotel.underfitting.com`
 - Service: `reverse-traval`
 - Nightly cache prewarm timer: `reverse-traval-prewarm.timer`
+  - Runs around 02:10 CST with a randomized delay.
+  - Always prioritizes 深圳、广州、东莞、惠州、汕尾、北京、上海.
+  - Rotates through national and global popular cities.
+  - Stops after the configured night window so daytime searches keep capacity.
 
 Useful commands:
 

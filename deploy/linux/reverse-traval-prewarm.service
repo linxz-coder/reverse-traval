@@ -9,4 +9,5 @@ User=reverse_travel
 Group=reverse_travel
 WorkingDirectory=/opt/reverse-traval
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/opt/reverse-traval/.venv/bin/python /opt/reverse-traval/scripts/nightly_prewarm.py --batch-size 6 --holiday-count 3 --profiles default,quality --delay-seconds 90
+TimeoutStartSec=7h
+ExecStart=/opt/reverse-traval/.venv/bin/python /opt/reverse-traval/scripts/nightly_prewarm.py --batch-size 5 --holiday-count 3 --profiles default,quality --delay-seconds 60 --priority-cities 深圳,广州,东莞,惠州,汕尾,北京,上海 --max-runtime-seconds 19800 --wait --watch-interval 60 --watch-timeout 21600

@@ -400,3 +400,50 @@ def test_cache_prewarm_background_state(monkeypatch):
     assert final_state["total"] == 1
     assert final_state["success_count"] == 1
     assert any("正在预热测试缓存" in event["message"] for event in final_state["events"])
+
+
+def test_cache_prewarm_respects_runtime_window(monkeypatch):
+    calls = 0
+
+    def fake_find_choices(**kwargs):
+        nonlocal calls
+        calls += 1
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [],
+            "cache": {"source": "live", "hit": False},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    with app_module.prewarm_lock:
+        app_module.prewarm_state.clear()
+        app_module.prewarm_state.update({"status": "idle", "message": "测试前空闲"})
+
+    state, status_code = app_module.start_cache_prewarm(
+        {
+            "cities": ["深圳"],
+            "holiday_codes": ["2026-06-19::端午节"],
+            "profiles": ["default"],
+            "delay_seconds": "0",
+            "max_runtime_seconds": "0",
+        }
+    )
+
+    assert status_code == 202
+    assert state["status"] in {"queued", "running", "succeeded"}
+    final_state = None
+    for _ in range(50):
+        final_state = app_module.public_prewarm_state()
+        if final_state.get("status") == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert final_state["status"] == "succeeded"
+    assert final_state["completed"] == 0
+    assert final_state["skipped_count"] == 1
+    assert calls == 0

@@ -505,6 +505,11 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
     delay_seconds = parse_optional_int(config.get("delay_seconds"), "预热间隔秒数")
     if delay_seconds is None:
         delay_seconds = 1
+    max_runtime_seconds = parse_optional_int(config.get("max_runtime_seconds"), "预热最长运行秒数")
+    if max_runtime_seconds is not None:
+        max_runtime_seconds = max(0, max_runtime_seconds)
+    completed_count = 0
+    stopped_by_time_window = False
 
     with prewarm_lock:
         prewarm_state.clear()
@@ -523,6 +528,8 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 "city_count": len(cities),
                 "holiday_count": len(holiday_codes),
                 "profiles": profiles,
+                "max_runtime_seconds": max_runtime_seconds,
+                "skipped_count": 0,
                 "events": [],
                 "errors": [],
             }
@@ -530,6 +537,10 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
         append_prewarm_event(prewarm_state, "缓存预热已开始", total=total)
 
     for index, (city, holiday_code, profile_name) in enumerate(targets, start=1):
+        if max_runtime_seconds is not None and time.time() - started_at >= max_runtime_seconds:
+            stopped_by_time_window = True
+            break
+
         profile = PREWARM_FILTER_PROFILES[profile_name]
         label = profile["label"]
         update_prewarm_state(
@@ -569,6 +580,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 error_count=error_count,
                 errors=errors[-20:],
             )
+            completed_count = index
         else:
             success_count += 1
             cache = result.get("cache") or {}
@@ -586,19 +598,37 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 error_count=error_count,
                 errors=errors[-20:],
             )
+            completed_count = index
         if delay_seconds > 0 and index < total:
             time.sleep(delay_seconds)
 
     elapsed_seconds = round(time.time() - started_at)
+    if stopped_by_time_window:
+        update_prewarm_state(
+            f"缓存预热达到夜间时间窗口：已完成 {completed_count}/{total}，成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
+            status="succeeded",
+            completed=completed_count,
+            total=total,
+            success_count=success_count,
+            cache_hits=cache_hits,
+            live_count=live_count,
+            error_count=error_count,
+            skipped_count=max(0, total - completed_count),
+            elapsed_seconds=elapsed_seconds,
+            errors=errors[-20:],
+        )
+        return
+
     update_prewarm_state(
         f"缓存预热完成：成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
         status="succeeded",
-        completed=total,
+        completed=completed_count,
         total=total,
         success_count=success_count,
         cache_hits=cache_hits,
         live_count=live_count,
         error_count=error_count,
+        skipped_count=0,
         elapsed_seconds=elapsed_seconds,
         errors=errors[-20:],
     )
