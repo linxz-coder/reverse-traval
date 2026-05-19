@@ -13,6 +13,7 @@ def test_nightly_prewarm_city_batch_keeps_priority_first_without_duplicates():
     assert cities[:2] == ["深圳", "广州"]
     assert len(cities) == len(set(cities))
     assert len(cities) == 7
+    assert nightly_prewarm.CORE_CITIES[:4] == ("深圳", "广州", "东莞", "惠州")
 
 
 def test_nightly_prewarm_rotating_batch_allows_zero_size():

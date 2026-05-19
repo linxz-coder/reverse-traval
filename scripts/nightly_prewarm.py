@@ -12,7 +12,16 @@ CORE_CITIES = (
     "广州",
     "东莞",
     "惠州",
+    "佛山",
+    "珠海",
+    "中山",
+    "江门",
     "汕尾",
+    "肇庆",
+    "韶关",
+    "河源",
+    "清远",
+    "云浮",
     "北京",
     "上海",
 )
@@ -148,7 +157,7 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=5)
     parser.add_argument("--holiday-count", type=int, default=3)
     parser.add_argument("--holiday-code", action="append", dest="holiday_codes")
-    parser.add_argument("--profiles", default="default,quality")
+    parser.add_argument("--profiles", default="quality")
     parser.add_argument("--delay-seconds", type=int, default=60)
     parser.add_argument("--priority-cities", default=",".join(CORE_CITIES))
     parser.add_argument("--max-runtime-seconds", type=int, default=19800)

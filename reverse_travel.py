@@ -5,6 +5,7 @@ import copy
 import hashlib
 import html
 import json
+import math
 import os
 import random
 import re
@@ -23,6 +24,7 @@ from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
 from holiday_helper import HolidayCalendar, HolidayCalendarError, HolidayRange
+from mysql_store import get_mysql_store
 
 try:  # Optional dependency; a local fallback keeps tests and deploys resilient.
     from opencc import OpenCC
@@ -105,7 +107,7 @@ ENGLISH_PLACE_ALIASES = (
     ("world exhibition", "国际会展中心"),
     ("wecc", "国际会展中心"),
 )
-SIMPLIFIED_HOTEL_NAME_SOURCES = {"携程酒店", "去哪儿酒店", "飞猪酒店", "Trip.com 简体"}
+SIMPLIFIED_HOTEL_NAME_SOURCES = {"携程酒店", "去哪儿酒店", "飞猪酒店", "Trip.com 简体", "人工审核中文名"}
 DOMESTIC_NAME_RECHECK_SECONDS = 30 * 24 * 60 * 60
 
 
@@ -143,6 +145,47 @@ MAX_SCROLL_ROUNDS = 16
 SCROLL_WAIT_MS = 2200
 STABLE_SCROLL_ROUNDS = 6
 COMPARE_PAGE_BATCH_SIZE = 4
+FAST_HOTEL_LIST_LIMIT = _env_int("REVERSE_TRAVEL_FAST_HOTEL_LIST_LIMIT", 36, min_value=12, max_value=80)
+FAST_MIN_HOTEL_LIST_ITEMS = _env_int(
+    "REVERSE_TRAVEL_FAST_MIN_HOTEL_LIST_ITEMS",
+    18,
+    min_value=8,
+    max_value=FAST_HOTEL_LIST_LIMIT,
+)
+FAST_COMPARE_WINDOW_LIMIT = _env_int("REVERSE_TRAVEL_FAST_COMPARE_WINDOW_LIMIT", 2, min_value=1, max_value=4)
+FAST_INITIAL_WAIT_MS = 1200
+FAST_SCROLL_WAIT_MS = 800
+FAST_MAX_SCROLL_ROUNDS = 2
+FAST_STABLE_SCROLL_ROUNDS = 1
+AREA_GROUP_MERGE_DISTANCE_KM = 1.8
+LIGHTWEIGHT_BLOCKED_RESOURCE_TYPES = {"image", "media", "font"}
+LIGHTWEIGHT_BLOCKED_URL_EXTENSIONS = (
+    ".avif",
+    ".gif",
+    ".ico",
+    ".jpeg",
+    ".jpg",
+    ".mp4",
+    ".png",
+    ".svg",
+    ".ttf",
+    ".webm",
+    ".webp",
+    ".woff",
+    ".woff2",
+)
+LIGHTWEIGHT_BLOCKED_HOST_PARTS = (
+    "bat.bing.com",
+    "clarity.ms",
+    "doubleclick.net",
+    "facebook.com/tr",
+    "facebook.net",
+    "google-analytics.com",
+    "googletagmanager.com",
+    "hotjar.com",
+    "sentry.io",
+)
+HOTEL_LIST_CACHE_TTL_SECONDS = 24 * 60 * 60
 CHINESE_NAME_WORKERS = 8
 DOMESTIC_NAME_WORKERS = 5
 FEATURE_VERIFY_WORKERS = 8
@@ -955,10 +998,18 @@ AREA_CITY_CANDIDATE_TRANSLATIONS = {
     },
 }
 CITY_ID_LABELS = {
+    "30": "深圳",
     "31": "珠海",
+    "32": "广州",
     "59": "澳门",
+    "62": "湛江",
+    "223": "东莞",
     "251": "佛山",
+    "316": "江门",
+    "422": "韶关",
+    "552": "肇庆",
     "553": "中山",
+    "1391": "汕尾",
     "3933": "云浮",
 }
 CITY_LABEL_KEYWORDS = {
@@ -1058,9 +1109,13 @@ class ReverseTravelFinder:
         self._cache_lock = threading.Lock()
         self._search_cache: dict[tuple[str, ...], dict[str, Any]] = {}
         self._search_cache_meta: dict[tuple[str, ...], dict[str, Any]] = {}
+        self._coverage_result_cache: dict[tuple[str, ...], dict[str, Any]] = {}
+        self._coverage_result_cache_meta: dict[tuple[str, ...], dict[str, Any]] = {}
+        self._hotel_list_cache: dict[tuple[str, ...], dict[str, Any]] = {}
         self._city_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._city_cache_path())
         self._hotel_name_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._hotel_name_cache_path())
         self._hotel_feature_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._hotel_feature_cache_path())
+        self._mysql_store = get_mysql_store()
         self.geonames_username = os.environ.get("GEONAMES_USERNAME", "").strip()
         self._geonames_area_cache: dict[tuple[float, float, str], str] = {}
 
@@ -1168,7 +1223,7 @@ class ReverseTravelFinder:
 
         if display_name:
             simplified_display = self._to_simplified_chinese(display_name)
-            if simplified_display and simplified_display != display_name:
+            if simplified_display and self._contains_chinese_text(simplified_display):
                 item["hotel_name_simplified"] = simplified_display
             elif aliases:
                 item["hotel_name_simplified"] = aliases[0]
@@ -1195,35 +1250,272 @@ class ReverseTravelFinder:
         for item in choices:
             self._add_choice_search_names(item)
 
-    def _apply_hotel_name_record_to_choice(self, item: dict[str, Any], record: dict[str, Any]) -> None:
+    def _normalized_name_token(self, value: str) -> str:
+        return re.sub(r"[^\u3400-\u9fffA-Za-z0-9]+", "", self._to_simplified_chinese(str(value or "")).lower())
+
+    def _hotel_name_city_aliases(self, item: dict[str, Any] | None = None, city_name: str = "") -> set[str]:
+        values = [
+            city_name,
+            str((item or {}).get("recommend_city") or ""),
+            str((item or {}).get("city") or ""),
+        ]
+        aliases: set[str] = set()
+        for value in values:
+            token = self._normalized_name_token(value)
+            if not token:
+                continue
+            aliases.add(token)
+            stripped = re.sub(r"(特别行政区|自治州|地区|市|区|县)$", "", token)
+            if stripped:
+                aliases.add(stripped)
+        return aliases
+
+    def _is_generic_or_city_hotel_name(
+        self,
+        value: str,
+        item: dict[str, Any] | None = None,
+        city_name: str = "",
+    ) -> bool:
+        name = self._to_simplified_chinese(str(value or "")).strip()
+        token = self._normalized_name_token(name)
+        if not token:
+            return True
+        generic_tokens = {
+            "酒店",
+            "宾馆",
+            "住宿",
+            "酒店民宿",
+            "民宿",
+            "国内酒店",
+            "海外酒店",
+            "tripcom",
+        }
+        if token in generic_tokens:
+            return True
+        city_aliases = self._hotel_name_city_aliases(item, city_name)
+        city_suffixes = ("酒店", "宾馆", "住宿", "民宿", "酒店预订", "住宿预订")
+        if token in city_aliases or any(token == f"{city}{suffix}" for city in city_aliases for suffix in city_suffixes):
+            return True
+        bad_tokens = ("携程", "去哪儿", "飞猪", "酒店预订", "宾馆预订", "价格查询", "Trip.com")
+        return any(text in name for text in bad_tokens)
+
+    def _hotel_name_fallback_for_quality(self, item: dict[str, Any], candidate_name: str = "") -> str:
+        candidate_token = self._normalized_name_token(candidate_name)
+        for key in ("hotel_original_name", "hotel_name", "hotel_name_simplified"):
+            value = str(item.get(key) or "").strip()
+            if not value:
+                continue
+            if candidate_token and self._normalized_name_token(value) == candidate_token:
+                continue
+            return value
+        return ""
+
+    def _is_usable_cached_hotel_name(
+        self,
+        value: str,
+        item: dict[str, Any] | None = None,
+        city_name: str = "",
+        source: str = "",
+    ) -> bool:
+        name = self._to_simplified_chinese(str(value or "")).strip()
+        if not self._contains_chinese_text(name):
+            return False
+        if self._is_generic_or_city_hotel_name(name, item, city_name):
+            return False
+        if len(re.findall(r"[\u3400-\u9fff]", name)) < 4:
+            return False
+        fallback = self._hotel_name_fallback_for_quality(item or {}, name)
+        if not fallback:
+            return self._is_reliable_chinese_hotel_name(name)
+        if source and source.startswith("MySQL"):
+            return self._is_reliable_domestic_hotel_name(name, fallback)
+        return self._is_reliable_domestic_hotel_name(name, fallback)
+
+    def _choice_hotel_name_needs_refresh(self, item: dict[str, Any], city_name: str = "") -> bool:
+        name = str(item.get("hotel_name") or "").strip()
+        source = str(item.get("hotel_name_source") or "").strip()
+        if not name:
+            return True
+        if not self._contains_chinese_text(name):
+            return True
+        return not self._is_usable_cached_hotel_name(name, item, city_name, source)
+
+    def _repair_bad_choice_hotel_name(self, item: dict[str, Any], city_name: str = "") -> None:
+        if not isinstance(item, dict):
+            return
+        if not self._choice_hotel_name_needs_refresh(item, city_name):
+            item.pop("hotel_name_needs_refresh", None)
+            return
+        current_name = str(item.get("hotel_name") or "").strip()
+        original_name = str(item.get("hotel_original_name") or "").strip()
+        if original_name and self._normalized_name_token(original_name) != self._normalized_name_token(current_name):
+            item["hotel_name"] = original_name
+        source = str(item.get("hotel_name_source") or "").strip()
+        if source.startswith("MySQL"):
+            item["hotel_name_source"] = ""
+        simplified = str(item.get("hotel_name_simplified") or "").strip()
+        if simplified and not self._is_usable_cached_hotel_name(simplified, item, city_name, source):
+            item["hotel_name_simplified"] = ""
+        item["hotel_name_needs_refresh"] = True
+
+    def prepare_cached_preview_hotel_names(self, choices: list[dict[str, Any]], city_name: str = "") -> None:
+        for item in choices:
+            self._repair_bad_choice_hotel_name(item, city_name)
+            self._add_choice_search_names(item)
+
+    def _apply_hotel_name_record_to_choice(
+        self,
+        item: dict[str, Any],
+        record: dict[str, Any],
+        city_name: str = "",
+    ) -> None:
         if not isinstance(record, dict):
             self._add_choice_search_names(item)
             return
         name = str(record.get("hotel_name") or "").strip()
         source = str(record.get("source") or "").strip()
-        if name:
+        simplified_record_name = str(record.get("hotel_name_simplified") or "").strip()
+        display_name = name or simplified_record_name
+        if display_name and self._is_usable_cached_hotel_name(display_name, item, city_name, source):
             current_name = str(item.get("hotel_name") or "").strip()
             original_name = str(item.get("hotel_original_name") or "").strip()
             if current_name and not original_name:
                 item["hotel_original_name"] = current_name
-            item["hotel_name"] = name
+            item["hotel_name"] = display_name
             if source:
                 item["hotel_name_source"] = source
-        if record.get("hotel_name_simplified"):
-            item["hotel_name_simplified"] = str(record.get("hotel_name_simplified") or "").strip()
+            item.pop("hotel_name_needs_refresh", None)
+        if simplified_record_name and self._is_usable_cached_hotel_name(simplified_record_name, item, city_name, source):
+            item["hotel_name_simplified"] = simplified_record_name
         aliases = record.get("hotel_name_aliases")
         if aliases:
             item["hotel_name_aliases"] = aliases if isinstance(aliases, list) else [str(aliases)]
+        area_name = str(record.get("area_name") or "").strip()
+        area_source = str(record.get("area_source") or "").strip()
+        if area_name and area_source == "人工审核片区":
+            item["area_name"] = self._to_simplified_chinese(area_name)
+            item["area_source"] = area_source
+        self._repair_bad_choice_hotel_name(item, city_name)
         self._add_choice_search_names(item)
 
-    def _apply_cached_hotel_names_to_choices(self, choices: list[dict[str, Any]]) -> None:
+    def _apply_cached_hotel_names_to_choices(self, choices: list[dict[str, Any]], city_name: str = "") -> None:
+        missing_mysql_items: list[tuple[str, dict[str, Any]]] = []
+        hotel_ids: list[str] = []
         for item in choices:
             hotel_id = str(item.get("hotel_id") or "")
+            if hotel_id:
+                hotel_ids.append(hotel_id)
             cached: dict[str, Any] = {}
             if hotel_id:
                 with self._cache_lock:
                     cached = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {})
-            self._apply_hotel_name_record_to_choice(item, cached)
+            if cached:
+                self._apply_hotel_name_record_to_choice(item, cached, city_name)
+            elif hotel_id:
+                missing_mysql_items.append((hotel_id, item))
+            else:
+                self._repair_bad_choice_hotel_name(item, city_name)
+                self._add_choice_search_names(item)
+
+        if missing_mysql_items:
+            records = self._mysql_store.hotel_name_records([hotel_id for hotel_id, _ in missing_mysql_items])
+            for hotel_id, item in missing_mysql_items:
+                record = records.get(hotel_id) or {}
+                self._apply_hotel_name_record_to_choice(item, record, city_name)
+
+        self._apply_approved_hotel_name_records_to_choices(choices, city_name, hotel_ids)
+        self._apply_approved_hotel_area_records_to_choices(choices, city_name, hotel_ids)
+
+    def _apply_approved_hotel_name_records_to_choices(
+        self,
+        choices: list[dict[str, Any]],
+        city_name: str = "",
+        hotel_ids: list[str] | None = None,
+    ) -> None:
+        if not hasattr(self._mysql_store, "approved_hotel_name_records"):
+            return
+        ids = list(dict.fromkeys(str(value or "").strip() for value in (hotel_ids or []) if str(value or "").strip()))
+        if not ids:
+            ids = list(dict.fromkeys(str(item.get("hotel_id") or "").strip() for item in choices if str(item.get("hotel_id") or "").strip()))
+        if not ids:
+            return
+        try:
+            records = self._mysql_store.approved_hotel_name_records(ids)
+        except Exception:
+            records = {}
+        if not records:
+            return
+        changed = False
+        for item in choices:
+            hotel_id = str(item.get("hotel_id") or "").strip()
+            record = records.get(hotel_id) or {}
+            hotel_name = str(record.get("hotel_name") or "").strip()
+            if not hotel_id or not hotel_name:
+                continue
+            approved_record = {
+                "hotel_name": hotel_name,
+                "hotel_name_simplified": hotel_name,
+                "hotel_name_original": record.get("hotel_name_original") or "",
+                "source": "人工审核中文名",
+                "detail_url": record.get("detail_url") or "",
+            }
+            self._apply_hotel_name_record_to_choice(item, approved_record, city_name)
+            with self._cache_lock:
+                cached = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {})
+                if cached.get("hotel_name") == hotel_name and cached.get("source") == "人工审核中文名":
+                    continue
+                cached["hotel_name"] = hotel_name
+                cached["hotel_name_simplified"] = hotel_name
+                cached["source"] = "人工审核中文名"
+                if record.get("hotel_name_original") and not cached.get("hotel_name_original"):
+                    cached["hotel_name_original"] = record.get("hotel_name_original")
+                self._hotel_name_cache[hotel_id] = self._hotel_name_record_with_search_fields(cached)
+                changed = True
+        if changed:
+            self._save_hotel_name_cache()
+
+    def _apply_approved_hotel_area_records_to_choices(
+        self,
+        choices: list[dict[str, Any]],
+        city_name: str = "",
+        hotel_ids: list[str] | None = None,
+    ) -> None:
+        if not hasattr(self._mysql_store, "approved_hotel_area_records"):
+            return
+        ids = list(dict.fromkeys(str(value or "").strip() for value in (hotel_ids or []) if str(value or "").strip()))
+        if not ids:
+            ids = list(dict.fromkeys(str(item.get("hotel_id") or "").strip() for item in choices if str(item.get("hotel_id") or "").strip()))
+        if not ids:
+            return
+        try:
+            records = self._mysql_store.approved_hotel_area_records(ids)
+        except Exception:
+            records = {}
+        if not records:
+            return
+        changed = False
+        for item in choices:
+            hotel_id = str(item.get("hotel_id") or "").strip()
+            record = records.get(hotel_id) or {}
+            area_name = str(record.get("area_name") or "").strip()
+            if not hotel_id or not area_name:
+                continue
+            approved_record = {
+                "area_name": area_name,
+                "area_source": "人工审核片区",
+                "detail_url": record.get("detail_url") or "",
+            }
+            self._apply_hotel_name_record_to_choice(item, approved_record, city_name)
+            with self._cache_lock:
+                cached = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {})
+                if cached.get("area_name") == area_name and cached.get("area_source") == "人工审核片区":
+                    continue
+                cached["area_name"] = area_name
+                cached["area_source"] = "人工审核片区"
+                self._hotel_name_cache[hotel_id] = self._hotel_name_record_with_search_fields(cached)
+                changed = True
+        if changed:
+            self._save_hotel_name_cache()
 
     def _city_cache_path(self) -> Path:
         return self.cache_dir / "city_cache.json"
@@ -1238,6 +1530,16 @@ class ReverseTravelFinder:
         raw_key = json.dumps(cache_key, ensure_ascii=False, separators=(",", ":"))
         digest = hashlib.sha256(raw_key.encode("utf-8")).hexdigest()
         return self.cache_dir / "search" / f"{digest}.json"
+
+    def _coverage_result_cache_path(self, cache_key: tuple[str, ...]) -> Path:
+        raw_key = json.dumps(cache_key, ensure_ascii=False, separators=(",", ":"))
+        digest = hashlib.sha256(raw_key.encode("utf-8")).hexdigest()
+        return self.cache_dir / "coverage" / f"{digest}.json"
+
+    def _hotel_list_cache_path(self, cache_key: tuple[str, ...]) -> Path:
+        raw_key = json.dumps(cache_key, ensure_ascii=False, separators=(",", ":"))
+        digest = hashlib.sha256(raw_key.encode("utf-8")).hexdigest()
+        return self.cache_dir / "hotel_lists" / f"{digest}.json"
 
     def _read_json_file(self, path: Path) -> Any:
         try:
@@ -1373,6 +1675,221 @@ class ReverseTravelFinder:
         }
         self._write_json_file(self._search_cache_path(cache_key), record)
 
+    def _coverage_result_cache_key(
+        self,
+        city: str,
+        holiday_code: str,
+        feature_filters: FeatureFilters,
+        min_price: int | None,
+        max_price: int | None,
+    ) -> tuple[str, ...]:
+        return (
+            f"{QUERY_PROFILE}:coverage_complete_v1",
+            city.strip().lower(),
+            holiday_code,
+            *feature_filters.cache_parts(),
+            "" if min_price is None else str(min_price),
+            "" if max_price is None else str(max_price),
+        )
+
+    def _is_complete_coverage_result(self, result: dict[str, Any] | None) -> bool:
+        if not isinstance(result, dict):
+            return False
+        supplement = result.get("coverage_supplement")
+        if not isinstance(supplement, dict):
+            return False
+        return str(supplement.get("status") or "") in {"succeeded", "skipped"}
+
+    def _load_coverage_result_cache(self, cache_key: tuple[str, ...]) -> dict[str, Any] | None:
+        if self.search_cache_ttl_seconds <= 0:
+            return None
+        record = self._read_json_file(self._coverage_result_cache_path(cache_key))
+        if not isinstance(record, dict) or record.get("cache_key") != list(cache_key):
+            return None
+        try:
+            created_at = float(record.get("created_at") or 0)
+        except (TypeError, ValueError):
+            return None
+        if not self._is_cache_meta_fresh({"created_at": created_at}, self.search_cache_ttl_seconds):
+            return None
+        result = record.get("result")
+        if not self._is_complete_coverage_result(result):
+            return None
+        return {"created_at": created_at, "result": result}
+
+    def _get_cached_coverage_result_base(
+        self,
+        cache_key: tuple[str, ...],
+    ) -> tuple[dict[str, Any], dict[str, Any]] | None:
+        with self._cache_lock:
+            cached = self._coverage_result_cache.get(cache_key)
+            cached_meta = self._coverage_result_cache_meta.get(cache_key)
+            if cached is not None and not self._is_cache_meta_fresh(cached_meta, self.search_cache_ttl_seconds):
+                self._coverage_result_cache.pop(cache_key, None)
+                self._coverage_result_cache_meta.pop(cache_key, None)
+                cached = None
+                cached_meta = None
+            if cached is not None and self._is_complete_coverage_result(cached):
+                return (
+                    copy.deepcopy(cached),
+                    self._build_cache_info(
+                        source="coverage_memory",
+                        created_at=float((cached_meta or {}).get("created_at") or time.time()),
+                        hit=True,
+                    ),
+                )
+
+        disk_record = self._load_coverage_result_cache(cache_key)
+        if disk_record is None:
+            return None
+
+        base_result = copy.deepcopy(disk_record["result"])
+        created_at = float(disk_record["created_at"])
+        with self._cache_lock:
+            self._coverage_result_cache[cache_key] = copy.deepcopy(base_result)
+            self._coverage_result_cache_meta[cache_key] = {"created_at": created_at}
+        return (
+            base_result,
+            self._build_cache_info(source="coverage_disk", created_at=created_at, hit=True),
+        )
+
+    def _get_best_cached_coverage_result_base(
+        self,
+        city: str,
+        holiday_code: str,
+        feature_filters: FeatureFilters,
+        min_price: int | None,
+        max_price: int | None,
+    ) -> tuple[dict[str, Any], dict[str, Any]] | None:
+        exact_key = self._coverage_result_cache_key(city, holiday_code, feature_filters, min_price, max_price)
+        cached = self._get_cached_coverage_result_base(exact_key)
+        if cached is not None:
+            return cached
+        if min_price is None and max_price is None:
+            return None
+        full_key = self._coverage_result_cache_key(city, holiday_code, feature_filters, None, None)
+        return self._get_cached_coverage_result_base(full_key)
+
+    def store_completed_coverage_result(
+        self,
+        *,
+        city: str,
+        holiday_code: str,
+        min_price: int | None,
+        max_price: int | None,
+        advanced_filter: str | None = "all",
+        pool_filter: str | None = "all",
+        child_facility_filter: str | None = "all",
+        result: dict[str, Any],
+    ) -> bool:
+        if not city or not holiday_code or not self._is_complete_coverage_result(result):
+            return False
+        if self.search_cache_ttl_seconds <= 0:
+            return False
+        feature_filters = self._normalize_feature_filters(
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+        cache_key = self._coverage_result_cache_key(city, holiday_code, feature_filters, min_price, max_price)
+        created_at = time.time()
+        record = {
+            "version": 1,
+            "cache_key": list(cache_key),
+            "created_at": created_at,
+            "created_at_text": self._format_timestamp(created_at),
+            "ttl_seconds": self.search_cache_ttl_seconds,
+            "result": copy.deepcopy(result),
+        }
+        with self._cache_lock:
+            self._coverage_result_cache[cache_key] = copy.deepcopy(result)
+            self._coverage_result_cache_meta[cache_key] = {"created_at": created_at}
+        self._write_json_file(self._coverage_result_cache_path(cache_key), record)
+        return True
+
+    def _hotel_list_cache_key(
+        self,
+        city_candidate: CityCandidate,
+        check_in: dt.date,
+        check_out: dt.date,
+        feature_filters: FeatureFilters,
+        keyword_candidate: HotelKeywordCandidate | None,
+    ) -> tuple[str, ...]:
+        keyword_part = "city"
+        if keyword_candidate is not None:
+            keyword_part = "|".join(
+                (
+                    "keyword",
+                    str(keyword_candidate.hotel_id or ""),
+                    keyword_candidate.filter_id,
+                    keyword_candidate.search_coordinate,
+                    keyword_candidate.title.strip().lower(),
+                )
+            )
+        return (
+            "hotel_list_v1",
+            str(city_candidate.city_id),
+            city_candidate.city_name.strip().lower(),
+            check_in.isoformat(),
+            check_out.isoformat(),
+            *feature_filters.cache_parts(),
+            keyword_part,
+        )
+
+    def _load_hotel_list_cache(
+        self,
+        cache_key: tuple[str, ...],
+        *,
+        limit: int,
+        allow_incomplete: bool = False,
+    ) -> list[dict[str, Any]] | None:
+        if HOTEL_LIST_CACHE_TTL_SECONDS <= 0:
+            return None
+        with self._cache_lock:
+            record = copy.deepcopy(self._hotel_list_cache.get(cache_key))
+        if not isinstance(record, dict):
+            record = self._read_json_file(self._hotel_list_cache_path(cache_key))
+        if not isinstance(record, dict) or record.get("cache_key") != list(cache_key):
+            return None
+        if not self._is_cache_meta_fresh(record, HOTEL_LIST_CACHE_TTL_SECONDS):
+            return None
+        items = record.get("items")
+        if not isinstance(items, list):
+            return None
+        try:
+            fetched_limit = int(record.get("fetched_limit") or 0)
+        except (TypeError, ValueError):
+            fetched_limit = 0
+        complete = bool(record.get("complete"))
+        if not allow_incomplete and not complete and fetched_limit < limit:
+            return None
+        with self._cache_lock:
+            self._hotel_list_cache[cache_key] = copy.deepcopy(record)
+        return copy.deepcopy(items[:limit])
+
+    def _store_hotel_list_cache(
+        self,
+        cache_key: tuple[str, ...],
+        items: list[dict[str, Any]],
+        *,
+        fetched_limit: int,
+        complete: bool,
+    ) -> None:
+        if HOTEL_LIST_CACHE_TTL_SECONDS <= 0 or not items:
+            return
+        record = {
+            "version": 1,
+            "cache_key": list(cache_key),
+            "created_at": time.time(),
+            "ttl_seconds": HOTEL_LIST_CACHE_TTL_SECONDS,
+            "fetched_limit": fetched_limit,
+            "complete": complete,
+            "items": copy.deepcopy(items),
+        }
+        with self._cache_lock:
+            self._hotel_list_cache[cache_key] = copy.deepcopy(record)
+        self._write_json_file(self._hotel_list_cache_path(cache_key), record)
+
     def _build_cache_info(self, source: str, created_at: float, hit: bool) -> dict[str, Any]:
         age_seconds = max(0, round(time.time() - created_at))
         expires_at = created_at + self.search_cache_ttl_seconds
@@ -1383,6 +1900,8 @@ class ReverseTravelFinder:
                 "live": "实时查询",
                 "memory": "内存缓存",
                 "disk": "本地缓存",
+                "coverage_memory": "完整行政区缓存",
+                "coverage_disk": "完整行政区缓存",
                 "stale_disk": "旧缓存",
             }.get(source, source),
             "created_at": self._format_timestamp(created_at),
@@ -1407,8 +1926,11 @@ class ReverseTravelFinder:
         cache_info: dict[str, Any],
     ) -> dict[str, Any]:
         result = copy.deepcopy(base_result)
+        city_candidate = self._city_candidate_from_result_city(result.get("city"))
         filtered_choices: list[dict[str, Any]] = []
         for hotel in result["choices"]:
+            if city_candidate and self._is_outside_search_city(hotel, city_candidate, str(hotel.get("detail_url") or "")):
+                continue
             if min_price is not None and hotel["holiday_avg_nightly_tax_total_value"] < min_price:
                 continue
             if max_price is not None and hotel["holiday_avg_nightly_tax_total_value"] > max_price:
@@ -1417,12 +1939,35 @@ class ReverseTravelFinder:
 
         result["price_filter"] = {"min_price": min_price, "max_price": max_price}
         result["feature_filters"] = feature_filters.to_response()
-        self._apply_cached_hotel_names_to_choices(filtered_choices)
+        self._apply_cached_hotel_names_to_choices(filtered_choices, result["city"])
         self._refresh_choice_area_names(filtered_choices, result["city"])
         result["choices"] = filtered_choices
         result["area_recommendations"] = self._build_area_recommendations(filtered_choices, result["city"])
         result["cache"] = cache_info
         return result
+
+    def _city_candidate_from_result_city(self, city_name: Any) -> CityCandidate | None:
+        normalized = self._normalize_city_label(str(city_name or ""))
+        if not normalized:
+            return None
+        city_id = 0
+        for raw_city_id, label in CITY_ID_LABELS.items():
+            if self._normalize_city_label(label) == normalized:
+                try:
+                    city_id = int(raw_city_id)
+                except (TypeError, ValueError):
+                    city_id = 0
+                break
+        return CityCandidate(
+            city_id=city_id,
+            city_name=normalized,
+            province_id=0,
+            country_id=0,
+            lat=0,
+            lon=0,
+            filter_id="",
+            search_coordinate="",
+        )
 
     def _load_cached_city_candidate(self, cache_key: str) -> CityCandidate | None:
         if not cache_key:
@@ -1485,7 +2030,15 @@ class ReverseTravelFinder:
             self._store_search_cache(cache_key, base_result, created_at)
             cache_info = self._build_cache_info(source="live", created_at=created_at, hit=False)
         else:
-            cached_result = self._get_cached_search_base(cache_key)
+            cached_result = self._get_best_cached_coverage_result_base(
+                city,
+                holiday_code,
+                feature_filters,
+                min_price,
+                max_price,
+            )
+            if cached_result is None:
+                cached_result = self._get_cached_search_base(cache_key)
             if cached_result is not None:
                 base_result, cache_info = cached_result
             else:
@@ -1526,7 +2079,15 @@ class ReverseTravelFinder:
             child_facility_filter=child_facility_filter,
         )
         cache_key = self._search_cache_key(city, holiday_code, feature_filters)
-        cached_result = self._get_cached_search_base(cache_key)
+        cached_result = self._get_best_cached_coverage_result_base(
+            city,
+            holiday_code,
+            feature_filters,
+            min_price,
+            max_price,
+        )
+        if cached_result is None:
+            cached_result = self._get_cached_search_base(cache_key)
         if cached_result is None:
             return None
         base_result, cache_info = cached_result
@@ -1630,7 +2191,7 @@ class ReverseTravelFinder:
         scanned_hotel_limit: int | None = None,
     ) -> dict[str, Any]:
         payload_choices = copy.deepcopy(choices)
-        self._apply_cached_hotel_names_to_choices(payload_choices)
+        self._apply_cached_hotel_names_to_choices(payload_choices, city_name)
         self._refresh_choice_area_names(payload_choices, city_name)
         result = {
             "city": city_name,
@@ -1690,7 +2251,7 @@ class ReverseTravelFinder:
 
         city_candidate = self._resolve_city(city)
         base_choices = self._filter_choices_by_price(copy.deepcopy(choices), min_price, max_price)
-        self._apply_cached_hotel_names_to_choices(base_choices)
+        self._apply_cached_hotel_names_to_choices(base_choices, city_candidate.city_name)
         self._refresh_choice_area_names(base_choices, city_candidate.city_name)
         base_choices.sort(key=self._choice_sort_key)
 
@@ -1953,7 +2514,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         comparison_map = self._build_comparison_map(comparison_hotels, compare_windows, holiday.days)
         choices = self._build_choices_from_hotels(city_candidate, holiday, holiday_hotels, comparison_map)
         choices = self._filter_choices_by_verified_features(choices, feature_filters)
-        self._apply_cached_hotel_names_to_choices(choices)
+        self._apply_cached_hotel_names_to_choices(choices, city_candidate.city_name)
         self._refresh_choice_area_names(choices, city_candidate.city_name)
         choices.sort(key=self._choice_sort_key)
         return choices
@@ -1974,7 +2535,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         total: int = 0,
     ) -> dict[str, Any]:
         payload_choices = copy.deepcopy(choices)
-        self._apply_cached_hotel_names_to_choices(payload_choices)
+        self._apply_cached_hotel_names_to_choices(payload_choices, city_name)
         self._refresh_choice_area_names(payload_choices, city_name)
         return {
             "city": city_name,
@@ -2019,6 +2580,94 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             int(item.get("price_diff_nightly") or 0),
             int(item.get("holiday_avg_nightly_tax_total_value") or 0),
         )
+
+    def _emit_fast_preview_choices(
+        self,
+        *,
+        city_candidate: CityCandidate,
+        holiday: HolidayRange,
+        compare_windows: list[dict[str, dt.date]],
+        context,
+        page,
+        feature_filters: FeatureFilters,
+        progress_callback: Callable[[dict[str, Any]], None] | None,
+    ) -> None:
+        if progress_callback is None:
+            return
+        fast_compare_windows = self._fast_compare_windows(compare_windows)
+        if not fast_compare_windows:
+            return
+        try:
+            self._emit_progress(
+                progress_callback,
+                f"正在先抓取{city_candidate.city_name}首屏酒店，准备快速预览...",
+                "fast_holiday_hotels",
+                percent=14,
+                scanned_hotel_limit=FAST_HOTEL_LIST_LIMIT,
+            )
+            holiday_hotels = self._fetch_hotel_list(
+                city_candidate=city_candidate,
+                check_in=holiday.start,
+                check_out=holiday.check_out,
+                limit=FAST_HOTEL_LIST_LIMIT,
+                page=page,
+                feature_filters=feature_filters,
+                fast_mode=True,
+            )
+            if not holiday_hotels:
+                return
+            self._emit_progress(
+                progress_callback,
+                f"首屏已抓到 {len(holiday_hotels)} 家酒店，正在用 {len(fast_compare_windows)} 个代表时段快速对比...",
+                "fast_comparison_hotels",
+                percent=22,
+                hotel_count=len(holiday_hotels),
+                comparison_total=len(fast_compare_windows),
+                scanned_hotel_limit=FAST_HOTEL_LIST_LIMIT,
+            )
+            comparison_hotels = self._fetch_hotel_lists_parallel(
+                city_candidate=city_candidate,
+                windows=fast_compare_windows,
+                limit=FAST_HOTEL_LIST_LIMIT,
+                context=context,
+                feature_filters=feature_filters,
+                fast_mode=True,
+            )
+            comparison_map = self._build_comparison_map(comparison_hotels, fast_compare_windows, holiday.days)
+            choices = self._build_choices_from_hotels(city_candidate, holiday, holiday_hotels, comparison_map)
+            choices.sort(key=self._choice_sort_key)
+            if not choices:
+                return
+            partial_result = self._live_choices_result_payload(
+                city_name=city_candidate.city_name,
+                holiday=holiday,
+                feature_filters=feature_filters,
+                compare_windows=fast_compare_windows,
+                choices=choices[:PARTIAL_RESULT_LIMIT],
+                partial_stage="fast_preview",
+                partial_message="首屏快速预览已生成，后台会继续完成全量酒店、更多代表时段和设施核验。",
+                total_choice_count=len(choices),
+                scanned_hotel_limit=FAST_HOTEL_LIST_LIMIT,
+            )
+            partial_result["partial"]["fast_preview"] = True
+            partial_result["partial"]["comparison_window_limit"] = len(fast_compare_windows)
+            self._emit_progress(
+                progress_callback,
+                f"已先展示 {len(choices[:PARTIAL_RESULT_LIMIT])} 家首屏预览酒店，完整搜索继续进行。",
+                "fast_preview",
+                percent=32,
+                choice_count=len(choices),
+                scanned_hotel_limit=FAST_HOTEL_LIST_LIMIT,
+                comparison_total=len(fast_compare_windows),
+                partial_result=partial_result,
+            )
+        except Exception as exc:  # noqa: BLE001
+            self._emit_progress(
+                progress_callback,
+                f"快速预览暂未完成，继续完整搜索：{exc}",
+                "fast_preview_skipped",
+                percent=16,
+            )
 
     def _choice_merge_key(self, item: dict[str, Any], fallback_index: int = 0) -> str:
         hotel_id = str(item.get("hotel_id") or "").strip()
@@ -2129,11 +2778,21 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 except PlaywrightTimeoutError:
                     pass
 
+                self._emit_fast_preview_choices(
+                    city_candidate=city_candidate,
+                    holiday=holiday,
+                    compare_windows=compare_windows,
+                    context=context,
+                    page=page,
+                    feature_filters=feature_filters,
+                    progress_callback=progress_callback,
+                )
+
                 self._emit_progress(
                     progress_callback,
                     f"正在抓取{city_candidate.city_name}假期酒店列表...",
                     "holiday_hotels",
-                    percent=18,
+                    percent=34,
                 )
                 holiday_hotels = self._fetch_hotel_list(
                     city_candidate=city_candidate,
@@ -2152,7 +2811,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     progress_callback,
                     f"已抓到假期酒店 {len(holiday_hotels)} 家，正在抓取 {len(compare_windows)} 个平日代表时段...",
                     "comparison_hotels",
-                    percent=36,
+                    percent=44,
                     hotel_count=len(holiday_hotels),
                     comparison_total=len(compare_windows),
                 )
@@ -2179,7 +2838,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     emit_partial_choices(
                         stage="pricing_preview",
                         message=f"已完成 {completed_windows}/{total_windows} 个代表时段，先展示部分价格匹配酒店。",
-                        percent=min(74, 42 + round(28 * completed_windows / max(1, total_windows))),
+                        percent=min(74, 46 + round(28 * completed_windows / max(1, total_windows))),
                         source_choices=preview_choices,
                         scanned_hotel_limit=HOTEL_LIST_LIMIT,
                         completed=completed_windows,
@@ -2203,7 +2862,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         progress_callback,
                         "正在补充重点片区酒店，避免漏掉符合条件的酒店...",
                         "supplemental_hotels",
-                        percent=62,
+                        percent=76,
                         choice_count=len(choices),
                     )
                     supplemental_holiday_hotels, supplemental_comparison_hotels = self._fetch_supplemental_hotel_lists(
@@ -2232,7 +2891,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                             emit_partial_choices(
                                 stage="supplemental_preview",
                                 message=f"重点片区补充后已找到 {len(choices)} 家候选酒店，先展示当前结果。",
-                                percent=74,
+                                percent=78,
                                 source_choices=choices,
                                 scanned_hotel_limit=HOTEL_LIST_LIMIT,
                             )
@@ -2242,7 +2901,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         progress_callback,
                         f"首批已找到 {len(choices)} 家候选酒店，正在先核验一版筛选结果...",
                         "initial_verify_features",
-                        percent=75,
+                        percent=79,
                         choice_count=len(choices),
                     )
                     initial_verified_choices = self._filter_choices_by_verified_features(
@@ -2258,7 +2917,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     emit_partial_choices(
                         stage="initial_verified_preview",
                         message=f"首批设施核验后保留 {len(initial_verified_choices)} 家酒店，深扫更多酒店会继续更新。",
-                        percent=77,
+                        percent=80,
                         source_choices=initial_verified_choices,
                         scanned_hotel_limit=HOTEL_LIST_LIMIT,
                     )
@@ -2268,7 +2927,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         progress_callback,
                         f"首批 {HOTEL_LIST_LIMIT} 家酒店已完成，正在深扫更多酒店，最多覆盖 {DEEP_HOTEL_LIST_LIMIT} 家...",
                         "deep_holiday_hotels",
-                        percent=78,
+                        percent=82,
                         choice_count=len(choices),
                         scanned_hotel_limit=HOTEL_LIST_LIMIT,
                         deep_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
@@ -2296,7 +2955,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                                 progress_callback,
                                 f"深扫假期酒店后已覆盖 {len(holiday_hotels)} 家，正在补齐代表时段价格...",
                                 "deep_comparison_hotels",
-                                percent=80,
+                                percent=83,
                                 hotel_count=len(holiday_hotels),
                                 deep_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
                             )
@@ -2326,7 +2985,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                                         progress_callback,
                                         f"深扫已完成 {completed_windows}/{total_windows} 个代表时段，当前候选 {len(preview_choices)} 家。",
                                         "deep_pricing_progress",
-                                        percent=min(84, 80 + round(4 * completed_windows / max(1, total_windows))),
+                                        percent=min(85, 83 + round(2 * completed_windows / max(1, total_windows))),
                                         choice_count=len(preview_choices),
                                         completed=completed_windows,
                                         total=total_windows,
@@ -2336,7 +2995,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                                 emit_partial_choices(
                                     stage="deep_pricing_preview",
                                     message=f"深扫已完成 {completed_windows}/{total_windows} 个代表时段，目前找到 {len(preview_choices)} 家候选酒店。",
-                                    percent=min(84, 80 + round(4 * completed_windows / max(1, total_windows))),
+                                    percent=min(85, 83 + round(2 * completed_windows / max(1, total_windows))),
                                     source_choices=preview_choices,
                                     scanned_hotel_limit=DEEP_HOTEL_LIST_LIMIT,
                                     completed=completed_windows,
@@ -2380,7 +3039,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                             progress_callback,
                             f"深扫暂未完成，继续使用首批结果：{exc}",
                             "deep_search_skipped",
-                            percent=84,
+                            percent=85,
                             choice_count=len(choices),
                         )
 
@@ -2410,7 +3069,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             percent=92,
             choice_count=len(choices),
         )
-        self._apply_cached_hotel_names_to_choices(choices)
+        self._apply_cached_hotel_names_to_choices(choices, city_candidate.city_name)
         emit_partial_choices(
             stage="cached_names_preview",
             message="酒店结果已显示，简体中文酒店名会在后台继续匹配更新。",
@@ -2519,6 +3178,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         check_out=holiday.check_out,
                     )
                 )
+            if self._is_outside_search_city(hotel, city_candidate, detail_url):
+                continue
 
             choices.append(
                 {
@@ -2561,6 +3222,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     "price_diff_nightly": diff,
                     "price_diff_nightly_text": self._format_cny_diff(diff),
                     "detail_url": detail_url,
+                    "image_url": hotel.get("image_url") or "",
                 }
             )
         return choices
@@ -2597,6 +3259,25 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
     def _build_compare_windows(self, holiday: HolidayRange) -> list[dict[str, dt.date]]:
         return self._sample_compare_windows(self._build_all_compare_windows(holiday))
+
+    def _fast_compare_windows(self, compare_windows: list[dict[str, dt.date]]) -> list[dict[str, dt.date]]:
+        if len(compare_windows) <= FAST_COMPARE_WINDOW_LIMIT:
+            return compare_windows[:]
+        selected: list[dict[str, dt.date]] = []
+        weekdays = [item for item in compare_windows if item["check_in"].weekday() < 5]
+        weekends = [item for item in compare_windows if item["check_in"].weekday() >= 5]
+        if weekdays:
+            selected.append(weekdays[0])
+        if weekends and len(selected) < FAST_COMPARE_WINDOW_LIMIT:
+            selected.append(weekends[0])
+        selected_dates = {item["check_in"] for item in selected}
+        for item in compare_windows:
+            if len(selected) >= FAST_COMPARE_WINDOW_LIMIT:
+                break
+            if item["check_in"] not in selected_dates:
+                selected.append(item)
+                selected_dates.add(item["check_in"])
+        return sorted(selected, key=lambda item: item["check_in"])
 
     def _build_all_compare_windows(self, holiday: HolidayRange) -> list[dict[str, dt.date]]:
         nights = holiday.days
@@ -2643,10 +3324,23 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         return [items[idx] for idx in sorted(indexes)]
 
     def _route_lightweight_resources(self, route) -> None:
-        if route.request.resource_type in {"image", "media", "font"}:
+        request = route.request
+        resource_type = getattr(request, "resource_type", "")
+        url = getattr(request, "url", "")
+        if resource_type in LIGHTWEIGHT_BLOCKED_RESOURCE_TYPES or self._is_lightweight_blocked_url(url):
             route.abort()
             return
         route.continue_()
+
+    def _is_lightweight_blocked_url(self, url: str) -> bool:
+        if not url:
+            return False
+        parsed = urlparse(url)
+        host = parsed.netloc.lower()
+        path = parsed.path.lower()
+        if any(part in host or part in url.lower() for part in LIGHTWEIGHT_BLOCKED_HOST_PARTS):
+            return True
+        return path.endswith(LIGHTWEIGHT_BLOCKED_URL_EXTENSIONS)
 
     def _resolve_city(self, city: str) -> CityCandidate:
         city_cache_key = city.strip().lower()
@@ -3232,7 +3926,26 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         page,
         feature_filters: FeatureFilters,
         keyword_candidate: HotelKeywordCandidate | None = None,
+        fast_mode: bool = False,
     ) -> list[dict[str, Any]]:
+        cache_key = self._hotel_list_cache_key(
+            city_candidate,
+            check_in,
+            check_out,
+            feature_filters,
+            keyword_candidate,
+        )
+        cached_items = self._load_hotel_list_cache(cache_key, limit=limit)
+        if cached_items is not None:
+            return cached_items
+        seed_items = []
+        if not fast_mode:
+            seed_items = self._load_hotel_list_cache(
+                cache_key,
+                limit=min(limit, FAST_HOTEL_LIST_LIMIT),
+                allow_incomplete=True,
+            ) or []
+
         url = self._build_hotel_list_url(city_candidate, check_in, check_out, feature_filters, keyword_candidate)
         response_items: list[dict[str, Any]] = []
         response_lock = threading.Lock()
@@ -3247,7 +3960,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
         page.on("response", collect_response_items)
         try:
-            for wait_ms in (2500, 4500):
+            wait_sequence = (FAST_INITIAL_WAIT_MS,) if fast_mode else (2500, 4500)
+            for wait_ms in wait_sequence:
                 try:
                     try:
                         page.goto(url, wait_until="domcontentloaded", timeout=60000)
@@ -3255,7 +3969,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     except PlaywrightTimeoutError:
                         continue
 
-                    items = self._collect_scrolled_hotel_list(
+                    items, complete = self._collect_scrolled_hotel_list(
                         page=page,
                         limit=limit,
                         city_candidate=city_candidate,
@@ -3264,8 +3978,16 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         response_items=response_items,
                         response_lock=response_lock,
                         feature_filters=feature_filters,
+                        fast_mode=fast_mode,
+                        seed_items=seed_items,
                     )
                     if items:
+                        self._store_hotel_list_cache(
+                            cache_key,
+                            items,
+                            fetched_limit=limit,
+                            complete=complete and not fast_mode,
+                        )
                         return items
                 finally:
                     with response_lock:
@@ -3286,6 +4008,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         feature_filters: FeatureFilters,
         keyword_candidate: HotelKeywordCandidate | None = None,
         batch_callback: Callable[[dict[str, list[dict[str, Any]]], int, int], None] | None = None,
+        fast_mode: bool = False,
     ) -> dict[str, list[dict[str, Any]]]:
         results: dict[str, list[dict[str, Any]]] = {}
         for batch in self._chunked(windows, COMPARE_PAGE_BATCH_SIZE):
@@ -3301,21 +4024,31 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         limit=limit,
                         feature_filters=feature_filters,
                         keyword_candidate=keyword_candidate,
+                        fast_mode=fast_mode,
                     )
-                    page.on("response", state["handler"])
+                    if state.get("cached_items") is None:
+                        page.on("response", state["handler"])
                     states.append(state)
 
                 for state in states:
+                    if state.get("cached_items") is not None:
+                        self._add_hotel_list_state_items(state, state["cached_items"])
+                        state["done"] = True
+                        state["cache_hit"] = True
+                        continue
+                    if state.get("seed_items"):
+                        self._add_hotel_list_state_items(state, state["seed_items"])
                     try:
                         state["page"].goto(state["url"], wait_until="domcontentloaded", timeout=60000)
                     except PlaywrightTimeoutError:
                         state["load_failed"] = True
 
-                active = [state for state in states if not state.get("load_failed")]
+                active = [state for state in states if not state["done"] and not state.get("load_failed")]
                 if active:
-                    active[0]["page"].wait_for_timeout(4500)
+                    active[0]["page"].wait_for_timeout(FAST_INITIAL_WAIT_MS if fast_mode else 4500)
 
-                for round_index in range(MAX_SCROLL_ROUNDS + 1):
+                max_rounds = FAST_MAX_SCROLL_ROUNDS if fast_mode else MAX_SCROLL_ROUNDS
+                for round_index in range(max_rounds + 1):
                     active = [state for state in states if not state["done"] and not state.get("load_failed")]
                     if not active:
                         break
@@ -3331,17 +4064,25 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
                     for state in active:
                         self._advance_hotel_list_scroll(state["page"], wait_ms=0)
-                    active[0]["page"].wait_for_timeout(SCROLL_WAIT_MS)
+                    active[0]["page"].wait_for_timeout(FAST_SCROLL_WAIT_MS if fast_mode else SCROLL_WAIT_MS)
 
                 for state in states:
                     self._drain_hotel_list_state_response_items(state)
-                    results[state["key"]] = self._finalize_hotel_items(
+                    items = self._finalize_hotel_items(
                         list(state["collected"].values())[:limit],
                         city_candidate=city_candidate,
                         check_in=state["check_in"],
                         check_out=state["check_out"],
                         feature_filters=state["feature_filters"],
                     )
+                    results[state["key"]] = items
+                    if not state.get("cache_hit") and items:
+                        self._store_hotel_list_cache(
+                            state["cache_key"],
+                            items,
+                            fetched_limit=limit,
+                            complete=bool(state.get("complete")) and not fast_mode,
+                        )
                 if batch_callback is not None:
                     batch_callback(copy.deepcopy(results), len(results), len(windows))
             finally:
@@ -3366,7 +4107,23 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         limit: int,
         feature_filters: FeatureFilters,
         keyword_candidate: HotelKeywordCandidate | None = None,
+        fast_mode: bool = False,
     ) -> dict[str, Any]:
+        cache_key = self._hotel_list_cache_key(
+            city_candidate,
+            check_in,
+            check_out,
+            feature_filters,
+            keyword_candidate,
+        )
+        cached_items = self._load_hotel_list_cache(cache_key, limit=limit)
+        seed_items = []
+        if cached_items is None and not fast_mode:
+            seed_items = self._load_hotel_list_cache(
+                cache_key,
+                limit=min(limit, FAST_HOTEL_LIST_LIMIT),
+                allow_incomplete=True,
+            ) or []
         response_items: list[dict[str, Any]] = []
         response_lock = threading.Lock()
         nights = max(1, (check_out - check_in).days)
@@ -3393,6 +4150,10 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             "check_out": check_out,
             "feature_filters": feature_filters,
             "limit": limit,
+            "cache_key": cache_key,
+            "cached_items": cached_items,
+            "seed_items": seed_items,
+            "cache_hit": cached_items is not None,
             "response_items": response_items,
             "response_lock": response_lock,
             "collected": {},
@@ -3400,15 +4161,22 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             "stable_rounds": 0,
             "done": False,
             "load_failed": False,
+            "complete": False,
+            "fast_mode": fast_mode,
         }
 
     def _collect_hotel_list_state_snapshot(self, state: dict[str, Any]) -> None:
         self._drain_hotel_list_state_response_items(state)
-        self._add_hotel_list_state_items(
-            state,
-            self._extract_hotel_list_snapshot(state["page"], state["limit"]),
-        )
-        self._drain_hotel_list_state_response_items(state)
+        if self._hotel_list_dom_fallback_needed(
+            collected_count=len(state["collected"]),
+            limit=state["limit"],
+            fast_mode=bool(state.get("fast_mode")),
+        ):
+            self._add_hotel_list_state_items(
+                state,
+                self._extract_hotel_list_snapshot(state["page"], state["limit"]),
+            )
+            self._drain_hotel_list_state_response_items(state)
 
     def _drain_hotel_list_state_response_items(self, state: dict[str, Any]) -> None:
         with state["response_lock"]:
@@ -3419,7 +4187,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     def _add_hotel_list_state_items(self, state: dict[str, Any], items: list[dict[str, Any]]) -> None:
         collected = state["collected"]
         for item in items:
-            key = item["hotel_id"] or item["detail_href"] or item["hotel_name"]
+            key = self._hotel_merge_key(item)
             if not key:
                 continue
             if key not in collected:
@@ -3435,12 +4203,17 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         if current_count >= state["limit"]:
             state["done"] = True
             return
+        if state.get("fast_mode") and current_count >= FAST_MIN_HOTEL_LIST_ITEMS:
+            state["done"] = True
+            return
         if round_index >= 1 and current_count == state["last_count"]:
             state["stable_rounds"] += 1
         else:
             state["stable_rounds"] = 0
-        if state["stable_rounds"] >= STABLE_SCROLL_ROUNDS:
+        stable_limit = FAST_STABLE_SCROLL_ROUNDS if state.get("fast_mode") else STABLE_SCROLL_ROUNDS
+        if state["stable_rounds"] >= stable_limit:
             state["done"] = True
+            state["complete"] = not state.get("fast_mode")
             return
         state["last_count"] = current_count
 
@@ -3457,14 +4230,17 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         response_items: list[dict[str, Any]],
         response_lock: threading.Lock,
         feature_filters: FeatureFilters,
-    ) -> list[dict[str, Any]]:
+        fast_mode: bool = False,
+        seed_items: list[dict[str, Any]] | None = None,
+    ) -> tuple[list[dict[str, Any]], bool]:
         collected: dict[str, dict[str, Any]] = {}
         last_count = 0
         stable_rounds = 0
+        complete = False
 
         def add_items(items: list[dict[str, Any]]) -> None:
             for item in items:
-                key = item["hotel_id"] or item["detail_href"] or item["hotel_name"]
+                key = self._hotel_merge_key(item)
                 if not key:
                     continue
                 if key not in collected:
@@ -3480,23 +4256,36 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 response_items.clear()
             add_items(items)
 
-        for round_index in range(MAX_SCROLL_ROUNDS + 1):
+        if seed_items:
+            add_items(seed_items)
+
+        max_rounds = FAST_MAX_SCROLL_ROUNDS if fast_mode else MAX_SCROLL_ROUNDS
+        stable_limit = FAST_STABLE_SCROLL_ROUNDS if fast_mode else STABLE_SCROLL_ROUNDS
+        for round_index in range(max_rounds + 1):
             drain_response_items()
-            add_items(self._extract_hotel_list_snapshot(page, limit))
-            drain_response_items()
+            if self._hotel_list_dom_fallback_needed(
+                collected_count=len(collected),
+                limit=limit,
+                fast_mode=fast_mode,
+            ):
+                add_items(self._extract_hotel_list_snapshot(page, limit))
+                drain_response_items()
 
             current_count = len(collected)
             if current_count >= limit:
+                break
+            if fast_mode and current_count >= FAST_MIN_HOTEL_LIST_ITEMS:
                 break
             if round_index >= 1 and current_count == last_count:
                 stable_rounds += 1
             else:
                 stable_rounds = 0
-            if stable_rounds >= STABLE_SCROLL_ROUNDS:
+            if stable_rounds >= stable_limit:
+                complete = not fast_mode
                 break
 
             last_count = current_count
-            self._advance_hotel_list_scroll(page)
+            self._advance_hotel_list_scroll(page, wait_ms=FAST_SCROLL_WAIT_MS if fast_mode else SCROLL_WAIT_MS)
 
         drain_response_items()
         return self._finalize_hotel_items(
@@ -3505,7 +4294,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             check_in=check_in,
             check_out=check_out,
             feature_filters=feature_filters,
-        )
+        ), complete
+
+    def _hotel_list_dom_fallback_needed(self, collected_count: int, limit: int, fast_mode: bool = False) -> bool:
+        target = min(limit, FAST_MIN_HOTEL_LIST_ITEMS) if fast_mode else limit
+        return collected_count < max(1, target)
 
     def _hotel_item_score(self, item: dict[str, Any]) -> int:
         score = sum(
@@ -3563,6 +4356,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 area_text=area_hint,
             )
             feature_flags = self._extract_api_feature_flags(row)
+            image_url = self._extract_image_url(row)
             item = {
                 "hotel_id": hotel_id,
                 "hotel_name": hotel_name,
@@ -3576,6 +4370,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 **feature_flags,
                 "_source": "api",
             }
+            if image_url:
+                item["image_url"] = image_url
             coordinates = self._extract_coordinates(row)
             if coordinates:
                 item["latitude"], item["longitude"] = coordinates
@@ -3616,6 +4412,49 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
         visit(value)
         return found[0] if found else None
+
+    def _normalize_image_url(self, value: Any) -> str:
+        text = html.unescape(str(value or "").strip()).replace("\\/", "/").rstrip("\\")
+        if not text or len(text) > 2048 or text.startswith("data:"):
+            return ""
+        if text.startswith("//"):
+            text = f"https:{text}"
+        if not re.match(r"https?://", text, flags=re.IGNORECASE):
+            return ""
+        lowered = text.lower()
+        if re.search(r"\.(?:jpg|jpeg|png|webp)(?:[?#].*)?$", lowered):
+            return text
+        if any(token in lowered for token in ("tripcdn.com", "dimg", "image", "photo", "cover", "pic")):
+            return text
+        return ""
+
+    def _extract_image_url(self, value: Any) -> str:
+        key_tokens = ("image", "img", "photo", "picture", "pic", "cover")
+
+        def visit(node: Any, key_hint: str = "") -> str:
+            if isinstance(node, str):
+                if key_hint and any(token in key_hint for token in key_tokens):
+                    return self._normalize_image_url(node)
+                return ""
+            if isinstance(node, dict):
+                for key, child in node.items():
+                    lowered = str(key).lower()
+                    if any(token in lowered for token in key_tokens):
+                        found = visit(child, lowered)
+                        if found:
+                            return found
+                for child in node.values():
+                    found = visit(child, key_hint)
+                    if found:
+                        return found
+            elif isinstance(node, list):
+                for child in node:
+                    found = visit(child, key_hint)
+                    if found:
+                        return found
+            return ""
+
+        return visit(value)
 
     def _extract_api_feature_flags(self, row: dict[str, Any]) -> dict[str, bool | None]:
         text = json.dumps(row, ensure_ascii=False).lower()
@@ -4298,6 +5137,12 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 for name in simplified["representative_hotels"]
                 if str(name or "").strip()
             ]
+        if isinstance(simplified.get("merged_area_names"), list):
+            simplified["merged_area_names"] = [
+                self._to_simplified_chinese(str(name or ""))
+                for name in simplified["merged_area_names"]
+                if str(name or "").strip()
+            ]
         if isinstance(simplified.get("room_type_labels"), list):
             simplified["room_type_labels"] = [
                 self._to_simplified_chinese(str(label or ""))
@@ -4639,10 +5484,13 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 area_name = self._coordinate_area_name(item, city_name, coordinate_centers)
             if not area_name or self._is_generic_area_name(area_name):
                 continue
+            choice_city = self._area_city_label(str(item.get("recommend_city") or city_name or ""))
             group = groups.setdefault(
                 area_name,
                 {
                     "area_name": area_name,
+                    "city_label": choice_city,
+                    "area_aliases": set(),
                     "hotel_count": 0,
                     "lower_price_hotel_count": 0,
                     "slightly_higher_hotel_count": 0,
@@ -4650,8 +5498,10 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     "diff_values": [],
                     "room_types": set(),
                     "representative_hotels": [],
+                    "coordinates": [],
                 },
             )
+            group["area_aliases"].add(area_name)
             diff = int(item.get("price_diff_nightly") or 0)
             group["hotel_count"] += 1
             if diff <= 0:
@@ -4660,13 +5510,16 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 group["slightly_higher_hotel_count"] += 1
             group["holiday_values"].append(int(item.get("holiday_avg_nightly_tax_total_value") or 0))
             group["diff_values"].append(diff)
+            coords = self._item_coordinate_pair(item)
+            if coords is not None:
+                group["coordinates"].append(coords)
             if item.get("room_type_label"):
                 group["room_types"].add(item["room_type_label"])
             if len(group["representative_hotels"]) < 4:
                 group["representative_hotels"].append(item.get("hotel_name") or item.get("hotel_original_name") or "")
 
         recommendations: list[dict[str, Any]] = []
-        for group in groups.values():
+        for group in self._merge_area_recommendation_groups(list(groups.values())):
             holiday_values = [value for value in group["holiday_values"] if value > 0]
             diff_values = group["diff_values"] or [0]
             avg_holiday = round(sum(holiday_values) / len(holiday_values)) if holiday_values else 0
@@ -4684,6 +5537,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     "average_price_diff_nightly": avg_diff,
                     "average_price_diff_nightly_text": self._format_cny_diff(avg_diff),
                     "room_type_labels": sorted(group["room_types"]),
+                    "merged_area_names": sorted(group.get("area_aliases") or [group["area_name"]]),
                     "representative_hotels": [name for name in group["representative_hotels"] if name],
                     "reason": self._area_recommendation_reason(group["hotel_count"], group["lower_price_hotel_count"], avg_diff),
                 }
@@ -4701,6 +5555,83 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         if include_defaults:
             recommendations = self._add_default_area_recommendations(recommendations, city_name, choices)
         return self._simplify_area_recommendations(recommendations)
+
+    def _merge_area_recommendation_groups(self, groups: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        ordered = sorted(
+            groups,
+            key=lambda group: (
+                -int(group.get("hotel_count") or 0),
+                -int(group.get("lower_price_hotel_count") or 0),
+                -len(str(group.get("area_name") or "")),
+                str(group.get("area_name") or ""),
+            ),
+        )
+        merged: list[dict[str, Any]] = []
+        for group in ordered:
+            target = next((item for item in merged if self._area_groups_should_merge(item, group)), None)
+            if target is None:
+                merged.append(copy.deepcopy(group))
+                continue
+            self._merge_area_group_into(target, group)
+        return merged
+
+    def _merge_area_group_into(self, target: dict[str, Any], source: dict[str, Any]) -> None:
+        for key in ("hotel_count", "lower_price_hotel_count", "slightly_higher_hotel_count"):
+            target[key] = int(target.get(key) or 0) + int(source.get(key) or 0)
+        for key in ("holiday_values", "diff_values", "coordinates"):
+            target.setdefault(key, []).extend(source.get(key) or [])
+        target.setdefault("room_types", set()).update(source.get("room_types") or set())
+        target.setdefault("area_aliases", set()).update(source.get("area_aliases") or {source.get("area_name")})
+        existing_hotels = {name for name in target.get("representative_hotels") or [] if name}
+        for name in source.get("representative_hotels") or []:
+            if name and name not in existing_hotels and len(target["representative_hotels"]) < 4:
+                target["representative_hotels"].append(name)
+                existing_hotels.add(name)
+
+    def _area_groups_should_merge(self, left: dict[str, Any], right: dict[str, Any]) -> bool:
+        left_city = str(left.get("city_label") or "")
+        right_city = str(right.get("city_label") or "")
+        if left_city and right_city and left_city != right_city:
+            return False
+        left_key = self._area_merge_name_key(str(left.get("area_name") or ""), left_city or right_city)
+        right_key = self._area_merge_name_key(str(right.get("area_name") or ""), right_city or left_city)
+        if left_key and right_key:
+            if left_key == right_key:
+                return True
+        left_center = self._area_group_centroid(left)
+        right_center = self._area_group_centroid(right)
+        if left_center is None or right_center is None:
+            return False
+        return self._coordinate_distance_km(*left_center, *right_center) <= AREA_GROUP_MERGE_DISTANCE_KM
+
+    def _area_merge_name_key(self, area_name: str, city_label: str = "") -> str:
+        text = self._to_simplified_chinese(self._normalize_area_chinese_chars(area_name))
+        text = re.sub(r"\s+", "", text)
+        text = re.sub(r"(片区|区域)$", "", text)
+        if city_label:
+            normalized_city = self._to_simplified_chinese(self._normalize_area_chinese_chars(city_label))
+            text = re.sub(rf"^{re.escape(normalized_city)}市?", "", text)
+        text = re.sub(r"(旅游度假区|度假区|风景区|景区|商圈|商业区|商务区|中心区|核心区|附近|周边|公园)$", "", text)
+        return re.sub(r"[^0-9A-Za-z\u3400-\u9fff]", "", text).lower()
+
+    def _area_group_centroid(self, group: dict[str, Any]) -> tuple[float, float] | None:
+        coords = group.get("coordinates") or []
+        if not coords:
+            return None
+        return (
+            sum(lat for lat, _ in coords) / len(coords),
+            sum(lon for _, lon in coords) / len(coords),
+        )
+
+    def _coordinate_distance_km(self, lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+        radius_km = 6371.0
+        d_lat = math.radians(lat2 - lat1)
+        d_lon = math.radians(lon2 - lon1)
+        a = (
+            math.sin(d_lat / 2) ** 2
+            + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(d_lon / 2) ** 2
+        )
+        return 2 * radius_km * math.asin(math.sqrt(a))
 
     def _is_generic_area_name(self, area_name: str) -> bool:
         text = area_name or ""
@@ -4802,6 +5733,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     def _refresh_choice_area_names(self, choices: list[dict[str, Any]], city_name: str) -> None:
         coordinate_centers = self._coordinate_centers_by_city(choices, city_name)
         for item in choices:
+            if str(item.get("area_source") or "") == "人工审核片区":
+                approved_area = self._normalize_area_display_name(str(item.get("area_name") or ""), str(item.get("recommend_city") or city_name or ""))
+                if approved_area:
+                    item["area_name"] = self._to_simplified_chinese(approved_area)
+                    continue
             area_name = self._choice_area_name(item, city_name)
             if not area_name or self._is_generic_area_name(area_name):
                 area_name = self._coordinate_area_name(item, city_name, coordinate_centers)
@@ -4809,11 +5745,17 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
     def enhance_area_data(self, city_name: str, choices: list[dict[str, Any]]) -> dict[str, Any]:
         enhanced_choices = copy.deepcopy(choices or [])
+        self._apply_cached_hotel_names_to_choices(enhanced_choices, city_name)
         geonames_lookups = 0
         geonames_hits = 0
         coordinate_centers = self._coordinate_centers_by_city(enhanced_choices, city_name)
         for item in enhanced_choices:
             choice_city = str(item.get("recommend_city") or city_name or "")
+            if str(item.get("area_source") or "") == "人工审核片区":
+                approved_area = self._normalize_area_display_name(str(item.get("area_name") or ""), choice_city)
+                if approved_area:
+                    item["area_name"] = self._to_simplified_chinese(approved_area)
+                    continue
             area_name = ""
             if geonames_lookups < 8 and item.get("latitude") not in ("", None) and item.get("longitude") not in ("", None):
                 geonames_lookups += 1
@@ -4927,15 +5869,41 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     );
                     const roomPriceNode =
                         card.querySelector('.room-price .sale') ||
-                        card.querySelector('.room-price .price-line span:last-child');
-                    const totalNode = card.querySelector('.room-price .price-explain');
+                        card.querySelector('.room-price .price-line span:last-child') ||
+                        card.querySelector('[class*="price"] [class*="sale"]') ||
+                        card.querySelector('[class*="Price"] [class*="sale"]');
+                    const totalNode =
+                        card.querySelector('.room-price .price-explain') ||
+                        card.querySelector('[class*="price-explain"]') ||
+                        card.querySelector('[class*="PriceExplain"]') ||
+                        Array.from(card.querySelectorAll('span, div')).find((node) => {
+                            const text = (node.innerText || node.textContent || '').trim();
+                            return /Total price|incl\\. taxes|taxes & fees|含税|總價|总价/i.test(text) && /CNY\\s*[\\d,]+/.test(text);
+                        });
+                    const imageNode =
+                        card.querySelector('img[src*="tripcdn"], img[src*="dimg"], img[data-src*="tripcdn"], img[data-src*="dimg"]') ||
+                        card.querySelector('img[src], img[data-src], img[data-original], img[data-lazy-src]');
+                    const imageUrl = (
+                        imageNode?.currentSrc ||
+                        imageNode?.getAttribute('src') ||
+                        imageNode?.getAttribute('data-src') ||
+                        imageNode?.getAttribute('data-original') ||
+                        imageNode?.getAttribute('data-lazy-src') ||
+                        ''
+                    ).trim();
                     return {
                         hotel_id: card.getAttribute('id') || '',
                         hotel_name: (detailNode?.textContent || '').trim(),
                         detail_href: detailNode?.getAttribute('href') || '',
-                        room_name: (card.querySelector('.room-name')?.textContent || '').trim(),
+                        room_name: (
+                            card.querySelector('.room-name')?.textContent ||
+                            card.querySelector('[class*="room-name"]')?.textContent ||
+                            card.querySelector('[class*="RoomName"]')?.textContent ||
+                            ''
+                        ).trim(),
                         room_price_text: (roomPriceNode?.textContent || '').trim(),
                         tax_total_text: (totalNode?.innerText || totalNode?.textContent || '').trim(),
+                        image_url: imageUrl,
                         raw_text: (card.innerText || '').trim(),
                     };
                 });
@@ -4963,12 +5931,23 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     while (node && node !== document.body) {
                         const text = (node.innerText || '').trim();
                         const cnyCount = (text.match(/CNY/g) || []).length;
-                        if (text.includes('Total price') || cnyCount >= 2) {
+                        if (/Total price|incl\\. taxes|taxes & fees|含税|總價|总价/i.test(text) || cnyCount >= 2) {
                             container = node;
                             break;
                         }
                         node = node.parentElement;
                     }
+                    const imageNode =
+                        container?.querySelector('img[src*="tripcdn"], img[src*="dimg"], img[data-src*="tripcdn"], img[data-src*="dimg"]') ||
+                        container?.querySelector('img[src], img[data-src], img[data-original], img[data-lazy-src]');
+                    const imageUrl = (
+                        imageNode?.currentSrc ||
+                        imageNode?.getAttribute('src') ||
+                        imageNode?.getAttribute('data-src') ||
+                        imageNode?.getAttribute('data-original') ||
+                        imageNode?.getAttribute('data-lazy-src') ||
+                        ''
+                    ).trim();
                     rows.push({
                         hotel_id: '',
                         hotel_name: (anchor.textContent || '').trim(),
@@ -4976,6 +5955,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                         room_name: '',
                         room_price_text: '',
                         tax_total_text: '',
+                        image_url: imageUrl,
                         raw_text: (container?.innerText || anchor.innerText || '').trim(),
                     });
                     if (rows.length >= limit) {
@@ -5072,6 +6052,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             room_price_text = str(card.get("room_price_text") or "").strip()
             tax_total_text = str(card.get("tax_total_text") or "").strip()
             detail_href = str(card.get("detail_href") or "").strip()
+            image_url = self._normalize_image_url(card.get("image_url"))
 
             if not hotel_name and raw_text:
                 hotel_name = raw_text.splitlines()[0].strip()
@@ -5083,7 +6064,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if tax_total_text:
                 tax_total_text = tax_total_text.splitlines()[0].strip()
             else:
-                total_match = re.search(r"Total price:\s*CNY\s*[\d,]+", raw_text)
+                total_match = re.search(
+                    r"(?:Total price|含税总价|含稅總價|总价|總價|合计|合計)[:：]?\s*CNY\s*[\d,]+",
+                    raw_text,
+                    flags=re.IGNORECASE,
+                )
                 if total_match:
                     tax_total_text = total_match.group(0)
                 elif len(cny_matches) >= 2:
@@ -5103,19 +6088,20 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if not hotel_id or not hotel_name or not tax_total_text:
                 continue
 
-            items.append(
-                {
-                    "hotel_id": hotel_id,
-                    "hotel_name": hotel_name,
-                    "detail_href": detail_href,
-                    "room_name": room_name,
-                    "room_price_text": room_price_text,
-                    "tax_total_text": tax_total_text,
-                    "has_pool": self._text_has_pool_feature(raw_text.lower()),
-                    "has_child_facility": self._text_has_child_feature(raw_text.lower()),
-                    "is_advanced": None,
-                }
-            )
+            item = {
+                "hotel_id": hotel_id,
+                "hotel_name": hotel_name,
+                "detail_href": detail_href,
+                "room_name": room_name,
+                "room_price_text": room_price_text,
+                "tax_total_text": tax_total_text,
+                "has_pool": self._text_has_pool_feature(raw_text.lower()),
+                "has_child_facility": self._text_has_child_feature(raw_text.lower()),
+                "is_advanced": None,
+            }
+            if image_url:
+                item["image_url"] = image_url
+            items.append(item)
         return items
 
     def _extract_hotel_id(self, detail_href: str) -> str:
@@ -5338,20 +6324,31 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
     def enhance_hotel_name_data(self, city_name: str, choices: list[dict[str, Any]]) -> dict[str, Any]:
         enhanced_choices = copy.deepcopy(choices or [])
         lookup_targets: dict[str, tuple[str, str]] = {}
+        lookup_needs_refresh: set[str] = set()
         for item in enhanced_choices:
             hotel_id = str(item.get("hotel_id") or "")
             with self._cache_lock:
                 cached = copy.deepcopy(self._hotel_name_cache.get(hotel_id) or {}) if hotel_id else {}
-            self._apply_hotel_name_record_to_choice(item, cached)
+            self._apply_hotel_name_record_to_choice(item, cached, city_name)
+            needs_refresh = self._choice_hotel_name_needs_refresh(item, city_name)
             if not hotel_id or not item.get("detail_url"):
                 continue
-            if not self._should_lookup_domestic_hotel_name(cached):
+            if not self._should_lookup_domestic_hotel_name(cached, item, city_name):
                 continue
+            if needs_refresh:
+                lookup_needs_refresh.add(hotel_id)
+            if needs_refresh:
+                fallback_name = (
+                    self._hotel_name_fallback_for_quality(item)
+                    or str(item.get("hotel_name") or item.get("hotel_original_name") or "")
+                )
+            else:
+                fallback_name = str(item.get("hotel_name") or item.get("hotel_original_name") or "")
             lookup_targets.setdefault(
                 hotel_id,
                 (
                     str(item.get("detail_url") or ""),
-                    str(item.get("hotel_name") or item.get("hotel_original_name") or ""),
+                    fallback_name,
                 ),
             )
 
@@ -5380,13 +6377,16 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                             )
                             domestic_hits += 1
                         else:
-                            current["domestic_checked_at"] = checked_at
+                            if hotel_id in lookup_needs_refresh:
+                                current.pop("domestic_checked_at", None)
+                            else:
+                                current["domestic_checked_at"] = checked_at
                             self._hotel_name_cache[hotel_id] = self._hotel_name_record_with_search_fields(current)
                         changed = True
         if changed:
             self._save_hotel_name_cache()
 
-        self._apply_cached_hotel_names_to_choices(enhanced_choices)
+        self._apply_cached_hotel_names_to_choices(enhanced_choices, city_name)
         return {
             "city": city_name,
             "choices": enhanced_choices,
@@ -5398,7 +6398,22 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             },
         }
 
-    def _should_lookup_domestic_hotel_name(self, record: dict[str, Any]) -> bool:
+    def _should_lookup_domestic_hotel_name(
+        self,
+        record: dict[str, Any],
+        item: dict[str, Any] | None = None,
+        city_name: str = "",
+    ) -> bool:
+        if item is not None and self._choice_hotel_name_needs_refresh(item, city_name):
+            return True
+        record_name = str((record or {}).get("hotel_name") or (record or {}).get("hotel_name_simplified") or "")
+        if record_name and not self._is_usable_cached_hotel_name(
+            record_name,
+            item or {},
+            city_name,
+            str((record or {}).get("source") or ""),
+        ):
+            return True
         source = str((record or {}).get("source") or "")
         if source in SIMPLIFIED_HOTEL_NAME_SOURCES:
             return False
@@ -5599,7 +6614,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if not match:
                 continue
             name = self._clean_chinese_hotel_name(match.group(1))
-            if self._is_reliable_chinese_hotel_name(name):
+            if self._is_reliable_domestic_hotel_name(name):
                 return name
         return ""
 

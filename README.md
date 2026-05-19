@@ -41,11 +41,19 @@ python3 -m pytest -q
 
 - `deploy/launchd/com.linxz.reverse-traval.app.plist`
 - `deploy/launchd/com.linxz.reverse-traval.tunnel.plist`
+- `deploy/launchd/com.reverse-traval.prewarm.plist`
 
 当前部署方式是本机 Flask 服务加 Cloudflare Quick Tunnel。公网地址由 `cloudflared` 生成，日志位置：
 
 ```text
 .cache/cloudflared.err.log
+```
+
+每日推荐使用“高级酒店 + 有泳池 + 有儿童设施”的缓存结果。半夜预热任务默认 02:10 运行，优先预热广东主要城市，日志位置：
+
+```text
+.cache/logs/nightly-prewarm.log
+.cache/logs/nightly-prewarm.err.log
 ```
 
 ## 说明

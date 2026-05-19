@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS hotel_area_corrections (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  hotel_id VARCHAR(64) NOT NULL,
+  trip_hotel_id VARCHAR(64) DEFAULT NULL,
+  city_name_zh VARCHAR(64) DEFAULT NULL,
+  hotel_name_zh VARCHAR(255) DEFAULT NULL,
+  hotel_name_original VARCHAR(255) DEFAULT NULL,
+  current_area_name_zh VARCHAR(128) DEFAULT NULL,
+  suggested_area_name_zh VARCHAR(128) NOT NULL,
+  detail_url VARCHAR(1024) DEFAULT NULL,
+  user_note VARCHAR(500) DEFAULT NULL,
+  client_id VARCHAR(80) DEFAULT NULL,
+  status ENUM('pending', 'approved', 'rejected') NOT NULL DEFAULT 'pending',
+  reviewer_note VARCHAR(500) DEFAULT NULL,
+  reviewed_at DATETIME DEFAULT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_hotel_area_corrections_status (status, created_at),
+  KEY idx_hotel_area_corrections_hotel (hotel_id, status, id),
+  KEY idx_hotel_area_corrections_client (client_id, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

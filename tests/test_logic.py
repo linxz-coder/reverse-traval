@@ -8,6 +8,7 @@ from holiday_helper import HolidayRange
 from reverse_travel import (
     CityCandidate,
     CITY_COVERAGE_AREA_KEYWORDS,
+    FAST_MIN_HOTEL_LIST_ITEMS,
     FeatureFilters,
     HotelKeywordCandidate,
     MAJOR_CITY_COVERAGE_DISTRICTS,
@@ -55,6 +56,18 @@ def test_build_compare_windows_skips_statutory_holidays():
         assert not finder.calendar.is_statutory_holiday(window["check_in"])
 
 
+def test_fast_compare_windows_keep_weekday_and_weekend_samples():
+    finder = ReverseTravelFinder(StubCalendar())
+    holiday = finder._get_holiday("2026-05-01::劳动节")
+    windows = finder._build_compare_windows(holiday)
+
+    fast = finder._fast_compare_windows(windows)
+
+    assert len(fast) == 2
+    assert any(window["check_in"].weekday() < 5 for window in fast)
+    assert any(window["check_in"].weekday() >= 5 for window in fast)
+
+
 def test_build_all_compare_windows_keeps_full_month():
     finder = ReverseTravelFinder(StubCalendar())
     holiday = finder._get_holiday("2026-05-01::劳动节")
@@ -69,6 +82,47 @@ def test_chunked_keeps_all_items():
     finder = ReverseTravelFinder(StubCalendar())
 
     assert finder._chunked(list(range(9)), 4) == [[0, 1, 2, 3], [4, 5, 6, 7], [8]]
+
+
+def test_lightweight_route_blocks_assets_and_keeps_api_calls():
+    finder = ReverseTravelFinder(StubCalendar())
+
+    class FakeRequest:
+        def __init__(self, url, resource_type):
+            self.url = url
+            self.resource_type = resource_type
+
+    class FakeRoute:
+        def __init__(self, url, resource_type):
+            self.request = FakeRequest(url, resource_type)
+            self.action = None
+
+        def abort(self):
+            self.action = "abort"
+
+        def continue_(self):
+            self.action = "continue"
+
+    image_route = FakeRoute("https://cdn.example.com/hotel.webp?size=640", "image")
+    api_route = FakeRoute("https://www.trip.com/restapi/soa2/28820/htls/getHotelList", "xhr")
+    analytics_route = FakeRoute("https://www.google-analytics.com/g/collect", "script")
+
+    finder._route_lightweight_resources(image_route)
+    finder._route_lightweight_resources(api_route)
+    finder._route_lightweight_resources(analytics_route)
+
+    assert image_route.action == "abort"
+    assert analytics_route.action == "abort"
+    assert api_route.action == "continue"
+
+
+def test_hotel_list_dom_fallback_prefers_api_until_needed():
+    finder = ReverseTravelFinder(StubCalendar())
+
+    assert finder._hotel_list_dom_fallback_needed(FAST_MIN_HOTEL_LIST_ITEMS - 1, 120, fast_mode=True)
+    assert not finder._hotel_list_dom_fallback_needed(FAST_MIN_HOTEL_LIST_ITEMS, 120, fast_mode=True)
+    assert finder._hotel_list_dom_fallback_needed(119, 120, fast_mode=False)
+    assert not finder._hotel_list_dom_fallback_needed(120, 120, fast_mode=False)
 
 
 def test_extract_price_value():
@@ -406,6 +460,31 @@ def test_outside_search_city_filter_uses_city_id_for_yunfu():
         {"hotel_name": "雲浮雲安鳳悅假日酒店（雲安區店）", "area_hint": ""},
         city,
         "https://www.trip.com/hotels/detail/?cityId=3933&hotelId=122458846",
+    )
+
+
+def test_outside_search_city_filter_uses_known_city_ids_without_names():
+    finder = ReverseTravelFinder(StubCalendar())
+    city = CityCandidate(
+        city_id=223,
+        city_name="東莞",
+        province_id=23,
+        country_id=1,
+        lat=23.02,
+        lon=113.75,
+        filter_id="",
+        search_coordinate="",
+    )
+
+    assert finder._is_outside_search_city(
+        {"hotel_name": "滨江精选酒店", "area_hint": ""},
+        city,
+        "https://www.trip.com/hotels/detail/?cityId=30&hotelId=1",
+    )
+    assert not finder._is_outside_search_city(
+        {"hotel_name": "东城精选酒店", "area_hint": ""},
+        city,
+        "https://www.trip.com/hotels/detail/?cityId=223&hotelId=2",
     )
 
 
@@ -1314,6 +1393,170 @@ def test_cached_trip_hk_hotel_name_displays_as_simplified(tmp_path):
     assert choice["hotel_name_source"] == "Trip.com HK"
 
 
+def test_bad_mysql_hotel_name_cache_does_not_replace_display_name(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+
+    class FakeStore:
+        def hotel_name_records(self, hotel_ids):
+            return {
+                hotel_ids[0]: {
+                    "hotel_name": "深圳",
+                    "hotel_name_simplified": "深圳",
+                    "source": "MySQL酒店名缓存",
+                }
+            }
+
+    finder._mysql_store = FakeStore()
+    choice = {
+        "hotel_id": "777",
+        "hotel_name": "Hampton by Hilton Shenzhen Guangming",
+        "hotel_original_name": "Hampton by Hilton Shenzhen Guangming",
+        "detail_url": "https://www.trip.com/hotels/detail/?cityId=30&hotelId=777",
+    }
+
+    finder._apply_cached_hotel_names_to_choices([choice], "深圳")
+
+    assert choice["hotel_name"] == "Hampton by Hilton Shenzhen Guangming"
+    assert choice.get("hotel_name_source", "") == ""
+    assert choice["hotel_name_needs_refresh"] is True
+    assert finder._choice_hotel_name_needs_refresh(choice, "深圳") is True
+
+
+def test_approved_area_cache_updates_choice_area(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+
+    class FakeStore:
+        def hotel_name_records(self, hotel_ids):
+            return {
+                hotel_ids[0]: {
+                    "hotel_name": "深圳光明希尔顿欢朋酒店",
+                    "hotel_name_simplified": "深圳光明希尔顿欢朋酒店",
+                    "source": "人工审核中文名",
+                    "area_name": "光明区片区",
+                    "area_source": "人工审核片区",
+                }
+            }
+
+    finder._mysql_store = FakeStore()
+    choice = {
+        "hotel_id": "777",
+        "hotel_name": "Hampton by Hilton Shenzhen Guangming",
+        "hotel_original_name": "Hampton by Hilton Shenzhen Guangming",
+        "area_name": "南山科技园片区",
+        "detail_url": "https://www.trip.com/hotels/detail/?cityId=30&hotelId=777",
+    }
+
+    finder._apply_cached_hotel_names_to_choices([choice], "深圳")
+    finder._refresh_choice_area_names([choice], "深圳")
+
+    assert choice["hotel_name"] == "深圳光明希尔顿欢朋酒店"
+    assert choice["area_name"] == "光明区片区"
+    assert choice["area_source"] == "人工审核片区"
+
+
+def test_approved_name_from_mysql_overrides_stale_local_cache(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+    finder._hotel_name_cache["80911801"] = {
+        "hotel_name": "希尔顿欢朋酒店",
+        "hotel_name_simplified": "希尔顿欢朋酒店",
+        "source": "MySQL酒店名缓存",
+    }
+
+    class FakeStore:
+        def hotel_name_records(self, hotel_ids):
+            raise AssertionError("local cache should not require hotel name lookup")
+
+        def approved_hotel_name_records(self, hotel_ids):
+            assert hotel_ids == ["80911801"]
+            return {
+                "80911801": {
+                    "hotel_name": "佛山三龙湾希尔顿欢朋酒店",
+                    "hotel_name_original": "Hampton by Hilton Foshan Sanlong Bay",
+                    "review_id": 2,
+                }
+            }
+
+        def approved_hotel_area_records(self, hotel_ids):
+            return {}
+
+    finder._mysql_store = FakeStore()
+    choice = {
+        "hotel_id": "80911801",
+        "hotel_name": "希尔顿欢朋酒店",
+        "hotel_original_name": "Hampton by Hilton Foshan Sanlong Bay",
+        "detail_url": "https://www.trip.com/hotels/detail/?cityId=251&hotelId=80911801",
+    }
+
+    finder._apply_cached_hotel_names_to_choices([choice], "佛山")
+
+    assert choice["hotel_name"] == "佛山三龙湾希尔顿欢朋酒店"
+    assert choice["hotel_name_simplified"] == "佛山三龙湾希尔顿欢朋酒店"
+    assert choice["hotel_name_source"] == "人工审核中文名"
+    assert finder._hotel_name_cache["80911801"]["hotel_name"] == "佛山三龙湾希尔顿欢朋酒店"
+    assert finder._hotel_name_cache["80911801"]["hotel_name_simplified"] == "佛山三龙湾希尔顿欢朋酒店"
+    assert finder._hotel_name_cache["80911801"]["source"] == "人工审核中文名"
+
+
+def test_approved_area_from_mysql_overrides_stale_local_cache(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+    finder._hotel_name_cache["777"] = {
+        "hotel_name": "佛山希尔顿酒店",
+        "source": "携程酒店",
+        "area_name": "佛山区域待确认",
+    }
+
+    class FakeStore:
+        def hotel_name_records(self, hotel_ids):
+            raise AssertionError("local cache should not require hotel name lookup")
+
+        def approved_hotel_area_records(self, hotel_ids):
+            assert hotel_ids == ["777"]
+            return {"777": {"area_name": "佛山石梁片区", "review_id": 78}}
+
+    finder._mysql_store = FakeStore()
+    choice = {
+        "hotel_id": "777",
+        "hotel_name": "Hilton Foshan",
+        "hotel_original_name": "Hilton Foshan",
+        "area_name": "",
+        "detail_url": "https://www.trip.com/hotels/detail/?cityId=251&hotelId=777",
+    }
+
+    finder._apply_cached_hotel_names_to_choices([choice], "佛山")
+
+    assert choice["area_name"] == "佛山石梁片区"
+    assert choice["area_source"] == "人工审核片区"
+    assert finder._hotel_name_cache["777"]["area_name"] == "佛山石梁片区"
+    assert finder._hotel_name_cache["777"]["area_source"] == "人工审核片区"
+
+
+def test_area_refresh_keeps_approved_area_from_mysql(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+
+    class FakeStore:
+        def hotel_name_records(self, hotel_ids):
+            return {}
+
+        def approved_hotel_area_records(self, hotel_ids):
+            return {"66913266": {"area_name": "佛山祖庙片区", "review_id": 79}}
+
+    finder._mysql_store = FakeStore()
+    finder._geonames_area_name = lambda *args, **kwargs: "佛山千灯湖片区"
+    choice = {
+        "hotel_id": "66913266",
+        "hotel_name": "皇冠假日酒店",
+        "hotel_original_name": "Crowne Plaza FOSHAN NANHAI by IHG",
+        "area_name": "",
+        "latitude": "23.02",
+        "longitude": "113.15",
+    }
+
+    result = finder.enhance_area_data("佛山", [choice])
+
+    assert result["choices"][0]["area_name"] == "佛山祖庙片区"
+    assert result["choices"][0]["area_source"] == "人工审核片区"
+
+
 def test_coverage_payload_applies_cached_simplified_hotel_names(tmp_path):
     finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
     finder._hotel_name_cache["777"] = {
@@ -1363,10 +1606,19 @@ def test_coverage_merge_triggers_final_hotel_name_refresh():
     assert "startHotelNameRefresh({ ...data, choices: lastChoices" in source
 
 
+def test_partial_results_trigger_early_hotel_name_refresh():
+    source = (Path(__file__).resolve().parents[1] / "templates" / "index.html").read_text()
+
+    assert "HOTEL_NAME_PARTIAL_REFRESH_LIMIT" in source
+    assert "hotelNameRefreshInFlight" in source
+    assert "refreshHotelNames: true, refreshCoverage: false" in source
+    assert "partial: Boolean(data.partial?.preliminary)" in source
+
+
 def test_live_search_uses_cached_hotel_names_without_blocking_enrichment():
     source = inspect.getsource(ReverseTravelFinder._find_choices_base)
 
-    assert "_apply_cached_hotel_names_to_choices(choices)" in source
+    assert "_apply_cached_hotel_names_to_choices(choices, city_candidate.city_name)" in source
     assert "_enrich_choices_with_chinese_hotel_names(choices)" not in source
 
 
@@ -1401,10 +1653,67 @@ def test_enhance_hotel_name_data_prefers_domestic_simplified_source(tmp_path, mo
     assert result["hotel_name_refresh"]["domestic_hits"] == 1
 
 
+def test_enhance_hotel_name_data_retries_bad_recent_mysql_name(tmp_path, monkeypatch):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+    finder._hotel_name_cache["777"] = {
+        "hotel_name": "深圳",
+        "hotel_name_simplified": "深圳",
+        "source": "MySQL酒店名缓存",
+        "domestic_checked_at": 9999999999,
+    }
+    captured = {}
+
+    def fake_fetch(detail_url, fallback_name):
+        captured["detail_url"] = detail_url
+        captured["fallback_name"] = fallback_name
+        return {"hotel_name": "深圳光明希尔顿欢朋酒店", "source": "携程酒店"}
+
+    monkeypatch.setattr(finder, "_fetch_domestic_simplified_hotel_name", fake_fetch)
+
+    result = finder.enhance_hotel_name_data(
+        "深圳",
+        [
+            {
+                "hotel_id": "777",
+                "hotel_name": "深圳",
+                "hotel_original_name": "Hampton by Hilton Shenzhen Guangming",
+                "detail_url": "https://www.trip.com/hotels/detail/?cityId=30&hotelId=777",
+                "room_type": "king",
+            }
+        ],
+    )
+
+    choice = result["choices"][0]
+    assert captured["detail_url"].endswith("hotelId=777")
+    assert captured["fallback_name"] == "Hampton by Hilton Shenzhen Guangming"
+    assert choice["hotel_name"] == "深圳光明希尔顿欢朋酒店"
+    assert choice["hotel_name_source"] == "携程酒店"
+    assert "hotel_name_needs_refresh" not in choice
+    assert result["hotel_name_refresh"]["domestic_hits"] == 1
+
+
+def test_approved_manual_hotel_name_source_is_trusted():
+    finder = ReverseTravelFinder(StubCalendar())
+    item = {
+        "hotel_name": "深圳光明希尔顿欢朋酒店",
+        "hotel_original_name": "Hampton by Hilton Shenzhen Guangming",
+    }
+
+    assert (
+        finder._should_lookup_domestic_hotel_name(
+            {"hotel_name": "深圳光明希尔顿欢朋酒店", "source": "人工审核中文名"},
+            item,
+            "深圳",
+        )
+        is False
+    )
+
+
 def test_domestic_hotel_name_rejects_generic_short_name():
     finder = ReverseTravelFinder(StubCalendar())
 
     assert finder._is_reliable_domestic_hotel_name("酒店", "深圳光明虹橋希爾頓花園酒店") is False
+    assert finder._is_usable_cached_hotel_name("深圳", {"hotel_name": "深圳"}, "深圳", "MySQL酒店名缓存") is False
     assert finder._extract_domestic_simplified_hotel_name(
         '"hotelName":"酒店"',
         "深圳光明虹橋希爾頓花園酒店",
@@ -1461,6 +1770,30 @@ def test_normalize_hotel_cards_fallback_text():
             "is_advanced": None,
         }
     ]
+
+
+def test_normalize_hotel_cards_accepts_dom_tax_total_fallbacks():
+    finder = ReverseTravelFinder(StubCalendar())
+    items = finder._normalize_hotel_cards(
+        [
+            {
+                "hotel_name": "深圳首屏测试酒店",
+                "detail_href": "/hotels/detail/?cityId=30&hotelId=12345",
+                "raw_text": "\n".join(
+                    [
+                        "深圳首屏测试酒店",
+                        "Deluxe King Room",
+                        "CNY 520",
+                        "含税总价 CNY 1,560",
+                    ]
+                ),
+            }
+        ]
+    )
+
+    assert items[0]["hotel_id"] == "12345"
+    assert items[0]["room_price_text"] == "CNY 520"
+    assert items[0]["tax_total_text"] == "含税总价 CNY 1,560"
 
 
 def test_normalize_hotel_api_items_uses_total_tax_price():
@@ -1562,6 +1895,7 @@ def test_build_area_recommendations_prioritizes_hotel_count():
             },
         ],
         "深圳",
+        include_defaults=False,
     )
 
     assert recommendations[0]["area_name"] == "深圳国际会展中心片区"
@@ -1588,6 +1922,73 @@ def test_build_area_recommendations_returns_all_area_groups():
 
     assert len(recommendations) == 11
     assert {item["area_name"] for item in recommendations} == {f"深圳测试{i}片区" for i in range(1, 12)}
+
+
+def test_build_area_recommendations_does_not_merge_similar_names_without_close_coordinates():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "深圳国际会展中心片区",
+                "hotel_name": "深圳国际会展中心酒店A",
+                "holiday_avg_nightly_tax_total_value": 500,
+                "price_diff_nightly": -30,
+                "room_type_label": "大床房",
+            },
+            {
+                "area_name": "深圳会展中心片区",
+                "hotel_name": "深圳会展中心酒店B",
+                "holiday_avg_nightly_tax_total_value": 600,
+                "price_diff_nightly": 10,
+                "room_type_label": "双床房",
+            },
+        ],
+        "深圳",
+        include_defaults=False,
+    )
+
+    assert len(recommendations) == 2
+    assert {item["area_name"] for item in recommendations} == {"深圳国际会展中心片区", "深圳会展中心片区"}
+
+
+def test_build_area_recommendations_merges_very_close_area_coordinates():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "深圳福田中心片区",
+                "hotel_name": "深圳福田酒店A",
+                "latitude": 22.541,
+                "longitude": 114.055,
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -40,
+                "room_type_label": "大床房",
+            },
+            {
+                "area_name": "深圳市民中心片区",
+                "hotel_name": "深圳市民中心酒店B",
+                "latitude": 22.544,
+                "longitude": 114.058,
+                "holiday_avg_nightly_tax_total_value": 560,
+                "price_diff_nightly": 20,
+                "room_type_label": "双床房",
+            },
+            {
+                "area_name": "深圳大鹏片区",
+                "hotel_name": "深圳大鹏酒店",
+                "latitude": 22.596,
+                "longitude": 114.474,
+                "holiday_avg_nightly_tax_total_value": 700,
+                "price_diff_nightly": -10,
+                "room_type_label": "大床房",
+            },
+        ],
+        "深圳",
+    )
+
+    merged = next(item for item in recommendations if item["hotel_count"] == 2)
+    assert set(merged["merged_area_names"]) == {"深圳福田中心片区", "深圳市民中心片区"}
+    assert any(item["area_name"] == "深圳大鹏片区" for item in recommendations)
 
 
 def test_area_recommendations_convert_traditional_chinese_to_simplified():
@@ -2065,6 +2466,116 @@ def test_find_choices_uses_memory_and_disk_cache(tmp_path):
     assert fallback["cache"]["hit"] is False
 
 
+def test_cached_result_finalization_filters_other_city_detail_urls():
+    finder = ReverseTravelFinder(StubCalendar())
+    base_result = {
+        "city": "东莞",
+        "holiday": {"code": "2026-05-01::劳动节", "name": "劳动节"},
+        "feature_filters": {},
+        "comparison_windows": [],
+        "area_recommendations": [],
+        "choices": [
+            {
+                "hotel_id": "1",
+                "hotel_name": "东莞测试酒店",
+                "detail_url": "https://www.trip.com/hotels/detail/?cityId=223&hotelId=1",
+                "holiday_avg_nightly_tax_total_value": 500,
+                "price_diff_nightly": -20,
+                "room_type": "king",
+            },
+            {
+                "hotel_id": "2",
+                "hotel_name": "混入酒店",
+                "detail_url": "https://www.trip.com/hotels/detail/?cityId=32&hotelId=2",
+                "holiday_avg_nightly_tax_total_value": 480,
+                "price_diff_nightly": -30,
+                "room_type": "king",
+            },
+        ],
+    }
+
+    result = finder._finalize_choices_result(
+        base_result,
+        min_price=None,
+        max_price=None,
+        feature_filters=FeatureFilters(),
+        cache_info={"source": "disk", "hit": True},
+    )
+
+    assert [item["hotel_id"] for item in result["choices"]] == ["1"]
+
+
+def test_completed_coverage_cache_is_preferred_and_can_be_price_filtered(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+    result = {
+        "city": "深圳",
+        "holiday": {"code": "2026-05-01::劳动节", "name": "劳动节"},
+        "feature_filters": {},
+        "comparison_windows": [],
+        "area_recommendations": [],
+        "coverage_supplement": {"status": "succeeded", "message": "行政区补充完成。"},
+        "choices": [
+            {
+                "hotel_id": "1",
+                "hotel_name": "深圳低价酒店",
+                "detail_url": "https://www.trip.com/hotels/detail/?cityId=30&hotelId=1",
+                "holiday_avg_nightly_tax_total_value": 500,
+                "price_diff_nightly": -20,
+                "room_type": "king",
+            },
+            {
+                "hotel_id": "2",
+                "hotel_name": "深圳高价酒店",
+                "detail_url": "https://www.trip.com/hotels/detail/?cityId=30&hotelId=2",
+                "holiday_avg_nightly_tax_total_value": 900,
+                "price_diff_nightly": -40,
+                "room_type": "king",
+            },
+        ],
+    }
+
+    stored = finder.store_completed_coverage_result(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+        result=result,
+    )
+    cached = finder.find_cached_choices(
+        "深圳",
+        "2026-05-01::劳动节",
+        min_price=600,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert stored is True
+    assert cached is not None
+    assert cached["cache"]["source"] == "coverage_memory"
+    assert cached["coverage_supplement"]["status"] == "succeeded"
+    assert [item["hotel_id"] for item in cached["choices"]] == ["2"]
+
+
+def test_incomplete_coverage_result_is_not_cached(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+
+    assert not finder.store_completed_coverage_result(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+        result={"coverage_supplement": {"status": "running"}, "choices": []},
+    )
+
+
 def test_find_stale_cached_choices_returns_preview_after_fresh_ttl(tmp_path):
     finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path, search_cache_ttl_seconds=60)
     feature_filters = finder._normalize_feature_filters("all", "all", "all")
@@ -2106,6 +2617,116 @@ def test_find_stale_cached_choices_returns_preview_after_fresh_ttl(tmp_path):
     assert stale["cache"]["source"] == "stale_disk"
     assert stale["cache"]["stale"] is True
     assert stale["choices"][0]["hotel_name"] == "深圳旧缓存酒店"
+
+
+def test_hotel_list_cache_does_not_satisfy_larger_full_scan(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path)
+    feature_filters = FeatureFilters()
+    candidate = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543099,
+        lon=114.057868,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543099_114.057868_0",
+    )
+    key = finder._hotel_list_cache_key(
+        candidate,
+        dt.date(2026, 5, 1),
+        dt.date(2026, 5, 4),
+        feature_filters,
+        None,
+    )
+    items = [
+        {
+            "hotel_id": "1",
+            "hotel_name": "深圳首屏酒店",
+            "detail_href": "",
+            "room_name": "King Room",
+            "room_price_text": "CNY 500",
+            "tax_total_text": "Total price: CNY 1,500",
+            "tax_total_value": 1500,
+        }
+    ]
+
+    finder._store_hotel_list_cache(key, items, fetched_limit=36, complete=False)
+
+    assert finder._load_hotel_list_cache(key, limit=20) == items
+    assert finder._load_hotel_list_cache(key, limit=120) is None
+    assert finder._load_hotel_list_cache(key, limit=36, allow_incomplete=True) == items
+
+    finder._store_hotel_list_cache(key, items, fetched_limit=36, complete=True)
+    assert finder._load_hotel_list_cache(key, limit=120) == items
+
+
+def test_fast_preview_emits_partial_result_with_small_scan():
+    class FastPreviewFinder(ReverseTravelFinder):
+        def _fetch_hotel_list(self, **kwargs):
+            assert kwargs["fast_mode"] is True
+            return [
+                {
+                    "hotel_id": "1",
+                    "hotel_name": "深圳首屏酒店",
+                    "detail_href": "",
+                    "detail_url": "https://www.trip.com/hotels/detail/?cityId=30&hotelId=1",
+                    "room_name": "King Room",
+                    "room_price_text": "CNY 500",
+                    "tax_total_text": "Total price: CNY 1,500",
+                    "tax_total_value": 1500,
+                    "area_name": "深圳福田中心片区",
+                }
+            ]
+
+        def _fetch_hotel_lists_parallel(self, **kwargs):
+            assert kwargs["fast_mode"] is True
+            assert len(kwargs["windows"]) == 2
+            return {
+                window["check_in"].isoformat(): [
+                    {
+                        "hotel_id": "1",
+                        "hotel_name": "深圳首屏酒店",
+                        "detail_href": "",
+                        "room_name": "King Room",
+                        "room_price_text": "CNY 450",
+                        "tax_total_text": "Total price: CNY 1,350",
+                        "tax_total_value": 1350,
+                    }
+                ]
+                for window in kwargs["windows"]
+            }
+
+    finder = FastPreviewFinder(StubCalendar())
+    holiday = finder._get_holiday("2026-05-01::劳动节")
+    candidate = CityCandidate(
+        city_id=30,
+        city_name="深圳",
+        province_id=23,
+        country_id=1,
+        lat=22.543099,
+        lon=114.057868,
+        filter_id="19|30",
+        search_coordinate="NORMAL_22.543099_114.057868_0",
+    )
+    events = []
+
+    finder._emit_fast_preview_choices(
+        city_candidate=candidate,
+        holiday=holiday,
+        compare_windows=finder._build_compare_windows(holiday),
+        context=object(),
+        page=object(),
+        feature_filters=FeatureFilters(),
+        progress_callback=events.append,
+    )
+
+    preview = next(event for event in events if event["stage"] == "fast_preview")
+    partial = preview["partial_result"]["partial"]
+    assert partial["stage"] == "fast_preview"
+    assert partial["fast_preview"] is True
+    assert partial["comparison_window_limit"] == 2
+    assert preview["partial_result"]["choices"][0]["hotel_name"] == "深圳首屏酒店"
 
 
 def test_deep_hotel_search_runs_only_when_initial_list_hits_limit():

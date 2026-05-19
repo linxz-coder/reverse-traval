@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>反向旅游好选择</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231657d8'/%3E%3Cstop offset='0.48' stop-color='%231657d8'/%3E%3Cstop offset='0.48' stop-color='%230f8b8d'/%3E%3Cstop offset='1' stop-color='%230f8b8d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3C/svg%3E" />
     <style>
       :root {
         --bg: #f4f6f8;
@@ -26,11 +27,15 @@
         --warn-bg: #fff4d7;
         --bad: #b42318;
         --bad-bg: #fff1f0;
-        --shadow: 0 10px 24px rgba(21, 35, 54, 0.08);
+        --shadow: 0 14px 34px rgba(21, 35, 54, 0.08);
         --shadow-soft: 0 1px 2px rgba(21, 35, 54, 0.06);
+        --shadow-lift: 0 18px 42px rgba(21, 35, 54, 0.11);
       }
       * { box-sizing: border-box; }
       * { min-width: 0; }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0;
         overflow-x: hidden;
@@ -111,27 +116,6 @@
         color: var(--muted);
         font-size: 14px;
       }
-      .health {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #466273;
-        font-size: 13px;
-        white-space: nowrap;
-        height: 34px;
-        padding: 0 12px;
-        border: 1px solid rgba(15, 139, 141, 0.2);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.72);
-        box-shadow: var(--shadow-soft);
-      }
-      .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: var(--good);
-        box-shadow: 0 0 0 4px rgba(17, 122, 69, 0.12);
-      }
       .toolbar, .panel {
         background: var(--panel);
         border: 1px solid var(--line);
@@ -185,6 +169,7 @@
         color: var(--text);
         font-size: 14px;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.72);
+        transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
       }
       input:hover, select:hover {
         border-color: #c2ccd9;
@@ -243,7 +228,12 @@
         min-width: 116px;
         box-shadow: 0 8px 18px rgba(22, 87, 216, 0.18);
       }
-      button:hover { background: linear-gradient(180deg, #1659d2, var(--primary-dark)); }
+      button:hover {
+        background: linear-gradient(180deg, #1659d2, var(--primary-dark));
+        transform: translateY(-1px);
+        box-shadow: 0 12px 24px rgba(22, 87, 216, 0.22);
+      }
+      button:active { transform: translateY(0); }
       button:disabled { opacity: 0.76; cursor: wait; }
       .secondary-btn {
         border: 1px solid var(--line);
@@ -254,6 +244,7 @@
       .secondary-btn:hover {
         background: #f3f6fb;
         color: var(--primary);
+        box-shadow: 0 8px 18px rgba(21, 35, 54, 0.08);
       }
       .nearby-hint {
         color: var(--muted);
@@ -311,6 +302,7 @@
       .chip-btn:hover, .seg-btn:hover {
         background: #f3f6fb;
         color: var(--primary);
+        transform: translateY(-1px);
       }
       .chip-btn.active, .seg-btn.active {
         border-color: var(--primary);
@@ -385,6 +377,12 @@
         font-size: 14px;
       }
       .hidden { display: none !important; }
+      #page-top,
+      #area-panel,
+      #hotel-results-panel,
+      #daily-recommendation {
+        scroll-margin-top: 18px;
+      }
       .result {
         margin-top: 18px;
         display: grid;
@@ -430,11 +428,54 @@
       .section-meta {
         color: var(--muted);
         font-size: 13px;
+        line-height: 1.4;
+        text-align: right;
+      }
+      .area-head-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .area-merge-bar {
+        display: grid;
+        grid-template-columns: minmax(170px, 1fr) minmax(180px, 260px) auto auto;
+        gap: 10px;
+        align-items: end;
+        margin-bottom: 12px;
+        padding: 10px;
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fbfcfe;
+      }
+      .area-merge-meta {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+        align-self: center;
+      }
+      .area-merge-name {
+        display: grid;
+        gap: 6px;
+      }
+      .area-merge-name span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .area-merge-bar button {
+        min-width: 96px;
       }
       .area-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
+        max-height: min(58vh, 620px);
+        overflow-y: auto;
+        padding-right: 4px;
+        scroll-padding: 8px;
       }
       .area-card {
         border: 1px solid #dfe6ee;
@@ -449,7 +490,7 @@
       .area-card:hover,
       .area-card:focus {
         border-color: rgba(22, 87, 216, 0.45);
-        box-shadow: 0 8px 18px rgba(22, 87, 216, 0.12);
+        box-shadow: var(--shadow-lift);
         outline: none;
         transform: translateY(-1px);
       }
@@ -458,26 +499,13 @@
         background: linear-gradient(180deg, #f7fbff, #edf4ff);
         box-shadow: 0 0 0 3px rgba(22, 87, 216, 0.12), var(--shadow-soft);
       }
-      .area-more-card {
-        min-height: 128px;
-        display: grid;
-        place-items: center;
-        gap: 6px;
-        background: linear-gradient(180deg, #f7fbff, #edf4ff);
-        border-style: dashed;
-        color: var(--primary);
+      .area-card.merge-selected {
+        border-color: rgba(15, 139, 141, 0.64);
+        box-shadow: 0 0 0 3px rgba(15, 139, 141, 0.1), var(--shadow-soft);
       }
-      .area-more-dots {
-        font-size: 30px;
-        line-height: 1;
-        font-weight: 900;
-        letter-spacing: 0;
-      }
-      .area-more-text {
-        color: #405066;
-        font-size: 12px;
-        font-weight: 800;
-        text-align: center;
+      .area-card.merge-pending {
+        border-color: rgba(180, 120, 20, 0.5);
+        background: linear-gradient(180deg, #fffdf8, #fffbf0);
       }
       .area-name {
         font-size: 16px;
@@ -496,6 +524,220 @@
         color: var(--muted);
         font-size: 12px;
         line-height: 1.55;
+      }
+      .area-merge-note {
+        margin-top: 8px;
+        padding: 8px;
+        border: 1px solid rgba(180, 120, 20, 0.22);
+        border-radius: 7px;
+        background: rgba(255, 246, 221, 0.72);
+        color: #72511a;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+      .area-merge-status {
+        background: #fff2c2;
+        color: #7a5414;
+      }
+      .area-select {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+        padding-top: 9px;
+        border-top: 1px solid var(--line-soft);
+        color: #405066;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .area-select.disabled {
+        color: var(--muted);
+        cursor: not-allowed;
+      }
+      .area-select input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        padding: 0;
+        margin: 0;
+        accent-color: var(--primary);
+        box-shadow: none;
+        cursor: pointer;
+      }
+      .area-select input[type="checkbox"]:disabled {
+        cursor: not-allowed;
+      }
+      .area-card-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .area-rename-link {
+        width: 28px;
+        height: 28px;
+        min-width: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 7px;
+        background: transparent;
+        color: var(--muted-2);
+        box-shadow: none;
+      }
+      .area-rename-link:hover,
+      .area-rename-link:focus {
+        background: #eef3f7;
+        color: #5d6b7e;
+        text-decoration: none;
+        transform: none;
+        box-shadow: none;
+        outline: none;
+      }
+      .area-rename-link svg {
+        width: 15px;
+        height: 15px;
+        stroke: currentColor;
+      }
+      .area-rename-link:disabled {
+        color: #b5bfca;
+        cursor: not-allowed;
+        text-decoration: none;
+      }
+      .daily-panel {
+        margin-top: 14px;
+        padding: 16px;
+      }
+      .daily-content {
+        display: block;
+      }
+      .daily-hotel {
+        display: grid;
+        grid-template-columns: minmax(160px, 220px) minmax(0, 1fr) auto;
+        gap: 14px;
+        align-items: start;
+        padding: 2px;
+      }
+      .daily-photo {
+        width: 100%;
+        grid-row: span 2;
+        aspect-ratio: 4 / 3;
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #edf2f7;
+      }
+      .daily-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .daily-photo-empty {
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .daily-info {
+        min-width: 0;
+      }
+      .daily-title {
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+      .daily-meta,
+      .stage-lane {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .daily-price-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        grid-column: 2 / -1;
+      }
+      .daily-price {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fff;
+        padding: 8px 10px;
+      }
+      .daily-price .k {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .daily-price .v {
+        display: block;
+        margin-top: 2px;
+        font-size: 16px;
+        font-weight: 900;
+        line-height: 1.25;
+      }
+      .daily-price .muted {
+        display: block;
+        margin-top: 3px;
+        font-size: 11px;
+        line-height: 1.35;
+      }
+      .daily-feature-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+      .daily-feature-row .pill {
+        background: #f6f8fb;
+      }
+      .daily-action {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+      }
+      .daily-action a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 8px;
+        background: var(--primary);
+        color: #fff;
+        box-shadow: 0 8px 18px rgba(22, 87, 216, 0.18);
+        white-space: nowrap;
+      }
+      .daily-action a:hover {
+        background: var(--primary-dark);
+        text-decoration: none;
+        transform: translateY(-1px);
+      }
+      .stage-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        min-height: 24px;
+        padding: 0 8px;
+        border-radius: 999px;
+        border: 1px solid var(--line-soft);
+        background: #fff;
+        color: #405066;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .stage-pill.active {
+        border-color: rgba(22, 87, 216, 0.35);
+        background: var(--primary-soft);
+        color: var(--primary);
       }
       .table-head {
         display: grid;
@@ -521,6 +763,43 @@
         gap: 10px;
         flex-wrap: wrap;
         justify-content: space-between;
+      }
+      .choice-filter-bar {
+        display: grid;
+        grid-template-columns: minmax(150px, 190px) repeat(2, minmax(118px, 150px)) auto minmax(180px, 1fr);
+        gap: 10px;
+        align-items: end;
+        padding: 10px;
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.76);
+      }
+      .choice-filter-field {
+        gap: 6px;
+      }
+      .choice-filter-field span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .choice-filter-field input,
+      .choice-filter-field select {
+        height: 36px;
+        border-radius: 7px;
+        background: #fff;
+      }
+      .choice-filter-clear {
+        width: auto;
+        height: 36px;
+        min-width: 72px;
+        padding: 0 12px;
+      }
+      .choice-filter-meta {
+        align-self: center;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
       }
       .result-search {
         width: min(430px, 100%);
@@ -563,6 +842,17 @@
         color: var(--muted);
         font-size: 13px;
       }
+      .export-pdf-btn {
+        width: auto;
+        height: 32px;
+        min-width: 96px;
+        padding: 0 12px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .export-pdf-btn:disabled {
+        cursor: not-allowed;
+      }
       .segmented {
         display: inline-flex;
         gap: 6px;
@@ -596,6 +886,180 @@
         margin-bottom: 5px;
         line-height: 1.35;
         overflow-wrap: anywhere;
+      }
+      .hotel-name-line {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .hotel-correction-btn {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        display: inline-grid;
+        place-items: center;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted-2);
+        box-shadow: none;
+      }
+      .hotel-correction-btn svg {
+        width: 15px;
+        height: 15px;
+        stroke: currentColor;
+      }
+      .hotel-correction-btn:hover,
+      .hotel-correction-btn:focus {
+        background: #f3f6fb;
+        color: #5e6a7b;
+        transform: none;
+        box-shadow: none;
+      }
+      .result-stage-pill {
+        height: 22px;
+        margin: 0 0 4px;
+        background: #eaf7ef;
+        color: #157347;
+        border: 1px solid rgba(21, 115, 71, 0.16);
+      }
+      .hotel-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+      .hotel-detail-link {
+        margin-top: 2px;
+      }
+      .area-correction-dialog {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: grid;
+        place-items: center;
+        padding: 18px;
+      }
+      .area-correction-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.36);
+      }
+      .area-correction-panel {
+        position: relative;
+        z-index: 1;
+        width: min(560px, 100%);
+        max-height: min(86vh, 720px);
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 22px 60px rgba(15, 23, 42, 0.22);
+        overflow: hidden;
+      }
+      .area-correction-head,
+      .area-correction-actions {
+        padding: 14px 16px;
+      }
+      .area-correction-head {
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .area-correction-title {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.25;
+      }
+      .area-correction-hotel {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .area-correction-body {
+        padding: 14px 16px 16px;
+        overflow: auto;
+      }
+      .area-correction-field {
+        display: grid;
+        gap: 7px;
+      }
+      .area-correction-field span,
+      .area-suggestion-head {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .area-suggestion-head {
+        margin: 14px 0 8px;
+      }
+      .area-suggestion-list {
+        display: grid;
+        gap: 8px;
+      }
+      .area-suggestion-btn {
+        width: 100%;
+        height: auto;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 9px 10px;
+        border-radius: 8px;
+        background: #fbfcfe;
+        text-align: left;
+        box-shadow: none;
+      }
+      .area-suggestion-btn:hover,
+      .area-suggestion-btn:focus {
+        background: #fff;
+        border-color: rgba(22, 87, 216, 0.28);
+        transform: none;
+        box-shadow: var(--shadow-soft);
+      }
+      .area-suggestion-name {
+        display: block;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.35;
+      }
+      .area-suggestion-meta {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+      .area-suggestion-tag {
+        flex: 0 0 auto;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .area-correction-error {
+        margin-top: 10px;
+        color: var(--bad);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .area-correction-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        border-top: 1px solid var(--line-soft);
+      }
+      .area-correction-actions button {
+        width: auto;
+        min-width: 84px;
+      }
+      .area-correction-cancel {
+        background: #fff;
+        color: var(--text);
       }
       .muted {
         color: var(--muted);
@@ -639,12 +1103,118 @@
         color: var(--muted);
         text-align: center;
       }
+      .floating-nav {
+        position: fixed;
+        top: 52%;
+        right: 0;
+        z-index: 40;
+        display: grid;
+        justify-items: end;
+        transform: translateY(-50%);
+      }
+      .floating-nav-toggle {
+        width: auto;
+        height: auto;
+        min-width: 34px;
+        min-height: 72px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 7px;
+        border: 1px solid rgba(189, 201, 216, 0.72);
+        border-right: 0;
+        border-radius: 999px 0 0 999px;
+        background: rgba(255, 255, 255, 0.46);
+        color: rgba(37, 48, 68, 0.76);
+        box-shadow: 0 8px 22px rgba(31, 45, 68, 0.09);
+        backdrop-filter: blur(14px);
+        font-size: 12px;
+        font-weight: 820;
+        line-height: 1;
+        letter-spacing: 0;
+        white-space: nowrap;
+        writing-mode: vertical-rl;
+      }
+      .floating-nav-toggle:hover,
+      .floating-nav-toggle:focus,
+      .floating-nav.is-open .floating-nav-toggle {
+        border-color: rgba(22, 87, 216, 0.38);
+        background: rgba(255, 255, 255, 0.88);
+        color: var(--primary);
+        outline: none;
+        box-shadow: 0 10px 26px rgba(31, 45, 68, 0.12);
+      }
+      .floating-nav-menu {
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 8px);
+        display: grid;
+        gap: 7px;
+        width: 218px;
+        padding: 8px;
+        border: 1px solid rgba(214, 224, 235, 0.86);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 16px 34px rgba(31, 45, 68, 0.13);
+        backdrop-filter: blur(16px);
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(6px, -50%);
+        transition: opacity 0.16s ease, transform 0.16s ease;
+      }
+      .floating-nav.is-open .floating-nav-menu {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(0, -50%);
+      }
+      .floating-nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        min-height: 36px;
+        padding: 0 10px;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        background: transparent;
+        color: #253044;
+        font-size: 13px;
+        font-weight: 820;
+        text-decoration: none;
+      }
+      .floating-nav-link:hover,
+      .floating-nav-link:focus {
+        outline: none;
+        border-color: #d6e0eb;
+        background: #f6fbff;
+        color: var(--primary);
+        text-decoration: none;
+      }
+      .floating-nav-link span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 22px;
+        height: 22px;
+        padding: 0 7px;
+        border-radius: 999px;
+        background: var(--panel-2);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 820;
+      }
+      .floating-nav-link:hover span,
+      .floating-nav-link:focus span {
+        background: var(--primary-soft);
+        color: var(--primary);
+      }
       @media (max-width: 1040px) {
         .toolbar { grid-template-columns: 1fr 1fr; }
         .nearby-toolbar { grid-template-columns: 1fr 1fr; }
         button { min-width: 0; }
         .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .area-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .area-merge-bar { grid-template-columns: 1fr 1fr; }
       }
       @media (max-width: 720px) {
         body {
@@ -657,9 +1227,6 @@
         .top-actions {
           align-items: stretch;
           margin-top: 10px;
-        }
-        .health {
-          white-space: normal;
         }
         h1 { font-size: 23px; }
         .sub {
@@ -690,7 +1257,60 @@
         .summary {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+        .section-head {
+          align-items: flex-start;
+          flex-wrap: wrap;
+        }
+        .area-head-actions {
+          width: 100%;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+        .section-meta {
+          text-align: left;
+        }
+        .area-merge-bar {
+          grid-template-columns: 1fr;
+          align-items: stretch;
+        }
         .area-grid { grid-template-columns: 1fr; }
+        .area-grid { max-height: 52vh; }
+        .daily-price-grid {
+          grid-template-columns: 1fr;
+          grid-column: 1 / -1;
+        }
+        .daily-hotel {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .daily-photo {
+          grid-row: auto;
+          max-height: 220px;
+        }
+        .daily-action {
+          justify-content: stretch;
+        }
+        .daily-action a {
+          width: 100%;
+        }
+        .floating-nav {
+          top: 62%;
+          right: 0;
+          bottom: auto;
+          transform: translateY(-50%);
+        }
+        .floating-nav-toggle {
+          min-width: 32px;
+          min-height: 64px;
+          padding: 8px 6px;
+          background: rgba(255, 255, 255, 0.66);
+        }
+        .floating-nav-menu {
+          top: 50%;
+          right: calc(100% + 7px);
+          bottom: auto;
+          width: min(280px, calc(100vw - 48px));
+        }
         label { gap: 6px; }
         input, select, button {
           height: 40px;
@@ -742,6 +1362,21 @@
         .segmented {
           width: 100%;
         }
+        .export-pdf-btn {
+          width: 100%;
+        }
+        .choice-filter-bar {
+          width: 100%;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+        }
+        .choice-filter-field.sort,
+        .choice-filter-meta {
+          grid-column: 1 / -1;
+        }
+        .choice-filter-clear {
+          width: 100%;
+        }
         .result-search { width: 100%; }
         .segmented {
           display: grid;
@@ -782,14 +1417,26 @@
           border: 1px solid var(--line-soft);
           border-radius: 8px;
           background: #fff;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          padding: 12px;
           overflow: hidden;
         }
         td {
-          border-bottom: 1px solid var(--line-soft);
-          padding: 10px 12px;
-        }
-        td:last-child {
           border-bottom: 0;
+          padding: 0;
+        }
+        td[data-label="酒店"],
+        td[data-label="每晚差额"] {
+          grid-column: 1 / -1;
+        }
+        td[data-label="假期每晚含税"],
+        td[data-label="代表时段每晚含税"] {
+          min-width: 0;
+          border-radius: 8px;
+          background: #f7f9fc;
+          padding: 8px 9px;
         }
         td::before {
           content: attr(data-label);
@@ -799,8 +1446,59 @@
           font-weight: 700;
           margin-bottom: 4px;
         }
+        td[data-label="酒店"]::before {
+          display: none;
+        }
+        td[data-label="每晚差额"] {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          border-top: 1px solid var(--line-soft);
+          padding-top: 8px;
+        }
+        td[data-label="每晚差额"]::before {
+          margin-bottom: 0;
+        }
+        .desktop-detail,
+        .hotel-source-pill {
+          display: none;
+        }
+        .hotel-name-line {
+          align-items: center;
+          margin-bottom: 4px;
+        }
+        .hotel-name {
+          margin-bottom: 0;
+          font-size: 15px;
+        }
+        .hotel-meta-row .pill {
+          margin-top: 2px;
+          margin-bottom: 2px;
+        }
+        .hotel-detail-link {
+          margin-top: 8px;
+        }
+        .hotel-detail-link a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 32px;
+          padding: 0 10px;
+          border: 1px solid rgba(22, 87, 216, 0.22);
+          border-radius: 8px;
+          background: #f4f8ff;
+          color: var(--primary);
+          font-size: 12px;
+          font-weight: 800;
+          text-decoration: none;
+        }
+        .result-stage-pill {
+          margin-left: 0;
+        }
         .price-main {
-          font-size: 17px;
+          font-size: 16px;
+          overflow-wrap: anywhere;
         }
         .diff {
           min-width: 0;
@@ -840,7 +1538,7 @@
     </style>
   </head>
   <body>
-    <main class="page">
+    <main class="page" id="page-top">
       <header class="topbar">
         <div>
           <div class="title-row">
@@ -850,7 +1548,6 @@
           <p class="sub">按可选酒店条件筛选，比较大床房/双床房每晚含税均价。</p>
         </div>
         <div class="top-actions">
-          <div class="health"><span class="dot"></span><span>本地服务运行中</span></div>
           <a class="contact-author" href="mailto:lxz@underfitting.com" aria-label="联系作者 lxz@underfitting.com">
             <span>联系作者</span>
             <strong>lxz@underfitting.com</strong>
@@ -911,7 +1608,7 @@
 
       <form class="nearby-toolbar" id="nearby-form">
         <label>
-          按所在城市推荐
+          从所在城市找周边
           <select id="origin-province" name="origin_province"></select>
         </label>
         <label>
@@ -919,7 +1616,7 @@
           <select id="origin-city" name="origin_city"></select>
         </label>
         <button class="secondary-btn" id="geo-btn" type="button">用当前位置</button>
-        <button id="nearby-submit-btn" type="submit"><span class="spinner"></span><span id="nearby-submit-text">按所在城市推荐</span></button>
+        <button id="nearby-submit-btn" type="submit"><span class="spinner"></span><span id="nearby-submit-text">搜索周边城市</span></button>
         <div class="nearby-hint" id="nearby-hint"></div>
       </form>
 
@@ -948,14 +1645,25 @@
 
       <section class="result hidden" id="result">
         <div class="panel summary" id="summary"></div>
-        <div class="panel area-panel">
+        <div class="panel area-panel" id="area-panel">
           <div class="section-head">
             <h2 class="section-title">推荐旅游区域</h2>
-            <div class="section-meta" id="area-meta"></div>
+            <div class="area-head-actions">
+              <div class="section-meta" id="area-meta"></div>
+            </div>
+          </div>
+          <div class="area-merge-bar hidden" id="area-merge-bar">
+            <div class="area-merge-meta" id="area-merge-meta"></div>
+            <label class="area-merge-name">
+              <span>合并后的片区名</span>
+              <input id="area-merge-name" type="text" placeholder="例如：深圳光明虹桥片区" autocomplete="off" />
+            </label>
+            <button id="area-merge-submit" type="button">合并片区</button>
+            <button class="secondary-btn" id="area-merge-clear" type="button">清除选择</button>
           </div>
           <div class="area-grid" id="area-recommendations"></div>
         </div>
-        <div class="panel">
+        <div class="panel" id="hotel-results-panel">
           <div class="table-head">
             <div class="table-head-main">
               <h2 class="table-title">反向旅游好选择</h2>
@@ -970,7 +1678,30 @@
                 <button class="seg-btn" type="button" data-view="lower">假期更低</button>
                 <button class="seg-btn" type="button" data-view="slight">略高可接受</button>
               </div>
+              <button class="secondary-btn export-pdf-btn" id="export-pdf-btn" type="button" disabled>导出 PDF</button>
               <div class="table-meta" id="table-meta"></div>
+            </div>
+            <div class="choice-filter-bar" id="choice-filter-bar">
+              <label class="choice-filter-field sort">
+                <span>排序</span>
+                <select id="result-sort">
+                  <option value="default" selected>默认排序</option>
+                  <option value="price_asc">价格低到高</option>
+                  <option value="price_desc">价格高到低</option>
+                  <option value="discount_desc">优惠大到小</option>
+                  <option value="discount_asc">优惠小到大</option>
+                </select>
+              </label>
+              <label class="choice-filter-field">
+                <span>最低价</span>
+                <input id="result-min-price" type="number" min="0" inputmode="numeric" placeholder="不限" />
+              </label>
+              <label class="choice-filter-field">
+                <span>最高价</span>
+                <input id="result-max-price" type="number" min="0" inputmode="numeric" placeholder="不限" />
+              </label>
+              <button class="secondary-btn choice-filter-clear" id="result-filter-clear" type="button">重置</button>
+              <div class="choice-filter-meta" id="result-price-range-meta"></div>
             </div>
           </div>
           <div class="table-wrap">
@@ -988,7 +1719,56 @@
           </div>
         </div>
       </section>
+
+      <section class="panel daily-panel" id="daily-recommendation">
+        <div class="section-head">
+          <h2 class="section-title">每日推荐</h2>
+          <div class="section-meta" id="daily-meta">正在读取预热缓存...</div>
+        </div>
+        <div id="daily-content" class="daily-content">
+          <div class="empty">正在加载每日推荐。</div>
+        </div>
+      </section>
     </main>
+
+    <nav class="floating-nav" id="floating-nav" aria-label="页面导航">
+      <button class="floating-nav-toggle" id="floating-nav-toggle" type="button" aria-expanded="false" aria-controls="floating-nav-menu" title="页面导航">
+        导航
+      </button>
+      <div class="floating-nav-menu" id="floating-nav-menu" aria-hidden="true">
+        <a class="floating-nav-link" href="#page-top" data-nav-target="page-top">页面顶部 <span>顶</span></a>
+        <a class="floating-nav-link" href="#area-panel" data-nav-target="area-panel">推荐旅游区域 <span id="floating-area-count">0</span></a>
+        <a class="floating-nav-link" href="#hotel-results-panel" data-nav-target="hotel-results-panel">推荐酒店区域 <span id="floating-hotel-count">0</span></a>
+        <a class="floating-nav-link" href="#daily-recommendation" data-nav-target="daily-recommendation">每日推荐 <span>日</span></a>
+      </div>
+    </nav>
+
+    <div class="area-correction-dialog hidden" id="area-correction-dialog" role="dialog" aria-modal="true" aria-labelledby="area-correction-title">
+      <div class="area-correction-backdrop" data-area-correction-cancel></div>
+      <section class="area-correction-panel">
+        <div class="area-correction-head">
+          <h2 class="area-correction-title" id="area-correction-title">纠正酒店信息</h2>
+          <div class="area-correction-hotel" id="area-correction-hotel"></div>
+        </div>
+        <div class="area-correction-body">
+          <label class="area-correction-field">
+            <span>正确酒店名</span>
+            <input id="hotel-correction-name-input" type="text" placeholder="不修改则保持原样" autocomplete="off" />
+          </label>
+          <label class="area-correction-field">
+            <span>正确片区名</span>
+            <input id="area-correction-input" type="text" placeholder="例如：深圳福田中心片区" autocomplete="off" />
+          </label>
+          <div class="area-correction-error hidden" id="area-correction-error"></div>
+          <div class="area-suggestion-head" id="area-suggestion-head">建议使用已有片区</div>
+          <div class="area-suggestion-list" id="area-suggestion-list"></div>
+        </div>
+        <div class="area-correction-actions">
+          <button class="area-correction-cancel" type="button" data-area-correction-cancel>取消</button>
+          <button type="button" id="area-correction-submit">提交审核</button>
+        </div>
+      </section>
+    </div>
 
     <script>
       const holidaySelect = document.getElementById("holiday-select");
@@ -1013,11 +1793,37 @@
       const summary = document.getElementById("summary");
       const areaRecommendations = document.getElementById("area-recommendations");
       const areaMeta = document.getElementById("area-meta");
+      const areaMergeBar = document.getElementById("area-merge-bar");
+      const areaMergeMeta = document.getElementById("area-merge-meta");
+      const areaMergeNameInput = document.getElementById("area-merge-name");
+      const areaMergeSubmit = document.getElementById("area-merge-submit");
+      const areaMergeClear = document.getElementById("area-merge-clear");
       const tableMeta = document.getElementById("table-meta");
       const choicesBody = document.getElementById("choices-body");
       const viewFilter = document.getElementById("view-filter");
+      const exportPdfBtn = document.getElementById("export-pdf-btn");
       const resultSearchInput = document.getElementById("result-search");
+      const resultSortSelect = document.getElementById("result-sort");
+      const resultMinPriceInput = document.getElementById("result-min-price");
+      const resultMaxPriceInput = document.getElementById("result-max-price");
+      const resultFilterClear = document.getElementById("result-filter-clear");
+      const resultPriceRangeMeta = document.getElementById("result-price-range-meta");
+      const dailyMeta = document.getElementById("daily-meta");
+      const dailyContent = document.getElementById("daily-content");
       const useCacheInput = document.getElementById("use-cache");
+      const floatingNav = document.getElementById("floating-nav");
+      const floatingNavToggle = document.getElementById("floating-nav-toggle");
+      const floatingNavMenu = document.getElementById("floating-nav-menu");
+      const floatingAreaCount = document.getElementById("floating-area-count");
+      const floatingHotelCount = document.getElementById("floating-hotel-count");
+      const areaCorrectionDialog = document.getElementById("area-correction-dialog");
+      const areaCorrectionHotel = document.getElementById("area-correction-hotel");
+      const hotelCorrectionNameInput = document.getElementById("hotel-correction-name-input");
+      const areaCorrectionInput = document.getElementById("area-correction-input");
+      const areaCorrectionError = document.getElementById("area-correction-error");
+      const areaSuggestionHead = document.getElementById("area-suggestion-head");
+      const areaSuggestionList = document.getElementById("area-suggestion-list");
+      const areaCorrectionSubmit = document.getElementById("area-correction-submit");
       const priceButtons = Array.from(document.querySelectorAll("[data-price-range]"));
       let timer = null;
       let startedAt = 0;
@@ -1030,18 +1836,103 @@
       let lastAreaRefreshMeta = "";
       let lastResultMeta = "";
       let lastHotelNameMeta = "";
+      let lastResultStage = "";
+      let lastResultCity = "";
       let lastTotalChoiceCount = 0;
       let areaRefreshToken = 0;
       let hotelNameRefreshToken = 0;
+      let hotelNameRefreshInFlight = false;
+      let queuedHotelNameRefreshData = null;
+      let lastHotelNameRefreshSignature = "";
+      let hotelNameCorrectionToken = 0;
+      let approvedHotelNameRecords = new Map();
+      let hotelAreaCorrectionToken = 0;
+      let approvedHotelAreaRecords = new Map();
+      let activeAreaCorrectionItem = null;
+      let activeAreaCorrectionResolve = null;
       let coverageRefreshToken = 0;
       let currentUseCache = true;
       let currentRequestKind = "single";
       let activeView = "all";
       let resultSearchQuery = "";
+      let resultSortMode = "default";
+      let resultMinPriceFilter = "";
+      let resultMaxPriceFilter = "";
       let activeAreaFilter = null;
-      let areaListExpanded = false;
-      const AREA_COLLAPSED_LIMIT = 8;
+      let selectedAreaMerges = new Map();
+      let pendingAreaMergeAreaKeys = new Map();
+      let activeAreaMergeCorrections = [];
+      let areaMergeCorrectionToken = 0;
+      let areaMergeNameTouched = false;
+      let renderChoicesTimer = null;
+      const HOTEL_NAME_PARTIAL_REFRESH_LIMIT = 18;
+      const HOTEL_NAME_BATCH_SIZE = 8;
       const provinceCityOptions = {{ province_city_options|tojson }};
+      const clientId = getClientId();
+
+      function makeClientId() {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+          return window.crypto.randomUUID();
+        }
+        return `${Date.now().toString(36)}${Math.random().toString(36).slice(2)}`;
+      }
+
+      function getClientId() {
+        const key = "reverseTravelClientId";
+        try {
+          const existing = window.sessionStorage.getItem(key);
+          if (existing) return existing;
+          const value = makeClientId();
+          window.sessionStorage.setItem(key, value);
+          return value;
+        } catch {
+          return makeClientId();
+        }
+      }
+
+      function jobPayload(payload) {
+        return { ...(payload || {}), client_id: clientId };
+      }
+
+      function jobHeaders(includeJson = false) {
+        const headers = { "X-Reverse-Travel-Client": clientId };
+        if (includeJson) headers["Content-Type"] = "application/json";
+        return headers;
+      }
+
+      function setFloatingNavOpen(open) {
+        floatingNav.classList.toggle("is-open", open);
+        floatingNavToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        floatingNavMenu.setAttribute("aria-hidden", open ? "false" : "true");
+      }
+
+      function floatingNavCountText(value) {
+        const count = Math.max(0, Math.round(Number(value || 0)));
+        if (!Number.isFinite(count)) return "0";
+        return count > 99 ? "99+" : String(count);
+      }
+
+      function updateFloatingNavCounts({ areaCount, hotelCount } = {}) {
+        if (areaCount !== undefined && floatingAreaCount) {
+          floatingAreaCount.textContent = floatingNavCountText(areaCount);
+        }
+        if (hotelCount !== undefined && floatingHotelCount) {
+          floatingHotelCount.textContent = floatingNavCountText(hotelCount);
+        }
+      }
+
+      function targetIsScrollable(target) {
+        if (!target) return false;
+        const style = window.getComputedStyle(target);
+        if (style.display === "none" || style.visibility === "hidden") return false;
+        return target.getClientRects().length > 0;
+      }
+
+      function pollUrlWithVersion(pollUrl, version) {
+        const url = new URL(pollUrl, window.location.origin);
+        if (version) url.searchParams.set("since_version", String(version));
+        return url.pathname + url.search + url.hash;
+      }
 
       function esc(text) {
         return String(text || "")
@@ -1083,10 +1974,78 @@
         return Array.from(value).map((char) => t2sChars[char] || char).join("");
       }
 
+      function hasChineseText(text) {
+        return /[\u3400-\u9fff]/.test(String(text || ""));
+      }
+
+      function chineseCharCount(text) {
+        return (String(text || "").match(/[\u3400-\u9fff]/g) || []).length;
+      }
+
       function normalizeSearchText(text) {
         return simplifyChineseText(text)
           .toLowerCase()
           .replace(/[\s\-_,.()（）·•|｜\/\\:："'“”‘’]+/g, "");
+      }
+
+      function hotelCityAliases(item) {
+        const values = [
+          item?.recommend_city,
+          lastResultCity,
+          form?.elements?.city?.value,
+        ];
+        const aliases = new Set();
+        values.forEach((value) => {
+          const token = normalizeSearchText(value || "");
+          if (!token) return;
+          aliases.add(token);
+          const stripped = token.replace(/(特别行政区|自治州|地区|市|区|县)$/u, "");
+          if (stripped) aliases.add(stripped);
+        });
+        return aliases;
+      }
+
+      function isGenericOrCityHotelName(name, item) {
+        const value = simplifyChineseText(name || "").trim();
+        const token = normalizeSearchText(value);
+        if (!token) return true;
+        if (["酒店", "宾馆", "住宿", "酒店民宿", "民宿", "国内酒店", "海外酒店", "tripcom"].includes(token)) {
+          return true;
+        }
+        const cityAliases = hotelCityAliases(item);
+        const suffixes = ["酒店", "宾馆", "住宿", "民宿", "酒店预订", "住宿预订"];
+        if (cityAliases.has(token)) return true;
+        for (const city of cityAliases) {
+          if (suffixes.some((suffix) => token === normalizeSearchText(`${city}${suffix}`))) return true;
+        }
+        return /携程|去哪儿|飞猪|酒店预订|宾馆预订|价格查询|Trip\.com/i.test(value);
+      }
+
+      function hotelNameNeedsRefresh(item) {
+        if (!item) return false;
+        if (item.hotel_name_needs_refresh) return true;
+        const name = simplifyChineseText(item.hotel_name || "").trim();
+        if (!name) return true;
+        if (!hasChineseText(name)) return true;
+        if (isGenericOrCityHotelName(name, item)) return true;
+        return chineseCharCount(name) < 4;
+      }
+
+      function displayHotelName(item) {
+        const name = String(item?.hotel_name || "").trim();
+        if (!hotelNameNeedsRefresh(item)) return simplifyChineseText(name);
+        const originalName = String(item?.hotel_original_name || "").trim();
+        if (originalName && normalizeSearchText(originalName) !== normalizeSearchText(name)) {
+          return simplifyChineseText(originalName);
+        }
+        if (name && !isGenericOrCityHotelName(name, item)) return simplifyChineseText(name);
+        return "酒店名匹配中";
+      }
+
+      function hotelNameSourceLabel(item) {
+        const source = String(item?.hotel_name_source || "").trim();
+        if (!source) return "";
+        return hotelNameNeedsRefresh(item) ? "" : source;
       }
 
       function choiceSearchText(item) {
@@ -1104,12 +2063,17 @@
       }
 
       function choiceKey(item, index) {
+        if (item && item._choice_key) return String(item._choice_key);
         const hotelId = item && item.hotel_id ? String(item.hotel_id) : "";
-        const roomType = item && item.room_type ? String(item.room_type) : "";
+        const roomType = item && (item.room_type || item.holiday_room_name) ? String(item.room_type || item.holiday_room_name) : "";
         const city = item && item.recommend_city ? String(item.recommend_city) : "";
         if (hotelId) return `${city}:${hotelId}:${roomType}`;
         if (item && item.detail_url) return `${city}:${item.detail_url}:${roomType}`;
         return `${city}:${index}`;
+      }
+
+      function choiceByKey(key) {
+        return lastChoices.find((item, index) => choiceKey(item, index) === key) || null;
       }
 
       function mergeChoiceUpdates(updatedChoices, fields = null) {
@@ -1129,10 +2093,49 @@
             fields.forEach((field) => {
               if (Object.prototype.hasOwnProperty.call(updated, field)) existing[field] = updated[field];
             });
+            if (
+              fields.includes("hotel_name_needs_refresh")
+              && !Object.prototype.hasOwnProperty.call(updated, "hotel_name_needs_refresh")
+            ) {
+              const previousRefreshFlag = existing.hotel_name_needs_refresh;
+              delete existing.hotel_name_needs_refresh;
+              if (hotelNameNeedsRefresh(existing)) existing.hotel_name_needs_refresh = previousRefreshFlag || true;
+            }
           } else {
             Object.assign(existing, updated);
           }
         });
+        applyApprovedHotelNameCorrections();
+        applyApprovedHotelAreaCorrections();
+      }
+
+      function mergeResultDelta(base, delta) {
+        if (!delta) return base || null;
+        const next = { ...(base || {}), ...(delta.meta || {}) };
+        const byKey = new Map();
+        (base?.choices || []).forEach((item, index) => {
+          byKey.set(choiceKey(item, index), { ...item });
+        });
+        (delta.choices_removed || []).forEach((key) => byKey.delete(String(key)));
+        (delta.choices_upsert || []).forEach((item, index) => {
+          if (!item) return;
+          const key = choiceKey(item, index);
+          const existing = byKey.get(key) || {};
+          const merged = { ...existing, ...item };
+          delete merged._choice_key;
+          byKey.set(key, merged);
+        });
+        const order = Array.isArray(delta.choice_order) ? delta.choice_order.map(String) : [];
+        if (order.length) {
+          next.choices = order.map((key) => byKey.get(key)).filter(Boolean);
+          byKey.forEach((value, key) => {
+            if (!order.includes(key)) next.choices.push(value);
+          });
+        } else {
+          next.choices = Array.from(byKey.values());
+        }
+        if (!Array.isArray(next.area_recommendations)) next.area_recommendations = base?.area_recommendations || [];
+        return next;
       }
 
       function initOriginCitySelector() {
@@ -1172,7 +2175,7 @@
         submitBtn.classList.toggle("loading", active && currentRequestKind === "single");
         nearbySubmitBtn.classList.toggle("loading", active && currentRequestKind === "nearby");
         submitText.textContent = active && currentRequestKind === "single" ? "筛选中" : "开始筛选";
-        nearbySubmitText.textContent = active && currentRequestKind === "nearby" ? "推荐中" : "按所在城市推荐";
+        nearbySubmitText.textContent = active && currentRequestKind === "nearby" ? "推荐中" : "搜索周边城市";
         statusBox.classList.toggle("hidden", !active);
         if (!active) {
           window.clearInterval(timer);
@@ -1192,9 +2195,9 @@
       function loadingMessage(seconds) {
         if (currentRequestKind === "nearby") {
           if (currentUseCache) {
-            return "正在读取附近城市缓存；没有缓存会自动逐城新搜索。";
+            return "正在读取周边城市缓存；没有缓存会自动逐城新搜索。";
           }
-          return seconds > 45 ? "正在逐城比较附近城市价格，可能需要 5-15 分钟..." : "正在逐城新搜索附近城市，可能需要 5-15 分钟...";
+          return seconds > 45 ? "正在逐城比较周边城市价格，可能需要 5-15 分钟..." : "正在逐城新搜索周边城市，可能需要 5-15 分钟...";
         }
         if (currentUseCache) {
           return "正在读取缓存；如未命中会自动新搜索。";
@@ -1220,15 +2223,73 @@
         return "bad";
       }
 
+      function formatPriceText(value) {
+        return String(value || "")
+          .replace(/^Total price:\s*/i, "")
+          .replace(/^Avg\.?\s*nightly:\s*/i, "")
+          .trim();
+      }
+
+      function stageLabel(stage) {
+        const labels = {
+          prepare: "准备",
+          mysql_price_preview: "价格缓存",
+          stale_cache_preview: "历史缓存",
+          resolve_city: "城市识别",
+          fast_holiday_hotels: "首屏酒店",
+          fast_comparison_hotels: "快速对比",
+          fast_preview: "首屏预览",
+          holiday_hotels: "假期列表",
+          comparison_hotels: "代表时段",
+          pricing_preview: "价格预览",
+          supplemental_hotels: "重点片区",
+          supplemental_preview: "补充预览",
+          initial_verify_features: "初筛核验",
+          initial_verified_preview: "核验预览",
+          deep_holiday_hotels: "深扫酒店",
+          deep_comparison_hotels: "深扫对比",
+          deep_pricing_progress: "深扫价格",
+          deep_pricing_preview: "深扫预览",
+          deep_pricing_complete: "深扫完成",
+          verify_features: "设施核验",
+          verified_preview: "核验完成",
+          cached_chinese_names: "中文缓存",
+          cached_names_preview: "中文预览",
+          coverage: "行政区补充",
+          coverage_preview: "补充预览",
+          hotel_names: "中文名",
+          areas: "区域规范化",
+          finalize: "整理结果",
+          succeeded: "完成",
+        };
+        return labels[stage] || stage || "进度";
+      }
+
+      function resultStageFromData(data) {
+        const stage = data?.partial?.stage || "";
+        if (stage) return stage;
+        if (data && Array.isArray(data.choices)) return "succeeded";
+        return "";
+      }
+
+      function isCompleteCoverageResult(data) {
+        const status = data?.coverage_supplement?.status || "";
+        return status === "succeeded" || status === "skipped";
+      }
+
       function renderSummary(data) {
-        const areaCount = mergeAreaLists(
+        const currentAreas = mergeAreaLists(
           data.area_recommendations || [],
           buildAreasFromChoices(data.choices || [])
+        );
+        const areaCount = mergeAreaLists(
+          currentAreas,
+          lastServerAreas
         ).length;
         if (data.origin_city) {
           summary.innerHTML = `
-            <div class="stat"><div class="k">按所在城市推荐</div><div class="v">${esc(data.origin_city)}</div></div>
-            <div class="stat"><div class="k">附近城市</div><div class="v">${esc((data.nearby_cities || []).join("、"))}</div></div>
+            <div class="stat"><div class="k">周边推荐起点</div><div class="v">${esc(data.origin_city)}</div></div>
+            <div class="stat"><div class="k">实际搜索城市</div><div class="v">${esc((data.nearby_cities || []).join("、"))}</div></div>
             <div class="stat"><div class="k">命中酒店</div><div class="v">${esc((data.choices || []).length)} 家</div></div>
             <div class="stat"><div class="k">推荐区域</div><div class="v">${esc(areaCount)} 个</div></div>
           `;
@@ -1247,11 +2308,128 @@
         return `${normalizeSearchText(areaName)}::${normalizeSearchText(recommendCity)}`;
       }
 
+      function areaAliases(area) {
+        const names = [area?.area_name, ...(Array.isArray(area?.merged_area_names) ? area.merged_area_names : [])];
+        const seen = new Set();
+        const aliases = [];
+        names.forEach((name) => {
+          const value = simplifyChineseText(name || "");
+          const key = normalizeSearchText(value);
+          if (!value || seen.has(key)) return;
+          seen.add(key);
+          aliases.push(value);
+        });
+        return aliases;
+      }
+
       function matchesActiveArea(item) {
         if (!activeAreaFilter) return true;
         const itemArea = normalizeSearchText(item.area_name || "");
         const itemCity = normalizeSearchText(item.recommend_city || "");
-        return itemArea === activeAreaFilter.area && (!activeAreaFilter.city || itemCity === activeAreaFilter.city);
+        return activeAreaFilter.areas.has(itemArea) && (!activeAreaFilter.city || itemCity === activeAreaFilter.city);
+      }
+
+      function numericValue(value) {
+        if (value === null || value === undefined || value === "") return NaN;
+        const number = Number(value);
+        if (Number.isFinite(number)) return number;
+        const match = String(value).replaceAll(",", "").match(/-?\d+(?:\.\d+)?/);
+        return match ? Number(match[0]) : NaN;
+      }
+
+      function choicePriceValue(item) {
+        const direct = numericValue(item?.holiday_avg_nightly_tax_total_value);
+        if (Number.isFinite(direct)) return direct;
+        return numericValue(item?.holiday_avg_nightly_tax_total_price);
+      }
+
+      function choiceDiscountValue(item) {
+        const direct = numericValue(item?.price_diff_nightly);
+        if (Number.isFinite(direct)) return direct;
+        return numericValue(item?.price_diff_nightly_text);
+      }
+
+      function normalizedPriceFilterValue(value) {
+        const text = String(value || "").trim();
+        if (!text) return "";
+        const number = Number(text);
+        return Number.isFinite(number) && number >= 0 ? number : "";
+      }
+
+      function resultPriceFilterBounds() {
+        let minPrice = resultMinPriceFilter;
+        let maxPrice = resultMaxPriceFilter;
+        if (minPrice !== "" && maxPrice !== "" && minPrice > maxPrice) {
+          [minPrice, maxPrice] = [maxPrice, minPrice];
+        }
+        return { minPrice, maxPrice };
+      }
+
+      function compareFinite(left, right, direction = 1) {
+        const leftOk = Number.isFinite(left);
+        const rightOk = Number.isFinite(right);
+        if (!leftOk && !rightOk) return 0;
+        if (!leftOk) return 1;
+        if (!rightOk) return -1;
+        return (left - right) * direction;
+      }
+
+      function sortVisibleChoices(items) {
+        if (resultSortMode === "default") return items;
+        const sorted = items.slice();
+        sorted.sort((a, b) => {
+          const priceCompare = compareFinite(choicePriceValue(a), choicePriceValue(b), resultSortMode === "price_desc" ? -1 : 1);
+          const discountCompare = compareFinite(choiceDiscountValue(a), choiceDiscountValue(b), resultSortMode === "discount_asc" ? -1 : 1);
+          if (resultSortMode === "price_asc" || resultSortMode === "price_desc") {
+            return priceCompare || discountCompare || String(displayHotelName(a)).localeCompare(String(displayHotelName(b)), "zh-Hans-CN");
+          }
+          if (resultSortMode === "discount_desc" || resultSortMode === "discount_asc") {
+            return discountCompare || priceCompare || String(displayHotelName(a)).localeCompare(String(displayHotelName(b)), "zh-Hans-CN");
+          }
+          return 0;
+        });
+        return sorted;
+      }
+
+      function currentResultPriceRange() {
+        const prices = lastChoices
+          .map(choicePriceValue)
+          .filter((value) => Number.isFinite(value) && value >= 0);
+        if (!prices.length) return null;
+        return {
+          min: Math.floor(Math.min(...prices)),
+          max: Math.ceil(Math.max(...prices)),
+        };
+      }
+
+      function updateResultFilterRangeMeta() {
+        const range = currentResultPriceRange();
+        if (!range) {
+          resultMinPriceInput.placeholder = "不限";
+          resultMaxPriceInput.placeholder = "不限";
+          resultPriceRangeMeta.textContent = "";
+          return;
+        }
+        resultMinPriceInput.placeholder = String(range.min);
+        resultMaxPriceInput.placeholder = String(range.max);
+        resultPriceRangeMeta.textContent = `本次结果价格：CNY ${range.min} - ${range.max}`;
+      }
+
+      function resultListFilterText() {
+        const parts = [];
+        const { minPrice, maxPrice } = resultPriceFilterBounds();
+        if (resultSortMode !== "default") {
+          const label = resultSortSelect.options[resultSortSelect.selectedIndex]?.textContent || "";
+          if (label) parts.push(label);
+        }
+        if (minPrice !== "" || maxPrice !== "") {
+          parts.push(`价格 CNY ${minPrice === "" ? "不限" : minPrice} - ${maxPrice === "" ? "不限" : maxPrice}`);
+        }
+        return parts.length ? `，列表筛选：${parts.join("，")}` : "";
+      }
+
+      function hasResultListFilter() {
+        return resultSortMode !== "default" || resultMinPriceFilter !== "" || resultMaxPriceFilter !== "";
       }
 
       function visibleChoices(options = {}) {
@@ -1267,68 +2445,355 @@
         if (resultSearchQuery) {
           items = items.filter((item) => choiceSearchText(item).includes(resultSearchQuery));
         }
+        const { minPrice, maxPrice } = resultPriceFilterBounds();
+        if (minPrice !== "" || maxPrice !== "") {
+          items = items.filter((item) => {
+            const price = choicePriceValue(item);
+            if (!Number.isFinite(price)) return false;
+            if (minPrice !== "" && price < minPrice) return false;
+            if (maxPrice !== "" && price > maxPrice) return false;
+            return true;
+          });
+        }
         if (!options.ignoreAreaFilter) {
           items = items.filter(matchesActiveArea);
         }
-        return items;
+        return sortVisibleChoices(items);
       }
 
-      function renderChoices() {
-        const items = visibleChoices();
-        const cacheText = formatCacheInfo(lastCacheInfo);
-        const searchText = resultSearchQuery && resultSearchInput.value.trim()
-          ? `，搜索「${resultSearchInput.value.trim()}」`
-          : "";
-        const areaText = activeAreaFilter ? `，片区「${activeAreaFilter.label}」` : "";
-        const stageText = [lastResultMeta, lastHotelNameMeta].filter(Boolean).join("，");
+      function exportFilterSummary() {
+        const parts = [];
+        const viewLabels = { all: "全部", lower: "假期更低", slight: "略高可接受" };
+        if (activeView && activeView !== "all") parts.push(`结果类型：${viewLabels[activeView] || activeView}`);
+        if (activeAreaFilter?.label) parts.push(`片区：${activeAreaFilter.label}`);
+        if (resultSearchQuery && resultSearchInput.value.trim()) parts.push(`搜索：${resultSearchInput.value.trim()}`);
+        const listFilter = resultListFilterText().replace(/^，/, "");
+        if (listFilter) parts.push(listFilter);
+        return parts.length ? parts.join("，") : "当前已展示结果";
+      }
+
+      function exportReportTitle() {
+        const city = lastResultCity || simplifyChineseText(form?.elements?.city?.value || "");
+        const holiday = holidaySelect?.selectedOptions?.[0]?.textContent?.trim() || "";
+        return ["反向旅游搜索结果", city, holiday].filter(Boolean).join(" - ");
+      }
+
+      function exportAreaSummaryHtml(items) {
+        const areas = buildAreasFromChoices(items);
+        if (!areas.length) return "";
+        return `
+          <section>
+            <h2>推荐旅游区域</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>片区</th>
+                  <th>城市</th>
+                  <th>酒店数</th>
+                  <th>更低</th>
+                  <th>假期均价</th>
+                  <th>每晚差额</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${areas.map((area) => `
+                  <tr>
+                    <td>${esc(area.area_name || "-")}</td>
+                    <td>${esc(area.recommend_city || "-")}</td>
+                    <td>${esc(area.hotel_count || 0)}</td>
+                    <td>${esc(area.lower_price_hotel_count || 0)}</td>
+                    <td>${esc(area.average_holiday_nightly_tax_total_price || "-")}</td>
+                    <td>${esc(area.average_price_diff_nightly_text || "-")}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </section>
+        `;
+      }
+
+      function exportHotelRowsHtml(items) {
+        return items.map((item, index) => {
+          const hotelName = displayHotelName(item);
+          const areaText = [item.recommend_city, item.area_name].filter(Boolean).map(simplifyChineseText).join(" · ") || "-";
+          const detailUrl = String(item.detail_url || "").trim();
+          return `
+            <tr>
+              <td>${esc(index + 1)}</td>
+              <td>
+                <strong>${esc(hotelName)}</strong>
+                ${item.hotel_original_name && normalizeSearchText(item.hotel_original_name) !== normalizeSearchText(hotelName) ? `<div class="muted">原名：${esc(item.hotel_original_name)}</div>` : ""}
+                ${detailUrl ? `<div class="muted"><a href="${esc(detailUrl)}">${esc(detailUrl)}</a></div>` : ""}
+              </td>
+              <td>${esc(areaText)}</td>
+              <td>${esc(item.holiday_avg_nightly_tax_total_price || "-")}<div class="muted">整段：${esc(formatPriceText(item.holiday_tax_total_price) || "-")}</div></td>
+              <td>${esc(item.comparison_average_nightly_tax_total_price || "-")}<div class="muted">最低样本：${esc(item.comparison_lowest_nightly_tax_total_price || "-")}</div></td>
+              <td>${esc(item.price_diff_nightly_text || "-")}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      function buildPdfExportHtml(items) {
+        const title = exportReportTitle();
+        const exportedAt = new Date().toLocaleString("zh-CN", { hour12: false });
         const totalChoiceCount = Math.max(lastTotalChoiceCount || 0, lastChoices.length);
-        const countText = totalChoiceCount > lastChoices.length
-          ? `${items.length}/${lastChoices.length} 家（已找到 ${totalChoiceCount} 家，逐步显示）`
-          : `${items.length}/${lastChoices.length} 家`;
-        tableMeta.textContent = `${countText}，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${stageText ? `，${stageText}` : ""}${areaText}${searchText}`;
-        renderAreas(visibleChoices({ ignoreAreaFilter: true }));
+        const progressText = totalChoiceCount > lastChoices.length
+          ? `当前前台已显示 ${lastChoices.length}/${totalChoiceCount} 家，本次导出 ${items.length} 家。`
+          : `当前前台已显示 ${lastChoices.length} 家，本次导出 ${items.length} 家。`;
+        const areaCount = buildAreasFromChoices(items).length;
+        return `<!doctype html>
+          <html lang="zh-CN">
+          <head>
+            <meta charset="utf-8" />
+            <title>${esc(title)}</title>
+            <style>
+              @page { margin: 14mm; }
+              * { box-sizing: border-box; }
+              body { margin: 0; color: #152336; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12px; line-height: 1.5; }
+              h1 { margin: 0 0 8px; font-size: 22px; }
+              h2 { margin: 20px 0 8px; font-size: 15px; }
+              .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 14px 0; }
+              .stat { border: 1px solid #dce6ef; border-radius: 6px; padding: 8px; }
+              .k { color: #66758a; font-size: 10px; font-weight: 700; }
+              .v { margin-top: 3px; font-size: 13px; font-weight: 800; overflow-wrap: anywhere; }
+              .summary { color: #405066; margin: 8px 0 14px; }
+              table { width: 100%; border-collapse: collapse; page-break-inside: auto; }
+              tr { page-break-inside: avoid; page-break-after: auto; }
+              th, td { border: 1px solid #dce6ef; padding: 7px 8px; text-align: left; vertical-align: top; }
+              th { background: #f3f6fb; color: #405066; font-size: 11px; }
+              a { color: #1657d8; word-break: break-all; text-decoration: none; }
+              .muted { color: #66758a; font-size: 10px; margin-top: 3px; overflow-wrap: anywhere; }
+              @media print { body { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+            </style>
+          </head>
+          <body>
+            <h1>${esc(title)}</h1>
+            <div class="summary">${esc(progressText)} ${esc(exportFilterSummary())}</div>
+            <div class="meta">
+              <div class="stat"><div class="k">导出时间</div><div class="v">${esc(exportedAt)}</div></div>
+              <div class="stat"><div class="k">酒店数量</div><div class="v">${esc(items.length)} 家</div></div>
+              <div class="stat"><div class="k">推荐片区</div><div class="v">${esc(areaCount)} 个</div></div>
+              <div class="stat"><div class="k">代表时段</div><div class="v">${esc(lastComparisonCount)} 个</div></div>
+            </div>
+            ${exportAreaSummaryHtml(items)}
+            <section>
+              <h2>推荐酒店</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 36px;">#</th>
+                    <th>酒店</th>
+                    <th>片区</th>
+                    <th>假期每晚含税</th>
+                    <th>代表时段每晚含税</th>
+                    <th>每晚差额</th>
+                  </tr>
+                </thead>
+                <tbody>${exportHotelRowsHtml(items)}</tbody>
+              </table>
+            </section>
+          </body>
+          </html>`;
+      }
+
+      function exportCurrentResultsPdf() {
+        const items = visibleChoices();
         if (!items.length) {
-          choicesBody.innerHTML = `<tr><td class="empty" colspan="4">${activeAreaFilter ? "该片区下没有匹配当前筛选的酒店。" : (resultSearchQuery ? "结果里没有匹配的酒店。" : "当前条件下没有找到“反向旅游好选择”。")}</td></tr>`;
+          errorBox.textContent = "当前没有可导出的酒店结果。";
+          errorBox.classList.remove("hidden");
           return;
         }
-        choicesBody.innerHTML = items.map((item) => `
-          <tr>
+        const printWindow = window.open("", "_blank");
+        if (!printWindow) {
+          errorBox.textContent = "浏览器拦截了导出窗口，请允许弹出窗口后重试。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        printWindow.opener = null;
+        printWindow.document.open();
+        printWindow.document.write(buildPdfExportHtml(items));
+        printWindow.document.close();
+        const runPrint = () => {
+          printWindow.focus();
+          printWindow.print();
+        };
+        if (printWindow.document.readyState === "complete") {
+          window.setTimeout(runPrint, 120);
+        } else {
+          printWindow.addEventListener("load", () => window.setTimeout(runPrint, 120), { once: true });
+        }
+      }
+
+      function choiceStageLabel(item) {
+        if (item.price_cache_preview) return stageLabel("mysql_price_preview");
+        if (lastResultStage && lastResultStage !== "succeeded") return stageLabel(lastResultStage);
+        return "";
+      }
+
+      function choiceRenderSignature(item) {
+        return [
+          lastResultStage,
+          lastResultCity,
+          hotelNameNeedsRefresh(item),
+          displayHotelName(item),
+          hotelNameSourceLabel(item),
+          item.hotel_name,
+          item.hotel_original_name,
+          item.hotel_name_source,
+          item.hotel_name_needs_refresh,
+          item.price_cache_preview,
+          item.recommend_city,
+          item.area_name,
+          item.holiday_room_name,
+          item.holiday_room_price,
+          item.holiday_tax_total_price,
+          item.holiday_avg_nightly_tax_total_price,
+          item.comparison_average_nightly_tax_total_price,
+          item.comparison_sample_count,
+          item.comparison_lowest_nightly_tax_total_price,
+          item.comparison_lowest_check_in,
+          item.comparison_lowest_check_out,
+          item.price_diff_nightly,
+          item.price_diff_nightly_text,
+          item.detail_url,
+        ].map((value) => String(value ?? "")).join("|");
+      }
+
+      function choiceRowHtml(item, key, signature) {
+        const choiceStage = choiceStageLabel(item);
+        const hotelName = displayHotelName(item);
+        const sourceLabel = hotelNameSourceLabel(item);
+        return `
+          <tr data-choice-key="${esc(key)}" data-choice-signature="${esc(signature)}">
             <td data-label="酒店">
-              <div class="hotel-name">${esc(simplifyChineseText(item.hotel_name))}</div>
-              ${item.hotel_original_name && item.hotel_original_name !== item.hotel_name ? `<div class="muted">原名：${esc(item.hotel_original_name)}</div>` : ""}
-              <div>
-                <span class="pill">${esc(item.room_type_label)}</span>
-                ${item.recommend_city ? `<span class="pill">${esc(item.recommend_city)}</span>` : ""}
-                ${item.area_name ? `<span class="pill">${esc(item.area_name)}</span>` : ""}
-                ${item.hotel_name_source ? `<span class="pill">${esc(item.hotel_name_source)}</span>` : ""}
+              <div class="hotel-name-line">
+                <div class="hotel-name">${esc(hotelName)}</div>
+                <button class="hotel-correction-btn" type="button" data-action="edit-hotel-correction" data-choice-key="${esc(key)}" aria-label="纠正酒店名称或片区" title="纠正酒店名称或片区">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                  </svg>
+                </button>
+                ${choiceStage ? `<span class="pill result-stage-pill">${esc(choiceStage)}</span>` : ""}
               </div>
-              <div class="muted">${esc(item.holiday_room_name)}</div>
-              <div><a href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">打开 Trip.com 详情</a></div>
+              ${item.hotel_original_name && normalizeSearchText(item.hotel_original_name) !== normalizeSearchText(hotelName) ? `<div class="muted desktop-detail">原名：${esc(item.hotel_original_name)}</div>` : ""}
+              <div class="hotel-meta-row">
+                <span class="pill">${esc(item.room_type_label)}</span>
+                ${item.recommend_city ? `<span class="pill">推荐城市：${esc(item.recommend_city)}</span>` : ""}
+                ${item.area_name ? `<span class="pill">${esc(item.area_name)}</span>` : ""}
+                ${sourceLabel ? `<span class="pill hotel-source-pill">${esc(sourceLabel)}</span>` : ""}
+              </div>
+              <div class="muted desktop-detail">${esc(item.holiday_room_name)}</div>
+              <div class="hotel-detail-link"><a href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">打开 Trip.com 详情</a></div>
             </td>
             <td data-label="假期每晚含税">
               <div class="price-main">${esc(item.holiday_avg_nightly_tax_total_price)}</div>
-              <div class="muted">房价参考：${esc(item.holiday_room_price)}</div>
-              <div class="muted">整段含税：${esc(item.holiday_tax_total_price)}</div>
+              <div class="muted desktop-detail">房价参考：${esc(item.holiday_room_price)}</div>
+              <div class="muted desktop-detail">整段含税：${esc(formatPriceText(item.holiday_tax_total_price))}</div>
             </td>
             <td data-label="代表时段每晚含税">
               <div class="price-main">${esc(item.comparison_average_nightly_tax_total_price)}</div>
-              <div class="muted">样本数：${esc(item.comparison_sample_count)}</div>
-              <div class="muted">最低样本：${esc(item.comparison_lowest_nightly_tax_total_price)}</div>
-              <div class="muted">${esc(item.comparison_lowest_check_in)} 至 ${esc(item.comparison_lowest_check_out)}</div>
+              <div class="muted desktop-detail">样本数：${esc(item.comparison_sample_count)}</div>
+              <div class="muted desktop-detail">最低样本：${esc(item.comparison_lowest_nightly_tax_total_price)}</div>
+              <div class="muted desktop-detail">${esc(item.comparison_lowest_check_in)} 至 ${esc(item.comparison_lowest_check_out)}</div>
             </td>
             <td data-label="每晚差额">
               <span class="diff ${diffClass(item.price_diff_nightly)}">${esc(item.price_diff_nightly_text)}</span>
             </td>
           </tr>
-        `).join("");
+        `;
+      }
+
+      function rowFromHtml(html) {
+        const template = document.createElement("template");
+        template.innerHTML = html.trim();
+        return template.content.firstElementChild;
+      }
+
+      function renderChoiceRows(items) {
+        const existingRows = new Map();
+        choicesBody.querySelectorAll("tr[data-choice-key]").forEach((row) => {
+          existingRows.set(row.dataset.choiceKey, row);
+        });
+        const nextRows = [];
+        items.forEach((item, index) => {
+          const key = choiceKey(item, index);
+          const signature = choiceRenderSignature(item);
+          const existing = existingRows.get(key);
+          if (existing && existing.dataset.choiceSignature === signature) {
+            nextRows.push(existing);
+            return;
+          }
+          nextRows.push(rowFromHtml(choiceRowHtml(item, key, signature)));
+        });
+        choicesBody.replaceChildren(...nextRows);
+      }
+
+      function renderChoices() {
+        if (renderChoicesTimer) {
+          window.clearTimeout(renderChoicesTimer);
+          renderChoicesTimer = null;
+        }
+        applyActiveAreaMergeCorrections();
+        applyApprovedHotelNameCorrections();
+        applyApprovedHotelAreaCorrections();
+        updateResultFilterRangeMeta();
+        const items = visibleChoices();
+        updateFloatingNavCounts({ hotelCount: items.length });
+        if (exportPdfBtn) exportPdfBtn.disabled = !items.length;
+        const cacheText = formatCacheInfo(lastCacheInfo);
+        const searchText = resultSearchQuery && resultSearchInput.value.trim()
+          ? `，搜索「${resultSearchInput.value.trim()}」`
+          : "";
+        const areaText = activeAreaFilter ? `，片区「${activeAreaFilter.label}」` : "";
+        const phaseText = lastResultStage ? `阶段：${stageLabel(lastResultStage)}` : "";
+        const stageText = [phaseText, lastResultMeta, lastHotelNameMeta].filter(Boolean).join("，");
+        const totalChoiceCount = Math.max(lastTotalChoiceCount || 0, lastChoices.length);
+        const countText = totalChoiceCount > lastChoices.length
+          ? `${items.length}/${lastChoices.length} 家（已找到 ${totalChoiceCount} 家，逐步显示）`
+          : `${items.length}/${lastChoices.length} 家`;
+        tableMeta.textContent = `${countText}，${lastComparisonCount} 个代表时段，本次 ${formatDuration(lastQuerySeconds)}${cacheText ? `，${cacheText}` : ""}${stageText ? `，${stageText}` : ""}${areaText}${searchText}${resultListFilterText()}`;
+        renderAreas(visibleChoices({ ignoreAreaFilter: true }));
+        if (!items.length) {
+          choicesBody.innerHTML = `<tr><td class="empty" colspan="4">${activeAreaFilter ? "该片区下没有匹配当前筛选的酒店。" : (resultSearchQuery || hasResultListFilter() ? "结果里没有匹配当前筛选的酒店。" : "当前条件下没有找到“反向旅游好选择”。")}</td></tr>`;
+          return;
+        }
+        renderChoiceRows(items);
+      }
+
+      function scheduleRenderChoices(delay = 180) {
+        if (renderChoicesTimer) window.clearTimeout(renderChoicesTimer);
+        renderChoicesTimer = window.setTimeout(() => {
+          renderChoicesTimer = null;
+          renderChoices();
+        }, delay);
       }
 
       function resetViewMode() {
         activeView = "all";
         resultSearchQuery = "";
+        resultSortMode = "default";
+        resultMinPriceFilter = "";
+        resultMaxPriceFilter = "";
         activeAreaFilter = null;
-        areaListExpanded = false;
+        selectedAreaMerges = new Map();
+        pendingAreaMergeAreaKeys = new Map();
+        activeAreaMergeCorrections = [];
+        areaMergeCorrectionToken += 1;
+        approvedHotelNameRecords = new Map();
+        hotelNameCorrectionToken += 1;
+        approvedHotelAreaRecords = new Map();
+        hotelAreaCorrectionToken += 1;
+        areaMergeNameTouched = false;
+        areaMergeNameInput.value = "";
+        updateAreaMergeBar();
+        updateFloatingNavCounts({ areaCount: 0, hotelCount: 0 });
+        if (exportPdfBtn) exportPdfBtn.disabled = true;
         if (resultSearchInput) resultSearchInput.value = "";
+        if (resultSortSelect) resultSortSelect.value = "default";
+        if (resultMinPriceInput) resultMinPriceInput.value = "";
+        if (resultMaxPriceInput) resultMaxPriceInput.value = "";
         viewFilter.querySelectorAll("[data-view]").forEach((button) => {
           button.classList.toggle("active", button.dataset.view === activeView);
         });
@@ -1336,20 +2801,32 @@
 
       function applyResultData(data, options = {}) {
         lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
+        lastResultCity = simplifyChineseText(data.city || data.origin_city || lastResultCity || "");
         lastChoices = data.choices || [];
         lastServerAreas = data.area_recommendations || [];
+        refreshLocalAreaRecommendations();
         lastCacheInfo = data.cache || null;
         lastTotalChoiceCount = Number(data.partial?.total_choice_count || lastChoices.length || 0);
-        lastResultMeta = data.partial?.preliminary
-          ? (data.partial.message || "酒店在逐步显示中，最终结果会继续刷新")
-          : "";
-        lastAreaRefreshMeta = "";
+        lastResultStage = resultStageFromData(data);
+        if (data.partial?.preliminary) {
+          lastResultMeta = data.partial.message || "酒店在逐步显示中，最终结果会继续刷新";
+        } else if (isCompleteCoverageResult(data)) {
+          lastResultMeta = data.coverage_supplement?.message || "";
+        } else {
+          lastResultMeta = "";
+        }
+        if (options.refreshHotelNames !== false) {
+          startHotelNameRefresh(data, { partial: Boolean(data.partial?.preliminary) });
+        }
+        if (options.refreshAreas !== false) {
+          lastAreaRefreshMeta = "";
+        }
         renderSummary(data);
         renderChoices();
         result.classList.remove("hidden");
-        if (options.refreshHotelNames !== false) {
-          startHotelNameRefresh(data);
-        }
+        loadActiveAreaMergeCorrections(data);
+        loadApprovedHotelNameCorrections(data);
+        loadApprovedHotelAreaCorrections(data);
         if (options.refreshAreas !== false) {
           startAreaRefresh(data);
         }
@@ -1381,11 +2858,17 @@
           || Number(a.holiday_avg_nightly_tax_total_value || 0) - Number(b.holiday_avg_nightly_tax_total_value || 0)
         );
         lastServerAreas = data.area_recommendations || lastServerAreas;
+        refreshLocalAreaRecommendations();
         lastTotalChoiceCount = Math.max(lastTotalChoiceCount || 0, lastChoices.length);
         const supplement = data.coverage_supplement || {};
+        if (data.partial?.stage) lastResultStage = data.partial.stage;
+        else if (supplement.status === "succeeded") lastResultStage = "succeeded";
+        else if (supplement.message) lastResultStage = "coverage_preview";
         if (supplement.message) lastResultMeta = supplement.message;
         renderSummary({ ...data, choices: lastChoices, area_recommendations: lastServerAreas });
-        renderChoices();
+        loadApprovedHotelNameCorrections({ ...data, choices: lastChoices });
+        loadApprovedHotelAreaCorrections({ ...data, choices: lastChoices });
+        scheduleRenderChoices();
         if (supplement.status === "succeeded") {
           startHotelNameRefresh({ ...data, choices: lastChoices, area_recommendations: lastServerAreas });
         }
@@ -1393,24 +2876,28 @@
 
       function startCoverageRefresh(data) {
         if (!data || !(data.choices || []).length || data.city_results) return;
+        if (isCompleteCoverageResult(data)) return;
         const payload = coveragePayloadFromResult(data);
         if (!payload.city || !payload.holiday_code) return;
         const token = ++coverageRefreshToken;
+        lastResultStage = "coverage";
         lastResultMeta = "基础结果已显示，正在后台按行政区补充遗漏酒店...";
-        renderChoices();
+        scheduleRenderChoices();
         runAsyncJob("/api/coverage/start", payload, "行政区补充失败", {
           onProgress: (partial) => mergeCoverageResult(partial, token),
         }).then((coverageData) => {
           mergeCoverageResult(coverageData, token);
         }).catch(() => {
           if (token !== coverageRefreshToken) return;
+          lastResultStage = "succeeded";
           lastResultMeta = "";
-          renderChoices();
+          scheduleRenderChoices();
         });
       }
 
       function startAreaRefresh(data) {
         if (!data || !(data.choices || []).length) return;
+        if (data.city_results) return;
         const token = ++areaRefreshToken;
         lastAreaRefreshMeta = "酒店结果已显示，正在后台规范化推荐区域...";
         renderAreas(visibleChoices({ ignoreAreaFilter: true }));
@@ -1423,11 +2910,13 @@
           if (token !== areaRefreshToken) return;
           mergeChoiceUpdates(areaData.choices || [], ["area_name", "area_source", "area_hint", "latitude", "longitude"]);
           lastServerAreas = areaData.area_recommendations || lastServerAreas;
+          refreshLocalAreaRecommendations();
+          applyApprovedHotelAreaCorrections();
           const refresh = areaData.area_refresh || {};
           lastAreaRefreshMeta = refresh.source === "geonames"
             ? "区域已用 GeoNames 和本地规则规范化"
             : "区域已按中文片区规则规范化";
-          renderChoices();
+          scheduleRenderChoices();
         }).catch(() => {
           if (token !== areaRefreshToken) return;
           lastAreaRefreshMeta = "";
@@ -1435,31 +2924,569 @@
         });
       }
 
-      function startHotelNameRefresh(data) {
+      function hotelNameRefreshChoices(data, options = {}) {
+        const choices = Array.isArray(data?.choices) ? data.choices : [];
+        const targets = choices.filter((item) => {
+          if (!item || !item.hotel_id || !item.detail_url) return false;
+          if (hotelNameNeedsRefresh(item)) return true;
+          const source = String(item.hotel_name_source || "").trim();
+          if (["携程酒店", "去哪儿酒店", "飞猪酒店", "Trip.com 简体", "Trip.com HK", "人工审核中文名"].includes(source)) return false;
+          const name = String(item.hotel_name || "");
+          return !source && !hasChineseText(name);
+        });
+        return options.partial ? targets.slice(0, HOTEL_NAME_PARTIAL_REFRESH_LIMIT) : targets;
+      }
+
+      function hotelNameRefreshSignature(data, choices) {
+        return [
+          data?.city || "",
+          data?.origin_city || "",
+          Boolean(data?.partial?.preliminary),
+          choices.map((item) => `${item.hotel_id || ""}:${item.room_type || ""}:${item.hotel_name || ""}`).join("|"),
+        ].join("::");
+      }
+
+      function hotelNameRefreshBatches(choices) {
+        const batches = [];
+        for (let index = 0; index < choices.length; index += HOTEL_NAME_BATCH_SIZE) {
+          batches.push(choices.slice(index, index + HOTEL_NAME_BATCH_SIZE));
+        }
+        return batches;
+      }
+
+      function hotelNameRecordId(item) {
+        return String(item?.hotel_id || item?.trip_hotel_id || "").trim();
+      }
+
+      function approvedHotelNameChoices(data = null) {
+        const source = Array.isArray(data?.choices) && data.choices.length ? data.choices : lastChoices;
+        const seen = new Set();
+        const choices = [];
+        (source || []).forEach((item) => {
+          const hotelId = hotelNameRecordId(item);
+          if (!hotelId || seen.has(hotelId)) return;
+          seen.add(hotelId);
+          choices.push({
+            hotel_id: hotelId,
+            trip_hotel_id: item.trip_hotel_id || hotelId,
+          });
+        });
+        return choices;
+      }
+
+      function applyApprovedHotelNameCorrections() {
+        if (!approvedHotelNameRecords.size || !lastChoices.length) return false;
+        let changed = false;
+        lastChoices = lastChoices.map((item) => {
+          const hotelId = hotelNameRecordId(item);
+          const record = hotelId ? approvedHotelNameRecords.get(hotelId) : null;
+          const hotelName = simplifyChineseText(record?.hotel_name || "");
+          if (!hotelName) return item;
+          const sameName = normalizeSearchText(item.hotel_name || "") === normalizeSearchText(hotelName);
+          const sameSource = item.hotel_name_source === "人工审核中文名";
+          if (sameName && sameSource && !item.hotel_name_needs_refresh) return item;
+          changed = true;
+          const originalName = item.hotel_original_name || record.hotel_name_original || item.hotel_name || "";
+          const next = {
+            ...item,
+            hotel_name: hotelName,
+            hotel_name_simplified: hotelName,
+            hotel_original_name: originalName,
+            hotel_name_source: "人工审核中文名",
+          };
+          delete next.hotel_name_needs_refresh;
+          return next;
+        });
+        return changed;
+      }
+
+      async function loadApprovedHotelNameCorrections(data = null) {
+        const choices = approvedHotelNameChoices(data);
+        if (!choices.length) return;
+        const token = ++hotelNameCorrectionToken;
+        try {
+          const resp = await fetch("/api/hotel-name-corrections/approved", {
+            method: "POST",
+            headers: jobHeaders(true),
+            body: JSON.stringify(jobPayload({ choices })),
+            cache: "no-store",
+          });
+          const payload = await readJsonResponse(resp, "已审核酒店名加载失败");
+          if (token !== hotelNameCorrectionToken) return;
+          approvedHotelNameRecords = new Map(
+            (payload.records || [])
+              .map((record) => [String(record.hotel_id || "").trim(), record])
+              .filter(([hotelId, record]) => hotelId && record?.hotel_name)
+          );
+          if (applyApprovedHotelNameCorrections()) scheduleRenderChoices(20);
+        } catch {
+          if (token !== hotelNameCorrectionToken) return;
+        }
+      }
+
+      function hotelAreaRecordId(item) {
+        return String(item?.hotel_id || item?.trip_hotel_id || "").trim();
+      }
+
+      function approvedHotelAreaChoices(data = null) {
+        const source = Array.isArray(data?.choices) && data.choices.length ? data.choices : lastChoices;
+        const seen = new Set();
+        const choices = [];
+        (source || []).forEach((item) => {
+          const hotelId = hotelAreaRecordId(item);
+          if (!hotelId || seen.has(hotelId)) return;
+          seen.add(hotelId);
+          choices.push({
+            hotel_id: hotelId,
+            trip_hotel_id: item.trip_hotel_id || hotelId,
+          });
+        });
+        return choices;
+      }
+
+      function applyApprovedHotelAreaCorrections() {
+        if (!approvedHotelAreaRecords.size || !lastChoices.length) return false;
+        let changed = false;
+        lastChoices = lastChoices.map((item) => {
+          const hotelId = hotelAreaRecordId(item);
+          const record = hotelId ? approvedHotelAreaRecords.get(hotelId) : null;
+          const areaName = simplifyChineseText(record?.area_name || "");
+          if (!areaName) return item;
+          const sameArea = normalizeSearchText(item.area_name || "") === normalizeSearchText(areaName);
+          const sameSource = item.area_source === "人工审核片区";
+          if (sameArea && sameSource) return item;
+          changed = true;
+          return {
+            ...item,
+            area_name: areaName,
+            area_source: "人工审核片区",
+            area_hint: "后台已审核片区",
+          };
+        });
+        if (changed) {
+          lastServerAreas = mergeAreaLists(buildAreasFromChoices(lastChoices), lastServerAreas);
+        }
+        return changed;
+      }
+
+      async function loadApprovedHotelAreaCorrections(data = null) {
+        const choices = approvedHotelAreaChoices(data);
+        if (!choices.length) return;
+        const token = ++hotelAreaCorrectionToken;
+        try {
+          const resp = await fetch("/api/hotel-area-corrections/approved", {
+            method: "POST",
+            headers: jobHeaders(true),
+            body: JSON.stringify(jobPayload({ choices })),
+            cache: "no-store",
+          });
+          const payload = await readJsonResponse(resp, "已审核片区加载失败");
+          if (token !== hotelAreaCorrectionToken) return;
+          approvedHotelAreaRecords = new Map(
+            (payload.records || [])
+              .map((record) => [String(record.hotel_id || "").trim(), record])
+              .filter(([hotelId, record]) => hotelId && record?.area_name)
+          );
+          if (applyApprovedHotelAreaCorrections()) scheduleRenderChoices(20);
+        } catch {
+          if (token !== hotelAreaCorrectionToken) return;
+        }
+      }
+
+      function validateHotelNameCorrectionValue(value, currentName, item) {
+        const suggestedName = simplifyChineseText(value).trim();
+        if (!suggestedName) return "";
+        if (normalizeSearchText(suggestedName) === normalizeSearchText(currentName || "")) return "";
+        if (!hasChineseText(suggestedName) || chineseCharCount(suggestedName) < 4 || isGenericOrCityHotelName(suggestedName, item)) {
+          return "请填写完整的简体中文酒店名，不能只写城市名或通用词。";
+        }
+        return "";
+      }
+
+      async function submitHotelNameCorrectionPayload(item, suggestedName, currentName) {
+        const resp = await fetch("/api/hotel-name-corrections", {
+          method: "POST",
+          headers: jobHeaders(true),
+          body: JSON.stringify(jobPayload({
+            hotel_id: item.hotel_id || "",
+            trip_hotel_id: item.trip_hotel_id || item.hotel_id || "",
+            city: item.recommend_city || lastResultCity || "",
+            current_name: item.hotel_name || currentName || "",
+            hotel_original_name: item.hotel_original_name || "",
+            suggested_name: suggestedName,
+            area_name: item.area_name || "",
+            detail_url: item.detail_url || "",
+          })),
+        });
+        await readJsonResponse(resp, "酒店名修改提交失败");
+      }
+
+      async function submitHotelNameCorrection(item) {
+        return submitHotelCorrection(item);
+      }
+
+      function numericCoordinate(value) {
+        const number = Number(value);
+        return Number.isFinite(number) ? number : null;
+      }
+
+      function hotelCoordinatePair(item) {
+        const latitude = numericCoordinate(item?.latitude);
+        const longitude = numericCoordinate(item?.longitude);
+        if (latitude === null || longitude === null) return null;
+        if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) return null;
+        return { latitude, longitude };
+      }
+
+      function coordinateDistanceKm(left, right) {
+        if (!left || !right) return null;
+        const radiusKm = 6371;
+        const toRad = (value) => value * Math.PI / 180;
+        const dLat = toRad(right.latitude - left.latitude);
+        const dLon = toRad(right.longitude - left.longitude);
+        const lat1 = toRad(left.latitude);
+        const lat2 = toRad(right.latitude);
+        const a = Math.sin(dLat / 2) ** 2 +
+          Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
+        return 2 * radiusKm * Math.asin(Math.min(1, Math.sqrt(a)));
+      }
+
+      function comparableAreaText(areaName, cityName = "") {
+        let text = normalizeSearchText(areaName);
+        const city = normalizeSearchText(cityName);
+        if (city && text.startsWith(city)) text = text.slice(city.length);
+        return text.replace(/(旅游度假区|度假区|风景区|景区|商圈|商业区|商务区|中心区|核心区|附近|周边|片区|区域)$/g, "");
+      }
+
+      function editDistance(left, right) {
+        const a = Array.from(left || "");
+        const b = Array.from(right || "");
+        if (!a.length) return b.length;
+        if (!b.length) return a.length;
+        const previous = Array.from({ length: b.length + 1 }, (_, index) => index);
+        for (let i = 0; i < a.length; i += 1) {
+          const current = [i + 1];
+          for (let j = 0; j < b.length; j += 1) {
+            current[j + 1] = Math.min(
+              current[j] + 1,
+              previous[j + 1] + 1,
+              previous[j] + (a[i] === b[j] ? 0 : 1)
+            );
+          }
+          previous.splice(0, previous.length, ...current);
+        }
+        return previous[b.length];
+      }
+
+      function areaNameSimilarity(input, candidate, cityName = "") {
+        const left = comparableAreaText(input, cityName);
+        const right = comparableAreaText(candidate, cityName);
+        if (!left || !right) return 0;
+        if (left === right) return 1;
+        if (left.includes(right) || right.includes(left)) return 0.88;
+        const leftChars = new Set(Array.from(left));
+        const rightChars = new Set(Array.from(right));
+        const overlap = Array.from(leftChars).filter((char) => rightChars.has(char)).length;
+        const overlapScore = overlap / Math.max(leftChars.size, rightChars.size, 1);
+        const distanceScore = 1 - editDistance(left, right) / Math.max(left.length, right.length, 1);
+        return Math.max(0, overlapScore, distanceScore);
+      }
+
+      function areaSuggestionCandidates(item) {
+        const itemCity = simplifyChineseText(item?.recommend_city || lastResultCity || "");
+        const itemCityKey = normalizeSearchText(itemCity);
+        const currentAreaKey = normalizeSearchText(item?.area_name || "");
+        const itemCoords = hotelCoordinatePair(item);
+        const groups = new Map();
+        const addArea = (areaName, cityName, source, hotelCount = 0, coords = null) => {
+          const name = simplifyChineseText(areaName || "");
+          const city = simplifyChineseText(cityName || itemCity || "");
+          if (!name || isGenericAreaName(name)) return;
+          if (normalizeSearchText(name) === currentAreaKey) return;
+          const cityKey = normalizeSearchText(city);
+          if (itemCityKey && cityKey && cityKey !== itemCityKey) return;
+          const key = areaFilterKey(name, city);
+          const existing = groups.get(key) || {
+            area_name: name,
+            recommend_city: city,
+            hotel_count: 0,
+            sources: new Set(),
+            lat_sum: 0,
+            lon_sum: 0,
+            coord_count: 0,
+          };
+          existing.hotel_count = Math.max(existing.hotel_count, Number(hotelCount || 0));
+          existing.sources.add(source);
+          if (coords) {
+            existing.coord_count += 1;
+            existing.lat_sum += coords.latitude;
+            existing.lon_sum += coords.longitude;
+          }
+          groups.set(key, existing);
+        };
+
+        mergeAreaLists(lastServerAreas, buildAreasFromChoices(lastChoices)).forEach((area) => {
+          addArea(area.area_name, area.recommend_city, "推荐片区", area.hotel_count || 0);
+        });
+        lastChoices.forEach((choice) => {
+          const areaName = choice.area_name || "";
+          if (!areaName) return;
+          addArea(areaName, choice.recommend_city || itemCity, "同城酒店", 1, hotelCoordinatePair(choice));
+        });
+
+        return Array.from(groups.values()).map((group) => {
+          const center = group.coord_count
+            ? { latitude: group.lat_sum / group.coord_count, longitude: group.lon_sum / group.coord_count }
+            : null;
+          return {
+            area_name: group.area_name,
+            recommend_city: group.recommend_city,
+            hotel_count: group.hotel_count,
+            source: Array.from(group.sources).join("、"),
+            distance_km: coordinateDistanceKm(itemCoords, center),
+          };
+        });
+      }
+
+      function areaCorrectionSuggestions(item, query) {
+        const cityName = simplifyChineseText(item?.recommend_city || lastResultCity || "");
+        const normalizedQuery = simplifyChineseText(query || "").trim();
+        const candidates = areaSuggestionCandidates(item).map((candidate) => ({
+          ...candidate,
+          similarity: normalizedQuery ? areaNameSimilarity(normalizedQuery, candidate.area_name, cityName) : 0,
+        }));
+        const byNearby = [...candidates]
+          .filter((item) => Number.isFinite(item.distance_km))
+          .sort((a, b) => a.distance_km - b.distance_km || b.hotel_count - a.hotel_count)
+          .slice(0, 4);
+        const bySimilarity = normalizedQuery
+          ? [...candidates]
+              .filter((item) => item.similarity >= 0.38)
+              .sort((a, b) => b.similarity - a.similarity || (a.distance_km ?? 9999) - (b.distance_km ?? 9999))
+              .slice(0, 4)
+          : [];
+        const byCount = [...candidates]
+          .sort((a, b) => b.hotel_count - a.hotel_count || (a.distance_km ?? 9999) - (b.distance_km ?? 9999))
+          .slice(0, 4);
+        const combined = [...bySimilarity, ...byNearby, ...byCount];
+        const seen = new Set();
+        const suggestions = [];
+        combined.forEach((candidate) => {
+          const key = areaFilterKey(candidate.area_name, candidate.recommend_city);
+          if (seen.has(key)) return;
+          seen.add(key);
+          suggestions.push(candidate);
+        });
+        return suggestions.slice(0, 6);
+      }
+
+      function areaSuggestionKind(suggestion) {
+        if (suggestion.similarity >= 0.55) return "相似已有片区";
+        if (Number.isFinite(suggestion.distance_km)) return "附近片区";
+        return "已有片区";
+      }
+
+      function areaSuggestionMeta(suggestion) {
+        const parts = [];
+        if (suggestion.recommend_city) parts.push(suggestion.recommend_city);
+        if (suggestion.hotel_count) parts.push(`${suggestion.hotel_count} 家酒店`);
+        if (Number.isFinite(suggestion.distance_km)) {
+          parts.push(`距离约 ${suggestion.distance_km < 1 ? suggestion.distance_km.toFixed(1) : Math.round(suggestion.distance_km)} km`);
+        }
+        if (suggestion.source) parts.push(suggestion.source);
+        return parts.join(" · ") || "当前结果中的已有片区";
+      }
+
+      function renderAreaCorrectionSuggestions() {
+        if (!activeAreaCorrectionItem) return;
+        const query = areaCorrectionInput.value;
+        const suggestions = areaCorrectionSuggestions(activeAreaCorrectionItem, query);
+        areaSuggestionHead.textContent = query.trim() ? "建议使用已有片区" : "附近或同城已有片区";
+        areaSuggestionList.innerHTML = suggestions.length
+          ? suggestions.map((suggestion) => `
+              <button class="area-suggestion-btn" type="button" data-area-suggestion="${esc(suggestion.area_name)}">
+                <span>
+                  <span class="area-suggestion-name">${esc(suggestion.area_name)}</span>
+                  <span class="area-suggestion-meta">${esc(areaSuggestionMeta(suggestion))}</span>
+                </span>
+                <span class="area-suggestion-tag">${esc(areaSuggestionKind(suggestion))}</span>
+              </button>
+            `).join("")
+          : `<div class="empty">当前结果里没有可推荐的已有片区。</div>`;
+      }
+
+      function validateAreaCorrectionValue(value, currentArea) {
+        const suggestedArea = simplifyChineseText(value).trim();
+        if (!suggestedArea) return "请填写正确片区名。";
+        if (!hasChineseText(suggestedArea) || /热门酒店片区|区域待确认/.test(suggestedArea)) {
+          return "请填写具体的中文片区名称，不能使用泛化片区。";
+        }
+        if (normalizeSearchText(suggestedArea) === normalizeSearchText(currentArea || "")) {
+          return "新片区和当前片区相同，无需提交修改。";
+        }
+        return "";
+      }
+
+      function editableHotelNameValue(item) {
+        const currentName = displayHotelName(item);
+        return hasChineseText(currentName) && !isGenericOrCityHotelName(currentName, item) ? currentName : "";
+      }
+
+      function closeAreaCorrectionDialog(value = null) {
+        areaCorrectionDialog.classList.add("hidden");
+        activeAreaCorrectionItem = null;
+        const resolve = activeAreaCorrectionResolve;
+        activeAreaCorrectionResolve = null;
+        if (resolve) resolve(value);
+      }
+
+      function openAreaCorrectionDialog(item) {
+        return new Promise((resolve) => {
+          activeAreaCorrectionItem = item;
+          activeAreaCorrectionResolve = resolve;
+          const currentArea = simplifyChineseText(item.area_name || "");
+          const currentName = editableHotelNameValue(item);
+          const hotelName = currentName || item.hotel_name || item.hotel_original_name || "当前酒店";
+          areaCorrectionHotel.textContent = `${hotelName}${currentArea ? ` · 当前片区：${currentArea}` : ""}`;
+          hotelCorrectionNameInput.value = currentName;
+          areaCorrectionInput.value = currentArea;
+          areaCorrectionError.classList.add("hidden");
+          areaCorrectionError.textContent = "";
+          renderAreaCorrectionSuggestions();
+          areaCorrectionDialog.classList.remove("hidden");
+          window.setTimeout(() => {
+            hotelCorrectionNameInput.focus();
+            hotelCorrectionNameInput.select();
+          }, 0);
+        });
+      }
+
+      function confirmAreaCorrectionDialog() {
+        if (!activeAreaCorrectionItem) return;
+        const currentName = editableHotelNameValue(activeAreaCorrectionItem);
+        const currentArea = simplifyChineseText(activeAreaCorrectionItem.area_name || "");
+        const suggestedName = simplifyChineseText(hotelCorrectionNameInput.value).trim();
+        const suggestedArea = simplifyChineseText(areaCorrectionInput.value).trim();
+        const nameChanged = Boolean(suggestedName) && normalizeSearchText(suggestedName) !== normalizeSearchText(currentName || "");
+        const areaChanged = Boolean(suggestedArea) && normalizeSearchText(suggestedArea) !== normalizeSearchText(currentArea || "");
+        const nameValidation = nameChanged ? validateHotelNameCorrectionValue(suggestedName, currentName, activeAreaCorrectionItem) : "";
+        const areaValidation = areaChanged ? validateAreaCorrectionValue(suggestedArea, currentArea) : "";
+        const validation = nameValidation || areaValidation || (!nameChanged && !areaChanged ? "请至少修改酒店名或片区中的一项。" : "");
+        if (validation) {
+          areaCorrectionError.textContent = validation;
+          areaCorrectionError.classList.remove("hidden");
+          return;
+        }
+        closeAreaCorrectionDialog({
+          suggestedName: nameChanged ? suggestedName : "",
+          suggestedArea: areaChanged ? suggestedArea : "",
+          currentName,
+          currentArea,
+        });
+      }
+
+      async function submitHotelAreaCorrectionPayload(item, suggestedArea) {
+        const resp = await fetch("/api/hotel-area-corrections", {
+          method: "POST",
+          headers: jobHeaders(true),
+          body: JSON.stringify(jobPayload({
+            hotel_id: item.hotel_id || "",
+            trip_hotel_id: item.trip_hotel_id || item.hotel_id || "",
+            city: item.recommend_city || lastResultCity || "",
+            hotel_name: displayHotelName(item) || item.hotel_name || "",
+            hotel_original_name: item.hotel_original_name || "",
+            current_area_name: item.area_name || "",
+            suggested_area_name: suggestedArea,
+            detail_url: item.detail_url || "",
+          })),
+        });
+        await readJsonResponse(resp, "片区修改提交失败");
+      }
+
+      async function submitHotelCorrection(item) {
+        if (!item || !item.hotel_id) return;
+        const correction = await openAreaCorrectionDialog(item);
+        if (correction === null) return;
+        try {
+          if (correction.suggestedName) {
+            await submitHotelNameCorrectionPayload(item, correction.suggestedName, correction.currentName);
+          }
+          if (correction.suggestedArea) {
+            await submitHotelAreaCorrectionPayload(item, correction.suggestedArea);
+          }
+          if (correction.suggestedName && correction.suggestedArea) {
+            lastHotelNameMeta = "酒店名和片区修改已提交，审核通过后会作为固定信息使用";
+            lastAreaRefreshMeta = "酒店名和片区修改已提交，审核通过后会作为固定信息使用";
+          } else if (correction.suggestedName) {
+            lastHotelNameMeta = "酒店名修改已提交，审核通过后会作为正确中文名使用";
+          } else if (correction.suggestedArea) {
+            lastAreaRefreshMeta = "片区修改已提交，审核通过后会作为正确片区使用";
+          }
+          errorBox.classList.add("hidden");
+          scheduleRenderChoices(80);
+        } catch (error) {
+          errorBox.textContent = error.message || "酒店信息修改提交失败";
+          errorBox.classList.remove("hidden");
+        }
+      }
+
+      async function submitHotelAreaCorrection(item) {
+        return submitHotelCorrection(item);
+      }
+
+      function startHotelNameRefresh(data, options = {}) {
         if (!data || !(data.choices || []).length) return;
+        const requestChoices = hotelNameRefreshChoices(data, options);
+        if (!requestChoices.length) return;
+        const signature = hotelNameRefreshSignature(data, requestChoices);
+        if (signature === lastHotelNameRefreshSignature) return;
+        if (hotelNameRefreshInFlight) {
+          queuedHotelNameRefreshData = { data, options };
+          return;
+        }
+        lastHotelNameRefreshSignature = signature;
+        hotelNameRefreshInFlight = true;
         const token = ++hotelNameRefreshToken;
-        lastHotelNameMeta = "正在匹配简体中文酒店名...";
-        renderChoices();
-        runSilentJob("/api/hotel-names/start", {
-          city: data.city || "",
-          origin_city: data.origin_city || "",
-          choices: data.choices || [],
-        }, "酒店名刷新失败", 180000).then((nameData) => {
-          if (token !== hotelNameRefreshToken) return;
-          mergeChoiceUpdates(nameData.choices || [], [
-            "hotel_name",
-            "hotel_original_name",
-            "hotel_name_source",
-            "hotel_name_simplified",
-            "hotel_name_aliases",
-            "hotel_search_name",
-          ]);
-          lastHotelNameMeta = "酒店名已更新为可匹配到的简体中文";
-          renderChoices();
-        }).catch(() => {
+        const batches = hotelNameRefreshBatches(requestChoices);
+        let completed = 0;
+        lastHotelNameMeta = `正在分批匹配简体中文酒店名 0/${requestChoices.length}...`;
+        scheduleRenderChoices();
+        (async () => {
+          for (const batch of batches) {
+            if (token !== hotelNameRefreshToken) return;
+            const nameData = await runSilentJob("/api/hotel-names/start", {
+              city: data.city || "",
+              origin_city: data.origin_city || "",
+              choices: batch,
+            }, "酒店名刷新失败", options.partial ? 90000 : 180000);
+            if (token !== hotelNameRefreshToken) return;
+            mergeChoiceUpdates(nameData.choices || [], [
+              "hotel_name",
+              "hotel_original_name",
+              "hotel_name_source",
+              "hotel_name_simplified",
+              "hotel_name_aliases",
+              "hotel_search_name",
+              "hotel_name_needs_refresh",
+            ]);
+            completed += batch.length;
+            refreshLocalAreaRecommendations();
+            lastHotelNameMeta = completed >= requestChoices.length
+              ? "酒店名已更新为可匹配到的简体中文"
+              : `正在分批匹配简体中文酒店名 ${completed}/${requestChoices.length}...`;
+            scheduleRenderChoices();
+          }
+        })().catch(() => {
           if (token !== hotelNameRefreshToken) return;
           lastHotelNameMeta = "";
-          renderChoices();
+          scheduleRenderChoices();
+        }).finally(() => {
+          hotelNameRefreshInFlight = false;
+          const queued = queuedHotelNameRefreshData;
+          queuedHotelNameRefreshData = null;
+          if (queued && token === hotelNameRefreshToken) {
+            startHotelNameRefresh(queued.data, queued.options);
+          }
         });
       }
 
@@ -1470,7 +3497,7 @@
         progressList.innerHTML = items.map((event) => {
           const percent = Number(event.percent || 0);
           const progressText = percent ? `（${percent}%）` : "";
-          return `<div class="progress-item"><span>${esc(event.message)}${esc(progressText)}</span></div>`;
+          return `<div class="progress-item"><span><span class="stage-pill">${esc(stageLabel(event.stage))}</span>${esc(event.message)}${esc(progressText)}</span></div>`;
         }).join("");
         progressPanel.classList.remove("hidden");
       }
@@ -1497,6 +3524,109 @@
         return "实时查询";
       }
 
+      function boolStatus(value) {
+        if (value === true || value === 1 || value === "1") return true;
+        if (value === false || value === 0 || value === "0") return false;
+        if (typeof value === "string") {
+          const normalized = value.trim().toLowerCase();
+          if (normalized === "true" || normalized === "yes") return true;
+          if (normalized === "false" || normalized === "no") return false;
+        }
+        return null;
+      }
+
+      function featureLabel(value, yesText, noText, unknownText) {
+        const status = boolStatus(value);
+        if (status === true) return yesText;
+        if (status === false) return noText;
+        return unknownText;
+      }
+
+      function dailyPhotoHtml(hotel, hotelName, cityName) {
+        const imageUrl = hotel.image_url || hotel.hotel_image_url || "";
+        if (imageUrl) {
+          return `<div class="daily-photo"><img src="${esc(imageUrl)}" alt="${esc(hotelName)}" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('daily-photo-empty');this.parentElement.textContent='酒店照片待更新';"></div>`;
+        }
+        return `<div class="daily-photo daily-photo-empty"><span>${esc(cityName || "酒店照片")}</span></div>`;
+      }
+
+      function renderDailyRecommendation(data) {
+        if (!dailyContent || !dailyMeta) return;
+        if (!data || !data.available) {
+          dailyMeta.textContent = "等待预热缓存";
+          dailyContent.innerHTML = `<div class="empty">${esc(data?.message || "暂无可用的预热缓存。")}</div>`;
+          return;
+        }
+        const hotel = data.hotel || {};
+        const hotelForName = { ...hotel, recommend_city: hotel.recommend_city || data.city || "" };
+        const holiday = data.holiday || {};
+        const cache = data.cache || {};
+        const hotelName = displayHotelName(hotelForName) || "推荐酒店";
+        const sourceLabel = hotelNameSourceLabel(hotelForName);
+        const originalName = hotel.hotel_original_name && normalizeSearchText(hotel.hotel_original_name) !== normalizeSearchText(hotelName)
+          ? `<div class="muted">原名：${esc(hotel.hotel_original_name)}</div>`
+          : "";
+        const area = simplifyChineseText(hotel.area_name || "");
+        const priceDiff = Number(hotel.price_diff_nightly || 0);
+        const cacheAge = cache.age_seconds === null || cache.age_seconds === undefined ? "预热缓存" : formatAge(cache.age_seconds);
+        const features = [
+          featureLabel(hotel.is_advanced, "高级酒店", "非高级酒店", "等级待确认"),
+          featureLabel(hotel.has_pool, "有泳池", "无泳池", "泳池待确认"),
+          featureLabel(hotel.has_child_facility, "有儿童设施", "无儿童设施", "儿童设施待确认"),
+        ];
+        dailyMeta.textContent = `${data.city || "预热城市"} · ${holiday.name || "推荐假期"} · ${cacheAge}`;
+        dailyContent.innerHTML = `
+          <article class="daily-hotel">
+            ${dailyPhotoHtml(hotel, hotelName, data.city)}
+            <div class="daily-info">
+              <div class="daily-title">${esc(hotelName)}</div>
+              ${originalName}
+              <div class="daily-meta">
+                ${data.city ? `<span class="pill">${esc(data.city)}</span>` : ""}
+                ${area ? `<span class="pill">${esc(area)}</span>` : ""}
+                ${hotel.room_type_label ? `<span class="pill">${esc(hotel.room_type_label)}</span>` : ""}
+                ${sourceLabel ? `<span class="pill">${esc(sourceLabel)}</span>` : ""}
+              </div>
+              <div class="daily-feature-row">
+                ${features.map((item) => `<span class="pill">${esc(item)}</span>`).join("")}
+              </div>
+            </div>
+            <div class="daily-price-grid">
+              <div class="daily-price">
+                <span class="k">假期含税 / 每晚</span>
+                <span class="v">${esc(hotel.holiday_avg_nightly_tax_total_price || "-")}</span>
+                <span class="muted">整段含税：${esc(formatPriceText(hotel.holiday_tax_total_price) || "-")}</span>
+              </div>
+              <div class="daily-price">
+                <span class="k">平日含税 / 每晚</span>
+                <span class="v">${esc(hotel.comparison_average_nightly_tax_total_price || "-")}</span>
+                <span class="muted">${esc(hotel.comparison_sample_count || 0)} 个样本，最低 ${esc(hotel.comparison_lowest_nightly_tax_total_price || "-")}</span>
+              </div>
+              <div class="daily-price">
+                <span class="k">差额 / 每晚</span>
+                <span class="v"><span class="diff ${diffClass(priceDiff)}">${esc(hotel.price_diff_nightly_text || String(priceDiff))}</span></span>
+                <span class="muted">${esc(hotel.comparison_lowest_check_in || "")}${hotel.comparison_lowest_check_out ? ` 至 ${esc(hotel.comparison_lowest_check_out)}` : ""}</span>
+              </div>
+            </div>
+            <div class="daily-action">
+              ${hotel.detail_url ? `<a href="${esc(hotel.detail_url)}" target="_blank" rel="noreferrer">打开 Trip.com 详情</a>` : ""}
+            </div>
+          </article>
+        `;
+      }
+
+      async function loadDailyRecommendation() {
+        if (!dailyContent || !dailyMeta) return;
+        try {
+          const resp = await fetch("/api/daily-recommendation", { cache: "no-store" });
+          const data = await readJsonResponse(resp, "每日推荐加载失败");
+          renderDailyRecommendation(data);
+        } catch (error) {
+          dailyMeta.textContent = "加载失败";
+          dailyContent.innerHTML = `<div class="empty">${esc(error.message || "每日推荐加载失败")}</div>`;
+        }
+      }
+
       function areaCardKey(area) {
         return areaFilterKey(
           simplifyChineseText(area.area_name || ""),
@@ -1511,36 +3641,558 @@
           const areaName = simplifyChineseText(area.area_name || "");
           if (!areaName || isGenericAreaName(areaName)) continue;
           const recommendCity = simplifyChineseText(area.recommend_city || "");
-          const key = areaFilterKey(areaName, recommendCity);
-          if (seen.has(key)) continue;
-          seen.add(key);
-          merged.push({ ...area, area_name: areaName, recommend_city: recommendCity });
+          const aliases = areaAliases({ ...area, area_name: areaName });
+          const keys = (aliases.length ? aliases : [areaName]).map((name) => areaFilterKey(name, recommendCity));
+          if (keys.some((key) => seen.has(key))) continue;
+          keys.forEach((key) => seen.add(key));
+          merged.push({ ...area, area_name: areaName, recommend_city: recommendCity, merged_area_names: aliases });
         }
-        return merged;
+        return sortAreaRecommendations(merged);
       }
 
-      function displayAreasForState(areas) {
-        if (areaListExpanded || areas.length <= AREA_COLLAPSED_LIMIT) {
-          return { visibleAreas: areas, hiddenCount: 0, showToggle: areas.length > AREA_COLLAPSED_LIMIT };
+      function refreshLocalAreaRecommendations() {
+        if (!lastChoices.length) return;
+        lastServerAreas = mergeAreaLists(lastServerAreas, buildAreasFromChoices(lastChoices));
+      }
+
+      function sortAreaRecommendations(areas) {
+        return [...(areas || [])].sort((a, b) =>
+          (Number(b.hotel_count || 0) - Number(a.hotel_count || 0)) ||
+          (Number(b.lower_price_hotel_count || 0) - Number(a.lower_price_hotel_count || 0)) ||
+          (Number(b.lower_price_ratio || 0) - Number(a.lower_price_ratio || 0)) ||
+          (Number(a.average_price_diff_nightly || 0) - Number(b.average_price_diff_nightly || 0)) ||
+          (Number(a.average_holiday_nightly_tax_total_value || 0) - Number(b.average_holiday_nightly_tax_total_value || 0))
+        );
+      }
+
+      function representativeHotelsForArea(area, items) {
+        const areaNames = new Set(areaAliases(area).map((name) => normalizeSearchText(name)));
+        const recommendCity = normalizeSearchText(area.recommend_city || "");
+        const names = [];
+        const seen = new Set();
+        (items || []).forEach((item) => {
+          const itemArea = normalizeSearchText(item.area_name || "");
+          const itemCity = normalizeSearchText(item.recommend_city || "");
+          if (!areaNames.has(itemArea) || (recommendCity && itemCity !== recommendCity)) return;
+          const name = simplifyChineseText(item.hotel_name || item.hotel_original_name || "");
+          const key = normalizeSearchText(name);
+          if (!name || seen.has(key)) return;
+          seen.add(key);
+          names.push(name);
+        });
+        if (names.length) return names;
+        return (area.representative_hotels || []).map((name) => simplifyChineseText(name));
+      }
+
+      function selectedAreaMergeList() {
+        return Array.from(selectedAreaMerges.values());
+      }
+
+      function selectedAreaMergeCities() {
+        return new Set(selectedAreaMergeList().map((area) => normalizeSearchText(area.recommend_city || "")).filter(Boolean));
+      }
+
+      function updateAreaMergeDefaultName() {
+        if (areaMergeNameTouched) return;
+        const selected = selectedAreaMergeList();
+        areaMergeNameInput.value = selected[0]?.area_name || "";
+      }
+
+      function updateAreaMergeBar() {
+        const selected = selectedAreaMergeList();
+        const count = selected.length;
+        areaMergeBar.classList.toggle("hidden", count === 0);
+        if (!count) {
+          areaMergeMeta.textContent = "";
+          areaMergeSubmit.disabled = true;
+          return;
         }
-        const visible = areas.slice(0, AREA_COLLAPSED_LIMIT);
-        if (activeAreaFilter && !visible.some((area) => areaCardKey(area) === activeAreaFilter.key)) {
-          const activeArea = areas.find((area) => areaCardKey(area) === activeAreaFilter.key);
-          if (activeArea) {
-            const activeKey = areaCardKey(activeArea);
-            const rest = visible.filter((area) => areaCardKey(area) !== activeKey).slice(0, AREA_COLLAPSED_LIMIT - 1);
-            return {
-              visibleAreas: [activeArea, ...rest],
-              hiddenCount: Math.max(0, areas.length - AREA_COLLAPSED_LIMIT),
-              showToggle: true,
-            };
-          }
+        updateAreaMergeDefaultName();
+        const cities = selectedAreaMergeCities();
+        const hotels = selectedAreaMergeHotels();
+        const sourceNames = selected.map((area) => area.area_name).join("、");
+        const cityWarning = cities.size > 1 ? "，只能提交同一推荐城市的片区" : "";
+        areaMergeMeta.textContent = `已选 ${count} 个片区，覆盖 ${hotels.length} 家酒店：${sourceNames}${cityWarning}`;
+        areaMergeSubmit.disabled = count < 2 || cities.size > 1 || !hotels.length;
+      }
+
+      function areaMergePayloadFromCard(card) {
+        let aliases = [card.dataset.areaName || ""];
+        try {
+          const parsed = JSON.parse(card.dataset.areaAliases || "[]");
+          if (Array.isArray(parsed) && parsed.length) aliases = parsed;
+        } catch {
+          aliases = [card.dataset.areaName || ""];
         }
         return {
-          visibleAreas: visible,
-          hiddenCount: areas.length - visible.length,
-          showToggle: true,
+          key: card.dataset.areaKey || areaFilterKey(card.dataset.areaName || "", card.dataset.recommendCity || ""),
+          area_name: card.dataset.areaName || "",
+          recommend_city: card.dataset.recommendCity || "",
+          aliases,
+          hotel_count: Number(card.dataset.hotelCount || 0),
         };
+      }
+
+      function selectedAreaMergeHotels() {
+        return hotelsForAreas(selectedAreaMergeList());
+      }
+
+      function hotelsForAreas(selected) {
+        const hotels = [];
+        const seen = new Set();
+        selected.forEach((area) => {
+          const areaNames = new Set((area.aliases || [area.area_name]).map((name) => normalizeSearchText(name)).filter(Boolean));
+          const city = normalizeSearchText(area.recommend_city || "");
+          lastChoices.forEach((item, index) => {
+            const itemArea = normalizeSearchText(item.area_name || "");
+            const itemCity = normalizeSearchText(item.recommend_city || "");
+            if (!areaNames.has(itemArea) || (city && itemCity !== city)) return;
+            const hotelId = String(item.hotel_id || item.trip_hotel_id || "").trim();
+            if (!hotelId || seen.has(hotelId)) return;
+            seen.add(hotelId);
+            hotels.push({
+              hotel_id: hotelId,
+              trip_hotel_id: item.trip_hotel_id || hotelId,
+              city: item.recommend_city || lastResultCity || "",
+              hotel_name: displayHotelName(item) || item.hotel_name || "",
+              hotel_original_name: item.hotel_original_name || "",
+              current_area_name: item.area_name || "",
+              detail_url: item.detail_url || "",
+              choice_key: choiceKey(item, index),
+            });
+          });
+        });
+        return hotels;
+      }
+
+      function areaMergeSourceNames(selected) {
+        const names = [];
+        const seen = new Set();
+        selected.forEach((area) => {
+          (area.aliases || [area.area_name]).forEach((name) => {
+            const value = simplifyChineseText(name || "");
+            const key = normalizeSearchText(value);
+            if (!value || seen.has(key)) return;
+            seen.add(key);
+            names.push(value);
+          });
+        });
+        return names;
+      }
+
+      function areaOverlapsMergeSelection(area, selectedKeys) {
+        const recommendCity = simplifyChineseText(area.recommend_city || "");
+        return areaAliases(area).some((name) => {
+          const key = areaFilterKey(name, recommendCity);
+          if (selectedKeys.has(key)) return true;
+          const areaToken = `${normalizeSearchText(name)}::`;
+          return Array.from(selectedKeys).some((item) => String(item).startsWith(areaToken));
+        });
+      }
+
+      function correctionCreatedValue(correction) {
+        const value = Date.parse(correction?.created_at || correction?.updated_at || "");
+        return Number.isFinite(value) ? value : 0;
+      }
+
+      function correctionCity(correction) {
+        return simplifyChineseText(correction?.city_name_zh || correction?.city || "");
+      }
+
+      function correctionSuggestedArea(correction) {
+        return simplifyChineseText(correction?.suggested_area_name_zh || correction?.suggested_area_name || "");
+      }
+
+      function correctionSourceAreas(correction) {
+        return Array.isArray(correction?.source_areas) ? correction.source_areas : [];
+      }
+
+      function correctionHotels(correction) {
+        return Array.isArray(correction?.hotels) ? correction.hotels : [];
+      }
+
+      function correctionSourceNames(correction) {
+        const names = [];
+        const seen = new Set();
+        const append = (name) => {
+          const value = simplifyChineseText(name || "");
+          const key = normalizeSearchText(value);
+          if (!value || seen.has(key)) return;
+          seen.add(key);
+          names.push(value);
+        };
+        correctionSourceAreas(correction).forEach((area) => {
+          append(area.area_name);
+          (Array.isArray(area.aliases) ? area.aliases : []).forEach(append);
+        });
+        (Array.isArray(correction?.source_area_names) ? correction.source_area_names : []).forEach(append);
+        return names;
+      }
+
+      function correctionSourceKeys(correction) {
+        const keys = new Set();
+        const fallbackCity = correctionCity(correction);
+        correctionSourceAreas(correction).forEach((area) => {
+          const areaCity = simplifyChineseText(area.recommend_city || fallbackCity);
+          const names = [area.area_name, ...(Array.isArray(area.aliases) ? area.aliases : [])];
+          names.forEach((name) => {
+            const value = simplifyChineseText(name || "");
+            if (value) keys.add(areaFilterKey(value, areaCity));
+          });
+        });
+        correctionSourceNames(correction).forEach((name) => keys.add(areaFilterKey(name, fallbackCity)));
+        return keys;
+      }
+
+      function correctionHotelIds(correction) {
+        const ids = new Set();
+        correctionHotels(correction).forEach((hotel) => {
+          const id = String(hotel.hotel_id || hotel.trip_hotel_id || "").trim();
+          if (id) ids.add(id);
+        });
+        return ids;
+      }
+
+      function correctionOperation(correction) {
+        const explicit = String(correction?.operation_type || correction?.operation || "").trim();
+        if (explicit) return explicit;
+        return correctionSourceAreas(correction).length <= 1 ? "rename" : "merge";
+      }
+
+      function sortedAreaMergeCorrections(corrections) {
+        return [...(corrections || [])].sort((a, b) =>
+          Number(b?.id || 0) - Number(a?.id || 0) ||
+          correctionCreatedValue(b) - correctionCreatedValue(a)
+        );
+      }
+
+      function buildAreaMergeCorrectionRecord(suggestedArea, selected, hotels, submitData) {
+        const correction = submitData?.correction || submitData || {};
+        return {
+          id: correction.id || "",
+          status: correction.status || "pending",
+          city_name_zh: selected[0]?.recommend_city || lastResultCity || "",
+          suggested_area_name_zh: suggestedArea,
+          source_areas: selected.map((area) => ({
+            area_name: area.area_name,
+            recommend_city: area.recommend_city,
+            aliases: area.aliases || [area.area_name],
+            hotel_count: area.hotel_count || 0,
+          })),
+          source_area_names: areaMergeSourceNames(selected),
+          hotels,
+          hotel_count: (hotels || []).length,
+          created_at: new Date().toISOString(),
+        };
+      }
+
+      function upsertActiveAreaMergeCorrection(record) {
+        if (!record || !correctionSuggestedArea(record)) return;
+        const id = String(record.id || "");
+        activeAreaMergeCorrections = activeAreaMergeCorrections.filter((item) => {
+          if (id && String(item.id || "") === id) return false;
+          return !(
+            normalizeSearchText(correctionSuggestedArea(item)) === normalizeSearchText(correctionSuggestedArea(record)) &&
+            normalizeSearchText(correctionCity(item)) === normalizeSearchText(correctionCity(record)) &&
+            JSON.stringify([...correctionSourceKeys(item)].sort()) === JSON.stringify([...correctionSourceKeys(record)].sort())
+          );
+        });
+        activeAreaMergeCorrections.unshift(record);
+        activeAreaMergeCorrections = sortedAreaMergeCorrections(activeAreaMergeCorrections);
+        rebuildPendingAreaMergeMarkers();
+      }
+
+      function rebuildPendingAreaMergeMarkers() {
+        pendingAreaMergeAreaKeys = new Map();
+        activeAreaMergeCorrections.forEach((correction) => {
+          const suggestedArea = correctionSuggestedArea(correction);
+          const city = correctionCity(correction);
+          if (!suggestedArea) return;
+          const sourceNames = correctionSourceNames(correction);
+          const baseInfo = {
+            suggestedArea,
+            sourceNames,
+            hotelCount: Number(correction.hotel_count || correctionHotels(correction).length || 0),
+            correctionId: correction.id || "",
+            status: correction.status || "pending",
+            operation: correctionOperation(correction),
+          };
+          correctionSourceKeys(correction).forEach((key) => {
+            if (!pendingAreaMergeAreaKeys.has(key)) pendingAreaMergeAreaKeys.set(key, { ...baseInfo, role: "source" });
+          });
+          const targetKey = areaFilterKey(suggestedArea, city);
+          if (!pendingAreaMergeAreaKeys.has(targetKey)) {
+            pendingAreaMergeAreaKeys.set(targetKey, { ...baseInfo, role: "target" });
+          }
+        });
+      }
+
+      function pendingAreaMergeInfoForArea(area) {
+        const recommendCity = simplifyChineseText(area.recommend_city || "");
+        const names = areaAliases(area);
+        for (const name of names) {
+          const info = pendingAreaMergeAreaKeys.get(areaFilterKey(name, recommendCity)) ||
+            Array.from(pendingAreaMergeAreaKeys.entries()).find(([key]) => String(key).startsWith(`${normalizeSearchText(name)}::`))?.[1];
+          if (info && info.status !== "approved") return info;
+        }
+        return null;
+      }
+
+      function pendingAreaMergeLabel(info) {
+        if (!info) return "";
+        if (info.operation === "rename") {
+          if (info.role === "source") return `已提交改名为「${info.suggestedArea}」待审核`;
+          return "改名待审核";
+        }
+        if (info.role === "source") return `已提交合并到「${info.suggestedArea}」待审核`;
+        return "合并待审核";
+      }
+
+      function pendingAreaMergeNote(info) {
+        if (!info) return "";
+        const sourceText = (info.sourceNames || []).length ? info.sourceNames.join("、") : "已选片区";
+        const idText = info.correctionId ? ` #${info.correctionId}` : "";
+        if (info.operation === "rename") {
+          return `已操作改名${idText}：${sourceText} → ${info.suggestedArea}，等待后台审核，请勿重复提交。`;
+        }
+        return `已操作合并${idText}：${sourceText} → ${info.suggestedArea}，等待后台审核，请勿重复提交。`;
+      }
+
+      function markPendingAreaMerge(suggestedArea, selected, hotels, submitData) {
+        upsertActiveAreaMergeCorrection(buildAreaMergeCorrectionRecord(suggestedArea, selected, hotels, submitData));
+      }
+
+      function applyPendingAreaMergePreview(suggestedArea, selected, hotels) {
+        return applyActiveAreaMergeCorrections();
+      }
+
+      function applyActiveAreaMergeCorrections() {
+        if (!activeAreaMergeCorrections.length || !lastChoices.length) return false;
+        rebuildPendingAreaMergeMarkers();
+        const rules = sortedAreaMergeCorrections(activeAreaMergeCorrections).map((correction) => ({
+          correction,
+          suggestedArea: correctionSuggestedArea(correction),
+          city: correctionCity(correction),
+          status: correction.status || "pending",
+          sourceNames: correctionSourceNames(correction),
+          sourceKeys: correctionSourceKeys(correction),
+          hotelIds: correctionHotelIds(correction),
+          operation: correctionOperation(correction),
+        })).filter((rule) => rule.suggestedArea && (rule.sourceKeys.size || rule.hotelIds.size));
+        let changed = false;
+        const claimedChoices = new Set();
+        lastChoices = lastChoices.map((item, index) => {
+          const key = choiceKey(item, index);
+          if (claimedChoices.has(key)) return item;
+          const itemAreaKey = areaFilterKey(item.area_name || "", item.recommend_city || "");
+          const hotelId = String(item.hotel_id || item.trip_hotel_id || "").trim();
+          const rule = rules.find((candidate) =>
+            (hotelId && candidate.hotelIds.has(hotelId)) ||
+            candidate.sourceKeys.has(itemAreaKey) ||
+            candidate.sourceKeys.has(areaFilterKey(item.area_name || "", candidate.city))
+          );
+          if (!rule) return item;
+          claimedChoices.add(key);
+          changed = true;
+          return {
+            ...item,
+            area_name: rule.suggestedArea,
+            area_source: rule.status === "approved" ? "人工审核片区" : (rule.operation === "rename" ? "待审核片区改名" : "待审核合并片区"),
+            area_hint: rule.sourceNames.length ? `${rule.operation === "rename" ? "片区改名" : "片区合并"}：${rule.sourceNames.join("、")}` : item.area_hint,
+            _pending_area_merge: rule.status !== "approved",
+          };
+        });
+
+        const sourceKeysToRemove = new Set();
+        rules.forEach((rule) => rule.sourceKeys.forEach((key) => sourceKeysToRemove.add(key)));
+        const builtAreas = buildAreasFromChoices(lastChoices);
+        const targetAreas = [];
+        rules.forEach((rule) => {
+          const targetCity = rule.city || lastResultCity || "";
+          const targetKey = areaFilterKey(rule.suggestedArea, targetCity);
+          const mergedArea = builtAreas.find((area) => areaFilterKey(area.area_name, area.recommend_city) === targetKey);
+          if (!mergedArea) return;
+          mergedArea.merged_area_names = rule.sourceNames.length ? rule.sourceNames : [rule.suggestedArea];
+          mergedArea.reason = `${rule.status === "approved" ? "已审核" : "待审核"}${rule.operation === "rename" ? "改名" : "合并"}：${(rule.sourceNames || []).join("、")} 已归并到该片区。`;
+          targetAreas.push(mergedArea);
+        });
+        if (targetAreas.length || sourceKeysToRemove.size) {
+          lastServerAreas = mergeAreaLists(
+            targetAreas,
+            (lastServerAreas || []).filter((area) => !areaOverlapsMergeSelection(area, sourceKeysToRemove))
+          );
+        }
+        return changed || Boolean(targetAreas.length);
+      }
+
+      function areaMergeCitiesFromResult(data) {
+        const cities = [];
+        const append = (value) => {
+          const city = simplifyChineseText(value || "");
+          if (city && !cities.includes(city)) cities.push(city);
+        };
+        append(data?.city);
+        append(data?.origin_city);
+        (data?.nearby_cities || []).forEach(append);
+        (data?.city_results || []).forEach((item) => append(item.city));
+        (data?.choices || []).forEach((item) => append(item.recommend_city));
+        lastChoices.forEach((item) => append(item.recommend_city));
+        return cities.filter((city) => !city.endsWith("周边"));
+      }
+
+      async function loadActiveAreaMergeCorrections(data) {
+        const cities = areaMergeCitiesFromResult(data);
+        if (!cities.length) return;
+        const token = ++areaMergeCorrectionToken;
+        const params = new URLSearchParams();
+        cities.forEach((city) => params.append("city", city));
+        try {
+          const resp = await fetch(`/api/area-merge-corrections/active?${params.toString()}`, {
+            cache: "no-store",
+            headers: jobHeaders(),
+          });
+          const payload = await readJsonResponse(resp, "合并片区记录加载失败");
+          if (token !== areaMergeCorrectionToken) return;
+          activeAreaMergeCorrections = sortedAreaMergeCorrections(payload.corrections || []);
+          rebuildPendingAreaMergeMarkers();
+          if (applyActiveAreaMergeCorrections()) {
+            lastAreaRefreshMeta = lastAreaRefreshMeta || "已应用待审核/已审核片区合并记录";
+            scheduleRenderChoices(20);
+          } else {
+            renderAreas(visibleChoices({ ignoreAreaFilter: true }));
+          }
+        } catch {
+          if (token !== areaMergeCorrectionToken) return;
+        }
+      }
+
+      function clearAreaMergeSelection() {
+        selectedAreaMerges = new Map();
+        areaMergeNameTouched = false;
+        areaMergeNameInput.value = "";
+        renderAreas(visibleChoices({ ignoreAreaFilter: true }));
+      }
+
+      function toggleAreaMergeSelection(card, checked) {
+        if (card.dataset.areaMergePending === "1") return;
+        const area = areaMergePayloadFromCard(card);
+        if (!area.key || !area.area_name) return;
+        if (checked) {
+          selectedAreaMerges.set(area.key, area);
+        } else {
+          selectedAreaMerges.delete(area.key);
+        }
+        updateAreaMergeBar();
+        card.classList.toggle("merge-selected", checked);
+      }
+
+      async function submitAreaMergeCorrection() {
+        const selected = selectedAreaMergeList();
+        if (selected.length < 2) return;
+        const cities = selectedAreaMergeCities();
+        if (cities.size > 1) {
+          errorBox.textContent = "只能合并同一个推荐城市下的片区。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        const suggestedArea = simplifyChineseText(areaMergeNameInput.value).trim();
+        if (!suggestedArea || !hasChineseText(suggestedArea) || isGenericAreaName(suggestedArea)) {
+          errorBox.textContent = "请填写具体的中文片区名称，不能使用泛化片区。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        const hotels = selectedAreaMergeHotels();
+        if (!hotels.length) {
+          errorBox.textContent = "选中的片区里没有可固定的酒店。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        areaMergeSubmit.disabled = true;
+        try {
+          const resp = await fetch("/api/area-merge-corrections", {
+            method: "POST",
+            headers: jobHeaders(true),
+            body: JSON.stringify(jobPayload({
+              city: selected[0]?.recommend_city || lastResultCity || "",
+              suggested_area_name: suggestedArea,
+              source_areas: selected.map((area) => ({
+                area_name: area.area_name,
+                recommend_city: area.recommend_city,
+                aliases: area.aliases || [area.area_name],
+                hotel_count: area.hotel_count || 0,
+              })),
+              hotels,
+            })),
+          });
+          const submitData = await readJsonResponse(resp, "合并片区提交失败");
+          markPendingAreaMerge(suggestedArea, selected, hotels, submitData);
+          const previewApplied = applyPendingAreaMergePreview(suggestedArea, selected, hotels);
+          lastAreaRefreshMeta = previewApplied
+            ? `合并片区申请已提交，当前页已临时预览「${suggestedArea}」，审核通过后 ${hotels.length} 家酒店会固定到该片区`
+            : `合并片区申请已提交，审核通过后 ${hotels.length} 家酒店会固定为「${suggestedArea}」`;
+          errorBox.classList.add("hidden");
+          clearAreaMergeSelection();
+          scheduleRenderChoices(80);
+        } catch (error) {
+          errorBox.textContent = error.message || "合并片区提交失败";
+          errorBox.classList.remove("hidden");
+          updateAreaMergeBar();
+        }
+      }
+
+      async function submitAreaRenameCorrection(card) {
+        if (!card || card.dataset.areaMergePending === "1") return;
+        const area = areaMergePayloadFromCard(card);
+        if (!area.key || !area.area_name) return;
+        const suggestedArea = simplifyChineseText(window.prompt("新的片区名称", area.area_name) || "").trim();
+        if (!suggestedArea) return;
+        if (!hasChineseText(suggestedArea) || isGenericAreaName(suggestedArea)) {
+          errorBox.textContent = "请填写具体的中文片区名称，不能使用泛化片区。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        if (normalizeSearchText(suggestedArea) === normalizeSearchText(area.area_name)) {
+          errorBox.textContent = "新的片区名称不能和原片区相同。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        const hotels = hotelsForAreas([area]);
+        if (!hotels.length) {
+          errorBox.textContent = "该片区里没有可固定的酒店。";
+          errorBox.classList.remove("hidden");
+          return;
+        }
+        const button = card.querySelector("[data-area-rename]");
+        if (button) button.disabled = true;
+        try {
+          const resp = await fetch("/api/area-merge-corrections", {
+            method: "POST",
+            headers: jobHeaders(true),
+            body: JSON.stringify(jobPayload({
+              city: area.recommend_city || lastResultCity || "",
+              suggested_area_name: suggestedArea,
+              source_areas: [{
+                area_name: area.area_name,
+                recommend_city: area.recommend_city,
+                aliases: area.aliases || [area.area_name],
+                hotel_count: area.hotel_count || 0,
+              }],
+              hotels,
+            })),
+          });
+          const submitData = await readJsonResponse(resp, "片区改名提交失败");
+          markPendingAreaMerge(suggestedArea, [area], hotels, submitData);
+          const previewApplied = applyPendingAreaMergePreview(suggestedArea, [area], hotels);
+          lastAreaRefreshMeta = previewApplied
+            ? `片区改名申请已提交，当前页已临时预览「${suggestedArea}」，审核通过后 ${hotels.length} 家酒店会固定到该片区`
+            : `片区改名申请已提交，审核通过后 ${hotels.length} 家酒店会固定为「${suggestedArea}」`;
+          errorBox.classList.add("hidden");
+          scheduleRenderChoices(80);
+        } catch (error) {
+          errorBox.textContent = error.message || "片区改名提交失败";
+          errorBox.classList.remove("hidden");
+          if (button) button.disabled = false;
+        }
       }
 
       function renderAreas(items) {
@@ -1548,52 +4200,64 @@
         const areas = activeView === "all" && !resultSearchQuery && lastServerAreas.length
           ? mergeAreaLists(lastServerAreas, builtAreas)
           : builtAreas;
-        const { visibleAreas, hiddenCount, showToggle } = displayAreasForState(areas);
+        updateFloatingNavCounts({ areaCount: areas.length });
         areaMeta.textContent = activeAreaFilter
           ? `已筛选 ${activeAreaFilter.label}，再次点击该片区可取消`
           : (lastAreaRefreshMeta || (areas.length
-            ? (areaListExpanded && areas.length > AREA_COLLAPSED_LIMIT
-              ? `已显示全部 ${areas.length} 个片区`
-              : (hiddenCount ? `显示 ${visibleAreas.length}/${areas.length} 个片区，点击省略号查看全部` : `优先显示命中酒店更集中、降价更多的片区`))
+            ? `已显示 ${areas.length} 个推荐片区，可在区域框内滚动查看`
             : "暂无可推荐片区"));
         if (!areas.length) {
           areaRecommendations.innerHTML = `<div class="empty">当前条件下暂无推荐旅游区域。</div>`;
+          updateAreaMergeBar();
           return;
         }
-        const areaCards = visibleAreas.map((area) => {
+        const areaCards = areas.map((area) => {
             const areaName = simplifyChineseText(area.area_name || "");
             const recommendCity = simplifyChineseText(area.recommend_city || "");
             const reason = simplifyChineseText(area.reason || "");
-            const representativeHotels = (area.representative_hotels || []).map((name) => simplifyChineseText(name));
+            const representativeHotels = representativeHotelsForArea(area, items);
             const key = areaFilterKey(areaName, recommendCity);
             const active = activeAreaFilter && key === activeAreaFilter.key;
             const cityLabel = recommendCity ? `${recommendCity} · ` : "";
+            const mergedAreaNames = areaAliases(area);
+            const mergedCount = Math.max(0, mergedAreaNames.length - 1);
+            const pendingMerge = pendingAreaMergeInfoForArea(area);
+            const mergeSelected = !pendingMerge && selectedAreaMerges.has(key);
+            const pendingLabel = pendingAreaMergeLabel(pendingMerge);
+            const pendingNote = pendingAreaMergeNote(pendingMerge);
+            const mergeControlText = pendingMerge ? "已操作，等待审核" : "合并片区";
             return `
-            <article class="area-card${active ? " active" : ""}" role="button" tabindex="0" data-area-key="${esc(key)}" data-area-name="${esc(areaName)}" data-recommend-city="${esc(recommendCity)}" aria-pressed="${active ? "true" : "false"}" title="查看该片区酒店">
+            <article class="area-card${active ? " active" : ""}${mergeSelected ? " merge-selected" : ""}${pendingMerge ? " merge-pending" : ""}" role="button" tabindex="0" data-area-key="${esc(key)}" data-area-name="${esc(areaName)}" data-area-aliases="${esc(JSON.stringify(mergedAreaNames))}" data-recommend-city="${esc(recommendCity)}" data-hotel-count="${esc(area.hotel_count)}" data-area-merge-pending="${pendingMerge ? "1" : "0"}" aria-pressed="${active ? "true" : "false"}" title="查看该片区酒店">
               <div class="area-name">${esc(areaName)}</div>
               <div class="area-stats">
                 ${recommendCity ? `<span class="pill">${esc(recommendCity)}</span>` : ""}
                 <span class="pill">${esc(area.hotel_count)} 家酒店</span>
                 <span class="pill">${esc(area.lower_price_hotel_count)} 家更低</span>
+                ${mergedCount ? `<span class="pill">合并 ${esc(mergedCount + 1)} 个片区</span>` : ""}
+                ${pendingMerge ? `<span class="pill area-merge-status">${esc(pendingLabel)}</span>` : ""}
                 <span class="pill">${esc(area.average_holiday_nightly_tax_total_price)}/晚</span>
                 <span class="diff ${diffClass(area.average_price_diff_nightly)}">${esc(area.average_price_diff_nightly_text)}</span>
               </div>
               <div class="area-hotels">${esc(reason)}</div>
               <div class="area-hotels">${esc(cityLabel)}${esc(representativeHotels.slice(0, 3).join("、"))}</div>
+              ${pendingMerge ? `<div class="area-merge-note">${esc(pendingNote)}</div>` : ""}
+              <div class="area-card-actions" data-area-merge-control>
+                <button class="area-rename-link" type="button" data-area-rename ${pendingMerge ? "disabled" : ""} aria-label="修改片区名称" title="修改片区名称">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                  </svg>
+                </button>
+              </div>
+              <label class="area-select${pendingMerge ? " disabled" : ""}" data-area-merge-control aria-disabled="${pendingMerge ? "true" : "false"}">
+                <input type="checkbox" data-area-merge-checkbox ${mergeSelected ? "checked" : ""} ${pendingMerge ? "disabled" : ""} />
+                <span>${esc(mergeControlText)}</span>
+              </label>
             </article>
           `;
           });
-        if (showToggle) {
-          const toggleText = areaListExpanded ? "收起片区" : `还有 ${hiddenCount} 个片区`;
-          const toggleTitle = areaListExpanded ? "收起推荐片区" : "查看全部推荐片区";
-          areaCards.push(`
-            <article class="area-card area-more-card" role="button" tabindex="0" data-area-toggle="more" aria-expanded="${areaListExpanded ? "true" : "false"}" title="${esc(toggleTitle)}">
-              <div class="area-more-dots">...</div>
-              <div class="area-more-text">${esc(toggleText)}</div>
-            </article>
-          `);
-        }
         areaRecommendations.innerHTML = areaCards.join("");
+        updateAreaMergeBar();
       }
 
       function buildAreasFromChoices(items) {
@@ -1640,13 +4304,7 @@
             reason: areaReason(group.hotel_count, group.lower_price_hotel_count, avgDiff),
           };
         });
-        return areas.sort((a, b) =>
-          (b.lower_price_ratio - a.lower_price_ratio) ||
-          (b.lower_price_hotel_count - a.lower_price_hotel_count) ||
-          (b.hotel_count - a.hotel_count) ||
-          (a.average_price_diff_nightly - b.average_price_diff_nightly) ||
-          (a.average_holiday_nightly_tax_total_value - b.average_holiday_nightly_tax_total_value)
-        );
+        return sortAreaRecommendations(areas);
       }
 
       function isGenericAreaName(name) {
@@ -1666,9 +4324,17 @@
         if (activeAreaFilter && activeAreaFilter.key === key) {
           activeAreaFilter = null;
         } else {
+          let aliases = [areaName];
+          try {
+            const parsed = JSON.parse(card.dataset.areaAliases || "[]");
+            if (Array.isArray(parsed) && parsed.length) aliases = parsed;
+          } catch {
+            aliases = [areaName];
+          }
           activeAreaFilter = {
             key,
             area: normalizeSearchText(areaName),
+            areas: new Set(aliases.map((name) => normalizeSearchText(name)).filter(Boolean)),
             city: normalizeSearchText(recommendCity),
             label: recommendCity ? `${recommendCity} · ${areaName}` : areaName,
           };
@@ -1726,10 +4392,11 @@
 
       async function runAsyncJob(startUrl, payload, fallbackMessage, options = {}) {
         let partialKey = "";
+        let jobResultState = null;
         const startResp = await fetch(startUrl, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
+          headers: jobHeaders(true),
+          body: JSON.stringify(jobPayload(payload)),
         });
         const startData = await readJsonResponse(startResp, fallbackMessage);
         if (startData.progress_events) {
@@ -1743,7 +4410,12 @@
         if (startData.status === "succeeded" && startData.result) {
           return startData.result;
         }
+        let jobVersion = Number(startData.version || 0);
+        if (startData.result) {
+          jobResultState = startData.result;
+        }
         if (startData.partial_result && typeof options.onProgress === "function") {
+          jobResultState = startData.partial_result;
           partialKey = partialResultKey(startData.partial_result, startData);
           options.onProgress(startData.partial_result, startData);
         }
@@ -1757,8 +4429,11 @@
         const started = Date.now();
         while (Date.now() - started < maxWaitMs) {
           await sleep(pollInterval);
-          const resp = await fetch(pollUrl, { cache: "no-store" });
+          const resp = await fetch(pollUrlWithVersion(pollUrl, jobVersion), { cache: "no-store", headers: jobHeaders() });
           const data = await readJsonResponse(resp, fallbackMessage);
+          if (data.version !== undefined) {
+            jobVersion = Number(data.version || jobVersion);
+          }
           if (data.progress && data.progress.message) {
             const percent = Number(data.progress.percent || 0);
             lastProgressMessage = percent ? `${data.progress.message}（${percent}%）` : data.progress.message;
@@ -1767,16 +4442,33 @@
           if (data.progress_events) {
             renderProgressEvents(data.progress_events);
           }
+          if (data.partial_result_delta) {
+            jobResultState = mergeResultDelta(jobResultState, data.partial_result_delta);
+            if (jobResultState && typeof options.onProgress === "function") {
+              const key = partialResultKey(jobResultState, data);
+              if (key !== partialKey) {
+                partialKey = key;
+                options.onProgress(jobResultState, data);
+              }
+            }
+          }
           if (data.partial_result && typeof options.onProgress === "function") {
             const partial = data.partial_result;
+            jobResultState = partial;
             const key = partialResultKey(partial, data);
             if (key !== partialKey) {
               partialKey = key;
               options.onProgress(partial, data);
             }
           }
+          if (data.result_delta) {
+            jobResultState = mergeResultDelta(jobResultState, data.result_delta);
+          }
+          if (data.result) {
+            jobResultState = data.result;
+          }
           if (data.status === "succeeded") {
-            return data.result;
+            return data.result || jobResultState;
           }
           if (data.status === "failed") {
             throw new Error(data.error || fallbackMessage);
@@ -1789,20 +4481,29 @@
       async function runSilentJob(startUrl, payload, fallbackMessage, maxWaitMs = 180000) {
         const startResp = await fetch(startUrl, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
+          headers: jobHeaders(true),
+          body: JSON.stringify(jobPayload(payload)),
         });
         const startData = await readJsonResponse(startResp, fallbackMessage);
         if (startData.status === "succeeded" && startData.result) {
           return startData.result;
         }
         const pollUrl = startData.poll_url || `/api/jobs/${startData.job_id}`;
+        let jobVersion = Number(startData.version || 0);
+        let jobResultState = startData.result || startData.partial_result || null;
         const started = Date.now();
         while (Date.now() - started < maxWaitMs) {
           await sleep(1800);
-          const resp = await fetch(pollUrl, { cache: "no-store" });
+          const resp = await fetch(pollUrlWithVersion(pollUrl, jobVersion), { cache: "no-store", headers: jobHeaders() });
           const data = await readJsonResponse(resp, fallbackMessage);
-          if (data.status === "succeeded") return data.result;
+          if (data.version !== undefined) {
+            jobVersion = Number(data.version || jobVersion);
+          }
+          if (data.partial_result_delta) jobResultState = mergeResultDelta(jobResultState, data.partial_result_delta);
+          if (data.partial_result) jobResultState = data.partial_result;
+          if (data.result_delta) jobResultState = mergeResultDelta(jobResultState, data.result_delta);
+          if (data.result) jobResultState = data.result;
+          if (data.status === "succeeded") return data.result || jobResultState;
           if (data.status === "failed") throw new Error(data.error || fallbackMessage);
         }
         throw new Error(`${fallbackMessage}：后台任务暂未完成。`);
@@ -1822,10 +4523,14 @@
         result.classList.add("hidden");
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
+        hotelNameRefreshInFlight = false;
+        queuedHotelNameRefreshData = null;
+        lastHotelNameRefreshSignature = "";
         coverageRefreshToken += 1;
         lastAreaRefreshMeta = "";
         lastResultMeta = "";
         lastHotelNameMeta = "";
+        lastResultStage = "";
         const payload = Object.fromEntries(new FormData(form).entries());
         currentRequestKind = "single";
         currentUseCache = useCacheInput.checked;
@@ -1836,7 +4541,7 @@
         try {
           resetViewMode();
           const data = await runAsyncJob("/api/search/start", payload, "查询失败", {
-            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: false, refreshCoverage: false }),
+            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: true, refreshCoverage: false }),
           });
           applyResultData(data);
         } catch (error) {
@@ -1853,11 +4558,17 @@
         result.classList.add("hidden");
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
+        hotelNameRefreshInFlight = false;
+        queuedHotelNameRefreshData = null;
+        lastHotelNameRefreshSignature = "";
         coverageRefreshToken += 1;
         lastAreaRefreshMeta = "";
         lastResultMeta = "";
         lastHotelNameMeta = "";
-        const payload = Object.fromEntries(new FormData(form).entries());
+        lastResultStage = "";
+        const basePayload = Object.fromEntries(new FormData(form).entries());
+        delete basePayload.city;
+        const payload = { ...basePayload, ...Object.fromEntries(new FormData(nearbyForm).entries()) };
         payload.origin_city = originCity.value;
         payload.nearby_limit = "4";
         currentRequestKind = "nearby";
@@ -1869,7 +4580,7 @@
         try {
           resetViewMode();
           const data = await runAsyncJob("/api/nearby-search/start", payload, "附近推荐失败", {
-            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: false, refreshCoverage: false }),
+            onProgress: (partial) => applyResultData(partial, { refreshAreas: false, refreshHotelNames: true, refreshCoverage: false }),
           });
           applyResultData(data);
         } catch (error) {
@@ -1901,7 +4612,7 @@
             });
             const data = await readJsonResponse(resp, "定位失败");
             setOriginCity(data.city);
-            nearbyHint.textContent = `已按当前位置识别为 ${data.city}，可点击“按所在城市推荐”。`;
+            nearbyHint.textContent = `已按当前位置识别为 ${data.city}，可点击“搜索周边城市”。`;
           } catch (error) {
             errorBox.textContent = error.message || "定位失败，请手动选择所在城市。";
             errorBox.classList.remove("hidden");
@@ -1924,6 +4635,8 @@
         errorBox.classList.remove("hidden");
       });
 
+      loadDailyRecommendation();
+
       priceButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const [min, max] = button.dataset.priceRange.split("-");
@@ -1943,35 +4656,167 @@
         renderChoices();
       });
 
+      resultSortSelect.addEventListener("change", () => {
+        resultSortMode = resultSortSelect.value || "default";
+        renderChoices();
+      });
+
+      function syncResultPriceFilters() {
+        resultMinPriceFilter = normalizedPriceFilterValue(resultMinPriceInput.value);
+        resultMaxPriceFilter = normalizedPriceFilterValue(resultMaxPriceInput.value);
+      }
+
+      [resultMinPriceInput, resultMaxPriceInput].forEach((input) => {
+        input.addEventListener("input", () => {
+          syncResultPriceFilters();
+          scheduleRenderChoices(80);
+        });
+      });
+
+      resultFilterClear.addEventListener("click", () => {
+        resultSortSelect.value = "default";
+        resultMinPriceInput.value = "";
+        resultMaxPriceInput.value = "";
+        resultSortMode = "default";
+        resultMinPriceFilter = "";
+        resultMaxPriceFilter = "";
+        renderChoices();
+      });
+
+      exportPdfBtn.addEventListener("click", exportCurrentResultsPdf);
+
+      choicesBody.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-action='edit-hotel-correction']");
+        if (!button) return;
+        const item = choiceByKey(button.dataset.choiceKey || "");
+        submitHotelCorrection(item);
+      });
+
+      hotelCorrectionNameInput.addEventListener("input", () => {
+        areaCorrectionError.classList.add("hidden");
+      });
+
+      hotelCorrectionNameInput.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        confirmAreaCorrectionDialog();
+      });
+
+      areaCorrectionInput.addEventListener("input", () => {
+        areaCorrectionError.classList.add("hidden");
+        renderAreaCorrectionSuggestions();
+      });
+
+      areaCorrectionInput.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        confirmAreaCorrectionDialog();
+      });
+
+      areaSuggestionList.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-area-suggestion]");
+        if (!button) return;
+        areaCorrectionInput.value = button.dataset.areaSuggestion || "";
+        areaCorrectionError.classList.add("hidden");
+        renderAreaCorrectionSuggestions();
+      });
+
+      areaCorrectionSubmit.addEventListener("click", confirmAreaCorrectionDialog);
+
+      areaCorrectionDialog.addEventListener("click", (event) => {
+        if (!event.target.closest("[data-area-correction-cancel]")) return;
+        closeAreaCorrectionDialog(null);
+      });
+
+      areaMergeNameInput.addEventListener("input", () => {
+        areaMergeNameTouched = true;
+        updateAreaMergeBar();
+      });
+
+      areaMergeSubmit.addEventListener("click", () => {
+        submitAreaMergeCorrection();
+      });
+
+      areaMergeClear.addEventListener("click", () => {
+        clearAreaMergeSelection();
+      });
+
+      areaRecommendations.addEventListener("change", (event) => {
+        const checkbox = event.target.closest("[data-area-merge-checkbox]");
+        if (!checkbox) return;
+        const card = checkbox.closest(".area-card");
+        if (!card) return;
+        toggleAreaMergeSelection(card, checkbox.checked);
+      });
+
       areaRecommendations.addEventListener("click", (event) => {
-        const toggle = event.target.closest("[data-area-toggle]");
-        if (toggle) {
-          areaListExpanded = !areaListExpanded;
-          renderChoices();
+        const renameButton = event.target.closest("[data-area-rename]");
+        if (renameButton) {
+          const card = renameButton.closest(".area-card");
+          submitAreaRenameCorrection(card);
           return;
         }
+        if (event.target.closest("[data-area-merge-control]")) return;
         const card = event.target.closest(".area-card");
         if (!card) return;
         selectAreaCard(card);
       });
 
       areaRecommendations.addEventListener("keydown", (event) => {
+        if (event.target.closest("[data-area-merge-control]")) return;
         if (!["Enter", " "].includes(event.key)) return;
         event.preventDefault();
-        const toggle = event.target.closest("[data-area-toggle]");
-        if (toggle) {
-          areaListExpanded = !areaListExpanded;
-          renderChoices();
-          return;
-        }
         const card = event.target.closest(".area-card");
         if (!card) return;
         selectAreaCard(card);
       });
 
+      function refreshApprovedHotelCorrectionsForCurrentResults() {
+        if (!lastChoices.length || result.classList.contains("hidden")) return;
+        loadApprovedHotelNameCorrections({ city: lastResultCity, choices: lastChoices });
+        loadApprovedHotelAreaCorrections({ city: lastResultCity, choices: lastChoices });
+      }
+
+      function refreshApprovedHotelAreasForCurrentResults() {
+        refreshApprovedHotelCorrectionsForCurrentResults();
+      }
+
+      window.addEventListener("focus", refreshApprovedHotelCorrectionsForCurrentResults);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) refreshApprovedHotelCorrectionsForCurrentResults();
+      });
+
+      floatingNavToggle.addEventListener("click", () => {
+        setFloatingNavOpen(!floatingNav.classList.contains("is-open"));
+      });
+
+      floatingNavMenu.addEventListener("click", (event) => {
+        const link = event.target.closest("[data-nav-target]");
+        if (!link) return;
+        const target = document.getElementById(link.dataset.navTarget || "");
+        setFloatingNavOpen(false);
+        if (!targetIsScrollable(target)) {
+          event.preventDefault();
+          return;
+        }
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (floatingNav.contains(event.target)) return;
+        setFloatingNavOpen(false);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        if (!areaCorrectionDialog.classList.contains("hidden")) closeAreaCorrectionDialog(null);
+        setFloatingNavOpen(false);
+      });
+
       resultSearchInput.addEventListener("input", () => {
         resultSearchQuery = normalizeSearchText(resultSearchInput.value);
-        renderChoices();
+        scheduleRenderChoices(80);
       });
     </script>
   </body>

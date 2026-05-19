@@ -1,0 +1,1217 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>反向旅游搜索后台</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231657d8'/%3E%3Cstop offset='0.48' stop-color='%231657d8'/%3E%3Cstop offset='0.48' stop-color='%230f8b8d'/%3E%3Cstop offset='1' stop-color='%230f8b8d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3C/svg%3E" />
+    <style>
+      :root {
+        --bg: #f4f6f8;
+        --panel: #fff;
+        --line: #d9e1ea;
+        --line-soft: #edf1f5;
+        --text: #151a22;
+        --muted: #657386;
+        --primary: #1657d8;
+        --good: #117a45;
+        --warn: #9a5b00;
+        --bad: #b42318;
+      }
+      * { box-sizing: border-box; min-width: 0; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .page {
+        width: min(1280px, 100%);
+        margin: 0 auto;
+        padding: 24px 18px 44px;
+      }
+      .topbar {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+      h1, h2, p { margin: 0; }
+      h1 { font-size: 28px; line-height: 1.2; letter-spacing: 0; }
+      h2 { font-size: 16px; line-height: 1.2; letter-spacing: 0; }
+      .muted { color: var(--muted); }
+      .hidden { display: none !important; }
+      .title-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, var(--primary) 0 48%, #0f8b8d 48% 100%);
+        box-shadow: 0 7px 18px rgba(22, 87, 216, 0.18);
+        flex: 0 0 auto;
+      }
+      .status {
+        color: var(--muted);
+        font-size: 13px;
+        text-align: right;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .metric, .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 1px 2px rgba(21, 35, 54, 0.05);
+      }
+      .metric {
+        padding: 14px;
+        min-height: 92px;
+      }
+      .metric-label {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .metric-value {
+        margin-top: 8px;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1.1;
+      }
+      .metric-sub {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .panel-title-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .panel-body { padding: 0; }
+      .empty {
+        padding: 18px 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .job-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 10px;
+        padding: 12px;
+      }
+      .job {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfcfe;
+      }
+      .job.full {
+        grid-column: 1 / -1;
+      }
+      .job-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .job-id {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 22px;
+        padding: 0 8px;
+        border-radius: 999px;
+        background: #edf4ff;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .badge.running { background: #e9f7ef; color: var(--good); }
+      .badge.succeeded,
+      .badge.approved { background: #e9f7ef; color: var(--good); }
+      .badge.cache_hit,
+      .badge.live { background: #e9f7ef; color: var(--good); }
+      .badge.queued { background: #fff4d7; color: var(--warn); }
+      .badge.pending,
+      .badge.skipped { background: #fff4d7; color: var(--warn); }
+      .badge.failed,
+      .badge.rejected { background: #fff1f0; color: var(--bad); }
+      .progress {
+        width: 100%;
+        height: 7px;
+        margin: 10px 0 8px;
+        border-radius: 999px;
+        background: #e7ecf2;
+        overflow: hidden;
+      }
+      .progress span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--primary);
+      }
+      .job-message {
+        color: #263241;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+      .kv {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .kv span {
+        max-width: 100%;
+        padding: 5px 7px;
+        border: 1px solid var(--line-soft);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--muted);
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+      .prewarm-target-table {
+        max-height: 320px;
+        overflow: auto;
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fff;
+      }
+      .prewarm-target-table table {
+        min-width: 820px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+      th, td {
+        padding: 11px 12px;
+        border-bottom: 1px solid var(--line-soft);
+        text-align: left;
+        vertical-align: top;
+        font-size: 13px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      th {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        background: #fbfcfe;
+      }
+      tr:last-child td { border-bottom: 0; }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .action-btn {
+        min-height: 30px;
+        padding: 0 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #fff;
+        color: #263241;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .action-col,
+      .review-action-cell {
+        position: sticky;
+        right: 0;
+        z-index: 1;
+        box-shadow: -1px 0 0 var(--line-soft);
+      }
+      .action-col { background: #fbfcfe; }
+      .review-action-cell { background: #fff; }
+      .action-btn:hover {
+        border-color: #b7c3d1;
+      }
+      .action-btn.approve {
+        border-color: rgba(17, 122, 69, 0.28);
+        color: var(--good);
+      }
+      .action-btn.reject {
+        border-color: rgba(180, 35, 24, 0.24);
+        color: var(--bad);
+      }
+      .text-btn {
+        width: auto;
+        height: 30px;
+        padding: 0 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .text-btn:hover {
+        border-color: rgba(22, 87, 216, 0.28);
+        background: #f7faff;
+      }
+      .text-btn.batch-approve {
+        color: var(--good);
+        border-color: rgba(17, 122, 69, 0.24);
+      }
+      .text-btn.batch-reject {
+        color: var(--bad);
+        border-color: rgba(180, 35, 24, 0.22);
+      }
+      body.modal-open { overflow: hidden; }
+      .review-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+      .review-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.36);
+      }
+      .review-modal-panel {
+        position: relative;
+        z-index: 1;
+        width: min(1180px, 100%);
+        max-height: min(82vh, 760px);
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.2);
+        overflow: hidden;
+      }
+      .review-modal-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .review-modal-body {
+        overflow: auto;
+      }
+      @media (max-width: 860px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .status { text-align: left; }
+        .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        table { min-width: 760px; }
+        .table-wrap { overflow-x: auto; }
+        .review-modal { padding: 12px; }
+      }
+      @media (max-width: 540px) {
+        .page { padding: 18px 12px 36px; }
+        .metrics { grid-template-columns: 1fr; }
+        .job-list { grid-template-columns: 1fr; padding: 10px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="topbar">
+        <div>
+          <div class="title-row">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <h1>反向旅游搜索后台</h1>
+          </div>
+          <p class="muted">当前搜索、任务队列和进程内存</p>
+        </div>
+        <div class="status" id="status-text">正在加载...</div>
+      </div>
+
+      <section class="metrics">
+        <div class="metric">
+          <div class="metric-label">活跃任务</div>
+          <div class="metric-value" id="metric-active">-</div>
+          <div class="metric-sub" id="metric-active-sub">排队 0 / 运行 0</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">当前内存</div>
+          <div class="metric-value" id="metric-memory">-</div>
+          <div class="metric-sub" id="metric-memory-sub">峰值 -</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">已跟踪任务</div>
+          <div class="metric-value" id="metric-total">-</div>
+          <div class="metric-sub" id="metric-total-sub">成功 0 / 失败 0</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">进程</div>
+          <div class="metric-value" id="metric-pid">-</div>
+          <div class="metric-sub" id="metric-process-sub">worker -</div>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>当前搜索</h2>
+            <span class="muted" id="active-count">0 个任务</span>
+          </div>
+          <div class="panel-body" id="active-jobs"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>最近任务</h2>
+            <span class="muted" id="recent-count">0 条记录</span>
+          </div>
+          <div class="panel-body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 118px;">任务</th>
+                  <th style="width: 90px;">状态</th>
+                  <th style="width: 190px;">条件</th>
+                  <th>进度</th>
+                  <th style="width: 120px;">结果</th>
+                  <th style="width: 170px;">更新时间</th>
+                </tr>
+              </thead>
+              <tbody id="recent-jobs"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>缓存预热</h2>
+            <span class="muted" id="prewarm-status">-</span>
+          </div>
+          <div class="panel-body" id="prewarm-body"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>酒店名审核</h2>
+            <div class="panel-title-actions">
+              <span class="muted" id="hotel-name-review-count">0 条待审核</span>
+              <button class="text-btn batch-approve hidden" id="hotel-name-review-batch-approve" type="button" data-review-batch-section="hotelName" data-review-batch-action="approve">全部通过</button>
+              <button class="text-btn batch-reject hidden" id="hotel-name-review-batch-reject" type="button" data-review-batch-section="hotelName" data-review-batch-action="reject">全部拒绝</button>
+              <button class="text-btn hidden" id="hotel-name-review-more" type="button" data-review-more="hotelName">查看全部</button>
+            </div>
+          </div>
+          <div class="panel-body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 160px;">酒店</th>
+                  <th>当前 / 建议</th>
+                  <th style="width: 110px;">城市片区</th>
+                  <th style="width: 110px;">状态</th>
+                  <th style="width: 145px;">提交时间</th>
+                  <th class="action-col" style="width: 132px;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="hotel-name-reviews"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>片区审核</h2>
+            <div class="panel-title-actions">
+              <span class="muted" id="hotel-area-review-count">0 条待审核</span>
+              <button class="text-btn batch-approve hidden" id="hotel-area-review-batch-approve" type="button" data-review-batch-section="hotelArea" data-review-batch-action="approve">全部通过</button>
+              <button class="text-btn batch-reject hidden" id="hotel-area-review-batch-reject" type="button" data-review-batch-section="hotelArea" data-review-batch-action="reject">全部拒绝</button>
+              <button class="text-btn hidden" id="hotel-area-review-more" type="button" data-review-more="hotelArea">查看全部</button>
+            </div>
+          </div>
+          <div class="panel-body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 160px;">酒店</th>
+                  <th>当前片区 / 建议片区</th>
+                  <th style="width: 110px;">城市</th>
+                  <th style="width: 110px;">状态</th>
+                  <th style="width: 145px;">提交时间</th>
+                  <th class="action-col" style="width: 132px;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="hotel-area-reviews"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>合并片区审核</h2>
+            <div class="panel-title-actions">
+              <span class="muted" id="area-merge-review-count">0 条待审核</span>
+              <button class="text-btn batch-approve hidden" id="area-merge-review-batch-approve" type="button" data-review-batch-section="areaMerge" data-review-batch-action="approve">全部通过</button>
+              <button class="text-btn batch-reject hidden" id="area-merge-review-batch-reject" type="button" data-review-batch-section="areaMerge" data-review-batch-action="reject">全部拒绝</button>
+              <button class="text-btn hidden" id="area-merge-review-more" type="button" data-review-more="areaMerge">查看全部</button>
+            </div>
+          </div>
+          <div class="panel-body table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 160px;">合并后片区</th>
+                  <th>来源片区 / 酒店</th>
+                  <th style="width: 110px;">城市</th>
+                  <th style="width: 110px;">状态</th>
+                  <th style="width: 145px;">提交时间</th>
+                  <th class="action-col" style="width: 132px;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="area-merge-reviews"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="review-modal hidden" id="review-modal" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
+      <div class="review-modal-backdrop" data-review-modal-close></div>
+      <section class="review-modal-panel">
+        <div class="review-modal-head">
+          <h2 id="review-modal-title">审核记录</h2>
+          <button class="text-btn" type="button" data-review-modal-close>关闭</button>
+        </div>
+        <div class="review-modal-body table-wrap" id="review-modal-body"></div>
+      </section>
+    </div>
+
+    <script>
+      const statusText = document.getElementById("status-text");
+      const activeJobs = document.getElementById("active-jobs");
+      const recentJobs = document.getElementById("recent-jobs");
+      const activeCount = document.getElementById("active-count");
+      const recentCount = document.getElementById("recent-count");
+      const prewarmStatus = document.getElementById("prewarm-status");
+      const prewarmBody = document.getElementById("prewarm-body");
+      const hotelNameReviewCount = document.getElementById("hotel-name-review-count");
+      const hotelNameReviews = document.getElementById("hotel-name-reviews");
+      const hotelAreaReviewCount = document.getElementById("hotel-area-review-count");
+      const hotelAreaReviews = document.getElementById("hotel-area-reviews");
+      const areaMergeReviewCount = document.getElementById("area-merge-review-count");
+      const areaMergeReviews = document.getElementById("area-merge-reviews");
+      const hotelNameReviewMore = document.getElementById("hotel-name-review-more");
+      const hotelAreaReviewMore = document.getElementById("hotel-area-review-more");
+      const areaMergeReviewMore = document.getElementById("area-merge-review-more");
+      const hotelNameBatchApprove = document.getElementById("hotel-name-review-batch-approve");
+      const hotelNameBatchReject = document.getElementById("hotel-name-review-batch-reject");
+      const hotelAreaBatchApprove = document.getElementById("hotel-area-review-batch-approve");
+      const hotelAreaBatchReject = document.getElementById("hotel-area-review-batch-reject");
+      const areaMergeBatchApprove = document.getElementById("area-merge-review-batch-approve");
+      const areaMergeBatchReject = document.getElementById("area-merge-review-batch-reject");
+      const reviewModal = document.getElementById("review-modal");
+      const reviewModalTitle = document.getElementById("review-modal-title");
+      const reviewModalBody = document.getElementById("review-modal-body");
+      const REVIEW_PREVIEW_LIMIT = 3;
+      const reviewSections = {};
+      let activeReviewModalSection = "";
+
+      function esc(text) {
+        return String(text ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function statusUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get("token");
+        return token ? `/api/admin/status?token=${encodeURIComponent(token)}` : "/api/admin/status";
+      }
+
+      function adminApiUrl(path) {
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get("token");
+        return token ? `${path}?token=${encodeURIComponent(token)}` : path;
+      }
+
+      function mb(value) {
+        return value === null || value === undefined ? "-" : `${value} MB`;
+      }
+
+      function statusClass(status) {
+        return String(status || "unknown").toLowerCase().replace(/[^a-z0-9_-]+/g, "-");
+      }
+
+      function statusLabel(status) {
+        return {
+          queued: "排队中",
+          running: "运行中",
+          succeeded: "成功",
+          failed: "失败",
+          pending: "待审核",
+          approved: "已通过",
+          rejected: "未通过",
+          cache_hit: "缓存命中",
+          live: "新搜索",
+          skipped: "跳过",
+          idle: "空闲",
+        }[String(status || "").toLowerCase()] || (status || "-");
+      }
+
+      function badge(status) {
+        return `<span class="badge ${esc(statusClass(status))}">${esc(statusLabel(status))}</span>`;
+      }
+
+      function formatAdminDateTime(value) {
+        const raw = String(value || "").trim();
+        if (!raw) return "-";
+        const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/);
+        if (match) {
+          return `${match[1]}年${Number(match[2])}月${Number(match[3])}日 ${match[4]}:${match[5]}:${match[6]}`;
+        }
+        const date = new Date(raw);
+        if (Number.isNaN(date.getTime())) return raw;
+        const pad = (number) => String(number).padStart(2, "0");
+        return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日 ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+      }
+
+      function payloadText(payload) {
+        const parts = [];
+        if (payload.city) parts.push(`城市 ${payload.city}`);
+        if (payload.origin_city) parts.push(`出发 ${payload.origin_city}`);
+        if (payload.holiday_code) parts.push(`假期 ${payload.holiday_code}`);
+        if (payload.nearby_limit) parts.push(`附近 ${payload.nearby_limit}`);
+        if (payload.min_price || payload.max_price) parts.push(`价格 ${payload.min_price || "-"}-${payload.max_price || "-"}`);
+        if (payload.choices_count !== undefined) parts.push(`酒店 ${payload.choices_count}`);
+        return parts.length ? parts : ["-"];
+      }
+
+      function resultText(job) {
+        const result = job.result || {};
+        const partial = job.partial || {};
+        const parts = [];
+        if (result.choices_count !== undefined) parts.push(`结果 ${result.choices_count}`);
+        if (partial.choices_count !== undefined && result.choices_count === undefined) parts.push(`已显示 ${partial.choices_count}`);
+        if (result.city_count !== undefined) parts.push(`城市 ${result.city_count}`);
+        if (result.area_count !== undefined) parts.push(`片区 ${result.area_count}`);
+        return parts.join(" / ") || "-";
+      }
+
+      function progressPercent(progress) {
+        const value = Number(progress?.percent || 0);
+        if (!Number.isFinite(value)) return 0;
+        return Math.max(0, Math.min(100, value));
+      }
+
+      function renderKeyValues(items) {
+        return `<div class="kv">${items.map((item) => `<span>${esc(item)}</span>`).join("")}</div>`;
+      }
+
+      function renderActiveJob(job) {
+        const progress = job.progress || {};
+        const percent = progressPercent(progress);
+        const details = [
+          ...payloadText(job.payload || {}),
+          `用户 ${job.client_id || "-"}`,
+          `已用 ${job.age_seconds || 0}s`,
+          resultText(job),
+        ];
+        return `
+          <article class="job">
+            <div class="job-title">
+              <div>
+                <strong>${esc(job.kind || "-")}</strong>
+                <div class="job-id">${esc(String(job.job_id || "").slice(0, 12))}</div>
+              </div>
+              ${badge(job.status)}
+            </div>
+            <div class="progress"><span style="width:${percent}%"></span></div>
+            <div class="job-message">${esc(progress.message || "等待进度更新")}</div>
+            ${renderKeyValues(details)}
+          </article>
+        `;
+      }
+
+      function renderRecentJob(job) {
+        const progress = job.progress || {};
+        return `
+          <tr>
+            <td><div>${esc(job.kind || "-")}</div><div class="mono">${esc(String(job.job_id || "").slice(0, 12))}</div></td>
+            <td>${badge(job.status)}</td>
+            <td>${payloadText(job.payload || {}).map(esc).join("<br>")}</td>
+            <td>${esc(progress.message || "-")}</td>
+            <td>${esc(resultText(job))}</td>
+            <td>${esc(formatAdminDateTime(job.updated_at))}</td>
+          </tr>
+        `;
+      }
+
+      function prewarmTargetCondition(target) {
+        return target.profile_label || {
+          default: "默认条件",
+          quality: "高级+泳池+儿童设施",
+        }[target.profile] || target.profile || "-";
+      }
+
+      function prewarmTargetSource(target) {
+        if (target.status === "cache_hit") return "已有缓存";
+        if (target.status === "live") return "实时预热";
+        if (target.status === "skipped") return "时间窗口跳过";
+        if (target.error) return target.error;
+        return target.cache_source || "-";
+      }
+
+      function renderPrewarmTargets(prewarm) {
+        const targets = Array.isArray(prewarm?.target_results) ? prewarm.target_results : [];
+        if (!targets.length) return "";
+        return `
+          <article class="job full">
+            <div class="job-title">
+              <strong>${esc(prewarm?.run_date || "今日")}预热清单</strong>
+              <span class="muted">已记录 ${esc(targets.length)} 条</span>
+            </div>
+            <div class="prewarm-target-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 68px;">序号</th>
+                    <th style="width: 90px;">城市</th>
+                    <th style="width: 190px;">假期</th>
+                    <th style="width: 180px;">条件</th>
+                    <th style="width: 100px;">状态</th>
+                    <th style="width: 90px;">酒店数</th>
+                    <th style="width: 150px;">来源</th>
+                    <th style="width: 170px;">完成时间</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${targets.map((target) => `
+                    <tr>
+                      <td>${esc(target.index || "-")}/${esc(target.total || prewarm.total || "-")}</td>
+                      <td>${esc(target.city || "-")}</td>
+                      <td><div>${esc(target.holiday_name || "-")}</div><div class="muted">${esc(target.holiday_code || "")}</div></td>
+                      <td>${esc(prewarmTargetCondition(target))}</td>
+                      <td>${badge(target.status || "-")}</td>
+                      <td>${esc(target.choice_count ?? "-")}</td>
+                      <td>${esc(prewarmTargetSource(target))}</td>
+                      <td>${esc(formatAdminDateTime(target.completed_at))}</td>
+                    </tr>
+                  `).join("")}
+                </tbody>
+              </table>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderPrewarm(prewarm) {
+        const events = Array.isArray(prewarm?.events) ? prewarm.events.slice(-5).reverse() : [];
+        prewarmStatus.textContent = prewarm?.status || "-";
+        prewarmBody.innerHTML = `
+          <div class="job-list">
+            <article class="job">
+              <div class="job-title">
+                <strong>${esc(prewarm?.message || "暂无预热任务")}</strong>
+                ${badge(prewarm?.status || "idle")}
+              </div>
+              ${renderKeyValues([
+                `完成 ${prewarm?.completed ?? 0}/${prewarm?.total ?? 0}`,
+                `成功 ${prewarm?.success_count ?? 0}`,
+                `失败 ${prewarm?.error_count ?? 0}`,
+                `跳过 ${prewarm?.skipped_count ?? 0}`,
+                `记录 ${prewarm?.target_result_count ?? (prewarm?.target_results || []).length ?? 0}`,
+              ])}
+            </article>
+            ${renderPrewarmTargets(prewarm)}
+            ${events.map((event) => `
+              <article class="job">
+                <div class="job-message">${esc(event.message || "-")}</div>
+                <div class="kv"><span>${esc(event.time || "-")}</span></div>
+              </article>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      function hotelNameReviewButtons(item) {
+        if (item.status !== "pending") return "";
+        return `
+          <div class="actions">
+            <button class="action-btn approve" type="button" data-review-action="approve" data-review-id="${esc(item.id)}">通过并保存</button>
+            <button class="action-btn reject" type="button" data-review-action="reject" data-review-id="${esc(item.id)}">拒绝</button>
+          </div>
+        `;
+      }
+
+      function hotelAreaReviewButtons(item) {
+        if (item.status !== "pending") return "";
+        return `
+          <div class="actions">
+            <button class="action-btn approve" type="button" data-area-review-action="approve" data-area-review-id="${esc(item.id)}">通过并保存</button>
+            <button class="action-btn reject" type="button" data-area-review-action="reject" data-area-review-id="${esc(item.id)}">拒绝</button>
+          </div>
+        `;
+      }
+
+      function areaMergeReviewButtons(item) {
+        if (item.status !== "pending") return "";
+        return `
+          <div class="actions">
+            <button class="action-btn approve" type="button" data-area-merge-review-action="approve" data-area-merge-review-id="${esc(item.id)}">通过并保存</button>
+            <button class="action-btn reject" type="button" data-area-merge-review-action="reject" data-area-merge-review-id="${esc(item.id)}">拒绝</button>
+          </div>
+        `;
+      }
+
+      function reviewActionCell(buttons, item) {
+        return buttons || `<span class="muted">${esc(formatAdminDateTime(item.reviewed_at))}</span>`;
+      }
+
+      function emptyReviewRow(text) {
+        return `<tr><td colspan="6" class="empty">${esc(text)}</td></tr>`;
+      }
+
+      function reviewRows(reviewState) {
+        const pending = Array.isArray(reviewState?.pending) ? reviewState.pending : [];
+        const recent = Array.isArray(reviewState?.recent) ? reviewState.recent : [];
+        return recent.length ? recent : pending;
+      }
+
+      function reviewCountText(reviewState, rows) {
+        const pending = Array.isArray(reviewState?.pending) ? reviewState.pending : [];
+        if (reviewState?.disabled_reason) return `不可用：${reviewState.disabled_reason}`;
+        return rows.length ? `${pending.length} 条待审核 · 最近 ${rows.length} 条` : `${pending.length} 条待审核`;
+      }
+
+      function updateReviewMoreButton(button, sectionKey, rows) {
+        const shouldShow = rows.length > REVIEW_PREVIEW_LIMIT;
+        button.classList.toggle("hidden", !shouldShow);
+        button.textContent = shouldShow ? `查看全部 ${rows.length}` : "查看全部";
+        button.dataset.reviewMore = sectionKey;
+      }
+
+      function pendingReviewRows(reviewState) {
+        return Array.isArray(reviewState?.pending) ? reviewState.pending : [];
+      }
+
+      function updateBatchReviewButtons(section) {
+        const pendingCount = pendingReviewRows(section.reviewState).length;
+        [section.batchApproveButton, section.batchRejectButton].forEach((button) => {
+          if (!button) return;
+          button.classList.toggle("hidden", pendingCount === 0);
+          button.disabled = false;
+        });
+      }
+
+      function hotelNameReviewHead() {
+        return `
+          <tr>
+            <th style="width: 160px;">酒店</th>
+            <th>当前 / 建议</th>
+            <th style="width: 110px;">城市片区</th>
+            <th style="width: 110px;">状态</th>
+            <th style="width: 145px;">提交时间</th>
+            <th class="action-col" style="width: 132px;">操作</th>
+          </tr>
+        `;
+      }
+
+      function hotelAreaReviewHead() {
+        return `
+          <tr>
+            <th style="width: 160px;">酒店</th>
+            <th>当前片区 / 建议片区</th>
+            <th style="width: 110px;">城市</th>
+            <th style="width: 110px;">状态</th>
+            <th style="width: 145px;">提交时间</th>
+            <th class="action-col" style="width: 132px;">操作</th>
+          </tr>
+        `;
+      }
+
+      function areaMergeReviewHead() {
+        return `
+          <tr>
+            <th style="width: 160px;">合并后片区</th>
+            <th>来源片区 / 酒店</th>
+            <th style="width: 110px;">城市</th>
+            <th style="width: 110px;">状态</th>
+            <th style="width: 145px;">提交时间</th>
+            <th class="action-col" style="width: 132px;">操作</th>
+          </tr>
+        `;
+      }
+
+      function renderHotelNameReviewRow(item) {
+        const buttons = hotelNameReviewButtons(item);
+        return `
+          <tr>
+            <td>
+              <div class="mono">${esc(item.hotel_id || "-")}</div>
+              ${item.detail_url ? `<a href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">Trip.com</a>` : ""}
+            </td>
+            <td>
+              <div class="muted">当前：${esc(item.current_hotel_name_zh || "-")}</div>
+              <strong>${esc(item.suggested_hotel_name_zh || "-")}</strong>
+              ${item.hotel_name_original ? `<div class="muted">原名：${esc(item.hotel_name_original)}</div>` : ""}
+            </td>
+            <td>${esc([item.city_name_zh, item.area_name_zh].filter(Boolean).join(" / ") || "-")}</td>
+            <td>${badge(item.status || "-")}</td>
+            <td><div>${esc(formatAdminDateTime(item.created_at))}</div><div class="muted">${esc((item.client_id || "").slice(0, 12))}</div></td>
+            <td class="review-action-cell">${reviewActionCell(buttons, item)}</td>
+          </tr>
+        `;
+      }
+
+      function renderHotelAreaReviewRow(item) {
+        const buttons = hotelAreaReviewButtons(item);
+        return `
+          <tr>
+            <td>
+              <div class="mono">${esc(item.hotel_id || "-")}</div>
+              <div>${esc(item.hotel_name_zh || item.hotel_name_original || "-")}</div>
+              ${item.detail_url ? `<a href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">Trip.com</a>` : ""}
+            </td>
+            <td>
+              <div class="muted">当前：${esc(item.current_area_name_zh || "-")}</div>
+              <strong>${esc(item.suggested_area_name_zh || "-")}</strong>
+            </td>
+            <td>${esc(item.city_name_zh || "-")}</td>
+            <td>${badge(item.status || "-")}</td>
+            <td><div>${esc(formatAdminDateTime(item.created_at))}</div><div class="muted">${esc((item.client_id || "").slice(0, 12))}</div></td>
+            <td class="review-action-cell">${reviewActionCell(buttons, item)}</td>
+          </tr>
+        `;
+      }
+
+      function renderAreaMergeReviewRow(item) {
+        const buttons = areaMergeReviewButtons(item);
+        const sourceNames = Array.isArray(item.source_area_names) ? item.source_area_names : [];
+        const hotels = Array.isArray(item.hotels) ? item.hotels : [];
+        const hotelNames = hotels.slice(0, 5).map((hotel) => hotel.hotel_name_zh || hotel.hotel_name_original || hotel.hotel_id).filter(Boolean);
+        return `
+          <tr>
+            <td>
+              <strong>${esc(item.suggested_area_name_zh || "-")}</strong>
+              <div class="muted">${esc(item.hotel_count || hotels.length || 0)} 家酒店</div>
+            </td>
+            <td>
+              <div class="muted">来源：${esc(sourceNames.join("、") || "-")}</div>
+              <div>${esc(hotelNames.join("、") || "-")}${hotels.length > hotelNames.length ? ` 等 ${esc(hotels.length)} 家` : ""}</div>
+            </td>
+            <td>${esc(item.city_name_zh || "-")}</td>
+            <td>${badge(item.status || "-")}</td>
+            <td><div>${esc(formatAdminDateTime(item.created_at))}</div><div class="muted">${esc((item.client_id || "").slice(0, 12))}</div></td>
+            <td class="review-action-cell">${reviewActionCell(buttons, item)}</td>
+          </tr>
+        `;
+      }
+
+      function setReviewSection(sectionKey, config) {
+        reviewSections[sectionKey] = config;
+        config.countElement.textContent = reviewCountText(config.reviewState, config.rows);
+        updateReviewMoreButton(config.moreButton, sectionKey, config.rows);
+        updateBatchReviewButtons(config);
+        const previewRows = config.rows.slice(0, REVIEW_PREVIEW_LIMIT);
+        config.bodyElement.innerHTML = previewRows.length
+          ? previewRows.map(config.renderRow).join("")
+          : emptyReviewRow(config.emptyText);
+      }
+
+      function renderHotelNameReviews(reviewState) {
+        setReviewSection("hotelName", {
+          title: "酒店名审核",
+          reviewState,
+          rows: reviewRows(reviewState),
+          bodyElement: hotelNameReviews,
+          countElement: hotelNameReviewCount,
+          moreButton: hotelNameReviewMore,
+          batchApproveButton: hotelNameBatchApprove,
+          batchRejectButton: hotelNameBatchReject,
+          batchUrl: "/api/admin/hotel-name-corrections/batch-review",
+          tableHead: hotelNameReviewHead(),
+          renderRow: renderHotelNameReviewRow,
+          emptyText: "暂无酒店名修改待审核",
+        });
+      }
+
+      function renderHotelAreaReviews(reviewState) {
+        setReviewSection("hotelArea", {
+          title: "片区审核",
+          reviewState,
+          rows: reviewRows(reviewState),
+          bodyElement: hotelAreaReviews,
+          countElement: hotelAreaReviewCount,
+          moreButton: hotelAreaReviewMore,
+          batchApproveButton: hotelAreaBatchApprove,
+          batchRejectButton: hotelAreaBatchReject,
+          batchUrl: "/api/admin/hotel-area-corrections/batch-review",
+          tableHead: hotelAreaReviewHead(),
+          renderRow: renderHotelAreaReviewRow,
+          emptyText: "暂无片区修改待审核",
+        });
+      }
+
+      function renderAreaMergeReviews(reviewState) {
+        setReviewSection("areaMerge", {
+          title: "合并片区审核",
+          reviewState,
+          rows: reviewRows(reviewState),
+          bodyElement: areaMergeReviews,
+          countElement: areaMergeReviewCount,
+          moreButton: areaMergeReviewMore,
+          batchApproveButton: areaMergeBatchApprove,
+          batchRejectButton: areaMergeBatchReject,
+          batchUrl: "/api/admin/area-merge-corrections/batch-review",
+          tableHead: areaMergeReviewHead(),
+          renderRow: renderAreaMergeReviewRow,
+          emptyText: "暂无合并片区待审核",
+        });
+      }
+
+      function renderReviewModal(sectionKey) {
+        const section = reviewSections[sectionKey];
+        if (!section) return;
+        reviewModalTitle.textContent = `${section.title}（${section.rows.length} 条）`;
+        reviewModalBody.innerHTML = `
+          <table>
+            <thead>${section.tableHead}</thead>
+            <tbody>
+              ${section.rows.length ? section.rows.map(section.renderRow).join("") : emptyReviewRow(section.emptyText)}
+            </tbody>
+          </table>
+        `;
+      }
+
+      function openReviewModal(sectionKey) {
+        if (!reviewSections[sectionKey]) return;
+        activeReviewModalSection = sectionKey;
+        renderReviewModal(sectionKey);
+        reviewModal.classList.remove("hidden");
+        document.body.classList.add("modal-open");
+      }
+
+      function closeReviewModal() {
+        activeReviewModalSection = "";
+        reviewModal.classList.add("hidden");
+        document.body.classList.remove("modal-open");
+      }
+
+      function refreshOpenReviewModal() {
+        if (!activeReviewModalSection || reviewModal.classList.contains("hidden")) return;
+        renderReviewModal(activeReviewModalSection);
+      }
+
+      function render(data) {
+        const summary = data.summary || {};
+        const memory = data.memory || {};
+        const process = data.process || {};
+        document.getElementById("metric-active").textContent = summary.active ?? "-";
+        document.getElementById("metric-active-sub").textContent = `排队 ${summary.queued || 0} / 运行 ${summary.running || 0}`;
+        document.getElementById("metric-memory").textContent = mb(memory.rss_mb);
+        document.getElementById("metric-memory-sub").textContent = `峰值 ${mb(memory.peak_rss_mb)}`;
+        document.getElementById("metric-total").textContent = summary.total ?? "-";
+        document.getElementById("metric-total-sub").textContent = `成功 ${summary.succeeded || 0} / 失败 ${summary.failed || 0}`;
+        document.getElementById("metric-pid").textContent = process.pid ?? "-";
+        document.getElementById("metric-process-sub").textContent = `job ${process.job_workers || "-"} / nearby ${process.nearby_city_workers || "-"}`;
+
+        const active = data.jobs?.active || [];
+        const recent = data.jobs?.recent || [];
+        activeCount.textContent = `${active.length} 个任务`;
+        recentCount.textContent = `${recent.length} 条记录`;
+        activeJobs.innerHTML = active.length
+          ? `<div class="job-list">${active.map(renderActiveJob).join("")}</div>`
+          : `<div class="empty">暂无正在运行的任务</div>`;
+        recentJobs.innerHTML = recent.length
+          ? recent.map(renderRecentJob).join("")
+          : `<tr><td colspan="6" class="empty">暂无任务记录</td></tr>`;
+        renderPrewarm(data.prewarm || {});
+        renderHotelNameReviews(data.hotel_name_corrections || {});
+        renderHotelAreaReviews(data.hotel_area_corrections || {});
+        renderAreaMergeReviews(data.area_merge_corrections || {});
+        statusText.textContent = `最后更新 ${data.generated_at || "-"}`;
+        refreshOpenReviewModal();
+      }
+
+      async function reviewHotelNameCorrection(id, action) {
+        const reviewerNote = action === "reject"
+          ? (window.prompt("拒绝原因（可留空）", "") || "")
+          : "";
+        const resp = await fetch(adminApiUrl(`/api/admin/hotel-name-corrections/${encodeURIComponent(id)}/review`), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action, reviewer_note: reviewerNote }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error || data.detail || `操作失败（${resp.status}）`);
+        await loadStatus();
+      }
+
+      async function reviewHotelAreaCorrection(id, action) {
+        const reviewerNote = action === "reject"
+          ? (window.prompt("拒绝原因（可留空）", "") || "")
+          : "";
+        const resp = await fetch(adminApiUrl(`/api/admin/hotel-area-corrections/${encodeURIComponent(id)}/review`), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action, reviewer_note: reviewerNote }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error || data.detail || `操作失败（${resp.status}）`);
+        await loadStatus();
+      }
+
+      async function reviewAreaMergeCorrection(id, action) {
+        const reviewerNote = action === "reject"
+          ? (window.prompt("拒绝原因（可留空）", "") || "")
+          : "";
+        const resp = await fetch(adminApiUrl(`/api/admin/area-merge-corrections/${encodeURIComponent(id)}/review`), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action, reviewer_note: reviewerNote }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error || data.detail || `操作失败（${resp.status}）`);
+        await loadStatus();
+      }
+
+      async function batchReviewSection(sectionKey, action) {
+        const section = reviewSections[sectionKey];
+        if (!section) return;
+        const pending = pendingReviewRows(section.reviewState);
+        if (!pending.length) return;
+        const actionLabel = action === "approve" ? "通过" : "拒绝";
+        if (!window.confirm(`确定要批量${actionLabel}「${section.title}」的 ${pending.length} 条待审核记录吗？`)) return;
+        const reviewerNote = action === "reject"
+          ? (window.prompt("批量拒绝原因（可留空）", "") || "")
+          : "";
+        [section.batchApproveButton, section.batchRejectButton].forEach((button) => {
+          if (button) button.disabled = true;
+        });
+        try {
+          const resp = await fetch(adminApiUrl(section.batchUrl), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action, reviewer_note: reviewerNote }),
+          });
+          const data = await resp.json();
+          if (!resp.ok) throw new Error(data.error || data.detail || `批量操作失败（${resp.status}）`);
+          statusText.textContent = `批量${actionLabel}完成：成功 ${data.reviewed_count || 0} 条，失败 ${data.failed_count || 0} 条`;
+          await loadStatus();
+        } catch (error) {
+          statusText.textContent = error.message || `批量${actionLabel}失败`;
+          [section.batchApproveButton, section.batchRejectButton].forEach((button) => {
+            if (button) button.disabled = false;
+          });
+        }
+      }
+
+      function handleHotelNameReviewButton(button) {
+        if (!button) return false;
+        button.disabled = true;
+        reviewHotelNameCorrection(button.dataset.reviewId, button.dataset.reviewAction).catch((error) => {
+          statusText.textContent = error.message || "酒店名审核操作失败";
+          button.disabled = false;
+        });
+        return true;
+      }
+
+      function handleHotelAreaReviewButton(button) {
+        if (!button) return false;
+        button.disabled = true;
+        reviewHotelAreaCorrection(button.dataset.areaReviewId, button.dataset.areaReviewAction).catch((error) => {
+          statusText.textContent = error.message || "片区审核操作失败";
+          button.disabled = false;
+        });
+        return true;
+      }
+
+      function handleAreaMergeReviewButton(button) {
+        if (!button) return false;
+        button.disabled = true;
+        reviewAreaMergeCorrection(button.dataset.areaMergeReviewId, button.dataset.areaMergeReviewAction).catch((error) => {
+          statusText.textContent = error.message || "合并片区审核操作失败";
+          button.disabled = false;
+        });
+        return true;
+      }
+
+      function handleReviewActionClick(event) {
+        if (handleHotelNameReviewButton(event.target.closest("[data-review-action]"))) return;
+        if (handleHotelAreaReviewButton(event.target.closest("[data-area-review-action]"))) return;
+        handleAreaMergeReviewButton(event.target.closest("[data-area-merge-review-action]"));
+      }
+
+      async function loadStatus() {
+        try {
+          const resp = await fetch(statusUrl(), { cache: "no-store" });
+          const data = await resp.json();
+          if (!resp.ok) throw new Error(data.error || `状态读取失败（${resp.status}）`);
+          render(data);
+        } catch (error) {
+          statusText.textContent = error.message || "状态读取失败";
+        }
+      }
+
+      loadStatus();
+      window.setInterval(loadStatus, 2000);
+      document.querySelectorAll("[data-review-batch-section]").forEach((button) => {
+        button.addEventListener("click", () => {
+          batchReviewSection(button.dataset.reviewBatchSection, button.dataset.reviewBatchAction);
+        });
+      });
+      document.querySelectorAll("[data-review-more]").forEach((button) => {
+        button.addEventListener("click", () => openReviewModal(button.dataset.reviewMore));
+      });
+      reviewModal.addEventListener("click", (event) => {
+        if (event.target.closest("[data-review-modal-close]")) closeReviewModal();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !reviewModal.classList.contains("hidden")) closeReviewModal();
+      });
+      hotelNameReviews.addEventListener("click", handleReviewActionClick);
+      hotelAreaReviews.addEventListener("click", handleReviewActionClick);
+      areaMergeReviews.addEventListener("click", handleReviewActionClick);
+      reviewModalBody.addEventListener("click", handleReviewActionClick);
+    </script>
+  </body>
+</html>
