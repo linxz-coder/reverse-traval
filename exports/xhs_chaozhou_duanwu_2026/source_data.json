@@ -1,0 +1,356 @@
+{
+  "city": "潮州",
+  "generated_at": "2026-05-12T12:24:40",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "4826406",
+        "name": "华怡·金信酒店（潮州古城人民广场店）",
+        "area": "潮州待确认片区",
+        "price": 258,
+        "diff": -2,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "61526157",
+        "name": "韩思·熙湖酒店（潮州古城牌坊街店）",
+        "area": "潮州待确认片区",
+        "price": 388,
+        "diff": -29,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "133327491",
+        "name": "九尚·莲宿温泉私湯民宿",
+        "area": "潮州待确认片区",
+        "price": 667,
+        "diff": -111,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，具备儿童设施，适合亲子短途。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "4826406",
+        "name": "华怡·金信酒店（潮州古城人民广场店）",
+        "area": "潮州待确认片区",
+        "price": 258,
+        "diff": -2,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "61526157",
+        "name": "韩思·熙湖酒店（潮州古城牌坊街店）",
+        "area": "潮州待确认片区",
+        "price": 388,
+        "diff": -29,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "133327491",
+        "name": "九尚·莲宿温泉私湯民宿",
+        "area": "潮州待确认片区",
+        "price": 667,
+        "diff": -111,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，具备儿童设施，适合亲子短途。"
+      }
+    ],
+    "family_no_rise": [],
+    "family_no_rise_all": [],
+    "discount_star": [
+      {
+        "hotel_id": "133327491",
+        "name": "九尚·莲宿温泉私湯民宿",
+        "area": "潮州待确认片区",
+        "price": 667,
+        "diff": -111,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "61526157",
+        "name": "韩思·熙湖酒店（潮州古城牌坊街店）",
+        "area": "潮州待确认片区",
+        "price": 388,
+        "diff": -29,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "4826406",
+        "name": "华怡·金信酒店（潮州古城人民广场店）",
+        "area": "潮州待确认片区",
+        "price": 258,
+        "diff": -2,
+        "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "source_cached_at": "2026-05-11T18:03:18",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "潮州",
+        "note": "潮州，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "4826406",
+      "name": "华怡·金信酒店（潮州古城人民广场店）",
+      "area": "潮州待确认片区",
+      "price": 258,
+      "diff": -2,
+      "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+      "source_cached_at": "2026-05-11T18:03:18",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "潮州",
+      "note": "潮州，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "61526157",
+      "name": "韩思·熙湖酒店（潮州古城牌坊街店）",
+      "area": "潮州待确认片区",
+      "price": 388,
+      "diff": -29,
+      "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+      "source_cached_at": "2026-05-11T18:03:18",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "潮州",
+      "note": "潮州，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "133327491",
+      "name": "九尚·莲宿温泉私湯民宿",
+      "area": "潮州待确认片区",
+      "price": 667,
+      "diff": -111,
+      "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+      "source_cached_at": "2026-05-11T18:03:18",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "潮州",
+      "note": "潮州，具备儿童设施，适合亲子短途。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "133327491",
+      "name": "九尚·莲宿温泉私湯民宿",
+      "area": "潮州待确认片区",
+      "price": 667,
+      "diff": -111,
+      "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+      "source_cached_at": "2026-05-11T18:03:18",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "潮州",
+      "note": "潮州，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "61526157",
+      "name": "韩思·熙湖酒店（潮州古城牌坊街店）",
+      "area": "潮州待确认片区",
+      "price": 388,
+      "diff": -29,
+      "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+      "source_cached_at": "2026-05-11T18:03:18",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "潮州",
+      "note": "潮州，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "4826406",
+      "name": "华怡·金信酒店（潮州古城人民广场店）",
+      "area": "潮州待确认片区",
+      "price": 258,
+      "diff": -2,
+      "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+      "source_cached_at": "2026-05-11T18:03:18",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "潮州",
+      "note": "潮州，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "潮州待确认片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 0,
+      "average_price": 438,
+      "average_diff": -47,
+      "price_range": [
+        258,
+        667
+      ],
+      "hotels": [
+        {
+          "hotel_id": "133327491",
+          "name": "九尚·莲宿温泉私湯民宿",
+          "area": "潮州待确认片区",
+          "price": 667,
+          "diff": -111,
+          "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+          "source_cached_at": "2026-05-11T18:03:18"
+        },
+        {
+          "hotel_id": "61526157",
+          "name": "韩思·熙湖酒店（潮州古城牌坊街店）",
+          "area": "潮州待确认片区",
+          "price": 388,
+          "diff": -29,
+          "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+          "source_cached_at": "2026-05-11T18:03:18"
+        },
+        {
+          "hotel_id": "4826406",
+          "name": "华怡·金信酒店（潮州古城人民广场店）",
+          "area": "潮州待确认片区",
+          "price": 258,
+          "diff": -2,
+          "source_file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+          "source_cached_at": "2026-05-11T18:03:18"
+        }
+      ],
+      "representative_hotels": [
+        "九尚·莲宿温泉私湯民宿",
+        "韩思·熙湖酒店（潮州古城牌坊街店）",
+        "华怡·金信酒店（潮州古城人民广场店）"
+      ],
+      "rank": 1,
+      "summary": "3家高级酒店，3家降价"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 32,
+    "unique_hotel_count": 32,
+    "included_hotel_count": 3,
+    "matching_files": [
+      {
+        "file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "mtime": 1778493798.2110403,
+        "choices": 32,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 32,
+    "unique_hotel_count": 32,
+    "included_hotel_count": 3,
+    "matching_files": [
+      {
+        "file": "63a49a32d693d21e7c311f22c77821aba99a7fc8e62498aec479e39073b884b4.json",
+        "mtime": 1778493798.2110403,
+        "choices": 32,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "潮州",
+    "text": "潮州可重点看广济桥、牌坊街、开元寺、韩文公祠和潮州西湖；古城漫游、非遗美食和韩江夜景适合慢游。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/潮州",
+    "updated_at": ""
+  }
+}

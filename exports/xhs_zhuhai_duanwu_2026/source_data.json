@@ -1,0 +1,1540 @@
+{
+  "city": "珠海",
+  "generated_at": "2026-05-12T12:24:24",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "112997733",
+        "name": "丽柏酒店（珠海高栏港店）",
+        "area": "珠海待确认片区",
+        "price": 263,
+        "diff": -9,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "472406",
+        "name": "珠海2000年大酒店（万象汇情侣中路店）",
+        "area": "珠海待确认片区",
+        "price": 288,
+        "diff": 0,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "77250336",
+        "name": "铂顿国际公寓（珠海拱北口岸富华里店）",
+        "area": "珠海拱北口岸片区",
+        "price": 350,
+        "diff": -13,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "446826",
+        "name": "珠海南油大酒店（拱北口岸情侣南路店）",
+        "area": "珠海拱北口岸片区",
+        "price": 372,
+        "diff": -6,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "2354303",
+        "name": "珠海华发·会展行政酒店（横琴口岸十字门华发商都店）",
+        "area": "珠海横琴长隆片区",
+        "price": 383,
+        "diff": -55,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "134317006",
+        "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+        "area": "珠海待确认片区",
+        "price": 392,
+        "diff": -54,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "521085",
+        "name": "珠海棕泉酒店(拱北口岸珠海站店)",
+        "area": "珠海拱北口岸片区",
+        "price": 394,
+        "diff": -17,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "113018604",
+        "name": "珠海Ruby SUN瑰宝酒店（山姆明珠站店）",
+        "area": "珠海待确认片区",
+        "price": 404,
+        "diff": -5,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "129922675",
+        "name": "珠海香洲华发商都城际酒店",
+        "area": "珠海情侣路香洲片区",
+        "price": 405,
+        "diff": -57,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "435292",
+        "name": "珠海情侣路海滨泳场美居酒店",
+        "area": "珠海情侣路香洲片区",
+        "price": 480,
+        "diff": -9,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "112997733",
+        "name": "丽柏酒店（珠海高栏港店）",
+        "area": "珠海待确认片区",
+        "price": 263,
+        "diff": -9,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "472406",
+        "name": "珠海2000年大酒店（万象汇情侣中路店）",
+        "area": "珠海待确认片区",
+        "price": 288,
+        "diff": 0,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "77250336",
+        "name": "铂顿国际公寓（珠海拱北口岸富华里店）",
+        "area": "珠海拱北口岸片区",
+        "price": 350,
+        "diff": -13,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "446826",
+        "name": "珠海南油大酒店（拱北口岸情侣南路店）",
+        "area": "珠海拱北口岸片区",
+        "price": 372,
+        "diff": -6,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "2354303",
+        "name": "珠海华发·会展行政酒店（横琴口岸十字门华发商都店）",
+        "area": "珠海横琴长隆片区",
+        "price": 383,
+        "diff": -55,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "134317006",
+        "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+        "area": "珠海待确认片区",
+        "price": 392,
+        "diff": -54,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "521085",
+        "name": "珠海棕泉酒店(拱北口岸珠海站店)",
+        "area": "珠海拱北口岸片区",
+        "price": 394,
+        "diff": -17,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "113018604",
+        "name": "珠海Ruby SUN瑰宝酒店（山姆明珠站店）",
+        "area": "珠海待确认片区",
+        "price": 404,
+        "diff": -5,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "129922675",
+        "name": "珠海香洲华发商都城际酒店",
+        "area": "珠海情侣路香洲片区",
+        "price": 405,
+        "diff": -57,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "435292",
+        "name": "珠海情侣路海滨泳场美居酒店",
+        "area": "珠海情侣路香洲片区",
+        "price": 480,
+        "diff": -9,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "70971229",
+        "name": "回酒店(珠海情侣路日月贝店）",
+        "area": "珠海情侣路香洲片区",
+        "price": 491,
+        "diff": -69,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "117020607",
+        "name": "珠海九椽翠湖邸酒店（唐家湾站翠湖高尔夫店）",
+        "area": "珠海唐家湾片区",
+        "price": 518,
+        "diff": 0,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海唐家湾",
+        "note": "珠海唐家湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "91412676",
+        "name": "珠海中海万丽酒店",
+        "area": "珠海待确认片区",
+        "price": 762,
+        "diff": -224,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133581942",
+        "name": "珠海橫琴英迪格酒店",
+        "area": "珠海横琴长隆片区",
+        "price": 848,
+        "diff": -215,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "116552046",
+        "name": "金湾毛林大酒店",
+        "area": "珠海金湾航空新城片区",
+        "price": 930,
+        "diff": -60,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海金湾航空新城",
+        "note": "珠海金湾航空新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1691926",
+        "name": "长隆马戏酒店(珠海长隆度假区景区中心店)",
+        "area": "珠海横琴长隆片区",
+        "price": 965,
+        "diff": -21,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1700306",
+        "name": "珠海长隆企鹅酒店",
+        "area": "珠海横琴长隆片区",
+        "price": 1298,
+        "diff": -5,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "23948588",
+        "name": "珠海瑞吉酒店",
+        "area": "珠海待确认片区",
+        "price": 2000,
+        "diff": -835,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备泳池，适合短途度假。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "446826",
+        "name": "珠海南油大酒店（拱北口岸情侣南路店）",
+        "area": "珠海拱北口岸片区",
+        "price": 372,
+        "diff": -6,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "134317006",
+        "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+        "area": "珠海待确认片区",
+        "price": 392,
+        "diff": -54,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "435292",
+        "name": "珠海情侣路海滨泳场美居酒店",
+        "area": "珠海情侣路香洲片区",
+        "price": 480,
+        "diff": -9,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "117020607",
+        "name": "珠海九椽翠湖邸酒店（唐家湾站翠湖高尔夫店）",
+        "area": "珠海唐家湾片区",
+        "price": 518,
+        "diff": 0,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海唐家湾",
+        "note": "珠海唐家湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "91412676",
+        "name": "珠海中海万丽酒店",
+        "area": "珠海待确认片区",
+        "price": 762,
+        "diff": -224,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133581942",
+        "name": "珠海橫琴英迪格酒店",
+        "area": "珠海横琴长隆片区",
+        "price": 848,
+        "diff": -215,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "116552046",
+        "name": "金湾毛林大酒店",
+        "area": "珠海金湾航空新城片区",
+        "price": 930,
+        "diff": -60,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海金湾航空新城",
+        "note": "珠海金湾航空新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1691926",
+        "name": "长隆马戏酒店(珠海长隆度假区景区中心店)",
+        "area": "珠海横琴长隆片区",
+        "price": 965,
+        "diff": -21,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1700306",
+        "name": "珠海长隆企鹅酒店",
+        "area": "珠海横琴长隆片区",
+        "price": 1298,
+        "diff": -5,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "446826",
+        "name": "珠海南油大酒店（拱北口岸情侣南路店）",
+        "area": "珠海拱北口岸片区",
+        "price": 372,
+        "diff": -6,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "134317006",
+        "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+        "area": "珠海待确认片区",
+        "price": 392,
+        "diff": -54,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "435292",
+        "name": "珠海情侣路海滨泳场美居酒店",
+        "area": "珠海情侣路香洲片区",
+        "price": 480,
+        "diff": -9,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "117020607",
+        "name": "珠海九椽翠湖邸酒店（唐家湾站翠湖高尔夫店）",
+        "area": "珠海唐家湾片区",
+        "price": 518,
+        "diff": 0,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海唐家湾",
+        "note": "珠海唐家湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "91412676",
+        "name": "珠海中海万丽酒店",
+        "area": "珠海待确认片区",
+        "price": 762,
+        "diff": -224,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133581942",
+        "name": "珠海橫琴英迪格酒店",
+        "area": "珠海横琴长隆片区",
+        "price": 848,
+        "diff": -215,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "116552046",
+        "name": "金湾毛林大酒店",
+        "area": "珠海金湾航空新城片区",
+        "price": 930,
+        "diff": -60,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海金湾航空新城",
+        "note": "珠海金湾航空新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1691926",
+        "name": "长隆马戏酒店(珠海长隆度假区景区中心店)",
+        "area": "珠海横琴长隆片区",
+        "price": 965,
+        "diff": -21,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1700306",
+        "name": "珠海长隆企鹅酒店",
+        "area": "珠海横琴长隆片区",
+        "price": 1298,
+        "diff": -5,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "23948588",
+        "name": "珠海瑞吉酒店",
+        "area": "珠海待确认片区",
+        "price": 2000,
+        "diff": -835,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "91412676",
+        "name": "珠海中海万丽酒店",
+        "area": "珠海待确认片区",
+        "price": 762,
+        "diff": -224,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133581942",
+        "name": "珠海橫琴英迪格酒店",
+        "area": "珠海横琴长隆片区",
+        "price": 848,
+        "diff": -215,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "70971229",
+        "name": "回酒店(珠海情侣路日月贝店）",
+        "area": "珠海情侣路香洲片区",
+        "price": 491,
+        "diff": -69,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "116552046",
+        "name": "金湾毛林大酒店",
+        "area": "珠海金湾航空新城片区",
+        "price": 930,
+        "diff": -60,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海金湾航空新城",
+        "note": "珠海金湾航空新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "129922675",
+        "name": "珠海香洲华发商都城际酒店",
+        "area": "珠海情侣路香洲片区",
+        "price": 405,
+        "diff": -57,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海情侣路香洲",
+        "note": "珠海情侣路香洲，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "2354303",
+        "name": "珠海华发·会展行政酒店（横琴口岸十字门华发商都店）",
+        "area": "珠海横琴长隆片区",
+        "price": 383,
+        "diff": -55,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "134317006",
+        "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+        "area": "珠海待确认片区",
+        "price": 392,
+        "diff": -54,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海",
+        "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1691926",
+        "name": "长隆马戏酒店(珠海长隆度假区景区中心店)",
+        "area": "珠海横琴长隆片区",
+        "price": 965,
+        "diff": -21,
+        "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "source_cached_at": "2026-05-11T15:27:17",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海横琴长隆",
+        "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "521085",
+        "name": "珠海棕泉酒店(拱北口岸珠海站店)",
+        "area": "珠海拱北口岸片区",
+        "price": 394,
+        "diff": -17,
+        "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "source_cached_at": "2026-05-08T18:22:08",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "珠海拱北口岸",
+        "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "112997733",
+      "name": "丽柏酒店（珠海高栏港店）",
+      "area": "珠海待确认片区",
+      "price": 263,
+      "diff": -9,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "珠海",
+      "note": "珠海，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "472406",
+      "name": "珠海2000年大酒店（万象汇情侣中路店）",
+      "area": "珠海待确认片区",
+      "price": 288,
+      "diff": 0,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "珠海",
+      "note": "珠海，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "77250336",
+      "name": "铂顿国际公寓（珠海拱北口岸富华里店）",
+      "area": "珠海拱北口岸片区",
+      "price": 350,
+      "diff": -13,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海拱北口岸",
+      "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "446826",
+      "name": "珠海南油大酒店（拱北口岸情侣南路店）",
+      "area": "珠海拱北口岸片区",
+      "price": 372,
+      "diff": -6,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海拱北口岸",
+      "note": "珠海拱北口岸，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "2354303",
+      "name": "珠海华发·会展行政酒店（横琴口岸十字门华发商都店）",
+      "area": "珠海横琴长隆片区",
+      "price": 383,
+      "diff": -55,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "珠海横琴长隆",
+      "note": "珠海横琴长隆，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "134317006",
+      "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+      "area": "珠海待确认片区",
+      "price": 392,
+      "diff": -54,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海",
+      "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "521085",
+      "name": "珠海棕泉酒店(拱北口岸珠海站店)",
+      "area": "珠海拱北口岸片区",
+      "price": 394,
+      "diff": -17,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海拱北口岸",
+      "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "113018604",
+      "name": "珠海Ruby SUN瑰宝酒店（山姆明珠站店）",
+      "area": "珠海待确认片区",
+      "price": 404,
+      "diff": -5,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "珠海",
+      "note": "珠海，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "129922675",
+      "name": "珠海香洲华发商都城际酒店",
+      "area": "珠海情侣路香洲片区",
+      "price": 405,
+      "diff": -57,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "珠海情侣路香洲",
+      "note": "珠海情侣路香洲，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "435292",
+      "name": "珠海情侣路海滨泳场美居酒店",
+      "area": "珠海情侣路香洲片区",
+      "price": 480,
+      "diff": -9,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海情侣路香洲",
+      "note": "珠海情侣路香洲，具备儿童设施和泳池，适合亲子短途。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "23948588",
+      "name": "珠海瑞吉酒店",
+      "area": "珠海待确认片区",
+      "price": 2000,
+      "diff": -835,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海",
+      "note": "珠海，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "91412676",
+      "name": "珠海中海万丽酒店",
+      "area": "珠海待确认片区",
+      "price": 762,
+      "diff": -224,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海",
+      "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "133581942",
+      "name": "珠海橫琴英迪格酒店",
+      "area": "珠海横琴长隆片区",
+      "price": 848,
+      "diff": -215,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海横琴长隆",
+      "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "70971229",
+      "name": "回酒店(珠海情侣路日月贝店）",
+      "area": "珠海情侣路香洲片区",
+      "price": 491,
+      "diff": -69,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海情侣路香洲",
+      "note": "珠海情侣路香洲，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "116552046",
+      "name": "金湾毛林大酒店",
+      "area": "珠海金湾航空新城片区",
+      "price": 930,
+      "diff": -60,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海金湾航空新城",
+      "note": "珠海金湾航空新城，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "129922675",
+      "name": "珠海香洲华发商都城际酒店",
+      "area": "珠海情侣路香洲片区",
+      "price": 405,
+      "diff": -57,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "珠海情侣路香洲",
+      "note": "珠海情侣路香洲，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "2354303",
+      "name": "珠海华发·会展行政酒店（横琴口岸十字门华发商都店）",
+      "area": "珠海横琴长隆片区",
+      "price": 383,
+      "diff": -55,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "珠海横琴长隆",
+      "note": "珠海横琴长隆，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "134317006",
+      "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+      "area": "珠海待确认片区",
+      "price": 392,
+      "diff": -54,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海",
+      "note": "珠海，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "1691926",
+      "name": "长隆马戏酒店(珠海长隆度假区景区中心店)",
+      "area": "珠海横琴长隆片区",
+      "price": 965,
+      "diff": -21,
+      "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+      "source_cached_at": "2026-05-11T15:27:17",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海横琴长隆",
+      "note": "珠海横琴长隆，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "521085",
+      "name": "珠海棕泉酒店(拱北口岸珠海站店)",
+      "area": "珠海拱北口岸片区",
+      "price": 394,
+      "diff": -17,
+      "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+      "source_cached_at": "2026-05-08T18:22:08",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "珠海拱北口岸",
+      "note": "珠海拱北口岸，具备泳池，适合短途度假。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "珠海横琴长隆片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 0,
+      "average_price": 874,
+      "average_diff": -74,
+      "price_range": [
+        383,
+        1298
+      ],
+      "hotels": [
+        {
+          "hotel_id": "133581942",
+          "name": "珠海橫琴英迪格酒店",
+          "area": "珠海横琴长隆片区",
+          "price": 848,
+          "diff": -215,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        },
+        {
+          "hotel_id": "2354303",
+          "name": "珠海华发·会展行政酒店（横琴口岸十字门华发商都店）",
+          "area": "珠海横琴长隆片区",
+          "price": 383,
+          "diff": -55,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "1691926",
+          "name": "长隆马戏酒店(珠海长隆度假区景区中心店)",
+          "area": "珠海横琴长隆片区",
+          "price": 965,
+          "diff": -21,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        },
+        {
+          "hotel_id": "1700306",
+          "name": "珠海长隆企鹅酒店",
+          "area": "珠海横琴长隆片区",
+          "price": 1298,
+          "diff": -5,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        }
+      ],
+      "representative_hotels": [
+        "珠海橫琴英迪格酒店",
+        "珠海华发·会展行政酒店（横琴口岸十字门华发商都店）",
+        "长隆马戏酒店(珠海长隆度假区景区中心店)"
+      ],
+      "rank": 1,
+      "summary": "4家高级酒店，4家降价"
+    },
+    {
+      "area": "珠海情侣路香洲片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 0,
+      "average_price": 459,
+      "average_diff": -45,
+      "price_range": [
+        405,
+        491
+      ],
+      "hotels": [
+        {
+          "hotel_id": "70971229",
+          "name": "回酒店(珠海情侣路日月贝店）",
+          "area": "珠海情侣路香洲片区",
+          "price": 491,
+          "diff": -69,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "129922675",
+          "name": "珠海香洲华发商都城际酒店",
+          "area": "珠海情侣路香洲片区",
+          "price": 405,
+          "diff": -57,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "435292",
+          "name": "珠海情侣路海滨泳场美居酒店",
+          "area": "珠海情侣路香洲片区",
+          "price": 480,
+          "diff": -9,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        }
+      ],
+      "representative_hotels": [
+        "回酒店(珠海情侣路日月贝店）",
+        "珠海香洲华发商都城际酒店",
+        "珠海情侣路海滨泳场美居酒店"
+      ],
+      "rank": 2,
+      "summary": "3家高级酒店，3家降价"
+    },
+    {
+      "area": "珠海拱北口岸片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 0,
+      "average_price": 372,
+      "average_diff": -12,
+      "price_range": [
+        350,
+        394
+      ],
+      "hotels": [
+        {
+          "hotel_id": "521085",
+          "name": "珠海棕泉酒店(拱北口岸珠海站店)",
+          "area": "珠海拱北口岸片区",
+          "price": 394,
+          "diff": -17,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "77250336",
+          "name": "铂顿国际公寓（珠海拱北口岸富华里店）",
+          "area": "珠海拱北口岸片区",
+          "price": 350,
+          "diff": -13,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "446826",
+          "name": "珠海南油大酒店（拱北口岸情侣南路店）",
+          "area": "珠海拱北口岸片区",
+          "price": 372,
+          "diff": -6,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        }
+      ],
+      "representative_hotels": [
+        "珠海棕泉酒店(拱北口岸珠海站店)",
+        "铂顿国际公寓（珠海拱北口岸富华里店）",
+        "珠海南油大酒店（拱北口岸情侣南路店）"
+      ],
+      "rank": 3,
+      "summary": "3家高级酒店，3家降价"
+    },
+    {
+      "area": "珠海金湾航空新城片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 930,
+      "average_diff": -60,
+      "price_range": [
+        930,
+        930
+      ],
+      "hotels": [
+        {
+          "hotel_id": "116552046",
+          "name": "金湾毛林大酒店",
+          "area": "珠海金湾航空新城片区",
+          "price": 930,
+          "diff": -60,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        }
+      ],
+      "representative_hotels": [
+        "金湾毛林大酒店"
+      ],
+      "rank": 4,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "珠海唐家湾片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 518,
+      "average_diff": 0,
+      "price_range": [
+        518,
+        518
+      ],
+      "hotels": [
+        {
+          "hotel_id": "117020607",
+          "name": "珠海九椽翠湖邸酒店（唐家湾站翠湖高尔夫店）",
+          "area": "珠海唐家湾片区",
+          "price": 518,
+          "diff": 0,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        }
+      ],
+      "representative_hotels": [
+        "珠海九椽翠湖邸酒店（唐家湾站翠湖高尔夫店）"
+      ],
+      "rank": 5,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "珠海待确认片区",
+      "hotel_count": 6,
+      "discount_hotel_count": 5,
+      "flat_hotel_count": 1,
+      "average_price": 685,
+      "average_diff": -188,
+      "price_range": [
+        263,
+        2000
+      ],
+      "hotels": [
+        {
+          "hotel_id": "23948588",
+          "name": "珠海瑞吉酒店",
+          "area": "珠海待确认片区",
+          "price": 2000,
+          "diff": -835,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "91412676",
+          "name": "珠海中海万丽酒店",
+          "area": "珠海待确认片区",
+          "price": 762,
+          "diff": -224,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        },
+        {
+          "hotel_id": "134317006",
+          "name": "SKY·半岛假日酒店（珠海情侣中路万象汇店）",
+          "area": "珠海待确认片区",
+          "price": 392,
+          "diff": -54,
+          "source_file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+          "source_cached_at": "2026-05-11T15:27:17"
+        },
+        {
+          "hotel_id": "112997733",
+          "name": "丽柏酒店（珠海高栏港店）",
+          "area": "珠海待确认片区",
+          "price": 263,
+          "diff": -9,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "113018604",
+          "name": "珠海Ruby SUN瑰宝酒店（山姆明珠站店）",
+          "area": "珠海待确认片区",
+          "price": 404,
+          "diff": -5,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        },
+        {
+          "hotel_id": "472406",
+          "name": "珠海2000年大酒店（万象汇情侣中路店）",
+          "area": "珠海待确认片区",
+          "price": 288,
+          "diff": 0,
+          "source_file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+          "source_cached_at": "2026-05-08T18:22:08"
+        }
+      ],
+      "representative_hotels": [
+        "珠海瑞吉酒店",
+        "珠海中海万丽酒店",
+        "SKY·半岛假日酒店（珠海情侣中路万象汇店）"
+      ],
+      "rank": 6,
+      "summary": "6家高级酒店，5家降价，1家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 3,
+    "candidate_count": 97,
+    "unique_hotel_count": 62,
+    "included_hotel_count": 18,
+    "matching_files": [
+      {
+        "file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "mtime": 1778484437.3051853,
+        "choices": 38,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "mtime": 1778235728.3590453,
+        "choices": 66,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "0c929977b01b26f18939c0cc4778e8ec00c7567322f84b2db2fdb99e177c204f.json",
+        "mtime": 1778055978.64663,
+        "choices": 18,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 3,
+    "candidate_count": 97,
+    "unique_hotel_count": 62,
+    "included_hotel_count": 18,
+    "matching_files": [
+      {
+        "file": "b2df49e2f7ccb2a804da2780a47436f4b6ad1e9cd0c18db0f901e3dfe929828b.json",
+        "mtime": 1778484437.3051853,
+        "choices": 38,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "f493db83d7ca3ad247eec2a6a5412ec09cbefd864743f7baa35e23f5f9b6cf4d.json",
+        "mtime": 1778235728.3590453,
+        "choices": 66,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "0c929977b01b26f18939c0cc4778e8ec00c7567322f84b2db2fdb99e177c204f.json",
+        "mtime": 1778055978.64663,
+        "choices": 18,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "珠海",
+    "text": "珠海可重点看长隆海洋王国、情侣路、圆明新园、东澳岛和外伶仃岛；海岛度假、亲子乐园和城市海岸适合连线安排。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/珠海",
+    "updated_at": ""
+  }
+}

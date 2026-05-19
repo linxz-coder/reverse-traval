@@ -1,0 +1,92 @@
+{
+  "city": "湛江",
+  "generated_at": "2026-05-12T12:24:43",
+  "lists": {
+    "star_no_rise": [],
+    "star_no_rise_all": [],
+    "family_no_rise": [],
+    "family_no_rise_all": [],
+    "discount_star": []
+  },
+  "latest_city_rank": [],
+  "latest_discount_rank": [],
+  "area_region_rank": [],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 100,
+    "unique_hotel_count": 100,
+    "included_hotel_count": 0,
+    "matching_files": [
+      {
+        "file": "b7a94469701b7ccd839e989f6ad6118e97425c8495c40b472e355346fe2a71f6.json",
+        "mtime": 1778494787.756477,
+        "choices": 100,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 100,
+    "unique_hotel_count": 100,
+    "included_hotel_count": 0,
+    "matching_files": [
+      {
+        "file": "b7a94469701b7ccd839e989f6ad6118e97425c8495c40b472e355346fe2a71f6.json",
+        "mtime": 1778494787.756477,
+        "choices": 100,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "湛江",
+    "text": "湛江可重点看湖光岩、赤坎老街、金沙湾、硇洲岛和特呈岛；海湾城市、火山湖景和海岛度假适合分片区安排。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/湛江",
+    "updated_at": ""
+  }
+}

@@ -1,0 +1,2910 @@
+{
+  "city": "广州",
+  "created_at_texts": [
+    "2026-05-06T14:52:40+08:00",
+    "2026-05-07T11:52:20+08:00",
+    "2026-05-07T12:15:40+08:00",
+    "2026-05-09T14:50:50+08:00"
+  ],
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "5759046",
+        "name": "广州城市假期酒店(白云国际机场店）",
+        "area": "广州白云片区",
+        "price": 176,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "126904582",
+        "name": "广州领越公馆（广州塔琶洲会展店）",
+        "area": "广州琶洲会展片区",
+        "price": 259,
+        "diff": -7,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州琶洲会展",
+        "note": "广州琶洲会展，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6722235",
+        "name": "穗和瑞斯丽酒店（广州白云国际机场T3客运大楼人和地铁站店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "130894728",
+        "name": "雅格国际大酒店（广州白云国际机场店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "76116683",
+        "name": "枫林国际公寓（广州南沙客运港天后宫店）",
+        "area": "广州南沙片区",
+        "price": 271,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "440041",
+        "name": "广州海力花园酒店（南沙万达广场天后宫店）",
+        "area": "广州南沙片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "134306974",
+        "name": "美豪酒店（广州新塘高铁站店）",
+        "area": "广州增城新塘片区",
+        "price": 304,
+        "diff": -54,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州增城新塘",
+        "note": "广州增城新塘，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "123672287",
+        "name": "宜致酒店（广州珠江新城暨南大学石牌校区店）",
+        "area": "广州天河/珠江新城片区",
+        "price": 308,
+        "diff": -49,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133360561",
+        "name": "广州黄埔同派酒店（宝能演艺中心店）",
+        "area": "广州黄埔片区",
+        "price": 326,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州黄埔",
+        "note": "广州黄埔，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "125437298",
+        "name": "广州上下九步行街永庆坊宜致酒店",
+        "area": "广州荔湾/永庆坊片区",
+        "price": 346,
+        "diff": -14,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州荔湾/永庆坊",
+        "note": "广州荔湾/永庆坊，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "5759046",
+        "name": "广州城市假期酒店(白云国际机场店）",
+        "area": "广州白云片区",
+        "price": 176,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "126904582",
+        "name": "广州领越公馆（广州塔琶洲会展店）",
+        "area": "广州琶洲会展片区",
+        "price": 259,
+        "diff": -7,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州琶洲会展",
+        "note": "广州琶洲会展，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6722235",
+        "name": "穗和瑞斯丽酒店（广州白云国际机场T3客运大楼人和地铁站店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "130894728",
+        "name": "雅格国际大酒店（广州白云国际机场店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "76116683",
+        "name": "枫林国际公寓（广州南沙客运港天后宫店）",
+        "area": "广州南沙片区",
+        "price": 271,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "440041",
+        "name": "广州海力花园酒店（南沙万达广场天后宫店）",
+        "area": "广州南沙片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "134306974",
+        "name": "美豪酒店（广州新塘高铁站店）",
+        "area": "广州增城新塘片区",
+        "price": 304,
+        "diff": -54,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州增城新塘",
+        "note": "广州增城新塘，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "123672287",
+        "name": "宜致酒店（广州珠江新城暨南大学石牌校区店）",
+        "area": "广州天河/珠江新城片区",
+        "price": 308,
+        "diff": -49,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133360561",
+        "name": "广州黄埔同派酒店（宝能演艺中心店）",
+        "area": "广州黄埔片区",
+        "price": 326,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州黄埔",
+        "note": "广州黄埔，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "125437298",
+        "name": "广州上下九步行街永庆坊宜致酒店",
+        "area": "广州荔湾/永庆坊片区",
+        "price": 346,
+        "diff": -14,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州荔湾/永庆坊",
+        "note": "广州荔湾/永庆坊，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "122200313",
+        "name": "广州珠江新城太古汇宜致美居",
+        "area": "广州天河/珠江新城片区",
+        "price": 368,
+        "diff": -68,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "106339867",
+        "name": "丽怡酒店（广州火车站小北地铁站店）",
+        "area": "广州待确认片区",
+        "price": 375,
+        "diff": -5,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "108548872",
+        "name": "广州珠江新城五羊邨地铁站宜致美居",
+        "area": "广州天河/珠江新城片区",
+        "price": 378,
+        "diff": 0,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123757393",
+        "name": "亿柏酒店（琶洲会展中心广州塔店）",
+        "area": "广州琶洲会展片区",
+        "price": 412,
+        "diff": -5,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州琶洲会展",
+        "note": "广州琶洲会展，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "24039934",
+        "name": "One&One国际公寓(广州北京路步行街公园前地铁站店)",
+        "area": "广州越秀/北京路片区",
+        "price": 416,
+        "diff": -34,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "132285915",
+        "name": "十里华庭·红璞",
+        "area": "广州待确认片区",
+        "price": 426,
+        "diff": 0,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "512579",
+        "name": "广州南美大酒店",
+        "area": "广州待确认片区",
+        "price": 431,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "121857631",
+        "name": "全季酒店（琶洲会展中心店）",
+        "area": "广州琶洲会展片区",
+        "price": 432,
+        "diff": -30,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州琶洲会展",
+        "note": "广州琶洲会展，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "131772625",
+        "name": "森悦谷温泉度假酒店",
+        "area": "广州从化温泉片区",
+        "price": 463,
+        "diff": -58,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州从化温泉",
+        "note": "广州从化温泉，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "132658951",
+        "name": "广州国际金融城临江大道美居酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 463,
+        "diff": -48,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "392492",
+        "name": "广州总统大酒店（天河体育中心太古汇店）",
+        "area": "广州天河/珠江新城片区",
+        "price": 469,
+        "diff": -19,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1460650",
+        "name": "广州天河体育中心希尔顿欢朋酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 480,
+        "diff": -62,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "50200387",
+        "name": "广州番禺大道希尔顿欢朋酒店",
+        "area": "广州番禺长隆片区",
+        "price": 488,
+        "diff": -30,
+        "source_file": "7000bbf8db3302243d5074f4088ddaf282677069631bdd06b637573ae9da1e57.json",
+        "source_cached_at": "2026-05-07T13:06:51",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州番禺长隆",
+        "note": "广州番禺长隆，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "78218905",
+        "name": "广州增城凯悦酒店",
+        "area": "广州增城新塘片区",
+        "price": 493,
+        "diff": -10,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州增城新塘",
+        "note": "广州增城新塘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "102306108",
+        "name": "广州天河太古汇喆啡锐品酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 499,
+        "diff": -42,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "419306",
+        "name": "广州碧桂园凤悦凤凰城酒店",
+        "area": "广州待确认片区",
+        "price": 499,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "83644065",
+        "name": "广州珠江新城五羊邨地铁站亚朵酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 500,
+        "diff": -13,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "90697851",
+        "name": "广州天河体育中心美居酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 505,
+        "diff": -31,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "129977293",
+        "name": "格芮酒店（广州番禺长隆野生动物世界店）",
+        "area": "广州番禺长隆片区",
+        "price": 509,
+        "diff": -172,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州番禺长隆",
+        "note": "广州番禺长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133686859",
+        "name": "广州北京路步行街中华广场格芮美居",
+        "area": "广州越秀/北京路片区",
+        "price": 515,
+        "diff": -86,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "126698840",
+        "name": "广州滨江东路广州塔亚朵酒店",
+        "area": "广州琶洲会展片区",
+        "price": 516,
+        "diff": -2,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州琶洲会展",
+        "note": "广州琶洲会展，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "72144913",
+        "name": "广州莲花山雅阁璞邸",
+        "area": "广州待确认片区",
+        "price": 530,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133628325",
+        "name": "广州北京路步行街桔子水晶酒店",
+        "area": "广州越秀/北京路片区",
+        "price": 531,
+        "diff": -39,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "30006545",
+        "name": "广州卓美亞礼庭公寓",
+        "area": "广州待确认片区",
+        "price": 542,
+        "diff": -22,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "439463",
+        "name": "广东亚洲国际大酒店",
+        "area": "广州越秀/北京路片区",
+        "price": 542,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "393096",
+        "name": "广州花都皇冠假日酒店",
+        "area": "广州花都片区",
+        "price": 548,
+        "diff": -161,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州花都",
+        "note": "广州花都，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "397501",
+        "name": "广州白云宾馆",
+        "area": "广州白云片区",
+        "price": 571,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123086781",
+        "name": "广州北京路步行街金立轻居",
+        "area": "广州越秀/北京路片区",
+        "price": 572,
+        "diff": -35,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "107813207",
+        "name": "广州白云国际会议中心越秀福朋喜来登酒店",
+        "area": "广州白云片区",
+        "price": 583,
+        "diff": -43,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "2946017",
+        "name": "广州威珀斯酒店",
+        "area": "广州待确认片区",
+        "price": 583,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "374859",
+        "name": "广州十甫voco酒店",
+        "area": "广州荔湾/永庆坊片区",
+        "price": 595,
+        "diff": -10,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州荔湾/永庆坊",
+        "note": "广州荔湾/永庆坊，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "133577574",
+        "name": "广州天河民族文化村生态度假酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 597,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "346960",
+        "name": "广州东方宾馆",
+        "area": "广州待确认片区",
+        "price": 598,
+        "diff": -8,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "131308113",
+        "name": "希诺臻选X酒店(广州北京路步行街大佛古寺店)",
+        "area": "广州越秀/北京路片区",
+        "price": 608,
+        "diff": -51,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "133458405",
+        "name": "广州增城荔湖木莲庄酒店",
+        "area": "广州增城新塘片区",
+        "price": 638,
+        "diff": -8,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州增城新塘",
+        "note": "广州增城新塘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "104938311",
+        "name": "广州设计之都温德姆酒店",
+        "area": "广州白云片区",
+        "price": 655,
+        "diff": -11,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "346487",
+        "name": "广州万富希尔顿酒店",
+        "area": "广州白云片区",
+        "price": 668,
+        "diff": -5,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "133201669",
+        "name": "广州天河太古汇城际酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 669,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "8784327",
+        "name": "广州珠江新城假日酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 670,
+        "diff": -65,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "396871",
+        "name": "广州越秀宾馆希尔顿格芮精选酒店",
+        "area": "广州越秀/北京路片区",
+        "price": 671,
+        "diff": -82,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "344881",
+        "name": "广州中国大酒店",
+        "area": "广州待确认片区",
+        "price": 671,
+        "diff": -11,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "133835551",
+        "name": "广州塔琶洲会展亚朵S酒店",
+        "area": "广州琶洲会展片区",
+        "price": 671,
+        "diff": -9,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州琶洲会展",
+        "note": "广州琶洲会展，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "11897006",
+        "name": "广州南沙越秀喜来登酒店",
+        "area": "广州南沙片区",
+        "price": 694,
+        "diff": -252,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "108243856",
+        "name": "广州白云国际会议中心越秀万豪酒店",
+        "area": "广州白云片区",
+        "price": 742,
+        "diff": -165,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "434128",
+        "name": "广州南沙大酒店",
+        "area": "广州南沙片区",
+        "price": 744,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "98590389",
+        "name": "广州南沙金茂万豪酒店",
+        "area": "广州南沙片区",
+        "price": 767,
+        "diff": -1,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "429562",
+        "name": "广州香格里拉大酒店",
+        "area": "广州待确认片区",
+        "price": 816,
+        "diff": -34,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "344998",
+        "name": "广州海航威斯汀酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 849,
+        "diff": -16,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "485855",
+        "name": "广州辉盛阁国际公寓（万菱汇店）",
+        "area": "广州天河/珠江新城片区",
+        "price": 954,
+        "diff": -8,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "437873",
+        "name": "广州W酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 1313,
+        "diff": -114,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备泳池，适合短途度假。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "6722235",
+        "name": "穗和瑞斯丽酒店（广州白云国际机场T3客运大楼人和地铁站店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "130894728",
+        "name": "雅格国际大酒店（广州白云国际机场店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "76116683",
+        "name": "枫林国际公寓（广州南沙客运港天后宫店）",
+        "area": "广州南沙片区",
+        "price": 271,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "440041",
+        "name": "广州海力花园酒店（南沙万达广场天后宫店）",
+        "area": "广州南沙片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123672287",
+        "name": "宜致酒店（广州珠江新城暨南大学石牌校区店）",
+        "area": "广州天河/珠江新城片区",
+        "price": 308,
+        "diff": -49,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "125437298",
+        "name": "广州上下九步行街永庆坊宜致酒店",
+        "area": "广州荔湾/永庆坊片区",
+        "price": 346,
+        "diff": -14,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州荔湾/永庆坊",
+        "note": "广州荔湾/永庆坊，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "108548872",
+        "name": "广州珠江新城五羊邨地铁站宜致美居",
+        "area": "广州天河/珠江新城片区",
+        "price": 378,
+        "diff": 0,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "132285915",
+        "name": "十里华庭·红璞",
+        "area": "广州待确认片区",
+        "price": 426,
+        "diff": 0,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "512579",
+        "name": "广州南美大酒店",
+        "area": "广州待确认片区",
+        "price": 431,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "131772625",
+        "name": "森悦谷温泉度假酒店",
+        "area": "广州从化温泉片区",
+        "price": 463,
+        "diff": -58,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州从化温泉",
+        "note": "广州从化温泉，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "6722235",
+        "name": "穗和瑞斯丽酒店（广州白云国际机场T3客运大楼人和地铁站店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "130894728",
+        "name": "雅格国际大酒店（广州白云国际机场店）",
+        "area": "广州白云片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "76116683",
+        "name": "枫林国际公寓（广州南沙客运港天后宫店）",
+        "area": "广州南沙片区",
+        "price": 271,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "440041",
+        "name": "广州海力花园酒店（南沙万达广场天后宫店）",
+        "area": "广州南沙片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123672287",
+        "name": "宜致酒店（广州珠江新城暨南大学石牌校区店）",
+        "area": "广州天河/珠江新城片区",
+        "price": 308,
+        "diff": -49,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "125437298",
+        "name": "广州上下九步行街永庆坊宜致酒店",
+        "area": "广州荔湾/永庆坊片区",
+        "price": 346,
+        "diff": -14,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州荔湾/永庆坊",
+        "note": "广州荔湾/永庆坊，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "108548872",
+        "name": "广州珠江新城五羊邨地铁站宜致美居",
+        "area": "广州天河/珠江新城片区",
+        "price": 378,
+        "diff": 0,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "132285915",
+        "name": "十里华庭·红璞",
+        "area": "广州待确认片区",
+        "price": 426,
+        "diff": 0,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "512579",
+        "name": "广州南美大酒店",
+        "area": "广州待确认片区",
+        "price": 431,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "131772625",
+        "name": "森悦谷温泉度假酒店",
+        "area": "广州从化温泉片区",
+        "price": 463,
+        "diff": -58,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州从化温泉",
+        "note": "广州从化温泉，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "78218905",
+        "name": "广州增城凯悦酒店",
+        "area": "广州增城新塘片区",
+        "price": 493,
+        "diff": -10,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州增城新塘",
+        "note": "广州增城新塘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "419306",
+        "name": "广州碧桂园凤悦凤凰城酒店",
+        "area": "广州待确认片区",
+        "price": 499,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "129977293",
+        "name": "格芮酒店（广州番禺长隆野生动物世界店）",
+        "area": "广州番禺长隆片区",
+        "price": 509,
+        "diff": -172,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州番禺长隆",
+        "note": "广州番禺长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133686859",
+        "name": "广州北京路步行街中华广场格芮美居",
+        "area": "广州越秀/北京路片区",
+        "price": 515,
+        "diff": -86,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "72144913",
+        "name": "广州莲花山雅阁璞邸",
+        "area": "广州待确认片区",
+        "price": 530,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "30006545",
+        "name": "广州卓美亞礼庭公寓",
+        "area": "广州待确认片区",
+        "price": 542,
+        "diff": -22,
+        "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "source_cached_at": "2026-05-07T11:52:20",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州",
+        "note": "广州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "439463",
+        "name": "广东亚洲国际大酒店",
+        "area": "广州越秀/北京路片区",
+        "price": 542,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "393096",
+        "name": "广州花都皇冠假日酒店",
+        "area": "广州花都片区",
+        "price": 548,
+        "diff": -161,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州花都",
+        "note": "广州花都，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "397501",
+        "name": "广州白云宾馆",
+        "area": "广州白云片区",
+        "price": 571,
+        "diff": 0,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133577574",
+        "name": "广州天河民族文化村生态度假酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 597,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133458405",
+        "name": "广州增城荔湖木莲庄酒店",
+        "area": "广州增城新塘片区",
+        "price": 638,
+        "diff": -8,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州增城新塘",
+        "note": "广州增城新塘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "104938311",
+        "name": "广州设计之都温德姆酒店",
+        "area": "广州白云片区",
+        "price": 655,
+        "diff": -11,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "396871",
+        "name": "广州越秀宾馆希尔顿格芮精选酒店",
+        "area": "广州越秀/北京路片区",
+        "price": 671,
+        "diff": -82,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "11897006",
+        "name": "广州南沙越秀喜来登酒店",
+        "area": "广州南沙片区",
+        "price": 694,
+        "diff": -252,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "108243856",
+        "name": "广州白云国际会议中心越秀万豪酒店",
+        "area": "广州白云片区",
+        "price": 742,
+        "diff": -165,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "434128",
+        "name": "广州南沙大酒店",
+        "area": "广州南沙片区",
+        "price": 744,
+        "diff": 0,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "98590389",
+        "name": "广州南沙金茂万豪酒店",
+        "area": "广州南沙片区",
+        "price": 767,
+        "diff": -1,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "344998",
+        "name": "广州海航威斯汀酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 849,
+        "diff": -16,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "11897006",
+        "name": "广州南沙越秀喜来登酒店",
+        "area": "广州南沙片区",
+        "price": 694,
+        "diff": -252,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州南沙",
+        "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "129977293",
+        "name": "格芮酒店（广州番禺长隆野生动物世界店）",
+        "area": "广州番禺长隆片区",
+        "price": 509,
+        "diff": -172,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州番禺长隆",
+        "note": "广州番禺长隆，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "108243856",
+        "name": "广州白云国际会议中心越秀万豪酒店",
+        "area": "广州白云片区",
+        "price": 742,
+        "diff": -165,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州白云",
+        "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "393096",
+        "name": "广州花都皇冠假日酒店",
+        "area": "广州花都片区",
+        "price": 548,
+        "diff": -161,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州花都",
+        "note": "广州花都，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437873",
+        "name": "广州W酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 1313,
+        "diff": -114,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "133686859",
+        "name": "广州北京路步行街中华广场格芮美居",
+        "area": "广州越秀/北京路片区",
+        "price": 515,
+        "diff": -86,
+        "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "source_cached_at": "2026-05-09T14:50:50",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "396871",
+        "name": "广州越秀宾馆希尔顿格芮精选酒店",
+        "area": "广州越秀/北京路片区",
+        "price": 671,
+        "diff": -82,
+        "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "source_cached_at": "2026-05-06T14:52:40",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "广州越秀/北京路",
+        "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "122200313",
+        "name": "广州珠江新城太古汇宜致美居",
+        "area": "广州天河/珠江新城片区",
+        "price": 368,
+        "diff": -68,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "8784327",
+        "name": "广州珠江新城假日酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 670,
+        "diff": -65,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1460650",
+        "name": "广州天河体育中心希尔顿欢朋酒店",
+        "area": "广州天河/珠江新城片区",
+        "price": 480,
+        "diff": -62,
+        "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "source_cached_at": "2026-05-09T14:42:11",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "广州天河/珠江新城",
+        "note": "广州天河/珠江新城，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "5759046",
+      "name": "广州城市假期酒店(白云国际机场店）",
+      "area": "广州白云片区",
+      "price": 176,
+      "diff": 0,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "广州白云",
+      "note": "广州白云，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "126904582",
+      "name": "广州领越公馆（广州塔琶洲会展店）",
+      "area": "广州琶洲会展片区",
+      "price": 259,
+      "diff": -7,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "广州琶洲会展",
+      "note": "广州琶洲会展，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "6722235",
+      "name": "穗和瑞斯丽酒店（广州白云国际机场T3客运大楼人和地铁站店）",
+      "area": "广州白云片区",
+      "price": 259,
+      "diff": 0,
+      "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+      "source_cached_at": "2026-05-07T11:52:20",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州白云",
+      "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "130894728",
+      "name": "雅格国际大酒店（广州白云国际机场店）",
+      "area": "广州白云片区",
+      "price": 259,
+      "diff": 0,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州白云",
+      "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "76116683",
+      "name": "枫林国际公寓（广州南沙客运港天后宫店）",
+      "area": "广州南沙片区",
+      "price": 271,
+      "diff": 0,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州南沙",
+      "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "440041",
+      "name": "广州海力花园酒店（南沙万达广场天后宫店）",
+      "area": "广州南沙片区",
+      "price": 298,
+      "diff": 0,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州南沙",
+      "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "134306974",
+      "name": "美豪酒店（广州新塘高铁站店）",
+      "area": "广州增城新塘片区",
+      "price": 304,
+      "diff": -54,
+      "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+      "source_cached_at": "2026-05-07T11:52:20",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州增城新塘",
+      "note": "广州增城新塘，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "123672287",
+      "name": "宜致酒店（广州珠江新城暨南大学石牌校区店）",
+      "area": "广州天河/珠江新城片区",
+      "price": 308,
+      "diff": -49,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州天河/珠江新城",
+      "note": "广州天河/珠江新城，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "133360561",
+      "name": "广州黄埔同派酒店（宝能演艺中心店）",
+      "area": "广州黄埔片区",
+      "price": 326,
+      "diff": 0,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "广州黄埔",
+      "note": "广州黄埔，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "125437298",
+      "name": "广州上下九步行街永庆坊宜致酒店",
+      "area": "广州荔湾/永庆坊片区",
+      "price": 346,
+      "diff": -14,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州荔湾/永庆坊",
+      "note": "广州荔湾/永庆坊，具备儿童设施和泳池，适合亲子短途。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "11897006",
+      "name": "广州南沙越秀喜来登酒店",
+      "area": "广州南沙片区",
+      "price": 694,
+      "diff": -252,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州南沙",
+      "note": "广州南沙，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "129977293",
+      "name": "格芮酒店（广州番禺长隆野生动物世界店）",
+      "area": "广州番禺长隆片区",
+      "price": 509,
+      "diff": -172,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州番禺长隆",
+      "note": "广州番禺长隆，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "108243856",
+      "name": "广州白云国际会议中心越秀万豪酒店",
+      "area": "广州白云片区",
+      "price": 742,
+      "diff": -165,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州白云",
+      "note": "广州白云，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "393096",
+      "name": "广州花都皇冠假日酒店",
+      "area": "广州花都片区",
+      "price": 548,
+      "diff": -161,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州花都",
+      "note": "广州花都，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "437873",
+      "name": "广州W酒店",
+      "area": "广州天河/珠江新城片区",
+      "price": 1313,
+      "diff": -114,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州天河/珠江新城",
+      "note": "广州天河/珠江新城，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "133686859",
+      "name": "广州北京路步行街中华广场格芮美居",
+      "area": "广州越秀/北京路片区",
+      "price": 515,
+      "diff": -86,
+      "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+      "source_cached_at": "2026-05-09T14:50:50",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州越秀/北京路",
+      "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "396871",
+      "name": "广州越秀宾馆希尔顿格芮精选酒店",
+      "area": "广州越秀/北京路片区",
+      "price": 671,
+      "diff": -82,
+      "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+      "source_cached_at": "2026-05-06T14:52:40",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "广州越秀/北京路",
+      "note": "广州越秀/北京路，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "122200313",
+      "name": "广州珠江新城太古汇宜致美居",
+      "area": "广州天河/珠江新城片区",
+      "price": 368,
+      "diff": -68,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "广州天河/珠江新城",
+      "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "8784327",
+      "name": "广州珠江新城假日酒店",
+      "area": "广州天河/珠江新城片区",
+      "price": 670,
+      "diff": -65,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "广州天河/珠江新城",
+      "note": "广州天河/珠江新城，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "1460650",
+      "name": "广州天河体育中心希尔顿欢朋酒店",
+      "area": "广州天河/珠江新城片区",
+      "price": 480,
+      "diff": -62,
+      "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+      "source_cached_at": "2026-05-09T14:42:11",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "广州天河/珠江新城",
+      "note": "广州天河/珠江新城，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "广州天河/珠江新城片区",
+      "hotel_count": 13,
+      "discount_hotel_count": 8,
+      "flat_hotel_count": 5,
+      "average_price": 617,
+      "average_diff": -24,
+      "price_range": [
+        308,
+        1313
+      ],
+      "hotels": [
+        {
+          "hotel_id": "437873",
+          "name": "广州W酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 1313,
+          "diff": -100,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "123672287",
+          "name": "宜致酒店（广州珠江新城暨南大学石牌校区店）",
+          "area": "广州天河/珠江新城片区",
+          "price": 308,
+          "diff": -49,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "8784327",
+          "name": "广州珠江新城假日酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 671,
+          "diff": -49,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "132658951",
+          "name": "广州国际金融城临江大道美居酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 463,
+          "diff": -48,
+          "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+          "source_cached_at": "2026-05-09T14:42:11"
+        },
+        {
+          "hotel_id": "102306108",
+          "name": "广州天河太古汇喆啡锐品酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 499,
+          "diff": -30,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "122200313",
+          "name": "广州珠江新城太古汇宜致美居",
+          "area": "广州天河/珠江新城片区",
+          "price": 375,
+          "diff": -16,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "392492",
+          "name": "广州总统大酒店（天河体育中心太古汇店）",
+          "area": "广州天河/珠江新城片区",
+          "price": 472,
+          "diff": -8,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "485855",
+          "name": "广州辉盛阁国际公寓（万菱汇店）",
+          "area": "广州天河/珠江新城片区",
+          "price": 954,
+          "diff": -8,
+          "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+          "source_cached_at": "2026-05-09T14:50:50"
+        },
+        {
+          "hotel_id": "108548872",
+          "name": "广州珠江新城五羊邨地铁站宜致美居",
+          "area": "广州天河/珠江新城片区",
+          "price": 378,
+          "diff": 0,
+          "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+          "source_cached_at": "2026-05-09T14:50:50"
+        },
+        {
+          "hotel_id": "1460650",
+          "name": "广州天河体育中心希尔顿欢朋酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 470,
+          "diff": 0,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "133577574",
+          "name": "广州天河民族文化村生态度假酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 597,
+          "diff": 0,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "133201669",
+          "name": "广州天河太古汇城际酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 669,
+          "diff": 0,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "344998",
+          "name": "广州海航威斯汀酒店",
+          "area": "广州天河/珠江新城片区",
+          "price": 849,
+          "diff": 0,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        }
+      ],
+      "representative_hotels": [
+        "广州W酒店",
+        "宜致酒店（广州珠江新城暨南大学石牌校区店）",
+        "广州珠江新城假日酒店"
+      ],
+      "rank": 1,
+      "summary": "13家高级酒店，8家降价，5家持平"
+    },
+    {
+      "area": "广州白云片区",
+      "hotel_count": 7,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 4,
+      "average_price": 464,
+      "average_diff": -32,
+      "price_range": [
+        179,
+        742
+      ],
+      "hotels": [
+        {
+          "hotel_id": "108243856",
+          "name": "广州白云国际会议中心越秀万豪酒店",
+          "area": "广州白云片区",
+          "price": 742,
+          "diff": -191,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "107813207",
+          "name": "广州白云国际会议中心越秀福朋喜来登酒店",
+          "area": "广州白云片区",
+          "price": 583,
+          "diff": -19,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "104938311",
+          "name": "广州设计之都温德姆酒店",
+          "area": "广州白云片区",
+          "price": 655,
+          "diff": -11,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "5759046",
+          "name": "广州城市假期酒店(白云国际机场店）",
+          "area": "广州白云片区",
+          "price": 179,
+          "diff": 0,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "6722235",
+          "name": "穗和瑞斯丽酒店（广州白云国际机场T3客运大楼人和地铁站店）",
+          "area": "广州白云片区",
+          "price": 259,
+          "diff": 0,
+          "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+          "source_cached_at": "2026-05-07T11:52:20"
+        },
+        {
+          "hotel_id": "130894728",
+          "name": "雅格国际大酒店（广州白云国际机场店）",
+          "area": "广州白云片区",
+          "price": 259,
+          "diff": 0,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "397501",
+          "name": "广州白云宾馆",
+          "area": "广州白云片区",
+          "price": 571,
+          "diff": 0,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        }
+      ],
+      "representative_hotels": [
+        "广州白云国际会议中心越秀万豪酒店",
+        "广州白云国际会议中心越秀福朋喜来登酒店",
+        "广州设计之都温德姆酒店"
+      ],
+      "rank": 2,
+      "summary": "7家高级酒店，3家降价，4家持平"
+    },
+    {
+      "area": "广州南沙片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 3,
+      "average_price": 502,
+      "average_diff": -63,
+      "price_range": [
+        271,
+        744
+      ],
+      "hotels": [
+        {
+          "hotel_id": "11897006",
+          "name": "广州南沙越秀喜来登酒店",
+          "area": "广州南沙片区",
+          "price": 694,
+          "diff": -252,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "76116683",
+          "name": "枫林国际公寓（广州南沙客运港天后宫店）",
+          "area": "广州南沙片区",
+          "price": 271,
+          "diff": 0,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "440041",
+          "name": "广州海力花园酒店（南沙万达广场天后宫店）",
+          "area": "广州南沙片区",
+          "price": 298,
+          "diff": 0,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "434128",
+          "name": "广州南沙大酒店",
+          "area": "广州南沙片区",
+          "price": 744,
+          "diff": 0,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        }
+      ],
+      "representative_hotels": [
+        "广州南沙越秀喜来登酒店",
+        "枫林国际公寓（广州南沙客运港天后宫店）",
+        "广州海力花园酒店（南沙万达广场天后宫店）"
+      ],
+      "rank": 3,
+      "summary": "4家高级酒店，1家降价，3家持平"
+    },
+    {
+      "area": "广州越秀/北京路片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 1,
+      "average_price": 582,
+      "average_diff": -45,
+      "price_range": [
+        515,
+        671
+      ],
+      "hotels": [
+        {
+          "hotel_id": "133686859",
+          "name": "广州北京路步行街中华广场格芮美居",
+          "area": "广州越秀/北京路片区",
+          "price": 515,
+          "diff": -86,
+          "source_file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+          "source_cached_at": "2026-05-09T14:50:50"
+        },
+        {
+          "hotel_id": "396871",
+          "name": "广州越秀宾馆希尔顿格芮精选酒店",
+          "area": "广州越秀/北京路片区",
+          "price": 671,
+          "diff": -82,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "346960",
+          "name": "广州东方宾馆",
+          "area": "广州越秀/北京路片区",
+          "price": 598,
+          "diff": -13,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "439463",
+          "name": "广东亚洲国际大酒店",
+          "area": "广州越秀/北京路片区",
+          "price": 542,
+          "diff": 0,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        }
+      ],
+      "representative_hotels": [
+        "广州北京路步行街中华广场格芮美居",
+        "广州越秀宾馆希尔顿格芮精选酒店",
+        "广州东方宾馆"
+      ],
+      "rank": 4,
+      "summary": "4家高级酒店，3家降价，1家持平"
+    },
+    {
+      "area": "广州琶洲会展片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 0,
+      "average_price": 583,
+      "average_diff": -16,
+      "price_range": [
+        412,
+        816
+      ],
+      "hotels": [
+        {
+          "hotel_id": "121857631",
+          "name": "全季酒店（琶洲会展中心店）",
+          "area": "广州琶洲会展片区",
+          "price": 432,
+          "diff": -30,
+          "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+          "source_cached_at": "2026-05-09T14:42:11"
+        },
+        {
+          "hotel_id": "429562",
+          "name": "广州香格里拉大酒店",
+          "area": "广州琶洲会展片区",
+          "price": 816,
+          "diff": -22,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "133835551",
+          "name": "广州塔琶洲会展亚朵S酒店",
+          "area": "广州琶洲会展片区",
+          "price": 671,
+          "diff": -9,
+          "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+          "source_cached_at": "2026-05-09T14:42:11"
+        },
+        {
+          "hotel_id": "123757393",
+          "name": "亿柏酒店（琶洲会展中心广州塔店）",
+          "area": "广州琶洲会展片区",
+          "price": 412,
+          "diff": -5,
+          "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+          "source_cached_at": "2026-05-07T11:52:20"
+        }
+      ],
+      "representative_hotels": [
+        "全季酒店（琶洲会展中心店）",
+        "广州香格里拉大酒店",
+        "广州塔琶洲会展亚朵S酒店"
+      ],
+      "rank": 5,
+      "summary": "4家高级酒店，4家降价"
+    },
+    {
+      "area": "广州番禺长隆片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 0,
+      "average_price": 491,
+      "average_diff": -60,
+      "price_range": [
+        475,
+        509
+      ],
+      "hotels": [
+        {
+          "hotel_id": "129977293",
+          "name": "格芮酒店（广州番禺长隆野生动物世界店）",
+          "area": "广州番禺长隆片区",
+          "price": 509,
+          "diff": -172,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "101185598",
+          "name": "广州南站丽芮酒店",
+          "area": "广州番禺长隆片区",
+          "price": 475,
+          "diff": -5,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        },
+        {
+          "hotel_id": "50200387",
+          "name": "广州番禺大道希尔顿欢朋酒店",
+          "area": "广州番禺长隆片区",
+          "price": 488,
+          "diff": -3,
+          "source_file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+          "source_cached_at": "2026-05-13T11:45:46"
+        }
+      ],
+      "representative_hotels": [
+        "格芮酒店（广州番禺长隆野生动物世界店）",
+        "广州南站丽芮酒店",
+        "广州番禺大道希尔顿欢朋酒店"
+      ],
+      "rank": 6,
+      "summary": "3家高级酒店，3家降价"
+    },
+    {
+      "area": "广州增城新塘片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 0,
+      "average_price": 478,
+      "average_diff": -24,
+      "price_range": [
+        304,
+        638
+      ],
+      "hotels": [
+        {
+          "hotel_id": "134306974",
+          "name": "美豪酒店（广州新塘高铁站店）",
+          "area": "广州增城新塘片区",
+          "price": 304,
+          "diff": -54,
+          "source_file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+          "source_cached_at": "2026-05-07T11:52:20"
+        },
+        {
+          "hotel_id": "78218905",
+          "name": "广州增城凯悦酒店",
+          "area": "广州增城新塘片区",
+          "price": 493,
+          "diff": -10,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        },
+        {
+          "hotel_id": "133458405",
+          "name": "广州增城荔湖木莲庄酒店",
+          "area": "广州增城新塘片区",
+          "price": 638,
+          "diff": -8,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        }
+      ],
+      "representative_hotels": [
+        "美豪酒店（广州新塘高铁站店）",
+        "广州增城凯悦酒店",
+        "广州增城荔湖木莲庄酒店"
+      ],
+      "rank": 7,
+      "summary": "3家高级酒店，3家降价"
+    },
+    {
+      "area": "广州花都片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 548,
+      "average_diff": -161,
+      "price_range": [
+        548,
+        548
+      ],
+      "hotels": [
+        {
+          "hotel_id": "393096",
+          "name": "广州花都皇冠假日酒店",
+          "area": "广州花都片区",
+          "price": 548,
+          "diff": -161,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        }
+      ],
+      "representative_hotels": [
+        "广州花都皇冠假日酒店"
+      ],
+      "rank": 8,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "广州从化温泉片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 463,
+      "average_diff": -58,
+      "price_range": [
+        463,
+        463
+      ],
+      "hotels": [
+        {
+          "hotel_id": "131772625",
+          "name": "森悦谷温泉度假酒店",
+          "area": "广州从化温泉片区",
+          "price": 463,
+          "diff": -58,
+          "source_file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+          "source_cached_at": "2026-05-06T14:52:40"
+        }
+      ],
+      "representative_hotels": [
+        "森悦谷温泉度假酒店"
+      ],
+      "rank": 9,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "广州荔湾/永庆坊片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 346,
+      "average_diff": -14,
+      "price_range": [
+        346,
+        346
+      ],
+      "hotels": [
+        {
+          "hotel_id": "125437298",
+          "name": "广州上下九步行街永庆坊宜致酒店",
+          "area": "广州荔湾/永庆坊片区",
+          "price": 346,
+          "diff": -14,
+          "source_file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+          "source_cached_at": "2026-05-09T14:42:11"
+        }
+      ],
+      "representative_hotels": [
+        "广州上下九步行街永庆坊宜致酒店"
+      ],
+      "rank": 10,
+      "summary": "1家高级酒店，1家降价"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 7,
+    "candidate_count": 204,
+    "unique_hotel_count": 90,
+    "included_hotel_count": 60,
+    "matching_files": [
+      {
+        "file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "mtime": 1778309450.4782014,
+        "choices": 4,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "mtime": 1778308931.75987,
+        "choices": 127,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "d3870662555da652565a02325fc2a57938bebf76f5a6923530eab2abab071577.json",
+        "mtime": 1778222720.09797,
+        "choices": 95,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "7000bbf8db3302243d5074f4088ddaf282677069631bdd06b637573ae9da1e57.json",
+        "mtime": 1778130411.0557747,
+        "choices": 94,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "no",
+            "label": "否",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "no",
+            "label": "否",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "21f9d60e2ed014dd9d99227f4bc5392af026803f6aae3a2bf34a527be33783fa.json",
+        "mtime": 1778127340.0412352,
+        "choices": 5,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "mtime": 1778125940.8296306,
+        "choices": 9,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "mtime": 1778050360.0873115,
+        "choices": 31,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 8,
+    "candidate_count": 250,
+    "unique_hotel_count": 91,
+    "included_hotel_count": 50,
+    "matching_files": [
+      {
+        "file": "37216ffc10327d1c68ecd1b41a95d16d316f4bb40f135410cb1f4864b9cc9f98.json",
+        "mtime": 1778643946.366789,
+        "choices": 89,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "7f14a4ff0c3443e95d880851980166be0c65b39e3f296e656c1b44f3f9d45b89.json",
+        "mtime": 1778309450.4782014,
+        "choices": 4,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "b3bc72eb036c30b448416edaab1b26e0816ff67539d215d1011f96823e349404.json",
+        "mtime": 1778308931.75987,
+        "choices": 127,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "d3870662555da652565a02325fc2a57938bebf76f5a6923530eab2abab071577.json",
+        "mtime": 1778222720.09797,
+        "choices": 95,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "7000bbf8db3302243d5074f4088ddaf282677069631bdd06b637573ae9da1e57.json",
+        "mtime": 1778130411.0557747,
+        "choices": 94,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "no",
+            "label": "否",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "no",
+            "label": "否",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "21f9d60e2ed014dd9d99227f4bc5392af026803f6aae3a2bf34a527be33783fa.json",
+        "mtime": 1778127340.0412352,
+        "choices": 5,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "eceb033fcf80d443718f4381b1a6d9988b4c44a26c6d6a4b72af283c054ea5a4.json",
+        "mtime": 1778125940.8296306,
+        "choices": 9,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "16ef4e750d0e7e043b9233b963ce0c3e6d468c726f44838e195bbf17dba1e966.json",
+        "mtime": 1778050360.0873115,
+        "choices": 31,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "广州",
+    "text": "广州主要看长隆、白云山、广州塔、北京路、中山纪念堂、南越王博物馆、越秀公园、陈家祠；老城文化、珠江夜景和亲子度假可分片区安排。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/广州市",
+    "updated_at": "2026-05-11T16:30:00"
+  },
+  "generated_at": "2026-05-12T12:24:20"
+}

@@ -1,0 +1,3360 @@
+{
+  "star_no_rise": [
+    {
+      "hotel_id": "49232307",
+      "name": "格兰云天阅酒店（深圳国际会展中心店）",
+      "price": 264,
+      "diff": -72,
+      "area": "国际会展中心",
+      "note": "靠近深圳国际会展中心，适合会展、海上田园和宝安西部短住。"
+    },
+    {
+      "hotel_id": "531520",
+      "name": "深圳舜和国际酒店（宝安坪洲地铁站店）",
+      "price": 316,
+      "diff": 0,
+      "area": "宝安坪洲",
+      "note": "宝安坪洲/西乡方向，地铁和商圈配套成熟，适合周末城市短住。"
+    },
+    {
+      "hotel_id": "37890555",
+      "name": "泰华梧桐酒店（深圳宝安机场固戍地铁站店）",
+      "price": 353,
+      "diff": 0,
+      "area": "宝安固戍",
+      "note": "靠近固戍地铁站和机场片区，交通便利，适合早晚航班。"
+    },
+    {
+      "hotel_id": "667589",
+      "name": "深圳恒丰海悦国际酒店",
+      "price": 368,
+      "diff": 0,
+      "area": "宝安",
+      "note": "宝安老牌高星酒店，配套成熟，并核验儿童设施和泳池。"
+    },
+    {
+      "hotel_id": "535655",
+      "name": "长丰酒店（深圳国际会展中心店）",
+      "price": 395,
+      "diff": -28,
+      "area": "国际会展中心",
+      "note": "国际会展中心周边，去会展、海上田园和机场方向都方便。"
+    },
+    {
+      "hotel_id": "430026",
+      "name": "深圳宝利来国际大酒店（机场店）",
+      "price": 539,
+      "diff": 0,
+      "area": "机场",
+      "note": "机场片区成熟高星酒店，适合家庭短住和航班过渡。"
+    },
+    {
+      "hotel_id": "4690327",
+      "name": "深圳机场凯悦嘉寓酒店",
+      "price": 563,
+      "diff": -23,
+      "area": "机场",
+      "note": "机场长住型酒店，房型更适合家庭或早晚航班安排。"
+    },
+    {
+      "hotel_id": "119247459",
+      "name": "深圳皇悦豪生酒店（国际会展中心店）",
+      "price": 584,
+      "diff": -28,
+      "area": "国际会展中心",
+      "note": "会展中心片区酒店，儿童设施和泳池核验，适合宝安西部短途。"
+    },
+    {
+      "hotel_id": "345032",
+      "name": "深圳香格里拉大酒店",
+      "price": 595,
+      "diff": -25,
+      "area": "罗湖",
+      "note": "罗湖老牌高星酒店，靠近口岸和老城区商圈，城市漫游方便。"
+    },
+    {
+      "hotel_id": "124448334",
+      "name": "深圳光明温德姆至尊酒店",
+      "price": 679,
+      "diff": 0,
+      "area": "光明虹桥",
+      "note": "光明虹桥公园片区，高星品牌配套完整，适合光明周边反向游。"
+    }
+  ],
+  "family_no_rise": [
+    {
+      "hotel_id": "1647383",
+      "name": "深圳前海华侨城JW万豪酒店",
+      "price": 1109,
+      "diff": -215,
+      "area": "前海华侨城",
+      "note": "前海华侨城高端品牌，儿童设施和泳池核验，亲子度假属性强。"
+    },
+    {
+      "hotel_id": "347272",
+      "name": "深圳南山益田威斯汀酒店",
+      "price": 862,
+      "diff": -176,
+      "area": "南山",
+      "note": "南山核心商圈，靠近世界之窗/华侨城方向，亲子和城市游都方便。"
+    },
+    {
+      "hotel_id": "99984054",
+      "name": "深圳深铁雅高铂尔曼酒店",
+      "price": 944,
+      "diff": -133,
+      "area": "深圳北站",
+      "note": "深圳北站交通枢纽友好，亲子设施和泳池核验，适合高铁出行。"
+    },
+    {
+      "hotel_id": "5545861",
+      "name": "深圳龙华希尔顿逸林酒店（深圳北站店）",
+      "price": 761,
+      "diff": -118,
+      "area": "龙华",
+      "note": "龙华/深圳北站方向，国际品牌，适合家庭短住和高铁周边安排。"
+    },
+    {
+      "hotel_id": "371236",
+      "name": "深圳福朋喜来登酒店",
+      "price": 669,
+      "diff": -107,
+      "area": "福田/中心区",
+      "note": "福田方向国际品牌酒店，交通便利，儿童设施和泳池核验。"
+    },
+    {
+      "hotel_id": "67685680",
+      "name": "深圳南山深铁皇冠假日酒店",
+      "price": 1017,
+      "diff": -84,
+      "area": "南山",
+      "note": "南山片区皇冠假日品牌，适合亲子、商圈和科技园周边出行。"
+    },
+    {
+      "hotel_id": "122457119",
+      "name": "深圳南山假日酒店",
+      "price": 688,
+      "diff": -66,
+      "area": "南山",
+      "note": "南山片区假日品牌，商圈和地铁配套成熟，适合家庭短住。"
+    },
+    {
+      "hotel_id": "347428",
+      "name": "深圳好日子皇冠假日酒店",
+      "price": 903,
+      "diff": -65,
+      "area": "福田中心",
+      "note": "福田中心区老牌高星酒店，商务交通便利，儿童设施和泳池核验。"
+    },
+    {
+      "hotel_id": "345032",
+      "name": "深圳香格里拉大酒店",
+      "price": 595,
+      "diff": -45,
+      "area": "罗湖",
+      "note": "罗湖老牌高星酒店，靠近口岸和老城区商圈，城市漫游方便。"
+    },
+    {
+      "hotel_id": "419435",
+      "name": "途易晟曼湾度假酒店（大鹏店）",
+      "price": 599,
+      "diff": -42,
+      "area": "大鹏",
+      "note": "大鹏海边度假属性强，适合亲子海边短假和周边游。"
+    }
+  ],
+  "discount_star": [
+    {
+      "hotel_id": "116632641",
+      "name": "前海华侨城艾美酒店",
+      "price": 842,
+      "diff": -283,
+      "area": "前海华侨城",
+      "note": "前海华侨城片区，高星品牌度假感强，适合南山/前海周边短住。"
+    },
+    {
+      "hotel_id": "1647383",
+      "name": "深圳前海华侨城JW万豪酒店",
+      "price": 1109,
+      "diff": -215,
+      "area": "前海华侨城",
+      "note": "前海华侨城高端品牌，儿童设施和泳池核验，亲子度假属性强。"
+    },
+    {
+      "hotel_id": "347272",
+      "name": "深圳南山益田威斯汀酒店",
+      "price": 862,
+      "diff": -176,
+      "area": "南山",
+      "note": "南山核心商圈，靠近世界之窗/华侨城方向，亲子和城市游都方便。"
+    },
+    {
+      "hotel_id": "99984054",
+      "name": "深圳深铁雅高铂尔曼酒店",
+      "price": 944,
+      "diff": -133,
+      "area": "深圳北站",
+      "note": "深圳北站交通枢纽友好，亲子设施和泳池核验，适合高铁出行。"
+    },
+    {
+      "hotel_id": "5545861",
+      "name": "深圳龙华希尔顿逸林酒店（深圳北站店）",
+      "price": 761,
+      "diff": -118,
+      "area": "龙华",
+      "note": "龙华/深圳北站方向，国际品牌，适合家庭短住和高铁周边安排。"
+    },
+    {
+      "hotel_id": "371236",
+      "name": "深圳福朋喜来登酒店",
+      "price": 669,
+      "diff": -107,
+      "area": "福田/中心区",
+      "note": "福田方向国际品牌酒店，交通便利，儿童设施和泳池核验。"
+    },
+    {
+      "hotel_id": "67685680",
+      "name": "深圳南山深铁皇冠假日酒店",
+      "price": 1017,
+      "diff": -84,
+      "area": "南山",
+      "note": "南山片区皇冠假日品牌，适合亲子、商圈和科技园周边出行。"
+    },
+    {
+      "hotel_id": "49232307",
+      "name": "格兰云天阅酒店（深圳国际会展中心店）",
+      "price": 264,
+      "diff": -72,
+      "area": "国际会展中心",
+      "note": "靠近深圳国际会展中心，适合会展、海上田园和宝安西部短住。"
+    },
+    {
+      "hotel_id": "122457119",
+      "name": "深圳南山假日酒店",
+      "price": 688,
+      "diff": -66,
+      "area": "南山",
+      "note": "南山片区假日品牌，商圈和地铁配套成熟，适合家庭短住。"
+    },
+    {
+      "hotel_id": "347428",
+      "name": "深圳好日子皇冠假日酒店",
+      "price": 903,
+      "diff": -65,
+      "area": "福田中心",
+      "note": "福田中心区老牌高星酒店，商务交通便利，儿童设施和泳池核验。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "南山片区",
+      "hotel_count": 10,
+      "discount_hotel_count": 10,
+      "flat_hotel_count": 0,
+      "average_price": 809,
+      "average_diff": -59,
+      "price_range": [
+        383,
+        1398
+      ],
+      "hotels": [
+        {
+          "hotel_id": "29972589",
+          "name": "深圳南山博林天瑞喜来登酒店",
+          "area": "南山片区",
+          "price": 959,
+          "diff": -169,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "347272",
+          "name": "深圳南山益田威斯汀酒店",
+          "area": "南山片区",
+          "price": 898,
+          "diff": -94,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "67685680",
+          "name": "深圳南山深铁皇冠假日酒店",
+          "area": "南山片区",
+          "price": 1017,
+          "diff": -84,
+          "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+          "source_cached_at": "2026-05-06T15:12:25"
+        },
+        {
+          "hotel_id": "3716429",
+          "name": "深圳中洲万豪酒店",
+          "area": "南山片区",
+          "price": 1398,
+          "diff": -77,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "122457119",
+          "name": "深圳南山假日酒店",
+          "area": "南山片区",
+          "price": 688,
+          "diff": -60,
+          "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+          "source_cached_at": "2026-05-11T14:37:05"
+        },
+        {
+          "hotel_id": "84071192",
+          "name": "深圳南山科技园希尔顿欢朋酒店",
+          "area": "南山片区",
+          "price": 638,
+          "diff": -52,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "118406578",
+          "name": "深圳南山科技园澳特科兴亚朵S酒店",
+          "area": "南山片区",
+          "price": 516,
+          "diff": -28,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "124448336",
+          "name": "深圳南山万象青华酒店（万象天地店）",
+          "area": "南山片区",
+          "price": 597,
+          "diff": -11,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "110599174",
+          "name": "深圳INNOGYM楹诺酒店（深圳大学科技园店）",
+          "area": "南山片区",
+          "price": 383,
+          "diff": -8,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "345037",
+          "name": "深圳南山威尼斯英迪格酒店",
+          "area": "南山片区",
+          "price": 994,
+          "diff": -3,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        }
+      ],
+      "representative_hotels": [
+        "深圳南山博林天瑞喜来登酒店",
+        "深圳南山益田威斯汀酒店",
+        "深圳南山深铁皇冠假日酒店"
+      ],
+      "rank": 1,
+      "summary": "10家高级酒店，10家降价"
+    },
+    {
+      "area": "福田中心片区",
+      "hotel_count": 10,
+      "discount_hotel_count": 9,
+      "flat_hotel_count": 1,
+      "average_price": 950,
+      "average_diff": -39,
+      "price_range": [
+        589,
+        2191
+      ],
+      "hotels": [
+        {
+          "hotel_id": "371239",
+          "name": "金茂深圳JW万豪酒店",
+          "area": "福田中心片区",
+          "price": 1165,
+          "diff": -104,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "347428",
+          "name": "深圳好日子皇冠假日酒店",
+          "area": "福田中心片区",
+          "price": 883,
+          "diff": -69,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "374623",
+          "name": "深圳东海朗廷酒店",
+          "area": "福田中心片区",
+          "price": 1034,
+          "diff": -62,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "2907839",
+          "name": "深圳大中华希尔顿酒店",
+          "area": "福田中心片区",
+          "price": 937,
+          "diff": -49,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "371236",
+          "name": "深圳福朋喜来登酒店",
+          "area": "福田中心片区",
+          "price": 685,
+          "diff": -47,
+          "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+          "source_cached_at": "2026-05-11T14:37:05"
+        },
+        {
+          "hotel_id": "114715337",
+          "name": "深圳福田中心智选假日酒店",
+          "area": "福田中心片区",
+          "price": 693,
+          "diff": -25,
+          "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+          "source_cached_at": "2026-05-09T12:36:07"
+        },
+        {
+          "hotel_id": "91827074",
+          "name": "深圳福田CBD逸扉酒店",
+          "area": "福田中心片区",
+          "price": 716,
+          "diff": -18,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "61616470",
+          "name": "深圳滨河时代ICON LAB艾垦酒店(福田口岸店)",
+          "area": "福田中心片区",
+          "price": 589,
+          "diff": -10,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "347435",
+          "name": "深圳星河丽思卡尔顿酒店",
+          "area": "福田中心片区",
+          "price": 2191,
+          "diff": -3,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "6742479",
+          "name": "深圳福田迪富酒店（华强北店）",
+          "area": "福田中心片区",
+          "price": 612,
+          "diff": 0,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        }
+      ],
+      "representative_hotels": [
+        "金茂深圳JW万豪酒店",
+        "深圳好日子皇冠假日酒店",
+        "深圳东海朗廷酒店"
+      ],
+      "rank": 2,
+      "summary": "10家高级酒店，9家降价，1家持平"
+    },
+    {
+      "area": "国际会展中心片区",
+      "hotel_count": 10,
+      "discount_hotel_count": 9,
+      "flat_hotel_count": 1,
+      "average_price": 459,
+      "average_diff": -20,
+      "price_range": [
+        160,
+        640
+      ],
+      "hotels": [
+        {
+          "hotel_id": "49232307",
+          "name": "格兰云天阅酒店(深圳国际会展中心店)",
+          "area": "国际会展中心片区",
+          "price": 264,
+          "diff": -72,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "535655",
+          "name": "长丰酒店（深圳国际会展中心店）",
+          "area": "国际会展中心片区",
+          "price": 395,
+          "diff": -28,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "119247459",
+          "name": "深圳皇悦豪生酒店(国际会展中心店）",
+          "area": "国际会展中心片区",
+          "price": 584,
+          "diff": -28,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "21908586",
+          "name": "深圳同泰万怡酒店",
+          "area": "国际会展中心片区",
+          "price": 623,
+          "diff": -26,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "115996086",
+          "name": "朗华影音·高空云端城景｜City·View逸居（深圳福田会展中心店）",
+          "area": "国际会展中心片区",
+          "price": 449,
+          "diff": -25,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "426209",
+          "name": "深圳花园格兰云天大酒店（福田会展中心店)",
+          "area": "国际会展中心片区",
+          "price": 640,
+          "diff": -19,
+          "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+          "source_cached_at": "2026-05-09T12:36:07"
+        },
+        {
+          "hotel_id": "103066319",
+          "name": "荟语酒店（深圳福田口岸会展中心店）",
+          "area": "国际会展中心片区",
+          "price": 548,
+          "diff": -4,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "67619545",
+          "name": "深圳福田会展中心岚珊酒店",
+          "area": "国际会展中心片区",
+          "price": 559,
+          "diff": -2,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "105001585",
+          "name": "维展湾酒店（深圳国际会展中心福海西地铁站店）",
+          "area": "国际会展中心片区",
+          "price": 160,
+          "diff": -1,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "450229",
+          "name": "深圳楚天大酒店（福田口岸深圳会展中心店）",
+          "area": "国际会展中心片区",
+          "price": 366,
+          "diff": 0,
+          "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+          "source_cached_at": "2026-05-09T12:36:07"
+        }
+      ],
+      "representative_hotels": [
+        "格兰云天阅酒店(深圳国际会展中心店)",
+        "长丰酒店（深圳国际会展中心店）",
+        "深圳皇悦豪生酒店(国际会展中心店）"
+      ],
+      "rank": 3,
+      "summary": "10家高级酒店，9家降价，1家持平"
+    },
+    {
+      "area": "罗湖口岸片区",
+      "hotel_count": 7,
+      "discount_hotel_count": 6,
+      "flat_hotel_count": 1,
+      "average_price": 689,
+      "average_diff": -40,
+      "price_range": [
+        523,
+        1067
+      ],
+      "hotels": [
+        {
+          "hotel_id": "345032",
+          "name": "深圳香格里拉大酒店",
+          "area": "罗湖口岸片区",
+          "price": 595,
+          "diff": -62,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "974626",
+          "name": "深圳东门凯悦嘉轩酒店",
+          "area": "罗湖口岸片区",
+          "price": 648,
+          "diff": -59,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "425224",
+          "name": "深圳彭年万丽酒店",
+          "area": "罗湖口岸片区",
+          "price": 758,
+          "diff": -52,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "374848",
+          "name": "深圳君悦酒店",
+          "area": "罗湖口岸片区",
+          "price": 1067,
+          "diff": -52,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "346480",
+          "name": "深圳富苑皇冠假日套房酒店",
+          "area": "罗湖口岸片区",
+          "price": 640,
+          "diff": -42,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "103950502",
+          "name": "深圳罗湖盛业逸扉酒店",
+          "area": "罗湖口岸片区",
+          "price": 593,
+          "diff": -14,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "852199",
+          "name": "深圳东门智选假日酒店",
+          "area": "罗湖口岸片区",
+          "price": 523,
+          "diff": 0,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        }
+      ],
+      "representative_hotels": [
+        "深圳香格里拉大酒店",
+        "深圳东门凯悦嘉轩酒店",
+        "深圳彭年万丽酒店"
+      ],
+      "rank": 4,
+      "summary": "7家高级酒店，6家降价，1家持平"
+    },
+    {
+      "area": "华强北片区",
+      "hotel_count": 6,
+      "discount_hotel_count": 5,
+      "flat_hotel_count": 1,
+      "average_price": 608,
+      "average_diff": -55,
+      "price_range": [
+        374,
+        843
+      ],
+      "hotels": [
+        {
+          "hotel_id": "131307689",
+          "name": "五洲体育中心酒店",
+          "area": "华强北片区",
+          "price": 843,
+          "diff": -234,
+          "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+          "source_cached_at": "2026-05-09T12:36:07"
+        },
+        {
+          "hotel_id": "535694",
+          "name": "深圳华强广场酒店(华强北地铁站店)",
+          "area": "华强北片区",
+          "price": 682,
+          "diff": -61,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "1212062",
+          "name": "深圳回酒店",
+          "area": "华强北片区",
+          "price": 754,
+          "diff": -18,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "108474786",
+          "name": "鹭月酒店（深圳华强北科学馆地铁站店）",
+          "area": "华强北片区",
+          "price": 374,
+          "diff": -12,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "129895244",
+          "name": "全季酒店(深圳华强北体育中心店）",
+          "area": "华强北片区",
+          "price": 490,
+          "diff": -5,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "92350678",
+          "name": "格兰云天·阅酒店（深圳华强北店）",
+          "area": "华强北片区",
+          "price": 506,
+          "diff": 0,
+          "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+          "source_cached_at": "2026-05-09T12:36:07"
+        }
+      ],
+      "representative_hotels": [
+        "五洲体育中心酒店",
+        "深圳华强广场酒店(华强北地铁站店)",
+        "深圳回酒店"
+      ],
+      "rank": 5,
+      "summary": "6家高级酒店，5家降价，1家持平"
+    },
+    {
+      "area": "深圳湾片区",
+      "hotel_count": 5,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 2,
+      "average_price": 600,
+      "average_diff": -27,
+      "price_range": [
+        288,
+        868
+      ],
+      "hotels": [
+        {
+          "hotel_id": "130655366",
+          "name": "深圳湾福朋喜来登酒店",
+          "area": "深圳湾片区",
+          "price": 742,
+          "diff": -120,
+          "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+          "source_cached_at": "2026-05-09T12:36:07"
+        },
+        {
+          "hotel_id": "457383",
+          "name": "深圳南山美爵酒店",
+          "area": "深圳湾片区",
+          "price": 511,
+          "diff": -9,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "117960807",
+          "name": "深圳湾南油逸扉酒店",
+          "area": "深圳湾片区",
+          "price": 591,
+          "diff": -7,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "1649455",
+          "name": "深圳湾悦S酒店（南山南头古城地铁站店）",
+          "area": "深圳湾片区",
+          "price": 288,
+          "diff": 0,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "127627368",
+          "name": "深圳湾万象城逸扉酒店",
+          "area": "深圳湾片区",
+          "price": 868,
+          "diff": 0,
+          "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+          "source_cached_at": "2026-05-09T12:36:07"
+        }
+      ],
+      "representative_hotels": [
+        "深圳湾福朋喜来登酒店",
+        "深圳南山美爵酒店",
+        "深圳湾南油逸扉酒店"
+      ],
+      "rank": 6,
+      "summary": "5家高级酒店，3家降价，2家持平"
+    },
+    {
+      "area": "前海华侨城片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 0,
+      "average_price": 1196,
+      "average_diff": -149,
+      "price_range": [
+        717,
+        2117
+      ],
+      "hotels": [
+        {
+          "hotel_id": "116632641",
+          "name": "深圳前海华侨城艾美酒店",
+          "area": "前海华侨城片区",
+          "price": 842,
+          "diff": -283,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "1647383",
+          "name": "深圳前海华侨城JW万豪酒店",
+          "area": "前海华侨城片区",
+          "price": 1109,
+          "diff": -215,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "99435980",
+          "name": "香格里拉深圳前海JEN酒店",
+          "area": "前海华侨城片区",
+          "price": 717,
+          "diff": -68,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "126210891",
+          "name": "深圳前海华侨城瑞吉酒店",
+          "area": "前海华侨城片区",
+          "price": 2117,
+          "diff": -30,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        }
+      ],
+      "representative_hotels": [
+        "深圳前海华侨城艾美酒店",
+        "深圳前海华侨城JW万豪酒店",
+        "香格里拉深圳前海JEN酒店"
+      ],
+      "rank": 7,
+      "summary": "4家高级酒店，4家降价"
+    },
+    {
+      "area": "深圳北站/龙华片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 0,
+      "average_price": 606,
+      "average_diff": -38,
+      "price_range": [
+        333,
+        935
+      ],
+      "hotels": [
+        {
+          "hotel_id": "5545861",
+          "name": "深圳龙华希尔顿逸林酒店(深圳北站店)",
+          "area": "深圳北站/龙华片区",
+          "price": 761,
+          "diff": -118,
+          "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+          "source_cached_at": "2026-05-06T15:12:25"
+        },
+        {
+          "hotel_id": "99984054",
+          "name": "深圳深铁雅高铂尔曼酒店",
+          "area": "深圳北站/龙华片区",
+          "price": 935,
+          "diff": -16,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        },
+        {
+          "hotel_id": "78283372",
+          "name": "深圳龙华智选假日酒店(大浪商业中心店）",
+          "area": "深圳北站/龙华片区",
+          "price": 333,
+          "diff": -15,
+          "source_file": "36e19dbdb8c6da5d12293d376fca750239cca4afb5edadf89afdcdcd6f63c92d.json",
+          "source_cached_at": "2026-05-09T11:24:18"
+        },
+        {
+          "hotel_id": "124127234",
+          "name": "柚子hotel（深圳北站东广场店）",
+          "area": "深圳北站/龙华片区",
+          "price": 393,
+          "diff": -2,
+          "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+          "source_cached_at": "2026-05-13T10:31:12"
+        }
+      ],
+      "representative_hotels": [
+        "深圳龙华希尔顿逸林酒店(深圳北站店)",
+        "深圳深铁雅高铂尔曼酒店",
+        "深圳龙华智选假日酒店(大浪商业中心店）"
+      ],
+      "rank": 8,
+      "summary": "4家高级酒店，4家降价"
+    },
+    {
+      "area": "机场片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 1,
+      "average_price": 633,
+      "average_diff": -24,
+      "price_range": [
+        539,
+        798
+      ],
+      "hotels": [
+        {
+          "hotel_id": "17535038",
+          "name": "深圳机场凯悦酒店",
+          "area": "机场片区",
+          "price": 798,
+          "diff": -50,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "4690327",
+          "name": "深圳机场凯悦嘉寓酒店",
+          "area": "机场片区",
+          "price": 563,
+          "diff": -23,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "430026",
+          "name": "深圳宝利来国际大酒店（机场店）",
+          "area": "机场片区",
+          "price": 539,
+          "diff": 0,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        }
+      ],
+      "representative_hotels": [
+        "深圳机场凯悦酒店",
+        "深圳机场凯悦嘉寓酒店",
+        "深圳宝利来国际大酒店（机场店）"
+      ],
+      "rank": 9,
+      "summary": "3家高级酒店，2家降价，1家持平"
+    },
+    {
+      "area": "宝安西乡/固戍片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 3,
+      "average_price": 346,
+      "average_diff": 0,
+      "price_range": [
+        316,
+        368
+      ],
+      "hotels": [
+        {
+          "hotel_id": "531520",
+          "name": "深圳舜和国际酒店（宝安坪洲地铁站店）",
+          "area": "宝安西乡/固戍片区",
+          "price": 316,
+          "diff": 0,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "37890555",
+          "name": "泰华梧桐酒店（深圳宝安机场固戍地铁站店）",
+          "area": "宝安西乡/固戍片区",
+          "price": 353,
+          "diff": 0,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        },
+        {
+          "hotel_id": "667589",
+          "name": "深圳恒丰海悦国际酒店",
+          "area": "宝安西乡/固戍片区",
+          "price": 368,
+          "diff": 0,
+          "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+          "source_cached_at": "2026-05-08T11:35:46"
+        }
+      ],
+      "representative_hotels": [
+        "深圳舜和国际酒店（宝安坪洲地铁站店）",
+        "泰华梧桐酒店（深圳宝安机场固戍地铁站店）",
+        "深圳恒丰海悦国际酒店"
+      ],
+      "rank": 10,
+      "summary": "3家高级酒店，0家降价，3家持平"
+    }
+  ],
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 6,
+    "candidate_count": 265,
+    "unique_hotel_count": 117,
+    "included_hotel_count": 70,
+    "matching_files": [
+      {
+        "file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "mtime": 1778639472.395816,
+        "choices": 96,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "mtime": 1778481425.2291133,
+        "choices": 15,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "mtime": 1778301367.4983077,
+        "choices": 118,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "36e19dbdb8c6da5d12293d376fca750239cca4afb5edadf89afdcdcd6f63c92d.json",
+        "mtime": 1778297058.6638243,
+        "choices": 84,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "mtime": 1778211346.2213657,
+        "choices": 20,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "mtime": 1778051545.7035763,
+        "choices": 26,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city": "深圳",
+  "generated_at": "2026-05-12T12:24:44",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "105001585",
+        "name": "维展湾酒店（深圳国际会展中心福海西地铁站店）",
+        "area": "国际会展中心片区",
+        "price": 160,
+        "diff": -2,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "49232307",
+        "name": "格兰云天阅酒店(深圳国际会展中心店)",
+        "area": "国际会展中心片区",
+        "price": 264,
+        "diff": -72,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "1649455",
+        "name": "深圳湾悦S酒店（南山南头古城地铁站店）",
+        "area": "深圳湾片区",
+        "price": 288,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "531520",
+        "name": "深圳舜和国际酒店（宝安坪洲地铁站店）",
+        "area": "宝安西乡/固戍片区",
+        "price": 316,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "78283372",
+        "name": "深圳龙华智选假日酒店(大浪商业中心店）",
+        "area": "深圳北站/龙华片区",
+        "price": 333,
+        "diff": -12,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "37890555",
+        "name": "泰华梧桐酒店（深圳宝安机场固戍地铁站店）",
+        "area": "宝安西乡/固戍片区",
+        "price": 353,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "450229",
+        "name": "深圳楚天大酒店（福田口岸深圳会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 366,
+        "diff": 0,
+        "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "source_cached_at": "2026-05-09T12:36:07",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "667589",
+        "name": "深圳恒丰海悦国际酒店",
+        "area": "宝安西乡/固戍片区",
+        "price": 368,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "108474786",
+        "name": "鹭月酒店（深圳华强北科学馆地铁站店）",
+        "area": "华强北片区",
+        "price": 374,
+        "diff": -12,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "423089",
+        "name": "青木·影音｜AESTHETIC·DESIGNER拾光轻奢逸居（深圳万象城店）",
+        "area": "深圳万象城片区",
+        "price": 382,
+        "diff": -7,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳万象城",
+        "note": "深圳万象城，端午每晚含税均价低于平日代表价。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "105001585",
+        "name": "维展湾酒店（深圳国际会展中心福海西地铁站店）",
+        "area": "国际会展中心片区",
+        "price": 160,
+        "diff": -2,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "49232307",
+        "name": "格兰云天阅酒店(深圳国际会展中心店)",
+        "area": "国际会展中心片区",
+        "price": 264,
+        "diff": -72,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "1649455",
+        "name": "深圳湾悦S酒店（南山南头古城地铁站店）",
+        "area": "深圳湾片区",
+        "price": 288,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "531520",
+        "name": "深圳舜和国际酒店（宝安坪洲地铁站店）",
+        "area": "宝安西乡/固戍片区",
+        "price": 316,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "78283372",
+        "name": "深圳龙华智选假日酒店(大浪商业中心店）",
+        "area": "深圳北站/龙华片区",
+        "price": 333,
+        "diff": -12,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "37890555",
+        "name": "泰华梧桐酒店（深圳宝安机场固戍地铁站店）",
+        "area": "宝安西乡/固戍片区",
+        "price": 353,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "450229",
+        "name": "深圳楚天大酒店（福田口岸深圳会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 366,
+        "diff": 0,
+        "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "source_cached_at": "2026-05-09T12:36:07",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "667589",
+        "name": "深圳恒丰海悦国际酒店",
+        "area": "宝安西乡/固戍片区",
+        "price": 368,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "108474786",
+        "name": "鹭月酒店（深圳华强北科学馆地铁站店）",
+        "area": "华强北片区",
+        "price": 374,
+        "diff": -12,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "423089",
+        "name": "青木·影音｜AESTHETIC·DESIGNER拾光轻奢逸居（深圳万象城店）",
+        "area": "深圳万象城片区",
+        "price": 382,
+        "diff": -7,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳万象城",
+        "note": "深圳万象城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "110599174",
+        "name": "深圳INNOGYM楹诺酒店（深圳大学科技园店）",
+        "area": "南山片区",
+        "price": 383,
+        "diff": -7,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124127234",
+        "name": "柚子hotel（深圳北站东广场店）",
+        "area": "深圳北站/龙华片区",
+        "price": 393,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "535655",
+        "name": "长丰酒店（深圳国际会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 395,
+        "diff": -28,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "456133",
+        "name": "深圳维景酒店",
+        "area": "深圳待确认片区",
+        "price": 397,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳",
+        "note": "深圳，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "5753879",
+        "name": "深圳南山ICON LAB艾垦酒店（万象天地店）",
+        "area": "南山片区",
+        "price": 434,
+        "diff": -12,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "123833257",
+        "name": "洲曼酒店（深圳罗湖东门老街店)",
+        "area": "罗湖口岸片区",
+        "price": 438,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "115996086",
+        "name": "朗华影音·高空云端城景｜City·View逸居（深圳福田会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 449,
+        "diff": -25,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "70352199",
+        "name": "深圳蛇口海上世界品上酒店",
+        "area": "蛇口海上世界片区",
+        "price": 459,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "蛇口海上世界",
+        "note": "蛇口海上世界，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "129895244",
+        "name": "全季酒店(深圳华强北体育中心店）",
+        "area": "华强北片区",
+        "price": 490,
+        "diff": -7,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "535483",
+        "name": "秋果S酒店（深圳会展中心联合广场店）",
+        "area": "深圳待确认片区",
+        "price": 492,
+        "diff": -10,
+        "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "source_cached_at": "2026-05-09T12:36:07",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳",
+        "note": "深圳，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "92350678",
+        "name": "格兰云天·阅酒店（深圳华强北店）",
+        "area": "华强北片区",
+        "price": 506,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "457383",
+        "name": "深圳南山美爵酒店",
+        "area": "深圳湾片区",
+        "price": 511,
+        "diff": -9,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "118406578",
+        "name": "深圳南山科技园澳特科兴亚朵S酒店",
+        "area": "南山片区",
+        "price": 516,
+        "diff": -23,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "7942791",
+        "name": "深圳麓湾国际酒店",
+        "area": "大鹏海边片区",
+        "price": 537,
+        "diff": -32,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "大鹏海边",
+        "note": "大鹏海边，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430026",
+        "name": "深圳宝利来国际大酒店（机场店）",
+        "area": "机场片区",
+        "price": 539,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "机场",
+        "note": "机场，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "103066319",
+        "name": "荟语酒店（深圳福田口岸会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 548,
+        "diff": -3,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "67619545",
+        "name": "深圳福田会展中心岚珊酒店",
+        "area": "国际会展中心片区",
+        "price": 559,
+        "diff": -3,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "4690327",
+        "name": "深圳机场凯悦嘉寓酒店",
+        "area": "机场片区",
+        "price": 563,
+        "diff": -23,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "机场",
+        "note": "机场，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "119247459",
+        "name": "深圳皇悦豪生酒店(国际会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 584,
+        "diff": -28,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "61616470",
+        "name": "深圳滨河时代ICON LAB艾垦酒店(福田口岸店)",
+        "area": "福田中心片区",
+        "price": 589,
+        "diff": -10,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "117960807",
+        "name": "深圳湾南油逸扉酒店",
+        "area": "深圳湾片区",
+        "price": 591,
+        "diff": -7,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "83647767",
+        "name": "深圳福田口岸逸扉酒店",
+        "area": "福田中心片区",
+        "price": 591,
+        "diff": -1,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "103950502",
+        "name": "深圳罗湖盛业逸扉酒店",
+        "area": "罗湖口岸片区",
+        "price": 593,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "345032",
+        "name": "深圳香格里拉大酒店",
+        "area": "罗湖口岸片区",
+        "price": 595,
+        "diff": -50,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124448336",
+        "name": "深圳南山万象青华酒店（万象天地店）",
+        "area": "南山片区",
+        "price": 597,
+        "diff": -11,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "419435",
+        "name": "途易晟曼湾度假酒店（大鹏店）",
+        "area": "大鹏海边片区",
+        "price": 599,
+        "diff": -42,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "大鹏海边",
+        "note": "大鹏海边，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6742479",
+        "name": "深圳福田迪富酒店（华强北店）",
+        "area": "福田中心片区",
+        "price": 612,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "21908586",
+        "name": "深圳同泰万怡酒店",
+        "area": "国际会展中心片区",
+        "price": 623,
+        "diff": -59,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "84071192",
+        "name": "深圳南山科技园希尔顿欢朋酒店",
+        "area": "南山片区",
+        "price": 638,
+        "diff": -44,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "426209",
+        "name": "深圳花园格兰云天大酒店（福田会展中心店)",
+        "area": "国际会展中心片区",
+        "price": 640,
+        "diff": -19,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "974626",
+        "name": "深圳东门凯悦嘉轩酒店",
+        "area": "罗湖口岸片区",
+        "price": 648,
+        "diff": -82,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124448334",
+        "name": "深圳光明温德姆至尊酒店",
+        "area": "光明虹桥片区",
+        "price": 679,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "光明虹桥",
+        "note": "光明虹桥，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "535694",
+        "name": "深圳华强广场酒店(华强北地铁站店)",
+        "area": "华强北片区",
+        "price": 682,
+        "diff": -66,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "346480",
+        "name": "深圳富苑皇冠假日套房酒店",
+        "area": "罗湖口岸片区",
+        "price": 682,
+        "diff": -5,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "371236",
+        "name": "深圳福朋喜来登酒店",
+        "area": "福田中心片区",
+        "price": 685,
+        "diff": -47,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "122457119",
+        "name": "深圳南山假日酒店",
+        "area": "南山片区",
+        "price": 688,
+        "diff": -60,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "114715337",
+        "name": "深圳福田中心智选假日酒店",
+        "area": "福田中心片区",
+        "price": 693,
+        "diff": -21,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "91827074",
+        "name": "深圳福田CBD逸扉酒店",
+        "area": "福田中心片区",
+        "price": 716,
+        "diff": -18,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "99435980",
+        "name": "香格里拉深圳前海JEN酒店",
+        "area": "前海华侨城片区",
+        "price": 717,
+        "diff": -79,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "130655366",
+        "name": "深圳湾福朋喜来登酒店",
+        "area": "深圳湾片区",
+        "price": 742,
+        "diff": -120,
+        "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "source_cached_at": "2026-05-09T12:36:07",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1212062",
+        "name": "深圳回酒店",
+        "area": "华强北片区",
+        "price": 754,
+        "diff": -18,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "425224",
+        "name": "深圳彭年万丽酒店",
+        "area": "罗湖口岸片区",
+        "price": 758,
+        "diff": -52,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "5545861",
+        "name": "深圳龙华希尔顿逸林酒店(深圳北站店)",
+        "area": "深圳北站/龙华片区",
+        "price": 761,
+        "diff": -118,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "17535038",
+        "name": "深圳机场凯悦酒店",
+        "area": "机场片区",
+        "price": 798,
+        "diff": -50,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "机场",
+        "note": "机场，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "116632641",
+        "name": "深圳前海华侨城艾美酒店",
+        "area": "前海华侨城片区",
+        "price": 842,
+        "diff": -283,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "131307689",
+        "name": "五洲体育中心酒店",
+        "area": "华强北片区",
+        "price": 843,
+        "diff": -234,
+        "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "source_cached_at": "2026-05-09T12:36:07",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "127627368",
+        "name": "深圳湾万象城逸扉酒店",
+        "area": "深圳湾片区",
+        "price": 868,
+        "diff": 0,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "432774",
+        "name": "深圳隐秀山居酒店",
+        "area": "龙岗大运片区",
+        "price": 885,
+        "diff": 0,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "龙岗大运",
+        "note": "龙岗大运，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "347272",
+        "name": "深圳南山益田威斯汀酒店",
+        "area": "南山片区",
+        "price": 898,
+        "diff": -74,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "347428",
+        "name": "深圳好日子皇冠假日酒店",
+        "area": "福田中心片区",
+        "price": 903,
+        "diff": -50,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99984054",
+        "name": "深圳深铁雅高铂尔曼酒店",
+        "area": "深圳北站/龙华片区",
+        "price": 935,
+        "diff": -20,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "345037",
+        "name": "深圳南山威尼斯英迪格酒店",
+        "area": "南山片区",
+        "price": 967,
+        "diff": -33,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "29972589",
+        "name": "深圳南山博林天瑞喜来登酒店",
+        "area": "南山片区",
+        "price": 1008,
+        "diff": -130,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "67685680",
+        "name": "深圳南山深铁皇冠假日酒店",
+        "area": "南山片区",
+        "price": 1013,
+        "diff": -70,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374623",
+        "name": "深圳东海朗廷酒店",
+        "area": "福田中心片区",
+        "price": 1030,
+        "diff": -51,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "374848",
+        "name": "深圳君悦酒店",
+        "area": "罗湖口岸片区",
+        "price": 1084,
+        "diff": -110,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1647383",
+        "name": "深圳前海华侨城JW万豪酒店",
+        "area": "前海华侨城片区",
+        "price": 1109,
+        "diff": -97,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "371239",
+        "name": "金茂深圳JW万豪酒店",
+        "area": "福田中心片区",
+        "price": 1165,
+        "diff": -67,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "3716429",
+        "name": "深圳中洲万豪酒店",
+        "area": "深圳湾片区",
+        "price": 1398,
+        "diff": -79,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "126210891",
+        "name": "深圳前海华侨城瑞吉酒店",
+        "area": "前海华侨城片区",
+        "price": 2117,
+        "diff": -30,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "347435",
+        "name": "深圳星河丽思卡尔顿酒店",
+        "area": "福田中心片区",
+        "price": 2191,
+        "diff": -3,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "667589",
+        "name": "深圳恒丰海悦国际酒店",
+        "area": "宝安西乡/固戍片区",
+        "price": 368,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "7942791",
+        "name": "深圳麓湾国际酒店",
+        "area": "大鹏海边片区",
+        "price": 537,
+        "diff": -32,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "大鹏海边",
+        "note": "大鹏海边，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430026",
+        "name": "深圳宝利来国际大酒店（机场店）",
+        "area": "机场片区",
+        "price": 539,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "机场",
+        "note": "机场，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "119247459",
+        "name": "深圳皇悦豪生酒店(国际会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 584,
+        "diff": -28,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "345032",
+        "name": "深圳香格里拉大酒店",
+        "area": "罗湖口岸片区",
+        "price": 595,
+        "diff": -50,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "419435",
+        "name": "途易晟曼湾度假酒店（大鹏店）",
+        "area": "大鹏海边片区",
+        "price": 599,
+        "diff": -42,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "大鹏海边",
+        "note": "大鹏海边，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124448334",
+        "name": "深圳光明温德姆至尊酒店",
+        "area": "光明虹桥片区",
+        "price": 679,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "光明虹桥",
+        "note": "光明虹桥，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "371236",
+        "name": "深圳福朋喜来登酒店",
+        "area": "福田中心片区",
+        "price": 685,
+        "diff": -47,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "122457119",
+        "name": "深圳南山假日酒店",
+        "area": "南山片区",
+        "price": 688,
+        "diff": -60,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1212062",
+        "name": "深圳回酒店",
+        "area": "华强北片区",
+        "price": 754,
+        "diff": -18,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "667589",
+        "name": "深圳恒丰海悦国际酒店",
+        "area": "宝安西乡/固戍片区",
+        "price": 368,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "宝安西乡/固戍",
+        "note": "宝安西乡/固戍，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "7942791",
+        "name": "深圳麓湾国际酒店",
+        "area": "大鹏海边片区",
+        "price": 537,
+        "diff": -32,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "大鹏海边",
+        "note": "大鹏海边，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430026",
+        "name": "深圳宝利来国际大酒店（机场店）",
+        "area": "机场片区",
+        "price": 539,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "机场",
+        "note": "机场，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "119247459",
+        "name": "深圳皇悦豪生酒店(国际会展中心店）",
+        "area": "国际会展中心片区",
+        "price": 584,
+        "diff": -28,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "国际会展中心",
+        "note": "国际会展中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "345032",
+        "name": "深圳香格里拉大酒店",
+        "area": "罗湖口岸片区",
+        "price": 595,
+        "diff": -50,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "419435",
+        "name": "途易晟曼湾度假酒店（大鹏店）",
+        "area": "大鹏海边片区",
+        "price": 599,
+        "diff": -42,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "大鹏海边",
+        "note": "大鹏海边，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124448334",
+        "name": "深圳光明温德姆至尊酒店",
+        "area": "光明虹桥片区",
+        "price": 679,
+        "diff": 0,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "光明虹桥",
+        "note": "光明虹桥，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "371236",
+        "name": "深圳福朋喜来登酒店",
+        "area": "福田中心片区",
+        "price": 685,
+        "diff": -47,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "122457119",
+        "name": "深圳南山假日酒店",
+        "area": "南山片区",
+        "price": 688,
+        "diff": -60,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1212062",
+        "name": "深圳回酒店",
+        "area": "华强北片区",
+        "price": 754,
+        "diff": -18,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "5545861",
+        "name": "深圳龙华希尔顿逸林酒店(深圳北站店)",
+        "area": "深圳北站/龙华片区",
+        "price": 761,
+        "diff": -118,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "17535038",
+        "name": "深圳机场凯悦酒店",
+        "area": "机场片区",
+        "price": 798,
+        "diff": -50,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "机场",
+        "note": "机场，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "432774",
+        "name": "深圳隐秀山居酒店",
+        "area": "龙岗大运片区",
+        "price": 885,
+        "diff": 0,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "龙岗大运",
+        "note": "龙岗大运，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "347272",
+        "name": "深圳南山益田威斯汀酒店",
+        "area": "南山片区",
+        "price": 898,
+        "diff": -74,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "347428",
+        "name": "深圳好日子皇冠假日酒店",
+        "area": "福田中心片区",
+        "price": 903,
+        "diff": -50,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99984054",
+        "name": "深圳深铁雅高铂尔曼酒店",
+        "area": "深圳北站/龙华片区",
+        "price": 935,
+        "diff": -20,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "345037",
+        "name": "深圳南山威尼斯英迪格酒店",
+        "area": "南山片区",
+        "price": 967,
+        "diff": -33,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "67685680",
+        "name": "深圳南山深铁皇冠假日酒店",
+        "area": "南山片区",
+        "price": 1013,
+        "diff": -70,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374848",
+        "name": "深圳君悦酒店",
+        "area": "罗湖口岸片区",
+        "price": 1084,
+        "diff": -110,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1647383",
+        "name": "深圳前海华侨城JW万豪酒店",
+        "area": "前海华侨城片区",
+        "price": 1109,
+        "diff": -97,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "3716429",
+        "name": "深圳中洲万豪酒店",
+        "area": "深圳湾片区",
+        "price": 1398,
+        "diff": -79,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "126210891",
+        "name": "深圳前海华侨城瑞吉酒店",
+        "area": "前海华侨城片区",
+        "price": 2117,
+        "diff": -30,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "347435",
+        "name": "深圳星河丽思卡尔顿酒店",
+        "area": "福田中心片区",
+        "price": 2191,
+        "diff": -3,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "福田中心",
+        "note": "福田中心，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "116632641",
+        "name": "深圳前海华侨城艾美酒店",
+        "area": "前海华侨城片区",
+        "price": 842,
+        "diff": -283,
+        "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "source_cached_at": "2026-05-08T11:35:46",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "131307689",
+        "name": "五洲体育中心酒店",
+        "area": "华强北片区",
+        "price": 843,
+        "diff": -234,
+        "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "source_cached_at": "2026-05-09T12:36:07",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "华强北",
+        "note": "华强北，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "29972589",
+        "name": "深圳南山博林天瑞喜来登酒店",
+        "area": "南山片区",
+        "price": 1008,
+        "diff": -130,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "南山",
+        "note": "南山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "130655366",
+        "name": "深圳湾福朋喜来登酒店",
+        "area": "深圳湾片区",
+        "price": 742,
+        "diff": -120,
+        "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "source_cached_at": "2026-05-09T12:36:07",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "5545861",
+        "name": "深圳龙华希尔顿逸林酒店(深圳北站店)",
+        "area": "深圳北站/龙华片区",
+        "price": 761,
+        "diff": -118,
+        "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "source_cached_at": "2026-05-06T15:12:25",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳北站/龙华",
+        "note": "深圳北站/龙华，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374848",
+        "name": "深圳君悦酒店",
+        "area": "罗湖口岸片区",
+        "price": 1084,
+        "diff": -110,
+        "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "source_cached_at": "2026-05-11T14:37:05",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1647383",
+        "name": "深圳前海华侨城JW万豪酒店",
+        "area": "前海华侨城片区",
+        "price": 1109,
+        "diff": -97,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "974626",
+        "name": "深圳东门凯悦嘉轩酒店",
+        "area": "罗湖口岸片区",
+        "price": 648,
+        "diff": -82,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "罗湖口岸",
+        "note": "罗湖口岸，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99435980",
+        "name": "香格里拉深圳前海JEN酒店",
+        "area": "前海华侨城片区",
+        "price": 717,
+        "diff": -79,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "前海华侨城",
+        "note": "前海华侨城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "3716429",
+        "name": "深圳中洲万豪酒店",
+        "area": "深圳湾片区",
+        "price": 1398,
+        "diff": -79,
+        "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "source_cached_at": "2026-05-11T10:16:01",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "深圳湾",
+        "note": "深圳湾，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "105001585",
+      "name": "维展湾酒店（深圳国际会展中心福海西地铁站店）",
+      "area": "国际会展中心片区",
+      "price": 160,
+      "diff": -2,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "国际会展中心",
+      "note": "国际会展中心，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "49232307",
+      "name": "格兰云天阅酒店(深圳国际会展中心店)",
+      "area": "国际会展中心片区",
+      "price": 264,
+      "diff": -72,
+      "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+      "source_cached_at": "2026-05-08T11:35:46",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "国际会展中心",
+      "note": "国际会展中心，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "1649455",
+      "name": "深圳湾悦S酒店（南山南头古城地铁站店）",
+      "area": "深圳湾片区",
+      "price": 288,
+      "diff": 0,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "深圳湾",
+      "note": "深圳湾，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "531520",
+      "name": "深圳舜和国际酒店（宝安坪洲地铁站店）",
+      "area": "宝安西乡/固戍片区",
+      "price": 316,
+      "diff": 0,
+      "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+      "source_cached_at": "2026-05-08T11:35:46",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "宝安西乡/固戍",
+      "note": "宝安西乡/固戍，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "78283372",
+      "name": "深圳龙华智选假日酒店(大浪商业中心店）",
+      "area": "深圳北站/龙华片区",
+      "price": 333,
+      "diff": -12,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "深圳北站/龙华",
+      "note": "深圳北站/龙华，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "37890555",
+      "name": "泰华梧桐酒店（深圳宝安机场固戍地铁站店）",
+      "area": "宝安西乡/固戍片区",
+      "price": 353,
+      "diff": 0,
+      "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+      "source_cached_at": "2026-05-08T11:35:46",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "宝安西乡/固戍",
+      "note": "宝安西乡/固戍，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "450229",
+      "name": "深圳楚天大酒店（福田口岸深圳会展中心店）",
+      "area": "国际会展中心片区",
+      "price": 366,
+      "diff": 0,
+      "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+      "source_cached_at": "2026-05-09T12:36:07",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "国际会展中心",
+      "note": "国际会展中心，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "667589",
+      "name": "深圳恒丰海悦国际酒店",
+      "area": "宝安西乡/固戍片区",
+      "price": 368,
+      "diff": 0,
+      "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+      "source_cached_at": "2026-05-08T11:35:46",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "宝安西乡/固戍",
+      "note": "宝安西乡/固戍，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "108474786",
+      "name": "鹭月酒店（深圳华强北科学馆地铁站店）",
+      "area": "华强北片区",
+      "price": 374,
+      "diff": -12,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "华强北",
+      "note": "华强北，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "423089",
+      "name": "青木·影音｜AESTHETIC·DESIGNER拾光轻奢逸居（深圳万象城店）",
+      "area": "深圳万象城片区",
+      "price": 382,
+      "diff": -7,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "深圳万象城",
+      "note": "深圳万象城，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "116632641",
+      "name": "深圳前海华侨城艾美酒店",
+      "area": "前海华侨城片区",
+      "price": 842,
+      "diff": -283,
+      "source_file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+      "source_cached_at": "2026-05-08T11:35:46",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "前海华侨城",
+      "note": "前海华侨城，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "131307689",
+      "name": "五洲体育中心酒店",
+      "area": "华强北片区",
+      "price": 843,
+      "diff": -234,
+      "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+      "source_cached_at": "2026-05-09T12:36:07",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "华强北",
+      "note": "华强北，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "29972589",
+      "name": "深圳南山博林天瑞喜来登酒店",
+      "area": "南山片区",
+      "price": 1008,
+      "diff": -130,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "南山",
+      "note": "南山，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "130655366",
+      "name": "深圳湾福朋喜来登酒店",
+      "area": "深圳湾片区",
+      "price": 742,
+      "diff": -120,
+      "source_file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+      "source_cached_at": "2026-05-09T12:36:07",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "深圳湾",
+      "note": "深圳湾，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "5545861",
+      "name": "深圳龙华希尔顿逸林酒店(深圳北站店)",
+      "area": "深圳北站/龙华片区",
+      "price": 761,
+      "diff": -118,
+      "source_file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+      "source_cached_at": "2026-05-06T15:12:25",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "深圳北站/龙华",
+      "note": "深圳北站/龙华，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "374848",
+      "name": "深圳君悦酒店",
+      "area": "罗湖口岸片区",
+      "price": 1084,
+      "diff": -110,
+      "source_file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+      "source_cached_at": "2026-05-11T14:37:05",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "罗湖口岸",
+      "note": "罗湖口岸，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "1647383",
+      "name": "深圳前海华侨城JW万豪酒店",
+      "area": "前海华侨城片区",
+      "price": 1109,
+      "diff": -97,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "前海华侨城",
+      "note": "前海华侨城，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "974626",
+      "name": "深圳东门凯悦嘉轩酒店",
+      "area": "罗湖口岸片区",
+      "price": 648,
+      "diff": -82,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "罗湖口岸",
+      "note": "罗湖口岸，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "99435980",
+      "name": "香格里拉深圳前海JEN酒店",
+      "area": "前海华侨城片区",
+      "price": 717,
+      "diff": -79,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "前海华侨城",
+      "note": "前海华侨城，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "3716429",
+      "name": "深圳中洲万豪酒店",
+      "area": "深圳湾片区",
+      "price": 1398,
+      "diff": -79,
+      "source_file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+      "source_cached_at": "2026-05-11T10:16:01",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "深圳湾",
+      "note": "深圳湾，具备儿童设施和泳池，适合亲子短途。"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 6,
+    "candidate_count": 278,
+    "unique_hotel_count": 122,
+    "included_hotel_count": 71,
+    "matching_files": [
+      {
+        "file": "81981235ed810ff73a9f215555568cd1228adc682af8104896669b78b7fd7ca6.json",
+        "mtime": 1778481425.2291133,
+        "choices": 15,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "62bcba081e14d64443f8c3b525240cc4cdd7b1866bb94bd4e456fc0ef64c3406.json",
+        "mtime": 1778465761.9958606,
+        "choices": 114,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "96a78e248353737bcc83b0b993de358eaf30439795ad910bb3c4ad200ff15bbd.json",
+        "mtime": 1778301367.4983077,
+        "choices": 118,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "36e19dbdb8c6da5d12293d376fca750239cca4afb5edadf89afdcdcd6f63c92d.json",
+        "mtime": 1778297058.6638243,
+        "choices": 84,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "e71ececf515153a6b1a81d140af39519d0bfe0d4617080add20448d56606a1e9.json",
+        "mtime": 1778211346.2213657,
+        "choices": 20,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "a954fac1e1a7a537c9318e29e9e7a44aaef29c6187b6c7548ee3555fde9be41f.json",
+        "mtime": 1778051545.7035763,
+        "choices": 26,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "city_wikipedia_intro": {
+    "city": "深圳",
+    "text": "深圳可重点看世界之窗、锦绣中华民俗村、欢乐谷、东部华侨城、大鹏所城和中英街；滨海度假、主题乐园和历史街区适合按片区组合。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/深圳市",
+    "updated_at": "2026-05-11T16:30:00"
+  }
+}

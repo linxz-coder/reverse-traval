@@ -1,0 +1,2135 @@
+{
+  "city": "佛山",
+  "created_at_texts": [
+    "2026-05-06T15:59:30+08:00",
+    "2026-05-07T16:12:09+08:00"
+  ],
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "23971991",
+        "name": "励骏大酒店（佛山南庄华夏陶瓷博览城店）",
+        "area": "佛山待确认片区",
+        "price": 203,
+        "diff": -20,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1413290",
+        "name": "天鹅湖休闲酒店（佛山千灯湖平洲店）",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 238,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "48732997",
+        "name": "敏卓酒店（佛山创意产业园南风古灶店)",
+        "area": "佛山禅城祖庙片区",
+        "price": 278,
+        "diff": -10,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "128082654",
+        "name": "佛山樵顺酒店（广东千古情西樵山店）",
+        "area": "佛山西樵山片区",
+        "price": 297,
+        "diff": -1,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山西樵山",
+        "note": "佛山西樵山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437005",
+        "name": "佛山顺德碧桂园度假村",
+        "area": "佛山顺德北滘片区",
+        "price": 334,
+        "diff": 0,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "2304265",
+        "name": "佛山兴海唯璞酒店",
+        "area": "佛山待确认片区",
+        "price": 337,
+        "diff": -22,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "448961",
+        "name": "佛山顺德哥顿酒店（渔人码头店）",
+        "area": "佛山待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "98389151",
+        "name": "佛山白天鹅采奕酒店",
+        "area": "佛山待确认片区",
+        "price": 355,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "5575648",
+        "name": "佛山顺德华美达酒店（乐从家俱城店）",
+        "area": "佛山顺德乐从片区",
+        "price": 358,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山顺德乐从",
+        "note": "佛山顺德乐从，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "80911801",
+        "name": "佛山三龙湾希尔顿欢朋酒店",
+        "area": "佛山待确认片区",
+        "price": 361,
+        "diff": -16,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施，适合亲子短途。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "23971991",
+        "name": "励骏大酒店（佛山南庄华夏陶瓷博览城店）",
+        "area": "佛山待确认片区",
+        "price": 203,
+        "diff": -20,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1413290",
+        "name": "天鹅湖休闲酒店（佛山千灯湖平洲店）",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 238,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "48732997",
+        "name": "敏卓酒店（佛山创意产业园南风古灶店)",
+        "area": "佛山禅城祖庙片区",
+        "price": 278,
+        "diff": -10,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "128082654",
+        "name": "佛山樵顺酒店（广东千古情西樵山店）",
+        "area": "佛山西樵山片区",
+        "price": 297,
+        "diff": -1,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山西樵山",
+        "note": "佛山西樵山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437005",
+        "name": "佛山顺德碧桂园度假村",
+        "area": "佛山顺德北滘片区",
+        "price": 334,
+        "diff": 0,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "2304265",
+        "name": "佛山兴海唯璞酒店",
+        "area": "佛山待确认片区",
+        "price": 337,
+        "diff": -22,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "448961",
+        "name": "佛山顺德哥顿酒店（渔人码头店）",
+        "area": "佛山待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "98389151",
+        "name": "佛山白天鹅采奕酒店",
+        "area": "佛山待确认片区",
+        "price": 355,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "5575648",
+        "name": "佛山顺德华美达酒店（乐从家俱城店）",
+        "area": "佛山顺德乐从片区",
+        "price": 358,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山顺德乐从",
+        "note": "佛山顺德乐从，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "80911801",
+        "name": "佛山三龙湾希尔顿欢朋酒店",
+        "area": "佛山待确认片区",
+        "price": 361,
+        "diff": -16,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "894212",
+        "name": "柏丽酒店(佛山乐从罗浮宫家具城店)",
+        "area": "佛山顺德乐从片区",
+        "price": 368,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德乐从",
+        "note": "佛山顺德乐从，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "69464015",
+        "name": "佛山顺德北滘智选假日酒店",
+        "area": "佛山顺德北滘片区",
+        "price": 371,
+        "diff": -8,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "115730375",
+        "name": "佛山南海影视城希尔顿欢朋酒店",
+        "area": "佛山南海片区",
+        "price": 378,
+        "diff": -7,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山南海",
+        "note": "佛山南海，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "10914228",
+        "name": "佛山千灯湖酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 379,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "5024896",
+        "name": "佛山希尔顿花园酒店",
+        "area": "佛山待确认片区",
+        "price": 380,
+        "diff": -58,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "16932657",
+        "name": "佛山三水希尔顿欢朋酒店",
+        "area": "佛山三水片区",
+        "price": 386,
+        "diff": -18,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山三水",
+        "note": "佛山三水，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "69317334",
+        "name": "佛山南海和华希尔顿逸林酒店",
+        "area": "佛山南海片区",
+        "price": 414,
+        "diff": -63,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山南海",
+        "note": "佛山南海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "29594158",
+        "name": "佛山德徠酒店",
+        "area": "佛山待确认片区",
+        "price": 418,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "427470",
+        "name": "佛山恒安雅高瑞士大酒店（岭南新天地祖庙店）",
+        "area": "佛山禅城祖庙片区",
+        "price": 442,
+        "diff": -5,
+        "source_file": "2bd715bb9a8d37fc72a07509f34f00ec0bc379ce642436b6b501a023b00830b4.json",
+        "source_cached_at": "2026-05-11T17:04:21",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "430401",
+        "name": "佛山皇冠假日酒店",
+        "area": "佛山禅城祖庙片区",
+        "price": 444,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "478621",
+        "name": "佛山顺德雅高铂尔曼酒店",
+        "area": "佛山顺德北滘片区",
+        "price": 451,
+        "diff": -52,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "24467849",
+        "name": "佛山金沙洲温德姆花园酒店",
+        "area": "佛山待确认片区",
+        "price": 460,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "485183",
+        "name": "佛山財神酒店",
+        "area": "佛山待确认片区",
+        "price": 468,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "85099965",
+        "name": "佛山金鼎泰丰酒店（广东千古情西樵山店）",
+        "area": "佛山西樵山片区",
+        "price": 469,
+        "diff": 0,
+        "source_file": "05f643ff33c488e7a17ea9087eaa1d5ee91ea8c7e56f35bb127af3dcea86fa62.json",
+        "source_cached_at": "2026-05-06T15:59:30",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山西樵山",
+        "note": "佛山西樵山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "110441626",
+        "name": "HAJANA江景民宿（佛山沙寮店）",
+        "area": "佛山沙寮江景片区",
+        "price": 484,
+        "diff": -203,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山沙寮江景",
+        "note": "佛山沙寮江景，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "13637834",
+        "name": "佛山顺德龙江联塑万怡酒店",
+        "area": "佛山顺德龙江片区",
+        "price": 497,
+        "diff": -19,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德龙江",
+        "note": "佛山顺德龙江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "66913266",
+        "name": "佛山南海利泰皇冠假日酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 515,
+        "diff": -21,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "102646466",
+        "name": "佛山奥克伍德华庭酒店公寓",
+        "area": "佛山待确认片区",
+        "price": 531,
+        "diff": -6,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "114601336",
+        "name": "佛山长华温德姆酒店",
+        "area": "佛山待确认片区",
+        "price": 568,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "374877",
+        "name": "佛山保利洲际酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 656,
+        "diff": -31,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "48732997",
+        "name": "敏卓酒店（佛山创意产业园南风古灶店)",
+        "area": "佛山禅城祖庙片区",
+        "price": 278,
+        "diff": -10,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "128082654",
+        "name": "佛山樵顺酒店（广东千古情西樵山店）",
+        "area": "佛山西樵山片区",
+        "price": 297,
+        "diff": -1,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山西樵山",
+        "note": "佛山西樵山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437005",
+        "name": "佛山顺德碧桂园度假村",
+        "area": "佛山顺德北滘片区",
+        "price": 334,
+        "diff": 0,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "448961",
+        "name": "佛山顺德哥顿酒店（渔人码头店）",
+        "area": "佛山待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "98389151",
+        "name": "佛山白天鹅采奕酒店",
+        "area": "佛山待确认片区",
+        "price": 355,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "894212",
+        "name": "柏丽酒店(佛山乐从罗浮宫家具城店)",
+        "area": "佛山顺德乐从片区",
+        "price": 368,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德乐从",
+        "note": "佛山顺德乐从，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "10914228",
+        "name": "佛山千灯湖酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 379,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "69317334",
+        "name": "佛山南海和华希尔顿逸林酒店",
+        "area": "佛山南海片区",
+        "price": 414,
+        "diff": -63,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山南海",
+        "note": "佛山南海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430401",
+        "name": "佛山皇冠假日酒店",
+        "area": "佛山禅城祖庙片区",
+        "price": 444,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "478621",
+        "name": "佛山顺德雅高铂尔曼酒店",
+        "area": "佛山顺德北滘片区",
+        "price": 451,
+        "diff": -52,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "48732997",
+        "name": "敏卓酒店（佛山创意产业园南风古灶店)",
+        "area": "佛山禅城祖庙片区",
+        "price": 278,
+        "diff": -10,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "128082654",
+        "name": "佛山樵顺酒店（广东千古情西樵山店）",
+        "area": "佛山西樵山片区",
+        "price": 297,
+        "diff": -1,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山西樵山",
+        "note": "佛山西樵山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437005",
+        "name": "佛山顺德碧桂园度假村",
+        "area": "佛山顺德北滘片区",
+        "price": 334,
+        "diff": 0,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "448961",
+        "name": "佛山顺德哥顿酒店（渔人码头店）",
+        "area": "佛山待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "98389151",
+        "name": "佛山白天鹅采奕酒店",
+        "area": "佛山待确认片区",
+        "price": 355,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "894212",
+        "name": "柏丽酒店(佛山乐从罗浮宫家具城店)",
+        "area": "佛山顺德乐从片区",
+        "price": 368,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德乐从",
+        "note": "佛山顺德乐从，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "10914228",
+        "name": "佛山千灯湖酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 379,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "69317334",
+        "name": "佛山南海和华希尔顿逸林酒店",
+        "area": "佛山南海片区",
+        "price": 414,
+        "diff": -63,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山南海",
+        "note": "佛山南海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430401",
+        "name": "佛山皇冠假日酒店",
+        "area": "佛山禅城祖庙片区",
+        "price": 444,
+        "diff": 0,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山禅城祖庙",
+        "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "478621",
+        "name": "佛山顺德雅高铂尔曼酒店",
+        "area": "佛山顺德北滘片区",
+        "price": 451,
+        "diff": -52,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "85099965",
+        "name": "佛山金鼎泰丰酒店（广东千古情西樵山店）",
+        "area": "佛山西樵山片区",
+        "price": 469,
+        "diff": 0,
+        "source_file": "05f643ff33c488e7a17ea9087eaa1d5ee91ea8c7e56f35bb127af3dcea86fa62.json",
+        "source_cached_at": "2026-05-06T15:59:30",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山西樵山",
+        "note": "佛山西樵山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "110441626",
+        "name": "HAJANA江景民宿（佛山沙寮店）",
+        "area": "佛山沙寮江景片区",
+        "price": 484,
+        "diff": -203,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山沙寮江景",
+        "note": "佛山沙寮江景，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "13637834",
+        "name": "佛山顺德龙江联塑万怡酒店",
+        "area": "佛山顺德龙江片区",
+        "price": 497,
+        "diff": -19,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德龙江",
+        "note": "佛山顺德龙江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "66913266",
+        "name": "佛山南海利泰皇冠假日酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 515,
+        "diff": -21,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374877",
+        "name": "佛山保利洲际酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 656,
+        "diff": -31,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "110441626",
+        "name": "HAJANA江景民宿（佛山沙寮店）",
+        "area": "佛山沙寮江景片区",
+        "price": 484,
+        "diff": -203,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山沙寮江景",
+        "note": "佛山沙寮江景，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "69317334",
+        "name": "佛山南海和华希尔顿逸林酒店",
+        "area": "佛山南海片区",
+        "price": 414,
+        "diff": -63,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山南海",
+        "note": "佛山南海，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "5024896",
+        "name": "佛山希尔顿花园酒店",
+        "area": "佛山待确认片区",
+        "price": 380,
+        "diff": -58,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "478621",
+        "name": "佛山顺德雅高铂尔曼酒店",
+        "area": "佛山顺德北滘片区",
+        "price": 451,
+        "diff": -52,
+        "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "source_cached_at": "2026-05-11T11:08:36",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德北滘",
+        "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374877",
+        "name": "佛山保利洲际酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 656,
+        "diff": -31,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "2304265",
+        "name": "佛山兴海唯璞酒店",
+        "area": "佛山待确认片区",
+        "price": 337,
+        "diff": -22,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "66913266",
+        "name": "佛山南海利泰皇冠假日酒店",
+        "area": "佛山千灯湖/桂城片区",
+        "price": 515,
+        "diff": -21,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山千灯湖/桂城",
+        "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "23971991",
+        "name": "励骏大酒店（佛山南庄华夏陶瓷博览城店）",
+        "area": "佛山待确认片区",
+        "price": 203,
+        "diff": -20,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山",
+        "note": "佛山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "13637834",
+        "name": "佛山顺德龙江联塑万怡酒店",
+        "area": "佛山顺德龙江片区",
+        "price": 497,
+        "diff": -19,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "佛山顺德龙江",
+        "note": "佛山顺德龙江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "16932657",
+        "name": "佛山三水希尔顿欢朋酒店",
+        "area": "佛山三水片区",
+        "price": 386,
+        "diff": -18,
+        "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "source_cached_at": "2026-05-11T17:00:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "佛山三水",
+        "note": "佛山三水，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "23971991",
+      "name": "励骏大酒店（佛山南庄华夏陶瓷博览城店）",
+      "area": "佛山待确认片区",
+      "price": 203,
+      "diff": -20,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "1413290",
+      "name": "天鹅湖休闲酒店（佛山千灯湖平洲店）",
+      "area": "佛山千灯湖/桂城片区",
+      "price": 238,
+      "diff": 0,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山千灯湖/桂城",
+      "note": "佛山千灯湖/桂城，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "48732997",
+      "name": "敏卓酒店（佛山创意产业园南风古灶店)",
+      "area": "佛山禅城祖庙片区",
+      "price": 278,
+      "diff": -10,
+      "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+      "source_cached_at": "2026-05-11T11:08:36",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山禅城祖庙",
+      "note": "佛山禅城祖庙，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "128082654",
+      "name": "佛山樵顺酒店（广东千古情西樵山店）",
+      "area": "佛山西樵山片区",
+      "price": 297,
+      "diff": -1,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山西樵山",
+      "note": "佛山西樵山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "437005",
+      "name": "佛山顺德碧桂园度假村",
+      "area": "佛山顺德北滘片区",
+      "price": 334,
+      "diff": 0,
+      "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+      "source_cached_at": "2026-05-11T11:08:36",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山顺德北滘",
+      "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "2304265",
+      "name": "佛山兴海唯璞酒店",
+      "area": "佛山待确认片区",
+      "price": 337,
+      "diff": -22,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "448961",
+      "name": "佛山顺德哥顿酒店（渔人码头店）",
+      "area": "佛山待确认片区",
+      "price": 338,
+      "diff": 0,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "98389151",
+      "name": "佛山白天鹅采奕酒店",
+      "area": "佛山待确认片区",
+      "price": 355,
+      "diff": 0,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "5575648",
+      "name": "佛山顺德华美达酒店（乐从家俱城店）",
+      "area": "佛山顺德乐从片区",
+      "price": 358,
+      "diff": 0,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山顺德乐从",
+      "note": "佛山顺德乐从，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "80911801",
+      "name": "佛山三龙湾希尔顿欢朋酒店",
+      "area": "佛山待确认片区",
+      "price": 361,
+      "diff": -16,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，具备儿童设施，适合亲子短途。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "110441626",
+      "name": "HAJANA江景民宿（佛山沙寮店）",
+      "area": "佛山沙寮江景片区",
+      "price": 484,
+      "diff": -203,
+      "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+      "source_cached_at": "2026-05-11T11:08:36",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山沙寮江景",
+      "note": "佛山沙寮江景，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "69317334",
+      "name": "佛山南海和华希尔顿逸林酒店",
+      "area": "佛山南海片区",
+      "price": 414,
+      "diff": -63,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山南海",
+      "note": "佛山南海，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "5024896",
+      "name": "佛山希尔顿花园酒店",
+      "area": "佛山待确认片区",
+      "price": 380,
+      "diff": -58,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "478621",
+      "name": "佛山顺德雅高铂尔曼酒店",
+      "area": "佛山顺德北滘片区",
+      "price": 451,
+      "diff": -52,
+      "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+      "source_cached_at": "2026-05-11T11:08:36",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山顺德北滘",
+      "note": "佛山顺德北滘，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "374877",
+      "name": "佛山保利洲际酒店",
+      "area": "佛山千灯湖/桂城片区",
+      "price": 656,
+      "diff": -31,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山千灯湖/桂城",
+      "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "2304265",
+      "name": "佛山兴海唯璞酒店",
+      "area": "佛山待确认片区",
+      "price": 337,
+      "diff": -22,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "66913266",
+      "name": "佛山南海利泰皇冠假日酒店",
+      "area": "佛山千灯湖/桂城片区",
+      "price": 515,
+      "diff": -21,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山千灯湖/桂城",
+      "note": "佛山千灯湖/桂城，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "23971991",
+      "name": "励骏大酒店（佛山南庄华夏陶瓷博览城店）",
+      "area": "佛山待确认片区",
+      "price": 203,
+      "diff": -20,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山",
+      "note": "佛山，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "13637834",
+      "name": "佛山顺德龙江联塑万怡酒店",
+      "area": "佛山顺德龙江片区",
+      "price": 497,
+      "diff": -19,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "佛山顺德龙江",
+      "note": "佛山顺德龙江，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "16932657",
+      "name": "佛山三水希尔顿欢朋酒店",
+      "area": "佛山三水片区",
+      "price": 386,
+      "diff": -18,
+      "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+      "source_cached_at": "2026-05-11T17:00:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "佛山三水",
+      "note": "佛山三水，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "佛山千灯湖/桂城片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 2,
+      "average_price": 447,
+      "average_diff": -13,
+      "price_range": [
+        238,
+        656
+      ],
+      "hotels": [
+        {
+          "hotel_id": "374877",
+          "name": "佛山保利洲际酒店",
+          "area": "佛山千灯湖/桂城片区",
+          "price": 656,
+          "diff": -31,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "66913266",
+          "name": "佛山南海利泰皇冠假日酒店",
+          "area": "佛山千灯湖/桂城片区",
+          "price": 515,
+          "diff": -21,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "1413290",
+          "name": "天鹅湖休闲酒店（佛山千灯湖平洲店）",
+          "area": "佛山千灯湖/桂城片区",
+          "price": 238,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "10914228",
+          "name": "佛山千灯湖酒店",
+          "area": "佛山千灯湖/桂城片区",
+          "price": 379,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        }
+      ],
+      "representative_hotels": [
+        "佛山保利洲际酒店",
+        "佛山南海利泰皇冠假日酒店",
+        "天鹅湖休闲酒店（佛山千灯湖平洲店）"
+      ],
+      "rank": 1,
+      "summary": "4家高级酒店，2家降价，2家持平"
+    },
+    {
+      "area": "佛山顺德北滘片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 1,
+      "average_price": 385,
+      "average_diff": -20,
+      "price_range": [
+        334,
+        451
+      ],
+      "hotels": [
+        {
+          "hotel_id": "478621",
+          "name": "佛山顺德雅高铂尔曼酒店",
+          "area": "佛山顺德北滘片区",
+          "price": 451,
+          "diff": -52,
+          "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+          "source_cached_at": "2026-05-11T11:08:36"
+        },
+        {
+          "hotel_id": "69464015",
+          "name": "佛山顺德北滘智选假日酒店",
+          "area": "佛山顺德北滘片区",
+          "price": 371,
+          "diff": -8,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "437005",
+          "name": "佛山顺德碧桂园度假村",
+          "area": "佛山顺德北滘片区",
+          "price": 334,
+          "diff": 0,
+          "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+          "source_cached_at": "2026-05-11T11:08:36"
+        }
+      ],
+      "representative_hotels": [
+        "佛山顺德雅高铂尔曼酒店",
+        "佛山顺德北滘智选假日酒店",
+        "佛山顺德碧桂园度假村"
+      ],
+      "rank": 2,
+      "summary": "3家高级酒店，2家降价，1家持平"
+    },
+    {
+      "area": "佛山禅城祖庙片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 1,
+      "average_price": 388,
+      "average_diff": -5,
+      "price_range": [
+        278,
+        444
+      ],
+      "hotels": [
+        {
+          "hotel_id": "48732997",
+          "name": "敏卓酒店（佛山创意产业园南风古灶店)",
+          "area": "佛山禅城祖庙片区",
+          "price": 278,
+          "diff": -10,
+          "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+          "source_cached_at": "2026-05-11T11:08:36"
+        },
+        {
+          "hotel_id": "427470",
+          "name": "佛山恒安雅高瑞士大酒店（岭南新天地祖庙店）",
+          "area": "佛山禅城祖庙片区",
+          "price": 442,
+          "diff": -5,
+          "source_file": "2bd715bb9a8d37fc72a07509f34f00ec0bc379ce642436b6b501a023b00830b4.json",
+          "source_cached_at": "2026-05-11T17:04:21"
+        },
+        {
+          "hotel_id": "430401",
+          "name": "佛山皇冠假日酒店",
+          "area": "佛山禅城祖庙片区",
+          "price": 444,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        }
+      ],
+      "representative_hotels": [
+        "敏卓酒店（佛山创意产业园南风古灶店)",
+        "佛山恒安雅高瑞士大酒店（岭南新天地祖庙店）",
+        "佛山皇冠假日酒店"
+      ],
+      "rank": 3,
+      "summary": "3家高级酒店，2家降价，1家持平"
+    },
+    {
+      "area": "佛山南海片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 0,
+      "average_price": 396,
+      "average_diff": -35,
+      "price_range": [
+        378,
+        414
+      ],
+      "hotels": [
+        {
+          "hotel_id": "69317334",
+          "name": "佛山南海和华希尔顿逸林酒店",
+          "area": "佛山南海片区",
+          "price": 414,
+          "diff": -63,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "115730375",
+          "name": "佛山南海影视城希尔顿欢朋酒店",
+          "area": "佛山南海片区",
+          "price": 378,
+          "diff": -7,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        }
+      ],
+      "representative_hotels": [
+        "佛山南海和华希尔顿逸林酒店",
+        "佛山南海影视城希尔顿欢朋酒店"
+      ],
+      "rank": 4,
+      "summary": "2家高级酒店，2家降价"
+    },
+    {
+      "area": "佛山顺德乐从片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 2,
+      "average_price": 363,
+      "average_diff": 0,
+      "price_range": [
+        358,
+        368
+      ],
+      "hotels": [
+        {
+          "hotel_id": "5575648",
+          "name": "佛山顺德华美达酒店（乐从家俱城店）",
+          "area": "佛山顺德乐从片区",
+          "price": 358,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "894212",
+          "name": "柏丽酒店(佛山乐从罗浮宫家具城店)",
+          "area": "佛山顺德乐从片区",
+          "price": 368,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        }
+      ],
+      "representative_hotels": [
+        "佛山顺德华美达酒店（乐从家俱城店）",
+        "柏丽酒店(佛山乐从罗浮宫家具城店)"
+      ],
+      "rank": 5,
+      "summary": "2家高级酒店，0家降价，2家持平"
+    },
+    {
+      "area": "佛山西樵山片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 1,
+      "average_price": 383,
+      "average_diff": 0,
+      "price_range": [
+        297,
+        469
+      ],
+      "hotels": [
+        {
+          "hotel_id": "128082654",
+          "name": "佛山樵顺酒店（广东千古情西樵山店）",
+          "area": "佛山西樵山片区",
+          "price": 297,
+          "diff": -1,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "85099965",
+          "name": "佛山金鼎泰丰酒店（广东千古情西樵山店）",
+          "area": "佛山西樵山片区",
+          "price": 469,
+          "diff": 0,
+          "source_file": "05f643ff33c488e7a17ea9087eaa1d5ee91ea8c7e56f35bb127af3dcea86fa62.json",
+          "source_cached_at": "2026-05-06T15:59:30"
+        }
+      ],
+      "representative_hotels": [
+        "佛山樵顺酒店（广东千古情西樵山店）",
+        "佛山金鼎泰丰酒店（广东千古情西樵山店）"
+      ],
+      "rank": 6,
+      "summary": "2家高级酒店，1家降价，1家持平"
+    },
+    {
+      "area": "佛山沙寮江景片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 484,
+      "average_diff": -203,
+      "price_range": [
+        484,
+        484
+      ],
+      "hotels": [
+        {
+          "hotel_id": "110441626",
+          "name": "HAJANA江景民宿（佛山沙寮店）",
+          "area": "佛山沙寮江景片区",
+          "price": 484,
+          "diff": -203,
+          "source_file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+          "source_cached_at": "2026-05-11T11:08:36"
+        }
+      ],
+      "representative_hotels": [
+        "HAJANA江景民宿（佛山沙寮店）"
+      ],
+      "rank": 7,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "佛山顺德龙江片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 497,
+      "average_diff": -19,
+      "price_range": [
+        497,
+        497
+      ],
+      "hotels": [
+        {
+          "hotel_id": "13637834",
+          "name": "佛山顺德龙江联塑万怡酒店",
+          "area": "佛山顺德龙江片区",
+          "price": 497,
+          "diff": -19,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        }
+      ],
+      "representative_hotels": [
+        "佛山顺德龙江联塑万怡酒店"
+      ],
+      "rank": 8,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "佛山三水片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 386,
+      "average_diff": -18,
+      "price_range": [
+        386,
+        386
+      ],
+      "hotels": [
+        {
+          "hotel_id": "16932657",
+          "name": "佛山三水希尔顿欢朋酒店",
+          "area": "佛山三水片区",
+          "price": 386,
+          "diff": -18,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        }
+      ],
+      "representative_hotels": [
+        "佛山三水希尔顿欢朋酒店"
+      ],
+      "rank": 9,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "佛山待确认片区",
+      "hotel_count": 11,
+      "discount_hotel_count": 5,
+      "flat_hotel_count": 6,
+      "average_price": 402,
+      "average_diff": -11,
+      "price_range": [
+        203,
+        568
+      ],
+      "hotels": [
+        {
+          "hotel_id": "5024896",
+          "name": "佛山希尔顿花园酒店",
+          "area": "佛山待确认片区",
+          "price": 380,
+          "diff": -58,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "2304265",
+          "name": "佛山兴海唯璞酒店",
+          "area": "佛山待确认片区",
+          "price": 337,
+          "diff": -22,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "23971991",
+          "name": "励骏大酒店（佛山南庄华夏陶瓷博览城店）",
+          "area": "佛山待确认片区",
+          "price": 203,
+          "diff": -20,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "80911801",
+          "name": "佛山三龙湾希尔顿欢朋酒店",
+          "area": "佛山待确认片区",
+          "price": 361,
+          "diff": -16,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "102646466",
+          "name": "佛山奥克伍德华庭酒店公寓",
+          "area": "佛山待确认片区",
+          "price": 531,
+          "diff": -6,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "448961",
+          "name": "佛山顺德哥顿酒店（渔人码头店）",
+          "area": "佛山待确认片区",
+          "price": 338,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "98389151",
+          "name": "佛山白天鹅采奕酒店",
+          "area": "佛山待确认片区",
+          "price": 355,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "29594158",
+          "name": "佛山德徠酒店",
+          "area": "佛山待确认片区",
+          "price": 418,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "24467849",
+          "name": "佛山金沙洲温德姆花园酒店",
+          "area": "佛山待确认片区",
+          "price": 460,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "485183",
+          "name": "佛山財神酒店",
+          "area": "佛山待确认片区",
+          "price": 468,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        },
+        {
+          "hotel_id": "114601336",
+          "name": "佛山长华温德姆酒店",
+          "area": "佛山待确认片区",
+          "price": 568,
+          "diff": 0,
+          "source_file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+          "source_cached_at": "2026-05-11T17:00:03"
+        }
+      ],
+      "representative_hotels": [
+        "佛山希尔顿花园酒店",
+        "佛山兴海唯璞酒店",
+        "励骏大酒店（佛山南庄华夏陶瓷博览城店）"
+      ],
+      "rank": 10,
+      "summary": "11家高级酒店，5家降价，6家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 6,
+    "candidate_count": 190,
+    "unique_hotel_count": 97,
+    "included_hotel_count": 30,
+    "matching_files": [
+      {
+        "file": "2bd715bb9a8d37fc72a07509f34f00ec0bc379ce642436b6b501a023b00830b4.json",
+        "mtime": 1778490261.3003929,
+        "choices": 7,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "mtime": 1778490003.1539516,
+        "choices": 130,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "mtime": 1778468916.326875,
+        "choices": 16,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "e5abe160ebea6e6d9b4fce85541002d4903484347e4da0994774fc5b3eea3d3b.json",
+        "mtime": 1778141529.381008,
+        "choices": 12,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "e7c580b8358f64e297b225c2b19251a60afda422dacfd7495775ff79cdf92601.json",
+        "mtime": 1778130289.1145055,
+        "choices": 81,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "05f643ff33c488e7a17ea9087eaa1d5ee91ea8c7e56f35bb127af3dcea86fa62.json",
+        "mtime": 1778054370.4002044,
+        "choices": 17,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 6,
+    "candidate_count": 190,
+    "unique_hotel_count": 97,
+    "included_hotel_count": 30,
+    "matching_files": [
+      {
+        "file": "2bd715bb9a8d37fc72a07509f34f00ec0bc379ce642436b6b501a023b00830b4.json",
+        "mtime": 1778490261.3003929,
+        "choices": 7,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "40c9076549be3f9fd062ace5f42ffef87d0ceba9c17146a4089b41fae232a688.json",
+        "mtime": 1778490003.1539516,
+        "choices": 130,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "121f85686994b9e06a0ca1cfa12ce2c5a44b9d4021c69dec7789fce03357edda.json",
+        "mtime": 1778468916.326875,
+        "choices": 16,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "e5abe160ebea6e6d9b4fce85541002d4903484347e4da0994774fc5b3eea3d3b.json",
+        "mtime": 1778141529.381008,
+        "choices": 12,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "e7c580b8358f64e297b225c2b19251a60afda422dacfd7495775ff79cdf92601.json",
+        "mtime": 1778130289.1145055,
+        "choices": 81,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "05f643ff33c488e7a17ea9087eaa1d5ee91ea8c7e56f35bb127af3dcea86fa62.json",
+        "mtime": 1778054370.4002044,
+        "choices": 17,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "佛山",
+    "text": "佛山可重点看清晖园、西樵山、佛山祖庙、南风古灶/高灶陶窑；顺德园林美食、禅城老城和西樵山周边适合短途组合。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/佛山市",
+    "updated_at": "2026-05-11T16:30:00"
+  },
+  "generated_at": "2026-05-12T12:24:13"
+}

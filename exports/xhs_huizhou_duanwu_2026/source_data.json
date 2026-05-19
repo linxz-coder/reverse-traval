@@ -1,0 +1,2509 @@
+{
+  "city": "惠州",
+  "generated_at": "2026-05-12T12:24:18",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "98350461",
+        "name": "华辉酒店（惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 89,
+        "diff": -4,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "61133694",
+        "name": "贝多国际商务酒店（惠州惠阳高铁站淡水老城店）",
+        "area": "惠州惠阳片区",
+        "price": 91,
+        "diff": -7,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124123301",
+        "name": "城市便捷酒店（博罗商业中街广东省技师学院店）",
+        "area": "惠州博罗片区",
+        "price": 111,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州博罗",
+        "note": "惠州博罗，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1054954",
+        "name": "惠州金銮酒店（港惠购物中心店）",
+        "area": "惠州待确认片区",
+        "price": 118,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1722754",
+        "name": "柏曼酒店（惠州仲恺陈江店）",
+        "area": "惠州仲恺片区",
+        "price": 123,
+        "diff": 0,
+        "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "source_cached_at": "2026-05-08T14:41:56",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "106145846",
+        "name": "东能銀灘勝威酒店",
+        "area": "惠州待确认片区",
+        "price": 130,
+        "diff": -29,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "131772129",
+        "name": "悦柏廷酒店（惠州惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 130,
+        "diff": -7,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "102556922",
+        "name": "惠州小径湾海心度假公寓",
+        "area": "惠州待确认片区",
+        "price": 130,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6831799",
+        "name": "维也纳酒店（惠州仲愷高新区瀝林鎮卫生院瀝林北站店）",
+        "area": "惠州仲恺片区",
+        "price": 132,
+        "diff": 0,
+        "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+        "source_cached_at": "2026-05-07T13:02:09",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "127025334",
+        "name": "小五星酒店（惠州惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 134,
+        "diff": -4,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "98350461",
+        "name": "华辉酒店（惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 89,
+        "diff": -4,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "61133694",
+        "name": "贝多国际商务酒店（惠州惠阳高铁站淡水老城店）",
+        "area": "惠州惠阳片区",
+        "price": 91,
+        "diff": -7,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124123301",
+        "name": "城市便捷酒店（博罗商业中街广东省技师学院店）",
+        "area": "惠州博罗片区",
+        "price": 111,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州博罗",
+        "note": "惠州博罗，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1054954",
+        "name": "惠州金銮酒店（港惠购物中心店）",
+        "area": "惠州待确认片区",
+        "price": 118,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1722754",
+        "name": "柏曼酒店（惠州仲恺陈江店）",
+        "area": "惠州仲恺片区",
+        "price": 123,
+        "diff": 0,
+        "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "source_cached_at": "2026-05-08T14:41:56",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "106145846",
+        "name": "东能銀灘勝威酒店",
+        "area": "惠州待确认片区",
+        "price": 130,
+        "diff": -29,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "131772129",
+        "name": "悦柏廷酒店（惠州惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 130,
+        "diff": -7,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "102556922",
+        "name": "惠州小径湾海心度假公寓",
+        "area": "惠州待确认片区",
+        "price": 130,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6831799",
+        "name": "维也纳酒店（惠州仲愷高新区瀝林鎮卫生院瀝林北站店）",
+        "area": "惠州仲恺片区",
+        "price": 132,
+        "diff": 0,
+        "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+        "source_cached_at": "2026-05-07T13:02:09",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "127025334",
+        "name": "小五星酒店（惠州惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 134,
+        "diff": -4,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "133151299",
+        "name": "云臻美寓.酒店（惠州体育馆市政府店）",
+        "area": "惠州待确认片区",
+        "price": 143,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "6476332",
+        "name": "维也纳酒店（惠州惠阳站白云路店）",
+        "area": "惠州惠阳片区",
+        "price": 145,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1969441",
+        "name": "维也纳酒店（惠州西湖花边岭广场店）",
+        "area": "惠州惠城片区",
+        "price": 149,
+        "diff": -19,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠城",
+        "note": "惠州惠城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124793980",
+        "name": "城市便捷酒店（惠州大亞湾科創軟件园店）",
+        "area": "惠州大亚湾片区",
+        "price": 157,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州大亚湾",
+        "note": "惠州大亚湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "54696171",
+        "name": "丽枫酒店（惠州惠阳站金惠大道店）",
+        "area": "惠州惠阳片区",
+        "price": 162,
+        "diff": -2,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "125431018",
+        "name": "伊兰酒店（惠州淡水惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 163,
+        "diff": -3,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "12192923",
+        "name": "维也纳酒店(惠州仲恺高铁站格林童话店)",
+        "area": "惠州仲恺片区",
+        "price": 169,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "706695",
+        "name": "隆泰金都酒店（惠州西湖东站店）",
+        "area": "惠州惠城片区",
+        "price": 170,
+        "diff": -1,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠城",
+        "note": "惠州惠城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "128540818",
+        "name": "欧斯卡酒店（惠州淡水惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 178,
+        "diff": -8,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1511786",
+        "name": "维也纳酒店（惠州中信店）",
+        "area": "惠州待确认片区",
+        "price": 179,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "114656988",
+        "name": "惠州惠阳亿源假日酒店",
+        "area": "惠州惠阳片区",
+        "price": 181,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "114308426",
+        "name": "宜必思尚品酒店（惠州惠阳人民公园店）",
+        "area": "惠州惠阳片区",
+        "price": 187,
+        "diff": -2,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "532763",
+        "name": "惠州惠阳家路国际大酒店",
+        "area": "惠州惠阳片区",
+        "price": 194,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "917476",
+        "name": "维也纳国际酒店(惠州惠阳高铁店)",
+        "area": "惠州惠阳片区",
+        "price": 217,
+        "diff": -1,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "101475639",
+        "name": "萊顿智慧酒店（惠州惠阳高铁站店）",
+        "area": "惠州惠阳片区",
+        "price": 227,
+        "diff": -2,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "125315936",
+        "name": "喆啡酒店(惠州大亚湾滨海公园店)",
+        "area": "惠州大亚湾片区",
+        "price": 230,
+        "diff": -15,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州大亚湾",
+        "note": "惠州大亚湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "107799797",
+        "name": "维也纳国际酒店（惠州数码园广泰路店）",
+        "area": "惠州待确认片区",
+        "price": 235,
+        "diff": -9,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "48611364",
+        "name": "惠州悦榕湾酒店（鹅城大桥店）",
+        "area": "惠州待确认片区",
+        "price": 238,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "512600",
+        "name": "惠东华美达广场酒店",
+        "area": "惠州惠东片区",
+        "price": 250,
+        "diff": 0,
+        "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+        "source_cached_at": "2026-05-07T13:02:09",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124639194",
+        "name": "惠州惠阳高铁站锦江都城酒店(惠阳区店)",
+        "area": "惠州惠阳片区",
+        "price": 251,
+        "diff": -1,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "23999500",
+        "name": "维也纳公寓(惠州大亚湾黄金海岸店)",
+        "area": "惠州大亚湾片区",
+        "price": 261,
+        "diff": -5,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州大亚湾",
+        "note": "惠州大亚湾，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133657180",
+        "name": "维也纳国际酒店(惠州大亞湾石化区店)",
+        "area": "惠州大亚湾片区",
+        "price": 277,
+        "diff": 0,
+        "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+        "source_cached_at": "2026-05-07T13:02:09",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州大亚湾",
+        "note": "惠州大亚湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "17492743",
+        "name": "惠东合正东部湾度假酒店（十里银滩亚婆角店）",
+        "area": "惠州惠东片区",
+        "price": 288,
+        "diff": -26,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "43723955",
+        "name": "山水S酒店(惠州新华广场店)",
+        "area": "惠州待确认片区",
+        "price": 288,
+        "diff": -8,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1466929",
+        "name": "山水S酒店(惠州港惠新天地瑞峰广场店)",
+        "area": "惠州待确认片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "716183",
+        "name": "天悦柏嘉大酒店（惠州西湖店）",
+        "area": "惠州惠城片区",
+        "price": 302,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠城",
+        "note": "惠州惠城，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "99805268",
+        "name": "惠州仲恺高新区美华酒店(天益城店）",
+        "area": "惠州仲恺片区",
+        "price": 303,
+        "diff": -31,
+        "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "source_cached_at": "2026-05-08T14:41:56",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99979910",
+        "name": "惠州惠阳市政广场亞朵X酒店",
+        "area": "惠州惠阳片区",
+        "price": 311,
+        "diff": -9,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "5376354",
+        "name": "惠州惠阳高铁站万联广场亚朵酒店",
+        "area": "惠州惠阳片区",
+        "price": 311,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠阳",
+        "note": "惠州惠阳，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "17321506",
+        "name": "惠州小径湾四季风度假公寓酒店",
+        "area": "惠州待确认片区",
+        "price": 313,
+        "diff": -78,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "118996010",
+        "name": "全季酒店（惠州水口文化体育中心店）",
+        "area": "惠州待确认片区",
+        "price": 313,
+        "diff": -6,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "99566259",
+        "name": "山水S酒店（惠州51新天地店）",
+        "area": "惠州惠城片区",
+        "price": 337,
+        "diff": -9,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠城",
+        "note": "惠州惠城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "2943240",
+        "name": "惠州小径湾呼噜海度假酒店公寓",
+        "area": "惠州待确认片区",
+        "price": 348,
+        "diff": -7,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "90280468",
+        "name": "惠州仲恺天益城亚朵酒店",
+        "area": "惠州仲恺片区",
+        "price": 352,
+        "diff": -21,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1489302",
+        "name": "惠州龙光城戴斯酒店",
+        "area": "惠州待确认片区",
+        "price": 361,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "1185097",
+        "name": "惠东碧桂园十里银滩海洋之星海景公寓",
+        "area": "惠州惠东片区",
+        "price": 368,
+        "diff": -14,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "23965944",
+        "name": "惠州盈富兴酒店",
+        "area": "惠州待确认片区",
+        "price": 398,
+        "diff": 0,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "116793383",
+        "name": "惠州北站希尔顿花园酒店",
+        "area": "惠州待确认片区",
+        "price": 443,
+        "diff": 0,
+        "source_file": "be10d7271a5285250ea08485224774b52fed6261abed1cb547494523ff36992a.json",
+        "source_cached_at": "2026-05-08T11:27:33",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "77429013",
+        "name": "惠州五矿哈施塔特君澜度假酒店",
+        "area": "惠州待确认片区",
+        "price": 446,
+        "diff": -24,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "427506",
+        "name": "惠州皇冠假日酒店",
+        "area": "惠州待确认片区",
+        "price": 540,
+        "diff": -8,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "2315705",
+        "name": "惠州翡翠山华美达酒店",
+        "area": "惠州待确认片区",
+        "price": 556,
+        "diff": -14,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "694774",
+        "name": "惠州白鹭湖雅居乐喜来登度假酒店",
+        "area": "惠州待确认片区",
+        "price": 582,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374871",
+        "name": "惠州富力万丽酒店",
+        "area": "惠州待确认片区",
+        "price": 606,
+        "diff": -82,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "35605023",
+        "name": "惠东碧桂园十里银滩东玥皇宫海景公寓",
+        "area": "惠州惠东片区",
+        "price": 942,
+        "diff": 0,
+        "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "source_cached_at": "2026-05-08T14:41:56",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "99561503",
+        "name": "惠州华润小径湾海舍度假民宿",
+        "area": "惠州待确认片区",
+        "price": 1280,
+        "diff": -28,
+        "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "source_cached_at": "2026-05-08T14:41:56",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "102556922",
+        "name": "惠州小径湾海心度假公寓",
+        "area": "惠州待确认片区",
+        "price": 130,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "17492743",
+        "name": "惠东合正东部湾度假酒店（十里银滩亚婆角店）",
+        "area": "惠州惠东片区",
+        "price": 288,
+        "diff": -26,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "17321506",
+        "name": "惠州小径湾四季风度假公寓酒店",
+        "area": "惠州待确认片区",
+        "price": 313,
+        "diff": -78,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1185097",
+        "name": "惠东碧桂园十里银滩海洋之星海景公寓",
+        "area": "惠州惠东片区",
+        "price": 368,
+        "diff": -14,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "23965944",
+        "name": "惠州盈富兴酒店",
+        "area": "惠州待确认片区",
+        "price": 398,
+        "diff": 0,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "77429013",
+        "name": "惠州五矿哈施塔特君澜度假酒店",
+        "area": "惠州待确认片区",
+        "price": 446,
+        "diff": -24,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "694774",
+        "name": "惠州白鹭湖雅居乐喜来登度假酒店",
+        "area": "惠州待确认片区",
+        "price": 582,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374871",
+        "name": "惠州富力万丽酒店",
+        "area": "惠州待确认片区",
+        "price": 606,
+        "diff": -82,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "102556922",
+        "name": "惠州小径湾海心度假公寓",
+        "area": "惠州待确认片区",
+        "price": 130,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "17492743",
+        "name": "惠东合正东部湾度假酒店（十里银滩亚婆角店）",
+        "area": "惠州惠东片区",
+        "price": 288,
+        "diff": -26,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "17321506",
+        "name": "惠州小径湾四季风度假公寓酒店",
+        "area": "惠州待确认片区",
+        "price": 313,
+        "diff": -78,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1185097",
+        "name": "惠东碧桂园十里银滩海洋之星海景公寓",
+        "area": "惠州惠东片区",
+        "price": 368,
+        "diff": -14,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "23965944",
+        "name": "惠州盈富兴酒店",
+        "area": "惠州待确认片区",
+        "price": 398,
+        "diff": 0,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "77429013",
+        "name": "惠州五矿哈施塔特君澜度假酒店",
+        "area": "惠州待确认片区",
+        "price": 446,
+        "diff": -24,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "694774",
+        "name": "惠州白鹭湖雅居乐喜来登度假酒店",
+        "area": "惠州待确认片区",
+        "price": 582,
+        "diff": 0,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "374871",
+        "name": "惠州富力万丽酒店",
+        "area": "惠州待确认片区",
+        "price": 606,
+        "diff": -82,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "374871",
+        "name": "惠州富力万丽酒店",
+        "area": "惠州待确认片区",
+        "price": 606,
+        "diff": -82,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "17321506",
+        "name": "惠州小径湾四季风度假公寓酒店",
+        "area": "惠州待确认片区",
+        "price": 313,
+        "diff": -78,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99805268",
+        "name": "惠州仲恺高新区美华酒店(天益城店）",
+        "area": "惠州仲恺片区",
+        "price": 303,
+        "diff": -31,
+        "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "source_cached_at": "2026-05-08T14:41:56",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "106145846",
+        "name": "东能銀灘勝威酒店",
+        "area": "惠州待确认片区",
+        "price": 130,
+        "diff": -29,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "99561503",
+        "name": "惠州华润小径湾海舍度假民宿",
+        "area": "惠州待确认片区",
+        "price": 1280,
+        "diff": -28,
+        "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "source_cached_at": "2026-05-08T14:41:56",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "17492743",
+        "name": "惠东合正东部湾度假酒店（十里银滩亚婆角店）",
+        "area": "惠州惠东片区",
+        "price": 288,
+        "diff": -26,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州惠东",
+        "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "77429013",
+        "name": "惠州五矿哈施塔特君澜度假酒店",
+        "area": "惠州待确认片区",
+        "price": 446,
+        "diff": -24,
+        "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "source_cached_at": "2026-05-11T15:23:48",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "惠州",
+        "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "90280468",
+        "name": "惠州仲恺天益城亚朵酒店",
+        "area": "惠州仲恺片区",
+        "price": 352,
+        "diff": -21,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州仲恺",
+        "note": "惠州仲恺，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1969441",
+        "name": "维也纳酒店（惠州西湖花边岭广场店）",
+        "area": "惠州惠城片区",
+        "price": 149,
+        "diff": -19,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州惠城",
+        "note": "惠州惠城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "125315936",
+        "name": "喆啡酒店(惠州大亚湾滨海公园店)",
+        "area": "惠州大亚湾片区",
+        "price": 230,
+        "diff": -15,
+        "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "source_cached_at": "2026-05-11T15:20:23",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "惠州大亚湾",
+        "note": "惠州大亚湾，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "98350461",
+      "name": "华辉酒店（惠阳高铁站店）",
+      "area": "惠州惠阳片区",
+      "price": 89,
+      "diff": -4,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州惠阳",
+      "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "61133694",
+      "name": "贝多国际商务酒店（惠州惠阳高铁站淡水老城店）",
+      "area": "惠州惠阳片区",
+      "price": 91,
+      "diff": -7,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州惠阳",
+      "note": "惠州惠阳，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "124123301",
+      "name": "城市便捷酒店（博罗商业中街广东省技师学院店）",
+      "area": "惠州博罗片区",
+      "price": 111,
+      "diff": 0,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州博罗",
+      "note": "惠州博罗，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "1054954",
+      "name": "惠州金銮酒店（港惠购物中心店）",
+      "area": "惠州待确认片区",
+      "price": 118,
+      "diff": 0,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "1722754",
+      "name": "柏曼酒店（惠州仲恺陈江店）",
+      "area": "惠州仲恺片区",
+      "price": 123,
+      "diff": 0,
+      "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+      "source_cached_at": "2026-05-08T14:41:56",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州仲恺",
+      "note": "惠州仲恺，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "106145846",
+      "name": "东能銀灘勝威酒店",
+      "area": "惠州待确认片区",
+      "price": 130,
+      "diff": -29,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "131772129",
+      "name": "悦柏廷酒店（惠州惠阳高铁站店）",
+      "area": "惠州惠阳片区",
+      "price": 130,
+      "diff": -7,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州惠阳",
+      "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "102556922",
+      "name": "惠州小径湾海心度假公寓",
+      "area": "惠州待确认片区",
+      "price": 130,
+      "diff": 0,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "6831799",
+      "name": "维也纳酒店（惠州仲愷高新区瀝林鎮卫生院瀝林北站店）",
+      "area": "惠州仲恺片区",
+      "price": 132,
+      "diff": 0,
+      "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+      "source_cached_at": "2026-05-07T13:02:09",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州仲恺",
+      "note": "惠州仲恺，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "127025334",
+      "name": "小五星酒店（惠州惠阳高铁站店）",
+      "area": "惠州惠阳片区",
+      "price": 134,
+      "diff": -4,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州惠阳",
+      "note": "惠州惠阳，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "374871",
+      "name": "惠州富力万丽酒店",
+      "area": "惠州待确认片区",
+      "price": 606,
+      "diff": -82,
+      "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+      "source_cached_at": "2026-05-11T15:23:48",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "17321506",
+      "name": "惠州小径湾四季风度假公寓酒店",
+      "area": "惠州待确认片区",
+      "price": 313,
+      "diff": -78,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "99805268",
+      "name": "惠州仲恺高新区美华酒店(天益城店）",
+      "area": "惠州仲恺片区",
+      "price": 303,
+      "diff": -31,
+      "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+      "source_cached_at": "2026-05-08T14:41:56",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州仲恺",
+      "note": "惠州仲恺，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "106145846",
+      "name": "东能銀灘勝威酒店",
+      "area": "惠州待确认片区",
+      "price": 130,
+      "diff": -29,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "99561503",
+      "name": "惠州华润小径湾海舍度假民宿",
+      "area": "惠州待确认片区",
+      "price": 1280,
+      "diff": -28,
+      "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+      "source_cached_at": "2026-05-08T14:41:56",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "17492743",
+      "name": "惠东合正东部湾度假酒店（十里银滩亚婆角店）",
+      "area": "惠州惠东片区",
+      "price": 288,
+      "diff": -26,
+      "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+      "source_cached_at": "2026-05-11T15:23:48",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州惠东",
+      "note": "惠州惠东，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "77429013",
+      "name": "惠州五矿哈施塔特君澜度假酒店",
+      "area": "惠州待确认片区",
+      "price": 446,
+      "diff": -24,
+      "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+      "source_cached_at": "2026-05-11T15:23:48",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "惠州",
+      "note": "惠州，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "90280468",
+      "name": "惠州仲恺天益城亚朵酒店",
+      "area": "惠州仲恺片区",
+      "price": 352,
+      "diff": -21,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州仲恺",
+      "note": "惠州仲恺，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "1969441",
+      "name": "维也纳酒店（惠州西湖花边岭广场店）",
+      "area": "惠州惠城片区",
+      "price": 149,
+      "diff": -19,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州惠城",
+      "note": "惠州惠城，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "125315936",
+      "name": "喆啡酒店(惠州大亚湾滨海公园店)",
+      "area": "惠州大亚湾片区",
+      "price": 230,
+      "diff": -15,
+      "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+      "source_cached_at": "2026-05-11T15:20:23",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "惠州大亚湾",
+      "note": "惠州大亚湾，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "惠州惠阳片区",
+      "hotel_count": 12,
+      "discount_hotel_count": 8,
+      "flat_hotel_count": 4,
+      "average_price": 199,
+      "average_diff": -3,
+      "price_range": [
+        78,
+        327
+      ],
+      "hotels": [
+        {
+          "hotel_id": "114492914",
+          "name": "惠州惠阳新都会亚朵酒店",
+          "area": "惠州惠阳片区",
+          "price": 327,
+          "diff": -13,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "99979910",
+          "name": "惠州惠阳市政广场亚朵X酒店",
+          "area": "惠州惠阳片区",
+          "price": 311,
+          "diff": -8,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "128540818",
+          "name": "欧斯卡酒店（惠州淡水惠阳高铁站店）",
+          "area": "惠州惠阳片区",
+          "price": 178,
+          "diff": -7,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "98350461",
+          "name": "华辉酒店（惠阳高铁站店）",
+          "area": "惠州惠阳片区",
+          "price": 78,
+          "diff": -4,
+          "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+          "source_cached_at": "2026-05-08T14:41:56"
+        },
+        {
+          "hotel_id": "125431018",
+          "name": "伊兰酒店（惠州淡水惠阳高铁站店）",
+          "area": "惠州惠阳片区",
+          "price": 163,
+          "diff": -2,
+          "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+          "source_cached_at": "2026-05-08T14:41:56"
+        },
+        {
+          "hotel_id": "1465961",
+          "name": "新丽晶大酒店（惠阳高铁站店）",
+          "area": "惠州惠阳片区",
+          "price": 148,
+          "diff": -1,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "114308426",
+          "name": "宜必思尚品酒店（惠州惠阳人民公园店）",
+          "area": "惠州惠阳片区",
+          "price": 198,
+          "diff": -1,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "124639194",
+          "name": "惠州惠阳高铁站锦江都城酒店(惠阳区店)",
+          "area": "惠州惠阳片区",
+          "price": 251,
+          "diff": -1,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "61133694",
+          "name": "贝多国际商务酒店（惠州惠阳高铁站淡水老城店）",
+          "area": "惠州惠阳片区",
+          "price": 91,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "127025334",
+          "name": "小五星酒店（惠州惠阳高铁站店）",
+          "area": "惠州惠阳片区",
+          "price": 134,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "532763",
+          "name": "惠州惠阳家路国际大酒店",
+          "area": "惠州惠阳片区",
+          "price": 194,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "5376354",
+          "name": "惠州惠阳高铁站万联广场亚朵酒店",
+          "area": "惠州惠阳片区",
+          "price": 311,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        }
+      ],
+      "representative_hotels": [
+        "惠州惠阳新都会亚朵酒店",
+        "惠州惠阳市政广场亚朵X酒店",
+        "欧斯卡酒店（惠州淡水惠阳高铁站店）"
+      ],
+      "rank": 1,
+      "summary": "12家高级酒店，8家降价，4家持平"
+    },
+    {
+      "area": "惠州惠东片区",
+      "hotel_count": 7,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 3,
+      "average_price": 328,
+      "average_diff": -7,
+      "price_range": [
+        128,
+        942
+      ],
+      "hotels": [
+        {
+          "hotel_id": "17492743",
+          "name": "惠东合正东部湾度假酒店（十里银滩亚婆角店）",
+          "area": "惠州惠东片区",
+          "price": 288,
+          "diff": -26,
+          "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+          "source_cached_at": "2026-05-11T15:23:48"
+        },
+        {
+          "hotel_id": "1969441",
+          "name": "维也纳酒店（惠州西湖花边岭广场店）",
+          "area": "惠州惠东片区",
+          "price": 147,
+          "diff": -17,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "454618",
+          "name": "锦江之星风尚酒店(惠州西湖东站店)",
+          "area": "惠州惠东片区",
+          "price": 128,
+          "diff": -2,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "998263",
+          "name": "维纳斯国际酒店(惠州西湖水东街店）",
+          "area": "惠州惠东片区",
+          "price": 238,
+          "diff": -2,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "512600",
+          "name": "惠东华美达广场酒店",
+          "area": "惠州惠东片区",
+          "price": 250,
+          "diff": 0,
+          "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+          "source_cached_at": "2026-05-07T13:02:09"
+        },
+        {
+          "hotel_id": "716183",
+          "name": "天悦柏嘉大酒店（惠州西湖店）",
+          "area": "惠州惠东片区",
+          "price": 302,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "35605023",
+          "name": "惠东碧桂园十里银滩东玥皇宫海景公寓",
+          "area": "惠州惠东片区",
+          "price": 942,
+          "diff": 0,
+          "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+          "source_cached_at": "2026-05-08T14:41:56"
+        }
+      ],
+      "representative_hotels": [
+        "惠东合正东部湾度假酒店（十里银滩亚婆角店）",
+        "维也纳酒店（惠州西湖花边岭广场店）",
+        "锦江之星风尚酒店(惠州西湖东站店)"
+      ],
+      "rank": 2,
+      "summary": "7家高级酒店，4家降价，3家持平"
+    },
+    {
+      "area": "惠州大亚湾片区",
+      "hotel_count": 5,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 2,
+      "average_price": 337,
+      "average_diff": -27,
+      "price_range": [
+        243,
+        556
+      ],
+      "hotels": [
+        {
+          "hotel_id": "17321506",
+          "name": "惠州小径湾四季风度假公寓酒店",
+          "area": "惠州大亚湾片区",
+          "price": 313,
+          "diff": -107,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "125315936",
+          "name": "喆啡酒店(惠州大亚湾滨海公园店)",
+          "area": "惠州大亚湾片区",
+          "price": 243,
+          "diff": -15,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "2315705",
+          "name": "惠州翡翠山华美达酒店",
+          "area": "惠州大亚湾片区",
+          "price": 556,
+          "diff": -11,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "133657180",
+          "name": "维也纳国际酒店(惠州大亚湾石化区店)",
+          "area": "惠州大亚湾片区",
+          "price": 277,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "1489302",
+          "name": "惠州龙光城戴斯酒店",
+          "area": "惠州大亚湾片区",
+          "price": 296,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        }
+      ],
+      "representative_hotels": [
+        "惠州小径湾四季风度假公寓酒店",
+        "喆啡酒店(惠州大亚湾滨海公园店)",
+        "惠州翡翠山华美达酒店"
+      ],
+      "rank": 3,
+      "summary": "5家高级酒店，3家降价，2家持平"
+    },
+    {
+      "area": "惠州仲恺片区",
+      "hotel_count": 5,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 3,
+      "average_price": 216,
+      "average_diff": -9,
+      "price_range": [
+        123,
+        352
+      ],
+      "hotels": [
+        {
+          "hotel_id": "99805268",
+          "name": "惠州仲恺高新区美华酒店(天益城店）",
+          "area": "惠州仲恺片区",
+          "price": 303,
+          "diff": -31,
+          "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+          "source_cached_at": "2026-05-08T14:41:56"
+        },
+        {
+          "hotel_id": "90280468",
+          "name": "惠州仲恺天益城亚朵酒店",
+          "area": "惠州仲恺片区",
+          "price": 352,
+          "diff": -15,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "1722754",
+          "name": "柏曼酒店（惠州仲恺陈江店）",
+          "area": "惠州仲恺片区",
+          "price": 123,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "6831799",
+          "name": "维也纳酒店（惠州仲愷高新区瀝林鎮卫生院瀝林北站店）",
+          "area": "惠州仲恺片区",
+          "price": 132,
+          "diff": 0,
+          "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+          "source_cached_at": "2026-05-07T13:02:09"
+        },
+        {
+          "hotel_id": "12192923",
+          "name": "维也纳酒店(惠州仲恺高铁站格林童话店)",
+          "area": "惠州仲恺片区",
+          "price": 169,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        }
+      ],
+      "representative_hotels": [
+        "惠州仲恺高新区美华酒店(天益城店）",
+        "惠州仲恺天益城亚朵酒店",
+        "柏曼酒店（惠州仲恺陈江店）"
+      ],
+      "rank": 4,
+      "summary": "5家高级酒店，2家降价，3家持平"
+    },
+    {
+      "area": "惠州惠城片区",
+      "hotel_count": 5,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 4,
+      "average_price": 281,
+      "average_diff": 0,
+      "price_range": [
+        118,
+        443
+      ],
+      "hotels": [
+        {
+          "hotel_id": "706695",
+          "name": "隆泰金都酒店（惠州西湖东站店）",
+          "area": "惠州惠城片区",
+          "price": 170,
+          "diff": -1,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "1054954",
+          "name": "惠州金銮酒店（港惠购物中心店）",
+          "area": "惠州惠城片区",
+          "price": 118,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "1466929",
+          "name": "山水S酒店(惠州港惠新天地瑞峰广场店)",
+          "area": "惠州惠城片区",
+          "price": 298,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "101972906",
+          "name": "漫悦兰庭酒店（江北佳兆业市政府店）",
+          "area": "惠州惠城片区",
+          "price": 378,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "116793383",
+          "name": "惠州北站希尔顿花园酒店",
+          "area": "惠州惠城片区",
+          "price": 443,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        }
+      ],
+      "representative_hotels": [
+        "隆泰金都酒店（惠州西湖东站店）",
+        "惠州金銮酒店（港惠购物中心店）",
+        "山水S酒店(惠州港惠新天地瑞峰广场店)"
+      ],
+      "rank": 5,
+      "summary": "5家高级酒店，1家降价，4家持平"
+    },
+    {
+      "area": "惠州数码园广泰路片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 235,
+      "average_diff": -9,
+      "price_range": [
+        235,
+        235
+      ],
+      "hotels": [
+        {
+          "hotel_id": "107799797",
+          "name": "维也纳国际酒店（惠州数码园广泰路店）",
+          "area": "惠州数码园广泰路片区",
+          "price": 235,
+          "diff": -9,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        }
+      ],
+      "representative_hotels": [
+        "维也纳国际酒店（惠州数码园广泰路店）"
+      ],
+      "rank": 6,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "惠州博罗片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 111,
+      "average_diff": 0,
+      "price_range": [
+        111,
+        111
+      ],
+      "hotels": [
+        {
+          "hotel_id": "124123301",
+          "name": "城市便捷酒店（博罗商业中街广东省技师学院店）",
+          "area": "惠州博罗片区",
+          "price": 111,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        }
+      ],
+      "representative_hotels": [
+        "城市便捷酒店（博罗商业中街广东省技师学院店）"
+      ],
+      "rank": 7,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "惠州鹅城大桥片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 238,
+      "average_diff": 0,
+      "price_range": [
+        238,
+        238
+      ],
+      "hotels": [
+        {
+          "hotel_id": "48611364",
+          "name": "惠州悦榕湾酒店（鹅城大桥店）",
+          "area": "惠州鹅城大桥片区",
+          "price": 238,
+          "diff": 0,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        }
+      ],
+      "representative_hotels": [
+        "惠州悦榕湾酒店（鹅城大桥店）"
+      ],
+      "rank": 8,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "惠州待确认片区",
+      "hotel_count": 7,
+      "discount_hotel_count": 6,
+      "flat_hotel_count": 1,
+      "average_price": 508,
+      "average_diff": -18,
+      "price_range": [
+        130,
+        1280
+      ],
+      "hotels": [
+        {
+          "hotel_id": "374871",
+          "name": "惠州富力万丽酒店",
+          "area": "惠州待确认片区",
+          "price": 606,
+          "diff": -51,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "106145846",
+          "name": "东能銀灘勝威酒店",
+          "area": "惠州待确认片区",
+          "price": 130,
+          "diff": -29,
+          "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+          "source_cached_at": "2026-05-07T13:02:09"
+        },
+        {
+          "hotel_id": "99561503",
+          "name": "惠州华润小径湾海舍度假民宿",
+          "area": "惠州待确认片区",
+          "price": 1280,
+          "diff": -28,
+          "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+          "source_cached_at": "2026-05-08T14:41:56"
+        },
+        {
+          "hotel_id": "43723955",
+          "name": "山水S酒店(惠州新华广场店)",
+          "area": "惠州待确认片区",
+          "price": 288,
+          "diff": -8,
+          "source_file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+          "source_cached_at": "2026-05-08T14:41:56"
+        },
+        {
+          "hotel_id": "118996010",
+          "name": "全季酒店（惠州水口文化体育中心店）",
+          "area": "惠州待确认片区",
+          "price": 313,
+          "diff": -7,
+          "source_file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+          "source_cached_at": "2026-05-07T13:02:09"
+        },
+        {
+          "hotel_id": "427506",
+          "name": "惠州皇冠假日酒店",
+          "area": "惠州待确认片区",
+          "price": 540,
+          "diff": -5,
+          "source_file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+          "source_cached_at": "2026-05-13T12:38:27"
+        },
+        {
+          "hotel_id": "23965944",
+          "name": "惠州盈富兴酒店",
+          "area": "惠州待确认片区",
+          "price": 398,
+          "diff": 0,
+          "source_file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+          "source_cached_at": "2026-05-11T15:23:48"
+        }
+      ],
+      "representative_hotels": [
+        "惠州富力万丽酒店",
+        "东能銀灘勝威酒店",
+        "惠州华润小径湾海舍度假民宿"
+      ],
+      "rank": 9,
+      "summary": "7家高级酒店，6家降价，1家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 7,
+    "candidate_count": 234,
+    "unique_hotel_count": 116,
+    "included_hotel_count": 55,
+    "matching_files": [
+      {
+        "file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "mtime": 1778484228.0173438,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "mtime": 1778484023.2516205,
+        "choices": 126,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "mtime": 1778222516.4713373,
+        "choices": 60,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "be10d7271a5285250ea08485224774b52fed6261abed1cb547494523ff36992a.json",
+        "mtime": 1778210853.9187734,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+        "mtime": 1778130129.1907825,
+        "choices": 62,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "no",
+            "label": "否",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "no",
+            "label": "否",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "7e16335987a087040287ca0c8faba84e7c5607b7819771b99912127da8100502.json",
+        "mtime": 1778124941.0576653,
+        "choices": 14,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "2bf45846dd392c14db3d3be4aa51b4f216e43ba9fd58f99aee3f312a1612f6e0.json",
+        "mtime": 1778052454.32327,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 7,
+    "candidate_count": 194,
+    "unique_hotel_count": 86,
+    "included_hotel_count": 44,
+    "matching_files": [
+      {
+        "file": "f0ac0f66ff61c111ff56298cdaf6e2486bc97fd2b29c37ec8f369f9a44880bee.json",
+        "mtime": 1778647107.9688246,
+        "choices": 69,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "a70099b7d660a0db639ece35ce71290afa084dce00f26de8fba062a7471801ce.json",
+        "mtime": 1778484228.0173438,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "bddbbac7efbe9315fcabfe702d20f138f4b44812a3497c84d1b4ae511223eb94.json",
+        "mtime": 1778222516.4713373,
+        "choices": 60,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "be10d7271a5285250ea08485224774b52fed6261abed1cb547494523ff36992a.json",
+        "mtime": 1778210853.9187734,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "987ca3d2a7b6cf0b8e2bddc9b0f1315c140c72ddc693486021457d7bae0584e3.json",
+        "mtime": 1778130129.1907825,
+        "choices": 62,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "no",
+            "label": "否",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "no",
+            "label": "否",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "7e16335987a087040287ca0c8faba84e7c5607b7819771b99912127da8100502.json",
+        "mtime": 1778124941.0576653,
+        "choices": 14,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "2bf45846dd392c14db3d3be4aa51b4f216e43ba9fd58f99aee3f312a1612f6e0.json",
+        "mtime": 1778052454.32327,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "惠州",
+    "text": "惠州可重点看惠州西湖、罗浮山、巽寮湾、双月湾和南昆山；滨海度假、山水温泉和古城漫游适合分片区安排。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/惠州",
+    "updated_at": ""
+  }
+}

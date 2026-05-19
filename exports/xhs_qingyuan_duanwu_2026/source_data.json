@@ -1,0 +1,1439 @@
+{
+  "city": "清远",
+  "generated_at": "2026-05-12T12:24:32",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "1748305",
+        "name": "柏曼酒店（清远市政府顺盈時代广场店）",
+        "area": "清远时代广场片区",
+        "price": 174,
+        "diff": -11,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远时代广场",
+        "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124364115",
+        "name": "柏纳酒店（清远顺盈時代广场清城站店）",
+        "area": "清远待确认片区",
+        "price": 189,
+        "diff": -16,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "34168523",
+        "name": "富德国际酒店（清远市体育公园人民醫院店）",
+        "area": "清远待确认片区",
+        "price": 190,
+        "diff": -31,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "68348315",
+        "name": "维也纳酒店（清远顺盈時代广场市政府店）",
+        "area": "清远时代广场片区",
+        "price": 202,
+        "diff": -17,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远时代广场",
+        "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "31323123",
+        "name": "潮曼酒店（清远万邦中心店）",
+        "area": "清远待确认片区",
+        "price": 208,
+        "diff": -10,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "108830095",
+        "name": "丽枫酒店（清远高铁站碧桂园店）",
+        "area": "清远待确认片区",
+        "price": 208,
+        "diff": -7,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "840592",
+        "name": "丽枫酒店（清远飛来湖店）",
+        "area": "清远待确认片区",
+        "price": 231,
+        "diff": -23,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123898615",
+        "name": "美豪丽致酒店（清远清城北江大桥店）",
+        "area": "清远待确认片区",
+        "price": 235,
+        "diff": 0,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "824654",
+        "name": "清远市迎宾馆",
+        "area": "清远待确认片区",
+        "price": 244,
+        "diff": 0,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2299060",
+        "name": "清远顺盈時代广场丽呈睿軒酒店",
+        "area": "清远待确认片区",
+        "price": 258,
+        "diff": -15,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "1748305",
+        "name": "柏曼酒店（清远市政府顺盈時代广场店）",
+        "area": "清远时代广场片区",
+        "price": 174,
+        "diff": -11,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远时代广场",
+        "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124364115",
+        "name": "柏纳酒店（清远顺盈時代广场清城站店）",
+        "area": "清远待确认片区",
+        "price": 189,
+        "diff": -16,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "34168523",
+        "name": "富德国际酒店（清远市体育公园人民醫院店）",
+        "area": "清远待确认片区",
+        "price": 190,
+        "diff": -31,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "68348315",
+        "name": "维也纳酒店（清远顺盈時代广场市政府店）",
+        "area": "清远时代广场片区",
+        "price": 202,
+        "diff": -17,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远时代广场",
+        "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "31323123",
+        "name": "潮曼酒店（清远万邦中心店）",
+        "area": "清远待确认片区",
+        "price": 208,
+        "diff": -10,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "108830095",
+        "name": "丽枫酒店（清远高铁站碧桂园店）",
+        "area": "清远待确认片区",
+        "price": 208,
+        "diff": -7,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "840592",
+        "name": "丽枫酒店（清远飛来湖店）",
+        "area": "清远待确认片区",
+        "price": 231,
+        "diff": -23,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123898615",
+        "name": "美豪丽致酒店（清远清城北江大桥店）",
+        "area": "清远待确认片区",
+        "price": 235,
+        "diff": 0,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "824654",
+        "name": "清远市迎宾馆",
+        "area": "清远待确认片区",
+        "price": 244,
+        "diff": 0,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2299060",
+        "name": "清远顺盈時代广场丽呈睿軒酒店",
+        "area": "清远待确认片区",
+        "price": 258,
+        "diff": -15,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437245",
+        "name": "凯里亞德酒店（清远城市广场店）",
+        "area": "清远待确认片区",
+        "price": 271,
+        "diff": -67,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "123684060",
+        "name": "清远新好来登国际酒店",
+        "area": "清远待确认片区",
+        "price": 273,
+        "diff": -7,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "132219301",
+        "name": "清远元禾丽呈美季酒店（清远大道清城轻轨站店）",
+        "area": "清远待确认片区",
+        "price": 305,
+        "diff": -2,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "56197192",
+        "name": "清远远光雅阁酒店（清新体育馆古龙峡店）",
+        "area": "清远待确认片区",
+        "price": 316,
+        "diff": -10,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133208451",
+        "name": "清远京洲酒店",
+        "area": "清远待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "437246",
+        "name": "清远国际酒店",
+        "area": "清远待确认片区",
+        "price": 415,
+        "diff": -60,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "125453710",
+        "name": "英德禾愿里山居（英西峰林走廊店）",
+        "area": "清远待确认片区",
+        "price": 429,
+        "diff": -6,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "14476634",
+        "name": "清远清新希尔顿欢朋酒店",
+        "area": "清远待确认片区",
+        "price": 460,
+        "diff": -173,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "437247",
+        "name": "清远恒大酒店",
+        "area": "清远待确认片区",
+        "price": 568,
+        "diff": -174,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "21788759",
+        "name": "清远茶棲谷客棧",
+        "area": "清远待确认片区",
+        "price": 730,
+        "diff": -2,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备泳池，适合短途度假。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "132219301",
+        "name": "清远元禾丽呈美季酒店（清远大道清城轻轨站店）",
+        "area": "清远待确认片区",
+        "price": 305,
+        "diff": -2,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "56197192",
+        "name": "清远远光雅阁酒店（清新体育馆古龙峡店）",
+        "area": "清远待确认片区",
+        "price": 316,
+        "diff": -10,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437246",
+        "name": "清远国际酒店",
+        "area": "清远待确认片区",
+        "price": 415,
+        "diff": -60,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "125453710",
+        "name": "英德禾愿里山居（英西峰林走廊店）",
+        "area": "清远待确认片区",
+        "price": 429,
+        "diff": -6,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437247",
+        "name": "清远恒大酒店",
+        "area": "清远待确认片区",
+        "price": 568,
+        "diff": -174,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "132219301",
+        "name": "清远元禾丽呈美季酒店（清远大道清城轻轨站店）",
+        "area": "清远待确认片区",
+        "price": 305,
+        "diff": -2,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "56197192",
+        "name": "清远远光雅阁酒店（清新体育馆古龙峡店）",
+        "area": "清远待确认片区",
+        "price": 316,
+        "diff": -10,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437246",
+        "name": "清远国际酒店",
+        "area": "清远待确认片区",
+        "price": 415,
+        "diff": -60,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "125453710",
+        "name": "英德禾愿里山居（英西峰林走廊店）",
+        "area": "清远待确认片区",
+        "price": 429,
+        "diff": -6,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437247",
+        "name": "清远恒大酒店",
+        "area": "清远待确认片区",
+        "price": 568,
+        "diff": -174,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "437247",
+        "name": "清远恒大酒店",
+        "area": "清远待确认片区",
+        "price": 568,
+        "diff": -174,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "14476634",
+        "name": "清远清新希尔顿欢朋酒店",
+        "area": "清远待确认片区",
+        "price": 460,
+        "diff": -173,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "437245",
+        "name": "凯里亞德酒店（清远城市广场店）",
+        "area": "清远待确认片区",
+        "price": 271,
+        "diff": -67,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "437246",
+        "name": "清远国际酒店",
+        "area": "清远待确认片区",
+        "price": 415,
+        "diff": -60,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "34168523",
+        "name": "富德国际酒店（清远市体育公园人民醫院店）",
+        "area": "清远待确认片区",
+        "price": 190,
+        "diff": -31,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "840592",
+        "name": "丽枫酒店（清远飛来湖店）",
+        "area": "清远待确认片区",
+        "price": 231,
+        "diff": -23,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "68348315",
+        "name": "维也纳酒店（清远顺盈時代广场市政府店）",
+        "area": "清远时代广场片区",
+        "price": 202,
+        "diff": -17,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远时代广场",
+        "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124364115",
+        "name": "柏纳酒店（清远顺盈時代广场清城站店）",
+        "area": "清远待确认片区",
+        "price": 189,
+        "diff": -16,
+        "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "source_cached_at": "2026-05-11T17:57:13",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "2299060",
+        "name": "清远顺盈時代广场丽呈睿軒酒店",
+        "area": "清远待确认片区",
+        "price": 258,
+        "diff": -15,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远",
+        "note": "清远，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1748305",
+        "name": "柏曼酒店（清远市政府顺盈時代广场店）",
+        "area": "清远时代广场片区",
+        "price": 174,
+        "diff": -11,
+        "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "source_cached_at": "2026-05-11T17:50:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "清远时代广场",
+        "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "1748305",
+      "name": "柏曼酒店（清远市政府顺盈時代广场店）",
+      "area": "清远时代广场片区",
+      "price": 174,
+      "diff": -11,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远时代广场",
+      "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "124364115",
+      "name": "柏纳酒店（清远顺盈時代广场清城站店）",
+      "area": "清远待确认片区",
+      "price": 189,
+      "diff": -16,
+      "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+      "source_cached_at": "2026-05-11T17:57:13",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "34168523",
+      "name": "富德国际酒店（清远市体育公园人民醫院店）",
+      "area": "清远待确认片区",
+      "price": 190,
+      "diff": -31,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "68348315",
+      "name": "维也纳酒店（清远顺盈時代广场市政府店）",
+      "area": "清远时代广场片区",
+      "price": 202,
+      "diff": -17,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远时代广场",
+      "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "31323123",
+      "name": "潮曼酒店（清远万邦中心店）",
+      "area": "清远待确认片区",
+      "price": 208,
+      "diff": -10,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "108830095",
+      "name": "丽枫酒店（清远高铁站碧桂园店）",
+      "area": "清远待确认片区",
+      "price": 208,
+      "diff": -7,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "840592",
+      "name": "丽枫酒店（清远飛来湖店）",
+      "area": "清远待确认片区",
+      "price": 231,
+      "diff": -23,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "123898615",
+      "name": "美豪丽致酒店（清远清城北江大桥店）",
+      "area": "清远待确认片区",
+      "price": 235,
+      "diff": 0,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "824654",
+      "name": "清远市迎宾馆",
+      "area": "清远待确认片区",
+      "price": 244,
+      "diff": 0,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "2299060",
+      "name": "清远顺盈時代广场丽呈睿軒酒店",
+      "area": "清远待确认片区",
+      "price": 258,
+      "diff": -15,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施，适合亲子短途。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "437247",
+      "name": "清远恒大酒店",
+      "area": "清远待确认片区",
+      "price": 568,
+      "diff": -174,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "14476634",
+      "name": "清远清新希尔顿欢朋酒店",
+      "area": "清远待确认片区",
+      "price": 460,
+      "diff": -173,
+      "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+      "source_cached_at": "2026-05-11T17:57:13",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "437245",
+      "name": "凯里亞德酒店（清远城市广场店）",
+      "area": "清远待确认片区",
+      "price": 271,
+      "diff": -67,
+      "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+      "source_cached_at": "2026-05-11T17:57:13",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "437246",
+      "name": "清远国际酒店",
+      "area": "清远待确认片区",
+      "price": 415,
+      "diff": -60,
+      "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+      "source_cached_at": "2026-05-11T17:57:13",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "34168523",
+      "name": "富德国际酒店（清远市体育公园人民醫院店）",
+      "area": "清远待确认片区",
+      "price": 190,
+      "diff": -31,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "840592",
+      "name": "丽枫酒店（清远飛来湖店）",
+      "area": "清远待确认片区",
+      "price": 231,
+      "diff": -23,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "68348315",
+      "name": "维也纳酒店（清远顺盈時代广场市政府店）",
+      "area": "清远时代广场片区",
+      "price": 202,
+      "diff": -17,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远时代广场",
+      "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "124364115",
+      "name": "柏纳酒店（清远顺盈時代广场清城站店）",
+      "area": "清远待确认片区",
+      "price": 189,
+      "diff": -16,
+      "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+      "source_cached_at": "2026-05-11T17:57:13",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "2299060",
+      "name": "清远顺盈時代广场丽呈睿軒酒店",
+      "area": "清远待确认片区",
+      "price": 258,
+      "diff": -15,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远",
+      "note": "清远，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "1748305",
+      "name": "柏曼酒店（清远市政府顺盈時代广场店）",
+      "area": "清远时代广场片区",
+      "price": 174,
+      "diff": -11,
+      "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+      "source_cached_at": "2026-05-11T17:50:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "清远时代广场",
+      "note": "清远时代广场，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "清远时代广场片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 0,
+      "average_price": 188,
+      "average_diff": -14,
+      "price_range": [
+        174,
+        202
+      ],
+      "hotels": [
+        {
+          "hotel_id": "68348315",
+          "name": "维也纳酒店（清远顺盈時代广场市政府店）",
+          "area": "清远时代广场片区",
+          "price": 202,
+          "diff": -17,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "1748305",
+          "name": "柏曼酒店（清远市政府顺盈時代广场店）",
+          "area": "清远时代广场片区",
+          "price": 174,
+          "diff": -11,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        }
+      ],
+      "representative_hotels": [
+        "维也纳酒店（清远顺盈時代广场市政府店）",
+        "柏曼酒店（清远市政府顺盈時代广场店）"
+      ],
+      "rank": 1,
+      "summary": "2家高级酒店，2家降价"
+    },
+    {
+      "area": "清远待确认片区",
+      "hotel_count": 18,
+      "discount_hotel_count": 15,
+      "flat_hotel_count": 3,
+      "average_price": 326,
+      "average_diff": -34,
+      "price_range": [
+        189,
+        730
+      ],
+      "hotels": [
+        {
+          "hotel_id": "437247",
+          "name": "清远恒大酒店",
+          "area": "清远待确认片区",
+          "price": 568,
+          "diff": -174,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "14476634",
+          "name": "清远清新希尔顿欢朋酒店",
+          "area": "清远待确认片区",
+          "price": 460,
+          "diff": -173,
+          "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+          "source_cached_at": "2026-05-11T17:57:13"
+        },
+        {
+          "hotel_id": "437245",
+          "name": "凯里亞德酒店（清远城市广场店）",
+          "area": "清远待确认片区",
+          "price": 271,
+          "diff": -67,
+          "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+          "source_cached_at": "2026-05-11T17:57:13"
+        },
+        {
+          "hotel_id": "437246",
+          "name": "清远国际酒店",
+          "area": "清远待确认片区",
+          "price": 415,
+          "diff": -60,
+          "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+          "source_cached_at": "2026-05-11T17:57:13"
+        },
+        {
+          "hotel_id": "34168523",
+          "name": "富德国际酒店（清远市体育公园人民醫院店）",
+          "area": "清远待确认片区",
+          "price": 190,
+          "diff": -31,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "840592",
+          "name": "丽枫酒店（清远飛来湖店）",
+          "area": "清远待确认片区",
+          "price": 231,
+          "diff": -23,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "124364115",
+          "name": "柏纳酒店（清远顺盈時代广场清城站店）",
+          "area": "清远待确认片区",
+          "price": 189,
+          "diff": -16,
+          "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+          "source_cached_at": "2026-05-11T17:57:13"
+        },
+        {
+          "hotel_id": "2299060",
+          "name": "清远顺盈時代广场丽呈睿軒酒店",
+          "area": "清远待确认片区",
+          "price": 258,
+          "diff": -15,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "31323123",
+          "name": "潮曼酒店（清远万邦中心店）",
+          "area": "清远待确认片区",
+          "price": 208,
+          "diff": -10,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "56197192",
+          "name": "清远远光雅阁酒店（清新体育馆古龙峡店）",
+          "area": "清远待确认片区",
+          "price": 316,
+          "diff": -10,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "108830095",
+          "name": "丽枫酒店（清远高铁站碧桂园店）",
+          "area": "清远待确认片区",
+          "price": 208,
+          "diff": -7,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "123684060",
+          "name": "清远新好来登国际酒店",
+          "area": "清远待确认片区",
+          "price": 273,
+          "diff": -7,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "125453710",
+          "name": "英德禾愿里山居（英西峰林走廊店）",
+          "area": "清远待确认片区",
+          "price": 429,
+          "diff": -6,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "132219301",
+          "name": "清远元禾丽呈美季酒店（清远大道清城轻轨站店）",
+          "area": "清远待确认片区",
+          "price": 305,
+          "diff": -2,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "21788759",
+          "name": "清远茶棲谷客棧",
+          "area": "清远待确认片区",
+          "price": 730,
+          "diff": -2,
+          "source_file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+          "source_cached_at": "2026-05-11T17:57:13"
+        },
+        {
+          "hotel_id": "123898615",
+          "name": "美豪丽致酒店（清远清城北江大桥店）",
+          "area": "清远待确认片区",
+          "price": 235,
+          "diff": 0,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "824654",
+          "name": "清远市迎宾馆",
+          "area": "清远待确认片区",
+          "price": 244,
+          "diff": 0,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        },
+        {
+          "hotel_id": "133208451",
+          "name": "清远京洲酒店",
+          "area": "清远待确认片区",
+          "price": 338,
+          "diff": 0,
+          "source_file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+          "source_cached_at": "2026-05-11T17:50:37"
+        }
+      ],
+      "representative_hotels": [
+        "清远恒大酒店",
+        "清远清新希尔顿欢朋酒店",
+        "凯里亞德酒店（清远城市广场店）"
+      ],
+      "rank": 2,
+      "summary": "18家高级酒店，15家降价，3家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 4,
+    "candidate_count": 163,
+    "unique_hotel_count": 88,
+    "included_hotel_count": 20,
+    "matching_files": [
+      {
+        "file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "mtime": 1778493433.7707098,
+        "choices": 19,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "mtime": 1778493037.1785824,
+        "choices": 96,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "197cd8ca2668beb9ab5609f0129280428e7688fa8004069a1399bc9cd1e18b4c.json",
+        "mtime": 1778486249.03754,
+        "choices": 9,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "58bfda251a9872186538194953500f1dcadc6168345669f48307899247e847a7.json",
+        "mtime": 1778145015.6205359,
+        "choices": 62,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 4,
+    "candidate_count": 163,
+    "unique_hotel_count": 88,
+    "included_hotel_count": 20,
+    "matching_files": [
+      {
+        "file": "5d0b3d0c1653399e08dba43579d079077af6e053b266a7ff79a5a7dfb8f3e4af.json",
+        "mtime": 1778493433.7707098,
+        "choices": 19,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "8c0b2bbbd15052ecd7cbc6bb1ae74223ea0f6da27dab115de9fa7c2007e464a3.json",
+        "mtime": 1778493037.1785824,
+        "choices": 96,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "197cd8ca2668beb9ab5609f0129280428e7688fa8004069a1399bc9cd1e18b4c.json",
+        "mtime": 1778486249.03754,
+        "choices": 9,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "58bfda251a9872186538194953500f1dcadc6168345669f48307899247e847a7.json",
+        "mtime": 1778145015.6205359,
+        "choices": 62,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "清远",
+    "text": "清远可重点看古龙峡、连州地下河、黄腾峡、英西峰林和湟川三峡；峡谷漂流、喀斯特山水和亲子度假适合短途。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/清远",
+    "updated_at": ""
+  }
+}
