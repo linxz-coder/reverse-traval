@@ -1,0 +1,166 @@
+{
+  "city": "梅州",
+  "generated_at": "2026-05-12T12:24:41",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "23984005",
+        "name": "美爵酒店",
+        "area": "梅州待确认片区",
+        "price": 129,
+        "diff": 0,
+        "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
+        "source_cached_at": "2026-05-11T18:10:32",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州",
+        "note": "梅州，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "23984005",
+        "name": "美爵酒店",
+        "area": "梅州待确认片区",
+        "price": 129,
+        "diff": 0,
+        "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
+        "source_cached_at": "2026-05-11T18:10:32",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州",
+        "note": "梅州，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "family_no_rise": [],
+    "family_no_rise_all": [],
+    "discount_star": []
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "23984005",
+      "name": "美爵酒店",
+      "area": "梅州待确认片区",
+      "price": 129,
+      "diff": 0,
+      "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
+      "source_cached_at": "2026-05-11T18:10:32",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州",
+      "note": "梅州，端午价格保持平稳，适合周边短途度假。"
+    }
+  ],
+  "latest_discount_rank": [],
+  "area_region_rank": [
+    {
+      "area": "梅州待确认片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 129,
+      "average_diff": 0,
+      "price_range": [
+        129,
+        129
+      ],
+      "hotels": [
+        {
+          "hotel_id": "23984005",
+          "name": "美爵酒店",
+          "area": "梅州待确认片区",
+          "price": 129,
+          "diff": 0,
+          "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
+          "source_cached_at": "2026-05-11T18:10:32"
+        }
+      ],
+      "representative_hotels": [
+        "美爵酒店"
+      ],
+      "rank": 1,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 72,
+    "unique_hotel_count": 72,
+    "included_hotel_count": 1,
+    "matching_files": [
+      {
+        "file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
+        "mtime": 1778494232.6146839,
+        "choices": 72,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 72,
+    "unique_hotel_count": 72,
+    "included_hotel_count": 1,
+    "matching_files": [
+      {
+        "file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
+        "mtime": 1778494232.6146839,
+        "choices": 72,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "梅州",
+    "text": "梅州可重点看客天下、雁南飞、叶剑英纪念园、松口古镇和五指石；客家文化、茶田山景和古镇线路适合组合。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/梅州",
+    "updated_at": ""
+  }
+}

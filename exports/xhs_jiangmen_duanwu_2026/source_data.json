@@ -1,0 +1,2147 @@
+{
+  "city": "江门",
+  "generated_at": "2026-05-12T12:24:26",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "1937574",
+        "name": "新侨都酒店（江门东站江海广场店）",
+        "area": "江门江海片区",
+        "price": 148,
+        "diff": -21,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门江海",
+        "note": "江门江海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1523283",
+        "name": "新侨都酒店（江门三十三墟街地王广场店）",
+        "area": "江门待确认片区",
+        "price": 160,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2310637",
+        "name": "台山天誠港大酒店",
+        "area": "江门台山片区",
+        "price": 169,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "130103277",
+        "name": "城市便捷酒店（江门君誠大厦店）",
+        "area": "江门待确认片区",
+        "price": 181,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "1247022",
+        "name": "台山高业大酒店（台山商业城店）",
+        "area": "江门台山片区",
+        "price": 188,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "24853235",
+        "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+        "area": "江门蓬江片区",
+        "price": 189,
+        "diff": -15,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "669506",
+        "name": "江门銀晶国际酒店",
+        "area": "江门待确认片区",
+        "price": 204,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "12789960",
+        "name": "维也纳酒店（江门迎宾大道利和广场店）",
+        "area": "江门蓬江片区",
+        "price": 205,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "103957260",
+        "name": "凯里亞德酒店（江门东站店）",
+        "area": "江门待确认片区",
+        "price": 207,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "80949036",
+        "name": "维也纳酒店（江门啟明里三十三墟街店）",
+        "area": "江门待确认片区",
+        "price": 209,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "1937574",
+        "name": "新侨都酒店（江门东站江海广场店）",
+        "area": "江门江海片区",
+        "price": 148,
+        "diff": -21,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门江海",
+        "note": "江门江海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1523283",
+        "name": "新侨都酒店（江门三十三墟街地王广场店）",
+        "area": "江门待确认片区",
+        "price": 160,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2310637",
+        "name": "台山天誠港大酒店",
+        "area": "江门台山片区",
+        "price": 169,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "130103277",
+        "name": "城市便捷酒店（江门君誠大厦店）",
+        "area": "江门待确认片区",
+        "price": 181,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "1247022",
+        "name": "台山高业大酒店（台山商业城店）",
+        "area": "江门台山片区",
+        "price": 188,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "24853235",
+        "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+        "area": "江门蓬江片区",
+        "price": 189,
+        "diff": -15,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "669506",
+        "name": "江门銀晶国际酒店",
+        "area": "江门待确认片区",
+        "price": 204,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "12789960",
+        "name": "维也纳酒店（江门迎宾大道利和广场店）",
+        "area": "江门蓬江片区",
+        "price": 205,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "103957260",
+        "name": "凯里亞德酒店（江门东站店）",
+        "area": "江门待确认片区",
+        "price": 207,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "80949036",
+        "name": "维也纳酒店（江门啟明里三十三墟街店）",
+        "area": "江门待确认片区",
+        "price": 209,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "430236",
+        "name": "中山大信酒店（小榄店）",
+        "area": "江门待确认片区",
+        "price": 262,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124574981",
+        "name": "江门珺璟麥客达温德姆酒店",
+        "area": "江门待确认片区",
+        "price": 264,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "128467375",
+        "name": "Wish文旭酒店（台山昌大昌广场店）",
+        "area": "江门台山片区",
+        "price": 268,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "123310802",
+        "name": "全季酒店（江门东站江海万达广场店）",
+        "area": "江门江海片区",
+        "price": 276,
+        "diff": -6,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门江海",
+        "note": "江门江海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "129350394",
+        "name": "维也纳国际酒店（台山昌大昌广场店）",
+        "area": "江门台山片区",
+        "price": 284,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "99043226",
+        "name": "台山鉑玥国际酒店",
+        "area": "江门台山片区",
+        "price": 294,
+        "diff": -14,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1100134",
+        "name": "江门丽宫国际酒店",
+        "area": "江门待确认片区",
+        "price": 294,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "70432932",
+        "name": "台山文华雅詩酒店",
+        "area": "江门台山片区",
+        "price": 296,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "74620815",
+        "name": "非繁城品酒店（新会步行街店）",
+        "area": "江门新会片区",
+        "price": 306,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门新会",
+        "note": "江门新会，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "112076439",
+        "name": "江门东站嘉华广场智选假日酒店",
+        "area": "江门待确认片区",
+        "price": 311,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123573413",
+        "name": "江门万达华侨广场鉑顿行政公寓",
+        "area": "江门蓬江片区",
+        "price": 314,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "114410884",
+        "name": "台山曼丽酒店",
+        "area": "江门台山片区",
+        "price": 317,
+        "diff": -18,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "117169123",
+        "name": "柏丽泉智酒店（江门滨江体育中心店）",
+        "area": "江门待确认片区",
+        "price": 328,
+        "diff": -32,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "131943712",
+        "name": "江门荷塘龙湖亞朵酒店",
+        "area": "江门待确认片区",
+        "price": 335,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "112380525",
+        "name": "江门蓬江华茵广场亞朵酒店",
+        "area": "江门蓬江片区",
+        "price": 335,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "448961",
+        "name": "佛山顺德哥顿酒店（渔人码头店）",
+        "area": "江门待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1525202",
+        "name": "開平翡翠湾凤悦凤凰酒店",
+        "area": "江门开平赤坎片区",
+        "price": 346,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门开平赤坎",
+        "note": "江门开平赤坎，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "119761681",
+        "name": "山水富丽华酒店（江门站店）",
+        "area": "江门待确认片区",
+        "price": 355,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1481437",
+        "name": "江门玉湖御景酒店",
+        "area": "江门待确认片区",
+        "price": 367,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "75525248",
+        "name": "鶴山东古玥湖酒店",
+        "area": "江门鹤山片区",
+        "price": 368,
+        "diff": -116,
+        "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "source_cached_at": "2026-05-06T15:49:09",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门鹤山",
+        "note": "江门鹤山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437229",
+        "name": "江门新会碧桂园凤悦凤凰酒店（万达广场店）",
+        "area": "江门新会片区",
+        "price": 387,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门新会",
+        "note": "江门新会，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437244",
+        "name": "台山新世界酒店",
+        "area": "江门台山片区",
+        "price": 391,
+        "diff": -21,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "102227300",
+        "name": "佛山九江希尔顿惠庭酒店",
+        "area": "江门待确认片区",
+        "price": 413,
+        "diff": -4,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "117149044",
+        "name": "江门新会花季酒店",
+        "area": "江门新会片区",
+        "price": 418,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门新会",
+        "note": "江门新会，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "684756",
+        "name": "台山喜运来温泉大酒店",
+        "area": "江门台山片区",
+        "price": 426,
+        "diff": -23,
+        "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "source_cached_at": "2026-05-06T15:49:09",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "106753827",
+        "name": "江门銀湖湾滨海新区智选假日酒店",
+        "area": "江门银湖湾片区",
+        "price": 426,
+        "diff": -22,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门银湖湾",
+        "note": "江门银湖湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "708149",
+        "name": "江门新会龙泉度假酒店",
+        "area": "江门新会片区",
+        "price": 428,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门新会",
+        "note": "江门新会，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "447002",
+        "name": "開平潭江半岛酒店",
+        "area": "江门开平赤坎片区",
+        "price": 428,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门开平赤坎",
+        "note": "江门开平赤坎，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "44643973",
+        "name": "鶴山万达嘉华酒店",
+        "area": "江门待确认片区",
+        "price": 592,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "24853235",
+        "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+        "area": "江门蓬江片区",
+        "price": 189,
+        "diff": -15,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "669506",
+        "name": "江门銀晶国际酒店",
+        "area": "江门待确认片区",
+        "price": 204,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430236",
+        "name": "中山大信酒店（小榄店）",
+        "area": "江门待确认片区",
+        "price": 262,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99043226",
+        "name": "台山鉑玥国际酒店",
+        "area": "江门台山片区",
+        "price": 294,
+        "diff": -14,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1100134",
+        "name": "江门丽宫国际酒店",
+        "area": "江门待确认片区",
+        "price": 294,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "448961",
+        "name": "佛山顺德哥顿酒店（渔人码头店）",
+        "area": "江门待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1525202",
+        "name": "開平翡翠湾凤悦凤凰酒店",
+        "area": "江门开平赤坎片区",
+        "price": 346,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门开平赤坎",
+        "note": "江门开平赤坎，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "75525248",
+        "name": "鶴山东古玥湖酒店",
+        "area": "江门鹤山片区",
+        "price": 368,
+        "diff": -116,
+        "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "source_cached_at": "2026-05-06T15:49:09",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门鹤山",
+        "note": "江门鹤山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437229",
+        "name": "江门新会碧桂园凤悦凤凰酒店（万达广场店）",
+        "area": "江门新会片区",
+        "price": 387,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门新会",
+        "note": "江门新会，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437244",
+        "name": "台山新世界酒店",
+        "area": "江门台山片区",
+        "price": 391,
+        "diff": -21,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "24853235",
+        "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+        "area": "江门蓬江片区",
+        "price": 189,
+        "diff": -15,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "669506",
+        "name": "江门銀晶国际酒店",
+        "area": "江门待确认片区",
+        "price": 204,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430236",
+        "name": "中山大信酒店（小榄店）",
+        "area": "江门待确认片区",
+        "price": 262,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99043226",
+        "name": "台山鉑玥国际酒店",
+        "area": "江门台山片区",
+        "price": 294,
+        "diff": -14,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1100134",
+        "name": "江门丽宫国际酒店",
+        "area": "江门待确认片区",
+        "price": 294,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "448961",
+        "name": "佛山顺德哥顿酒店（渔人码头店）",
+        "area": "江门待确认片区",
+        "price": 338,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1525202",
+        "name": "開平翡翠湾凤悦凤凰酒店",
+        "area": "江门开平赤坎片区",
+        "price": 346,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门开平赤坎",
+        "note": "江门开平赤坎，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "75525248",
+        "name": "鶴山东古玥湖酒店",
+        "area": "江门鹤山片区",
+        "price": 368,
+        "diff": -116,
+        "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "source_cached_at": "2026-05-06T15:49:09",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门鹤山",
+        "note": "江门鹤山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437229",
+        "name": "江门新会碧桂园凤悦凤凰酒店（万达广场店）",
+        "area": "江门新会片区",
+        "price": 387,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门新会",
+        "note": "江门新会，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437244",
+        "name": "台山新世界酒店",
+        "area": "江门台山片区",
+        "price": 391,
+        "diff": -21,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "102227300",
+        "name": "佛山九江希尔顿惠庭酒店",
+        "area": "江门待确认片区",
+        "price": 413,
+        "diff": -4,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "106753827",
+        "name": "江门銀湖湾滨海新区智选假日酒店",
+        "area": "江门银湖湾片区",
+        "price": 426,
+        "diff": -22,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门银湖湾",
+        "note": "江门银湖湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "447002",
+        "name": "開平潭江半岛酒店",
+        "area": "江门开平赤坎片区",
+        "price": 428,
+        "diff": 0,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门开平赤坎",
+        "note": "江门开平赤坎，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "44643973",
+        "name": "鶴山万达嘉华酒店",
+        "area": "江门待确认片区",
+        "price": 592,
+        "diff": 0,
+        "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "source_cached_at": "2026-05-06T15:42:54",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "75525248",
+        "name": "鶴山东古玥湖酒店",
+        "area": "江门鹤山片区",
+        "price": 368,
+        "diff": -116,
+        "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "source_cached_at": "2026-05-06T15:49:09",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门鹤山",
+        "note": "江门鹤山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "117169123",
+        "name": "柏丽泉智酒店（江门滨江体育中心店）",
+        "area": "江门待确认片区",
+        "price": 328,
+        "diff": -32,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门",
+        "note": "江门，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "684756",
+        "name": "台山喜运来温泉大酒店",
+        "area": "江门台山片区",
+        "price": 426,
+        "diff": -23,
+        "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "source_cached_at": "2026-05-06T15:49:09",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "106753827",
+        "name": "江门銀湖湾滨海新区智选假日酒店",
+        "area": "江门银湖湾片区",
+        "price": 426,
+        "diff": -22,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门银湖湾",
+        "note": "江门银湖湾，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1937574",
+        "name": "新侨都酒店（江门东站江海广场店）",
+        "area": "江门江海片区",
+        "price": 148,
+        "diff": -21,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门江海",
+        "note": "江门江海，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "437244",
+        "name": "台山新世界酒店",
+        "area": "江门台山片区",
+        "price": 391,
+        "diff": -21,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "114410884",
+        "name": "台山曼丽酒店",
+        "area": "江门台山片区",
+        "price": 317,
+        "diff": -18,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "24853235",
+        "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+        "area": "江门蓬江片区",
+        "price": 189,
+        "diff": -15,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门蓬江",
+        "note": "江门蓬江，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "99043226",
+        "name": "台山鉑玥国际酒店",
+        "area": "江门台山片区",
+        "price": 294,
+        "diff": -14,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "江门台山",
+        "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123310802",
+        "name": "全季酒店（江门东站江海万达广场店）",
+        "area": "江门江海片区",
+        "price": 276,
+        "diff": -6,
+        "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "source_cached_at": "2026-05-08T16:16:37",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "江门江海",
+        "note": "江门江海，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "1937574",
+      "name": "新侨都酒店（江门东站江海广场店）",
+      "area": "江门江海片区",
+      "price": 148,
+      "diff": -21,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门江海",
+      "note": "江门江海，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "1523283",
+      "name": "新侨都酒店（江门三十三墟街地王广场店）",
+      "area": "江门待确认片区",
+      "price": 160,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门",
+      "note": "江门，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "2310637",
+      "name": "台山天誠港大酒店",
+      "area": "江门台山片区",
+      "price": 169,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门台山",
+      "note": "江门台山，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "130103277",
+      "name": "城市便捷酒店（江门君誠大厦店）",
+      "area": "江门待确认片区",
+      "price": 181,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门",
+      "note": "江门，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "1247022",
+      "name": "台山高业大酒店（台山商业城店）",
+      "area": "江门台山片区",
+      "price": 188,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门台山",
+      "note": "江门台山，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "24853235",
+      "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+      "area": "江门蓬江片区",
+      "price": 189,
+      "diff": -15,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门蓬江",
+      "note": "江门蓬江，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "669506",
+      "name": "江门銀晶国际酒店",
+      "area": "江门待确认片区",
+      "price": 204,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门",
+      "note": "江门，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "12789960",
+      "name": "维也纳酒店（江门迎宾大道利和广场店）",
+      "area": "江门蓬江片区",
+      "price": 205,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门蓬江",
+      "note": "江门蓬江，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "103957260",
+      "name": "凯里亞德酒店（江门东站店）",
+      "area": "江门待确认片区",
+      "price": 207,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门",
+      "note": "江门，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "80949036",
+      "name": "维也纳酒店（江门啟明里三十三墟街店）",
+      "area": "江门待确认片区",
+      "price": 209,
+      "diff": 0,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门",
+      "note": "江门，端午价格保持平稳，适合周边短途度假。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "75525248",
+      "name": "鶴山东古玥湖酒店",
+      "area": "江门鹤山片区",
+      "price": 368,
+      "diff": -116,
+      "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+      "source_cached_at": "2026-05-06T15:49:09",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门鹤山",
+      "note": "江门鹤山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "117169123",
+      "name": "柏丽泉智酒店（江门滨江体育中心店）",
+      "area": "江门待确认片区",
+      "price": 328,
+      "diff": -32,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门",
+      "note": "江门，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "684756",
+      "name": "台山喜运来温泉大酒店",
+      "area": "江门台山片区",
+      "price": 426,
+      "diff": -23,
+      "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+      "source_cached_at": "2026-05-06T15:49:09",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门台山",
+      "note": "江门台山，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "106753827",
+      "name": "江门銀湖湾滨海新区智选假日酒店",
+      "area": "江门银湖湾片区",
+      "price": 426,
+      "diff": -22,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门银湖湾",
+      "note": "江门银湖湾，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "1937574",
+      "name": "新侨都酒店（江门东站江海广场店）",
+      "area": "江门江海片区",
+      "price": 148,
+      "diff": -21,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门江海",
+      "note": "江门江海，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "437244",
+      "name": "台山新世界酒店",
+      "area": "江门台山片区",
+      "price": 391,
+      "diff": -21,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门台山",
+      "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "114410884",
+      "name": "台山曼丽酒店",
+      "area": "江门台山片区",
+      "price": 317,
+      "diff": -18,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门台山",
+      "note": "江门台山，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "24853235",
+      "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+      "area": "江门蓬江片区",
+      "price": 189,
+      "diff": -15,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门蓬江",
+      "note": "江门蓬江，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "99043226",
+      "name": "台山鉑玥国际酒店",
+      "area": "江门台山片区",
+      "price": 294,
+      "diff": -14,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "江门台山",
+      "note": "江门台山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "123310802",
+      "name": "全季酒店（江门东站江海万达广场店）",
+      "area": "江门江海片区",
+      "price": 276,
+      "diff": -6,
+      "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+      "source_cached_at": "2026-05-08T16:16:37",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "江门江海",
+      "note": "江门江海，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "江门台山片区",
+      "hotel_count": 9,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 5,
+      "average_price": 293,
+      "average_diff": -8,
+      "price_range": [
+        169,
+        426
+      ],
+      "hotels": [
+        {
+          "hotel_id": "684756",
+          "name": "台山喜运来温泉大酒店",
+          "area": "江门台山片区",
+          "price": 426,
+          "diff": -23,
+          "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+          "source_cached_at": "2026-05-06T15:49:09"
+        },
+        {
+          "hotel_id": "437244",
+          "name": "台山新世界酒店",
+          "area": "江门台山片区",
+          "price": 391,
+          "diff": -21,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "114410884",
+          "name": "台山曼丽酒店",
+          "area": "江门台山片区",
+          "price": 317,
+          "diff": -18,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "99043226",
+          "name": "台山鉑玥国际酒店",
+          "area": "江门台山片区",
+          "price": 294,
+          "diff": -14,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "2310637",
+          "name": "台山天誠港大酒店",
+          "area": "江门台山片区",
+          "price": 169,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "1247022",
+          "name": "台山高业大酒店（台山商业城店）",
+          "area": "江门台山片区",
+          "price": 188,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "128467375",
+          "name": "Wish文旭酒店（台山昌大昌广场店）",
+          "area": "江门台山片区",
+          "price": 268,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "129350394",
+          "name": "维也纳国际酒店（台山昌大昌广场店）",
+          "area": "江门台山片区",
+          "price": 284,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "70432932",
+          "name": "台山文华雅詩酒店",
+          "area": "江门台山片区",
+          "price": 296,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        }
+      ],
+      "representative_hotels": [
+        "台山喜运来温泉大酒店",
+        "台山新世界酒店",
+        "台山曼丽酒店"
+      ],
+      "rank": 1,
+      "summary": "9家高级酒店，4家降价，5家持平"
+    },
+    {
+      "area": "江门蓬江片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 3,
+      "average_price": 261,
+      "average_diff": -4,
+      "price_range": [
+        189,
+        335
+      ],
+      "hotels": [
+        {
+          "hotel_id": "24853235",
+          "name": "美思柏丽酒店（江门五邑大学利和广场店）",
+          "area": "江门蓬江片区",
+          "price": 189,
+          "diff": -15,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "12789960",
+          "name": "维也纳酒店（江门迎宾大道利和广场店）",
+          "area": "江门蓬江片区",
+          "price": 205,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "123573413",
+          "name": "江门万达华侨广场鉑顿行政公寓",
+          "area": "江门蓬江片区",
+          "price": 314,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "112380525",
+          "name": "江门蓬江华茵广场亞朵酒店",
+          "area": "江门蓬江片区",
+          "price": 335,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        }
+      ],
+      "representative_hotels": [
+        "美思柏丽酒店（江门五邑大学利和广场店）",
+        "维也纳酒店（江门迎宾大道利和广场店）",
+        "江门万达华侨广场鉑顿行政公寓"
+      ],
+      "rank": 2,
+      "summary": "4家高级酒店，1家降价，3家持平"
+    },
+    {
+      "area": "江门新会片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 4,
+      "average_price": 385,
+      "average_diff": 0,
+      "price_range": [
+        306,
+        428
+      ],
+      "hotels": [
+        {
+          "hotel_id": "74620815",
+          "name": "非繁城品酒店（新会步行街店）",
+          "area": "江门新会片区",
+          "price": 306,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "437229",
+          "name": "江门新会碧桂园凤悦凤凰酒店（万达广场店）",
+          "area": "江门新会片区",
+          "price": 387,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "117149044",
+          "name": "江门新会花季酒店",
+          "area": "江门新会片区",
+          "price": 418,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "708149",
+          "name": "江门新会龙泉度假酒店",
+          "area": "江门新会片区",
+          "price": 428,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        }
+      ],
+      "representative_hotels": [
+        "非繁城品酒店（新会步行街店）",
+        "江门新会碧桂园凤悦凤凰酒店（万达广场店）",
+        "江门新会花季酒店"
+      ],
+      "rank": 3,
+      "summary": "4家高级酒店，0家降价，4家持平"
+    },
+    {
+      "area": "江门江海片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 0,
+      "average_price": 212,
+      "average_diff": -14,
+      "price_range": [
+        148,
+        276
+      ],
+      "hotels": [
+        {
+          "hotel_id": "1937574",
+          "name": "新侨都酒店（江门东站江海广场店）",
+          "area": "江门江海片区",
+          "price": 148,
+          "diff": -21,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "123310802",
+          "name": "全季酒店（江门东站江海万达广场店）",
+          "area": "江门江海片区",
+          "price": 276,
+          "diff": -6,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        }
+      ],
+      "representative_hotels": [
+        "新侨都酒店（江门东站江海广场店）",
+        "全季酒店（江门东站江海万达广场店）"
+      ],
+      "rank": 4,
+      "summary": "2家高级酒店，2家降价"
+    },
+    {
+      "area": "江门开平赤坎片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 2,
+      "average_price": 387,
+      "average_diff": 0,
+      "price_range": [
+        346,
+        428
+      ],
+      "hotels": [
+        {
+          "hotel_id": "1525202",
+          "name": "開平翡翠湾凤悦凤凰酒店",
+          "area": "江门开平赤坎片区",
+          "price": 346,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "447002",
+          "name": "開平潭江半岛酒店",
+          "area": "江门开平赤坎片区",
+          "price": 428,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        }
+      ],
+      "representative_hotels": [
+        "開平翡翠湾凤悦凤凰酒店",
+        "開平潭江半岛酒店"
+      ],
+      "rank": 5,
+      "summary": "2家高级酒店，0家降价，2家持平"
+    },
+    {
+      "area": "江门鹤山片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 368,
+      "average_diff": -116,
+      "price_range": [
+        368,
+        368
+      ],
+      "hotels": [
+        {
+          "hotel_id": "75525248",
+          "name": "鶴山东古玥湖酒店",
+          "area": "江门鹤山片区",
+          "price": 368,
+          "diff": -116,
+          "source_file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+          "source_cached_at": "2026-05-06T15:49:09"
+        }
+      ],
+      "representative_hotels": [
+        "鶴山东古玥湖酒店"
+      ],
+      "rank": 6,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "江门银湖湾片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 426,
+      "average_diff": -22,
+      "price_range": [
+        426,
+        426
+      ],
+      "hotels": [
+        {
+          "hotel_id": "106753827",
+          "name": "江门銀湖湾滨海新区智选假日酒店",
+          "area": "江门银湖湾片区",
+          "price": 426,
+          "diff": -22,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        }
+      ],
+      "representative_hotels": [
+        "江门銀湖湾滨海新区智选假日酒店"
+      ],
+      "rank": 7,
+      "summary": "1家高级酒店，1家降价"
+    },
+    {
+      "area": "江门待确认片区",
+      "hotel_count": 16,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 14,
+      "average_price": 301,
+      "average_diff": -2,
+      "price_range": [
+        160,
+        592
+      ],
+      "hotels": [
+        {
+          "hotel_id": "117169123",
+          "name": "柏丽泉智酒店（江门滨江体育中心店）",
+          "area": "江门待确认片区",
+          "price": 328,
+          "diff": -32,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "102227300",
+          "name": "佛山九江希尔顿惠庭酒店",
+          "area": "江门待确认片区",
+          "price": 413,
+          "diff": -4,
+          "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+          "source_cached_at": "2026-05-06T15:42:54"
+        },
+        {
+          "hotel_id": "1523283",
+          "name": "新侨都酒店（江门三十三墟街地王广场店）",
+          "area": "江门待确认片区",
+          "price": 160,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "130103277",
+          "name": "城市便捷酒店（江门君誠大厦店）",
+          "area": "江门待确认片区",
+          "price": 181,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "669506",
+          "name": "江门銀晶国际酒店",
+          "area": "江门待确认片区",
+          "price": 204,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "103957260",
+          "name": "凯里亞德酒店（江门东站店）",
+          "area": "江门待确认片区",
+          "price": 207,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "80949036",
+          "name": "维也纳酒店（江门啟明里三十三墟街店）",
+          "area": "江门待确认片区",
+          "price": 209,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "430236",
+          "name": "中山大信酒店（小榄店）",
+          "area": "江门待确认片区",
+          "price": 262,
+          "diff": 0,
+          "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+          "source_cached_at": "2026-05-06T15:42:54"
+        },
+        {
+          "hotel_id": "124574981",
+          "name": "江门珺璟麥客达温德姆酒店",
+          "area": "江门待确认片区",
+          "price": 264,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "1100134",
+          "name": "江门丽宫国际酒店",
+          "area": "江门待确认片区",
+          "price": 294,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "112076439",
+          "name": "江门东站嘉华广场智选假日酒店",
+          "area": "江门待确认片区",
+          "price": 311,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "131943712",
+          "name": "江门荷塘龙湖亞朵酒店",
+          "area": "江门待确认片区",
+          "price": 335,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "448961",
+          "name": "佛山顺德哥顿酒店（渔人码头店）",
+          "area": "江门待确认片区",
+          "price": 338,
+          "diff": 0,
+          "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+          "source_cached_at": "2026-05-06T15:42:54"
+        },
+        {
+          "hotel_id": "119761681",
+          "name": "山水富丽华酒店（江门站店）",
+          "area": "江门待确认片区",
+          "price": 355,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "1481437",
+          "name": "江门玉湖御景酒店",
+          "area": "江门待确认片区",
+          "price": 367,
+          "diff": 0,
+          "source_file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+          "source_cached_at": "2026-05-08T16:16:37"
+        },
+        {
+          "hotel_id": "44643973",
+          "name": "鶴山万达嘉华酒店",
+          "area": "江门待确认片区",
+          "price": 592,
+          "diff": 0,
+          "source_file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+          "source_cached_at": "2026-05-06T15:42:54"
+        }
+      ],
+      "representative_hotels": [
+        "柏丽泉智酒店（江门滨江体育中心店）",
+        "佛山九江希尔顿惠庭酒店",
+        "新侨都酒店（江门三十三墟街地王广场店）"
+      ],
+      "rank": 8,
+      "summary": "16家高级酒店，2家降价，14家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 3,
+    "candidate_count": 99,
+    "unique_hotel_count": 81,
+    "included_hotel_count": 39,
+    "matching_files": [
+      {
+        "file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "mtime": 1778228197.1774817,
+        "choices": 87,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "mtime": 1778053749.3559875,
+        "choices": 12,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "mtime": 1778053374.8305056,
+        "choices": 19,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 3,
+    "candidate_count": 99,
+    "unique_hotel_count": 81,
+    "included_hotel_count": 39,
+    "matching_files": [
+      {
+        "file": "d067a03d5acd8a42b5ed167d3aa544ddb1809442bbe3ea2290dbe78dfab576a9.json",
+        "mtime": 1778228197.1774817,
+        "choices": 87,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "f85e9dd06b2b72df8814d1e44d0dafb8e89fc812107b40ff96c0f3e05c604bef.json",
+        "mtime": 1778053749.3559875,
+        "choices": 12,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "60be1011c475f9c1ba235f9a34c40661a81938e139ea090f53b91601a23fbd23.json",
+        "mtime": 1778053374.8305056,
+        "choices": 19,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "江门",
+    "text": "江门可重点看开平碉楼与村落、赤坎华侨古镇、上下川岛、小鸟天堂和古劳水乡；侨乡文化与滨海度假适合组合。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/江门",
+    "updated_at": ""
+  }
+}

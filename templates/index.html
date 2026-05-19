@@ -379,10 +379,19 @@
         margin-top: 12px;
         color: var(--bad);
         background: var(--bad-bg);
-        border: 1px solid #ffd0cc;
+        border: 2px solid #ff8d82;
         border-radius: 8px;
-        padding: 12px;
+        padding: 14px 16px;
         font-size: 14px;
+        font-weight: 800;
+        line-height: 1.55;
+        box-shadow: 0 12px 28px rgba(194, 64, 55, 0.16);
+      }
+      .error.warning {
+        color: #7a4b00;
+        background: #fff7df;
+        border-color: #f2bf4b;
+        box-shadow: 0 12px 28px rgba(176, 111, 0, 0.14);
       }
       .hidden { display: none !important; }
       .result {
@@ -391,6 +400,86 @@
         gap: 14px;
       }
       .panel { overflow: hidden; }
+      .daily-panel {
+        margin-top: 18px;
+        padding: 16px;
+      }
+      .daily-content {
+        min-height: 80px;
+      }
+      .daily-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+        gap: 16px;
+        align-items: start;
+      }
+      .daily-kicker {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .daily-title {
+        margin: 0 0 9px;
+        color: #17212b;
+        font-size: 22px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+      }
+      .daily-desc {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .daily-price-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .daily-price {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fff;
+        padding: 10px;
+      }
+      .daily-price .k {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .daily-price .v {
+        margin-top: 5px;
+        color: #17212b;
+        font-size: 18px;
+        font-weight: 850;
+      }
+      .daily-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .daily-link {
+        width: auto;
+        min-width: 150px;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: linear-gradient(180deg, #1b63e7, var(--primary));
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 800;
+        box-shadow: 0 8px 18px rgba(22, 87, 216, 0.18);
+      }
+      .daily-note {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
       .summary {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -690,6 +779,19 @@
         .summary {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+        .daily-card {
+          grid-template-columns: 1fr;
+        }
+        .daily-price-grid {
+          grid-template-columns: 1fr;
+        }
+        .daily-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+        .daily-link {
+          width: 100%;
+        }
         .area-grid { grid-template-columns: 1fr; }
         label { gap: 6px; }
         input, select, button {
@@ -899,11 +1001,11 @@
             <option value="no">否</option>
           </select>
         </label>
-        <label class="cache-option" title="优先显示缓存结果">
+        <label class="cache-option" title="优先显示已有结果">
           <input id="use-cache" name="use_cache" type="checkbox" value="true" checked />
           <span>
-            <strong>优先显示缓存结果</strong>
-            <small>推荐勾选显示缓存结果，新搜索预估耗时10-15分钟</small>
+            <strong>优先显示已有结果</strong>
+            <small>推荐勾选，可更快看到已有结果；新搜索预估耗时10-15分钟</small>
           </span>
         </label>
         <button id="submit-btn" type="submit"><span class="spinner"></span><span id="submit-text">开始筛选</span></button>
@@ -944,7 +1046,7 @@
         </div>
         <div class="progress-list" id="progress-list"></div>
       </div>
-      <div class="error hidden" id="error-box"></div>
+      <div class="error hidden" id="error-box" role="alert" aria-live="assertive"></div>
 
       <section class="result hidden" id="result">
         <div class="panel summary" id="summary"></div>
@@ -988,6 +1090,15 @@
           </div>
         </div>
       </section>
+      <section class="panel daily-panel" id="daily-panel" aria-live="polite">
+        <div class="section-head">
+          <h2 class="section-title">每日推荐</h2>
+          <div class="section-meta" id="daily-meta">从已有结果中挑选</div>
+        </div>
+        <div class="daily-content" id="daily-content">
+          <div class="empty">正在加载今日推荐...</div>
+        </div>
+      </section>
     </main>
 
     <script>
@@ -1015,6 +1126,8 @@
       const areaMeta = document.getElementById("area-meta");
       const tableMeta = document.getElementById("table-meta");
       const choicesBody = document.getElementById("choices-body");
+      const dailyMeta = document.getElementById("daily-meta");
+      const dailyContent = document.getElementById("daily-content");
       const viewFilter = document.getElementById("view-filter");
       const resultSearchInput = document.getElementById("result-search");
       const useCacheInput = document.getElementById("use-cache");
@@ -1031,6 +1144,7 @@
       let lastResultMeta = "";
       let lastHotelNameMeta = "";
       let lastTotalChoiceCount = 0;
+      let lastResultCity = "";
       let areaRefreshToken = 0;
       let hotelNameRefreshToken = 0;
       let coverageRefreshToken = 0;
@@ -1040,6 +1154,7 @@
       let resultSearchQuery = "";
       let activeAreaFilter = null;
       let areaListExpanded = false;
+      let alertSeverity = "";
       const AREA_COLLAPSED_LIMIT = 8;
       const provinceCityOptions = {{ province_city_options|tojson }};
 
@@ -1083,15 +1198,50 @@
         return Array.from(value).map((char) => t2sChars[char] || char).join("");
       }
 
+      function containsChineseText(text) {
+        return /[\u3400-\u9fff]/.test(String(text || ""));
+      }
+
       function normalizeSearchText(text) {
         return simplifyChineseText(text)
           .toLowerCase()
           .replace(/[\s\-_,.()（）·•|｜\/\\:："'“”‘’]+/g, "");
       }
 
+      function displayHotelName(item) {
+        if (!item) return "";
+        const aliases = Array.isArray(item.hotel_name_aliases) ? item.hotel_name_aliases : [];
+        const candidates = [
+          item.hotel_name,
+          item.hotel_name_simplified,
+          ...aliases,
+          item.hotel_original_name,
+        ];
+        for (const candidate of candidates) {
+          const name = simplifyChineseText(candidate || "").trim();
+          if (name && containsChineseText(name)) return name;
+        }
+        return simplifyChineseText(item.hotel_name || item.hotel_original_name || "").trim();
+      }
+
+      function cleanRepresentativeHotelNames(names) {
+        return (names || [])
+          .map((name) => simplifyChineseText(name || "").trim())
+          .filter((name) => name && containsChineseText(name));
+      }
+
+      function displayChoiceAreaName(item) {
+        const rawArea = simplifyChineseText(item?.area_name || "").trim();
+        if (rawArea && !isGenericAreaName(rawArea)) return rawArea;
+        const city = simplifyChineseText(item?.recommend_city || lastResultCity || "").trim();
+        return city && !/[A-Za-z]/.test(city) ? `${city}待确认片区` : "城市待确认片区";
+      }
+
       function choiceSearchText(item) {
         const aliases = Array.isArray(item.hotel_name_aliases) ? item.hotel_name_aliases : [];
         return normalizeSearchText([
+          displayHotelName(item),
+          displayChoiceAreaName(item),
           item.hotel_name,
           item.hotel_original_name,
           item.hotel_name_simplified,
@@ -1189,15 +1339,55 @@
         timer = window.setInterval(updateElapsed, 1000);
       }
 
+      function userFacingMessage(message) {
+        let text = String(message || "");
+        [
+          [/缓存命中[:：]?/g, "已找到已有结果："],
+          [/读取附近城市缓存/g, "查找附近城市已有结果"],
+          [/读取旧缓存/g, "查找已有结果"],
+          [/读取缓存/g, "查找已有结果"],
+          [/旧补充缓存/g, "已有补充结果"],
+          [/旧共享缓存/g, "已有结果"],
+          [/旧缓存/g, "已有结果"],
+          [/部分搜索缓存/g, "部分搜索结果"],
+          [/部分补充缓存/g, "部分补充结果"],
+          [/部分共享缓存/g, "部分结果"],
+          [/共享缓存/g, "已有结果"],
+          [/本地缓存/g, "已有结果"],
+          [/内存缓存/g, "已有结果"],
+          [/缓存结果/g, "已有结果"],
+          [/缓存/g, "已有结果"],
+        ].forEach(([pattern, replacement]) => {
+          text = text.replace(pattern, replacement);
+        });
+        return text;
+      }
+
+      function showAlert(message, severity = "error") {
+        if (!message) return;
+        alertSeverity = severity;
+        errorBox.textContent = userFacingMessage(message);
+        errorBox.classList.toggle("warning", severity === "warning");
+        errorBox.classList.remove("hidden");
+      }
+
+      function clearAlert(severity = "") {
+        if (severity && alertSeverity !== severity) return;
+        alertSeverity = "";
+        errorBox.textContent = "";
+        errorBox.classList.remove("warning");
+        errorBox.classList.add("hidden");
+      }
+
       function loadingMessage(seconds) {
         if (currentRequestKind === "nearby") {
           if (currentUseCache) {
-            return "正在读取附近城市缓存；没有缓存会自动逐城新搜索。";
+            return "正在查找附近城市已有结果；没有可用结果会自动逐城新搜索。";
           }
           return seconds > 45 ? "正在逐城比较附近城市价格，可能需要 5-15 分钟..." : "正在逐城新搜索附近城市，可能需要 5-15 分钟...";
         }
         if (currentUseCache) {
-          return "正在读取缓存；如未命中会自动新搜索。";
+          return "正在查找已有结果；没有可用结果会自动新搜索。";
         }
         return seconds > 45 ? "正在比较多个代表日期的含税均价..." : "正在进行新搜索，通常需要 2-5 分钟...";
       }
@@ -1249,7 +1439,7 @@
 
       function matchesActiveArea(item) {
         if (!activeAreaFilter) return true;
-        const itemArea = normalizeSearchText(item.area_name || "");
+        const itemArea = normalizeSearchText(displayChoiceAreaName(item));
         const itemCity = normalizeSearchText(item.recommend_city || "");
         return itemArea === activeAreaFilter.area && (!activeAreaFilter.city || itemCity === activeAreaFilter.city);
       }
@@ -1294,12 +1484,11 @@
         choicesBody.innerHTML = items.map((item) => `
           <tr>
             <td data-label="酒店">
-              <div class="hotel-name">${esc(simplifyChineseText(item.hotel_name))}</div>
-              ${item.hotel_original_name && item.hotel_original_name !== item.hotel_name ? `<div class="muted">原名：${esc(item.hotel_original_name)}</div>` : ""}
+              <div class="hotel-name">${esc(displayHotelName(item))}</div>
               <div>
                 <span class="pill">${esc(item.room_type_label)}</span>
                 ${item.recommend_city ? `<span class="pill">${esc(item.recommend_city)}</span>` : ""}
-                ${item.area_name ? `<span class="pill">${esc(item.area_name)}</span>` : ""}
+                <span class="pill">${esc(displayChoiceAreaName(item))}</span>
                 ${item.hotel_name_source ? `<span class="pill">${esc(item.hotel_name_source)}</span>` : ""}
               </div>
               <div class="muted">${esc(item.holiday_room_name)}</div>
@@ -1323,6 +1512,72 @@
         `).join("");
       }
 
+      function renderDailyRecommendation(data) {
+        const item = data?.recommendation;
+        const holiday = data?.holiday || {};
+        if (!item) {
+          dailyMeta.textContent = "暂无推荐";
+          dailyContent.innerHTML = `<div class="empty">${esc(data?.message || "已有结果里暂时没有符合条件的每日推荐。")}</div>`;
+          return;
+        }
+        const city = simplifyChineseText(item.recommend_city || data.city || "").trim();
+        const area = displayChoiceAreaName(item);
+        const diff = Number(item.price_diff_nightly || 0);
+        const diffText = item.price_diff_nightly_text || (diff <= 0 ? `降约¥${Math.abs(diff)}/晚` : `涨约¥${diff}/晚`);
+        dailyMeta.textContent = `${data.date || ""} · 最近假期：${holiday.name || ""}`;
+        dailyContent.innerHTML = `
+          <article class="daily-card">
+            <div>
+              <div class="daily-kicker">
+                ${city ? `<span class="pill">${esc(city)}</span>` : ""}
+                <span class="pill">四星级以上</span>
+                <span class="pill">${esc(item.room_type_label || "推荐房型")}</span>
+                <span class="pill">${esc(area)}</span>
+              </div>
+              <h3 class="daily-title">${esc(displayHotelName(item))}</h3>
+              <div class="daily-desc">
+                ${esc(holiday.name || "最近假期")}：${esc(holiday.check_in || "")} 至 ${esc(holiday.check_out || "")}。
+                ${esc(item.holiday_room_name || "")}
+              </div>
+              <div class="daily-actions">
+                <a class="daily-link" href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">跳转 Trip.com</a>
+                <div class="daily-note">每日从已有结果中推荐，不重复展示；实际价格以 Trip.com 下单页为准。</div>
+              </div>
+            </div>
+            <div class="daily-price-grid">
+              <div class="daily-price">
+                <div class="k">假期每晚含税</div>
+                <div class="v">${esc(item.holiday_avg_nightly_tax_total_price)}</div>
+              </div>
+              <div class="daily-price">
+                <div class="k">代表时段均价</div>
+                <div class="v">${esc(item.comparison_average_nightly_tax_total_price)}</div>
+              </div>
+              <div class="daily-price">
+                <div class="k">每晚差额</div>
+                <div class="v"><span class="diff ${diffClass(diff)}">${esc(diffText)}</span></div>
+              </div>
+              <div class="daily-price">
+                <div class="k">最低样本</div>
+                <div class="v">${esc(item.comparison_lowest_nightly_tax_total_price)}</div>
+                <div class="daily-note">${esc(item.comparison_lowest_check_in || "")} 至 ${esc(item.comparison_lowest_check_out || "")}，样本数：${esc(item.comparison_sample_count || "")}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      async function loadDailyRecommendation() {
+        try {
+          const resp = await fetch("/api/daily-recommendation", { cache: "no-store" });
+          const data = await readJsonResponse(resp, "每日推荐加载失败");
+          renderDailyRecommendation(data);
+        } catch (error) {
+          dailyMeta.textContent = "加载失败";
+          dailyContent.innerHTML = `<div class="empty">${esc(error.message || "每日推荐加载失败")}</div>`;
+        }
+      }
+
       function resetViewMode() {
         activeView = "all";
         resultSearchQuery = "";
@@ -1338,10 +1593,11 @@
         lastQuerySeconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
         lastChoices = data.choices || [];
         lastServerAreas = data.area_recommendations || [];
+        lastResultCity = simplifyChineseText(data.city || data.origin_city || lastResultCity || "");
         lastCacheInfo = data.cache || null;
         lastTotalChoiceCount = Number(data.partial?.total_choice_count || lastChoices.length || 0);
         lastResultMeta = data.partial?.preliminary
-          ? (data.partial.message || "酒店在逐步显示中，最终结果会继续刷新")
+          ? userFacingMessage(data.partial.message || "酒店在逐步显示中，最终结果会继续刷新")
           : "";
         lastAreaRefreshMeta = "";
         renderSummary(data);
@@ -1369,6 +1625,7 @@
           advanced_filter: filters.advanced?.value || "all",
           pool_filter: filters.pool?.value || "all",
           child_facility_filter: filters.child_facility?.value || "all",
+          use_cache: currentUseCache ? "true" : "false",
           choices: data.choices || [],
         };
       }
@@ -1383,7 +1640,7 @@
         lastServerAreas = data.area_recommendations || lastServerAreas;
         lastTotalChoiceCount = Math.max(lastTotalChoiceCount || 0, lastChoices.length);
         const supplement = data.coverage_supplement || {};
-        if (supplement.message) lastResultMeta = supplement.message;
+        if (supplement.message) lastResultMeta = userFacingMessage(supplement.message);
         renderSummary({ ...data, choices: lastChoices, area_recommendations: lastServerAreas });
         renderChoices();
         if (supplement.status === "succeeded") {
@@ -1470,7 +1727,7 @@
         progressList.innerHTML = items.map((event) => {
           const percent = Number(event.percent || 0);
           const progressText = percent ? `（${percent}%）` : "";
-          return `<div class="progress-item"><span>${esc(event.message)}${esc(progressText)}</span></div>`;
+          return `<div class="progress-item"><span>${esc(userFacingMessage(event.message))}${esc(progressText)}</span></div>`;
         }).join("");
         progressPanel.classList.remove("hidden");
       }
@@ -1490,9 +1747,10 @@
 
       function formatCacheInfo(cache) {
         if (!cache) return "";
-        if (cache.summary_label) return cache.summary_label;
+        if (cache.partial) return "已先显示部分结果，后台继续补全";
+        if (cache.stale) return "已先显示已有结果，后台正在刷新";
         if (cache.hit) {
-          return `缓存命中：${cache.source_label || "缓存"} ${formatAge(cache.age_seconds)}`;
+          return `已优先显示已有结果 ${formatAge(cache.age_seconds)}`;
         }
         return "实时查询";
       }
@@ -1504,19 +1762,79 @@
         );
       }
 
+      function isCoordinateFallbackAreaName(areaName, cityName = "") {
+        const name = simplifyChineseText(areaName || "").trim();
+        const city = simplifyChineseText(cityName || lastResultCity || "").trim();
+        if (!name || !city || /[A-Za-z]/.test(city)) return false;
+        return [
+          "中心",
+          "北部",
+          "南部",
+          "东部",
+          "西部",
+          "东北部",
+          "西北部",
+          "东南部",
+          "西南部",
+        ].some((direction) => name === `${city}${direction}片区`);
+      }
+
+      function areaSortTier(area) {
+        const explicitTier = Number(area?.area_sort_tier);
+        if (Number.isFinite(explicitTier) && explicitTier > 0) return explicitTier;
+        const areaName = simplifyChineseText(area?.area_name || "").trim();
+        const source = simplifyChineseText(area?.area_source || "").trim();
+        const recommendCity = simplifyChineseText(area?.recommend_city || "").trim();
+        if (source === "酒店坐标" || source === "片区兜底") return 20;
+        if (areaName.includes("待确认片区")) return 20;
+        if (isCoordinateFallbackAreaName(areaName, recommendCity)) return 20;
+        return 0;
+      }
+
+      function compareAreaRecommendations(a, b) {
+        return (areaSortTier(a) - areaSortTier(b)) ||
+          (Number(b.hotel_count || 0) - Number(a.hotel_count || 0)) ||
+          (Number(b.lower_price_hotel_count || 0) - Number(a.lower_price_hotel_count || 0)) ||
+          (Number(b.lower_price_ratio || 0) - Number(a.lower_price_ratio || 0)) ||
+          (Number(a.average_price_diff_nightly || 0) - Number(b.average_price_diff_nightly || 0)) ||
+          (Number(a.average_holiday_nightly_tax_total_value || 0) - Number(b.average_holiday_nightly_tax_total_value || 0));
+      }
+
       function mergeAreaLists(primaryAreas, fallbackAreas) {
         const merged = [];
         const seen = new Set();
+        const byKey = new Map();
         for (const area of [...(primaryAreas || []), ...(fallbackAreas || [])]) {
           const areaName = simplifyChineseText(area.area_name || "");
           if (!areaName || isGenericAreaName(areaName)) continue;
           const recommendCity = simplifyChineseText(area.recommend_city || "");
           const key = areaFilterKey(areaName, recommendCity);
-          if (seen.has(key)) continue;
+          const cleanedArea = {
+            ...area,
+            area_name: areaName,
+            recommend_city: recommendCity,
+            area_sort_tier: areaSortTier({ ...area, area_name: areaName, recommend_city: recommendCity }),
+            representative_hotels: cleanRepresentativeHotelNames(area.representative_hotels || []),
+          };
+          if (seen.has(key)) {
+            const existing = byKey.get(key);
+            const fallbackHotels = cleanedArea.representative_hotels || [];
+            if (existing && fallbackHotels.length) {
+              existing.representative_hotels = cleanRepresentativeHotelNames([
+                ...fallbackHotels,
+                ...(existing.representative_hotels || []),
+              ]).slice(0, 4);
+            }
+            if (existing) {
+              existing.area_sort_tier = Math.max(areaSortTier(existing), areaSortTier(cleanedArea));
+            }
+            continue;
+          }
           seen.add(key);
-          merged.push({ ...area, area_name: areaName, recommend_city: recommendCity });
+          byKey.set(key, cleanedArea);
+          merged.push(cleanedArea);
         }
-        return merged;
+        return merged.sort(compareAreaRecommendations);
       }
 
       function displayAreasForState(areas) {
@@ -1564,7 +1882,7 @@
             const areaName = simplifyChineseText(area.area_name || "");
             const recommendCity = simplifyChineseText(area.recommend_city || "");
             const reason = simplifyChineseText(area.reason || "");
-            const representativeHotels = (area.representative_hotels || []).map((name) => simplifyChineseText(name));
+            const representativeHotels = cleanRepresentativeHotelNames(area.representative_hotels || []);
             const key = areaFilterKey(areaName, recommendCity);
             const active = activeAreaFilter && key === activeAreaFilter.key;
             const cityLabel = recommendCity ? `${recommendCity} · ` : "";
@@ -1599,15 +1917,14 @@
       function buildAreasFromChoices(items) {
         const groups = new Map();
         for (const item of items) {
-          const name = item.area_name || "";
-          if (!name || isGenericAreaName(name)) continue;
-          const areaName = simplifyChineseText(name);
+          const areaName = displayChoiceAreaName(item);
           const recommendCity = simplifyChineseText(item.recommend_city || "");
           const key = areaFilterKey(areaName, recommendCity);
           if (!groups.has(key)) {
             groups.set(key, {
               area_name: areaName,
               recommend_city: recommendCity,
+              area_sort_tier: 0,
               hotel_count: 0,
               lower_price_hotel_count: 0,
               slightly_higher_hotel_count: 0,
@@ -1618,13 +1935,19 @@
           }
           const group = groups.get(key);
           const diff = Number(item.price_diff_nightly || 0);
+          group.area_sort_tier = Math.max(group.area_sort_tier, areaSortTier({
+            area_name: areaName,
+            recommend_city: recommendCity,
+            area_source: item.area_source,
+          }));
           group.hotel_count += 1;
           if (diff <= 0) group.lower_price_hotel_count += 1;
           else group.slightly_higher_hotel_count += 1;
           group.holiday_values.push(Number(item.holiday_avg_nightly_tax_total_value || 0));
           group.diff_values.push(diff);
           if (group.representative_hotels.length < 4) {
-            group.representative_hotels.push(item.hotel_name || item.hotel_original_name || "");
+            const hotelName = displayHotelName(item);
+            if (hotelName && containsChineseText(hotelName)) group.representative_hotels.push(hotelName);
           }
         }
         let areas = Array.from(groups.values()).map((group) => {
@@ -1640,17 +1963,11 @@
             reason: areaReason(group.hotel_count, group.lower_price_hotel_count, avgDiff),
           };
         });
-        return areas.sort((a, b) =>
-          (b.lower_price_ratio - a.lower_price_ratio) ||
-          (b.lower_price_hotel_count - a.lower_price_hotel_count) ||
-          (b.hotel_count - a.hotel_count) ||
-          (a.average_price_diff_nightly - b.average_price_diff_nightly) ||
-          (a.average_holiday_nightly_tax_total_value - b.average_holiday_nightly_tax_total_value)
-        );
+        return areas.sort(compareAreaRecommendations);
       }
 
       function isGenericAreaName(name) {
-        return String(name || "").includes("热门酒店片区") || String(name || "").includes("区域待确认");
+        return String(name || "").includes("热门酒店片区") || String(name || "").includes("热门片区") || String(name || "").includes("区域待确认");
       }
 
       function areaReason(hotelCount, lowerCount) {
@@ -1702,6 +2019,25 @@
         return data;
       }
 
+      async function fetchWithTimeout(url, options = {}, timeoutMs = 30000, fallbackMessage = "请求失败") {
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+        try {
+          return await fetch(url, { ...options, signal: controller.signal });
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            throw new Error(`${fallbackMessage}：查询中断，服务器长时间没有响应，请稍后重试。`);
+          }
+          throw error;
+        } finally {
+          window.clearTimeout(timeoutId);
+        }
+      }
+
+      function pollInterruptedMessage(fallbackMessage, failureCount) {
+        return `${fallbackMessage}：连接暂时中断，连续 ${failureCount} 次没有收到服务器响应。后台可能仍在继续查询，页面会自动重连，稍后可能继续显示新结果。`;
+      }
+
       function sleep(ms) {
         return new Promise((resolve) => window.setTimeout(resolve, ms));
       }
@@ -1726,18 +2062,19 @@
 
       async function runAsyncJob(startUrl, payload, fallbackMessage, options = {}) {
         let partialKey = "";
-        const startResp = await fetch(startUrl, {
+        const startResp = await fetchWithTimeout(startUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
-        });
+        }, Number(options.startTimeoutMs || 45000), fallbackMessage);
         const startData = await readJsonResponse(startResp, fallbackMessage);
         if (startData.progress_events) {
           renderProgressEvents(startData.progress_events);
         }
         if (startData.progress && startData.progress.message) {
           const percent = Number(startData.progress.percent || 0);
-          lastProgressMessage = percent ? `${startData.progress.message}（${percent}%）` : startData.progress.message;
+          const message = userFacingMessage(startData.progress.message);
+          lastProgressMessage = percent ? `${message}（${percent}%）` : message;
           statusText.textContent = lastProgressMessage;
         }
         if (startData.status === "succeeded" && startData.result) {
@@ -1753,16 +2090,49 @@
           throw new Error(`${fallbackMessage}：查询任务创建失败。`);
         }
 
-        const maxWaitMs = 30 * 60 * 1000;
+        const maxWaitMs = Number(options.maxWaitMs || 0);
         const started = Date.now();
-        while (Date.now() - started < maxWaitMs) {
+        let pollFailureCount = 0;
+        while (!maxWaitMs || Date.now() - started < maxWaitMs) {
           await sleep(pollInterval);
-          const resp = await fetch(pollUrl, { cache: "no-store" });
+          let resp;
+          try {
+            resp = await fetchWithTimeout(
+              pollUrl,
+              { cache: "no-store" },
+              Number(options.pollTimeoutMs || 25000),
+              fallbackMessage
+            );
+            if (pollFailureCount >= 3) {
+              clearAlert("warning");
+            }
+            pollFailureCount = 0;
+          } catch (error) {
+            pollFailureCount += 1;
+            if (pollFailureCount >= 3) {
+              const warning = pollInterruptedMessage(fallbackMessage, pollFailureCount);
+              showAlert(warning, "warning");
+              lastProgressMessage = warning;
+              statusText.textContent = lastProgressMessage;
+              pollInterval = Math.min(30000, Math.max(5000, pollInterval * 2));
+              continue;
+            }
+            lastProgressMessage = `${fallbackMessage}：暂时没有收到服务器响应，正在重试（${pollFailureCount}/3）...`;
+            statusText.textContent = lastProgressMessage;
+            await sleep(Math.min(8000, pollInterval * pollFailureCount));
+            continue;
+          }
           const data = await readJsonResponse(resp, fallbackMessage);
           if (data.progress && data.progress.message) {
             const percent = Number(data.progress.percent || 0);
-            lastProgressMessage = percent ? `${data.progress.message}（${percent}%）` : data.progress.message;
+            const message = userFacingMessage(data.progress.message);
+            lastProgressMessage = percent ? `${message}（${percent}%）` : message;
             statusText.textContent = lastProgressMessage;
+          }
+          if (data.progress_warning && data.progress_warning.message) {
+            showAlert(data.progress_warning.message, "warning");
+          } else {
+            clearAlert("warning");
           }
           if (data.progress_events) {
             renderProgressEvents(data.progress_events);
@@ -1783,15 +2153,15 @@
           }
           pollInterval = Math.min(5000, Math.max(1500, pollInterval));
         }
-        throw new Error(`${fallbackMessage}：查询超过 30 分钟仍未完成，请稍后重试。`);
+        throw new Error(`${fallbackMessage}：查询仍未完成，后台可能还在继续处理，请稍后刷新后查看已有结果。`);
       }
 
       async function runSilentJob(startUrl, payload, fallbackMessage, maxWaitMs = 180000) {
-        const startResp = await fetch(startUrl, {
+        const startResp = await fetchWithTimeout(startUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
-        });
+        }, 30000, fallbackMessage);
         const startData = await readJsonResponse(startResp, fallbackMessage);
         if (startData.status === "succeeded" && startData.result) {
           return startData.result;
@@ -1800,7 +2170,7 @@
         const started = Date.now();
         while (Date.now() - started < maxWaitMs) {
           await sleep(1800);
-          const resp = await fetch(pollUrl, { cache: "no-store" });
+          const resp = await fetchWithTimeout(pollUrl, { cache: "no-store" }, 20000, fallbackMessage);
           const data = await readJsonResponse(resp, fallbackMessage);
           if (data.status === "succeeded") return data.result;
           if (data.status === "failed") throw new Error(data.error || fallbackMessage);
@@ -1818,7 +2188,7 @@
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        errorBox.classList.add("hidden");
+        clearAlert();
         result.classList.add("hidden");
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
@@ -1840,8 +2210,7 @@
           });
           applyResultData(data);
         } catch (error) {
-          errorBox.textContent = error.message || "查询失败";
-          errorBox.classList.remove("hidden");
+          showAlert(error.message || "查询失败");
         } finally {
           setLoading(false);
         }
@@ -1849,7 +2218,7 @@
 
       nearbyForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        errorBox.classList.add("hidden");
+        clearAlert();
         result.classList.add("hidden");
         areaRefreshToken += 1;
         hotelNameRefreshToken += 1;
@@ -1873,18 +2242,16 @@
           });
           applyResultData(data);
         } catch (error) {
-          errorBox.textContent = error.message || "附近推荐失败";
-          errorBox.classList.remove("hidden");
+          showAlert(error.message || "附近推荐失败");
         } finally {
           setLoading(false);
         }
       });
 
       geoBtn.addEventListener("click", () => {
-        errorBox.classList.add("hidden");
+        clearAlert();
         if (!navigator.geolocation) {
-          errorBox.textContent = "当前浏览器不支持读取位置，请手动选择所在城市。";
-          errorBox.classList.remove("hidden");
+          showAlert("当前浏览器不支持读取位置，请手动选择所在城市。");
           return;
         }
         geoBtn.disabled = true;
@@ -1903,8 +2270,7 @@
             setOriginCity(data.city);
             nearbyHint.textContent = `已按当前位置识别为 ${data.city}，可点击“按所在城市推荐”。`;
           } catch (error) {
-            errorBox.textContent = error.message || "定位失败，请手动选择所在城市。";
-            errorBox.classList.remove("hidden");
+            showAlert(error.message || "定位失败，请手动选择所在城市。");
             nearbyHint.textContent = "定位失败，可手动选择所在城市。";
           } finally {
             geoBtn.disabled = false;
@@ -1912,17 +2278,16 @@
         }, () => {
           geoBtn.disabled = false;
           nearbyHint.textContent = "无法读取位置，可手动选择所在城市。";
-          errorBox.textContent = "浏览器没有授权当前位置，请手动选择所在城市。";
-          errorBox.classList.remove("hidden");
+          showAlert("浏览器没有授权当前位置，请手动选择所在城市。");
         }, { timeout: 8000, maximumAge: 10 * 60 * 1000 });
       });
 
       initOriginCitySelector();
 
       loadHolidays().catch((error) => {
-        errorBox.textContent = error.message || "假期列表加载失败";
-        errorBox.classList.remove("hidden");
+        showAlert(error.message || "假期列表加载失败");
       });
+      loadDailyRecommendation();
 
       priceButtons.forEach((button) => {
         button.addEventListener("click", () => {

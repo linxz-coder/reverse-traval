@@ -16,6 +16,10 @@
   <dict>
     <key>PYTHONUNBUFFERED</key>
     <string>1</string>
+    <key>REVERSE_TRAVEL_ENV_FILE</key>
+    <string>/Users/linxiaozhong/development/reverse-travel-good-choice/.env.shared-cache</string>
+    <key>REVERSE_TRAVEL_NODE_NAME</key>
+    <string>mac-tunnel</string>
   </dict>
   <key>RunAtLoad</key>
   <true/>

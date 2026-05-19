@@ -12,6 +12,7 @@
 - 高级酒店、游泳池、儿童设施筛选
 - 查询过程可视化，长查询时显示当前抓取和对比阶段
 - 24 小时共享缓存；用户可选择只看缓存或发起新搜索
+- 可选 MySQL 共享缓存，服务器端和本机 tunnel 可共用同一份搜索/补充缓存
 - 全国主要城市缓存预热任务
 - PDF 报告生成脚本
 
@@ -47,6 +48,8 @@ python3 -m pytest -q
 ```text
 .cache/cloudflared.err.log
 ```
+
+本机 tunnel 会读取项目目录下的 `.env.shared-cache`。这个文件不提交到 Git；可用 `.env.shared-cache.example` 作为模板，让它和服务器 `/etc/reverse-traval/shared-cache.env` 指向同一个 MySQL。
 
 ## 说明
 

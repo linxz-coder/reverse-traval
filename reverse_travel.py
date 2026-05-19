@@ -29,6 +29,11 @@ try:  # Optional dependency; a local fallback keeps tests and deploys resilient.
 except ImportError:  # pragma: no cover
     OpenCC = None  # type: ignore[assignment]
 
+try:  # Optional shared cache backend. Local file cache remains the primary path.
+    import pymysql
+except ImportError:  # pragma: no cover
+    pymysql = None  # type: ignore[assignment]
+
 UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
@@ -72,6 +77,7 @@ T2S_CHAR_MAP = str.maketrans(
         "淺": "浅", "澀": "涩", "環": "环", "購": "购", "碼": "码", "棕": "棕", "櫚": "榈",
         "壯": "壮", "劇": "剧", "鐵": "铁", "盧": "卢", "奧": "奥", "馬": "马", "特": "特",
         "強": "强", "現": "现", "藝": "艺", "廠": "厂", "產": "产", "發": "发", "黃": "黄",
+        "態": "态",
     }
 )
 
@@ -120,6 +126,13 @@ def _env_int(name: str, default: int, *, min_value: int = 1, max_value: int = 16
     return max(min_value, min(max_value, value))
 
 
+def _env_bool(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
+
+
 HOTEL_LIST_LIMIT = _env_int("REVERSE_TRAVEL_HOTEL_LIST_LIMIT", 120, min_value=80, max_value=240)
 DEEP_HOTEL_LIST_LIMIT = _env_int(
     "REVERSE_TRAVEL_DEEP_HOTEL_LIST_LIMIT",
@@ -130,8 +143,29 @@ DEEP_HOTEL_LIST_LIMIT = _env_int(
 QUERY_PROFILE = "tri_state_feature_filters_verified_features_area_cache_v32"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 SEARCH_CACHE_TTL_SECONDS = 24 * 60 * 60
+COVERAGE_CACHE_TTL_SECONDS = SEARCH_CACHE_TTL_SECONDS
 STALE_SEARCH_CACHE_TTL_SECONDS = 7 * 24 * 60 * 60
+STALE_COVERAGE_CACHE_TTL_SECONDS = STALE_SEARCH_CACHE_TTL_SECONDS
 CITY_CACHE_TTL_SECONDS = 30 * 24 * 60 * 60
+SHARED_CACHE_ENABLED = _env_bool("REVERSE_TRAVEL_SHARED_CACHE_MYSQL", False)
+SHARED_CACHE_CONNECT_TIMEOUT_SECONDS = _env_int(
+    "REVERSE_TRAVEL_SHARED_CACHE_CONNECT_TIMEOUT_SECONDS",
+    1,
+    min_value=1,
+    max_value=5,
+)
+SHARED_CACHE_READ_TIMEOUT_SECONDS = _env_int(
+    "REVERSE_TRAVEL_SHARED_CACHE_READ_TIMEOUT_SECONDS",
+    2,
+    min_value=1,
+    max_value=8,
+)
+SHARED_CACHE_WRITE_TIMEOUT_SECONDS = _env_int(
+    "REVERSE_TRAVEL_SHARED_CACHE_WRITE_TIMEOUT_SECONDS",
+    2,
+    min_value=1,
+    max_value=8,
+)
 DEFAULT_LIST_FILTERS = "29~1*29*1~2*2,17~1*17*1*2,80~0~1*80*0*2"
 ADVANCED_YES_FILTERS = ("16~4*16*4*4", "16~5*16*5*5")
 ADVANCED_NO_FILTERS = ("16~2*16*2*≤2", "16~3*16*3*3")
@@ -1058,11 +1092,14 @@ class ReverseTravelFinder:
         self._cache_lock = threading.Lock()
         self._search_cache: dict[tuple[str, ...], dict[str, Any]] = {}
         self._search_cache_meta: dict[tuple[str, ...], dict[str, Any]] = {}
+        self._coverage_cache: dict[tuple[str, ...], list[dict[str, Any]]] = {}
+        self._coverage_cache_meta: dict[tuple[str, ...], dict[str, Any]] = {}
         self._city_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._city_cache_path())
         self._hotel_name_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._hotel_name_cache_path())
         self._hotel_feature_cache: dict[str, dict[str, Any]] = self._load_cache_items(self._hotel_feature_cache_path())
         self.geonames_username = os.environ.get("GEONAMES_USERNAME", "").strip()
         self._geonames_area_cache: dict[tuple[float, float, str], str] = {}
+        self._shared_cache_disabled_until = 0.0
 
     def list_holidays(self) -> list[dict[str, Any]]:
         holidays = self.calendar.get_upcoming_holidays()
@@ -1195,6 +1232,22 @@ class ReverseTravelFinder:
         for item in choices:
             self._add_choice_search_names(item)
 
+    def _choice_display_hotel_name(self, item: dict[str, Any]) -> str:
+        aliases = item.get("hotel_name_aliases") or []
+        if isinstance(aliases, str):
+            aliases = [aliases]
+        candidates = [
+            item.get("hotel_name"),
+            item.get("hotel_name_simplified"),
+            *aliases,
+            item.get("hotel_original_name"),
+        ]
+        for candidate in candidates:
+            name = self._to_simplified_chinese(str(candidate or "").strip())
+            if name and self._contains_chinese_text(name):
+                return name
+        return self._to_simplified_chinese(str(item.get("hotel_name") or item.get("hotel_original_name") or "").strip())
+
     def _apply_hotel_name_record_to_choice(self, item: dict[str, Any], record: dict[str, Any]) -> None:
         if not isinstance(record, dict):
             self._add_choice_search_names(item)
@@ -1234,10 +1287,15 @@ class ReverseTravelFinder:
     def _hotel_feature_cache_path(self) -> Path:
         return self.cache_dir / "hotel_feature_cache.json"
 
-    def _search_cache_path(self, cache_key: tuple[str, ...]) -> Path:
+    def _cache_key_digest(self, cache_key: tuple[str, ...]) -> str:
         raw_key = json.dumps(cache_key, ensure_ascii=False, separators=(",", ":"))
-        digest = hashlib.sha256(raw_key.encode("utf-8")).hexdigest()
-        return self.cache_dir / "search" / f"{digest}.json"
+        return hashlib.sha256(raw_key.encode("utf-8")).hexdigest()
+
+    def _search_cache_path(self, cache_key: tuple[str, ...]) -> Path:
+        return self.cache_dir / "search" / f"{self._cache_key_digest(cache_key)}.json"
+
+    def _coverage_cache_path(self, cache_key: tuple[str, ...]) -> Path:
+        return self.cache_dir / "coverage" / f"{self._cache_key_digest(cache_key)}.json"
 
     def _read_json_file(self, path: Path) -> Any:
         try:
@@ -1255,6 +1313,145 @@ class ReverseTravelFinder:
             tmp_path.replace(path)
         except OSError:
             return
+
+    def _shared_cache_connection(self):
+        if not SHARED_CACHE_ENABLED or pymysql is None:
+            return None
+        if time.time() < self._shared_cache_disabled_until:
+            return None
+        raw_port = (
+            os.environ.get("REVERSE_TRAVEL_SHARED_CACHE_PORT")
+            or os.environ.get("MYSQL_PORT")
+            or "3306"
+        )
+        try:
+            port = int(raw_port)
+        except ValueError:
+            port = 3306
+        try:
+            return pymysql.connect(
+                host=os.environ.get("REVERSE_TRAVEL_SHARED_CACHE_HOST")
+                or os.environ.get("MYSQL_HOST")
+                or "127.0.0.1",
+                port=port,
+                user=os.environ.get("REVERSE_TRAVEL_SHARED_CACHE_USER")
+                or os.environ.get("MYSQL_USER")
+                or "reverse_travel",
+                password=os.environ.get("REVERSE_TRAVEL_SHARED_CACHE_PASSWORD")
+                or os.environ.get("MYSQL_PASSWORD")
+                or "",
+                database=os.environ.get("REVERSE_TRAVEL_SHARED_CACHE_DATABASE")
+                or os.environ.get("MYSQL_DATABASE")
+                or "reverse_travel_archive",
+                charset="utf8mb4",
+                autocommit=True,
+                init_command="SET time_zone = '+00:00'",
+                connect_timeout=SHARED_CACHE_CONNECT_TIMEOUT_SECONDS,
+                read_timeout=SHARED_CACHE_READ_TIMEOUT_SECONDS,
+                write_timeout=SHARED_CACHE_WRITE_TIMEOUT_SECONDS,
+            )
+        except Exception:
+            self._shared_cache_disabled_until = time.time() + 60
+            return None
+
+    def _load_shared_cache_record(
+        self,
+        namespace: str,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+    ) -> dict[str, Any] | None:
+        if ttl_seconds <= 0:
+            return None
+        connection = self._shared_cache_connection()
+        if connection is None:
+            return None
+        digest = self._cache_key_digest(cache_key)
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    """
+                    SELECT payload_json
+                    FROM shared_cache_entries
+                    WHERE cache_namespace = %s
+                      AND cache_key_hash = %s
+                    LIMIT 1
+                    """,
+                    (namespace, digest),
+                )
+                row = cursor.fetchone()
+        except Exception:
+            self._shared_cache_disabled_until = time.time() + 60
+            return None
+        finally:
+            try:
+                connection.close()
+            except Exception:
+                pass
+        if not row:
+            return None
+        raw_payload = row[0]
+        if isinstance(raw_payload, bytes):
+            raw_payload = raw_payload.decode("utf-8")
+        try:
+            record = json.loads(raw_payload)
+        except (TypeError, json.JSONDecodeError):
+            return None
+        if not isinstance(record, dict) or record.get("cache_key") != list(cache_key):
+            return None
+        try:
+            created_at = float(record.get("created_at") or 0)
+        except (TypeError, ValueError):
+            return None
+        if not self._is_cache_meta_fresh({"created_at": created_at}, ttl_seconds):
+            return None
+        return record
+
+    def _store_shared_cache_record(
+        self,
+        namespace: str,
+        cache_key: tuple[str, ...],
+        record: dict[str, Any],
+        ttl_seconds: int,
+    ) -> None:
+        if ttl_seconds <= 0:
+            return
+        connection = self._shared_cache_connection()
+        if connection is None:
+            return
+        digest = self._cache_key_digest(cache_key)
+        raw_key = json.dumps(cache_key, ensure_ascii=False, separators=(",", ":"))
+        payload = json.dumps(record, ensure_ascii=False, separators=(",", ":"))
+        try:
+            created_at = float(record.get("created_at") or time.time())
+        except (TypeError, ValueError):
+            created_at = time.time()
+        created_dt = dt.datetime.fromtimestamp(created_at, tz=dt.timezone.utc).replace(tzinfo=None)
+        expires_dt = dt.datetime.fromtimestamp(created_at + ttl_seconds, tz=dt.timezone.utc).replace(tzinfo=None)
+        source_node = os.environ.get("REVERSE_TRAVEL_NODE_NAME", "").strip()
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    """
+                    INSERT INTO shared_cache_entries
+                      (cache_namespace, cache_key_hash, cache_key_json, payload_json, created_at, expires_at, source_node)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    ON DUPLICATE KEY UPDATE
+                      cache_key_json = VALUES(cache_key_json),
+                      payload_json = VALUES(payload_json),
+                      created_at = VALUES(created_at),
+                      expires_at = VALUES(expires_at),
+                      source_node = VALUES(source_node),
+                      updated_at = CURRENT_TIMESTAMP
+                    """,
+                    (namespace, digest, raw_key, payload, created_dt, expires_dt, source_node),
+                )
+        except Exception:
+            self._shared_cache_disabled_until = time.time() + 60
+        finally:
+            try:
+                connection.close()
+            except Exception:
+                pass
 
     def _load_cache_items(self, path: Path) -> dict[str, Any]:
         data = self._read_json_file(path)
@@ -1287,7 +1484,12 @@ class ReverseTravelFinder:
             return False
         return created_at > 0 and time.time() - created_at <= ttl_seconds
 
-    def _load_search_cache(self, cache_key: tuple[str, ...], ttl_seconds: int | None = None) -> dict[str, Any] | None:
+    def _load_search_cache(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int | None = None,
+        complete_only: bool = False,
+    ) -> dict[str, Any] | None:
         effective_ttl = self.search_cache_ttl_seconds if ttl_seconds is None else ttl_seconds
         if effective_ttl <= 0:
             return None
@@ -1303,43 +1505,475 @@ class ReverseTravelFinder:
         result = record.get("result")
         if not isinstance(result, dict):
             return None
-        return {"created_at": created_at, "result": result}
+        complete = record.get("complete", True) is not False
+        if complete_only and not complete:
+            return None
+        return {"created_at": created_at, "result": result, "complete": complete}
 
     def _search_cache_key(self, city: str, holiday_code: str, feature_filters: FeatureFilters) -> tuple[str, ...]:
         return (QUERY_PROFILE, city.strip().lower(), holiday_code, *feature_filters.cache_parts())
 
-    def _get_cached_search_base(self, cache_key: tuple[str, ...]) -> tuple[dict[str, Any], dict[str, Any]] | None:
+    def _coverage_cache_key(self, city: str, holiday_code: str, feature_filters: FeatureFilters) -> tuple[str, ...]:
+        return (QUERY_PROFILE, "coverage", city.strip().lower(), holiday_code, *feature_filters.cache_parts())
+
+    def _load_coverage_cache(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int | None = None,
+        complete_only: bool = False,
+    ) -> dict[str, Any] | None:
+        effective_ttl = COVERAGE_CACHE_TTL_SECONDS if ttl_seconds is None else ttl_seconds
+        if effective_ttl <= 0:
+            return None
+        record = self._read_json_file(self._coverage_cache_path(cache_key))
+        if not isinstance(record, dict) or record.get("cache_key") != list(cache_key):
+            return None
+        try:
+            created_at = float(record.get("created_at") or 0)
+        except (TypeError, ValueError):
+            return None
+        if not self._is_cache_meta_fresh({"created_at": created_at}, effective_ttl):
+            return None
+        choices = record.get("choices")
+        if not isinstance(choices, list):
+            return None
+        complete = record.get("complete", True) is not False
+        if complete_only and not complete:
+            return None
+        completed_areas = record.get("completed_areas")
+        if not isinstance(completed_areas, list):
+            completed_areas = []
+        return {
+            "created_at": created_at,
+            "choices": choices,
+            "complete": complete,
+            "completed_areas": completed_areas,
+        }
+
+    def _latest_cache_candidate(self, candidates: list[dict[str, Any]]) -> dict[str, Any] | None:
+        valid: list[dict[str, Any]] = []
+        for item in candidates:
+            try:
+                if float(item.get("created_at") or 0) > 0:
+                    valid.append(item)
+            except (TypeError, ValueError):
+                continue
+        if not valid:
+            return None
+        return max(valid, key=lambda item: float(item.get("created_at") or 0))
+
+    def _memory_search_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
         with self._cache_lock:
             cached = self._search_cache.get(cache_key)
             cached_meta = self._search_cache_meta.get(cache_key)
-            if cached is not None and not self._is_cache_meta_fresh(cached_meta, self.search_cache_ttl_seconds):
+            if cached is None:
+                return None
+            if not self._is_cache_meta_fresh(cached_meta, ttl_seconds):
                 self._search_cache.pop(cache_key, None)
                 self._search_cache_meta.pop(cache_key, None)
-                cached = None
-                cached_meta = None
-            if cached is not None:
-                return (
-                    copy.deepcopy(cached),
-                    self._build_cache_info(
-                        source="memory",
-                        created_at=float((cached_meta or {}).get("created_at") or time.time()),
-                        hit=True,
+                return None
+            complete = (cached_meta or {}).get("complete") is not False
+            if complete_only and not complete:
+                return None
+            if stale_preview and complete and self._is_cache_meta_fresh(cached_meta, self.search_cache_ttl_seconds):
+                return None
+            return {
+                "source": "memory",
+                "created_at": float((cached_meta or {}).get("created_at") or time.time()),
+                "result": copy.deepcopy(cached),
+                "complete": complete,
+            }
+
+    def _disk_search_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
+        record = self._load_search_cache(cache_key, ttl_seconds=ttl_seconds, complete_only=complete_only)
+        if record is None:
+            return None
+        complete = record.get("complete", True) is not False
+        created_at = float(record["created_at"])
+        if stale_preview and complete and self._is_cache_meta_fresh({"created_at": created_at}, self.search_cache_ttl_seconds):
+            return None
+        return {
+            "source": "disk",
+            "created_at": created_at,
+            "result": copy.deepcopy(record["result"]),
+            "complete": complete,
+        }
+
+    def _shared_search_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
+        record = self._load_shared_cache_record("search", cache_key, ttl_seconds)
+        if record is None:
+            return None
+        complete = record.get("complete", True) is not False
+        if complete_only and not complete:
+            return None
+        result = record.get("result")
+        if not isinstance(result, dict):
+            return None
+        try:
+            created_at = float(record.get("created_at") or 0)
+        except (TypeError, ValueError):
+            return None
+        if stale_preview and complete and self._is_cache_meta_fresh({"created_at": created_at}, self.search_cache_ttl_seconds):
+            return None
+        return {
+            "source": "shared_db",
+            "created_at": created_at,
+            "result": copy.deepcopy(result),
+            "complete": complete,
+            "record": record,
+        }
+
+    def _remember_search_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        candidate: dict[str, Any],
+    ) -> None:
+        result = candidate.get("result")
+        if not isinstance(result, dict):
+            return
+        created_at = float(candidate.get("created_at") or time.time())
+        complete = candidate.get("complete", True) is not False
+        if candidate.get("source") == "shared_db" and isinstance(candidate.get("record"), dict):
+            self._write_json_file(self._search_cache_path(cache_key), candidate["record"])
+        with self._cache_lock:
+            self._search_cache[cache_key] = copy.deepcopy(result)
+            self._search_cache_meta[cache_key] = {"created_at": created_at, "complete": complete}
+
+    def _memory_coverage_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
+        with self._cache_lock:
+            cached = self._coverage_cache.get(cache_key)
+            cached_meta = self._coverage_cache_meta.get(cache_key)
+            if cached is None:
+                return None
+            if not self._is_cache_meta_fresh(cached_meta, ttl_seconds):
+                self._coverage_cache.pop(cache_key, None)
+                self._coverage_cache_meta.pop(cache_key, None)
+                return None
+            complete = (cached_meta or {}).get("complete") is not False
+            if complete_only and not complete:
+                return None
+            if stale_preview and complete and self._is_cache_meta_fresh(cached_meta, COVERAGE_CACHE_TTL_SECONDS):
+                return None
+            return {
+                "source": "memory",
+                "created_at": float((cached_meta or {}).get("created_at") or time.time()),
+                "choices": copy.deepcopy(cached),
+                "complete": complete,
+                "completed_areas": copy.deepcopy((cached_meta or {}).get("completed_areas") or []),
+            }
+
+    def _disk_coverage_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
+        record = self._load_coverage_cache(cache_key, ttl_seconds=ttl_seconds, complete_only=complete_only)
+        if record is None:
+            return None
+        complete = record.get("complete", True) is not False
+        created_at = float(record["created_at"])
+        if stale_preview and complete and self._is_cache_meta_fresh({"created_at": created_at}, COVERAGE_CACHE_TTL_SECONDS):
+            return None
+        return {
+            "source": "disk",
+            "created_at": created_at,
+            "choices": copy.deepcopy(record["choices"]),
+            "complete": complete,
+            "completed_areas": copy.deepcopy(record.get("completed_areas") or []),
+        }
+
+    def _shared_coverage_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
+        record = self._load_shared_cache_record("coverage", cache_key, ttl_seconds)
+        if record is None:
+            return None
+        complete = record.get("complete", True) is not False
+        if complete_only and not complete:
+            return None
+        choices = record.get("choices")
+        if not isinstance(choices, list):
+            return None
+        try:
+            created_at = float(record.get("created_at") or 0)
+        except (TypeError, ValueError):
+            return None
+        if stale_preview and complete and self._is_cache_meta_fresh({"created_at": created_at}, COVERAGE_CACHE_TTL_SECONDS):
+            return None
+        completed_areas = record.get("completed_areas")
+        if not isinstance(completed_areas, list):
+            completed_areas = []
+        return {
+            "source": "shared_db",
+            "created_at": created_at,
+            "choices": copy.deepcopy(choices),
+            "complete": complete,
+            "completed_areas": copy.deepcopy(completed_areas),
+            "record": record,
+        }
+
+    def _remember_coverage_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        candidate: dict[str, Any],
+    ) -> None:
+        choices = candidate.get("choices")
+        if not isinstance(choices, list):
+            return
+        created_at = float(candidate.get("created_at") or time.time())
+        complete = candidate.get("complete", True) is not False
+        completed_areas = candidate.get("completed_areas")
+        if not isinstance(completed_areas, list):
+            completed_areas = []
+        if candidate.get("source") == "shared_db" and isinstance(candidate.get("record"), dict):
+            self._write_json_file(self._coverage_cache_path(cache_key), candidate["record"])
+        with self._cache_lock:
+            self._coverage_cache[cache_key] = copy.deepcopy(choices)
+            self._coverage_cache_meta[cache_key] = {
+                "created_at": created_at,
+                "complete": complete,
+                "completed_areas": copy.deepcopy(completed_areas),
+            }
+
+    def _latest_search_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
+        return self._latest_cache_candidate(
+            [
+                candidate
+                for candidate in (
+                    self._memory_search_cache_candidate(
+                        cache_key,
+                        ttl_seconds,
+                        complete_only=complete_only,
+                        stale_preview=stale_preview,
+                    ),
+                    self._disk_search_cache_candidate(
+                        cache_key,
+                        ttl_seconds,
+                        complete_only=complete_only,
+                        stale_preview=stale_preview,
+                    ),
+                    self._shared_search_cache_candidate(
+                        cache_key,
+                        ttl_seconds,
+                        complete_only=complete_only,
+                        stale_preview=stale_preview,
                     ),
                 )
+                if candidate is not None
+            ]
+        )
 
-        disk_record = self._load_search_cache(cache_key)
-        if disk_record is None:
+    def _latest_coverage_cache_candidate(
+        self,
+        cache_key: tuple[str, ...],
+        ttl_seconds: int,
+        *,
+        complete_only: bool = False,
+        stale_preview: bool = False,
+    ) -> dict[str, Any] | None:
+        return self._latest_cache_candidate(
+            [
+                candidate
+                for candidate in (
+                    self._memory_coverage_cache_candidate(
+                        cache_key,
+                        ttl_seconds,
+                        complete_only=complete_only,
+                        stale_preview=stale_preview,
+                    ),
+                    self._disk_coverage_cache_candidate(
+                        cache_key,
+                        ttl_seconds,
+                        complete_only=complete_only,
+                        stale_preview=stale_preview,
+                    ),
+                    self._shared_coverage_cache_candidate(
+                        cache_key,
+                        ttl_seconds,
+                        complete_only=complete_only,
+                        stale_preview=stale_preview,
+                    ),
+                )
+                if candidate is not None
+            ]
+        )
+
+    def _get_cached_search_base(self, cache_key: tuple[str, ...]) -> tuple[dict[str, Any], dict[str, Any]] | None:
+        candidate = self._latest_search_cache_candidate(
+            cache_key,
+            self.search_cache_ttl_seconds,
+            complete_only=True,
+        )
+        if candidate is None:
+            return None
+        self._remember_search_cache_candidate(cache_key, candidate)
+        source = str(candidate.get("source") or "memory")
+        created_at = float(candidate.get("created_at") or time.time())
+        return (
+            copy.deepcopy(candidate["result"]),
+            self._build_cache_info(source=source, created_at=created_at, hit=True),
+        )
+
+    def _get_cached_coverage_choices(
+        self,
+        cache_key: tuple[str, ...],
+    ) -> tuple[list[dict[str, Any]], dict[str, Any]] | None:
+        candidate = self._latest_coverage_cache_candidate(
+            cache_key,
+            COVERAGE_CACHE_TTL_SECONDS,
+            complete_only=True,
+        )
+        if candidate is None:
+            return None
+        self._remember_coverage_cache_candidate(cache_key, candidate)
+        source = str(candidate.get("source") or "memory")
+        created_at = float(candidate.get("created_at") or time.time())
+        return (
+            copy.deepcopy(candidate["choices"]),
+            self._build_cache_info(source=source, created_at=created_at, hit=True),
+        )
+
+    def _get_stale_cached_coverage_choices(
+        self,
+        cache_key: tuple[str, ...],
+    ) -> tuple[list[dict[str, Any]], dict[str, Any]] | None:
+        if STALE_COVERAGE_CACHE_TTL_SECONDS <= COVERAGE_CACHE_TTL_SECONDS:
             return None
 
-        base_result = copy.deepcopy(disk_record["result"])
-        created_at = float(disk_record["created_at"])
-        with self._cache_lock:
-            self._search_cache[cache_key] = copy.deepcopy(base_result)
-            self._search_cache_meta[cache_key] = {"created_at": created_at}
-        return (
-            base_result,
-            self._build_cache_info(source="disk", created_at=created_at, hit=True),
+        candidate = self._latest_coverage_cache_candidate(
+            cache_key,
+            STALE_COVERAGE_CACHE_TTL_SECONDS,
+            stale_preview=True,
         )
+        if candidate is None:
+            return None
+
+        self._remember_coverage_cache_candidate(cache_key, candidate)
+        created_at = float(candidate["created_at"])
+        complete = candidate.get("complete", True) is not False
+        choices = candidate.get("choices")
+        if not isinstance(choices, list):
+            return None
+
+        source = str(candidate.get("source") or "disk")
+        if source == "shared_db":
+            source = "stale_shared_db" if complete else "partial_shared_db"
+        elif source == "disk":
+            source = "stale_disk" if complete else "partial_disk"
+        elif not complete:
+            source = "partial_memory"
+
+        cache_info = self._build_cache_info(source=source, created_at=created_at, hit=True)
+        completed_areas = candidate.get("completed_areas")
+        if isinstance(completed_areas, list):
+            cache_info["completed_area_count"] = len(completed_areas)
+        cache_info["stale"] = True
+        if complete:
+            cache_info["summary_label"] = "先显示旧补充缓存，正在后台刷新行政区酒店"
+        else:
+            cache_info["partial"] = True
+            cache_info["source_label"] = "部分补充缓存"
+            cache_info["summary_label"] = "先显示已完成的行政区补充缓存，正在后台继续补全"
+        return copy.deepcopy(choices), cache_info
+
+    def _get_coverage_choices_for_update(
+        self,
+        cache_key: tuple[str, ...],
+    ) -> list[dict[str, Any]]:
+        candidate = self._latest_coverage_cache_candidate(cache_key, COVERAGE_CACHE_TTL_SECONDS)
+        if candidate is None:
+            return []
+        self._remember_coverage_cache_candidate(cache_key, candidate)
+        choices = candidate.get("choices")
+        return copy.deepcopy(choices) if isinstance(choices, list) else []
+
+    def _merge_existing_coverage_choices_for_update(
+        self,
+        cache_key: tuple[str, ...],
+        choices: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        existing_choices = self._get_coverage_choices_for_update(cache_key)
+        if not existing_choices:
+            return copy.deepcopy(choices)
+        return self._merge_choice_lists(existing_choices, choices)
+
+    def _coverage_completed_areas_for_update(self, cache_key: tuple[str, ...]) -> list[dict[str, Any]]:
+        candidate = self._latest_coverage_cache_candidate(cache_key, COVERAGE_CACHE_TTL_SECONDS)
+        if candidate is None:
+            return []
+        self._remember_coverage_cache_candidate(cache_key, candidate)
+        completed_areas = candidate.get("completed_areas")
+        return copy.deepcopy(completed_areas) if isinstance(completed_areas, list) else []
+
+    def _coverage_progress_for_update(self, cache_key: tuple[str, ...]) -> dict[str, Any] | None:
+        candidate = self._latest_coverage_cache_candidate(cache_key, COVERAGE_CACHE_TTL_SECONDS)
+        if candidate is None:
+            return None
+        self._remember_coverage_cache_candidate(cache_key, candidate)
+        choices = candidate.get("choices")
+        completed_areas = candidate.get("completed_areas")
+        return {
+            "choices": copy.deepcopy(choices) if isinstance(choices, list) else [],
+            "completed_areas": copy.deepcopy(completed_areas) if isinstance(completed_areas, list) else [],
+        }
+
+    def _merge_coverage_completed_areas(
+        self,
+        primary: list[dict[str, Any]],
+        supplemental: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        merged: dict[str, dict[str, Any]] = {}
+        for index, item in enumerate([*primary, *supplemental]):
+            if not isinstance(item, dict):
+                continue
+            key = str(item.get("key") or item.get("keyword") or index).strip()
+            if not key:
+                continue
+            merged[key] = copy.deepcopy(item)
+        return list(merged.values())
 
     def _get_stale_cached_search_base(
         self,
@@ -1347,31 +1981,146 @@ class ReverseTravelFinder:
     ) -> tuple[dict[str, Any], dict[str, Any]] | None:
         if STALE_SEARCH_CACHE_TTL_SECONDS <= self.search_cache_ttl_seconds:
             return None
-        disk_record = self._load_search_cache(cache_key, ttl_seconds=STALE_SEARCH_CACHE_TTL_SECONDS)
-        if disk_record is None:
+
+        candidate = self._latest_search_cache_candidate(
+            cache_key,
+            STALE_SEARCH_CACHE_TTL_SECONDS,
+            stale_preview=True,
+        )
+        if candidate is None:
             return None
 
-        created_at = float(disk_record["created_at"])
-        if self._is_cache_meta_fresh({"created_at": created_at}, self.search_cache_ttl_seconds):
+        self._remember_search_cache_candidate(cache_key, candidate)
+        created_at = float(candidate["created_at"])
+        complete = candidate.get("complete", True) is not False
+        result = candidate.get("result")
+        if not isinstance(result, dict):
             return None
 
-        cache_info = self._build_cache_info(source="stale_disk", created_at=created_at, hit=True)
-        cache_info["stale"] = True
-        cache_info["summary_label"] = "先显示旧缓存，正在后台刷新最新价格"
-        return copy.deepcopy(disk_record["result"]), cache_info
+        source = str(candidate.get("source") or "disk")
+        if source == "shared_db":
+            source = "stale_shared_db" if complete else "partial_shared_db"
+        elif source == "disk":
+            source = "stale_disk" if complete else "partial_disk"
+        if not complete:
+            source = "partial_memory" if source == "memory" else source
 
-    def _store_search_cache(self, cache_key: tuple[str, ...], base_result: dict[str, Any], created_at: float) -> None:
+        cache_info = self._build_cache_info(source=source, created_at=created_at, hit=True)
+        if complete:
+            cache_info["stale"] = True
+            cache_info["summary_label"] = "先显示旧缓存，正在后台刷新最新价格"
+        else:
+            cache_info["partial"] = True
+            cache_info["source_label"] = "部分搜索缓存"
+            cache_info["summary_label"] = "先显示部分缓存，后台继续补全最新价格"
+        return copy.deepcopy(result), cache_info
+
+    def _search_result_for_cache_update(self, cache_key: tuple[str, ...]) -> dict[str, Any] | None:
+        candidate = self._latest_search_cache_candidate(cache_key, STALE_SEARCH_CACHE_TTL_SECONDS)
+        if candidate is None:
+            return None
+        self._remember_search_cache_candidate(cache_key, candidate)
+        result = candidate.get("result")
+        return copy.deepcopy(result) if isinstance(result, dict) else None
+
+    def _merge_search_results_for_cache(self, cache_key: tuple[str, ...], base_result: dict[str, Any]) -> dict[str, Any]:
+        existing = self._search_result_for_cache_update(cache_key)
+        if not existing:
+            return copy.deepcopy(base_result)
+        existing_choices = existing.get("choices") if isinstance(existing, dict) else []
+        new_choices = base_result.get("choices") if isinstance(base_result, dict) else []
+        if not isinstance(existing_choices, list) or not isinstance(new_choices, list):
+            return copy.deepcopy(base_result)
+        merged_result = copy.deepcopy(base_result)
+        merged_choices = self._merge_choice_lists(existing_choices, new_choices)
+        merged_choices.sort(key=self._choice_sort_key)
+        merged_result["choices"] = merged_choices
+        city_name = str(merged_result.get("city") or existing.get("city") or "").strip()
+        if city_name:
+            merged_result["area_recommendations"] = self._build_area_recommendations(merged_choices, city_name)
+        partial = merged_result.get("partial")
+        if isinstance(partial, dict):
+            partial["displayed_choice_count"] = len(merged_choices)
+            partial["total_choice_count"] = max(
+                int(partial.get("total_choice_count") or 0),
+                len(merged_choices),
+            )
+        return merged_result
+
+    def _store_search_cache(
+        self,
+        cache_key: tuple[str, ...],
+        base_result: dict[str, Any],
+        created_at: float,
+        complete: bool = True,
+        merge_existing: bool = False,
+    ) -> None:
         if self.search_cache_ttl_seconds <= 0:
             return
+        cached_result = (
+            self._merge_search_results_for_cache(cache_key, base_result)
+            if merge_existing
+            else copy.deepcopy(base_result)
+        )
         record = {
             "version": 1,
             "cache_key": list(cache_key),
             "created_at": created_at,
             "created_at_text": self._format_timestamp(created_at),
             "ttl_seconds": self.search_cache_ttl_seconds,
-            "result": copy.deepcopy(base_result),
+            "complete": complete,
+            "result": cached_result,
         }
+        with self._cache_lock:
+            self._search_cache[cache_key] = copy.deepcopy(cached_result)
+            self._search_cache_meta[cache_key] = {"created_at": created_at, "complete": complete}
         self._write_json_file(self._search_cache_path(cache_key), record)
+        self._store_shared_cache_record("search", cache_key, record, self.search_cache_ttl_seconds)
+
+    def _store_coverage_cache(
+        self,
+        cache_key: tuple[str, ...],
+        choices: list[dict[str, Any]],
+        created_at: float,
+        complete: bool = True,
+        merge_existing: bool = False,
+        completed_areas: list[dict[str, Any]] | None = None,
+    ) -> None:
+        if COVERAGE_CACHE_TTL_SECONDS <= 0:
+            return
+        cached_choices = (
+            self._merge_existing_coverage_choices_for_update(cache_key, choices)
+            if merge_existing
+            else copy.deepcopy(choices)
+        )
+        incoming_completed_areas = copy.deepcopy(completed_areas or [])
+        cached_completed_areas = (
+            self._merge_coverage_completed_areas(
+                self._coverage_completed_areas_for_update(cache_key),
+                incoming_completed_areas,
+            )
+            if merge_existing
+            else incoming_completed_areas
+        )
+        record = {
+            "version": 1,
+            "cache_key": list(cache_key),
+            "created_at": created_at,
+            "created_at_text": self._format_timestamp(created_at),
+            "ttl_seconds": COVERAGE_CACHE_TTL_SECONDS,
+            "complete": complete,
+            "choices": cached_choices,
+            "completed_areas": cached_completed_areas,
+        }
+        with self._cache_lock:
+            self._coverage_cache[cache_key] = copy.deepcopy(cached_choices)
+            self._coverage_cache_meta[cache_key] = {
+                "created_at": created_at,
+                "complete": complete,
+                "completed_areas": copy.deepcopy(cached_completed_areas),
+            }
+        self._write_json_file(self._coverage_cache_path(cache_key), record)
+        self._store_shared_cache_record("coverage", cache_key, record, COVERAGE_CACHE_TTL_SECONDS)
 
     def _build_cache_info(self, source: str, created_at: float, hit: bool) -> dict[str, Any]:
         age_seconds = max(0, round(time.time() - created_at))
@@ -1384,6 +2133,11 @@ class ReverseTravelFinder:
                 "memory": "内存缓存",
                 "disk": "本地缓存",
                 "stale_disk": "旧缓存",
+                "shared_db": "共享缓存",
+                "stale_shared_db": "旧共享缓存",
+                "partial_memory": "部分搜索缓存",
+                "partial_disk": "部分搜索缓存",
+                "partial_shared_db": "部分共享缓存",
             }.get(source, source),
             "created_at": self._format_timestamp(created_at),
             "age_seconds": age_seconds,
@@ -1476,12 +2230,14 @@ class ReverseTravelFinder:
                 city=city,
                 holiday_code=holiday_code,
                 feature_filters=feature_filters,
+                cache_key=cache_key,
+                merge_partial_cache=False,
                 progress_callback=progress_callback,
             )
             created_at = time.time()
             with self._cache_lock:
                 self._search_cache[cache_key] = copy.deepcopy(base_result)
-                self._search_cache_meta[cache_key] = {"created_at": created_at}
+                self._search_cache_meta[cache_key] = {"created_at": created_at, "complete": True}
             self._store_search_cache(cache_key, base_result, created_at)
             cache_info = self._build_cache_info(source="live", created_at=created_at, hit=False)
         else:
@@ -1493,12 +2249,14 @@ class ReverseTravelFinder:
                     city=city,
                     holiday_code=holiday_code,
                     feature_filters=feature_filters,
+                    cache_key=cache_key,
+                    merge_partial_cache=True,
                     progress_callback=progress_callback,
                 )
                 created_at = time.time()
                 with self._cache_lock:
                     self._search_cache[cache_key] = copy.deepcopy(base_result)
-                    self._search_cache_meta[cache_key] = {"created_at": created_at}
+                    self._search_cache_meta[cache_key] = {"created_at": created_at, "complete": True}
                 self._store_search_cache(cache_key, base_result, created_at)
                 cache_info = self._build_cache_info(source="live", created_at=created_at, hit=False)
 
@@ -1571,12 +2329,16 @@ class ReverseTravelFinder:
         city: str,
         holiday_code: str,
         feature_filters: FeatureFilters,
+        cache_key: tuple[str, ...],
+        merge_partial_cache: bool,
         progress_callback: Callable[[dict[str, Any]], None] | None,
     ) -> dict[str, Any]:
         kwargs: dict[str, Any] = {
             "city": city,
             "holiday_code": holiday_code,
             "feature_filters": feature_filters,
+            "cache_key": cache_key,
+            "merge_partial_cache": merge_partial_cache,
         }
         if progress_callback is not None:
             kwargs["progress_callback"] = progress_callback
@@ -1665,6 +2427,173 @@ class ReverseTravelFinder:
             }
         return result
 
+    def _cached_coverage_result_payload(
+        self,
+        *,
+        cache_key: tuple[str, ...],
+        city_name: str,
+        holiday: HolidayRange,
+        feature_filters: FeatureFilters,
+        compare_windows: list[dict[str, dt.date]],
+        base_choices: list[dict[str, Any]],
+        min_price: int | None,
+        max_price: int | None,
+        stale: bool = False,
+    ) -> dict[str, Any] | None:
+        cached = self._get_stale_cached_coverage_choices(cache_key) if stale else self._get_cached_coverage_choices(cache_key)
+        if cached is None:
+            return None
+        cached_choices, cache_info = cached
+        filtered_cached_choices = self._filter_choices_by_price(cached_choices, min_price, max_price)
+        final_choices = self._merge_choice_lists(base_choices, filtered_cached_choices)
+        final_choices.sort(key=self._choice_sort_key)
+        added_count = max(0, len(final_choices) - len(base_choices))
+        is_stale = bool(cache_info.get("stale"))
+        message = (
+            f"已先显示{cache_info['source_label']}补充结果，正在后台刷新行政区酒店。"
+            if is_stale
+            else f"已使用{cache_info['source_label']}补充行政区酒店，新增 {added_count} 家候选酒店。"
+        )
+        result = self._coverage_result_payload(
+            city_name=city_name,
+            holiday=holiday,
+            feature_filters=feature_filters,
+            compare_windows=compare_windows,
+            choices=final_choices,
+            min_price=min_price,
+            max_price=max_price,
+            status="refreshing" if is_stale else "succeeded",
+            message=message,
+            completed=1,
+            total=1,
+        )
+        result["coverage_supplement"]["cache"] = cache_info
+        return result
+
+    def _coverage_task_key(
+        self,
+        *,
+        stage_prefix: str,
+        keyword: str,
+        list_feature_filters: FeatureFilters,
+        verify_feature_filters: FeatureFilters,
+        hotel_list_limit: int,
+    ) -> str:
+        raw = json.dumps(
+            {
+                "stage": stage_prefix,
+                "keyword": self._to_simplified_chinese(str(keyword or "")).lower(),
+                "list_filters": list_feature_filters.cache_parts(),
+                "verify_filters": verify_feature_filters.cache_parts(),
+                "hotel_list_limit": hotel_list_limit,
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+        return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+    def _coverage_completed_area_record(
+        self,
+        *,
+        key: str,
+        area_name: str,
+        keyword: str,
+        stage_prefix: str,
+        result_count: int,
+        status: str,
+        candidate_title: str = "",
+    ) -> dict[str, Any]:
+        return {
+            "key": key,
+            "area_name": self._to_simplified_chinese(str(area_name or "").strip()),
+            "keyword": self._to_simplified_chinese(str(keyword or "").strip()),
+            "stage": stage_prefix,
+            "status": status,
+            "result_count": max(0, int(result_count or 0)),
+            "candidate_title": self._to_simplified_chinese(str(candidate_title or "").strip()),
+            "completed_at": self._format_timestamp(time.time()),
+        }
+
+    def find_cached_coverage_choices(
+        self,
+        *,
+        city: str,
+        holiday_code: str,
+        choices: list[dict[str, Any]],
+        min_price: int | None,
+        max_price: int | None,
+        advanced_filter: str | None = "all",
+        pool_filter: str | None = "all",
+        child_facility_filter: str | None = "all",
+    ) -> dict[str, Any] | None:
+        feature_filters = self._normalize_feature_filters(
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+        holiday = self._get_holiday(holiday_code)
+        compare_windows = self._build_compare_windows(holiday)
+        if not compare_windows:
+            raise ReverseTravelFinderError("未来一个月内没有可比较的非法定假期时间段。")
+
+        city_candidate = self._resolve_city(city)
+        base_choices = self._filter_choices_by_price(copy.deepcopy(choices), min_price, max_price)
+        self._apply_cached_hotel_names_to_choices(base_choices)
+        self._refresh_choice_area_names(base_choices, city_candidate.city_name)
+        base_choices.sort(key=self._choice_sort_key)
+        cache_key = self._coverage_cache_key(city_candidate.city_name, holiday_code, feature_filters)
+        return self._cached_coverage_result_payload(
+            cache_key=cache_key,
+            city_name=city_candidate.city_name,
+            holiday=holiday,
+            feature_filters=feature_filters,
+            compare_windows=compare_windows,
+            base_choices=base_choices,
+            min_price=min_price,
+            max_price=max_price,
+        )
+
+    def find_stale_cached_coverage_choices(
+        self,
+        *,
+        city: str,
+        holiday_code: str,
+        choices: list[dict[str, Any]],
+        min_price: int | None,
+        max_price: int | None,
+        advanced_filter: str | None = "all",
+        pool_filter: str | None = "all",
+        child_facility_filter: str | None = "all",
+    ) -> dict[str, Any] | None:
+        feature_filters = self._normalize_feature_filters(
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+        holiday = self._get_holiday(holiday_code)
+        compare_windows = self._build_compare_windows(holiday)
+        if not compare_windows:
+            raise ReverseTravelFinderError("未来一个月内没有可比较的非法定假期时间段。")
+
+        city_candidate = self._resolve_city(city)
+        base_choices = self._filter_choices_by_price(copy.deepcopy(choices), min_price, max_price)
+        self._apply_cached_hotel_names_to_choices(base_choices)
+        self._refresh_choice_area_names(base_choices, city_candidate.city_name)
+        base_choices.sort(key=self._choice_sort_key)
+        cache_key = self._coverage_cache_key(city_candidate.city_name, holiday_code, feature_filters)
+        return self._cached_coverage_result_payload(
+            cache_key=cache_key,
+            city_name=city_candidate.city_name,
+            holiday=holiday,
+            feature_filters=feature_filters,
+            compare_windows=compare_windows,
+            base_choices=base_choices,
+            min_price=min_price,
+            max_price=max_price,
+            stale=True,
+        )
+
     def supplement_coverage_choices(
         self,
         *,
@@ -1676,6 +2605,7 @@ class ReverseTravelFinder:
         advanced_filter: str | None = "all",
         pool_filter: str | None = "all",
         child_facility_filter: str | None = "all",
+        use_cache: bool = True,
         progress_callback: Callable[[dict[str, Any]], None] | None = None,
     ) -> dict[str, Any]:
         feature_filters = self._normalize_feature_filters(
@@ -1693,6 +2623,51 @@ class ReverseTravelFinder:
         self._apply_cached_hotel_names_to_choices(base_choices)
         self._refresh_choice_area_names(base_choices, city_candidate.city_name)
         base_choices.sort(key=self._choice_sort_key)
+
+        cache_key = self._coverage_cache_key(city_candidate.city_name, holiday_code, feature_filters)
+        if use_cache:
+            cached_result = self._cached_coverage_result_payload(
+                cache_key=cache_key,
+                city_name=city_candidate.city_name,
+                holiday=holiday,
+                feature_filters=feature_filters,
+                compare_windows=compare_windows,
+                base_choices=base_choices,
+                min_price=min_price,
+                max_price=max_price,
+            )
+            if cached_result is not None:
+                self._emit_progress(
+                    progress_callback,
+                    cached_result["coverage_supplement"]["message"],
+                    "coverage_cache_hit",
+                    percent=100,
+                    partial_result=cached_result,
+                )
+                return cached_result
+
+        completed_area_records: list[dict[str, Any]] = []
+        completed_task_keys: set[str] = set()
+        if use_cache:
+            progress_record = self._coverage_progress_for_update(cache_key)
+            if progress_record is not None:
+                cached_progress_choices = progress_record.get("choices") or []
+                if isinstance(cached_progress_choices, list) and cached_progress_choices:
+                    filtered_progress_choices = self._filter_choices_by_price(
+                        copy.deepcopy(cached_progress_choices),
+                        min_price,
+                        max_price,
+                    )
+                    base_choices = self._merge_choice_lists(base_choices, filtered_progress_choices)
+                    base_choices.sort(key=self._choice_sort_key)
+                cached_completed_areas = progress_record.get("completed_areas") or []
+                if isinstance(cached_completed_areas, list):
+                    completed_area_records = copy.deepcopy(cached_completed_areas)
+                    completed_task_keys = {
+                        str(item.get("key") or "")
+                        for item in completed_area_records
+                        if isinstance(item, dict) and item.get("key")
+                    }
 
         advanced_priority_plan: list[dict[str, str]] = []
         if feature_filters.advanced in {"all", "yes"}:
@@ -1741,8 +2716,21 @@ class ReverseTravelFinder:
         )
 
         coverage_choices: list[dict[str, Any]] = []
+        unfiltered_coverage_choices: list[dict[str, Any]] = []
         completed_total = 0
         planned_total = len(advanced_priority_plan) if advanced_priority_plan else len(initial_coverage_plan)
+
+        def persist_partial_coverage_cache() -> None:
+            if not unfiltered_coverage_choices and not completed_area_records:
+                return
+            self._store_coverage_cache(
+                cache_key,
+                unfiltered_coverage_choices,
+                time.time(),
+                complete=False,
+                merge_existing=True,
+                completed_areas=completed_area_records,
+            )
 
         def emit_coverage_preview(
             *,
@@ -1789,16 +2777,65 @@ class ReverseTravelFinder:
         ) -> int:
             if not plan:
                 return 0
-            candidates = self._resolve_hotel_keyword_candidates(
-                city,
-                city_candidate,
-                keywords=[item["keyword"] for item in plan],
-                max_candidates=MAX_COVERAGE_KEYWORD_CANDIDATES,
-            )
-            total = len(candidates)
+            total = len(plan)
             local_completed = 0
-            for index, candidate in enumerate(candidates, start=1):
+            for index, plan_item in enumerate(plan, start=1):
+                keyword = plan_item["keyword"]
+                area_name = plan_item["area_name"]
+                task_key = self._coverage_task_key(
+                    stage_prefix=stage_prefix,
+                    keyword=keyword,
+                    list_feature_filters=list_feature_filters,
+                    verify_feature_filters=verify_feature_filters,
+                    hotel_list_limit=hotel_list_limit,
+                )
                 overall_completed = completed_total + index - 1
+                if task_key in completed_task_keys:
+                    self._emit_progress(
+                        progress_callback,
+                        f"已跳过已缓存的 {area_name} 范围酒店（{index}/{total}）。",
+                        f"{stage_prefix}_cached_area",
+                        percent=min(92, 8 + round(87 * (overall_completed + 1) / max(1, planned_total))),
+                        completed=overall_completed + 1,
+                        total=planned_total,
+                    )
+                    local_completed = index
+                    continue
+
+                candidates = self._resolve_hotel_keyword_candidates(
+                    city,
+                    city_candidate,
+                    keywords=[keyword],
+                    max_candidates=1,
+                )
+                if not candidates:
+                    completed_area_records[:] = self._merge_coverage_completed_areas(
+                        completed_area_records,
+                        [
+                            self._coverage_completed_area_record(
+                                key=task_key,
+                                area_name=area_name,
+                                keyword=keyword,
+                                stage_prefix=stage_prefix,
+                                result_count=0,
+                                status="no_candidate",
+                            )
+                        ],
+                    )
+                    completed_task_keys.add(task_key)
+                    persist_partial_coverage_cache()
+                    self._emit_progress(
+                        progress_callback,
+                        f"{area_name} 暂未匹配到可补充酒店，已记录为完成（{index}/{total}）。",
+                        f"{stage_prefix}_no_candidate",
+                        percent=min(92, 8 + round(87 * (overall_completed + 1) / max(1, planned_total))),
+                        completed=overall_completed + 1,
+                        total=planned_total,
+                    )
+                    local_completed = index
+                    continue
+
+                candidate = candidates[0]
                 self._emit_progress(
                     progress_callback,
                     f"正在{label} {candidate.title} 范围酒店（{index}/{total}）...",
@@ -1817,9 +2854,30 @@ class ReverseTravelFinder:
                     list_feature_filters=list_feature_filters,
                     hotel_list_limit=hotel_list_limit,
                 )
-                candidate_choices = self._filter_choices_by_price(candidate_choices, min_price, max_price)
+                completed_area_records[:] = self._merge_coverage_completed_areas(
+                    completed_area_records,
+                    [
+                        self._coverage_completed_area_record(
+                            key=task_key,
+                            area_name=area_name,
+                            keyword=keyword,
+                            stage_prefix=stage_prefix,
+                            result_count=len(candidate_choices),
+                            status="completed",
+                            candidate_title=candidate.title,
+                        )
+                    ],
+                )
+                completed_task_keys.add(task_key)
                 if candidate_choices:
-                    coverage_choices[:] = self._merge_choice_lists(coverage_choices, candidate_choices)
+                    unfiltered_coverage_choices[:] = self._merge_choice_lists(
+                        unfiltered_coverage_choices,
+                        candidate_choices,
+                    )
+                persist_partial_coverage_cache()
+                filtered_candidate_choices = self._filter_choices_by_price(candidate_choices, min_price, max_price)
+                if filtered_candidate_choices:
+                    coverage_choices[:] = self._merge_choice_lists(coverage_choices, filtered_candidate_choices)
                     emit_coverage_preview(
                         candidate=candidate,
                         completed=completed_total + index,
@@ -1888,6 +2946,15 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
 
         final_choices = self._merge_choice_lists(base_choices, coverage_choices)
         final_choices.sort(key=self._choice_sort_key)
+        created_at = time.time()
+        self._store_coverage_cache(
+            cache_key,
+            unfiltered_coverage_choices,
+            created_at,
+            complete=True,
+            merge_existing=True,
+            completed_areas=completed_area_records,
+        )
         result = self._coverage_result_payload(
             city_name=city_candidate.city_name,
             holiday=holiday,
@@ -1900,6 +2967,11 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             message=f"行政区补充完成，新增 {max(0, len(final_choices) - len(base_choices))} 家候选酒店。",
             completed=completed_total,
             total=planned_total,
+        )
+        result["coverage_supplement"]["cache"] = self._build_cache_info(
+            source="live",
+            created_at=created_at,
+            hit=False,
         )
         self._emit_progress(
             progress_callback,
@@ -2049,6 +3121,8 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         city: str,
         holiday_code: str,
         feature_filters: FeatureFilters,
+        cache_key: tuple[str, ...] | None = None,
+        merge_partial_cache: bool = True,
         progress_callback: Callable[[dict[str, Any]], None] | None = None,
     ) -> dict[str, Any]:
         self._emit_progress(progress_callback, "正在准备节假日和对比日期...", "prepare", percent=5)
@@ -2071,7 +3145,30 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             scanned_hotel_limit: int | None = None,
             **extra: Any,
         ) -> None:
-            if progress_callback is None or not source_choices:
+            if not source_choices:
+                return
+            if cache_key is not None:
+                cache_choices = sorted(copy.deepcopy(source_choices), key=self._choice_sort_key)
+                partial_cache_result = self._live_choices_result_payload(
+                    city_name=city_candidate.city_name,
+                    holiday=holiday,
+                    feature_filters=feature_filters,
+                    compare_windows=compare_windows,
+                    choices=cache_choices,
+                    partial_stage=stage,
+                    partial_message=message,
+                    total_choice_count=len(cache_choices),
+                    scanned_hotel_limit=scanned_hotel_limit,
+                )
+                partial_cache_result["partial"]["cache_partial"] = True
+                self._store_search_cache(
+                    cache_key,
+                    partial_cache_result,
+                    time.time(),
+                    complete=False,
+                    merge_existing=merge_partial_cache,
+                )
+            if progress_callback is None:
                 return
             preview_choices = sorted(
                 copy.deepcopy(source_choices),
@@ -4293,11 +5390,12 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if key in simplified:
                 simplified[key] = self._to_simplified_chinese(str(simplified.get(key) or ""))
         if isinstance(simplified.get("representative_hotels"), list):
-            simplified["representative_hotels"] = [
-                self._to_simplified_chinese(str(name or ""))
-                for name in simplified["representative_hotels"]
-                if str(name or "").strip()
-            ]
+            representative_hotels: list[str] = []
+            for name in simplified["representative_hotels"]:
+                simplified_name = self._to_simplified_chinese(str(name or "").strip())
+                if simplified_name and self._contains_chinese_text(simplified_name):
+                    representative_hotels.append(simplified_name)
+            simplified["representative_hotels"] = representative_hotels
         if isinstance(simplified.get("room_type_labels"), list):
             simplified["room_type_labels"] = [
                 self._to_simplified_chinese(str(label or ""))
@@ -4635,14 +5733,15 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         coordinate_centers = self._coordinate_centers_by_city(choices, city_name)
         for item in choices:
             area_name = self._choice_area_name(item, city_name)
+            used_fallback_area = False
             if not area_name or self._is_generic_area_name(area_name):
-                area_name = self._coordinate_area_name(item, city_name, coordinate_centers)
-            if not area_name or self._is_generic_area_name(area_name):
-                continue
+                area_name = self._fallback_area_name(item, city_name, coordinate_centers)
+                used_fallback_area = True
             group = groups.setdefault(
                 area_name,
                 {
                     "area_name": area_name,
+                    "area_sort_tier": 0,
                     "hotel_count": 0,
                     "lower_price_hotel_count": 0,
                     "slightly_higher_hotel_count": 0,
@@ -4651,6 +5750,10 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     "room_types": set(),
                     "representative_hotels": [],
                 },
+            )
+            group["area_sort_tier"] = max(
+                group["area_sort_tier"],
+                self._area_sort_tier(area_name, item=item, city_name=city_name, used_fallback=used_fallback_area),
             )
             diff = int(item.get("price_diff_nightly") or 0)
             group["hotel_count"] += 1
@@ -4663,7 +5766,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             if item.get("room_type_label"):
                 group["room_types"].add(item["room_type_label"])
             if len(group["representative_hotels"]) < 4:
-                group["representative_hotels"].append(item.get("hotel_name") or item.get("hotel_original_name") or "")
+                group["representative_hotels"].append(self._choice_display_hotel_name(item))
 
         recommendations: list[dict[str, Any]] = []
         for group in groups.values():
@@ -4675,6 +5778,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             recommendations.append(
                 {
                     "area_name": group["area_name"],
+                    "area_sort_tier": group["area_sort_tier"],
                     "hotel_count": group["hotel_count"],
                     "lower_price_hotel_count": group["lower_price_hotel_count"],
                     "slightly_higher_hotel_count": group["slightly_higher_hotel_count"],
@@ -4690,21 +5794,54 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             )
 
         recommendations.sort(
-            key=lambda item: (
-                -item["hotel_count"],
-                -item["lower_price_hotel_count"],
-                -item["lower_price_ratio"],
-                item["average_price_diff_nightly"],
-                item["average_holiday_nightly_tax_total_value"],
-            )
+            key=self._area_recommendation_sort_key
         )
         if include_defaults:
             recommendations = self._add_default_area_recommendations(recommendations, city_name, choices)
+            recommendations.sort(key=self._area_recommendation_sort_key)
         return self._simplify_area_recommendations(recommendations)
+
+    def _area_recommendation_sort_key(self, item: dict[str, Any]) -> tuple[Any, ...]:
+        return (
+            int(item.get("area_sort_tier") or 0),
+            -int(item.get("hotel_count") or 0),
+            -int(item.get("lower_price_hotel_count") or 0),
+            -float(item.get("lower_price_ratio") or 0),
+            int(item.get("average_price_diff_nightly") or 0),
+            int(item.get("average_holiday_nightly_tax_total_value") or 0),
+        )
+
+    def _area_sort_tier(
+        self,
+        area_name: str,
+        *,
+        item: dict[str, Any] | None = None,
+        city_name: str = "",
+        used_fallback: bool = False,
+    ) -> int:
+        source = str((item or {}).get("area_source") or "")
+        if used_fallback or source in {"酒店坐标", "片区兜底"}:
+            return 20
+        text = self._to_simplified_chinese(str(area_name or "").strip())
+        if "待确认片区" in text:
+            return 20
+        if self._is_coordinate_fallback_area_name(text, city_name or str((item or {}).get("recommend_city") or "")):
+            return 20
+        return 0
+
+    def _is_coordinate_fallback_area_name(self, area_name: str, city_name: str = "") -> bool:
+        text = self._to_simplified_chinese(str(area_name or "").strip())
+        if not text:
+            return False
+        city_label = self._area_city_label(city_name or text)
+        if not city_label or re.search(r"[A-Za-z]", city_label):
+            return False
+        directions = ("中心", "北部", "南部", "东部", "西部", "东北部", "西北部", "东南部", "西南部")
+        return text in {f"{city_label}{direction}片区" for direction in directions}
 
     def _is_generic_area_name(self, area_name: str) -> bool:
         text = area_name or ""
-        return "热门酒店片区" in text or "区域待确认" in text
+        return "热门酒店片区" in text or "热门片区" in text or "区域待确认" in text
 
     def _coordinate_centers_by_city(
         self,
@@ -4773,6 +5910,21 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             direction = ("东" if dlon > 0 else "西") + ("北部" if dlat > 0 else "南部")
         return f"{city_label}{direction}片区"
 
+    def _fallback_area_name(
+        self,
+        item: dict[str, Any],
+        city_name: str,
+        coordinate_centers: dict[str, tuple[float, float]],
+    ) -> str:
+        coordinate_area = self._coordinate_area_name(item, city_name, coordinate_centers)
+        if coordinate_area and not self._is_generic_area_name(coordinate_area):
+            return self._to_simplified_chinese(coordinate_area)
+        city_label = self._area_city_label(str(item.get("recommend_city") or city_name or ""))
+        city_label = self._to_simplified_chinese(str(city_label or "").strip())
+        if not city_label or re.search(r"[A-Za-z]", city_label):
+            city_label = "城市"
+        return f"{city_label}待确认片区"
+
     def _choice_area_name(self, item: dict[str, Any], city_name: str) -> str:
         choice_city = str(item.get("recommend_city") or city_name or "")
         raw_area = str(item.get("area_name") or "").strip()
@@ -4804,11 +5956,12 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         for item in choices:
             area_name = self._choice_area_name(item, city_name)
             if not area_name or self._is_generic_area_name(area_name):
-                area_name = self._coordinate_area_name(item, city_name, coordinate_centers)
-            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else self._to_simplified_chinese(area_name)
+                area_name = self._fallback_area_name(item, city_name, coordinate_centers)
+            item["area_name"] = self._to_simplified_chinese(area_name)
 
     def enhance_area_data(self, city_name: str, choices: list[dict[str, Any]]) -> dict[str, Any]:
         enhanced_choices = copy.deepcopy(choices or [])
+        self._apply_cached_hotel_names_to_choices(enhanced_choices)
         geonames_lookups = 0
         geonames_hits = 0
         coordinate_centers = self._coordinate_centers_by_city(enhanced_choices, city_name)
@@ -4826,10 +5979,10 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 if area_name:
                     item["area_source"] = "区域规范化"
             if not area_name or self._is_generic_area_name(area_name):
-                area_name = self._coordinate_area_name(item, choice_city, coordinate_centers)
-                if area_name:
-                    item["area_source"] = "酒店坐标"
-            item["area_name"] = "" if not area_name or self._is_generic_area_name(area_name) else self._to_simplified_chinese(area_name)
+                coordinate_area = self._coordinate_area_name(item, choice_city, coordinate_centers)
+                area_name = coordinate_area or self._fallback_area_name(item, choice_city, coordinate_centers)
+                item["area_source"] = "酒店坐标" if coordinate_area else "片区兜底"
+            item["area_name"] = self._to_simplified_chinese(area_name)
 
         recommendations = self._build_area_recommendations(enhanced_choices, city_name, include_defaults=False)
         if not recommendations:
@@ -4867,6 +6020,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
             filled.append(
                 {
                     "area_name": area_name,
+                    "area_sort_tier": 0,
                     "hotel_count": 0,
                     "lower_price_hotel_count": 0,
                     "slightly_higher_hotel_count": 0,

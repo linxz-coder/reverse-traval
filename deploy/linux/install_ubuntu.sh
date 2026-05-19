@@ -49,6 +49,12 @@ runuser -u "${APP_USER}" -- env PLAYWRIGHT_BROWSERS_PATH="${APP_DIR}/.cache/ms-p
   "${APP_DIR}/.venv/bin/python" -m playwright install chromium
 
 runuser -u "${APP_USER}" -- mkdir -p "${APP_DIR}/.cache" "${APP_DIR}/exports"
+install -d -m 0750 -o "${APP_USER}" -g "${APP_USER}" /etc/reverse-traval
+if [ ! -f /etc/reverse-traval/shared-cache.env ]; then
+  install -m 0640 -o "${APP_USER}" -g "${APP_USER}" \
+    "${APP_DIR}/deploy/linux/shared-cache.env.example" \
+    /etc/reverse-traval/shared-cache.env
+fi
 
 install -m 0644 "${APP_DIR}/deploy/linux/reverse-traval.service" /etc/systemd/system/reverse-traval.service
 install -m 0644 "${APP_DIR}/deploy/linux/reverse-traval-prewarm.service" /etc/systemd/system/reverse-traval-prewarm.service

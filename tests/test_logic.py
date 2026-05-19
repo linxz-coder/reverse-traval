@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
+import reverse_travel as reverse_travel_module
 from holiday_helper import HolidayRange
 from reverse_travel import (
     CityCandidate,
@@ -1363,6 +1364,17 @@ def test_coverage_merge_triggers_final_hotel_name_refresh():
     assert "startHotelNameRefresh({ ...data, choices: lastChoices" in source
 
 
+def test_frontend_reports_interrupted_async_jobs():
+    source = (Path(__file__).resolve().parents[1] / "templates" / "index.html").read_text()
+
+    assert "function fetchWithTimeout" in source
+    assert "pollInterruptedMessage" in source
+    assert "后台可能仍在继续查询" in source
+    assert "连续 ${failureCount} 次没有收到服务器响应" in source
+    assert 'role="alert"' in source
+    assert ".error.warning" in source
+
+
 def test_live_search_uses_cached_hotel_names_without_blocking_enrichment():
     source = inspect.getsource(ReverseTravelFinder._find_choices_base)
 
@@ -1571,6 +1583,49 @@ def test_build_area_recommendations_prioritizes_hotel_count():
     assert recommendations[1]["area_name"] == "深圳前海片区"
 
 
+def test_build_area_recommendations_sorts_fallback_areas_last():
+    finder = ReverseTravelFinder(StubCalendar())
+    choices = [
+        {
+            "area_name": "深圳东门片区",
+            "hotel_name": "深圳东门真实片区酒店",
+            "holiday_avg_nightly_tax_total_value": 620,
+            "price_diff_nightly": 80,
+            "room_type_label": "大床房",
+        },
+        *[
+            {
+                "area_name": "深圳待确认片区",
+                "area_source": "片区兜底",
+                "hotel_name": f"深圳待确认酒店{i}",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -30,
+                "room_type_label": "大床房",
+            }
+            for i in range(5)
+        ],
+        *[
+            {
+                "area_name": "深圳东部片区",
+                "area_source": "酒店坐标",
+                "hotel_name": f"深圳坐标兜底酒店{i}",
+                "holiday_avg_nightly_tax_total_value": 500,
+                "price_diff_nightly": -40,
+                "room_type_label": "双床房",
+            }
+            for i in range(4)
+        ],
+    ]
+
+    recommendations = finder._build_area_recommendations(choices, "深圳", include_defaults=False)
+
+    assert recommendations[0]["area_name"] == "深圳东门片区"
+    assert recommendations[-2]["area_name"] in {"深圳待确认片区", "深圳东部片区"}
+    assert recommendations[-1]["area_name"] in {"深圳待确认片区", "深圳东部片区"}
+    assert recommendations[-2]["area_sort_tier"] == 20
+    assert recommendations[-1]["area_sort_tier"] == 20
+
+
 def test_build_area_recommendations_returns_all_area_groups():
     finder = ReverseTravelFinder(StubCalendar())
     choices = [
@@ -1609,6 +1664,35 @@ def test_area_recommendations_convert_traditional_chinese_to_simplified():
     assert recommendations[0]["representative_hotels"] == ["深圳国际会展中心皇冠假日酒店"]
 
 
+def test_area_recommendations_prefer_simplified_hotel_name_and_hide_english_only():
+    finder = ReverseTravelFinder(StubCalendar())
+    recommendations = finder._build_area_recommendations(
+        [
+            {
+                "area_name": "光明虹桥公园片区",
+                "hotel_name": "Hilton Garden Inn Shenzhen Guangming Hongqiao Park",
+                "hotel_name_simplified": "深圳光明虹桥希尔顿花园酒店",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -20,
+                "room_type_label": "大床房",
+            },
+            {
+                "area_name": "深圳前海片区",
+                "hotel_name": "Qianhai English Hotel",
+                "holiday_avg_nightly_tax_total_value": 620,
+                "price_diff_nightly": -10,
+                "room_type_label": "大床房",
+            },
+        ],
+        "深圳",
+        include_defaults=False,
+    )
+
+    by_area = {item["area_name"]: item for item in recommendations}
+    assert by_area["光明虹桥公园片区"]["representative_hotels"] == ["深圳光明虹桥希尔顿花园酒店"]
+    assert by_area["深圳前海片区"]["representative_hotels"] == []
+
+
 def test_build_area_recommendations_removes_generic_area_names():
     finder = ReverseTravelFinder(StubCalendar())
     recommendations = finder._build_area_recommendations(
@@ -1638,6 +1722,50 @@ def test_build_area_recommendations_removes_generic_area_names():
     assert len(recommendations) >= 3
     assert all("热门酒店片区" not in item["area_name"] for item in recommendations)
     assert all("区域待确认" not in item["area_name"] for item in recommendations)
+
+
+def test_area_recommendations_assign_fallback_area_for_unresolved_hotels():
+    finder = ReverseTravelFinder(StubCalendar())
+    choices = [
+        {
+            "area_name": "深圳热门酒店片区",
+            "hotel_name": "无法识别区域酒店",
+            "area_hint": "",
+            "holiday_avg_nightly_tax_total_value": 500,
+            "price_diff_nightly": 20,
+            "room_type_label": "大床房",
+        },
+        {
+            "area_name": "",
+            "hotel_name": "深圳坐标酒店",
+            "area_hint": "",
+            "holiday_avg_nightly_tax_total_value": 600,
+            "price_diff_nightly": -10,
+            "room_type_label": "双床房",
+            "latitude": 22.65,
+            "longitude": 114.15,
+        },
+        {
+            "area_name": "",
+            "hotel_name": "深圳另一个坐标酒店",
+            "area_hint": "",
+            "holiday_avg_nightly_tax_total_value": 560,
+            "price_diff_nightly": 0,
+            "room_type_label": "大床房",
+            "latitude": 22.45,
+            "longitude": 113.95,
+        },
+    ]
+
+    finder._refresh_choice_area_names(choices, "深圳")
+    recommendations = finder._build_area_recommendations(choices, "深圳", include_defaults=False)
+    area_names = {item["area_name"] for item in recommendations}
+
+    assert "深圳热门酒店片区" not in area_names
+    assert "深圳待确认片区" in area_names
+    assert any(name.startswith("深圳") and name.endswith("片区") for name in area_names)
+    assert all(choice["area_name"] for choice in choices)
+    assert all("热门酒店片区" not in choice["area_name"] for choice in choices)
 
 
 def test_build_area_recommendations_supports_global_city_areas():
@@ -1699,11 +1827,12 @@ def test_build_area_recommendations_fills_common_global_city_defaults():
         "London",
     )
 
-    assert [item["area_name"] for item in recommendations[:3]] == [
+    area_names = [item["area_name"] for item in recommendations]
+    assert area_names[:2] == [
         "伦敦西区片区",
         "伦敦市中心片区",
-        "伦敦国王十字片区",
     ]
+    assert area_names[-1] == "伦敦待确认片区"
 
 
 def test_build_area_recommendations_derives_areas_from_hotel_names():
@@ -1962,7 +2091,7 @@ def test_enhance_area_data_normalizes_mixed_language_area_names():
     assert all(not re.search(r"[A-Za-z]", name) for name in area_names if name)
 
 
-def test_refresh_choice_area_names_hides_unresolved_generic_area():
+def test_refresh_choice_area_names_assigns_fallback_for_unresolved_generic_area():
     finder = ReverseTravelFinder(StubCalendar())
     choices = [
         {
@@ -1981,7 +2110,7 @@ def test_refresh_choice_area_names_hides_unresolved_generic_area():
 
     finder._refresh_choice_area_names(choices, "中山")
 
-    assert choices[0]["area_name"] == ""
+    assert choices[0]["area_name"] == "中山待确认片区"
     assert choices[1]["area_name"] == "中山东区片区"
 
 
@@ -1991,7 +2120,7 @@ def test_find_choices_uses_memory_and_disk_cache(tmp_path):
             super().__init__(StubCalendar(), cache_dir=tmp_path, search_cache_ttl_seconds=3600)
             self.calls = 0
 
-        def _find_choices_base(self, city, holiday_code, feature_filters):
+        def _find_choices_base(self, city, holiday_code, feature_filters, cache_key=None, merge_partial_cache=True):
             self.calls += 1
             return {
                 "city": "深圳",
@@ -2065,6 +2194,120 @@ def test_find_choices_uses_memory_and_disk_cache(tmp_path):
     assert fallback["cache"]["hit"] is False
 
 
+def test_cached_search_prefers_newest_shared_record_over_memory(tmp_path, monkeypatch):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path, search_cache_ttl_seconds=3600)
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._search_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    old_created_at = dt.datetime.now().timestamp() - 120
+    new_created_at = dt.datetime.now().timestamp()
+
+    def result_with_choice(hotel_id, hotel_name):
+        return {
+            "city": "深圳",
+            "holiday": {
+                "code": "2026-05-01::劳动节",
+                "name": "劳动节",
+                "check_in": "2026-05-01",
+                "check_out": "2026-05-04",
+                "days": 3,
+            },
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": feature_filters.to_response(),
+            "comparison_windows": [{"check_in": "2026-05-04", "check_out": "2026-05-07"}],
+            "area_recommendations": [],
+            "choices": [
+                {
+                    "hotel_id": hotel_id,
+                    "hotel_name": hotel_name,
+                    "area_name": "深圳南山片区",
+                    "holiday_avg_nightly_tax_total_value": 520,
+                    "price_diff_nightly": -10,
+                    "room_type": "king",
+                    "room_type_label": "大床房",
+                }
+            ],
+        }
+
+    finder._store_search_cache(cache_key, result_with_choice("old", "深圳旧结果酒店"), old_created_at)
+    shared_record = {
+        "version": 1,
+        "cache_key": list(cache_key),
+        "created_at": new_created_at,
+        "created_at_text": finder._format_timestamp(new_created_at),
+        "ttl_seconds": 3600,
+        "complete": True,
+        "result": result_with_choice("new", "深圳最新共享结果酒店"),
+    }
+
+    monkeypatch.setattr(
+        finder,
+        "_load_shared_cache_record",
+        lambda namespace, key, ttl_seconds: shared_record if namespace == "search" and key == cache_key else None,
+    )
+
+    cached = finder.find_cached_choices("深圳", "2026-05-01::劳动节", None, None, "all", "all", "all")
+
+    assert cached is not None
+    assert cached["cache"]["source"] == "shared_db"
+    assert [item["hotel_id"] for item in cached["choices"]] == ["new"]
+
+
+def test_partial_search_cache_merges_and_returns_preview(tmp_path):
+    finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path, search_cache_ttl_seconds=3600)
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._search_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+
+    def result_with_choice(hotel_id, hotel_name, price):
+        return {
+            "city": "深圳",
+            "holiday": {
+                "code": "2026-05-01::劳动节",
+                "name": "劳动节",
+                "check_in": "2026-05-01",
+                "check_out": "2026-05-04",
+                "days": 3,
+            },
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": feature_filters.to_response(),
+            "comparison_windows": [{"check_in": "2026-05-04", "check_out": "2026-05-07"}],
+            "area_recommendations": [],
+            "choices": [
+                {
+                    "hotel_id": hotel_id,
+                    "hotel_name": hotel_name,
+                    "area_name": "深圳南山片区",
+                    "holiday_avg_nightly_tax_total_value": price,
+                    "price_diff_nightly": -10,
+                    "room_type": "king",
+                    "room_type_label": "大床房",
+                }
+            ],
+            "partial": {"stage": "pricing_preview", "message": "部分结果", "preliminary": True},
+        }
+
+    finder._store_search_cache(
+        cache_key,
+        result_with_choice("partial-a", "深圳部分缓存酒店A", 520),
+        dt.datetime.now().timestamp(),
+        complete=False,
+        merge_existing=True,
+    )
+    finder._store_search_cache(
+        cache_key,
+        result_with_choice("partial-b", "深圳部分缓存酒店B", 610),
+        dt.datetime.now().timestamp(),
+        complete=False,
+        merge_existing=True,
+    )
+
+    assert finder.find_cached_choices("深圳", "2026-05-01::劳动节", None, None, "all", "all", "all") is None
+    preview = finder.find_stale_cached_choices("深圳", "2026-05-01::劳动节", None, None, "all", "all", "all")
+
+    assert preview is not None
+    assert preview["cache"]["partial"] is True
+    assert {item["hotel_id"] for item in preview["choices"]} == {"partial-a", "partial-b"}
+
+
 def test_find_stale_cached_choices_returns_preview_after_fresh_ttl(tmp_path):
     finder = ReverseTravelFinder(StubCalendar(), cache_dir=tmp_path, search_cache_ttl_seconds=60)
     feature_filters = finder._normalize_feature_filters("all", "all", "all")
@@ -2106,6 +2349,591 @@ def test_find_stale_cached_choices_returns_preview_after_fresh_ttl(tmp_path):
     assert stale["cache"]["source"] == "stale_disk"
     assert stale["cache"]["stale"] is True
     assert stale["choices"][0]["hotel_name"] == "深圳旧缓存酒店"
+
+
+def test_coverage_supplement_uses_local_cache_without_live_browser(tmp_path):
+    class CachedCoverageFinder(ReverseTravelFinder):
+        def __init__(self):
+            super().__init__(StubCalendar(), cache_dir=tmp_path)
+
+        def _resolve_city(self, city):
+            return CityCandidate(
+                city_id=30,
+                city_name="深圳",
+                province_id=23,
+                country_id=1,
+                lat=22.543096,
+                lon=114.057865,
+                filter_id="19|30",
+                search_coordinate="NORMAL_22.543096_114.057865_0",
+            )
+
+        def _coverage_choices_for_candidate(self, **_kwargs):
+            raise AssertionError("coverage cache miss should not start a live browser query")
+
+    finder = CachedCoverageFinder()
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._coverage_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    finder._store_coverage_cache(
+        cache_key,
+        [
+            {
+                "hotel_id": "gm-hilton",
+                "hotel_name": "深圳光明虹桥希尔顿花园酒店",
+                "area_name": "光明虹桥公园片区",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -40,
+                "room_type": "king",
+                "room_type_label": "大床房",
+            }
+        ],
+        dt.datetime.now().timestamp(),
+    )
+
+    base_choices = [
+        {
+            "hotel_id": "base",
+            "hotel_name": "深圳南山缓存酒店",
+            "area_name": "深圳南山片区",
+            "holiday_avg_nightly_tax_total_value": 700,
+            "price_diff_nightly": 20,
+            "room_type": "king",
+            "room_type_label": "大床房",
+        }
+    ]
+    result = finder.supplement_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert result["coverage_supplement"]["cache"]["source"] == "memory"
+    assert {item["hotel_id"] for item in result["choices"]} == {"base", "gm-hilton"}
+
+    restarted = CachedCoverageFinder()
+    cached = restarted.find_cached_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert cached is not None
+    assert cached["coverage_supplement"]["cache"]["source"] == "disk"
+    assert {item["hotel_id"] for item in cached["choices"]} == {"base", "gm-hilton"}
+
+
+def test_cached_coverage_prefers_newest_shared_record_over_memory(tmp_path, monkeypatch):
+    class CachedCoverageFinder(ReverseTravelFinder):
+        def __init__(self):
+            super().__init__(StubCalendar(), cache_dir=tmp_path)
+
+        def _resolve_city(self, city):
+            return CityCandidate(
+                city_id=30,
+                city_name="深圳",
+                province_id=23,
+                country_id=1,
+                lat=22.543096,
+                lon=114.057865,
+                filter_id="19|30",
+                search_coordinate="NORMAL_22.543096_114.057865_0",
+            )
+
+    finder = CachedCoverageFinder()
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._coverage_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    old_created_at = dt.datetime.now().timestamp() - 120
+    new_created_at = dt.datetime.now().timestamp()
+    old_choices = [
+        {
+            "hotel_id": "old-area",
+            "hotel_name": "深圳旧补充酒店",
+            "area_name": "深圳南山片区",
+            "holiday_avg_nightly_tax_total_value": 600,
+            "price_diff_nightly": -30,
+            "room_type": "king",
+            "room_type_label": "大床房",
+        }
+    ]
+    new_choices = [
+        {
+            "hotel_id": "new-area",
+            "hotel_name": "深圳最新共享补充酒店",
+            "area_name": "光明虹桥公园片区",
+            "holiday_avg_nightly_tax_total_value": 520,
+            "price_diff_nightly": -20,
+            "room_type": "king",
+            "room_type_label": "大床房",
+        }
+    ]
+
+    finder._store_coverage_cache(cache_key, old_choices, old_created_at)
+    shared_record = {
+        "version": 1,
+        "cache_key": list(cache_key),
+        "created_at": new_created_at,
+        "created_at_text": finder._format_timestamp(new_created_at),
+        "ttl_seconds": 3600,
+        "complete": True,
+        "choices": new_choices,
+        "completed_areas": [{"key": "new", "area_name": "光明虹桥公园片区"}],
+    }
+    monkeypatch.setattr(
+        finder,
+        "_load_shared_cache_record",
+        lambda namespace, key, ttl_seconds: shared_record if namespace == "coverage" and key == cache_key else None,
+    )
+
+    cached = finder.find_cached_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=[],
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert cached is not None
+    assert cached["coverage_supplement"]["cache"]["source"] == "shared_db"
+    assert [item["hotel_id"] for item in cached["choices"]] == ["new-area"]
+
+
+def test_coverage_supplement_can_bypass_local_cache(tmp_path):
+    class CachedCoverageFinder(ReverseTravelFinder):
+        def __init__(self):
+            super().__init__(StubCalendar(), cache_dir=tmp_path)
+
+        def _resolve_city(self, city):
+            return CityCandidate(
+                city_id=30,
+                city_name="深圳",
+                province_id=23,
+                country_id=1,
+                lat=22.543096,
+                lon=114.057865,
+                filter_id="19|30",
+                search_coordinate="NORMAL_22.543096_114.057865_0",
+            )
+
+        def _cached_coverage_result_payload(self, **_kwargs):
+            raise AssertionError("coverage cache should not be read when use_cache=false")
+
+        def _advanced_priority_coverage_plan(self, *_args, **_kwargs):
+            return []
+
+        def _city_coverage_supplement_plan(self, *_args, **_kwargs):
+            return []
+
+    finder = CachedCoverageFinder()
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._coverage_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    finder._store_coverage_cache(
+        cache_key,
+        [
+            {
+                "hotel_id": "cached-hotel",
+                "hotel_name": "深圳缓存酒店",
+                "area_name": "深圳南山片区",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -40,
+                "room_type": "king",
+                "room_type_label": "大床房",
+            }
+        ],
+        dt.datetime.now().timestamp(),
+    )
+
+    base_choices = [
+        {
+            "hotel_id": "base",
+            "hotel_name": "深圳基础酒店",
+            "area_name": "深圳福田片区",
+            "holiday_avg_nightly_tax_total_value": 700,
+            "price_diff_nightly": 20,
+            "room_type": "king",
+            "room_type_label": "大床房",
+        }
+    ]
+    result = finder.supplement_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+        use_cache=False,
+    )
+
+    assert result["coverage_supplement"]["status"] == "skipped"
+    assert {item["hotel_id"] for item in result["choices"]} == {"base"}
+
+
+def test_coverage_records_empty_completed_area_and_skips_next_time(tmp_path, monkeypatch):
+    class FakeContext:
+        def route(self, *_args, **_kwargs):
+            pass
+
+        def add_init_script(self, *_args, **_kwargs):
+            pass
+
+    class FakeBrowser:
+        def new_context(self, **_kwargs):
+            return FakeContext()
+
+        def close(self):
+            pass
+
+    class FakeChromium:
+        def launch(self, **_kwargs):
+            return FakeBrowser()
+
+    class FakePlaywright:
+        chromium = FakeChromium()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+    monkeypatch.setattr(reverse_travel_module, "sync_playwright", lambda: FakePlaywright())
+
+    class EmptyCoverageFinder(ReverseTravelFinder):
+        def __init__(self):
+            super().__init__(StubCalendar(), cache_dir=tmp_path)
+            self.lookup_calls = 0
+
+        def _resolve_city(self, city):
+            return CityCandidate(
+                city_id=30,
+                city_name="深圳",
+                province_id=23,
+                country_id=1,
+                lat=22.543096,
+                lon=114.057865,
+                filter_id="19|30",
+                search_coordinate="NORMAL_22.543096_114.057865_0",
+            )
+
+        def _advanced_priority_coverage_plan(self, *_args, **_kwargs):
+            return [{"area_name": "光明虹桥公园片区", "keyword": "深圳光明虹桥"}]
+
+        def _city_coverage_supplement_plan(self, *_args, **_kwargs):
+            return []
+
+        def _resolve_hotel_keyword_candidates(self, *_args, **_kwargs):
+            self.lookup_calls += 1
+            return [
+                HotelKeywordCandidate(
+                    hotel_id="gm-empty",
+                    title="深圳光明虹桥",
+                    filter_id="19|30",
+                    lat=22.75,
+                    lon=113.94,
+                    search_coordinate="NORMAL_22.75_113.94_0",
+                )
+            ]
+
+        def _coverage_choices_for_candidate(self, **_kwargs):
+            return []
+
+    finder = EmptyCoverageFinder()
+    result = finder.supplement_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=[],
+        min_price=None,
+        max_price=None,
+        advanced_filter="yes",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert result["coverage_supplement"]["status"] == "succeeded"
+    assert finder.lookup_calls == 1
+
+    feature_filters = finder._normalize_feature_filters("yes", "all", "all")
+    cache_key = finder._coverage_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    cached = finder._load_coverage_cache(cache_key)
+    assert cached is not None
+    assert cached["completed_areas"][0]["area_name"] == "光明虹桥公园片区"
+    assert cached["completed_areas"][0]["result_count"] == 0
+    finder._store_coverage_cache(
+        cache_key,
+        [],
+        dt.datetime.now().timestamp(),
+        complete=False,
+        completed_areas=cached["completed_areas"],
+    )
+
+    class SkipCoverageFinder(EmptyCoverageFinder):
+        def _resolve_hotel_keyword_candidates(self, *_args, **_kwargs):
+            raise AssertionError("completed empty coverage area should be skipped")
+
+    skipped = SkipCoverageFinder().supplement_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=[],
+        min_price=None,
+        max_price=None,
+        advanced_filter="yes",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert skipped["coverage_supplement"]["status"] == "succeeded"
+    assert skipped["choices"] == []
+
+
+def test_stale_coverage_cache_returns_preview_after_fresh_ttl(tmp_path):
+    class CachedCoverageFinder(ReverseTravelFinder):
+        def __init__(self):
+            super().__init__(StubCalendar(), cache_dir=tmp_path)
+
+        def _resolve_city(self, city):
+            return CityCandidate(
+                city_id=30,
+                city_name="深圳",
+                province_id=23,
+                country_id=1,
+                lat=22.543096,
+                lon=114.057865,
+                filter_id="19|30",
+                search_coordinate="NORMAL_22.543096_114.057865_0",
+            )
+
+    finder = CachedCoverageFinder()
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._coverage_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    created_at = dt.datetime.now().timestamp() - 2 * 24 * 60 * 60
+    finder._store_coverage_cache(
+        cache_key,
+        [
+            {
+                "hotel_id": "old-gm",
+                "hotel_name": "深圳光明旧补充酒店",
+                "area_name": "光明虹桥公园片区",
+                "holiday_avg_nightly_tax_total_value": 480,
+                "price_diff_nightly": -30,
+                "room_type": "king",
+                "room_type_label": "大床房",
+            }
+        ],
+        created_at,
+    )
+
+    base_choices = [
+        {
+            "hotel_id": "base",
+            "hotel_name": "深圳南山缓存酒店",
+            "area_name": "深圳南山片区",
+            "holiday_avg_nightly_tax_total_value": 700,
+            "price_diff_nightly": 20,
+            "room_type": "king",
+            "room_type_label": "大床房",
+        }
+    ]
+
+    assert finder.find_cached_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    ) is None
+    stale = finder.find_stale_cached_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert stale is not None
+    supplement = stale["coverage_supplement"]
+    assert supplement["status"] == "refreshing"
+    assert supplement["cache"]["source"] == "stale_disk"
+    assert supplement["cache"]["stale"] is True
+    assert {item["hotel_id"] for item in stale["choices"]} == {"base", "old-gm"}
+
+
+def test_partial_coverage_cache_is_preview_not_final_cache(tmp_path):
+    class CachedCoverageFinder(ReverseTravelFinder):
+        def __init__(self):
+            super().__init__(StubCalendar(), cache_dir=tmp_path)
+
+        def _resolve_city(self, city):
+            return CityCandidate(
+                city_id=30,
+                city_name="深圳",
+                province_id=23,
+                country_id=1,
+                lat=22.543096,
+                lon=114.057865,
+                filter_id="19|30",
+                search_coordinate="NORMAL_22.543096_114.057865_0",
+            )
+
+    finder = CachedCoverageFinder()
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._coverage_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    finder._store_coverage_cache(
+        cache_key,
+        [
+            {
+                "hotel_id": "partial-gm",
+                "hotel_name": "深圳光明部分补充酒店",
+                "area_name": "光明虹桥公园片区",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -20,
+                "room_type": "king",
+                "room_type_label": "大床房",
+            }
+        ],
+        dt.datetime.now().timestamp(),
+        complete=False,
+    )
+
+    base_choices = [
+        {
+            "hotel_id": "base",
+            "hotel_name": "深圳基础酒店",
+            "area_name": "深圳南山片区",
+            "holiday_avg_nightly_tax_total_value": 700,
+            "price_diff_nightly": 10,
+            "room_type": "king",
+            "room_type_label": "大床房",
+        }
+    ]
+
+    assert finder.find_cached_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    ) is None
+
+    preview = finder.find_stale_cached_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert preview is not None
+    supplement = preview["coverage_supplement"]
+    assert supplement["status"] == "refreshing"
+    assert supplement["cache"]["partial"] is True
+    assert {item["hotel_id"] for item in preview["choices"]} == {"base", "partial-gm"}
+
+
+def test_coverage_cache_update_merges_existing_partial_choices(tmp_path):
+    class CachedCoverageFinder(ReverseTravelFinder):
+        def __init__(self):
+            super().__init__(StubCalendar(), cache_dir=tmp_path)
+
+        def _resolve_city(self, city):
+            return CityCandidate(
+                city_id=30,
+                city_name="深圳",
+                province_id=23,
+                country_id=1,
+                lat=22.543096,
+                lon=114.057865,
+                filter_id="19|30",
+                search_coordinate="NORMAL_22.543096_114.057865_0",
+            )
+
+    finder = CachedCoverageFinder()
+    feature_filters = finder._normalize_feature_filters("all", "all", "all")
+    cache_key = finder._coverage_cache_key("深圳", "2026-05-01::劳动节", feature_filters)
+    now = dt.datetime.now().timestamp()
+    finder._store_coverage_cache(
+        cache_key,
+        [
+            {
+                "hotel_id": "old-area",
+                "hotel_name": "深圳旧片区酒店",
+                "area_name": "深圳南山片区",
+                "holiday_avg_nightly_tax_total_value": 600,
+                "price_diff_nightly": -30,
+                "room_type": "king",
+                "room_type_label": "大床房",
+            }
+        ],
+        now,
+        complete=False,
+    )
+    finder._store_coverage_cache(
+        cache_key,
+        [
+            {
+                "hotel_id": "new-area",
+                "hotel_name": "深圳新片区酒店",
+                "area_name": "光明虹桥公园片区",
+                "holiday_avg_nightly_tax_total_value": 520,
+                "price_diff_nightly": -20,
+                "room_type": "king",
+                "room_type_label": "大床房",
+            }
+        ],
+        now + 1,
+        complete=False,
+        merge_existing=True,
+    )
+
+    base_choices = [
+        {
+            "hotel_id": "base",
+            "hotel_name": "深圳基础酒店",
+            "area_name": "深圳福田片区",
+            "holiday_avg_nightly_tax_total_value": 700,
+            "price_diff_nightly": 10,
+            "room_type": "king",
+            "room_type_label": "大床房",
+        }
+    ]
+    preview = finder.find_stale_cached_coverage_choices(
+        city="深圳",
+        holiday_code="2026-05-01::劳动节",
+        choices=base_choices,
+        min_price=None,
+        max_price=None,
+        advanced_filter="all",
+        pool_filter="all",
+        child_facility_filter="all",
+    )
+
+    assert preview is not None
+    assert {item["hotel_id"] for item in preview["choices"]} == {"base", "old-area", "new-area"}
 
 
 def test_deep_hotel_search_runs_only_when_initial_list_hits_limit():

@@ -2,8 +2,12 @@
 Description=Run reverse travel cache prewarm every night
 
 [Timer]
+OnCalendar=*-*-* 00:10:00
 OnCalendar=*-*-* 02:10:00
-RandomizedDelaySec=30min
+OnCalendar=*-*-* 04:10:00
+OnCalendar=*-*-* 06:10:00
+OnCalendar=*-*-* 22:10:00
+RandomizedDelaySec=20min
 Persistent=true
 Unit=reverse-traval-prewarm.service
 

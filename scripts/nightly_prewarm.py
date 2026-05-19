@@ -96,12 +96,12 @@ def post_json(url: str, payload: dict) -> dict:
         return json.loads(response.read().decode("utf-8"))
 
 
-def rotating_batch(cities: tuple[str, ...], batch_size: int, day: dt.date) -> list[str]:
+def rotating_batch(cities: tuple[str, ...], batch_size: int, day: dt.date, slot_offset: int = 0) -> list[str]:
     if batch_size <= 0 or not cities:
         return []
     batch_size = max(1, min(batch_size, len(cities)))
     batch_count = (len(cities) + batch_size - 1) // batch_size
-    batch_index = day.toordinal() % batch_count
+    batch_index = (day.toordinal() + max(0, slot_offset)) % batch_count
     start = batch_index * batch_size
     batch = list(cities[start : start + batch_size])
     if len(batch) < batch_size:
@@ -123,10 +123,37 @@ def build_city_batch(
     batch_size: int,
     priority_cities: list[str],
     city_pool: tuple[str, ...] = STARTER_CITIES,
+    slot_offset: int = 0,
 ) -> list[str]:
     priority = unique_cities(priority_cities)
     rotating_pool = tuple(city for city in city_pool if city not in priority)
-    return unique_cities(priority + rotating_batch(rotating_pool, batch_size, day))
+    return unique_cities(priority + rotating_batch(rotating_pool, batch_size, day, slot_offset=slot_offset))
+
+
+def parse_allowed_hours(value: str) -> set[int]:
+    hours: set[int] = set()
+    for part in value.split(","):
+        item = part.strip()
+        if not item:
+            continue
+        if "-" in item:
+            start_text, end_text = item.split("-", 1)
+            start = max(0, min(23, int(start_text)))
+            end = max(0, min(23, int(end_text)))
+            if start <= end:
+                hours.update(range(start, end + 1))
+            else:
+                hours.update(range(start, 24))
+                hours.update(range(0, end + 1))
+        else:
+            hours.add(max(0, min(23, int(item))))
+    return hours
+
+
+def is_allowed_hour(now: dt.datetime, allowed_hours: str) -> bool:
+    if not allowed_hours.strip():
+        return True
+    return now.hour in parse_allowed_hours(allowed_hours)
 
 
 def wait_for_prewarm(status_url: str, timeout_seconds: int, interval_seconds: int) -> dict:
@@ -152,6 +179,9 @@ def main() -> None:
     parser.add_argument("--delay-seconds", type=int, default=60)
     parser.add_argument("--priority-cities", default=",".join(CORE_CITIES))
     parser.add_argument("--max-runtime-seconds", type=int, default=19800)
+    parser.add_argument("--prewarm-coverage", action="store_true")
+    parser.add_argument("--allowed-hours", default="")
+    parser.add_argument("--slot-rotation-hours", type=int, default=0)
     parser.add_argument("--wait", action="store_true")
     parser.add_argument("--watch-interval", type=int, default=60)
     parser.add_argument("--watch-timeout", type=int, default=21600)
@@ -159,13 +189,32 @@ def main() -> None:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
+    now = dt.datetime.now()
+    if not args.dry_run and not is_allowed_hour(now, args.allowed_hours):
+        print(
+            json.dumps(
+                {
+                    "skipped": True,
+                    "reason": "outside_allowed_hours",
+                    "allowed_hours": args.allowed_hours,
+                    "current_hour": now.hour,
+                },
+                ensure_ascii=False,
+            )
+        )
+        return
+
     if args.cities:
         cities = unique_cities(parse_city_list(args.cities))
     else:
+        slot_offset = 0
+        if args.slot_rotation_hours > 0:
+            slot_offset = now.hour // max(1, args.slot_rotation_hours)
         cities = build_city_batch(
-            day=dt.date.today(),
+            day=now.date(),
             batch_size=args.batch_size,
             priority_cities=parse_city_list(args.priority_cities),
+            slot_offset=slot_offset,
         )
 
     if args.holiday_codes:
@@ -182,6 +231,7 @@ def main() -> None:
         "holiday_codes": holiday_codes,
         "delay_seconds": str(max(0, args.delay_seconds)),
         "max_runtime_seconds": str(max(0, args.max_runtime_seconds)),
+        "include_coverage": args.prewarm_coverage,
     }
     if args.dry_run:
         print(json.dumps({"dry_run": True, "payload": payload}, ensure_ascii=False, indent=2))

@@ -1,0 +1,92 @@
+{
+  "city": "茂名",
+  "generated_at": "2026-05-12T12:24:42",
+  "lists": {
+    "star_no_rise": [],
+    "star_no_rise_all": [],
+    "family_no_rise": [],
+    "family_no_rise_all": [],
+    "discount_star": []
+  },
+  "latest_city_rank": [],
+  "latest_discount_rank": [],
+  "area_region_rank": [],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 103,
+    "unique_hotel_count": 103,
+    "included_hotel_count": 0,
+    "matching_files": [
+      {
+        "file": "0ccc38cd0b587749a701779d1c506081b460679b8ef3e5d18ac75b5dafb27f78.json",
+        "mtime": 1778494603.6099565,
+        "choices": 103,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 103,
+    "unique_hotel_count": 103,
+    "included_hotel_count": 0,
+    "matching_files": [
+      {
+        "file": "0ccc38cd0b587749a701779d1c506081b460679b8ef3e5d18ac75b5dafb27f78.json",
+        "mtime": 1778494603.6099565,
+        "choices": 103,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "茂名",
+    "text": "茂名可重点看中国第一滩、浪漫海岸、放鸡岛、御水古温泉和信宜天马山；滨海度假、温泉和山地休闲适合组合。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/茂名",
+    "updated_at": ""
+  }
+}

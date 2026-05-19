@@ -1,0 +1,166 @@
+{
+  "city": "阳江",
+  "generated_at": "2026-05-12T12:24:41",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "133947768",
+        "name": "鲸喜优选公寓(阳江东汇城广场店)",
+        "area": "阳江东汇城广场片区",
+        "price": 239,
+        "diff": 0,
+        "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
+        "source_cached_at": "2026-05-11T18:13:38",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江东汇城广场",
+        "note": "阳江东汇城广场，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "133947768",
+        "name": "鲸喜优选公寓(阳江东汇城广场店)",
+        "area": "阳江东汇城广场片区",
+        "price": 239,
+        "diff": 0,
+        "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
+        "source_cached_at": "2026-05-11T18:13:38",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江东汇城广场",
+        "note": "阳江东汇城广场，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "family_no_rise": [],
+    "family_no_rise_all": [],
+    "discount_star": []
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "133947768",
+      "name": "鲸喜优选公寓(阳江东汇城广场店)",
+      "area": "阳江东汇城广场片区",
+      "price": 239,
+      "diff": 0,
+      "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
+      "source_cached_at": "2026-05-11T18:13:38",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江东汇城广场",
+      "note": "阳江东汇城广场，端午价格保持平稳，适合周边短途度假。"
+    }
+  ],
+  "latest_discount_rank": [],
+  "area_region_rank": [
+    {
+      "area": "阳江东汇城广场片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 239,
+      "average_diff": 0,
+      "price_range": [
+        239,
+        239
+      ],
+      "hotels": [
+        {
+          "hotel_id": "133947768",
+          "name": "鲸喜优选公寓(阳江东汇城广场店)",
+          "area": "阳江东汇城广场片区",
+          "price": 239,
+          "diff": 0,
+          "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
+          "source_cached_at": "2026-05-11T18:13:38"
+        }
+      ],
+      "representative_hotels": [
+        "鲸喜优选公寓(阳江东汇城广场店)"
+      ],
+      "rank": 1,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 73,
+    "unique_hotel_count": 73,
+    "included_hotel_count": 1,
+    "matching_files": [
+      {
+        "file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
+        "mtime": 1778494418.5771387,
+        "choices": 73,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 1,
+    "candidate_count": 73,
+    "unique_hotel_count": 73,
+    "included_hotel_count": 1,
+    "matching_files": [
+      {
+        "file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
+        "mtime": 1778494418.5771387,
+        "choices": 73,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "阳江",
+    "text": "阳江可重点看海陵岛、闸坡、大角湾、十里银滩和凌霄岩；滨海度假、海鲜美食和喀斯特洞景适合短途安排。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/阳江",
+    "updated_at": ""
+  }
+}

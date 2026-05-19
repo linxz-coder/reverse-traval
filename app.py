@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import math
 import os
@@ -8,10 +9,36 @@ import threading
 import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 from typing import Any, Callable
 
 from flask import Flask, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
+
+
+APP_DIR = Path(__file__).resolve().parent
+
+
+def load_env_file(path: Path) -> None:
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except OSError:
+        return
+    for line in lines:
+        text = line.strip()
+        if not text or text.startswith("#") or "=" not in text:
+            continue
+        key, value = text.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip("'\"")
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
+if os.environ.get("REVERSE_TRAVEL_ENV_FILE"):
+    load_env_file(Path(os.environ["REVERSE_TRAVEL_ENV_FILE"]).expanduser())
+load_env_file(APP_DIR / ".env.shared-cache")
+load_env_file(APP_DIR / ".env")
 
 from holiday_helper import HolidayCalendar, HolidayCalendarError
 from reverse_travel import ReverseTravelFinder, ReverseTravelFinderError
@@ -40,6 +67,7 @@ refresh_executor = ThreadPoolExecutor(max_workers=2)
 prewarm_executor = ThreadPoolExecutor(max_workers=1)
 job_lock = threading.Lock()
 prewarm_lock = threading.Lock()
+daily_recommendation_lock = threading.Lock()
 jobs: dict[str, dict[str, Any]] = {}
 job_signature_index: dict[str, str] = {}
 prewarm_state: dict[str, Any] = {
@@ -48,6 +76,13 @@ prewarm_state: dict[str, Any] = {
     "updated_at": "",
 }
 JOB_TTL_SECONDS = 6 * 60 * 60
+DAILY_RECOMMENDATION_HISTORY_PATH = APP_DIR / ".cache" / "daily_recommendations.json"
+JOB_PROGRESS_WARNING_SECONDS = env_int(
+    "REVERSE_TRAVEL_JOB_PROGRESS_WARNING_SECONDS",
+    20 * 60,
+    min_value=300,
+    max_value=7200,
+)
 
 PREWARM_MAJOR_CITIES = (
     "北京", "上海", "广州", "深圳", "杭州", "南京", "苏州", "成都", "重庆", "武汉",
@@ -265,17 +300,248 @@ def nearby_cities_for(origin_city: str, limit: int = 4) -> list[str]:
     return configured[: max(1, min(limit, 6))]
 
 
+def holiday_range_meta(item) -> dict:
+    return {
+        "code": item.code,
+        "name": item.name,
+        "check_in": item.start.isoformat(),
+        "check_out": item.check_out.isoformat(),
+        "days": item.days,
+    }
+
+
 def holiday_meta(holiday_code: str) -> dict:
-    for item in finder.list_holidays():
-        if item["code"] == holiday_code:
-            return {
-                "code": item["code"],
-                "name": item["name"],
-                "check_in": item["start"],
-                "check_out": item["end"],
-                "days": item["days"],
-            }
+    for item in calendar.get_upcoming_holidays():
+        if item.code == holiday_code:
+            return holiday_range_meta(item)
     return {"code": holiday_code, "name": "", "check_in": "", "check_out": "", "days": 0}
+
+
+def nearest_holiday_meta() -> dict:
+    holidays = calendar.get_upcoming_holidays()
+    if not holidays:
+        return {"code": "", "name": "", "check_in": "", "check_out": "", "days": 0}
+    return holiday_range_meta(holidays[0])
+
+
+def read_json_file(path: Path) -> dict[str, Any]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def daily_cache_context(record: dict[str, Any], source: str) -> dict[str, str]:
+    cache_key = record.get("cache_key") if isinstance(record.get("cache_key"), list) else []
+    context = {"city": "", "holiday_code": "", "advanced_filter": "all", "source": source}
+    if len(cache_key) >= 4 and cache_key[1] == "coverage":
+        context.update(
+            {
+                "city": str(cache_key[2] or ""),
+                "holiday_code": str(cache_key[3] or ""),
+                "advanced_filter": str(cache_key[4] if len(cache_key) > 4 else "all"),
+            }
+        )
+    elif len(cache_key) >= 3:
+        context.update(
+            {
+                "city": str(cache_key[1] or ""),
+                "holiday_code": str(cache_key[2] or ""),
+                "advanced_filter": str(cache_key[3] if len(cache_key) > 3 else "all"),
+            }
+        )
+    return context
+
+
+def choice_int(item: dict[str, Any], key: str, default: int = 0) -> int:
+    try:
+        return int(round(float(item.get(key) or default)))
+    except (TypeError, ValueError):
+        return default
+
+
+def choice_is_advanced(item: dict[str, Any], advanced_filter: str) -> bool:
+    if item.get("is_advanced") is True:
+        return True
+    hotel_id = str(item.get("hotel_id") or "").strip()
+    cached: dict[str, Any] = {}
+    if hotel_id:
+        try:
+            cached = finder._cached_hotel_feature_flags(hotel_id)
+        except Exception:
+            cached = {}
+    if cached.get("is_advanced") is True:
+        return True
+    if item.get("is_advanced") is False or cached.get("is_advanced") is False:
+        return False
+    return str(advanced_filter or "").lower() == "yes"
+
+
+def daily_candidate_key(item: dict[str, Any], holiday_code: str) -> str:
+    hotel_id = str(item.get("hotel_id") or "").strip()
+    if hotel_id:
+        return f"{holiday_code}:{hotel_id}"
+    detail_url = str(item.get("detail_url") or "").strip()
+    return f"{holiday_code}:{hashlib.sha1(detail_url.encode('utf-8')).hexdigest()}"
+
+
+def collect_daily_recommendation_candidates(holiday: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    holiday_code = str(holiday.get("code") or "")
+    by_key: dict[str, dict[str, Any]] = {}
+    scanned_files = 0
+    source_dirs = (
+        ("search", finder.cache_dir / "search"),
+        ("coverage", finder.cache_dir / "coverage"),
+    )
+    for source, cache_dir in source_dirs:
+        for path in cache_dir.glob("*.json"):
+            scanned_files += 1
+            record = read_json_file(path)
+            if not record:
+                continue
+            context = daily_cache_context(record, source)
+            if context["holiday_code"] != holiday_code:
+                continue
+            result = record.get("result") if isinstance(record.get("result"), dict) else {}
+            choices = result.get("choices") if source == "search" else record.get("choices")
+            if not isinstance(choices, list):
+                continue
+            city_name = str(result.get("city") or context["city"] or "").strip()
+            for raw_item in choices:
+                if not isinstance(raw_item, dict):
+                    continue
+                if choice_int(raw_item, "price_diff_nightly", 999999) > 0:
+                    continue
+                if not choice_is_advanced(raw_item, context["advanced_filter"]):
+                    continue
+                detail_url = finder._to_zh_detail_url(str(raw_item.get("detail_url") or "").strip())
+                if "trip.com" not in detail_url.lower():
+                    continue
+                item = copy.deepcopy(raw_item)
+                item["detail_url"] = detail_url
+                item["recommend_city"] = str(item.get("recommend_city") or city_name).strip()
+                item["daily_cache_source"] = source
+                item["daily_cache_created_at"] = record.get("created_at_text") or ""
+                key = daily_candidate_key(item, holiday_code)
+                item["daily_recommendation_key"] = key
+                existing = by_key.get(key)
+                if existing is None or (
+                    choice_int(item, "price_diff_nightly", 0),
+                    choice_int(item, "holiday_avg_nightly_tax_total_value", 999999),
+                ) < (
+                    choice_int(existing, "price_diff_nightly", 0),
+                    choice_int(existing, "holiday_avg_nightly_tax_total_value", 999999),
+                ):
+                    by_key[key] = item
+    candidates = list(by_key.values())
+    candidates.sort(
+        key=lambda item: (
+            choice_int(item, "price_diff_nightly", 0),
+            choice_int(item, "holiday_avg_nightly_tax_total_value", 999999),
+            str(item.get("recommend_city") or ""),
+            str(item.get("hotel_id") or item.get("detail_url") or ""),
+        )
+    )
+    return candidates, {"scanned_files": scanned_files, "candidate_count": len(candidates)}
+
+
+def load_daily_recommendation_history() -> dict[str, Any]:
+    data = read_json_file(DAILY_RECOMMENDATION_HISTORY_PATH)
+    if not isinstance(data.get("daily"), dict):
+        data["daily"] = {}
+    if not isinstance(data.get("used_keys"), list):
+        data["used_keys"] = []
+    return data
+
+
+def save_daily_recommendation_history(history: dict[str, Any]) -> None:
+    DAILY_RECOMMENDATION_HISTORY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    DAILY_RECOMMENDATION_HISTORY_PATH.write_text(
+        json.dumps(history, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def choose_daily_candidate(candidates: list[dict[str, Any]], today: str) -> tuple[dict[str, Any] | None, dict[str, Any]]:
+    if not candidates:
+        return None, {"used_count": 0, "cycle_reset": False}
+    by_key = {item["daily_recommendation_key"]: item for item in candidates}
+    with daily_recommendation_lock:
+        history = load_daily_recommendation_history()
+        daily = history["daily"]
+        used_keys = [str(key) for key in history["used_keys"] if str(key) in by_key]
+        selected_key = str(daily.get(today) or "")
+        if selected_key in by_key:
+            history["used_keys"] = used_keys
+            save_daily_recommendation_history(history)
+            return by_key[selected_key], {"used_count": len(set(used_keys)), "cycle_reset": False}
+
+        used_set = set(used_keys)
+        available = [item for item in candidates if item["daily_recommendation_key"] not in used_set]
+        cycle_reset = False
+        if not available:
+            used_set = set()
+            available = candidates
+            cycle_reset = True
+        selected = min(
+            available,
+            key=lambda item: hashlib.sha256(f"{today}:{item['daily_recommendation_key']}".encode("utf-8")).hexdigest(),
+        )
+        selected_key = selected["daily_recommendation_key"]
+        used_set.add(selected_key)
+        daily[today] = selected_key
+        history["daily"] = dict(sorted(daily.items())[-370:])
+        history["used_keys"] = sorted(used_set)
+        save_daily_recommendation_history(history)
+        return selected, {"used_count": len(used_set), "cycle_reset": cycle_reset}
+
+
+def simplify_daily_recommendation_choice(choice: dict[str, Any]) -> None:
+    for key in (
+        "recommend_city",
+        "area_name",
+        "area_hint",
+        "hotel_name",
+        "hotel_name_simplified",
+        "hotel_original_name",
+        "room_type_label",
+        "holiday_room_name",
+        "comparison_room_name",
+    ):
+        if isinstance(choice.get(key), str):
+            choice[key] = finder._to_simplified_chinese(str(choice.get(key) or ""))
+
+
+def daily_recommendation_payload() -> dict[str, Any]:
+    today = time.strftime("%Y-%m-%d", time.localtime())
+    holiday = nearest_holiday_meta()
+    if not holiday.get("code"):
+        return {"date": today, "holiday": holiday, "recommendation": None, "message": "暂无可用的未来法定假期。"}
+    candidates, stats = collect_daily_recommendation_candidates(holiday)
+    selected, history_meta = choose_daily_candidate(candidates, today)
+    if selected is None:
+        return {
+            "date": today,
+            "holiday": holiday,
+            "recommendation": None,
+            "source": stats,
+            "message": "已有结果里暂时没有符合条件的不涨价四星级以上酒店。",
+        }
+    choice = copy.deepcopy(selected)
+    finder._apply_cached_hotel_names_to_choices([choice])
+    finder._refresh_choice_area_names([choice], str(choice.get("recommend_city") or ""))
+    simplify_daily_recommendation_choice(choice)
+    return {
+        "date": today,
+        "holiday": holiday,
+        "recommendation": choice,
+        "source": {
+            **stats,
+            **history_meta,
+            "rule": "最近假期、已有结果、四星级以上、每晚差额不高于0元、每日不重复",
+        },
+    }
 
 
 def request_price_filters(payload: dict) -> tuple[int | None, int | None]:
@@ -323,8 +589,24 @@ def canonical_tri_state(value: Any) -> str:
         return str(value or "all").strip().lower()
 
 
+def canonical_choices_signature(choices: Any) -> str:
+    if not isinstance(choices, list):
+        return ""
+    keys: list[str] = []
+    for index, item in enumerate(choices):
+        if not isinstance(item, dict):
+            continue
+        recommend_city = str(item.get("recommend_city") or "").strip()
+        hotel_id = str(item.get("hotel_id") or "").strip()
+        room_type = str(item.get("room_type") or item.get("room_type_label") or "").strip()
+        fallback = str(item.get("detail_url") or item.get("hotel_name") or index).strip()
+        keys.append(f"{recommend_city}:{hotel_id or fallback}:{room_type}")
+    raw = json.dumps(sorted(keys), ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
 def canonical_job_signature(kind: str, payload: dict[str, Any]) -> str | None:
-    if kind not in {"search", "nearby"}:
+    if kind not in {"search", "nearby", "coverage"}:
         return None
 
     holiday_code = str(payload.get("holiday_code") or "").strip()
@@ -341,7 +623,7 @@ def canonical_job_signature(kind: str, payload: dict[str, Any]) -> str | None:
         "use_cache": parse_bool(payload.get("use_cache"), default=True),
         "cache_only": parse_bool(payload.get("cache_only"), default=False),
     }
-    if kind == "search":
+    if kind in {"search", "coverage"}:
         raw_city = str(payload.get("city") or "").strip()
         base["city"] = normalize_city(raw_city) or raw_city
     else:
@@ -392,6 +674,9 @@ def public_job(job: dict[str, Any]) -> dict[str, Any]:
         data["progress_events"] = job["progress_events"]
     if job.get("partial_result"):
         data["partial_result"] = job["partial_result"]
+    progress_warning = job_progress_warning(job)
+    if progress_warning:
+        data["progress_warning"] = progress_warning
     return data
 
 
@@ -422,6 +707,25 @@ def append_job_progress_event(job: dict[str, Any], progress: dict[str, Any]) -> 
     else:
         events.append(event)
     job["progress_events"] = events[-12:]
+
+
+def job_progress_warning(job: dict[str, Any], now: float | None = None) -> dict[str, Any] | None:
+    if job.get("status") not in {"queued", "running"}:
+        return None
+    current_ts = time.time() if now is None else now
+    try:
+        updated_ts = float(job.get("updated_ts") or 0)
+    except (TypeError, ValueError):
+        updated_ts = 0
+    age_seconds = max(0, round(current_ts - updated_ts)) if updated_ts > 0 else 0
+    if updated_ts > 0 and age_seconds <= JOB_PROGRESS_WARNING_SECONDS:
+        return None
+    minutes = max(1, round(age_seconds / 60))
+    return {
+        "stage": "slow_progress",
+        "message": f"后台仍在查询，但已约 {minutes} 分钟没有新的进度更新；页面会继续等待，完成后会自动显示结果。",
+        "age_seconds": age_seconds,
+    }
 
 
 def is_local_request() -> bool:
@@ -503,6 +807,10 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
             limit=parse_optional_int(config.get("city_limit"), "预热城市数量"),
         )
     profiles = normalize_prewarm_profiles(config.get("profiles"))
+    coverage_flag = config.get("include_coverage")
+    if coverage_flag is None:
+        coverage_flag = config.get("prewarm_coverage")
+    include_coverage = parse_bool(coverage_flag, default=False)
     configured_holidays = config.get("holiday_codes")
     if isinstance(configured_holidays, str):
         holiday_codes = [item.strip() for item in configured_holidays.split(",") if item.strip()]
@@ -523,6 +831,10 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
     cache_hits = 0
     live_count = 0
     error_count = 0
+    coverage_success_count = 0
+    coverage_cache_hits = 0
+    coverage_live_count = 0
+    coverage_error_count = 0
     errors: list[dict[str, str]] = []
     delay_seconds = parse_optional_int(config.get("delay_seconds"), "预热间隔秒数")
     if delay_seconds is None:
@@ -550,6 +862,11 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 "city_count": len(cities),
                 "holiday_count": len(holiday_codes),
                 "profiles": profiles,
+                "include_coverage": include_coverage,
+                "coverage_success_count": 0,
+                "coverage_cache_hits": 0,
+                "coverage_live_count": 0,
+                "coverage_error_count": 0,
                 "max_runtime_seconds": max_runtime_seconds,
                 "skipped_count": 0,
                 "events": [],
@@ -610,14 +927,69 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 cache_hits += 1
             elif cache.get("source") == "live":
                 live_count += 1
+
+            coverage_result: dict[str, Any] | None = None
+            if include_coverage and result.get("choices"):
+                update_prewarm_state(
+                    f"正在预热 {index}/{total}：{city} 行政区/四星以上补充缓存",
+                    completed=index - 1,
+                    total=total,
+                )
+
+                def coverage_progress_callback(progress: dict[str, Any]) -> None:
+                    message = progress.get("message")
+                    if message:
+                        update_prewarm_state(f"{city}：{message}", completed=index - 1, total=total)
+
+                try:
+                    coverage_result = finder.supplement_coverage_choices(
+                        city=city,
+                        holiday_code=holiday_code,
+                        choices=result.get("choices") or [],
+                        min_price=None,
+                        max_price=None,
+                        advanced_filter=profile["advanced_filter"],
+                        pool_filter=profile["pool_filter"],
+                        child_facility_filter=profile["child_facility_filter"],
+                        progress_callback=coverage_progress_callback,
+                    )
+                except Exception as exc:  # noqa: BLE001
+                    coverage_error_count += 1
+                    errors.append(
+                        {
+                            "city": city,
+                            "holiday_code": holiday_code,
+                            "profile": profile_name,
+                            "stage": "coverage",
+                            "error": str(exc),
+                        }
+                    )
+                    update_prewarm_state(
+                        f"补充缓存预热失败 {index}/{total}：{city}，{str(exc)}",
+                        completed=index,
+                        total=total,
+                        coverage_error_count=coverage_error_count,
+                        errors=errors[-20:],
+                    )
+                else:
+                    coverage_success_count += 1
+                    coverage_cache = ((coverage_result.get("coverage_supplement") or {}).get("cache") or {})
+                    if coverage_cache.get("hit"):
+                        coverage_cache_hits += 1
+                    elif coverage_cache.get("source") == "live":
+                        coverage_live_count += 1
             update_prewarm_state(
-                f"已预热 {index}/{total}：{city}，命中 {len(result.get('choices') or [])} 家",
+                f"已预热 {index}/{total}：{city}，命中 {len((coverage_result or result).get('choices') or [])} 家",
                 completed=index,
                 total=total,
                 success_count=success_count,
                 cache_hits=cache_hits,
                 live_count=live_count,
                 error_count=error_count,
+                coverage_success_count=coverage_success_count,
+                coverage_cache_hits=coverage_cache_hits,
+                coverage_live_count=coverage_live_count,
+                coverage_error_count=coverage_error_count,
                 errors=errors[-20:],
             )
             completed_count = index
@@ -635,6 +1007,10 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
             cache_hits=cache_hits,
             live_count=live_count,
             error_count=error_count,
+            coverage_success_count=coverage_success_count,
+            coverage_cache_hits=coverage_cache_hits,
+            coverage_live_count=coverage_live_count,
+            coverage_error_count=coverage_error_count,
             skipped_count=max(0, total - completed_count),
             elapsed_seconds=elapsed_seconds,
             errors=errors[-20:],
@@ -650,6 +1026,10 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
         cache_hits=cache_hits,
         live_count=live_count,
         error_count=error_count,
+        coverage_success_count=coverage_success_count,
+        coverage_cache_hits=coverage_cache_hits,
+        coverage_live_count=coverage_live_count,
+        coverage_error_count=coverage_error_count,
         skipped_count=0,
         elapsed_seconds=elapsed_seconds,
         errors=errors[-20:],
@@ -734,7 +1114,7 @@ def search_result_from_payload(
     except (HolidayCalendarError, ReverseTravelFinderError) as exc:
         return {"error": str(exc)}, 400
     except Exception as exc:  # pragma: no cover
-        return {"error": f"查询失败: {exc}"}, 500
+        return {"error": f"查询中断: {exc}"}, 500
     return result, 200
 
 
@@ -798,9 +1178,15 @@ def stale_search_result_from_payload(payload: dict) -> tuple[dict[str, Any] | No
     except Exception as exc:  # pragma: no cover
         return {"error": f"读取旧缓存失败: {exc}"}, 500
     if result is not None:
+        cache = result.get("cache") or {}
+        message = (
+            "先显示部分缓存结果，后台正在继续补全最新价格。"
+            if cache.get("partial")
+            else "先显示旧缓存结果，后台正在刷新最新价格。"
+        )
         result["partial"] = {
             "stage": "stale_cache_preview",
-            "message": "先显示旧缓存结果，后台正在刷新最新价格。",
+            "message": message,
             "preliminary": True,
             "displayed_choice_count": len(result.get("choices") or []),
             "total_choice_count": len(result.get("choices") or []),
@@ -1166,6 +1552,7 @@ def coverage_result_from_payload(
     advanced_filter = payload.get("advanced_filter")
     pool_filter = payload.get("pool_filter")
     child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+    use_cache = parse_bool(payload.get("use_cache"), default=True)
     if not city or not holiday_code:
         return {"error": "city 和 holiday_code 不能为空"}, 400
     if not isinstance(choices, list):
@@ -1181,12 +1568,81 @@ def coverage_result_from_payload(
             advanced_filter=advanced_filter,
             pool_filter=pool_filter,
             child_facility_filter=child_facility_filter,
+            use_cache=use_cache,
             progress_callback=progress_callback,
         )
     except (HolidayCalendarError, ReverseTravelFinderError) as exc:
         return {"error": str(exc)}, 400
     except Exception as exc:  # noqa: BLE001
-        return {"error": f"行政区补充失败: {exc}"}, 500
+        return {"error": f"行政区补充中断: {exc}"}, 500
+    return result, 200
+
+
+def cached_coverage_result_from_payload(payload: dict) -> tuple[dict[str, Any] | None, int]:
+    if not parse_bool(payload.get("use_cache"), default=True):
+        return None, 404
+    city = (payload.get("city") or "").strip()
+    holiday_code = (payload.get("holiday_code") or "").strip()
+    choices = payload.get("choices") or []
+    advanced_filter = payload.get("advanced_filter")
+    pool_filter = payload.get("pool_filter")
+    child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+    if not city or not holiday_code:
+        return {"error": "city 和 holiday_code 不能为空"}, 400
+    if not isinstance(choices, list):
+        return {"error": "choices 必须是列表"}, 400
+    try:
+        min_price_int, max_price_int = request_price_filters(payload)
+        result = finder.find_cached_coverage_choices(
+            city=city,
+            holiday_code=holiday_code,
+            choices=choices,
+            min_price=min_price_int,
+            max_price=max_price_int,
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+    except (HolidayCalendarError, ReverseTravelFinderError) as exc:
+        return {"error": str(exc)}, 400
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"行政区补充缓存读取失败: {exc}"}, 500
+    if result is None:
+        return None, 404
+    return result, 200
+
+
+def stale_coverage_result_from_payload(payload: dict) -> tuple[dict[str, Any] | None, int]:
+    if not parse_bool(payload.get("use_cache"), default=True):
+        return None, 404
+    city = (payload.get("city") or "").strip()
+    holiday_code = (payload.get("holiday_code") or "").strip()
+    choices = payload.get("choices") or []
+    advanced_filter = payload.get("advanced_filter")
+    pool_filter = payload.get("pool_filter")
+    child_facility_filter = payload.get("child_facility_filter") or payload.get("children_pool_filter")
+    if not city or not holiday_code:
+        return {"error": "city 和 holiday_code 不能为空"}, 400
+    if not isinstance(choices, list):
+        return {"error": "choices 必须是列表"}, 400
+    try:
+        min_price_int, max_price_int = request_price_filters(payload)
+        result = finder.find_stale_cached_coverage_choices(
+            city=city,
+            holiday_code=holiday_code,
+            choices=choices,
+            min_price=min_price_int,
+            max_price=max_price_int,
+            advanced_filter=advanced_filter,
+            pool_filter=pool_filter,
+            child_facility_filter=child_facility_filter,
+        )
+    except (HolidayCalendarError, ReverseTravelFinderError) as exc:
+        return {"error": str(exc)}, 400
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"行政区补充旧缓存读取失败: {exc}"}, 500
+    if result is None:
+        return None, 404
     return result, 200
 
 
@@ -1195,12 +1651,16 @@ def cached_result_for_job_start(kind: str, payload: dict[str, Any]) -> tuple[dic
         return cached_search_result_from_payload(payload)
     if kind == "nearby":
         return cached_nearby_search_result_from_payload(payload)
+    if kind == "coverage":
+        return cached_coverage_result_from_payload(payload)
     return None, 404
 
 
 def stale_result_for_job_start(kind: str, payload: dict[str, Any]) -> tuple[dict[str, Any] | None, int]:
     if kind == "search":
         return stale_search_result_from_payload(payload)
+    if kind == "coverage":
+        return stale_coverage_result_from_payload(payload)
     return None, 404
 
 
@@ -1211,7 +1671,7 @@ def job_start_payload(job: dict[str, Any], *, reused: bool = False, cache_hit: b
         "poll_url": f"/api/jobs/{job['job_id']}",
         "poll_interval_ms": 1500 if job.get("status") == "succeeded" else 2000,
         "reused": reused,
-        "cache_hit": cache_hit,
+        "cache_hit": cache_hit or bool(job.get("cache_hit")),
     }
     if job.get("progress"):
         payload["progress"] = job["progress"]
@@ -1244,6 +1704,7 @@ def create_completed_job(kind: str, payload: dict[str, Any], result: dict[str, A
         "progress_events": [{"time": utc_timestamp(), "stage": "cache_hit", "message": message, "percent": 100}],
         "error": "",
         "status_code": 200,
+        "cache_hit": True,
     }
     with job_lock:
         jobs[job_id] = job
@@ -1266,23 +1727,29 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
     def progress_callback(progress: dict[str, Any]) -> None:
         update_job_progress(job_id, progress)
 
-    if kind == "search":
-        result, status_code = search_result_from_payload(payload, progress_callback=progress_callback)
-    elif kind == "nearby":
-        result, status_code = nearby_search_result_from_payload(payload, progress_callback=progress_callback)
-    elif kind == "coverage":
-        update_job_progress(job_id, {"stage": "coverage", "message": "基础结果已显示，正在后台补充缺失行政区。", "percent": 5})
-        result, status_code = coverage_result_from_payload(payload, progress_callback=progress_callback)
-    elif kind == "hotel_names":
-        update_job_progress(job_id, {"stage": "hotel_names", "message": "正在后台匹配简体中文酒店名。", "percent": 40})
-        result, status_code = hotel_name_result_from_payload(payload)
-    else:
-        update_job_progress(job_id, {"stage": "areas", "message": "正在规范化推荐旅游区域。", "percent": 40})
-        result, status_code = area_result_from_payload(payload)
+    try:
+        if kind == "search":
+            result, status_code = search_result_from_payload(payload, progress_callback=progress_callback)
+        elif kind == "nearby":
+            result, status_code = nearby_search_result_from_payload(payload, progress_callback=progress_callback)
+        elif kind == "coverage":
+            update_job_progress(job_id, {"stage": "coverage", "message": "基础结果已显示，正在后台补充缺失行政区。", "percent": 5})
+            result, status_code = coverage_result_from_payload(payload, progress_callback=progress_callback)
+        elif kind == "hotel_names":
+            update_job_progress(job_id, {"stage": "hotel_names", "message": "正在后台匹配简体中文酒店名。", "percent": 40})
+            result, status_code = hotel_name_result_from_payload(payload)
+        else:
+            update_job_progress(job_id, {"stage": "areas", "message": "正在规范化推荐旅游区域。", "percent": 40})
+            result, status_code = area_result_from_payload(payload)
+    except Exception as exc:  # noqa: BLE001
+        result = {"error": f"查询中断: {exc}"}
+        status_code = 500
 
     with job_lock:
         job = jobs.get(job_id)
         if not job:
+            return
+        if job.get("status") == "failed" and job.get("error"):
             return
         job["updated_at"] = utc_timestamp()
         job["updated_ts"] = time.time()
@@ -1307,26 +1774,20 @@ def start_background_job(kind: str, payload: dict[str, Any]):
     cleanup_jobs()
     now = time.time()
     signature = canonical_job_signature(kind, payload)
-    allow_completed_reuse = parse_bool(payload.get("use_cache"), default=True)
 
     if signature:
         with job_lock:
             existing_id = job_signature_index.get(signature)
             existing_job = jobs.get(existing_id or "")
-            if existing_job and (
-                existing_job.get("status") in {"queued", "running"}
-                or (allow_completed_reuse and existing_job.get("status") == "succeeded")
-            ):
-                if existing_job.get("status") in {"queued", "running"}:
-                    append_job_progress_event(
-                        existing_job,
-                        {"stage": "deduped", "message": "已复用同条件查询任务，等待同一份结果。"},
-                    )
-                    existing_job["updated_at"] = utc_timestamp()
-                    existing_job["updated_ts"] = time.time()
+            if existing_job and existing_job.get("status") in {"queued", "running"}:
+                append_job_progress_event(
+                    existing_job,
+                    {"stage": "deduped", "message": "已复用同条件查询任务，等待同一份结果。"},
+                )
+                existing_job["updated_at"] = utc_timestamp()
+                existing_job["updated_ts"] = time.time()
                 reused_job = copy.deepcopy(existing_job)
-                status_code = 200 if reused_job.get("status") == "succeeded" else 202
-                return jsonify(job_start_payload(reused_job, reused=True)), status_code
+                return jsonify(job_start_payload(reused_job, reused=True)), 202
 
     cached_result, cached_status_code = cached_result_for_job_start(kind, payload)
     if cached_status_code == 200 and cached_result is not None:
@@ -1340,8 +1801,13 @@ def start_background_job(kind: str, payload: dict[str, Any]):
         return jsonify(stale_result or {"error": "旧缓存读取失败"}), stale_status_code
 
     job_id = uuid.uuid4().hex
+    stale_message = (
+        "已先显示旧补充缓存，正在后台刷新行政区酒店。"
+        if kind == "coverage"
+        else "已先显示旧缓存，正在后台刷新最新价格。"
+    )
     initial_progress = (
-        {"stage": "stale_cache_preview", "message": "已先显示旧缓存，正在后台刷新最新价格。", "percent": 8}
+        {"stage": "stale_cache_preview", "message": stale_message, "percent": 8}
         if stale_result is not None
         else {"stage": "queued", "message": "查询任务已创建，正在等待执行。"}
     )
@@ -1366,9 +1832,17 @@ def start_background_job(kind: str, payload: dict[str, Any]):
         jobs[job_id] = job
         if signature:
             job_signature_index[signature] = job_id
+    response_job = copy.deepcopy(job)
+    run_payload = copy.deepcopy(payload)
+    if kind == "coverage" and stale_result is not None:
+        stale_cache = ((stale_result.get("coverage_supplement") or {}).get("cache") or {})
+        stale_choices = stale_result.get("choices")
+        if stale_cache.get("partial") and isinstance(stale_choices, list) and stale_choices:
+            run_payload["choices"] = copy.deepcopy(stale_choices)
+
     executor = refresh_executor if kind in {"areas", "hotel_names"} else job_executor
-    executor.submit(run_job, job_id, kind, copy.deepcopy(payload))
-    return jsonify(job_start_payload(job)), 202
+    executor.submit(run_job, job_id, kind, run_payload)
+    return jsonify(job_start_payload(response_job)), 202
 
 
 @app.errorhandler(HTTPException)
@@ -1408,6 +1882,14 @@ def nearby_cities():
             "nearby": {city: list(values) for city, values in NEARBY_CITY_GROUPS.items()},
         }
     )
+
+
+@app.get("/api/daily-recommendation")
+def daily_recommendation():
+    try:
+        return jsonify(daily_recommendation_payload())
+    except Exception as exc:  # pragma: no cover
+        return jsonify({"error": f"每日推荐读取失败: {exc}"}), 500
 
 
 @app.post("/api/resolve-location")
@@ -1470,7 +1952,8 @@ def coverage_start():
 def get_job(job_id: str):
     cleanup_jobs()
     with job_lock:
-        job = copy.deepcopy(jobs.get(job_id))
+        stored_job = jobs.get(job_id)
+        job = copy.deepcopy(stored_job)
     if not job:
         return jsonify({"error": "查询任务不存在或已过期"}), 404
     status_code = 200 if job.get("status") != "failed" else int(job.get("status_code") or 500)

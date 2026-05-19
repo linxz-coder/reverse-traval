@@ -7,4 +7,7 @@ exports/
 .venv/
 venv/
 env/
-
+.env
+.env.*
+!.env.example
+!.env.shared-cache.example

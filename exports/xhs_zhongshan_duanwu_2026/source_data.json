@@ -1,0 +1,2476 @@
+{
+  "city": "中山",
+  "generated_at": "2026-05-12T12:24:22",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "7085135",
+        "name": "城市便捷酒店（中山大信新都汇小榄高铁站店）",
+        "area": "中山小榄片区",
+        "price": 105,
+        "diff": 0,
+        "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+        "source_cached_at": "2026-05-08T16:17:36",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1511636",
+        "name": "拾乐酒店（中山站店）",
+        "area": "中山待确认片区",
+        "price": 136,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "13326756",
+        "name": "M.Z 墨子智能酒店(中山古镇国际灯饰批发中心店)",
+        "area": "中山古镇片区",
+        "price": 139,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "130072185",
+        "name": "城市便捷酒店（中山小榄镇北秀路店）",
+        "area": "中山小榄片区",
+        "price": 157,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "98591730",
+        "name": "希亚途花园酒店（中山古镇国际灯饰批发中心店）",
+        "area": "中山古镇片区",
+        "price": 159,
+        "diff": -2,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1481478",
+        "name": "中山华悦国际酒店（火炬開发区）",
+        "area": "中山火炬开发区片区",
+        "price": 180,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山火炬开发区",
+        "note": "中山火炬开发区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1462355",
+        "name": "中山颐和君利酒店（石岐万象汇店）",
+        "area": "中山石岐片区",
+        "price": 188,
+        "diff": -7,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "2367269",
+        "name": "中山万维酒店（灯都古镇会议展览中心古镇站店）",
+        "area": "中山古镇片区",
+        "price": 188,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "1431031",
+        "name": "东方凤悦凤凰酒店（中山灯都古镇华丰汇店）",
+        "area": "中山古镇片区",
+        "price": 192,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "73652308",
+        "name": "名悦酒店（中山市中医院店）",
+        "area": "中山西区片区",
+        "price": 193,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山西区",
+        "note": "中山西区，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "7085135",
+        "name": "城市便捷酒店（中山大信新都汇小榄高铁站店）",
+        "area": "中山小榄片区",
+        "price": 105,
+        "diff": 0,
+        "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+        "source_cached_at": "2026-05-08T16:17:36",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1511636",
+        "name": "拾乐酒店（中山站店）",
+        "area": "中山待确认片区",
+        "price": 136,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "13326756",
+        "name": "M.Z 墨子智能酒店(中山古镇国际灯饰批发中心店)",
+        "area": "中山古镇片区",
+        "price": 139,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "130072185",
+        "name": "城市便捷酒店（中山小榄镇北秀路店）",
+        "area": "中山小榄片区",
+        "price": 157,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "98591730",
+        "name": "希亚途花园酒店（中山古镇国际灯饰批发中心店）",
+        "area": "中山古镇片区",
+        "price": 159,
+        "diff": -2,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1481478",
+        "name": "中山华悦国际酒店（火炬開发区）",
+        "area": "中山火炬开发区片区",
+        "price": 180,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山火炬开发区",
+        "note": "中山火炬开发区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1462355",
+        "name": "中山颐和君利酒店（石岐万象汇店）",
+        "area": "中山石岐片区",
+        "price": 188,
+        "diff": -7,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "2367269",
+        "name": "中山万维酒店（灯都古镇会议展览中心古镇站店）",
+        "area": "中山古镇片区",
+        "price": 188,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "1431031",
+        "name": "东方凤悦凤凰酒店（中山灯都古镇华丰汇店）",
+        "area": "中山古镇片区",
+        "price": 192,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "73652308",
+        "name": "名悦酒店（中山市中医院店）",
+        "area": "中山西区片区",
+        "price": 193,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山西区",
+        "note": "中山西区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2302092",
+        "name": "富业假日酒店(孫文西路步行街兴中广场店)",
+        "area": "中山石岐片区",
+        "price": 195,
+        "diff": -11,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "71584220",
+        "name": "科生酒店（中山三角店）",
+        "area": "中山待确认片区",
+        "price": 197,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "131869171",
+        "name": "愉舍酒店(中山灯都古镇店)",
+        "area": "中山古镇片区",
+        "price": 201,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1619863",
+        "name": "路易酒店(中山东区利和广场店)",
+        "area": "中山东区片区",
+        "price": 201,
+        "diff": 0,
+        "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+        "source_cached_at": "2026-05-08T16:17:36",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2111779",
+        "name": "中山真善美大酒店",
+        "area": "中山待确认片区",
+        "price": 209,
+        "diff": -8,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1522804",
+        "name": "维也纳国际酒店(中山石岐大信店)",
+        "area": "中山石岐片区",
+        "price": 209,
+        "diff": -8,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "855247",
+        "name": "中山大东裕酒店",
+        "area": "中山东区片区",
+        "price": 213,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "18025499",
+        "name": "如家商旅酒店（中山利和广场体育路店）",
+        "area": "中山东区片区",
+        "price": 213,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "18041543",
+        "name": "中山京德森商旅酒店（利和广场店）",
+        "area": "中山东区片区",
+        "price": 222,
+        "diff": -43,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133560029",
+        "name": "维也纳酒店(中山利和广场市政府店)",
+        "area": "中山东区片区",
+        "price": 223,
+        "diff": -13,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "437284",
+        "name": "丽呈朗譽酒店（中山市阜沙东阜公路店）",
+        "area": "中山待确认片区",
+        "price": 223,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "115585532",
+        "name": "中山京城国际酒店",
+        "area": "中山待确认片区",
+        "price": 231,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "129928647",
+        "name": "铂顿元世纪酒店（中山大涌红博城店）",
+        "area": "中山大涌片区",
+        "price": 253,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山大涌",
+        "note": "中山大涌，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1745258",
+        "name": "中山顺景花园酒店",
+        "area": "中山待确认片区",
+        "price": 254,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2304295",
+        "name": "俊诚海逸酒店（中山北站店）",
+        "area": "中山港口片区",
+        "price": 258,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山港口",
+        "note": "中山港口，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430236",
+        "name": "中山大信酒店（小榄店）",
+        "area": "中山小榄片区",
+        "price": 262,
+        "diff": -133,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "122898470",
+        "name": "陌上輕居酒店（中山站火炬軟件园店）",
+        "area": "中山火炬开发区片区",
+        "price": 269,
+        "diff": -5,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山火炬开发区",
+        "note": "中山火炬开发区，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "442286",
+        "name": "中山金钻酒店",
+        "area": "中山待确认片区",
+        "price": 270,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "70488489",
+        "name": "中山青之韵酒店（火炬开发区店）",
+        "area": "中山火炬开发区片区",
+        "price": 281,
+        "diff": -31,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山火炬开发区",
+        "note": "中山火炬开发区，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "122982426",
+        "name": "丽呈酒店（中山葯科大学店）",
+        "area": "中山待确认片区",
+        "price": 292,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "6321809",
+        "name": "中山古镇华裕置地酒店",
+        "area": "中山古镇片区",
+        "price": 302,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "124672284",
+        "name": "廷泊酒店（中山富逸城中山站店）",
+        "area": "中山东区片区",
+        "price": 304,
+        "diff": -16,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "7458358",
+        "name": "中山市良安酒店",
+        "area": "中山待确认片区",
+        "price": 305,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "66840234",
+        "name": "中山北站V-PARK广场亚朵酒店",
+        "area": "中山待确认片区",
+        "price": 319,
+        "diff": -15,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133208032",
+        "name": "浩枫温德姆酒店（中山古镇国贸店）",
+        "area": "中山古镇片区",
+        "price": 329,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6205361",
+        "name": "中山利和希尔顿花园酒店",
+        "area": "中山东区片区",
+        "price": 330,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "123839877",
+        "name": "全季酒店（中山古镇国贸店）",
+        "area": "中山古镇片区",
+        "price": 330,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "125782786",
+        "name": "珠海北站宝龙城亞朵酒店",
+        "area": "中山待确认片区",
+        "price": 335,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "131833219",
+        "name": "全季酒店（中山小欖东昇店）",
+        "area": "中山小榄片区",
+        "price": 345,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "95121020",
+        "name": "中山翠亨新区希尔顿欢朋酒店",
+        "area": "中山南朗翠亨片区",
+        "price": 356,
+        "diff": 0,
+        "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+        "source_cached_at": "2026-05-08T16:17:36",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山南朗翠亨",
+        "note": "中山南朗翠亨，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133475450",
+        "name": "中山石岐步行街金城饭店",
+        "area": "中山石岐片区",
+        "price": 358,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "19478267",
+        "name": "中山南朗希尔顿欢朋酒店",
+        "area": "中山南朗翠亨片区",
+        "price": 378,
+        "diff": 0,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山南朗翠亨",
+        "note": "中山南朗翠亨，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "99817336",
+        "name": "珠海香山邑酒店",
+        "area": "中山待确认片区",
+        "price": 392,
+        "diff": 0,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "23673877",
+        "name": "中山保利艾美酒店",
+        "area": "中山石岐片区",
+        "price": 589,
+        "diff": -34,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "101272915",
+        "name": "GOGOING·Zcamp星艦营地",
+        "area": "中山待确认片区",
+        "price": 619,
+        "diff": -53,
+        "source_file": "2bc4da98e10ab86430161b345abe320f9e1d5b2924edc099e033ecff274f924a.json",
+        "source_cached_at": "2026-05-06T14:47:47",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "46029169",
+        "name": "中山利和威斯汀酒店",
+        "area": "中山古镇片区",
+        "price": 619,
+        "diff": -9,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123786644",
+        "name": "逸鄉居度假山庄（中山南朗站店）",
+        "area": "中山南朗翠亨片区",
+        "price": 624,
+        "diff": 0,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山南朗翠亨",
+        "note": "中山南朗翠亨，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430279",
+        "name": "中山喜来登酒店",
+        "area": "中山待确认片区",
+        "price": 629,
+        "diff": -47,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "430236",
+        "name": "中山大信酒店（小榄店）",
+        "area": "中山小榄片区",
+        "price": 262,
+        "diff": -133,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "66840234",
+        "name": "中山北站V-PARK广场亚朵酒店",
+        "area": "中山待确认片区",
+        "price": 319,
+        "diff": -15,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "46029169",
+        "name": "中山利和威斯汀酒店",
+        "area": "中山古镇片区",
+        "price": 619,
+        "diff": -9,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123786644",
+        "name": "逸鄉居度假山庄（中山南朗站店）",
+        "area": "中山南朗翠亨片区",
+        "price": 624,
+        "diff": 0,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山南朗翠亨",
+        "note": "中山南朗翠亨，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430279",
+        "name": "中山喜来登酒店",
+        "area": "中山待确认片区",
+        "price": 629,
+        "diff": -47,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "430236",
+        "name": "中山大信酒店（小榄店）",
+        "area": "中山小榄片区",
+        "price": 262,
+        "diff": -133,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "66840234",
+        "name": "中山北站V-PARK广场亚朵酒店",
+        "area": "中山待确认片区",
+        "price": 319,
+        "diff": -15,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "46029169",
+        "name": "中山利和威斯汀酒店",
+        "area": "中山古镇片区",
+        "price": 619,
+        "diff": -9,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山古镇",
+        "note": "中山古镇，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "123786644",
+        "name": "逸鄉居度假山庄（中山南朗站店）",
+        "area": "中山南朗翠亨片区",
+        "price": 624,
+        "diff": 0,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山南朗翠亨",
+        "note": "中山南朗翠亨，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "430279",
+        "name": "中山喜来登酒店",
+        "area": "中山待确认片区",
+        "price": 629,
+        "diff": -47,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "430236",
+        "name": "中山大信酒店（小榄店）",
+        "area": "中山小榄片区",
+        "price": 262,
+        "diff": -133,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山小榄",
+        "note": "中山小榄，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "101272915",
+        "name": "GOGOING·Zcamp星艦营地",
+        "area": "中山待确认片区",
+        "price": 619,
+        "diff": -53,
+        "source_file": "2bc4da98e10ab86430161b345abe320f9e1d5b2924edc099e033ecff274f924a.json",
+        "source_cached_at": "2026-05-06T14:47:47",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "430279",
+        "name": "中山喜来登酒店",
+        "area": "中山待确认片区",
+        "price": 629,
+        "diff": -47,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "18041543",
+        "name": "中山京德森商旅酒店（利和广场店）",
+        "area": "中山东区片区",
+        "price": 222,
+        "diff": -43,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "23673877",
+        "name": "中山保利艾美酒店",
+        "area": "中山石岐片区",
+        "price": 589,
+        "diff": -34,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "70488489",
+        "name": "中山青之韵酒店（火炬开发区店）",
+        "area": "中山火炬开发区片区",
+        "price": 281,
+        "diff": -31,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山火炬开发区",
+        "note": "中山火炬开发区，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124672284",
+        "name": "廷泊酒店（中山富逸城中山站店）",
+        "area": "中山东区片区",
+        "price": 304,
+        "diff": -16,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "66840234",
+        "name": "中山北站V-PARK广场亚朵酒店",
+        "area": "中山待确认片区",
+        "price": 319,
+        "diff": -15,
+        "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "source_cached_at": "2026-05-11T15:01:33",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "中山",
+        "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133560029",
+        "name": "维也纳酒店(中山利和广场市政府店)",
+        "area": "中山东区片区",
+        "price": 223,
+        "diff": -13,
+        "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "source_cached_at": "2026-05-09T19:26:26",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山东区",
+        "note": "中山东区，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "2302092",
+        "name": "富业假日酒店(孫文西路步行街兴中广场店)",
+        "area": "中山石岐片区",
+        "price": 195,
+        "diff": -11,
+        "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "source_cached_at": "2026-05-06T14:36:03",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "中山石岐",
+        "note": "中山石岐，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "7085135",
+      "name": "城市便捷酒店（中山大信新都汇小榄高铁站店）",
+      "area": "中山小榄片区",
+      "price": 105,
+      "diff": 0,
+      "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+      "source_cached_at": "2026-05-08T16:17:36",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山小榄",
+      "note": "中山小榄，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "1511636",
+      "name": "拾乐酒店（中山站店）",
+      "area": "中山待确认片区",
+      "price": 136,
+      "diff": 0,
+      "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+      "source_cached_at": "2026-05-06T14:36:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山",
+      "note": "中山，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "13326756",
+      "name": "M.Z 墨子智能酒店(中山古镇国际灯饰批发中心店)",
+      "area": "中山古镇片区",
+      "price": 139,
+      "diff": 0,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山古镇",
+      "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "130072185",
+      "name": "城市便捷酒店（中山小榄镇北秀路店）",
+      "area": "中山小榄片区",
+      "price": 157,
+      "diff": 0,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山小榄",
+      "note": "中山小榄，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "98591730",
+      "name": "希亚途花园酒店（中山古镇国际灯饰批发中心店）",
+      "area": "中山古镇片区",
+      "price": 159,
+      "diff": -2,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山古镇",
+      "note": "中山古镇，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "1481478",
+      "name": "中山华悦国际酒店（火炬開发区）",
+      "area": "中山火炬开发区片区",
+      "price": 180,
+      "diff": 0,
+      "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+      "source_cached_at": "2026-05-06T14:36:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山火炬开发区",
+      "note": "中山火炬开发区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "1462355",
+      "name": "中山颐和君利酒店（石岐万象汇店）",
+      "area": "中山石岐片区",
+      "price": 188,
+      "diff": -7,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "中山石岐",
+      "note": "中山石岐，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "2367269",
+      "name": "中山万维酒店（灯都古镇会议展览中心古镇站店）",
+      "area": "中山古镇片区",
+      "price": 188,
+      "diff": 0,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "中山古镇",
+      "note": "中山古镇，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "1431031",
+      "name": "东方凤悦凤凰酒店（中山灯都古镇华丰汇店）",
+      "area": "中山古镇片区",
+      "price": 192,
+      "diff": 0,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山古镇",
+      "note": "中山古镇，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "73652308",
+      "name": "名悦酒店（中山市中医院店）",
+      "area": "中山西区片区",
+      "price": 193,
+      "diff": 0,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山西区",
+      "note": "中山西区，端午价格保持平稳，适合周边短途度假。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "430236",
+      "name": "中山大信酒店（小榄店）",
+      "area": "中山小榄片区",
+      "price": 262,
+      "diff": -133,
+      "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+      "source_cached_at": "2026-05-11T15:01:33",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "中山小榄",
+      "note": "中山小榄，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "101272915",
+      "name": "GOGOING·Zcamp星艦营地",
+      "area": "中山待确认片区",
+      "price": 619,
+      "diff": -53,
+      "source_file": "2bc4da98e10ab86430161b345abe320f9e1d5b2924edc099e033ecff274f924a.json",
+      "source_cached_at": "2026-05-06T14:47:47",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "中山",
+      "note": "中山，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "430279",
+      "name": "中山喜来登酒店",
+      "area": "中山待确认片区",
+      "price": 629,
+      "diff": -47,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "中山",
+      "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "18041543",
+      "name": "中山京德森商旅酒店（利和广场店）",
+      "area": "中山东区片区",
+      "price": 222,
+      "diff": -43,
+      "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+      "source_cached_at": "2026-05-06T14:36:03",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山东区",
+      "note": "中山东区，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "23673877",
+      "name": "中山保利艾美酒店",
+      "area": "中山石岐片区",
+      "price": 589,
+      "diff": -34,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "中山石岐",
+      "note": "中山石岐，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "70488489",
+      "name": "中山青之韵酒店（火炬开发区店）",
+      "area": "中山火炬开发区片区",
+      "price": 281,
+      "diff": -31,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山火炬开发区",
+      "note": "中山火炬开发区，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "124672284",
+      "name": "廷泊酒店（中山富逸城中山站店）",
+      "area": "中山东区片区",
+      "price": 304,
+      "diff": -16,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山东区",
+      "note": "中山东区，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "66840234",
+      "name": "中山北站V-PARK广场亚朵酒店",
+      "area": "中山待确认片区",
+      "price": 319,
+      "diff": -15,
+      "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+      "source_cached_at": "2026-05-11T15:01:33",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "中山",
+      "note": "中山，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "133560029",
+      "name": "维也纳酒店(中山利和广场市政府店)",
+      "area": "中山东区片区",
+      "price": 223,
+      "diff": -13,
+      "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+      "source_cached_at": "2026-05-09T19:26:26",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山东区",
+      "note": "中山东区，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "2302092",
+      "name": "富业假日酒店(孫文西路步行街兴中广场店)",
+      "area": "中山石岐片区",
+      "price": 195,
+      "diff": -11,
+      "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+      "source_cached_at": "2026-05-06T14:36:03",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "中山石岐",
+      "note": "中山石岐，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "中山古镇片区",
+      "hotel_count": 9,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 7,
+      "average_price": 273,
+      "average_diff": -1,
+      "price_range": [
+        139,
+        619
+      ],
+      "hotels": [
+        {
+          "hotel_id": "46029169",
+          "name": "中山利和威斯汀酒店",
+          "area": "中山古镇片区",
+          "price": 619,
+          "diff": -9,
+          "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+          "source_cached_at": "2026-05-11T15:01:33"
+        },
+        {
+          "hotel_id": "98591730",
+          "name": "希亚途花园酒店（中山古镇国际灯饰批发中心店）",
+          "area": "中山古镇片区",
+          "price": 159,
+          "diff": -2,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "13326756",
+          "name": "M.Z 墨子智能酒店(中山古镇国际灯饰批发中心店)",
+          "area": "中山古镇片区",
+          "price": 139,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "2367269",
+          "name": "中山万维酒店（灯都古镇会议展览中心古镇站店）",
+          "area": "中山古镇片区",
+          "price": 188,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "1431031",
+          "name": "东方凤悦凤凰酒店（中山灯都古镇华丰汇店）",
+          "area": "中山古镇片区",
+          "price": 192,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "131869171",
+          "name": "愉舍酒店(中山灯都古镇店)",
+          "area": "中山古镇片区",
+          "price": 201,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "6321809",
+          "name": "中山古镇华裕置地酒店",
+          "area": "中山古镇片区",
+          "price": 302,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "133208032",
+          "name": "浩枫温德姆酒店（中山古镇国贸店）",
+          "area": "中山古镇片区",
+          "price": 329,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "123839877",
+          "name": "全季酒店（中山古镇国贸店）",
+          "area": "中山古镇片区",
+          "price": 330,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        }
+      ],
+      "representative_hotels": [
+        "中山利和威斯汀酒店",
+        "希亚途花园酒店（中山古镇国际灯饰批发中心店）",
+        "M.Z 墨子智能酒店(中山古镇国际灯饰批发中心店)"
+      ],
+      "rank": 1,
+      "summary": "9家高级酒店，2家降价，7家持平"
+    },
+    {
+      "area": "中山东区片区",
+      "hotel_count": 7,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 4,
+      "average_price": 244,
+      "average_diff": -10,
+      "price_range": [
+        201,
+        330
+      ],
+      "hotels": [
+        {
+          "hotel_id": "18041543",
+          "name": "中山京德森商旅酒店（利和广场店）",
+          "area": "中山东区片区",
+          "price": 222,
+          "diff": -43,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "124672284",
+          "name": "廷泊酒店（中山富逸城中山站店）",
+          "area": "中山东区片区",
+          "price": 304,
+          "diff": -16,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "133560029",
+          "name": "维也纳酒店(中山利和广场市政府店)",
+          "area": "中山东区片区",
+          "price": 223,
+          "diff": -13,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "1619863",
+          "name": "路易酒店(中山东区利和广场店)",
+          "area": "中山东区片区",
+          "price": 201,
+          "diff": 0,
+          "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+          "source_cached_at": "2026-05-08T16:17:36"
+        },
+        {
+          "hotel_id": "855247",
+          "name": "中山大东裕酒店",
+          "area": "中山东区片区",
+          "price": 213,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "18025499",
+          "name": "如家商旅酒店（中山利和广场体育路店）",
+          "area": "中山东区片区",
+          "price": 213,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "6205361",
+          "name": "中山利和希尔顿花园酒店",
+          "area": "中山东区片区",
+          "price": 330,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        }
+      ],
+      "representative_hotels": [
+        "中山京德森商旅酒店（利和广场店）",
+        "廷泊酒店（中山富逸城中山站店）",
+        "维也纳酒店(中山利和广场市政府店)"
+      ],
+      "rank": 2,
+      "summary": "7家高级酒店，3家降价，4家持平"
+    },
+    {
+      "area": "中山石岐片区",
+      "hotel_count": 5,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 1,
+      "average_price": 308,
+      "average_diff": -12,
+      "price_range": [
+        188,
+        589
+      ],
+      "hotels": [
+        {
+          "hotel_id": "23673877",
+          "name": "中山保利艾美酒店",
+          "area": "中山石岐片区",
+          "price": 589,
+          "diff": -34,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "2302092",
+          "name": "富业假日酒店(孫文西路步行街兴中广场店)",
+          "area": "中山石岐片区",
+          "price": 195,
+          "diff": -11,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "1522804",
+          "name": "维也纳国际酒店(中山石岐大信店)",
+          "area": "中山石岐片区",
+          "price": 209,
+          "diff": -8,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "1462355",
+          "name": "中山颐和君利酒店（石岐万象汇店）",
+          "area": "中山石岐片区",
+          "price": 188,
+          "diff": -7,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "133475450",
+          "name": "中山石岐步行街金城饭店",
+          "area": "中山石岐片区",
+          "price": 358,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        }
+      ],
+      "representative_hotels": [
+        "中山保利艾美酒店",
+        "富业假日酒店(孫文西路步行街兴中广场店)",
+        "维也纳国际酒店(中山石岐大信店)"
+      ],
+      "rank": 3,
+      "summary": "5家高级酒店，4家降价，1家持平"
+    },
+    {
+      "area": "中山小榄片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 3,
+      "average_price": 217,
+      "average_diff": -33,
+      "price_range": [
+        105,
+        345
+      ],
+      "hotels": [
+        {
+          "hotel_id": "430236",
+          "name": "中山大信酒店（小榄店）",
+          "area": "中山小榄片区",
+          "price": 262,
+          "diff": -133,
+          "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+          "source_cached_at": "2026-05-11T15:01:33"
+        },
+        {
+          "hotel_id": "7085135",
+          "name": "城市便捷酒店（中山大信新都汇小榄高铁站店）",
+          "area": "中山小榄片区",
+          "price": 105,
+          "diff": 0,
+          "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+          "source_cached_at": "2026-05-08T16:17:36"
+        },
+        {
+          "hotel_id": "130072185",
+          "name": "城市便捷酒店（中山小榄镇北秀路店）",
+          "area": "中山小榄片区",
+          "price": 157,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "131833219",
+          "name": "全季酒店（中山小欖东昇店）",
+          "area": "中山小榄片区",
+          "price": 345,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        }
+      ],
+      "representative_hotels": [
+        "中山大信酒店（小榄店）",
+        "城市便捷酒店（中山大信新都汇小榄高铁站店）",
+        "城市便捷酒店（中山小榄镇北秀路店）"
+      ],
+      "rank": 4,
+      "summary": "4家高级酒店，1家降价，3家持平"
+    },
+    {
+      "area": "中山火炬开发区片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 1,
+      "average_price": 243,
+      "average_diff": -12,
+      "price_range": [
+        180,
+        281
+      ],
+      "hotels": [
+        {
+          "hotel_id": "70488489",
+          "name": "中山青之韵酒店（火炬开发区店）",
+          "area": "中山火炬开发区片区",
+          "price": 281,
+          "diff": -31,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "122898470",
+          "name": "陌上輕居酒店（中山站火炬軟件园店）",
+          "area": "中山火炬开发区片区",
+          "price": 269,
+          "diff": -5,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "1481478",
+          "name": "中山华悦国际酒店（火炬開发区）",
+          "area": "中山火炬开发区片区",
+          "price": 180,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        }
+      ],
+      "representative_hotels": [
+        "中山青之韵酒店（火炬开发区店）",
+        "陌上輕居酒店（中山站火炬軟件园店）",
+        "中山华悦国际酒店（火炬開发区）"
+      ],
+      "rank": 5,
+      "summary": "3家高级酒店，2家降价，1家持平"
+    },
+    {
+      "area": "中山南朗翠亨片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 3,
+      "average_price": 453,
+      "average_diff": 0,
+      "price_range": [
+        356,
+        624
+      ],
+      "hotels": [
+        {
+          "hotel_id": "95121020",
+          "name": "中山翠亨新区希尔顿欢朋酒店",
+          "area": "中山南朗翠亨片区",
+          "price": 356,
+          "diff": 0,
+          "source_file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+          "source_cached_at": "2026-05-08T16:17:36"
+        },
+        {
+          "hotel_id": "19478267",
+          "name": "中山南朗希尔顿欢朋酒店",
+          "area": "中山南朗翠亨片区",
+          "price": 378,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "123786644",
+          "name": "逸鄉居度假山庄（中山南朗站店）",
+          "area": "中山南朗翠亨片区",
+          "price": 624,
+          "diff": 0,
+          "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+          "source_cached_at": "2026-05-11T15:01:33"
+        }
+      ],
+      "representative_hotels": [
+        "中山翠亨新区希尔顿欢朋酒店",
+        "中山南朗希尔顿欢朋酒店",
+        "逸鄉居度假山庄（中山南朗站店）"
+      ],
+      "rank": 6,
+      "summary": "3家高级酒店，0家降价，3家持平"
+    },
+    {
+      "area": "中山西区片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 193,
+      "average_diff": 0,
+      "price_range": [
+        193,
+        193
+      ],
+      "hotels": [
+        {
+          "hotel_id": "73652308",
+          "name": "名悦酒店（中山市中医院店）",
+          "area": "中山西区片区",
+          "price": 193,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        }
+      ],
+      "representative_hotels": [
+        "名悦酒店（中山市中医院店）"
+      ],
+      "rank": 7,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "中山大涌片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 253,
+      "average_diff": 0,
+      "price_range": [
+        253,
+        253
+      ],
+      "hotels": [
+        {
+          "hotel_id": "129928647",
+          "name": "铂顿元世纪酒店（中山大涌红博城店）",
+          "area": "中山大涌片区",
+          "price": 253,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        }
+      ],
+      "representative_hotels": [
+        "铂顿元世纪酒店（中山大涌红博城店）"
+      ],
+      "rank": 8,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "中山港口片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 258,
+      "average_diff": 0,
+      "price_range": [
+        258,
+        258
+      ],
+      "hotels": [
+        {
+          "hotel_id": "2304295",
+          "name": "俊诚海逸酒店（中山北站店）",
+          "area": "中山港口片区",
+          "price": 258,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        }
+      ],
+      "representative_hotels": [
+        "俊诚海逸酒店（中山北站店）"
+      ],
+      "rank": 9,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "中山待确认片区",
+      "hotel_count": 14,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 10,
+      "average_price": 315,
+      "average_diff": -9,
+      "price_range": [
+        136,
+        629
+      ],
+      "hotels": [
+        {
+          "hotel_id": "101272915",
+          "name": "GOGOING·Zcamp星艦营地",
+          "area": "中山待确认片区",
+          "price": 619,
+          "diff": -53,
+          "source_file": "2bc4da98e10ab86430161b345abe320f9e1d5b2924edc099e033ecff274f924a.json",
+          "source_cached_at": "2026-05-06T14:47:47"
+        },
+        {
+          "hotel_id": "430279",
+          "name": "中山喜来登酒店",
+          "area": "中山待确认片区",
+          "price": 629,
+          "diff": -47,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "66840234",
+          "name": "中山北站V-PARK广场亚朵酒店",
+          "area": "中山待确认片区",
+          "price": 319,
+          "diff": -15,
+          "source_file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+          "source_cached_at": "2026-05-11T15:01:33"
+        },
+        {
+          "hotel_id": "2111779",
+          "name": "中山真善美大酒店",
+          "area": "中山待确认片区",
+          "price": 209,
+          "diff": -8,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "1511636",
+          "name": "拾乐酒店（中山站店）",
+          "area": "中山待确认片区",
+          "price": 136,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "71584220",
+          "name": "科生酒店（中山三角店）",
+          "area": "中山待确认片区",
+          "price": 197,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "437284",
+          "name": "丽呈朗譽酒店（中山市阜沙东阜公路店）",
+          "area": "中山待确认片区",
+          "price": 223,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "115585532",
+          "name": "中山京城国际酒店",
+          "area": "中山待确认片区",
+          "price": 231,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "1745258",
+          "name": "中山顺景花园酒店",
+          "area": "中山待确认片区",
+          "price": 254,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "442286",
+          "name": "中山金钻酒店",
+          "area": "中山待确认片区",
+          "price": 270,
+          "diff": 0,
+          "source_file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+          "source_cached_at": "2026-05-09T19:26:26"
+        },
+        {
+          "hotel_id": "122982426",
+          "name": "丽呈酒店（中山葯科大学店）",
+          "area": "中山待确认片区",
+          "price": 292,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "7458358",
+          "name": "中山市良安酒店",
+          "area": "中山待确认片区",
+          "price": 305,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "125782786",
+          "name": "珠海北站宝龙城亞朵酒店",
+          "area": "中山待确认片区",
+          "price": 335,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        },
+        {
+          "hotel_id": "99817336",
+          "name": "珠海香山邑酒店",
+          "area": "中山待确认片区",
+          "price": 392,
+          "diff": 0,
+          "source_file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+          "source_cached_at": "2026-05-06T14:36:03"
+        }
+      ],
+      "representative_hotels": [
+        "GOGOING·Zcamp星艦营地",
+        "中山喜来登酒店",
+        "中山北站V-PARK广场亚朵酒店"
+      ],
+      "rank": 10,
+      "summary": "14家高级酒店，4家降价，10家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 9,
+    "candidate_count": 442,
+    "unique_hotel_count": 114,
+    "included_hotel_count": 48,
+    "matching_files": [
+      {
+        "file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "mtime": 1778482893.459528,
+        "choices": 7,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "mtime": 1778325986.099639,
+        "choices": 86,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+        "mtime": 1778228256.230433,
+        "choices": 80,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "914d5e955df57aff7015cee7e29abb17eb70c7e85ce4ca0785738d88a3342905.json",
+        "mtime": 1778211134.4628963,
+        "choices": 17,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "3c6fad6a214e63df979e3e77d15afb658efe370229ece46d1b896dacfa70ae5d.json",
+        "mtime": 1778126104.084838,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "2bc4da98e10ab86430161b345abe320f9e1d5b2924edc099e033ecff274f924a.json",
+        "mtime": 1778050067.6648474,
+        "choices": 8,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "mtime": 1778049363.6456525,
+        "choices": 85,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "74f8789a7dca3f390bca7c20aaf046406634b8ec47b586ae5e857d8fe26f7e5c.json",
+        "mtime": 1778049098.9904695,
+        "choices": 84,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "68c86139add78ce4ea49d8d51d9b4c09e6fe06266a3cc09db9f79906dc07b601.json",
+        "mtime": 1778047861.1093762,
+        "choices": 84,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 9,
+    "candidate_count": 442,
+    "unique_hotel_count": 114,
+    "included_hotel_count": 48,
+    "matching_files": [
+      {
+        "file": "de9e055464eb95049d2fdddad25ab99662f397bcf5d0a7ad0bc87e9485338fb6.json",
+        "mtime": 1778482893.459528,
+        "choices": 7,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "9fa37618c54b235f3c43e6ab3ad9fa9eb07fe8ed8fdd63784f326f1aa88749ec.json",
+        "mtime": 1778325986.099639,
+        "choices": 86,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "1671e2614bc8ffba5f7377367d9edfc214a6f137ac2ccd6c70f1e945ab79b192.json",
+        "mtime": 1778228256.230433,
+        "choices": 80,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "914d5e955df57aff7015cee7e29abb17eb70c7e85ce4ca0785738d88a3342905.json",
+        "mtime": 1778211134.4628963,
+        "choices": 17,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "3c6fad6a214e63df979e3e77d15afb658efe370229ece46d1b896dacfa70ae5d.json",
+        "mtime": 1778126104.084838,
+        "choices": 6,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "2bc4da98e10ab86430161b345abe320f9e1d5b2924edc099e033ecff274f924a.json",
+        "mtime": 1778050067.6648474,
+        "choices": 8,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "86e7d2d2fe693a3dd5ca83f63396168573d8e0d3634463ef767806c6f9620fb2.json",
+        "mtime": 1778049363.6456525,
+        "choices": 85,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "74f8789a7dca3f390bca7c20aaf046406634b8ec47b586ae5e857d8fe26f7e5c.json",
+        "mtime": 1778049098.9904695,
+        "choices": 84,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "68c86139add78ce4ea49d8d51d9b4c09e6fe06266a3cc09db9f79906dc07b601.json",
+        "mtime": 1778047861.1093762,
+        "choices": 84,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "中山",
+    "text": "中山可重点看孙中山故里、岐江公园、中山詹园、孙文西路和紫马岭公园；人文街区和亲子短途可按城区组合。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/中山",
+    "updated_at": ""
+  }
+}

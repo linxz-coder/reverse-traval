@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "items": {
+    "深圳": {
+      "city": "深圳",
+      "text": "深圳可重点看世界之窗、锦绣中华民俗村、欢乐谷、东部华侨城、大鹏所城和中英街；滨海度假、主题乐园和历史街区适合按片区组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/深圳市",
+      "updated_at": "2026-05-11T16:30:00"
+    },
+    "广州": {
+      "city": "广州",
+      "text": "广州主要看长隆、白云山、广州塔、北京路、中山纪念堂、南越王博物馆、越秀公园、陈家祠；老城文化、珠江夜景和亲子度假可分片区安排。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/广州市",
+      "updated_at": "2026-05-11T16:30:00"
+    },
+    "佛山": {
+      "city": "佛山",
+      "text": "佛山可重点看清晖园、西樵山、佛山祖庙、南风古灶/高灶陶窑；顺德园林美食、禅城老城和西樵山周边适合短途组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/佛山市",
+      "updated_at": "2026-05-11T16:30:00"
+    },
+    "东莞": {
+      "city": "东莞",
+      "text": "东莞可重点看可园、松山湖、鸦片战争博物馆、虎门炮台和观音山；历史文化、城市湖景和亲子度假适合按片区组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/东莞",
+      "updated_at": "2026-05-15T10:35:39"
+    },
+    "惠州": {
+      "city": "惠州",
+      "text": "惠州可重点看惠州西湖、罗浮山、巽寮湾、双月湾和南昆山；滨海度假、山水温泉和古城漫游适合分片区安排。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/惠州",
+      "updated_at": "2026-05-15T10:35:42"
+    },
+    "中山": {
+      "city": "中山",
+      "text": "中山可重点看孙中山故里、岐江公园、中山詹园、孙文西路和紫马岭公园；人文街区和亲子短途可按城区组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/中山",
+      "updated_at": "2026-05-15T10:35:49"
+    },
+    "珠海": {
+      "city": "珠海",
+      "text": "珠海可重点看长隆海洋王国、情侣路、圆明新园、东澳岛和外伶仃岛；海岛度假、亲子乐园和城市海岸适合连线安排。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/珠海",
+      "updated_at": "2026-05-15T10:35:49"
+    },
+    "江门": {
+      "city": "江门",
+      "text": "江门可重点看开平碉楼与村落、赤坎华侨古镇、上下川岛、小鸟天堂和古劳水乡；侨乡文化与滨海度假适合组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/江门",
+      "updated_at": "2026-05-15T10:35:42"
+    },
+    "汕尾": {
+      "city": "汕尾",
+      "text": "汕尾可重点看红海湾、金町湾、凤山祖庙、莲花山和玄武山；海滨度假、古城人文和山海景观适合周边短途。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/汕尾",
+      "updated_at": "2026-05-15T10:35:45"
+    },
+    "河源": {
+      "city": "河源",
+      "text": "河源可重点看万绿湖、桂山、镜花缘、霍山和河源恐龙博物馆；湖景度假、山地自然和亲子行程适合搭配。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/河源",
+      "updated_at": "2026-05-15T10:35:41"
+    },
+    "肇庆": {
+      "city": "肇庆",
+      "text": "肇庆可重点看七星岩、鼎湖山、宋城墙、阅江楼和砚洲岛；山水景区、老城文化和亲子休闲适合短途组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/肇庆",
+      "updated_at": "2026-05-15T10:35:48"
+    },
+    "云浮": {
+      "city": "云浮",
+      "text": "云浮可重点看国恩寺、蟠龙洞、天露山和六祖故里旅游度假区；禅文化、山地自然和温泉休闲适合周边短途。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/云浮",
+      "updated_at": "2026-05-15T10:35:47"
+    },
+    "汕头": {
+      "city": "汕头",
+      "text": "汕头可重点看小公园、南澳岛、礐石风景区、陈慈黉故居和老妈宫；海岛度假、骑楼街区和潮汕美食适合组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/汕头",
+      "updated_at": "2026-05-15T10:35:45"
+    },
+    "清远": {
+      "city": "清远",
+      "text": "清远可重点看古龙峡、连州地下河、黄腾峡、英西峰林和湟川三峡；峡谷漂流、喀斯特山水和亲子度假适合短途。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/清远",
+      "updated_at": "2026-05-15T10:35:44"
+    },
+    "韶关": {
+      "city": "韶关",
+      "text": "韶关可重点看丹霞山、南华寺、乳源大峡谷、珠玑古巷和梅关古道；自然地貌、禅宗文化和古道历史适合组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/韶关",
+      "updated_at": "2026-05-15T10:35:46"
+    },
+    "潮州": {
+      "city": "潮州",
+      "text": "潮州可重点看广济桥、牌坊街、开元寺、韩文公祠和潮州西湖；古城漫游、非遗美食和韩江夜景适合慢游。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/潮州",
+      "updated_at": "2026-05-15T10:35:39"
+    },
+    "揭阳": {
+      "city": "揭阳",
+      "text": "揭阳可重点看进贤门、揭阳学宫、黄岐山、望天湖和惠来海滨；古城人文、城市山景和滨海休闲适合短途组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/揭阳",
+      "updated_at": "2026-05-15T10:35:43"
+    },
+    "梅州": {
+      "city": "梅州",
+      "text": "梅州可重点看客天下、雁南飞、叶剑英纪念园、松口古镇和五指石；客家文化、茶田山景和古镇线路适合组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/梅州",
+      "updated_at": "2026-05-15T10:35:44"
+    },
+    "阳江": {
+      "city": "阳江",
+      "text": "阳江可重点看海陵岛、闸坡、大角湾、十里银滩和凌霄岩；滨海度假、海鲜美食和喀斯特洞景适合短途安排。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/阳江",
+      "updated_at": "2026-05-15T10:35:47"
+    },
+    "茂名": {
+      "city": "茂名",
+      "text": "茂名可重点看中国第一滩、浪漫海岸、放鸡岛、御水古温泉和信宜天马山；滨海度假、温泉和山地休闲适合组合。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/茂名",
+      "updated_at": "2026-05-15T10:35:43"
+    },
+    "湛江": {
+      "city": "湛江",
+      "text": "湛江可重点看湖光岩、赤坎老街、金沙湾、硇洲岛和特呈岛；海湾城市、火山湖景和海岛度假适合分片区安排。",
+      "source": "维基百科",
+      "source_url": "https://zh.wikipedia.org/wiki/湛江",
+      "updated_at": "2026-05-15T10:35:48"
+    }
+  }
+}

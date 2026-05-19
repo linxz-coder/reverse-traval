@@ -1,0 +1,2048 @@
+{
+  "city": "汕尾",
+  "generated_at": "2026-05-12T12:24:28",
+  "lists": {
+    "star_no_rise": [
+      {
+        "hotel_id": "61617298",
+        "name": "汕尾嘉艺公寓",
+        "area": "汕尾待确认片区",
+        "price": 71,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "29657593",
+        "name": "城市便捷酒店(汕尾陆河店)",
+        "area": "汕尾陆河片区",
+        "price": 110,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆河",
+        "note": "汕尾陆河，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "102024694",
+        "name": "诗漫公寓（辉煌壹号店）",
+        "area": "汕尾海丰片区",
+        "price": 123,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "112894380",
+        "name": "COCO青旅民宿（汕尾高铁站店）",
+        "area": "汕尾高铁站片区",
+        "price": 125,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾高铁站",
+        "note": "汕尾高铁站，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "91358438",
+        "name": "云海民宿（深汕特别合作区店）",
+        "area": "汕尾海丰片区",
+        "price": 129,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "133241454",
+        "name": "山水商务公寓",
+        "area": "汕尾待确认片区",
+        "price": 129,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "131642450",
+        "name": "熙悦LOFT复式公寓",
+        "area": "汕尾待确认片区",
+        "price": 134,
+        "diff": -109,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "85115753",
+        "name": "尚客优连锁酒店（陆河店）",
+        "area": "汕尾陆河片区",
+        "price": 140,
+        "diff": -9,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆河",
+        "note": "汕尾陆河，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "6023165",
+        "name": "金豪轩酒店（汕尾海丰天虹购物中心店）",
+        "area": "汕尾海丰片区",
+        "price": 153,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1342130",
+        "name": "海悦湾酒店（汕尾海丰客运总站店）",
+        "area": "汕尾海丰片区",
+        "price": 155,
+        "diff": -2,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午每晚含税均价低于平日代表价。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "61617298",
+        "name": "汕尾嘉艺公寓",
+        "area": "汕尾待确认片区",
+        "price": 71,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "29657593",
+        "name": "城市便捷酒店(汕尾陆河店)",
+        "area": "汕尾陆河片区",
+        "price": 110,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆河",
+        "note": "汕尾陆河，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "102024694",
+        "name": "诗漫公寓（辉煌壹号店）",
+        "area": "汕尾海丰片区",
+        "price": 123,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "112894380",
+        "name": "COCO青旅民宿（汕尾高铁站店）",
+        "area": "汕尾高铁站片区",
+        "price": 125,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾高铁站",
+        "note": "汕尾高铁站，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "91358438",
+        "name": "云海民宿（深汕特别合作区店）",
+        "area": "汕尾海丰片区",
+        "price": 129,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "133241454",
+        "name": "山水商务公寓",
+        "area": "汕尾待确认片区",
+        "price": 129,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "131642450",
+        "name": "熙悦LOFT复式公寓",
+        "area": "汕尾待确认片区",
+        "price": 134,
+        "diff": -109,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "85115753",
+        "name": "尚客优连锁酒店（陆河店）",
+        "area": "汕尾陆河片区",
+        "price": 140,
+        "diff": -9,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆河",
+        "note": "汕尾陆河，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "6023165",
+        "name": "金豪轩酒店（汕尾海丰天虹购物中心店）",
+        "area": "汕尾海丰片区",
+        "price": 153,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1342130",
+        "name": "海悦湾酒店（汕尾海丰客运总站店）",
+        "area": "汕尾海丰片区",
+        "price": 155,
+        "diff": -2,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "108713995",
+        "name": "汐岸民宿（深汕特别合作区店）",
+        "area": "汕尾海丰片区",
+        "price": 163,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "85460489",
+        "name": "潮漫酒店（汕尾二马路美食街店）",
+        "area": "汕尾待确认片区",
+        "price": 172,
+        "diff": -33,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "68086773",
+        "name": "润达酒店（汕尾陆河店）",
+        "area": "汕尾陆河片区",
+        "price": 172,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆河",
+        "note": "汕尾陆河，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "99902482",
+        "name": "雅思莱特国际酒店（海丰可塘珠宝市场店）",
+        "area": "汕尾海丰片区",
+        "price": 178,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "3362658",
+        "name": "汕尾柏丽湾酒店",
+        "area": "汕尾待确认片区",
+        "price": 181,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "100002936",
+        "name": "康铂酒店（汕尾海丰店）",
+        "area": "汕尾海丰片区",
+        "price": 200,
+        "diff": -2,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "68108494",
+        "name": "海丰万瑞酒店",
+        "area": "汕尾海丰片区",
+        "price": 202,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "28545435",
+        "name": "维也纳酒店(陆河店)",
+        "area": "汕尾陆河片区",
+        "price": 209,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆河",
+        "note": "汕尾陆河，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "55924770",
+        "name": "凯里亚德酒店（汕尾海丰店）",
+        "area": "汕尾海丰片区",
+        "price": 219,
+        "diff": -13,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "133945748",
+        "name": "橙子酒店（汕尾二马路美食街店）",
+        "area": "汕尾待确认片区",
+        "price": 223,
+        "diff": -26,
+        "source_file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+        "source_cached_at": "2026-05-07T12:57:20",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "81158306",
+        "name": "丽枫酒店(陆丰龙山大道店)",
+        "area": "汕尾陆丰片区",
+        "price": 229,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆丰",
+        "note": "汕尾陆丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "81156986",
+        "name": "香榭丽舍酒店（陆丰东海岁宝百货店）",
+        "area": "汕尾陆丰片区",
+        "price": 234,
+        "diff": -32,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆丰",
+        "note": "汕尾陆丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "62473801",
+        "name": "丽枫酒店(海丰凤凰新城店)",
+        "area": "汕尾海丰片区",
+        "price": 238,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "134443998",
+        "name": "海屿晚风民宿",
+        "area": "汕尾红海湾片区",
+        "price": 240,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾红海湾",
+        "note": "汕尾红海湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "118889545",
+        "name": "愉森禾院海景公寓（汕尾保利金町湾店）",
+        "area": "汕尾金町湾片区",
+        "price": 247,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "12065198",
+        "name": "海丰龙丰运动主題酒店",
+        "area": "汕尾海丰片区",
+        "price": 253,
+        "diff": -5,
+        "source_file": "581587af0c838617719527e414f0dda9c2d377ae8fa2c97a0cf118d7733a7123.json",
+        "source_cached_at": "2026-05-08T11:25:18",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "59424539",
+        "name": "海丰亚丁酒店",
+        "area": "汕尾海丰片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "116854541",
+        "name": "美澜四季酒店（可塘珠宝交易市场店）",
+        "area": "汕尾海丰片区",
+        "price": 259,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1968122",
+        "name": "陆丰皓丽半岛酒店",
+        "area": "汕尾陆丰片区",
+        "price": 265,
+        "diff": -146,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆丰",
+        "note": "汕尾陆丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "19453448",
+        "name": "维也纳国际酒店(深汕合作区店)",
+        "area": "汕尾海丰片区",
+        "price": 301,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "12662077",
+        "name": "汕尾新品清湖大酒店",
+        "area": "汕尾市区片区",
+        "price": 367,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾市区",
+        "note": "汕尾市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "85939852",
+        "name": "汕尾陆丰希尔顿惠庭酒店",
+        "area": "汕尾陆丰片区",
+        "price": 377,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆丰",
+        "note": "汕尾陆丰，具备儿童设施，适合亲子短途。"
+      },
+      {
+        "hotel_id": "2368120",
+        "name": "汕尾邻家小苑",
+        "area": "汕尾红海湾片区",
+        "price": 388,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾红海湾",
+        "note": "汕尾红海湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "913739",
+        "name": "汕尾金银湾商务酒店",
+        "area": "汕尾待确认片区",
+        "price": 389,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "94466976",
+        "name": "汕尾海迪温德姆酒店",
+        "area": "汕尾海丰片区",
+        "price": 408,
+        "diff": 0,
+        "source_file": "6470257bea8ac63d23e5bc94db0e226281bb4dc798c4bf915dc2e757d36f122d.json",
+        "source_cached_at": "2026-05-11T15:30:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "132855153",
+        "name": "日出橙·呆呆民宿（汕尾红海湾店）",
+        "area": "汕尾红海湾片区",
+        "price": 480,
+        "diff": -40,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾红海湾",
+        "note": "汕尾红海湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "76543256",
+        "name": "汕尾满心Funny民宿",
+        "area": "汕尾金町湾片区",
+        "price": 587,
+        "diff": -16,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "107897357",
+        "name": "蓝湾度假公寓（汕尾保利金町湾店）",
+        "area": "汕尾金町湾片区",
+        "price": 641,
+        "diff": -64,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "26199922",
+        "name": "栖巢海景度假美宿（汕尾保利金町湾店）",
+        "area": "汕尾金町湾片区",
+        "price": 829,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "108273668",
+        "name": "星海湾愛丽絲的海·度假美宿（汕尾保利金町湾店）",
+        "area": "汕尾金町湾片区",
+        "price": 942,
+        "diff": 0,
+        "source_file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+        "source_cached_at": "2026-05-07T12:57:20",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "120269880",
+        "name": "汕尾整栋咖啡民宿",
+        "area": "汕尾红海湾片区",
+        "price": 975,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾红海湾",
+        "note": "汕尾红海湾，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "54669162",
+        "name": "佰思特·梵高的海·度假美宿（汕尾保利金町湾店）",
+        "area": "汕尾金町湾片区",
+        "price": 1509,
+        "diff": 0,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "94466976",
+        "name": "汕尾海迪温德姆酒店",
+        "area": "汕尾海丰片区",
+        "price": 408,
+        "diff": 0,
+        "source_file": "6470257bea8ac63d23e5bc94db0e226281bb4dc798c4bf915dc2e757d36f122d.json",
+        "source_cached_at": "2026-05-11T15:30:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "94466976",
+        "name": "汕尾海迪温德姆酒店",
+        "area": "汕尾海丰片区",
+        "price": 408,
+        "diff": 0,
+        "source_file": "6470257bea8ac63d23e5bc94db0e226281bb4dc798c4bf915dc2e757d36f122d.json",
+        "source_cached_at": "2026-05-11T15:30:37",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "1968122",
+        "name": "陆丰皓丽半岛酒店",
+        "area": "汕尾陆丰片区",
+        "price": 265,
+        "diff": -146,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆丰",
+        "note": "汕尾陆丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "131642450",
+        "name": "熙悦LOFT复式公寓",
+        "area": "汕尾待确认片区",
+        "price": 134,
+        "diff": -109,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "107897357",
+        "name": "蓝湾度假公寓（汕尾保利金町湾店）",
+        "area": "汕尾金町湾片区",
+        "price": 641,
+        "diff": -64,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "132855153",
+        "name": "日出橙·呆呆民宿（汕尾红海湾店）",
+        "area": "汕尾红海湾片区",
+        "price": 480,
+        "diff": -40,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾红海湾",
+        "note": "汕尾红海湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "85460489",
+        "name": "潮漫酒店（汕尾二马路美食街店）",
+        "area": "汕尾待确认片区",
+        "price": 172,
+        "diff": -33,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，具备泳池，适合短途度假。"
+      },
+      {
+        "hotel_id": "81156986",
+        "name": "香榭丽舍酒店（陆丰东海岁宝百货店）",
+        "area": "汕尾陆丰片区",
+        "price": 234,
+        "diff": -32,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆丰",
+        "note": "汕尾陆丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "133945748",
+        "name": "橙子酒店（汕尾二马路美食街店）",
+        "area": "汕尾待确认片区",
+        "price": 223,
+        "diff": -26,
+        "source_file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+        "source_cached_at": "2026-05-07T12:57:20",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾",
+        "note": "汕尾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "76543256",
+        "name": "汕尾满心Funny民宿",
+        "area": "汕尾金町湾片区",
+        "price": 587,
+        "diff": -16,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾金町湾",
+        "note": "汕尾金町湾，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "55924770",
+        "name": "凯里亚德酒店（汕尾海丰店）",
+        "area": "汕尾海丰片区",
+        "price": 219,
+        "diff": -13,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾海丰",
+        "note": "汕尾海丰，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "85115753",
+        "name": "尚客优连锁酒店（陆河店）",
+        "area": "汕尾陆河片区",
+        "price": 140,
+        "diff": -9,
+        "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "source_cached_at": "2026-05-08T14:43:04",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "汕尾陆河",
+        "note": "汕尾陆河，端午每晚含税均价低于平日代表价。"
+      }
+    ]
+  },
+  "latest_city_rank": [
+    {
+      "hotel_id": "61617298",
+      "name": "汕尾嘉艺公寓",
+      "area": "汕尾待确认片区",
+      "price": 71,
+      "diff": 0,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾",
+      "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "29657593",
+      "name": "城市便捷酒店(汕尾陆河店)",
+      "area": "汕尾陆河片区",
+      "price": 110,
+      "diff": 0,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾陆河",
+      "note": "汕尾陆河，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "102024694",
+      "name": "诗漫公寓（辉煌壹号店）",
+      "area": "汕尾海丰片区",
+      "price": 123,
+      "diff": 0,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾海丰",
+      "note": "汕尾海丰，具备儿童设施，适合亲子短途。"
+    },
+    {
+      "hotel_id": "112894380",
+      "name": "COCO青旅民宿（汕尾高铁站店）",
+      "area": "汕尾高铁站片区",
+      "price": 125,
+      "diff": 0,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾高铁站",
+      "note": "汕尾高铁站，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "91358438",
+      "name": "云海民宿（深汕特别合作区店）",
+      "area": "汕尾海丰片区",
+      "price": 129,
+      "diff": 0,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾海丰",
+      "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "133241454",
+      "name": "山水商务公寓",
+      "area": "汕尾待确认片区",
+      "price": 129,
+      "diff": 0,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾",
+      "note": "汕尾，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "131642450",
+      "name": "熙悦LOFT复式公寓",
+      "area": "汕尾待确认片区",
+      "price": 134,
+      "diff": -109,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾",
+      "note": "汕尾，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "85115753",
+      "name": "尚客优连锁酒店（陆河店）",
+      "area": "汕尾陆河片区",
+      "price": 140,
+      "diff": -9,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾陆河",
+      "note": "汕尾陆河，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "6023165",
+      "name": "金豪轩酒店（汕尾海丰天虹购物中心店）",
+      "area": "汕尾海丰片区",
+      "price": 153,
+      "diff": 0,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾海丰",
+      "note": "汕尾海丰，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "1342130",
+      "name": "海悦湾酒店（汕尾海丰客运总站店）",
+      "area": "汕尾海丰片区",
+      "price": 155,
+      "diff": -2,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾海丰",
+      "note": "汕尾海丰，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "1968122",
+      "name": "陆丰皓丽半岛酒店",
+      "area": "汕尾陆丰片区",
+      "price": 265,
+      "diff": -146,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾陆丰",
+      "note": "汕尾陆丰，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "131642450",
+      "name": "熙悦LOFT复式公寓",
+      "area": "汕尾待确认片区",
+      "price": 134,
+      "diff": -109,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾",
+      "note": "汕尾，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "107897357",
+      "name": "蓝湾度假公寓（汕尾保利金町湾店）",
+      "area": "汕尾金町湾片区",
+      "price": 641,
+      "diff": -64,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾金町湾",
+      "note": "汕尾金町湾，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "132855153",
+      "name": "日出橙·呆呆民宿（汕尾红海湾店）",
+      "area": "汕尾红海湾片区",
+      "price": 480,
+      "diff": -40,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾红海湾",
+      "note": "汕尾红海湾，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "85460489",
+      "name": "潮漫酒店（汕尾二马路美食街店）",
+      "area": "汕尾待确认片区",
+      "price": 172,
+      "diff": -33,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "汕尾",
+      "note": "汕尾，具备泳池，适合短途度假。"
+    },
+    {
+      "hotel_id": "81156986",
+      "name": "香榭丽舍酒店（陆丰东海岁宝百货店）",
+      "area": "汕尾陆丰片区",
+      "price": 234,
+      "diff": -32,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾陆丰",
+      "note": "汕尾陆丰，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "133945748",
+      "name": "橙子酒店（汕尾二马路美食街店）",
+      "area": "汕尾待确认片区",
+      "price": 223,
+      "diff": -26,
+      "source_file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+      "source_cached_at": "2026-05-07T12:57:20",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾",
+      "note": "汕尾，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "76543256",
+      "name": "汕尾满心Funny民宿",
+      "area": "汕尾金町湾片区",
+      "price": 587,
+      "diff": -16,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾金町湾",
+      "note": "汕尾金町湾，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "55924770",
+      "name": "凯里亚德酒店（汕尾海丰店）",
+      "area": "汕尾海丰片区",
+      "price": 219,
+      "diff": -13,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾海丰",
+      "note": "汕尾海丰，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "85115753",
+      "name": "尚客优连锁酒店（陆河店）",
+      "area": "汕尾陆河片区",
+      "price": 140,
+      "diff": -9,
+      "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+      "source_cached_at": "2026-05-08T14:43:04",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "汕尾陆河",
+      "note": "汕尾陆河，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "汕尾海丰片区",
+      "hotel_count": 15,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 11,
+      "average_price": 216,
+      "average_diff": -1,
+      "price_range": [
+        123,
+        408
+      ],
+      "hotels": [
+        {
+          "hotel_id": "55924770",
+          "name": "凯里亚德酒店（汕尾海丰店）",
+          "area": "汕尾海丰片区",
+          "price": 219,
+          "diff": -13,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "12065198",
+          "name": "海丰龙丰运动主題酒店",
+          "area": "汕尾海丰片区",
+          "price": 253,
+          "diff": -5,
+          "source_file": "581587af0c838617719527e414f0dda9c2d377ae8fa2c97a0cf118d7733a7123.json",
+          "source_cached_at": "2026-05-08T11:25:18"
+        },
+        {
+          "hotel_id": "1342130",
+          "name": "海悦湾酒店（汕尾海丰客运总站店）",
+          "area": "汕尾海丰片区",
+          "price": 155,
+          "diff": -2,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "100002936",
+          "name": "康铂酒店（汕尾海丰店）",
+          "area": "汕尾海丰片区",
+          "price": 200,
+          "diff": -2,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "102024694",
+          "name": "诗漫公寓（辉煌壹号店）",
+          "area": "汕尾海丰片区",
+          "price": 123,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "91358438",
+          "name": "云海民宿（深汕特别合作区店）",
+          "area": "汕尾海丰片区",
+          "price": 129,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "6023165",
+          "name": "金豪轩酒店（汕尾海丰天虹购物中心店）",
+          "area": "汕尾海丰片区",
+          "price": 153,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "108713995",
+          "name": "汐岸民宿（深汕特别合作区店）",
+          "area": "汕尾海丰片区",
+          "price": 163,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "99902482",
+          "name": "雅思莱特国际酒店（海丰可塘珠宝市场店）",
+          "area": "汕尾海丰片区",
+          "price": 178,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "68108494",
+          "name": "海丰万瑞酒店",
+          "area": "汕尾海丰片区",
+          "price": 202,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "62473801",
+          "name": "丽枫酒店(海丰凤凰新城店)",
+          "area": "汕尾海丰片区",
+          "price": 238,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "59424539",
+          "name": "海丰亚丁酒店",
+          "area": "汕尾海丰片区",
+          "price": 259,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "116854541",
+          "name": "美澜四季酒店（可塘珠宝交易市场店）",
+          "area": "汕尾海丰片区",
+          "price": 259,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "19453448",
+          "name": "维也纳国际酒店(深汕合作区店)",
+          "area": "汕尾海丰片区",
+          "price": 301,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "94466976",
+          "name": "汕尾海迪温德姆酒店",
+          "area": "汕尾海丰片区",
+          "price": 408,
+          "diff": 0,
+          "source_file": "6470257bea8ac63d23e5bc94db0e226281bb4dc798c4bf915dc2e757d36f122d.json",
+          "source_cached_at": "2026-05-11T15:30:37"
+        }
+      ],
+      "representative_hotels": [
+        "凯里亚德酒店（汕尾海丰店）",
+        "海丰龙丰运动主題酒店",
+        "海悦湾酒店（汕尾海丰客运总站店）"
+      ],
+      "rank": 1,
+      "summary": "15家高级酒店，4家降价，11家持平"
+    },
+    {
+      "area": "汕尾金町湾片区",
+      "hotel_count": 6,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 4,
+      "average_price": 792,
+      "average_diff": -13,
+      "price_range": [
+        247,
+        1509
+      ],
+      "hotels": [
+        {
+          "hotel_id": "107897357",
+          "name": "蓝湾度假公寓（汕尾保利金町湾店）",
+          "area": "汕尾金町湾片区",
+          "price": 641,
+          "diff": -64,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "76543256",
+          "name": "汕尾满心Funny民宿",
+          "area": "汕尾金町湾片区",
+          "price": 587,
+          "diff": -16,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "118889545",
+          "name": "愉森禾院海景公寓（汕尾保利金町湾店）",
+          "area": "汕尾金町湾片区",
+          "price": 247,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "26199922",
+          "name": "栖巢海景度假美宿（汕尾保利金町湾店）",
+          "area": "汕尾金町湾片区",
+          "price": 829,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "108273668",
+          "name": "星海湾愛丽絲的海·度假美宿（汕尾保利金町湾店）",
+          "area": "汕尾金町湾片区",
+          "price": 942,
+          "diff": 0,
+          "source_file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+          "source_cached_at": "2026-05-07T12:57:20"
+        },
+        {
+          "hotel_id": "54669162",
+          "name": "佰思特·梵高的海·度假美宿（汕尾保利金町湾店）",
+          "area": "汕尾金町湾片区",
+          "price": 1509,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        }
+      ],
+      "representative_hotels": [
+        "蓝湾度假公寓（汕尾保利金町湾店）",
+        "汕尾满心Funny民宿",
+        "愉森禾院海景公寓（汕尾保利金町湾店）"
+      ],
+      "rank": 2,
+      "summary": "6家高级酒店，2家降价，4家持平"
+    },
+    {
+      "area": "汕尾陆丰片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 2,
+      "average_price": 276,
+      "average_diff": -44,
+      "price_range": [
+        229,
+        377
+      ],
+      "hotels": [
+        {
+          "hotel_id": "1968122",
+          "name": "陆丰皓丽半岛酒店",
+          "area": "汕尾陆丰片区",
+          "price": 265,
+          "diff": -146,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "81156986",
+          "name": "香榭丽舍酒店（陆丰东海岁宝百货店）",
+          "area": "汕尾陆丰片区",
+          "price": 234,
+          "diff": -32,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "81158306",
+          "name": "丽枫酒店(陆丰龙山大道店)",
+          "area": "汕尾陆丰片区",
+          "price": 229,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "85939852",
+          "name": "汕尾陆丰希尔顿惠庭酒店",
+          "area": "汕尾陆丰片区",
+          "price": 377,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        }
+      ],
+      "representative_hotels": [
+        "陆丰皓丽半岛酒店",
+        "香榭丽舍酒店（陆丰东海岁宝百货店）",
+        "丽枫酒店(陆丰龙山大道店)"
+      ],
+      "rank": 3,
+      "summary": "4家高级酒店，2家降价，2家持平"
+    },
+    {
+      "area": "汕尾红海湾片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 3,
+      "average_price": 521,
+      "average_diff": -10,
+      "price_range": [
+        240,
+        975
+      ],
+      "hotels": [
+        {
+          "hotel_id": "132855153",
+          "name": "日出橙·呆呆民宿（汕尾红海湾店）",
+          "area": "汕尾红海湾片区",
+          "price": 480,
+          "diff": -40,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "134443998",
+          "name": "海屿晚风民宿",
+          "area": "汕尾红海湾片区",
+          "price": 240,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "2368120",
+          "name": "汕尾邻家小苑",
+          "area": "汕尾红海湾片区",
+          "price": 388,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "120269880",
+          "name": "汕尾整栋咖啡民宿",
+          "area": "汕尾红海湾片区",
+          "price": 975,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        }
+      ],
+      "representative_hotels": [
+        "日出橙·呆呆民宿（汕尾红海湾店）",
+        "海屿晚风民宿",
+        "汕尾邻家小苑"
+      ],
+      "rank": 4,
+      "summary": "4家高级酒店，1家降价，3家持平"
+    },
+    {
+      "area": "汕尾陆河片区",
+      "hotel_count": 4,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 3,
+      "average_price": 158,
+      "average_diff": -2,
+      "price_range": [
+        110,
+        209
+      ],
+      "hotels": [
+        {
+          "hotel_id": "85115753",
+          "name": "尚客优连锁酒店（陆河店）",
+          "area": "汕尾陆河片区",
+          "price": 140,
+          "diff": -9,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "29657593",
+          "name": "城市便捷酒店(汕尾陆河店)",
+          "area": "汕尾陆河片区",
+          "price": 110,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "68086773",
+          "name": "润达酒店（汕尾陆河店）",
+          "area": "汕尾陆河片区",
+          "price": 172,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "28545435",
+          "name": "维也纳酒店(陆河店)",
+          "area": "汕尾陆河片区",
+          "price": 209,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        }
+      ],
+      "representative_hotels": [
+        "尚客优连锁酒店（陆河店）",
+        "城市便捷酒店(汕尾陆河店)",
+        "润达酒店（汕尾陆河店）"
+      ],
+      "rank": 5,
+      "summary": "4家高级酒店，1家降价，3家持平"
+    },
+    {
+      "area": "汕尾高铁站片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 125,
+      "average_diff": 0,
+      "price_range": [
+        125,
+        125
+      ],
+      "hotels": [
+        {
+          "hotel_id": "112894380",
+          "name": "COCO青旅民宿（汕尾高铁站店）",
+          "area": "汕尾高铁站片区",
+          "price": 125,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        }
+      ],
+      "representative_hotels": [
+        "COCO青旅民宿（汕尾高铁站店）"
+      ],
+      "rank": 6,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "汕尾市区片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 367,
+      "average_diff": 0,
+      "price_range": [
+        367,
+        367
+      ],
+      "hotels": [
+        {
+          "hotel_id": "12662077",
+          "name": "汕尾新品清湖大酒店",
+          "area": "汕尾市区片区",
+          "price": 367,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        }
+      ],
+      "representative_hotels": [
+        "汕尾新品清湖大酒店"
+      ],
+      "rank": 7,
+      "summary": "1家高级酒店，0家降价，1家持平"
+    },
+    {
+      "area": "汕尾待确认片区",
+      "hotel_count": 7,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 4,
+      "average_price": 186,
+      "average_diff": -24,
+      "price_range": [
+        71,
+        389
+      ],
+      "hotels": [
+        {
+          "hotel_id": "131642450",
+          "name": "熙悦LOFT复式公寓",
+          "area": "汕尾待确认片区",
+          "price": 134,
+          "diff": -109,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "85460489",
+          "name": "潮漫酒店（汕尾二马路美食街店）",
+          "area": "汕尾待确认片区",
+          "price": 172,
+          "diff": -33,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "133945748",
+          "name": "橙子酒店（汕尾二马路美食街店）",
+          "area": "汕尾待确认片区",
+          "price": 223,
+          "diff": -26,
+          "source_file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+          "source_cached_at": "2026-05-07T12:57:20"
+        },
+        {
+          "hotel_id": "61617298",
+          "name": "汕尾嘉艺公寓",
+          "area": "汕尾待确认片区",
+          "price": 71,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "133241454",
+          "name": "山水商务公寓",
+          "area": "汕尾待确认片区",
+          "price": 129,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "3362658",
+          "name": "汕尾柏丽湾酒店",
+          "area": "汕尾待确认片区",
+          "price": 181,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        },
+        {
+          "hotel_id": "913739",
+          "name": "汕尾金银湾商务酒店",
+          "area": "汕尾待确认片区",
+          "price": 389,
+          "diff": 0,
+          "source_file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+          "source_cached_at": "2026-05-08T14:43:04"
+        }
+      ],
+      "representative_hotels": [
+        "熙悦LOFT复式公寓",
+        "潮漫酒店（汕尾二马路美食街店）",
+        "橙子酒店（汕尾二马路美食街店）"
+      ],
+      "rank": 8,
+      "summary": "7家高级酒店，3家降价，4家持平"
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 6,
+    "candidate_count": 97,
+    "unique_hotel_count": 64,
+    "included_hotel_count": 42,
+    "matching_files": [
+      {
+        "file": "6470257bea8ac63d23e5bc94db0e226281bb4dc798c4bf915dc2e757d36f122d.json",
+        "mtime": 1778484637.7720034,
+        "choices": 3,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "mtime": 1778222584.0498152,
+        "choices": 59,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "581587af0c838617719527e414f0dda9c2d377ae8fa2c97a0cf118d7733a7123.json",
+        "mtime": 1778210718.460978,
+        "choices": 9,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "b5ca9dc41f3b6a8d397f5b15756ceffd2a8460820eb27f60388d6ff9ffd81a68.json",
+        "mtime": 1778149616.1806955,
+        "choices": 3,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+        "mtime": 1778129840.9419677,
+        "choices": 19,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "no",
+            "label": "否",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "no",
+            "label": "否",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "c06c814d94090a545ea1a436eb33fcd664d8e5a6ba1da3da5fd120111a382937.json",
+        "mtime": 1778052631.1941543,
+        "choices": 7,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ]
+  },
+  "area_region_rank_source": {
+    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "matching_file_count": 6,
+    "candidate_count": 97,
+    "unique_hotel_count": 64,
+    "included_hotel_count": 42,
+    "matching_files": [
+      {
+        "file": "6470257bea8ac63d23e5bc94db0e226281bb4dc798c4bf915dc2e757d36f122d.json",
+        "mtime": 1778484637.7720034,
+        "choices": 3,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "41970eb402c562e4c16b85929cc9b86e8968df7e4df257dd1295df7f800751a0.json",
+        "mtime": 1778222584.0498152,
+        "choices": 59,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "581587af0c838617719527e414f0dda9c2d377ae8fa2c97a0cf118d7733a7123.json",
+        "mtime": 1778210718.460978,
+        "choices": 9,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "b5ca9dc41f3b6a8d397f5b15756ceffd2a8460820eb27f60388d6ff9ffd81a68.json",
+        "mtime": 1778149616.1806955,
+        "choices": 3,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "c35fed58ac0852bb67b8277f24feaf70654dcaf800edd30d3d97194d6933c651.json",
+        "mtime": 1778129840.9419677,
+        "choices": 19,
+        "advanced": false,
+        "filters": {
+          "advanced": {
+            "value": "all",
+            "label": "全部",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "no",
+            "label": "否",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "no",
+            "label": "否",
+            "name": "儿童设施"
+          }
+        }
+      },
+      {
+        "file": "c06c814d94090a545ea1a436eb33fcd664d8e5a6ba1da3da5fd120111a382937.json",
+        "mtime": 1778052631.1941543,
+        "choices": 7,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        }
+      }
+    ],
+    "source": "search_cache"
+  },
+  "city_wikipedia_intro": {
+    "city": "汕尾",
+    "text": "汕尾可重点看红海湾、金町湾、凤山祖庙、莲花山和玄武山；海滨度假、古城人文和山海景观适合周边短途。",
+    "source": "维基百科",
+    "source_url": "https://zh.wikipedia.org/wiki/汕尾",
+    "updated_at": ""
+  }
+}

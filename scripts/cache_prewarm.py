@@ -32,6 +32,7 @@ def main() -> None:
     parser.add_argument("--profiles", default="default")
     parser.add_argument("--holiday-code", action="append", dest="holiday_codes")
     parser.add_argument("--delay-seconds", type=int, default=1)
+    parser.add_argument("--prewarm-coverage", action="store_true")
     args = parser.parse_args()
 
     status_url = f"{args.base_url}/api/admin/prewarm/status"
@@ -43,6 +44,7 @@ def main() -> None:
         "city_preset": "major",
         "profiles": [item.strip() for item in args.profiles.split(",") if item.strip()],
         "delay_seconds": str(args.delay_seconds),
+        "include_coverage": args.prewarm_coverage,
     }
     if args.city_limit:
         payload["city_limit"] = str(args.city_limit)

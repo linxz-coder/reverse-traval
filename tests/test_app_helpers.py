@@ -36,6 +36,33 @@ def test_parse_bool_accepts_form_values():
     assert parse_bool(None, default=False) is False
 
 
+def test_coverage_job_signature_ignores_base_choice_changes():
+    first = app_module.canonical_job_signature(
+        "coverage",
+        {
+            "city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+            "choices": [{"hotel_id": "base-1", "room_type": "king"}],
+        },
+    )
+    second = app_module.canonical_job_signature(
+        "coverage",
+        {
+            "city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+            "choices": [{"hotel_id": "base-2", "room_type": "twin"}],
+        },
+    )
+
+    assert first == second
+
+
 def test_api_errors_return_json():
     client = flask_app.test_client()
 
@@ -109,6 +136,85 @@ def test_background_search_job_returns_result(monkeypatch):
     assert any(event["message"] == "正在测试后台进度" for event in data["progress_events"])
     assert data["result"]["city"] == "广州"
     assert data["result"]["choices"][0]["hotel_name"] == "测试酒店"
+
+
+def test_background_search_job_exception_marks_failed(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    monkeypatch.setattr(app_module.finder, "find_cached_choices", lambda **_kwargs: None)
+    monkeypatch.setattr(app_module.finder, "find_stale_cached_choices", lambda **_kwargs: None)
+
+    def fake_find_choices(**_kwargs):
+        raise RuntimeError("浏览器连接断开")
+
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/search/start",
+        json={
+            "city": "广州",
+            "holiday_code": "2026-06-19::端午节",
+            "min_price": "",
+            "max_price": "",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+        },
+    )
+
+    assert response.status_code == 202
+    poll_url = response.get_json()["poll_url"]
+    data = None
+    for _ in range(50):
+        poll_response = client.get(poll_url)
+        assert poll_response.is_json
+        data = poll_response.get_json()
+        if data["status"] == "failed":
+            break
+        time.sleep(0.02)
+
+    assert data["status"] == "failed"
+    assert "查询中断" in data["error"]
+    assert "浏览器连接断开" in data["error"]
+
+
+def test_slow_running_job_reports_warning_without_stopping():
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+        job_id = "stalled-job"
+        signature = "stalled-signature"
+        app_module.jobs[job_id] = {
+            "job_id": job_id,
+            "kind": "search",
+            "signature": signature,
+            "status": "running",
+            "created_at": app_module.utc_timestamp(),
+            "updated_at": app_module.utc_timestamp(),
+            "created_ts": time.time() - app_module.JOB_PROGRESS_WARNING_SECONDS - 10,
+            "updated_ts": time.time() - app_module.JOB_PROGRESS_WARNING_SECONDS - 10,
+            "payload": {},
+            "result": None,
+            "partial_result": None,
+            "progress": {"stage": "running", "message": "正在查询"},
+            "progress_events": [],
+            "error": "",
+            "status_code": None,
+        }
+        app_module.job_signature_index[signature] = job_id
+
+    client = flask_app.test_client()
+    response = client.get(f"/api/jobs/{job_id}")
+
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["status"] == "running"
+    assert data["progress_warning"]["stage"] == "slow_progress"
+    assert "后台仍在查询" in data["progress_warning"]["message"]
+    assert app_module.job_signature_index[signature] == job_id
 
 
 def test_background_search_start_reuses_running_same_condition(monkeypatch):
@@ -231,6 +337,23 @@ def test_background_search_start_returns_cached_result_immediately(monkeypatch):
     assert data["cache_hit"] is True
     assert data["result"]["choices"][0]["hotel_name"] == "缓存酒店"
     assert client.get(data["poll_url"]).get_json()["status"] == "succeeded"
+
+    reused_response = client.post(
+        "/api/search/start",
+        json={
+            "city": "广州",
+            "holiday_code": "2026-06-19::端午节",
+            "min_price": "",
+            "max_price": "",
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+            "use_cache": "true",
+        },
+    )
+    reused_data = reused_response.get_json()
+    assert reused_data["reused"] is False
+    assert reused_data["cache_hit"] is True
 
 
 def test_background_search_partial_result_is_price_filtered(monkeypatch):
@@ -511,6 +634,19 @@ def test_frontend_area_panel_has_collapsed_full_area_toggle():
     assert "activeAreaFilter && !visible.some" in html
 
 
+def test_frontend_area_cards_reuse_current_simplified_hotel_names():
+    client = flask_app.test_client()
+
+    response = client.get("/")
+    html = response.get_data(as_text=True)
+
+    assert response.status_code == 200
+    assert "function displayHotelName(item)" in html
+    assert "function cleanRepresentativeHotelNames(names)" in html
+    assert "representative_hotels: cleanRepresentativeHotelNames(area.representative_hotels || [])" in html
+    assert "const hotelName = displayHotelName(item);" in html
+
+
 def test_area_refresh_job_returns_normalized_choices(monkeypatch):
     def fake_enhance_area_data(city, choices):
         return {
@@ -642,6 +778,195 @@ def test_coverage_refresh_job_reports_partial_result(monkeypatch):
     assert any(choice["hotel_name"] == "北京朝阳补充酒店" for choice in data["result"]["choices"])
 
 
+def test_coverage_start_returns_stale_preview_while_refreshing(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    stale_result = {
+        "city": "深圳",
+        "holiday": {"code": "2026-06-19::端午节", "name": "端午节"},
+        "price_filter": {"min_price": None, "max_price": None},
+        "feature_filters": {},
+        "comparison_windows": [],
+        "area_recommendations": [{"area_name": "光明虹桥公园片区"}],
+        "choices": [
+            {"hotel_id": "1", "hotel_name": "深圳已有酒店", "room_type": "king"},
+            {"hotel_id": "old", "hotel_name": "深圳旧补充酒店", "room_type": "king"},
+        ],
+        "coverage_supplement": {
+            "status": "refreshing",
+            "message": "已先显示旧缓存",
+            "cache": {"source": "stale_disk", "hit": True, "stale": True},
+        },
+    }
+    final_result = {
+        **stale_result,
+        "choices": [
+            {"hotel_id": "1", "hotel_name": "深圳已有酒店", "room_type": "king"},
+            {"hotel_id": "new", "hotel_name": "深圳新补充酒店", "room_type": "king"},
+        ],
+        "coverage_supplement": {"status": "succeeded", "message": "行政区补充完成"},
+    }
+
+    monkeypatch.setattr(app_module.finder, "find_cached_coverage_choices", lambda **_kwargs: None)
+    monkeypatch.setattr(app_module.finder, "find_stale_cached_coverage_choices", lambda **_kwargs: stale_result)
+    monkeypatch.setattr(app_module.finder, "supplement_coverage_choices", lambda **_kwargs: final_result)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/coverage/start",
+        json={
+            "city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "choices": [{"hotel_id": "1", "hotel_name": "深圳已有酒店", "room_type": "king"}],
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+        },
+    )
+
+    assert response.status_code == 202
+    started = response.get_json()
+    assert started["partial_result"]["coverage_supplement"]["status"] == "refreshing"
+    assert any(choice["hotel_id"] == "old" for choice in started["partial_result"]["choices"])
+
+    data = None
+    for _ in range(50):
+        poll_response = client.get(started["poll_url"])
+        assert poll_response.is_json
+        data = poll_response.get_json()
+        if data["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert data["status"] == "succeeded"
+    assert any(choice["hotel_id"] == "new" for choice in data["result"]["choices"])
+
+
+def test_coverage_refresh_uses_partial_cache_choices_as_base(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    partial_result = {
+        "city": "深圳",
+        "holiday": {"code": "2026-06-19::端午节", "name": "端午节"},
+        "price_filter": {"min_price": None, "max_price": None},
+        "feature_filters": {},
+        "comparison_windows": [],
+        "area_recommendations": [{"area_name": "光明虹桥公园片区"}],
+        "choices": [
+            {"hotel_id": "base", "hotel_name": "深圳基础酒店", "room_type": "king"},
+            {"hotel_id": "partial", "hotel_name": "深圳部分缓存酒店", "room_type": "king"},
+        ],
+        "coverage_supplement": {
+            "status": "refreshing",
+            "message": "已先显示部分缓存",
+            "cache": {"source": "stale_disk", "hit": True, "stale": True, "partial": True},
+        },
+    }
+    captured_choices = []
+
+    def fake_supplement_coverage_choices(**kwargs):
+        captured_choices.extend(kwargs["choices"])
+        return {
+            **partial_result,
+            "choices": [
+                *kwargs["choices"],
+                {"hotel_id": "new", "hotel_name": "深圳新补充酒店", "room_type": "king"},
+            ],
+            "coverage_supplement": {"status": "succeeded", "message": "行政区补充完成"},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_cached_coverage_choices", lambda **_kwargs: None)
+    monkeypatch.setattr(app_module.finder, "find_stale_cached_coverage_choices", lambda **_kwargs: partial_result)
+    monkeypatch.setattr(app_module.finder, "supplement_coverage_choices", fake_supplement_coverage_choices)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/coverage/start",
+        json={
+            "city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "choices": [{"hotel_id": "base", "hotel_name": "深圳基础酒店", "room_type": "king"}],
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+        },
+    )
+
+    assert response.status_code == 202
+    started = response.get_json()
+    assert any(choice["hotel_id"] == "partial" for choice in started["partial_result"]["choices"])
+
+    data = None
+    for _ in range(50):
+        poll_response = client.get(started["poll_url"])
+        data = poll_response.get_json()
+        if data["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert data["status"] == "succeeded"
+    assert {choice["hotel_id"] for choice in captured_choices} == {"base", "partial"}
+
+
+def test_coverage_refresh_job_passes_cache_bypass(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    captured = {}
+
+    def unexpected_cache_lookup(**_kwargs):
+        raise AssertionError("coverage cache should not be read when use_cache=false")
+
+    def fake_supplement_coverage_choices(**kwargs):
+        captured["use_cache"] = kwargs.get("use_cache")
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": kwargs["min_price"], "max_price": kwargs["max_price"]},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": kwargs["choices"],
+            "coverage_supplement": {"status": "skipped", "message": "当前结果已覆盖主要行政区。"},
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_cached_coverage_choices", unexpected_cache_lookup)
+    monkeypatch.setattr(app_module.finder, "find_stale_cached_coverage_choices", unexpected_cache_lookup)
+    monkeypatch.setattr(app_module.finder, "supplement_coverage_choices", fake_supplement_coverage_choices)
+    client = flask_app.test_client()
+
+    response = client.post(
+        "/api/coverage/start",
+        json={
+            "city": "深圳",
+            "holiday_code": "2026-06-19::端午节",
+            "choices": [{"hotel_id": "base", "hotel_name": "深圳基础酒店", "room_type": "king"}],
+            "advanced_filter": "all",
+            "pool_filter": "all",
+            "child_facility_filter": "all",
+            "use_cache": "false",
+        },
+    )
+
+    assert response.status_code == 202
+    started = response.get_json()
+    data = None
+    for _ in range(50):
+        poll_response = client.get(started["poll_url"])
+        data = poll_response.get_json()
+        if data["status"] == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert data["status"] == "succeeded"
+    assert captured["use_cache"] is False
+
+
 def test_cache_prewarm_background_state(monkeypatch):
     def fake_find_choices(**kwargs):
         progress_callback = kwargs.get("progress_callback")
@@ -685,6 +1010,77 @@ def test_cache_prewarm_background_state(monkeypatch):
     assert final_state["total"] == 1
     assert final_state["success_count"] == 1
     assert any("正在预热测试缓存" in event["message"] for event in final_state["events"])
+
+
+def test_cache_prewarm_can_include_coverage_supplement(monkeypatch):
+    coverage_calls = 0
+
+    def fake_find_choices(**kwargs):
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [{"hotel_id": "1", "hotel_name": "预热酒店"}],
+            "cache": {"source": "disk", "hit": True},
+        }
+
+    def fake_supplement_coverage_choices(**kwargs):
+        nonlocal coverage_calls
+        coverage_calls += 1
+        progress_callback = kwargs.get("progress_callback")
+        if progress_callback:
+            progress_callback({"stage": "coverage", "message": "正在预热行政区补充缓存", "percent": 60})
+        return {
+            "city": kwargs["city"],
+            "holiday": {"code": kwargs["holiday_code"], "name": "端午节"},
+            "price_filter": {"min_price": None, "max_price": None},
+            "feature_filters": {},
+            "comparison_windows": [],
+            "area_recommendations": [],
+            "choices": [
+                {"hotel_id": "1", "hotel_name": "预热酒店"},
+                {"hotel_id": "2", "hotel_name": "补充酒店"},
+            ],
+            "coverage_supplement": {
+                "status": "succeeded",
+                "message": "补充完成",
+                "cache": {"source": "live", "hit": False},
+            },
+        }
+
+    monkeypatch.setattr(app_module.finder, "find_choices", fake_find_choices)
+    monkeypatch.setattr(app_module.finder, "supplement_coverage_choices", fake_supplement_coverage_choices)
+    with app_module.prewarm_lock:
+        app_module.prewarm_state.clear()
+        app_module.prewarm_state.update({"status": "idle", "message": "测试前空闲"})
+
+    state, status_code = app_module.start_cache_prewarm(
+        {
+            "cities": ["深圳"],
+            "holiday_codes": ["2026-06-19::端午节"],
+            "profiles": ["default"],
+            "delay_seconds": "0",
+            "include_coverage": True,
+        }
+    )
+
+    assert status_code == 202
+    assert state["status"] in {"queued", "running", "succeeded"}
+    final_state = None
+    for _ in range(50):
+        final_state = app_module.public_prewarm_state()
+        if final_state.get("status") == "succeeded":
+            break
+        time.sleep(0.02)
+
+    assert final_state["status"] == "succeeded"
+    assert coverage_calls == 1
+    assert final_state["coverage_success_count"] == 1
+    assert final_state["coverage_live_count"] == 1
+    assert any("行政区补充缓存" in event["message"] for event in final_state["events"])
 
 
 def test_cache_prewarm_respects_runtime_window(monkeypatch):
