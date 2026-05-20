@@ -1541,6 +1541,9 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "<h1>反向旅游搜索后台</h1>" in html
     assert 'rel="icon"' in html
     assert "brand-mark" in html
+    assert '"SF Pro Text", "Inter"' in html
+    assert "--panel-subtle" in html
+    assert ".review-group[open] summary" in html
     assert "审核中心" in html
     assert 'id="review-center-count"' in html
     assert 'class="panel-body review-center-body"' in html
