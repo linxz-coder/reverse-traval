@@ -1366,7 +1366,7 @@ def test_frontend_area_panel_uses_fixed_scroll_without_more_toggle():
     assert 'data-area-toggle="more"' not in html
     assert "还有 ${hiddenCount} 个片区" not in html
     assert "已显示 ${areas.length} 个推荐片区" in html
-    assert "max-height: min(58vh, 620px)" in html
+    assert "max-height: min(56vh, 600px)" in html
     assert "function areaAliases(area)" in html
     assert "data-area-aliases" in html
     assert "function sortAreaRecommendations(areas)" in html
