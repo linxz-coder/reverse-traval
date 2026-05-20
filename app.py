@@ -898,6 +898,16 @@ def utc_timestamp() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
+def local_timestamp(timestamp: float | None = None) -> str:
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp or time.time()))
+
+
+def local_period_label(started_at: float, finished_at: float | None = None) -> str:
+    start_text = local_timestamp(started_at)
+    finish_text = local_timestamp(finished_at) if finished_at is not None else ""
+    return f"{start_text} - {finish_text}" if finish_text else f"{start_text} - 进行中"
+
+
 def cleanup_jobs() -> None:
     cutoff = time.time() - JOB_TTL_SECONDS
     with job_lock:
@@ -1208,7 +1218,15 @@ def normalize_prewarm_city_list(value: Any) -> list[str]:
 
 def public_prewarm_state() -> dict[str, Any]:
     with prewarm_lock:
-        return copy.deepcopy(prewarm_state)
+        state = copy.deepcopy(prewarm_state)
+    targets = state.get("target_results")
+    if isinstance(targets, list):
+        state["target_results"] = sorted(
+            (item for item in targets if isinstance(item, dict)),
+            key=lambda item: str(item.get("completed_at") or item.get("updated_at") or ""),
+            reverse=True,
+        )
+    return state
 
 
 def append_prewarm_event(state: dict[str, Any], message: str, **extra: Any) -> None:
@@ -1305,6 +1323,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
     ]
     total = len(targets)
     started_at = time.time()
+    preset = str(config.get("preset") or "manual").strip() or "manual"
     success_count = 0
     cache_hits = 0
     live_count = 0
@@ -1328,6 +1347,12 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 "created_at": utc_timestamp(),
                 "updated_at": utc_timestamp(),
                 "run_date": time.strftime("%Y-%m-%d", time.localtime()),
+                "run_started_at": utc_timestamp(),
+                "run_started_local": local_timestamp(started_at),
+                "run_finished_at": "",
+                "run_finished_local": "",
+                "run_period_label": local_period_label(started_at),
+                "preset": preset,
                 "total": total,
                 "completed": 0,
                 "success_count": 0,
@@ -1337,6 +1362,10 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 "city_count": len(cities),
                 "holiday_count": len(holiday_codes),
                 "profiles": profiles,
+                "profile_labels": [
+                    PREWARM_FILTER_PROFILES.get(profile_name, PREWARM_FILTER_PROFILES["default"])["label"]
+                    for profile_name in profiles
+                ],
                 "max_runtime_seconds": max_runtime_seconds,
                 "skipped_count": 0,
                 "events": [],
@@ -1439,7 +1468,9 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
         if delay_seconds > 0 and index < total:
             time.sleep(delay_seconds)
 
-    elapsed_seconds = round(time.time() - started_at)
+    finished_at = time.time()
+    elapsed_seconds = round(finished_at - started_at)
+    period_label = local_period_label(started_at, finished_at)
     if stopped_by_time_window:
         for skipped_index, (city, holiday_code, profile_name) in enumerate(targets[completed_count:], start=completed_count + 1):
             append_prewarm_target_result(
@@ -1453,8 +1484,11 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 )
             )
         update_prewarm_state(
-            f"缓存预热达到夜间时间窗口：已完成 {completed_count}/{total}，成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
+            f"缓存预热达到夜间时间窗口（{period_label}）：已完成 {completed_count}/{total}，成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
             status="succeeded",
+            run_finished_at=utc_timestamp(),
+            run_finished_local=local_timestamp(finished_at),
+            run_period_label=period_label,
             completed=completed_count,
             total=total,
             success_count=success_count,
@@ -1468,8 +1502,11 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
         return
 
     update_prewarm_state(
-        f"缓存预热完成：成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
+        f"缓存预热完成（{period_label}）：成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
         status="succeeded",
+        run_finished_at=utc_timestamp(),
+        run_finished_local=local_timestamp(finished_at),
+        run_period_label=period_label,
         completed=completed_count,
         total=total,
         success_count=success_count,

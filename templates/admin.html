@@ -414,7 +414,10 @@
         <section class="panel">
           <div class="panel-head">
             <h2>最近任务</h2>
-            <span class="muted" id="recent-count">0 条记录</span>
+            <div class="panel-title-actions">
+              <span class="muted" id="recent-count">0 条记录</span>
+              <button class="text-btn hidden" id="recent-jobs-more" type="button">查看全部</button>
+            </div>
           </div>
           <div class="panel-body table-wrap">
             <table>
@@ -542,6 +545,7 @@
       const recentJobs = document.getElementById("recent-jobs");
       const activeCount = document.getElementById("active-count");
       const recentCount = document.getElementById("recent-count");
+      const recentJobsMore = document.getElementById("recent-jobs-more");
       const prewarmStatus = document.getElementById("prewarm-status");
       const prewarmBody = document.getElementById("prewarm-body");
       const hotelNameReviewCount = document.getElementById("hotel-name-review-count");
@@ -563,8 +567,10 @@
       const reviewModalTitle = document.getElementById("review-modal-title");
       const reviewModalBody = document.getElementById("review-modal-body");
       const REVIEW_PREVIEW_LIMIT = 3;
+      const RECENT_JOB_PREVIEW_LIMIT = 5;
       const reviewSections = {};
       let activeReviewModalSection = "";
+      let latestRecentJobs = [];
 
       function esc(text) {
         return String(text ?? "")
@@ -706,6 +712,52 @@
         `;
       }
 
+      function recentJobTableHead() {
+        return `
+          <tr>
+            <th style="width: 118px;">任务</th>
+            <th style="width: 90px;">状态</th>
+            <th style="width: 190px;">条件</th>
+            <th>进度</th>
+            <th style="width: 120px;">结果</th>
+            <th style="width: 96px;">PDF</th>
+            <th style="width: 170px;">更新时间</th>
+          </tr>
+        `;
+      }
+
+      function updateRecentJobs(recent) {
+        latestRecentJobs = Array.isArray(recent) ? recent : [];
+        recentCount.textContent = `${latestRecentJobs.length} 条记录`;
+        const previewRows = latestRecentJobs.slice(0, RECENT_JOB_PREVIEW_LIMIT);
+        recentJobsMore.classList.toggle("hidden", latestRecentJobs.length <= RECENT_JOB_PREVIEW_LIMIT);
+        recentJobsMore.textContent = latestRecentJobs.length > RECENT_JOB_PREVIEW_LIMIT
+          ? `查看全部 ${latestRecentJobs.length}`
+          : "查看全部";
+        recentJobs.innerHTML = previewRows.length
+          ? previewRows.map(renderRecentJob).join("")
+          : `<tr><td colspan="7" class="empty">暂无任务记录</td></tr>`;
+      }
+
+      function renderRecentJobsModal() {
+        reviewModalTitle.textContent = `最近任务（${latestRecentJobs.length} 条）`;
+        reviewModalBody.innerHTML = `
+          <table>
+            <thead>${recentJobTableHead()}</thead>
+            <tbody>
+              ${latestRecentJobs.length ? latestRecentJobs.map(renderRecentJob).join("") : `<tr><td colspan="7" class="empty">暂无任务记录</td></tr>`}
+            </tbody>
+          </table>
+        `;
+      }
+
+      function openRecentJobsModal() {
+        activeReviewModalSection = "recentJobs";
+        renderRecentJobsModal();
+        reviewModal.classList.remove("hidden");
+        document.body.classList.add("modal-open");
+      }
+
       function prewarmTargetCondition(target) {
         return target.profile_label || {
           default: "默认条件",
@@ -721,14 +773,52 @@
         return target.cache_source || "-";
       }
 
-      function renderPrewarmTargets(prewarm) {
+      function prewarmTargetTimeValue(target) {
+        const raw = String(target?.completed_at || target?.updated_at || "");
+        const value = Date.parse(raw);
+        return Number.isNaN(value) ? 0 : value;
+      }
+
+      function sortedPrewarmTargets(prewarm) {
         const targets = Array.isArray(prewarm?.target_results) ? prewarm.target_results : [];
+        return [...targets].sort((left, right) => prewarmTargetTimeValue(right) - prewarmTargetTimeValue(left));
+      }
+
+      function snapshotPrewarmTargetScroll() {
+        const node = prewarmBody.querySelector(".prewarm-target-table");
+        return node ? { top: node.scrollTop, left: node.scrollLeft } : null;
+      }
+
+      function restorePrewarmTargetScroll(snapshot) {
+        if (!snapshot) return;
+        window.requestAnimationFrame(() => {
+          const node = prewarmBody.querySelector(".prewarm-target-table");
+          if (!node) return;
+          node.scrollTop = snapshot.top;
+          node.scrollLeft = snapshot.left;
+        });
+      }
+
+      function prewarmRunType(prewarm) {
+        return prewarm?.preset === "daily" ? "每日推荐预热" : "手动预热";
+      }
+
+      function prewarmPeriodText(prewarm) {
+        if (prewarm?.run_period_label) return prewarm.run_period_label;
+        const start = prewarm?.run_started_local || prewarm?.created_at || "";
+        const finish = prewarm?.run_finished_local || (prewarm?.status === "running" ? "进行中" : prewarm?.updated_at || "");
+        if (!start) return "-";
+        return `${formatAdminDateTime(start)} - ${finish === "进行中" ? "进行中" : formatAdminDateTime(finish)}`;
+      }
+
+      function renderPrewarmTargets(prewarm) {
+        const targets = sortedPrewarmTargets(prewarm);
         if (!targets.length) return "";
         return `
           <article class="job full">
             <div class="job-title">
               <strong>${esc(prewarm?.run_date || "今日")}预热清单</strong>
-              <span class="muted">已记录 ${esc(targets.length)} 条</span>
+              <span class="muted">最近完成在前 · 已记录 ${esc(targets.length)} 条</span>
             </div>
             <div class="prewarm-target-table">
               <table>
@@ -766,6 +856,7 @@
 
       function renderPrewarm(prewarm) {
         const events = Array.isArray(prewarm?.events) ? prewarm.events.slice(-5).reverse() : [];
+        const scrollSnapshot = snapshotPrewarmTargetScroll();
         prewarmStatus.textContent = prewarm?.status || "-";
         prewarmBody.innerHTML = `
           <div class="job-list">
@@ -775,8 +866,13 @@
                 ${badge(prewarm?.status || "idle")}
               </div>
               ${renderKeyValues([
+                `类型 ${prewarmRunType(prewarm)}`,
+                `日期 ${prewarm?.run_date || "-"}`,
+                `时段 ${prewarmPeriodText(prewarm)}`,
                 `完成 ${prewarm?.completed ?? 0}/${prewarm?.total ?? 0}`,
                 `成功 ${prewarm?.success_count ?? 0}`,
+                `实际新搜索 ${prewarm?.live_count ?? 0}`,
+                `已有缓存 ${prewarm?.cache_hits ?? 0}`,
                 `失败 ${prewarm?.error_count ?? 0}`,
                 `跳过 ${prewarm?.skipped_count ?? 0}`,
                 `记录 ${prewarm?.target_result_count ?? (prewarm?.target_results || []).length ?? 0}`,
@@ -791,6 +887,7 @@
             `).join("")}
           </div>
         `;
+        restorePrewarmTargetScroll(scrollSnapshot);
       }
 
       function hotelNameReviewButtons(item) {
@@ -1059,6 +1156,10 @@
 
       function refreshOpenReviewModal() {
         if (!activeReviewModalSection || reviewModal.classList.contains("hidden")) return;
+        if (activeReviewModalSection === "recentJobs") {
+          renderRecentJobsModal();
+          return;
+        }
         renderReviewModal(activeReviewModalSection);
       }
 
@@ -1078,13 +1179,10 @@
         const active = data.jobs?.active || [];
         const recent = data.jobs?.recent || [];
         activeCount.textContent = `${active.length} 个任务`;
-        recentCount.textContent = `${recent.length} 条记录`;
         activeJobs.innerHTML = active.length
           ? `<div class="job-list">${active.map(renderActiveJob).join("")}</div>`
           : `<div class="empty">暂无正在运行的任务</div>`;
-        recentJobs.innerHTML = recent.length
-          ? recent.map(renderRecentJob).join("")
-          : `<tr><td colspan="7" class="empty">暂无任务记录</td></tr>`;
+        updateRecentJobs(recent);
         renderPrewarm(data.prewarm || {});
         renderHotelNameReviews(data.hotel_name_corrections || {});
         renderHotelAreaReviews(data.hotel_area_corrections || {});
@@ -1215,6 +1313,7 @@
 
       loadStatus();
       window.setInterval(loadStatus, 2000);
+      recentJobsMore.addEventListener("click", openRecentJobsModal);
       document.querySelectorAll("[data-review-batch-section]").forEach((button) => {
         button.addEventListener("click", () => {
           batchReviewSection(button.dataset.reviewBatchSection, button.dataset.reviewBatchAction);

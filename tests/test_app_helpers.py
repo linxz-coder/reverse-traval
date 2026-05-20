@@ -1548,6 +1548,10 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "function jobPdfLink(job" in html
     assert "下载 PDF" in html
     assert "pdf_available" in html
+    assert 'id="recent-jobs-more"' in html
+    assert "RECENT_JOB_PREVIEW_LIMIT = 5" in html
+    assert "function updateRecentJobs(recent)" in html
+    assert "function openRecentJobsModal()" in html
     assert "hotel-name-reviews" in html
     assert "hotel-area-reviews" in html
     assert "area-merge-reviews" in html
@@ -1578,6 +1582,12 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "function renderPrewarmTargets(prewarm)" in html
     assert "target_results" in html
     assert "预热清单" in html
+    assert "最近完成在前" in html
+    assert "function sortedPrewarmTargets(prewarm)" in html
+    assert "function snapshotPrewarmTargetScroll()" in html
+    assert "restorePrewarmTargetScroll(scrollSnapshot)" in html
+    assert "时段 ${prewarmPeriodText(prewarm)}" in html
+    assert "实际新搜索" in html
 
 
 def test_admin_batch_approves_hotel_area_corrections_and_refreshes_cache(monkeypatch):
@@ -2298,6 +2308,11 @@ def test_cache_prewarm_background_state(monkeypatch, tmp_path):
         time.sleep(0.02)
 
     assert final_state["status"] == "succeeded"
+    assert final_state["run_started_local"]
+    assert final_state["run_finished_local"]
+    assert final_state["run_period_label"]
+    assert " - " in final_state["run_period_label"]
+    assert "缓存预热完成（" in final_state["message"]
     assert final_state["total"] == 1
     assert final_state["success_count"] == 1
     assert final_state["target_result_count"] == 1
@@ -2353,9 +2368,31 @@ def test_cache_prewarm_respects_runtime_window(monkeypatch, tmp_path):
         time.sleep(0.02)
 
     assert final_state["status"] == "succeeded"
+    assert "缓存预热达到夜间时间窗口（" in final_state["message"]
+    assert final_state["run_finished_local"]
     assert final_state["completed"] == 0
     assert final_state["target_result_count"] == 1
     assert final_state["target_results"][0]["status"] == "skipped"
     assert final_state["target_results"][0]["city"] == "深圳"
     assert final_state["skipped_count"] == 1
     assert calls == 0
+
+
+def test_public_prewarm_state_sorts_recent_targets_first():
+    with app_module.prewarm_lock:
+        app_module.prewarm_state.clear()
+        app_module.prewarm_state.update(
+            {
+                "status": "succeeded",
+                "message": "测试排序",
+                "target_results": [
+                    {"city": "深圳", "completed_at": "2026-05-20T01:00:00Z"},
+                    {"city": "广州", "completed_at": "2026-05-20T03:00:00Z"},
+                    {"city": "东莞", "completed_at": "2026-05-20T02:00:00Z"},
+                ],
+            }
+        )
+
+    state = app_module.public_prewarm_state()
+
+    assert [item["city"] for item in state["target_results"]] == ["广州", "东莞", "深圳"]
