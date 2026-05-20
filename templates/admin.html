@@ -228,6 +228,57 @@
         border-bottom: 1px solid var(--line-soft);
         background: #fff;
       }
+      .recent-job-cards {
+        display: none;
+        gap: 10px;
+        padding: 12px;
+      }
+      .recent-job-card {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: var(--panel-subtle);
+        padding: 12px;
+      }
+      .recent-job-card-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .recent-job-card-head strong {
+        display: block;
+        font-size: 14px;
+        line-height: 1.25;
+      }
+      .recent-job-card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .recent-job-field {
+        min-height: 54px;
+        padding: 8px;
+        border: 1px solid var(--line-soft);
+        border-radius: 7px;
+        background: #fff;
+      }
+      .recent-job-field.wide {
+        grid-column: 1 / -1;
+      }
+      .recent-job-label {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .recent-job-value {
+        color: #263241;
+        font-size: 13px;
+        line-height: 1.42;
+        overflow-wrap: anywhere;
+      }
       .job-list {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -486,6 +537,12 @@
           padding: 10px 12px;
         }
       }
+      @media (max-width: 700px) {
+        .recent-table-wrap { display: none; }
+        .recent-job-cards { display: grid; }
+        .recent-job-card-grid { grid-template-columns: 1fr; }
+        .recent-job-field { min-height: 0; }
+      }
       @media (max-width: 540px) {
         .page { padding: 18px 12px 36px; }
         .metrics { grid-template-columns: 1fr; }
@@ -546,7 +603,7 @@
               <button class="text-btn hidden" id="recent-jobs-more" type="button">查看全部</button>
             </div>
           </div>
-          <div class="panel-body table-wrap">
+          <div class="panel-body table-wrap recent-table-wrap">
             <table>
               <thead>
                 <tr>
@@ -562,6 +619,7 @@
               <tbody id="recent-jobs"></tbody>
             </table>
           </div>
+          <div class="recent-job-cards" id="recent-job-cards"></div>
         </section>
 
         <section class="panel">
@@ -696,6 +754,7 @@
       const statusText = document.getElementById("status-text");
       const activeJobs = document.getElementById("active-jobs");
       const recentJobs = document.getElementById("recent-jobs");
+      const recentJobCards = document.getElementById("recent-job-cards");
       const activeCount = document.getElementById("active-count");
       const recentCount = document.getElementById("recent-count");
       const recentJobsMore = document.getElementById("recent-jobs-more");
@@ -877,6 +936,44 @@
         `;
       }
 
+      function renderRecentJobCard(job) {
+        const progress = job.progress || {};
+        const conditions = payloadText(job.payload || {});
+        return `
+          <article class="recent-job-card">
+            <div class="recent-job-card-head">
+              <div>
+                <strong>${esc(job.kind || "-")}</strong>
+                <div class="mono">${esc(String(job.job_id || "").slice(0, 12))}</div>
+              </div>
+              ${badge(job.status)}
+            </div>
+            <div class="recent-job-card-grid">
+              <div class="recent-job-field">
+                <span class="recent-job-label">结果</span>
+                <div class="recent-job-value">${esc(resultText(job))}</div>
+              </div>
+              <div class="recent-job-field">
+                <span class="recent-job-label">更新时间</span>
+                <div class="recent-job-value">${esc(formatAdminDateTime(job.updated_at))}</div>
+              </div>
+              <div class="recent-job-field wide">
+                <span class="recent-job-label">条件</span>
+                <div class="recent-job-value">${conditions.map(esc).join("<br>")}</div>
+              </div>
+              <div class="recent-job-field wide">
+                <span class="recent-job-label">进度</span>
+                <div class="recent-job-value">${esc(progress.message || "-")}</div>
+              </div>
+              <div class="recent-job-field wide">
+                <span class="recent-job-label">PDF</span>
+                <div class="recent-job-value">${jobPdfLink(job, "下载 PDF")}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
       function recentJobTableHead() {
         return `
           <tr>
@@ -902,17 +999,25 @@
         recentJobs.innerHTML = previewRows.length
           ? previewRows.map(renderRecentJob).join("")
           : `<tr><td colspan="7" class="empty">暂无任务记录</td></tr>`;
+        recentJobCards.innerHTML = previewRows.length
+          ? previewRows.map(renderRecentJobCard).join("")
+          : `<div class="empty">暂无任务记录</div>`;
       }
 
       function renderRecentJobsModal() {
         reviewModalTitle.textContent = `最近任务（${latestRecentJobs.length} 条）`;
         reviewModalBody.innerHTML = `
-          <table>
-            <thead>${recentJobTableHead()}</thead>
-            <tbody>
-              ${latestRecentJobs.length ? latestRecentJobs.map(renderRecentJob).join("") : `<tr><td colspan="7" class="empty">暂无任务记录</td></tr>`}
-            </tbody>
-          </table>
+          <div class="table-wrap recent-table-wrap">
+            <table>
+              <thead>${recentJobTableHead()}</thead>
+              <tbody>
+                ${latestRecentJobs.length ? latestRecentJobs.map(renderRecentJob).join("") : `<tr><td colspan="7" class="empty">暂无任务记录</td></tr>`}
+              </tbody>
+            </table>
+          </div>
+          <div class="recent-job-cards">
+            ${latestRecentJobs.length ? latestRecentJobs.map(renderRecentJobCard).join("") : `<div class="empty">暂无任务记录</div>`}
+          </div>
         `;
       }
 

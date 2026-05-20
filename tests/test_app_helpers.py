@@ -1560,6 +1560,10 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "下载 PDF" in html
     assert "pdf_available" in html
     assert 'id="recent-jobs-more"' in html
+    assert 'id="recent-job-cards"' in html
+    assert "function renderRecentJobCard(job)" in html
+    assert ".recent-table-wrap { display: none; }" in html
+    assert ".recent-job-card-grid { grid-template-columns: 1fr; }" in html
     assert "RECENT_JOB_PREVIEW_LIMIT = 5" in html
     assert "function updateRecentJobs(recent)" in html
     assert "function openRecentJobsModal()" in html
