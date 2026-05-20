@@ -1588,6 +1588,9 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "restorePrewarmTargetScroll(scrollSnapshot)" in html
     assert "时段 ${prewarmPeriodText(prewarm)}" in html
     assert "实际新搜索" in html
+    assert "安排在半夜的这次缓存预热" in html
+    assert "失败城市：" in html
+    assert "events.map" not in html
 
 
 def test_admin_batch_approves_hotel_area_corrections_and_refreshes_cache(monkeypatch):
@@ -2010,8 +2013,9 @@ def test_daily_prewarm_config_uses_prewarm_cities_and_holidays(monkeypatch):
     config = app_module.daily_prewarm_config({"city_limit": "2", "holiday_limit": "1", "delay_seconds": "0"})
 
     assert config["preset"] == "daily"
-    assert len(config["cities"]) == 2
-    assert config["cities"] == ["深圳", "广州"]
+    assert len(config["cities"]) == 5
+    assert config["cities"][:2] == ["深圳", "广州"]
+    assert len([city for city in config["cities"][2:] if city in app_module.INTERNATIONAL_PREWARM_CITIES]) == 3
     assert config["holiday_codes"] == ["2026-06-19::端午节"]
     assert config["profiles"] == ["quality"]
 
@@ -2387,8 +2391,8 @@ def test_public_prewarm_state_sorts_recent_targets_first():
                 "message": "测试排序",
                 "target_results": [
                     {"city": "深圳", "completed_at": "2026-05-20T01:00:00Z"},
-                    {"city": "广州", "completed_at": "2026-05-20T03:00:00Z"},
-                    {"city": "东莞", "completed_at": "2026-05-20T02:00:00Z"},
+                    {"city": "广州", "status": "live", "completed_at": "2026-05-20T03:00:00Z"},
+                    {"city": "东莞", "status": "failed", "error": "接口超时", "completed_at": "2026-05-20T02:00:00Z"},
                 ],
             }
         )
@@ -2396,3 +2400,6 @@ def test_public_prewarm_state_sorts_recent_targets_first():
     state = app_module.public_prewarm_state()
 
     assert [item["city"] for item in state["target_results"]] == ["广州", "东莞", "深圳"]
+    assert state["summary"]["success_city_count"] == 1
+    assert state["summary"]["failed_city_count"] == 1
+    assert state["summary"]["failed_cities"][0]["city"] == "东莞"

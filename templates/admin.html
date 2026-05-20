@@ -800,7 +800,15 @@
       }
 
       function prewarmRunType(prewarm) {
-        return prewarm?.preset === "daily" ? "每日推荐预热" : "手动预热";
+        if (prewarm?.preset === "nightly") return "半夜定时预热";
+        if (prewarm?.preset === "daily") return "每日推荐预热";
+        return "手动预热";
+      }
+
+      function prewarmSummaryTitle(prewarm) {
+        if (prewarm?.preset === "nightly") return "安排在半夜的这次缓存预热";
+        if (prewarm?.preset === "daily") return "每日推荐缓存预热";
+        return "缓存预热";
       }
 
       function prewarmPeriodText(prewarm) {
@@ -809,6 +817,29 @@
         const finish = prewarm?.run_finished_local || (prewarm?.status === "running" ? "进行中" : prewarm?.updated_at || "");
         if (!start) return "-";
         return `${formatAdminDateTime(start)} - ${finish === "进行中" ? "进行中" : formatAdminDateTime(finish)}`;
+      }
+
+      function prewarmFailedCities(prewarm) {
+        const summaryItems = Array.isArray(prewarm?.summary?.failed_cities) ? prewarm.summary.failed_cities : [];
+        if (summaryItems.length) return summaryItems;
+        const targets = Array.isArray(prewarm?.target_results) ? prewarm.target_results : [];
+        const byCity = {};
+        targets.forEach((target) => {
+          if (target?.status !== "failed" || !target.city) return;
+          byCity[target.city] = byCity[target.city] || { city: target.city, error: "" };
+          if (target.error && !byCity[target.city].error) byCity[target.city].error = target.error;
+        });
+        return Object.values(byCity);
+      }
+
+      function renderPrewarmFailureLine(prewarm) {
+        const failed = prewarmFailedCities(prewarm);
+        if (!failed.length) return `<div class="job-message muted">失败城市：无</div>`;
+        return `
+          <div class="job-message">
+            失败城市：${failed.map((item) => `${esc(item.city || "-")}${item.error ? `（${esc(item.error)}）` : ""}`).join("、")}
+          </div>
+        `;
       }
 
       function renderPrewarmTargets(prewarm) {
@@ -855,36 +886,34 @@
       }
 
       function renderPrewarm(prewarm) {
-        const events = Array.isArray(prewarm?.events) ? prewarm.events.slice(-5).reverse() : [];
         const scrollSnapshot = snapshotPrewarmTargetScroll();
+        const summary = prewarm?.summary || {};
         prewarmStatus.textContent = prewarm?.status || "-";
         prewarmBody.innerHTML = `
           <div class="job-list">
-            <article class="job">
+            <article class="job full">
               <div class="job-title">
-                <strong>${esc(prewarm?.message || "暂无预热任务")}</strong>
+                <div>
+                  <strong>${esc(prewarmSummaryTitle(prewarm))}</strong>
+                  <div class="muted">${esc(prewarm?.message || "暂无预热任务")}</div>
+                </div>
                 ${badge(prewarm?.status || "idle")}
               </div>
               ${renderKeyValues([
                 `类型 ${prewarmRunType(prewarm)}`,
                 `日期 ${prewarm?.run_date || "-"}`,
                 `时段 ${prewarmPeriodText(prewarm)}`,
-                `完成 ${prewarm?.completed ?? 0}/${prewarm?.total ?? 0}`,
-                `成功 ${prewarm?.success_count ?? 0}`,
+                `预热城市 ${summary.prewarmed_city_count ?? prewarm?.city_count ?? 0}`,
+                `成功城市 ${summary.success_city_count ?? prewarm?.success_count ?? 0}`,
+                `失败城市 ${summary.failed_city_count ?? prewarm?.error_count ?? 0}`,
                 `实际新搜索 ${prewarm?.live_count ?? 0}`,
                 `已有缓存 ${prewarm?.cache_hits ?? 0}`,
-                `失败 ${prewarm?.error_count ?? 0}`,
                 `跳过 ${prewarm?.skipped_count ?? 0}`,
-                `记录 ${prewarm?.target_result_count ?? (prewarm?.target_results || []).length ?? 0}`,
+                `缓存任务 ${summary.success_target_count ?? prewarm?.success_count ?? 0}/${prewarm?.total ?? 0}`,
               ])}
+              ${renderPrewarmFailureLine(prewarm)}
             </article>
             ${renderPrewarmTargets(prewarm)}
-            ${events.map((event) => `
-              <article class="job">
-                <div class="job-message">${esc(event.message || "-")}</div>
-                <div class="kv"><span>${esc(event.time || "-")}</span></div>
-              </article>
-            `).join("")}
           </div>
         `;
         restorePrewarmTargetScroll(scrollSnapshot);

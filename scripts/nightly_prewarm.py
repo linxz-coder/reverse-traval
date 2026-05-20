@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import random
 import time
 from urllib.request import Request, urlopen
 
@@ -88,6 +89,31 @@ POPULAR_CITIES = (
 )
 STARTER_CITIES = tuple(dict.fromkeys((*CORE_CITIES, *POPULAR_CITIES)))
 
+INTERNATIONAL_CITIES = (
+    "曼谷",
+    "吉隆坡",
+    "新加坡",
+    "东京",
+    "大阪",
+    "首尔",
+    "雅加达",
+    "迪拜",
+    "巴黎",
+    "伦敦",
+    "纽约",
+    "芝加哥",
+    "拉斯维加斯",
+    "洛杉矶",
+    "柏林",
+    "莫斯科",
+    "圣保罗",
+    "悉尼",
+    "墨尔本",
+    "罗马",
+    "米兰",
+    "巴塞罗那",
+)
+
 
 def read_json(url: str) -> dict:
     with urlopen(url, timeout=20) as response:
@@ -118,6 +144,29 @@ def rotating_batch(cities: tuple[str, ...], batch_size: int, day: dt.date) -> li
     return batch
 
 
+def random_international_batch(
+    *,
+    day: dt.date,
+    count: int,
+    city_pool: tuple[str, ...] = INTERNATIONAL_CITIES,
+) -> list[str]:
+    if count <= 0 or not city_pool:
+        return []
+    rng = random.Random(f"reverse-travel-international-prewarm:{day.isoformat()}")
+    return rng.sample(list(city_pool), min(count, len(city_pool)))
+
+
+def within_start_window(now: dt.datetime, start_hour: int, latest_start_hour: int) -> bool:
+    start_hour = max(0, min(23, start_hour))
+    latest_start_hour = max(0, min(24, latest_start_hour))
+    current = now.hour + now.minute / 60 + now.second / 3600
+    if start_hour < latest_start_hour:
+        return start_hour <= current < latest_start_hour
+    if start_hour > latest_start_hour:
+        return current >= start_hour or current < latest_start_hour
+    return True
+
+
 def parse_city_list(value: str) -> list[str]:
     return [item.strip() for item in value.split(",") if item.strip()]
 
@@ -132,10 +181,12 @@ def build_city_batch(
     batch_size: int,
     priority_cities: list[str],
     city_pool: tuple[str, ...] = STARTER_CITIES,
+    international_city_count: int = 3,
 ) -> list[str]:
     priority = unique_cities(priority_cities)
-    rotating_pool = tuple(city for city in city_pool if city not in priority)
-    return unique_cities(priority + rotating_batch(rotating_pool, batch_size, day))
+    international = random_international_batch(day=day, count=international_city_count)
+    rotating_pool = tuple(city for city in city_pool if city not in priority and city not in international)
+    return unique_cities(priority + rotating_batch(rotating_pool, batch_size, day) + international)
 
 
 def wait_for_prewarm(status_url: str, timeout_seconds: int, interval_seconds: int) -> dict:
@@ -165,16 +216,40 @@ def main() -> None:
     parser.add_argument("--watch-interval", type=int, default=60)
     parser.add_argument("--watch-timeout", type=int, default=21600)
     parser.add_argument("--cities", default="")
+    parser.add_argument("--international-count", type=int, default=3)
+    parser.add_argument("--start-hour", type=int, default=2)
+    parser.add_argument("--latest-start-hour", type=int, default=6)
+    parser.add_argument("--allow-outside-window", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
+
+    now = dt.datetime.now()
+    if not args.dry_run and not args.allow_outside_window and not within_start_window(
+        now,
+        args.start_hour,
+        args.latest_start_hour,
+    ):
+        print(
+            json.dumps(
+                {
+                    "skipped": True,
+                    "reason": "outside nightly prewarm window",
+                    "now": now.isoformat(timespec="seconds"),
+                    "window": f"{args.start_hour:02d}:00-{args.latest_start_hour:02d}:00",
+                },
+                ensure_ascii=False,
+            )
+        )
+        return
 
     if args.cities:
         cities = unique_cities(parse_city_list(args.cities))
     else:
         cities = build_city_batch(
-            day=dt.date.today(),
+            day=now.date(),
             batch_size=args.batch_size,
             priority_cities=parse_city_list(args.priority_cities),
+            international_city_count=args.international_count,
         )
 
     if args.holiday_codes:
@@ -191,6 +266,7 @@ def main() -> None:
         "holiday_codes": holiday_codes,
         "delay_seconds": str(max(0, args.delay_seconds)),
         "max_runtime_seconds": str(max(0, args.max_runtime_seconds)),
+        "preset": "nightly",
     }
     if args.dry_run:
         print(json.dumps({"dry_run": True, "payload": payload}, ensure_ascii=False, indent=2))

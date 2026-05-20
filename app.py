@@ -7,6 +7,7 @@ import html
 import json
 import math
 import os
+import random
 import re
 import resource
 import subprocess
@@ -102,6 +103,11 @@ PREWARM_MAJOR_CITIES = (
     "西安", "长沙", "郑州", "天津", "青岛", "厦门", "福州", "宁波", "无锡", "合肥",
     "济南", "昆明", "贵阳", "南宁", "海口", "三亚", "大连", "沈阳", "哈尔滨", "长春",
     "石家庄", "太原", "呼和浩特", "兰州", "银川", "西宁", "乌鲁木齐", "拉萨",
+)
+INTERNATIONAL_PREWARM_CITIES = (
+    "曼谷", "吉隆坡", "新加坡", "东京", "大阪", "首尔", "雅加达", "迪拜",
+    "巴黎", "伦敦", "纽约", "芝加哥", "拉斯维加斯", "洛杉矶", "柏林",
+    "莫斯科", "圣保罗", "悉尼", "墨尔本", "罗马", "米兰", "巴塞罗那",
 )
 PREWARM_FILTER_PROFILES = {
     "default": {
@@ -1195,6 +1201,16 @@ def prewarm_city_list(preset: str = "major", limit: int | None = None) -> list[s
     return cities
 
 
+def random_international_prewarm_cities(day_key: str | None = None, count: int = 3) -> list[str]:
+    if count <= 0:
+        return []
+    day_key = day_key or time.strftime("%Y-%m-%d", time.localtime())
+    pool = list(INTERNATIONAL_PREWARM_CITIES)
+    sample_size = min(count, len(pool))
+    rng = random.Random(f"reverse-travel-international-prewarm:{day_key}")
+    return rng.sample(pool, sample_size)
+
+
 def normalize_prewarm_city_list(value: Any) -> list[str]:
     if not value:
         return []
@@ -1226,7 +1242,57 @@ def public_prewarm_state() -> dict[str, Any]:
             key=lambda item: str(item.get("completed_at") or item.get("updated_at") or ""),
             reverse=True,
         )
+    state["summary"] = prewarm_summary(state)
     return state
+
+
+def prewarm_summary(state: dict[str, Any]) -> dict[str, Any]:
+    targets = [item for item in (state.get("target_results") or []) if isinstance(item, dict)]
+    by_city: dict[str, list[dict[str, Any]]] = {}
+    for item in targets:
+        city = str(item.get("city") or "").strip()
+        if not city:
+            continue
+        by_city.setdefault(city, []).append(item)
+
+    success_statuses = {"succeeded", "cache_hit", "live"}
+    failed_cities: list[dict[str, Any]] = []
+    success_city_count = 0
+    skipped_city_count = 0
+    for city, items in sorted(by_city.items()):
+        statuses = {str(item.get("status") or "") for item in items}
+        failures = [str(item.get("error") or "").strip() for item in items if item.get("status") == "failed"]
+        if "failed" in statuses:
+            failed_cities.append(
+                {
+                    "city": city,
+                    "error": "；".join(dict.fromkeys(error for error in failures if error))[:300],
+                    "failed_count": sum(1 for item in items if item.get("status") == "failed"),
+                }
+            )
+        elif statuses & success_statuses:
+            success_city_count += 1
+        elif statuses == {"skipped"}:
+            skipped_city_count += 1
+
+    success_target_count = sum(1 for item in targets if str(item.get("status") or "") in success_statuses)
+    failed_target_count = sum(1 for item in targets if item.get("status") == "failed")
+    skipped_target_count = sum(1 for item in targets if item.get("status") == "skipped")
+    prewarmed_city_count = sum(
+        1
+        for items in by_city.values()
+        if any(item.get("status") != "skipped" for item in items)
+    )
+    return {
+        "prewarmed_city_count": prewarmed_city_count,
+        "success_city_count": success_city_count,
+        "failed_city_count": len(failed_cities),
+        "skipped_city_count": skipped_city_count,
+        "success_target_count": success_target_count,
+        "failed_target_count": failed_target_count,
+        "skipped_target_count": skipped_target_count,
+        "failed_cities": failed_cities,
+    }
 
 
 def append_prewarm_event(state: dict[str, Any], message: str, **extra: Any) -> None:
@@ -1549,8 +1615,15 @@ def daily_prewarm_config(config: dict[str, Any] | None = None) -> dict[str, Any]
     city_limit = parse_optional_int(config.get("city_limit"), "每日预热城市数量")
     if city_limit is None:
         city_limit = DAILY_PREWARM_CITY_LIMIT
+    international_count = parse_optional_int(config.get("international_city_count"), "国际预热城市数量")
+    if international_count is None:
+        international_count = 3
+    cities = [
+        *prewarm_city_list(limit=max(1, city_limit)),
+        *random_international_prewarm_cities(count=international_count),
+    ]
     return {
-        "cities": prewarm_city_list(limit=max(1, city_limit)),
+        "cities": list(dict.fromkeys(cities)),
         "holiday_codes": [item["code"] for item in holidays],
         "profiles": normalize_prewarm_profiles(config.get("profiles") or ["quality"]),
         "delay_seconds": str(config.get("delay_seconds", "1")),

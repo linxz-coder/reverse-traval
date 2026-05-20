@@ -23,6 +23,12 @@
     <string>60</string>
     <string>--priority-cities</string>
     <string>深圳,广州,东莞,惠州,佛山,珠海,中山,江门,汕尾,肇庆,韶关,河源,清远,云浮,北京,上海</string>
+    <string>--international-count</string>
+    <string>3</string>
+    <string>--start-hour</string>
+    <string>2</string>
+    <string>--latest-start-hour</string>
+    <string>6</string>
     <string>--max-runtime-seconds</string>
     <string>19800</string>
     <string>--wait</string>
