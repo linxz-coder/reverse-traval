@@ -1606,13 +1606,16 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert 'data-review-more="hotelName"' in html
     assert 'data-review-more="hotelArea"' in html
     assert 'data-review-more="areaMerge"' in html
-    assert "function renderPrewarmTargets(prewarm)" in html
+    assert "function renderPrewarmTargets(prewarm, openState = null)" in html
     assert "target_results" in html
     assert "预热清单" in html
     assert "最近完成在前" in html
     assert "function sortedPrewarmTargets(prewarm)" in html
     assert "function snapshotPrewarmTargetScroll()" in html
+    assert "function snapshotPrewarmTargetOpenState()" in html
     assert "restorePrewarmTargetScroll(scrollSnapshot)" in html
+    assert "const targetOpenState = snapshotPrewarmTargetOpenState()" in html
+    assert "renderPrewarmTargets(prewarm, targetOpenState)" in html
     assert "时段 ${prewarmPeriodText(prewarm)}" in html
     assert "实际新搜索" in html
     assert "安排在半夜的这次缓存预热" in html

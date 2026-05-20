@@ -1181,6 +1181,11 @@
         });
       }
 
+      function snapshotPrewarmTargetOpenState() {
+        const node = prewarmBody.querySelector(".prewarm-target-details");
+        return node ? node.open : null;
+      }
+
       function prewarmRunType(prewarm) {
         if (prewarm?.preset === "nightly") return "半夜定时预热";
         if (prewarm?.preset === "daily") return "每日推荐预热";
@@ -1340,10 +1345,10 @@
         `;
       }
 
-      function renderPrewarmTargets(prewarm) {
+      function renderPrewarmTargets(prewarm, openState = null) {
         const targets = sortedPrewarmTargets(prewarm);
         if (!targets.length) return "";
-        const shouldOpen = targets.length <= 8;
+        const shouldOpen = openState === null ? targets.length <= 8 : openState;
         return `
           <article class="job full">
             <details class="prewarm-target-details" ${shouldOpen ? "open" : ""}>
@@ -1383,6 +1388,7 @@
 
       function renderPrewarm(prewarm) {
         const scrollSnapshot = snapshotPrewarmTargetScroll();
+        const targetOpenState = snapshotPrewarmTargetOpenState();
         latestPrewarmState = prewarm || {};
         const summary = prewarm?.summary || {};
         prewarmStatus.textContent = prewarm?.status || "-";
@@ -1410,7 +1416,7 @@
               ])}
               ${renderPrewarmFailureLine(prewarm)}
             </article>
-            ${renderPrewarmTargets(prewarm)}
+            ${renderPrewarmTargets(prewarm, targetOpenState)}
           </div>
         `;
         restorePrewarmTargetScroll(scrollSnapshot);
