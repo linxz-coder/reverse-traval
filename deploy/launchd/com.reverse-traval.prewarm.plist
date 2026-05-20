@@ -28,7 +28,11 @@
     <string>--start-hour</string>
     <string>2</string>
     <string>--latest-start-hour</string>
+    <string>3</string>
+    <string>--makeup-start-hour</string>
     <string>6</string>
+    <string>--makeup-latest-start-hour</string>
+    <string>8</string>
     <string>--max-runtime-seconds</string>
     <string>19800</string>
     <string>--wait</string>
@@ -39,12 +43,20 @@
   </array>
 
   <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key>
-    <integer>2</integer>
-    <key>Minute</key>
-    <integer>10</integer>
-  </dict>
+  <array>
+    <dict>
+      <key>Hour</key>
+      <integer>2</integer>
+      <key>Minute</key>
+      <integer>10</integer>
+    </dict>
+    <dict>
+      <key>Hour</key>
+      <integer>6</integer>
+      <key>Minute</key>
+      <integer>10</integer>
+    </dict>
+  </array>
 
   <key>StandardOutPath</key>
   <string>/Users/lxz/.local/share/reverse-traval/.cache/logs/nightly-prewarm.log</string>

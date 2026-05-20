@@ -167,6 +167,22 @@ def within_start_window(now: dt.datetime, start_hour: int, latest_start_hour: in
     return True
 
 
+def within_any_start_window(now: dt.datetime, windows: list[tuple[int, int]]) -> bool:
+    return any(within_start_window(now, start_hour, latest_start_hour) for start_hour, latest_start_hour in windows)
+
+
+def window_labels(windows: list[tuple[int, int]]) -> list[str]:
+    return [f"{start_hour:02d}:00-{latest_start_hour:02d}:00" for start_hour, latest_start_hour in windows]
+
+
+def nightly_ran_for_day(status: dict, day: dt.date) -> bool:
+    if status.get("preset") != "nightly":
+        return False
+    if status.get("run_date") != day.isoformat():
+        return False
+    return status.get("status") in {"queued", "running", "succeeded", "failed"}
+
+
 def parse_city_list(value: str) -> list[str]:
     return [item.strip() for item in value.split(",") if item.strip()]
 
@@ -218,29 +234,43 @@ def main() -> None:
     parser.add_argument("--cities", default="")
     parser.add_argument("--international-count", type=int, default=3)
     parser.add_argument("--start-hour", type=int, default=2)
-    parser.add_argument("--latest-start-hour", type=int, default=6)
+    parser.add_argument("--latest-start-hour", type=int, default=3)
+    parser.add_argument("--makeup-start-hour", type=int, default=6)
+    parser.add_argument("--makeup-latest-start-hour", type=int, default=8)
     parser.add_argument("--allow-outside-window", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
     now = dt.datetime.now()
-    if not args.dry_run and not args.allow_outside_window and not within_start_window(
-        now,
-        args.start_hour,
-        args.latest_start_hour,
-    ):
+    windows = [
+        (args.start_hour, args.latest_start_hour),
+        (args.makeup_start_hour, args.makeup_latest_start_hour),
+    ]
+    if not args.dry_run and not args.allow_outside_window and not within_any_start_window(now, windows):
         print(
             json.dumps(
                 {
                     "skipped": True,
                     "reason": "outside nightly prewarm window",
                     "now": now.isoformat(timespec="seconds"),
-                    "window": f"{args.start_hour:02d}:00-{args.latest_start_hour:02d}:00",
+                    "windows": window_labels(windows),
                 },
                 ensure_ascii=False,
             )
         )
         return
+
+    status_url = f"{args.base_url}/api/admin/prewarm/status"
+    start_url = f"{args.base_url}/api/admin/prewarm/start"
+    status: dict = {}
+    if not args.dry_run:
+        status = read_json(status_url)
+        if status.get("status") == "running":
+            print(json.dumps({"skipped": True, "reason": "prewarm already running", "status": status}, ensure_ascii=False))
+            return
+        if nightly_ran_for_day(status, now.date()):
+            print(json.dumps({"skipped": True, "reason": "nightly prewarm already ran today", "status": status}, ensure_ascii=False))
+            return
 
     if args.cities:
         cities = unique_cities(parse_city_list(args.cities))
@@ -270,13 +300,6 @@ def main() -> None:
     }
     if args.dry_run:
         print(json.dumps({"dry_run": True, "payload": payload}, ensure_ascii=False, indent=2))
-        return
-
-    status_url = f"{args.base_url}/api/admin/prewarm/status"
-    start_url = f"{args.base_url}/api/admin/prewarm/start"
-    status = read_json(status_url)
-    if status.get("status") == "running":
-        print(json.dumps({"skipped": True, "reason": "prewarm already running", "status": status}, ensure_ascii=False))
         return
 
     state = post_json(start_url, payload)
