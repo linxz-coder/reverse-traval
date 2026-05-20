@@ -1541,6 +1541,14 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "<h1>反向旅游搜索后台</h1>" in html
     assert 'rel="icon"' in html
     assert "brand-mark" in html
+    assert "审核中心" in html
+    assert 'id="review-center-count"' in html
+    assert 'class="panel-body review-center-body"' in html
+    assert 'class="review-group" id="hotel-name-review-group"' in html
+    assert 'class="review-group" id="hotel-area-review-group"' in html
+    assert 'class="review-group" id="area-merge-review-group"' in html
+    assert "function updateReviewCenterSummary()" in html
+    assert "function initializeReviewCenterGroups()" in html
     assert "酒店名审核" in html
     assert "片区审核" in html
     assert "合并片区审核" in html

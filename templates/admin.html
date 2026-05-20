@@ -119,6 +119,54 @@
         color: var(--muted);
         font-size: 14px;
       }
+      .review-center-body {
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+      }
+      .review-group {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fbfcfe;
+        overflow: hidden;
+      }
+      .review-group summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 48px;
+        padding: 0 12px;
+        cursor: pointer;
+        list-style: none;
+      }
+      .review-group summary::-webkit-details-marker { display: none; }
+      .review-group-title {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .review-group-toggle {
+        flex: 0 0 auto;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .review-group-toggle::before { content: "展开"; }
+      .review-group[open] .review-group-toggle::before { content: "收起"; }
+      .review-group-content {
+        border-top: 1px solid var(--line-soft);
+        background: #fff;
+      }
+      .review-group-actions {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line-soft);
+      }
       .job-list {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -368,6 +416,12 @@
         table { min-width: 760px; }
         .table-wrap { overflow-x: auto; }
         .review-modal { padding: 12px; }
+        .review-group summary {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 10px 12px;
+        }
       }
       @media (max-width: 540px) {
         .page { padding: 18px 12px 36px; }
@@ -457,82 +511,108 @@
 
         <section class="panel">
           <div class="panel-head">
-            <h2>酒店名审核</h2>
-            <div class="panel-title-actions">
-              <span class="muted" id="hotel-name-review-count">0 条待审核</span>
-              <button class="text-btn batch-approve hidden" id="hotel-name-review-batch-approve" type="button" data-review-batch-section="hotelName" data-review-batch-action="approve">全部通过</button>
-              <button class="text-btn batch-reject hidden" id="hotel-name-review-batch-reject" type="button" data-review-batch-section="hotelName" data-review-batch-action="reject">全部拒绝</button>
-              <button class="text-btn hidden" id="hotel-name-review-more" type="button" data-review-more="hotelName">查看全部</button>
+            <div>
+              <h2>审核中心</h2>
+              <p class="muted">酒店名、片区和合并片区统一处理</p>
             </div>
+            <span class="muted" id="review-center-count">0 条待审核</span>
           </div>
-          <div class="panel-body table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 160px;">酒店</th>
-                  <th>当前 / 建议</th>
-                  <th style="width: 110px;">城市片区</th>
-                  <th style="width: 110px;">状态</th>
-                  <th style="width: 145px;">提交时间</th>
-                  <th class="action-col" style="width: 132px;">操作</th>
-                </tr>
-              </thead>
-              <tbody id="hotel-name-reviews"></tbody>
-            </table>
-          </div>
-        </section>
+          <div class="panel-body review-center-body">
+            <details class="review-group" id="hotel-name-review-group">
+              <summary>
+                <span class="review-group-title">
+                  <strong>酒店名审核</strong>
+                  <span class="muted" id="hotel-name-review-count">0 条待审核</span>
+                </span>
+                <span class="review-group-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="review-group-content">
+                <div class="review-group-actions">
+                  <button class="text-btn batch-approve hidden" id="hotel-name-review-batch-approve" type="button" data-review-batch-section="hotelName" data-review-batch-action="approve">全部通过</button>
+                  <button class="text-btn batch-reject hidden" id="hotel-name-review-batch-reject" type="button" data-review-batch-section="hotelName" data-review-batch-action="reject">全部拒绝</button>
+                  <button class="text-btn hidden" id="hotel-name-review-more" type="button" data-review-more="hotelName">查看全部</button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="width: 160px;">酒店</th>
+                        <th>当前 / 建议</th>
+                        <th style="width: 110px;">城市片区</th>
+                        <th style="width: 110px;">状态</th>
+                        <th style="width: 145px;">提交时间</th>
+                        <th class="action-col" style="width: 132px;">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody id="hotel-name-reviews"></tbody>
+                  </table>
+                </div>
+              </div>
+            </details>
 
-        <section class="panel">
-          <div class="panel-head">
-            <h2>片区审核</h2>
-            <div class="panel-title-actions">
-              <span class="muted" id="hotel-area-review-count">0 条待审核</span>
-              <button class="text-btn batch-approve hidden" id="hotel-area-review-batch-approve" type="button" data-review-batch-section="hotelArea" data-review-batch-action="approve">全部通过</button>
-              <button class="text-btn batch-reject hidden" id="hotel-area-review-batch-reject" type="button" data-review-batch-section="hotelArea" data-review-batch-action="reject">全部拒绝</button>
-              <button class="text-btn hidden" id="hotel-area-review-more" type="button" data-review-more="hotelArea">查看全部</button>
-            </div>
-          </div>
-          <div class="panel-body table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 160px;">酒店</th>
-                  <th>当前片区 / 建议片区</th>
-                  <th style="width: 110px;">城市</th>
-                  <th style="width: 110px;">状态</th>
-                  <th style="width: 145px;">提交时间</th>
-                  <th class="action-col" style="width: 132px;">操作</th>
-                </tr>
-              </thead>
-              <tbody id="hotel-area-reviews"></tbody>
-            </table>
-          </div>
-        </section>
+            <details class="review-group" id="hotel-area-review-group">
+              <summary>
+                <span class="review-group-title">
+                  <strong>片区审核</strong>
+                  <span class="muted" id="hotel-area-review-count">0 条待审核</span>
+                </span>
+                <span class="review-group-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="review-group-content">
+                <div class="review-group-actions">
+                  <button class="text-btn batch-approve hidden" id="hotel-area-review-batch-approve" type="button" data-review-batch-section="hotelArea" data-review-batch-action="approve">全部通过</button>
+                  <button class="text-btn batch-reject hidden" id="hotel-area-review-batch-reject" type="button" data-review-batch-section="hotelArea" data-review-batch-action="reject">全部拒绝</button>
+                  <button class="text-btn hidden" id="hotel-area-review-more" type="button" data-review-more="hotelArea">查看全部</button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="width: 160px;">酒店</th>
+                        <th>当前片区 / 建议片区</th>
+                        <th style="width: 110px;">城市</th>
+                        <th style="width: 110px;">状态</th>
+                        <th style="width: 145px;">提交时间</th>
+                        <th class="action-col" style="width: 132px;">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody id="hotel-area-reviews"></tbody>
+                  </table>
+                </div>
+              </div>
+            </details>
 
-        <section class="panel">
-          <div class="panel-head">
-            <h2>合并片区审核</h2>
-            <div class="panel-title-actions">
-              <span class="muted" id="area-merge-review-count">0 条待审核</span>
-              <button class="text-btn batch-approve hidden" id="area-merge-review-batch-approve" type="button" data-review-batch-section="areaMerge" data-review-batch-action="approve">全部通过</button>
-              <button class="text-btn batch-reject hidden" id="area-merge-review-batch-reject" type="button" data-review-batch-section="areaMerge" data-review-batch-action="reject">全部拒绝</button>
-              <button class="text-btn hidden" id="area-merge-review-more" type="button" data-review-more="areaMerge">查看全部</button>
-            </div>
-          </div>
-          <div class="panel-body table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th style="width: 160px;">合并后片区</th>
-                  <th>来源片区 / 酒店</th>
-                  <th style="width: 110px;">城市</th>
-                  <th style="width: 110px;">状态</th>
-                  <th style="width: 145px;">提交时间</th>
-                  <th class="action-col" style="width: 132px;">操作</th>
-                </tr>
-              </thead>
-              <tbody id="area-merge-reviews"></tbody>
-            </table>
+            <details class="review-group" id="area-merge-review-group">
+              <summary>
+                <span class="review-group-title">
+                  <strong>合并片区审核</strong>
+                  <span class="muted" id="area-merge-review-count">0 条待审核</span>
+                </span>
+                <span class="review-group-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="review-group-content">
+                <div class="review-group-actions">
+                  <button class="text-btn batch-approve hidden" id="area-merge-review-batch-approve" type="button" data-review-batch-section="areaMerge" data-review-batch-action="approve">全部通过</button>
+                  <button class="text-btn batch-reject hidden" id="area-merge-review-batch-reject" type="button" data-review-batch-section="areaMerge" data-review-batch-action="reject">全部拒绝</button>
+                  <button class="text-btn hidden" id="area-merge-review-more" type="button" data-review-more="areaMerge">查看全部</button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="width: 160px;">合并后片区</th>
+                        <th>来源片区 / 酒店</th>
+                        <th style="width: 110px;">城市</th>
+                        <th style="width: 110px;">状态</th>
+                        <th style="width: 145px;">提交时间</th>
+                        <th class="action-col" style="width: 132px;">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody id="area-merge-reviews"></tbody>
+                  </table>
+                </div>
+              </div>
+            </details>
           </div>
         </section>
       </div>
@@ -558,6 +638,7 @@
       const recentJobsMore = document.getElementById("recent-jobs-more");
       const prewarmStatus = document.getElementById("prewarm-status");
       const prewarmBody = document.getElementById("prewarm-body");
+      const reviewCenterCount = document.getElementById("review-center-count");
       const hotelNameReviewCount = document.getElementById("hotel-name-review-count");
       const hotelNameReviews = document.getElementById("hotel-name-reviews");
       const hotelAreaReviewCount = document.getElementById("hotel-area-review-count");
@@ -576,9 +657,15 @@
       const reviewModal = document.getElementById("review-modal");
       const reviewModalTitle = document.getElementById("review-modal-title");
       const reviewModalBody = document.getElementById("review-modal-body");
+      const reviewGroupElements = {
+        hotelName: document.getElementById("hotel-name-review-group"),
+        hotelArea: document.getElementById("hotel-area-review-group"),
+        areaMerge: document.getElementById("area-merge-review-group"),
+      };
       const REVIEW_PREVIEW_LIMIT = 3;
       const RECENT_JOB_PREVIEW_LIMIT = 5;
       const reviewSections = {};
+      let reviewCenterInitialized = false;
       let activeReviewModalSection = "";
       let latestRecentJobs = [];
       let latestPrewarmState = {};
@@ -1066,6 +1153,26 @@
         });
       }
 
+      function updateReviewCenterSummary() {
+        const sections = Object.values(reviewSections);
+        const pendingCount = sections.reduce((total, section) => total + pendingReviewRows(section.reviewState).length, 0);
+        const recentCount = sections.reduce((total, section) => total + section.rows.length, 0);
+        reviewCenterCount.textContent = pendingCount
+          ? `${pendingCount} 条待审核`
+          : `暂无待审核 · 最近 ${recentCount} 条`;
+      }
+
+      function initializeReviewCenterGroups() {
+        if (reviewCenterInitialized) return;
+        const sectionKeys = ["hotelName", "hotelArea", "areaMerge"];
+        const firstPendingKey = sectionKeys.find((sectionKey) => pendingReviewRows(reviewSections[sectionKey]?.reviewState).length > 0);
+        sectionKeys.forEach((sectionKey) => {
+          const group = reviewGroupElements[sectionKey];
+          if (group) group.open = sectionKey === firstPendingKey;
+        });
+        reviewCenterInitialized = true;
+      }
+
       function hotelNameReviewHead() {
         return `
           <tr>
@@ -1175,6 +1282,13 @@
         config.countElement.textContent = reviewCountText(config.reviewState, config.rows);
         updateReviewMoreButton(config.moreButton, sectionKey, config.rows);
         updateBatchReviewButtons(config);
+        const group = reviewGroupElements[sectionKey];
+        const pendingCount = pendingReviewRows(config.reviewState).length;
+        if (group) {
+          group.dataset.pendingCount = String(pendingCount);
+          const actionBar = group.querySelector(".review-group-actions");
+          if (actionBar) actionBar.classList.toggle("hidden", pendingCount === 0 && config.rows.length <= REVIEW_PREVIEW_LIMIT);
+        }
         const previewRows = config.rows.slice(0, REVIEW_PREVIEW_LIMIT);
         config.bodyElement.innerHTML = previewRows.length
           ? previewRows.map(config.renderRow).join("")
@@ -1297,6 +1411,8 @@
         renderHotelNameReviews(data.hotel_name_corrections || {});
         renderHotelAreaReviews(data.hotel_area_corrections || {});
         renderAreaMergeReviews(data.area_merge_corrections || {});
+        updateReviewCenterSummary();
+        initializeReviewCenterGroups();
         statusText.textContent = `最后更新 ${formatAdminDateTime(data.generated_at)}`;
         refreshOpenReviewModal();
       }
