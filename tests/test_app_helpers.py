@@ -1573,6 +1573,8 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert ".badge.approved" in html
     assert ".badge.rejected" in html
     assert "function formatAdminDateTime(value)" in html
+    assert "const hasTimezone" in html
+    assert "最后更新 ${formatAdminDateTime(data.generated_at)}" in html
     assert "job.idle_seconds" not in html
     assert "REVIEW_PREVIEW_LIMIT = 3" in html
     assert 'id="review-modal"' in html

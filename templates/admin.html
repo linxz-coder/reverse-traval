@@ -635,13 +635,17 @@
       function formatAdminDateTime(value) {
         const raw = String(value || "").trim();
         if (!raw) return "-";
+        const date = new Date(raw);
+        const pad = (number) => String(number).padStart(2, "0");
+        const hasTimezone = /(?:Z|[+-]\d{2}:?\d{2})$/i.test(raw);
+        if (hasTimezone && !Number.isNaN(date.getTime())) {
+          return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日 ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+        }
         const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/);
         if (match) {
           return `${match[1]}年${Number(match[2])}月${Number(match[3])}日 ${match[4]}:${match[5]}:${match[6]}`;
         }
-        const date = new Date(raw);
         if (Number.isNaN(date.getTime())) return raw;
-        const pad = (number) => String(number).padStart(2, "0");
         return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日 ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
       }
 
@@ -1293,7 +1297,7 @@
         renderHotelNameReviews(data.hotel_name_corrections || {});
         renderHotelAreaReviews(data.hotel_area_corrections || {});
         renderAreaMergeReviews(data.area_merge_corrections || {});
-        statusText.textContent = `最后更新 ${data.generated_at || "-"}`;
+        statusText.textContent = `最后更新 ${formatAdminDateTime(data.generated_at)}`;
         refreshOpenReviewModal();
       }
 
