@@ -16,6 +16,7 @@ except ImportError:  # pragma: no cover
 
 
 MYSQL_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+MYSQL_DATETIME_RE = re.compile(r"\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}:\d{2}")
 MYSQL_PRICE_RE = re.compile(r"-?\d[\d,]*")
 MYSQL_SOURCE_VALUES = {"dom", "api", "cache", "manual", "import"}
 HOTEL_NAME_REVIEW_STATUSES = {"pending", "approved", "rejected"}
@@ -63,6 +64,36 @@ def _date_text(value: Any) -> str | None:
     return parsed.isoformat() if parsed else None
 
 
+def _datetime_text(value: Any) -> str | None:
+    parsed: dt.datetime | None = None
+    if isinstance(value, dt.datetime):
+        parsed = value
+    elif isinstance(value, dt.date):
+        parsed = dt.datetime.combine(value, dt.time.min)
+    elif isinstance(value, (int, float)):
+        try:
+            parsed = dt.datetime.fromtimestamp(float(value)).astimezone()
+        except (OSError, OverflowError, ValueError):
+            parsed = None
+    else:
+        text = str(value or "").strip()
+        if text:
+            try:
+                parsed = dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
+            except ValueError:
+                match = MYSQL_DATETIME_RE.search(text)
+                if match:
+                    try:
+                        parsed = dt.datetime.fromisoformat(match.group(0).replace(" ", "T"))
+                    except ValueError:
+                        parsed = None
+    if parsed is None:
+        return None
+    if parsed.tzinfo is not None:
+        parsed = parsed.astimezone().replace(tzinfo=None)
+    return parsed.isoformat(sep=" ", timespec="seconds")
+
+
 def _nights(check_in: Any, check_out: Any, fallback: int = 1) -> int:
     start = _parse_date(check_in)
     end = _parse_date(check_out)
@@ -82,6 +113,13 @@ def _parse_price(value: Any) -> int | None:
         return int(match.group(0).replace(",", ""))
     except ValueError:
         return None
+
+
+def _nonnegative_int(value: Any, default: int = 0) -> int:
+    try:
+        return max(0, int(value))
+    except (TypeError, ValueError):
+        return default
 
 
 def _format_cny(value: Any) -> str:
@@ -150,6 +188,7 @@ class MySQLHotelStore:
         self._hotel_name_corrections_table_ready = False
         self._hotel_area_corrections_table_ready = False
         self._hotel_area_merge_corrections_table_ready = False
+        self._daily_recommended_hotels_table_ready = False
 
     def is_configured(self) -> bool:
         return bool(self.enabled and pymysql is not None and self.user and self.database and self.password)
@@ -353,6 +392,27 @@ class MySQLHotelStore:
             self._disabled_reason = str(exc)
             return 0
         return len(observations)
+
+    def upsert_daily_recommended_hotel(self, payload: dict[str, Any]) -> dict[str, Any]:
+        if not isinstance(payload, dict):
+            return {"ok": False, "error": "invalid_payload"}
+        conn = self._connect()
+        if conn is None:
+            return {"ok": False, "error": self.disabled_reason() or "mysql_unavailable"}
+        row = self._daily_recommended_hotel_row(payload)
+        if not row["refresh_slot"] or not row["hotel_id"] or not row["hotel_name_zh"]:
+            return {"ok": False, "error": "missing_required_fields"}
+        try:
+            with self._lock:
+                with conn:
+                    with conn.cursor() as cursor:
+                        self._ensure_daily_recommended_hotels_table(cursor)
+                        cursor.execute(self._daily_recommended_hotel_upsert_sql(), row)
+                        recommendation_id = cursor.lastrowid
+        except Exception as exc:  # noqa: BLE001
+            self._disabled_reason = str(exc)
+            return {"ok": False, "error": str(exc)}
+        return {"ok": True, "id": recommendation_id}
 
     def latest_price_preview(
         self,
@@ -1259,6 +1319,110 @@ class MySQLHotelStore:
             return 0
         return None
 
+    def _daily_recommended_hotel_row(self, payload: dict[str, Any]) -> dict[str, Any]:
+        hotel = payload.get("hotel") if isinstance(payload.get("hotel"), dict) else {}
+        holiday = payload.get("holiday") if isinstance(payload.get("holiday"), dict) else {}
+        cache = payload.get("cache") if isinstance(payload.get("cache"), dict) else {}
+        cache_key = payload.get("cache_key") if isinstance(payload.get("cache_key"), list) else []
+        selected_at = _datetime_text(payload.get("selected_at")) or _datetime_text(dt.datetime.now()) or None
+        recommendation_date = _date_text(payload.get("date")) or (selected_at or "")[:10] or dt.date.today().isoformat()
+        return {
+            "recommendation_date": recommendation_date,
+            "refresh_slot": _clean_text(payload.get("refresh_slot"), 32),
+            "refresh_hours": max(1, min(24, _nonnegative_int(payload.get("refresh_hours"), 6) or 6)),
+            "city_name_zh": _clean_text(payload.get("city"), 64),
+            "holiday_code": _clean_text(holiday.get("code"), 64),
+            "holiday_name_zh": _clean_text(holiday.get("name"), 80),
+            "hotel_id": _clean_text(hotel.get("hotel_id") or hotel.get("trip_hotel_id"), 64),
+            "hotel_name_zh": _clean_text(hotel.get("hotel_name") or hotel.get("hotel_name_simplified"), 255),
+            "hotel_name_original": _clean_text(hotel.get("hotel_original_name"), 255),
+            "hotel_name_source": _clean_text(hotel.get("hotel_name_source"), 80),
+            "area_name_zh": _clean_text(hotel.get("area_name"), 128),
+            "detail_url": _clean_text(hotel.get("detail_url"), 1024),
+            "image_url": _clean_text(hotel.get("image_url"), 1024),
+            "room_type_label": _clean_text(hotel.get("room_type_label"), 80),
+            "is_advanced": self._bool_int(hotel.get("is_advanced")),
+            "has_pool": self._bool_int(hotel.get("has_pool")),
+            "has_child_facility": self._bool_int(hotel.get("has_child_facility")),
+            "holiday_avg_nightly_tax_total_cny": _parse_price(
+                hotel.get("holiday_avg_nightly_tax_total_value")
+                or hotel.get("holiday_avg_nightly_tax_total_price")
+            ),
+            "holiday_tax_total_cny": _parse_price(
+                hotel.get("holiday_tax_total_value") or hotel.get("holiday_tax_total_price")
+            ),
+            "comparison_avg_nightly_tax_total_cny": _parse_price(
+                hotel.get("comparison_average_nightly_tax_total_value")
+                or hotel.get("comparison_average_nightly_tax_total_price")
+            ),
+            "comparison_lowest_nightly_tax_total_cny": _parse_price(
+                hotel.get("comparison_lowest_nightly_tax_total_value")
+                or hotel.get("comparison_lowest_nightly_tax_total_price")
+            ),
+            "comparison_lowest_check_in": _date_text(hotel.get("comparison_lowest_check_in")),
+            "comparison_lowest_check_out": _date_text(hotel.get("comparison_lowest_check_out")),
+            "comparison_sample_count": _nonnegative_int(hotel.get("comparison_sample_count"), 0),
+            "price_diff_nightly_cny": _parse_price(hotel.get("price_diff_nightly") or hotel.get("price_diff_nightly_text")),
+            "cache_created_at": _datetime_text(cache.get("created_at")),
+            "cache_age_seconds": _nonnegative_int(cache.get("age_seconds"), 0)
+            if cache.get("age_seconds") is not None
+            else None,
+            "cache_key_json": _json_dumps(cache_key),
+            "feature_filters_json": _json_dumps(payload.get("feature_filters") or {}),
+            "hotel_payload_json": _json_dumps(hotel),
+            "selected_at": selected_at,
+        }
+
+    def _ensure_daily_recommended_hotels_table(self, cursor) -> None:
+        if self._daily_recommended_hotels_table_ready:
+            return
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS daily_recommended_hotels (
+              id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+              recommendation_date DATE NOT NULL,
+              refresh_slot VARCHAR(32) NOT NULL,
+              refresh_hours TINYINT UNSIGNED NOT NULL DEFAULT 6,
+              city_name_zh VARCHAR(64) NOT NULL,
+              holiday_code VARCHAR(64) NOT NULL,
+              holiday_name_zh VARCHAR(80) DEFAULT NULL,
+              hotel_id VARCHAR(64) NOT NULL,
+              hotel_name_zh VARCHAR(255) NOT NULL,
+              hotel_name_original VARCHAR(255) DEFAULT NULL,
+              hotel_name_source VARCHAR(80) DEFAULT NULL,
+              area_name_zh VARCHAR(128) DEFAULT NULL,
+              detail_url VARCHAR(1024) DEFAULT NULL,
+              image_url VARCHAR(1024) DEFAULT NULL,
+              room_type_label VARCHAR(80) DEFAULT NULL,
+              is_advanced TINYINT(1) DEFAULT NULL,
+              has_pool TINYINT(1) DEFAULT NULL,
+              has_child_facility TINYINT(1) DEFAULT NULL,
+              holiday_avg_nightly_tax_total_cny DECIMAL(10,2) DEFAULT NULL,
+              holiday_tax_total_cny DECIMAL(10,2) DEFAULT NULL,
+              comparison_avg_nightly_tax_total_cny DECIMAL(10,2) DEFAULT NULL,
+              comparison_lowest_nightly_tax_total_cny DECIMAL(10,2) DEFAULT NULL,
+              comparison_lowest_check_in DATE DEFAULT NULL,
+              comparison_lowest_check_out DATE DEFAULT NULL,
+              comparison_sample_count INT UNSIGNED NOT NULL DEFAULT 0,
+              price_diff_nightly_cny DECIMAL(10,2) DEFAULT NULL,
+              cache_created_at DATETIME DEFAULT NULL,
+              cache_age_seconds INT UNSIGNED DEFAULT NULL,
+              cache_key_json JSON DEFAULT NULL,
+              feature_filters_json JSON DEFAULT NULL,
+              hotel_payload_json JSON DEFAULT NULL,
+              selected_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+              PRIMARY KEY (id),
+              UNIQUE KEY uq_daily_recommended_hotels_slot (refresh_slot),
+              KEY idx_daily_recommended_hotels_date (recommendation_date, selected_at),
+              KEY idx_daily_recommended_hotels_hotel (hotel_id, selected_at),
+              KEY idx_daily_recommended_hotels_city_holiday (city_name_zh, holiday_code)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+            """
+        )
+        self._daily_recommended_hotels_table_ready = True
+
     def _ensure_hotel_name_corrections_table(self, cursor) -> None:
         if self._hotel_name_corrections_table_ready:
             return
@@ -1540,6 +1704,66 @@ class MySQLHotelStore:
             """,
             row,
         )
+
+    @staticmethod
+    def _daily_recommended_hotel_upsert_sql() -> str:
+        return """
+            INSERT INTO daily_recommended_hotels (
+              recommendation_date, refresh_slot, refresh_hours, city_name_zh,
+              holiday_code, holiday_name_zh, hotel_id, hotel_name_zh,
+              hotel_name_original, hotel_name_source, area_name_zh, detail_url,
+              image_url, room_type_label, is_advanced, has_pool, has_child_facility,
+              holiday_avg_nightly_tax_total_cny, holiday_tax_total_cny,
+              comparison_avg_nightly_tax_total_cny, comparison_lowest_nightly_tax_total_cny,
+              comparison_lowest_check_in, comparison_lowest_check_out,
+              comparison_sample_count, price_diff_nightly_cny, cache_created_at,
+              cache_age_seconds, cache_key_json, feature_filters_json, hotel_payload_json,
+              selected_at
+            ) VALUES (
+              %(recommendation_date)s, %(refresh_slot)s, %(refresh_hours)s, %(city_name_zh)s,
+              %(holiday_code)s, %(holiday_name_zh)s, %(hotel_id)s, %(hotel_name_zh)s,
+              %(hotel_name_original)s, %(hotel_name_source)s, %(area_name_zh)s, %(detail_url)s,
+              %(image_url)s, %(room_type_label)s, %(is_advanced)s, %(has_pool)s, %(has_child_facility)s,
+              %(holiday_avg_nightly_tax_total_cny)s, %(holiday_tax_total_cny)s,
+              %(comparison_avg_nightly_tax_total_cny)s, %(comparison_lowest_nightly_tax_total_cny)s,
+              %(comparison_lowest_check_in)s, %(comparison_lowest_check_out)s,
+              %(comparison_sample_count)s, %(price_diff_nightly_cny)s, %(cache_created_at)s,
+              %(cache_age_seconds)s, %(cache_key_json)s, %(feature_filters_json)s, %(hotel_payload_json)s,
+              %(selected_at)s
+            )
+            ON DUPLICATE KEY UPDATE
+              id = LAST_INSERT_ID(id),
+              recommendation_date = VALUES(recommendation_date),
+              refresh_hours = VALUES(refresh_hours),
+              city_name_zh = VALUES(city_name_zh),
+              holiday_code = VALUES(holiday_code),
+              holiday_name_zh = VALUES(holiday_name_zh),
+              hotel_id = VALUES(hotel_id),
+              hotel_name_zh = VALUES(hotel_name_zh),
+              hotel_name_original = VALUES(hotel_name_original),
+              hotel_name_source = VALUES(hotel_name_source),
+              area_name_zh = VALUES(area_name_zh),
+              detail_url = VALUES(detail_url),
+              image_url = VALUES(image_url),
+              room_type_label = VALUES(room_type_label),
+              is_advanced = VALUES(is_advanced),
+              has_pool = VALUES(has_pool),
+              has_child_facility = VALUES(has_child_facility),
+              holiday_avg_nightly_tax_total_cny = VALUES(holiday_avg_nightly_tax_total_cny),
+              holiday_tax_total_cny = VALUES(holiday_tax_total_cny),
+              comparison_avg_nightly_tax_total_cny = VALUES(comparison_avg_nightly_tax_total_cny),
+              comparison_lowest_nightly_tax_total_cny = VALUES(comparison_lowest_nightly_tax_total_cny),
+              comparison_lowest_check_in = VALUES(comparison_lowest_check_in),
+              comparison_lowest_check_out = VALUES(comparison_lowest_check_out),
+              comparison_sample_count = VALUES(comparison_sample_count),
+              price_diff_nightly_cny = VALUES(price_diff_nightly_cny),
+              cache_created_at = VALUES(cache_created_at),
+              cache_age_seconds = VALUES(cache_age_seconds),
+              cache_key_json = VALUES(cache_key_json),
+              feature_filters_json = VALUES(feature_filters_json),
+              hotel_payload_json = VALUES(hotel_payload_json),
+              updated_at = NOW()
+        """
 
     @staticmethod
     def _profile_upsert_sql() -> str:

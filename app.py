@@ -402,6 +402,19 @@ def persist_result_prices(result: Any, *, job_id: str = "", source: str = "api")
         return 0
 
 
+def persist_daily_recommendation(payload: dict[str, Any], *, cache_key: list[Any] | None = None) -> bool:
+    if not isinstance(payload, dict):
+        return False
+    store_payload = copy.deepcopy(payload)
+    store_payload["cache_key"] = cache_key if isinstance(cache_key, list) else []
+    store_payload["selected_at"] = time.time()
+    try:
+        result = get_mysql_store().upsert_daily_recommended_hotel(store_payload)
+    except Exception:  # noqa: BLE001
+        return False
+    return bool(isinstance(result, dict) and result.get("ok"))
+
+
 def normalize_hotel_name_correction_payload(payload: dict[str, Any]) -> dict[str, Any]:
     hotel_id = str(payload.get("hotel_id") or payload.get("trip_hotel_id") or "").strip()[:64]
     city = normalize_city(payload.get("city") or payload.get("recommend_city")) or str(
@@ -1912,7 +1925,7 @@ def daily_recommendation_payload() -> dict[str, Any]:
     display_name = finder._to_simplified_chinese(str(hotel.get("hotel_name") or ""))
     original_name = finder._to_simplified_chinese(str(hotel.get("hotel_original_name") or ""))
     image_url = daily_hotel_display_image_url(hotel)
-    return {
+    payload = {
         "available": True,
         "date": day_key,
         "refresh_slot": slot_key,
@@ -1948,6 +1961,9 @@ def daily_recommendation_payload() -> dict[str, Any]:
             "price_diff_nightly_text": hotel.get("price_diff_nightly_text") or "",
         },
     }
+    selected_cache_key = selected.get("cache_key") if isinstance(selected.get("cache_key"), list) else []
+    persist_daily_recommendation(payload, cache_key=selected_cache_key)
+    return payload
 
 
 def bytes_to_mb(value: int | None) -> float | None:

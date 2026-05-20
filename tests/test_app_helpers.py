@@ -1813,6 +1813,63 @@ def test_daily_recommendation_reads_cached_search_records(tmp_path, monkeypatch)
     assert data["hotel"]["comparison_average_nightly_tax_total_price"] == "CNY 610"
 
 
+def test_daily_recommendation_persists_selected_hotel_to_mysql(tmp_path, monkeypatch):
+    cache_dir = tmp_path / "cache"
+    search_dir = cache_dir / "search"
+    search_dir.mkdir(parents=True)
+    monkeypatch.setattr(app_module.finder, "cache_dir", cache_dir)
+    monkeypatch.setattr(app_module, "daily_recommendation_slot_key", lambda now=None: "2026-06-19T06")
+    captured = []
+
+    class FakeStore:
+        def upsert_daily_recommended_hotel(self, payload):
+            captured.append(payload)
+            return {"ok": True, "id": 8}
+
+    monkeypatch.setattr(app_module, "get_mysql_store", lambda: FakeStore())
+    record = {
+        "cache_key": ["search", "深圳", "2026-06-19::端午节"],
+        "created_at": time.time(),
+        "result": {
+            "city": "深圳",
+            "holiday": {"code": "2026-06-19::端午节", "name": "端午节"},
+            "feature_filters": {"advanced_filter": "yes", "pool_filter": "yes", "child_facility_filter": "yes"},
+            "choices": [
+                {
+                    "hotel_id": "daily-1",
+                    "hotel_name": "深圳落库推荐酒店",
+                    "detail_url": "https://example.test/daily-1",
+                    "image_url": "https://images.example.test/daily-1.jpg",
+                    "area_name": "福田中心",
+                    "is_advanced": True,
+                    "has_pool": True,
+                    "has_child_facility": True,
+                    "holiday_avg_nightly_tax_total_value": 680,
+                    "holiday_avg_nightly_tax_total_price": "CNY 680",
+                    "comparison_average_nightly_tax_total_price": "CNY 760",
+                    "comparison_sample_count": 4,
+                    "price_diff_nightly": -80,
+                    "price_diff_nightly_text": "CNY -80",
+                }
+            ],
+        },
+    }
+    (search_dir / "daily.json").write_text(json.dumps(record), encoding="utf-8")
+
+    data = app_module.daily_recommendation_payload()
+
+    assert data["available"] is True
+    assert captured
+    stored = captured[0]
+    assert stored["refresh_slot"] == "2026-06-19T06"
+    assert stored["refresh_hours"] == 6
+    assert stored["cache_key"] == ["search", "深圳", "2026-06-19::端午节"]
+    assert stored["feature_filters"]["advanced_filter"] == "yes"
+    assert stored["hotel"]["hotel_id"] == "daily-1"
+    assert stored["hotel"]["hotel_name"] == "深圳落库推荐酒店"
+    assert stored["hotel"]["price_diff_nightly"] == -80
+
+
 def test_daily_recommendation_prefers_detail_photo_over_cached_thumbnail(tmp_path, monkeypatch):
     cache_dir = tmp_path / "cache"
     search_dir = cache_dir / "search"
