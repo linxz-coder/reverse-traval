@@ -43,3 +43,28 @@ def test_nightly_prewarm_detects_today_completed_run():
     assert nightly_prewarm.nightly_ran_for_day(status, dt.date(2026, 5, 20)) is True
     assert nightly_prewarm.nightly_ran_for_day(status, dt.date(2026, 5, 21)) is False
     assert nightly_prewarm.nightly_ran_for_day({"preset": "manual", "run_date": "2026-05-20"}, dt.date(2026, 5, 20)) is False
+
+
+def test_nightly_prewarm_extracts_failed_cities_for_makeup_window():
+    status = {
+        "preset": "nightly",
+        "run_date": "2026-05-20",
+        "status": "succeeded",
+        "summary": {"failed_cities": [{"city": "上海", "error": "<urlopen error>"}, {"city": "上海"}]},
+        "target_results": [
+            {"city": "广州", "status": "failed", "error": "timeout"},
+            {"city": "深圳", "status": "live"},
+        ],
+    }
+
+    assert nightly_prewarm.failed_cities_from_status(status) == ["上海", "广州"]
+    assert nightly_prewarm.makeup_failed_cities_for_status(
+        status,
+        dt.date(2026, 5, 20),
+        in_makeup_window=True,
+    ) == ["上海", "广州"]
+    assert nightly_prewarm.makeup_failed_cities_for_status(
+        status,
+        dt.date(2026, 5, 20),
+        in_makeup_window=False,
+    ) == []

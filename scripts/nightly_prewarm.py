@@ -183,6 +183,35 @@ def nightly_ran_for_day(status: dict, day: dt.date) -> bool:
     return status.get("status") in {"queued", "running", "succeeded", "failed"}
 
 
+def failed_cities_from_status(status: dict) -> list[str]:
+    cities: list[str] = []
+
+    summary = status.get("summary")
+    summary_failed = summary.get("failed_cities") if isinstance(summary, dict) else []
+    if isinstance(summary_failed, list):
+        for item in summary_failed:
+            city = str(item.get("city") if isinstance(item, dict) else item or "").strip()
+            if city:
+                cities.append(city)
+
+    targets = status.get("target_results")
+    if isinstance(targets, list):
+        for target in targets:
+            if not isinstance(target, dict) or target.get("status") != "failed":
+                continue
+            city = str(target.get("city") or "").strip()
+            if city:
+                cities.append(city)
+
+    return unique_cities(cities)
+
+
+def makeup_failed_cities_for_status(status: dict, day: dt.date, *, in_makeup_window: bool) -> list[str]:
+    if not in_makeup_window or not nightly_ran_for_day(status, day):
+        return []
+    return failed_cities_from_status(status)
+
+
 def parse_city_list(value: str) -> list[str]:
     return [item.strip() for item in value.split(",") if item.strip()]
 
@@ -246,6 +275,7 @@ def main() -> None:
         (args.start_hour, args.latest_start_hour),
         (args.makeup_start_hour, args.makeup_latest_start_hour),
     ]
+    in_makeup_window = within_start_window(now, args.makeup_start_hour, args.makeup_latest_start_hour)
     if not args.dry_run and not args.allow_outside_window and not within_any_start_window(now, windows):
         print(
             json.dumps(
@@ -263,17 +293,26 @@ def main() -> None:
     status_url = f"{args.base_url}/api/admin/prewarm/status"
     start_url = f"{args.base_url}/api/admin/prewarm/start"
     status: dict = {}
+    makeup_failed_cities: list[str] = []
     if not args.dry_run:
         status = read_json(status_url)
         if status.get("status") == "running":
             print(json.dumps({"skipped": True, "reason": "prewarm already running", "status": status}, ensure_ascii=False))
             return
         if nightly_ran_for_day(status, now.date()):
-            print(json.dumps({"skipped": True, "reason": "nightly prewarm already ran today", "status": status}, ensure_ascii=False))
-            return
+            makeup_failed_cities = makeup_failed_cities_for_status(
+                status,
+                now.date(),
+                in_makeup_window=in_makeup_window or args.allow_outside_window,
+            )
+            if not makeup_failed_cities:
+                print(json.dumps({"skipped": True, "reason": "nightly prewarm already ran today", "status": status}, ensure_ascii=False))
+                return
 
     if args.cities:
         cities = unique_cities(parse_city_list(args.cities))
+    elif makeup_failed_cities:
+        cities = makeup_failed_cities
     else:
         cities = build_city_batch(
             day=now.date(),
@@ -298,6 +337,9 @@ def main() -> None:
         "max_runtime_seconds": str(max(0, args.max_runtime_seconds)),
         "preset": "nightly",
     }
+    if makeup_failed_cities:
+        payload["makeup_for_failed_cities"] = True
+        payload["makeup_source_run_date"] = now.date().isoformat()
     if args.dry_run:
         print(json.dumps({"dry_run": True, "payload": payload}, ensure_ascii=False, indent=2))
         return

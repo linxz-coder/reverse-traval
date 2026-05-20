@@ -1590,6 +1590,11 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "实际新搜索" in html
     assert "安排在半夜的这次缓存预热" in html
     assert "失败城市：" in html
+    assert "data-prewarm-failures" in html
+    assert "查看原因" in html
+    assert "function renderPrewarmFailureModal()" in html
+    assert ".prewarm-failure-line" in html
+    assert 'item.city || "-")}${item.error' not in html
     assert "events.map" not in html
 
 

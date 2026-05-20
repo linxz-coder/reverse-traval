@@ -186,6 +186,16 @@
         font-size: 14px;
         line-height: 1.45;
       }
+      .prewarm-failure-line {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .prewarm-failure-cities {
+        overflow-wrap: anywhere;
+      }
       .kv {
         display: flex;
         flex-wrap: wrap;
@@ -571,6 +581,7 @@
       const reviewSections = {};
       let activeReviewModalSection = "";
       let latestRecentJobs = [];
+      let latestPrewarmState = {};
 
       function esc(text) {
         return String(text ?? "")
@@ -832,14 +843,75 @@
         return Object.values(byCity);
       }
 
+      function prewarmFailureDetails(prewarm) {
+        const targets = Array.isArray(prewarm?.target_results) ? prewarm.target_results : [];
+        const failedTargets = targets.filter((target) => target?.status === "failed");
+        if (failedTargets.length) {
+          return failedTargets.map((target) => ({
+            city: target.city || "-",
+            holiday: target.holiday_name || target.holiday_code || "-",
+            holidayCode: target.holiday_code || "",
+            condition: prewarmTargetCondition(target),
+            error: target.error || "-",
+            completedAt: target.completed_at || target.updated_at || "",
+          }));
+        }
+        return prewarmFailedCities(prewarm).map((item) => ({
+          city: item.city || "-",
+          holiday: "-",
+          holidayCode: "",
+          condition: "-",
+          error: item.error || "-",
+          completedAt: "",
+          failedCount: item.failed_count,
+        }));
+      }
+
       function renderPrewarmFailureLine(prewarm) {
         const failed = prewarmFailedCities(prewarm);
-        if (!failed.length) return `<div class="job-message muted">失败城市：无</div>`;
+        if (!failed.length) return `<div class="job-message muted prewarm-failure-line">失败城市：无</div>`;
         return `
-          <div class="job-message">
-            失败城市：${failed.map((item) => `${esc(item.city || "-")}${item.error ? `（${esc(item.error)}）` : ""}`).join("、")}
+          <div class="job-message prewarm-failure-line">
+            <span class="prewarm-failure-cities">失败城市：${failed.map((item) => esc(item.city || "-")).join("、")}</span>
+            <button class="text-btn" type="button" data-prewarm-failures>查看原因</button>
           </div>
         `;
+      }
+
+      function renderPrewarmFailureModal() {
+        const details = prewarmFailureDetails(latestPrewarmState);
+        reviewModalTitle.textContent = `失败城市原因（${details.length} 条）`;
+        reviewModalBody.innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 90px;">城市</th>
+                <th style="width: 180px;">假期</th>
+                <th style="width: 160px;">条件</th>
+                <th>错误原因</th>
+                <th style="width: 170px;">完成时间</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${details.length ? details.map((item) => `
+                <tr>
+                  <td>${esc(item.city)}</td>
+                  <td><div>${esc(item.holiday)}</div><div class="muted">${esc(item.holidayCode)}</div></td>
+                  <td>${esc(item.failedCount ? `失败 ${item.failedCount} 次` : item.condition)}</td>
+                  <td>${esc(item.error)}</td>
+                  <td>${esc(formatAdminDateTime(item.completedAt))}</td>
+                </tr>
+              `).join("") : `<tr><td colspan="5" class="empty">暂无失败原因</td></tr>`}
+            </tbody>
+          </table>
+        `;
+      }
+
+      function openPrewarmFailureModal() {
+        activeReviewModalSection = "prewarmFailures";
+        renderPrewarmFailureModal();
+        reviewModal.classList.remove("hidden");
+        document.body.classList.add("modal-open");
       }
 
       function renderPrewarmTargets(prewarm) {
@@ -887,6 +959,7 @@
 
       function renderPrewarm(prewarm) {
         const scrollSnapshot = snapshotPrewarmTargetScroll();
+        latestPrewarmState = prewarm || {};
         const summary = prewarm?.summary || {};
         prewarmStatus.textContent = prewarm?.status || "-";
         prewarmBody.innerHTML = `
@@ -1189,6 +1262,10 @@
           renderRecentJobsModal();
           return;
         }
+        if (activeReviewModalSection === "prewarmFailures") {
+          renderPrewarmFailureModal();
+          return;
+        }
         renderReviewModal(activeReviewModalSection);
       }
 
@@ -1343,6 +1420,9 @@
       loadStatus();
       window.setInterval(loadStatus, 2000);
       recentJobsMore.addEventListener("click", openRecentJobsModal);
+      prewarmBody.addEventListener("click", (event) => {
+        if (event.target.closest("[data-prewarm-failures]")) openPrewarmFailureModal();
+      });
       document.querySelectorAll("[data-review-batch-section]").forEach((button) => {
         button.addEventListener("click", () => {
           batchReviewSection(button.dataset.reviewBatchSection, button.dataset.reviewBatchAction);
