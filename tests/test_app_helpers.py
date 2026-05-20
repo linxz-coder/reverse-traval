@@ -1575,6 +1575,11 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "const summaryOpenState = snapshotPrewarmSummaryOpenState()" in html
     assert "renderPrewarmSummaryDetails([" in html
     assert "function renderPrewarmTargetCard(target, prewarm)" in html
+    assert "prewarm-city-list" in html
+    assert "prewarm-city-details" in html
+    assert "function groupedPrewarmTargetsByCity(prewarm)" in html
+    assert "function renderPrewarmCityDetails(group, prewarm, openState = null)" in html
+    assert "function snapshotPrewarmCityOpenState()" in html
     assert ".prewarm-target-table," in html
     assert ".review-table-wrap { display: none; }" in html
     assert 'id="hotel-name-review-cards"' in html
@@ -1615,16 +1620,17 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert 'data-review-more="hotelName"' in html
     assert 'data-review-more="hotelArea"' in html
     assert 'data-review-more="areaMerge"' in html
-    assert "function renderPrewarmTargets(prewarm, openState = null)" in html
+    assert "function renderPrewarmTargets(prewarm, openState = null, cityOpenState = null)" in html
     assert "target_results" in html
     assert "预热清单" in html
-    assert "最近完成在前" in html
+    assert "先按城市展示" in html
     assert "function sortedPrewarmTargets(prewarm)" in html
     assert "function snapshotPrewarmTargetScroll()" in html
     assert "function snapshotPrewarmTargetOpenState()" in html
     assert "restorePrewarmTargetScroll(scrollSnapshot)" in html
     assert "const targetOpenState = snapshotPrewarmTargetOpenState()" in html
-    assert "renderPrewarmTargets(prewarm, targetOpenState)" in html
+    assert "const cityOpenState = snapshotPrewarmCityOpenState()" in html
+    assert "renderPrewarmTargets(prewarm, targetOpenState, cityOpenState)" in html
     assert "时段 ${prewarmPeriodText(prewarm)}" in html
     assert "实际新搜索" in html
     assert "安排在半夜的这次缓存预热" in html

@@ -312,6 +312,53 @@
         background: #fff;
         padding: 12px;
       }
+      .prewarm-city-list {
+        display: grid;
+        gap: 10px;
+      }
+      .prewarm-city-details {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: var(--panel-subtle);
+        overflow: hidden;
+      }
+      .prewarm-city-details summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 50px;
+        padding: 0 12px;
+        cursor: pointer;
+        list-style: none;
+      }
+      .prewarm-city-details summary::-webkit-details-marker { display: none; }
+      .prewarm-city-details summary:hover { background: #f7faff; }
+      .prewarm-city-details[open] summary {
+        background: var(--primary-soft);
+      }
+      .prewarm-city-summary {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .prewarm-city-summary strong {
+        font-size: 14px;
+      }
+      .prewarm-city-toggle {
+        flex: 0 0 auto;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .prewarm-city-toggle::before { content: "明细"; }
+      .prewarm-city-details[open] .prewarm-city-toggle::before { content: "收起"; }
+      .prewarm-city-content {
+        border-top: 1px solid var(--line-soft);
+        background: #fff;
+        padding: 10px;
+      }
       .prewarm-target-cards,
       .prewarm-failure-cards,
       .review-card-list {
@@ -707,7 +754,8 @@
         }
         .review-group-title,
         .prewarm-summary-title,
-        .prewarm-target-summary {
+        .prewarm-target-summary,
+        .prewarm-city-summary {
           gap: 6px;
         }
         .review-group-actions {
@@ -747,6 +795,12 @@
           padding: 10px 12px;
         }
         .prewarm-summary-details summary {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 10px 12px;
+        }
+        .prewarm-city-details summary {
           align-items: flex-start;
           flex-direction: column;
           justify-content: center;
@@ -1316,6 +1370,20 @@
         return [...targets].sort((left, right) => prewarmTargetTimeValue(right) - prewarmTargetTimeValue(left));
       }
 
+      function groupedPrewarmTargetsByCity(prewarm) {
+        const groupsByCity = new Map();
+        sortedPrewarmTargets(prewarm).forEach((target) => {
+          const city = target.city || "-";
+          if (!groupsByCity.has(city)) {
+            groupsByCity.set(city, { city, latestTime: 0, targets: [] });
+          }
+          const group = groupsByCity.get(city);
+          group.targets.push(target);
+          group.latestTime = Math.max(group.latestTime, prewarmTargetTimeValue(target));
+        });
+        return Array.from(groupsByCity.values()).sort((left, right) => right.latestTime - left.latestTime);
+      }
+
       function snapshotPrewarmTargetScroll() {
         const node = prewarmBody.querySelector(".prewarm-target-table");
         return node ? { top: node.scrollTop, left: node.scrollLeft } : null;
@@ -1334,6 +1402,14 @@
       function snapshotPrewarmTargetOpenState() {
         const node = prewarmBody.querySelector(".prewarm-target-details");
         return node ? node.open : null;
+      }
+
+      function snapshotPrewarmCityOpenState() {
+        const state = {};
+        prewarmBody.querySelectorAll(".prewarm-city-details[data-prewarm-city-key]").forEach((node) => {
+          state[node.dataset.prewarmCityKey] = node.open;
+        });
+        return Object.keys(state).length ? state : null;
       }
 
       function snapshotPrewarmSummaryOpenState() {
@@ -1511,6 +1587,45 @@
         return `${target.index || "-"}/${target.total || prewarm.total || "-"}`;
       }
 
+      function prewarmCityKey(city) {
+        return encodeURIComponent(String(city || "-"));
+      }
+
+      function prewarmCityStatus(group) {
+        const statuses = group.targets.map((target) => String(target.status || "").toLowerCase());
+        if (statuses.includes("failed")) return "failed";
+        if (statuses.includes("running")) return "running";
+        if (statuses.includes("queued")) return "queued";
+        if (statuses.includes("live")) return "live";
+        if (statuses.length && statuses.every((status) => status === "cache_hit")) return "cache_hit";
+        if (statuses.length && statuses.every((status) => status === "skipped")) return "skipped";
+        if (statuses.length && statuses.every((status) => status === "succeeded")) return "succeeded";
+        return statuses[0] || "-";
+      }
+
+      function prewarmCityCount(group, statuses) {
+        const statusSet = new Set(statuses);
+        return group.targets.filter((target) => statusSet.has(String(target.status || "").toLowerCase())).length;
+      }
+
+      function prewarmCityLatestTime(group) {
+        const latest = group.targets.reduce((selected, target) => (
+          prewarmTargetTimeValue(target) > prewarmTargetTimeValue(selected) ? target : selected
+        ), {});
+        return latest.completed_at || latest.updated_at || "";
+      }
+
+      function prewarmCitySummaryText(group) {
+        const successCount = prewarmCityCount(group, ["cache_hit", "live", "succeeded"]);
+        const failedCount = prewarmCityCount(group, ["failed"]);
+        const latest = prewarmCityLatestTime(group);
+        const latestText = latest ? formatAdminCardDateTime(latest) : "-";
+        if (isAdminMobileLayout()) {
+          return `${group.targets.length} 条 · 成功 ${successCount} / 失败 ${failedCount} · ${latestText}`;
+        }
+        return `${group.targets.length} 条明细 · 成功 ${successCount} / 失败 ${failedCount} · 最近 ${latestText}`;
+      }
+
       function renderPrewarmTargetRow(target, prewarm) {
         return `
           <tr>
@@ -1562,40 +1677,65 @@
         `;
       }
 
-      function renderPrewarmTargets(prewarm, openState = null) {
-        const targets = sortedPrewarmTargets(prewarm);
-        if (!targets.length) return "";
-        const shouldOpen = openState === null ? targets.length <= 8 : openState;
+      function renderPrewarmCityDetails(group, prewarm, openState = null) {
+        const cityKey = prewarmCityKey(group.city);
+        const shouldOpen = openState && Object.prototype.hasOwnProperty.call(openState, cityKey)
+          ? openState[cityKey]
+          : false;
+        return `
+          <details class="prewarm-city-details" data-prewarm-city-key="${esc(cityKey)}" ${shouldOpen ? "open" : ""}>
+            <summary>
+              <span class="prewarm-city-summary">
+                <strong>${esc(group.city)}</strong>
+                ${badge(prewarmCityStatus(group))}
+                <span class="muted">${esc(prewarmCitySummaryText(group))}</span>
+              </span>
+              <span class="prewarm-city-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="prewarm-city-content">
+              <div class="prewarm-target-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width: 68px;">序号</th>
+                      <th style="width: 90px;">城市</th>
+                      <th style="width: 190px;">假期</th>
+                      <th style="width: 180px;">条件</th>
+                      <th style="width: 100px;">状态</th>
+                      <th style="width: 90px;">酒店数</th>
+                      <th style="width: 150px;">来源</th>
+                      <th style="width: 170px;">完成时间</th>
+                    </tr>
+                  </thead>
+                  <tbody>${group.targets.map((target) => renderPrewarmTargetRow(target, prewarm)).join("")}</tbody>
+                </table>
+              </div>
+              <div class="prewarm-target-cards">
+                ${group.targets.map((target) => renderPrewarmTargetCard(target, prewarm)).join("")}
+              </div>
+            </div>
+          </details>
+        `;
+      }
+
+      function renderPrewarmTargets(prewarm, openState = null, cityOpenState = null) {
+        const groups = groupedPrewarmTargetsByCity(prewarm);
+        const targetCount = groups.reduce((total, group) => total + group.targets.length, 0);
+        if (!targetCount) return "";
+        const shouldOpen = openState === null ? groups.length <= 12 : openState;
         return `
           <article class="job full">
             <details class="prewarm-target-details" ${shouldOpen ? "open" : ""}>
               <summary>
                 <span class="prewarm-target-summary">
                   <strong>${esc(prewarm?.run_date || "今日")}预热清单</strong>
-                  <span class="muted">最近完成在前 · 已记录 ${esc(targets.length)} 条</span>
+                  <span class="muted">先按城市展示 · ${esc(groups.length)} 个城市 / ${esc(targetCount)} 条明细</span>
                 </span>
                 <span class="prewarm-target-toggle" aria-hidden="true"></span>
               </summary>
               <div class="prewarm-target-content">
-                <div class="prewarm-target-table">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th style="width: 68px;">序号</th>
-                        <th style="width: 90px;">城市</th>
-                        <th style="width: 190px;">假期</th>
-                        <th style="width: 180px;">条件</th>
-                        <th style="width: 100px;">状态</th>
-                        <th style="width: 90px;">酒店数</th>
-                        <th style="width: 150px;">来源</th>
-                        <th style="width: 170px;">完成时间</th>
-                      </tr>
-                    </thead>
-                    <tbody>${targets.map((target) => renderPrewarmTargetRow(target, prewarm)).join("")}</tbody>
-                  </table>
-                </div>
-                <div class="prewarm-target-cards">
-                  ${targets.map((target) => renderPrewarmTargetCard(target, prewarm)).join("")}
+                <div class="prewarm-city-list">
+                  ${groups.map((group) => renderPrewarmCityDetails(group, prewarm, cityOpenState)).join("")}
                 </div>
               </div>
             </details>
@@ -1607,6 +1747,7 @@
         const scrollSnapshot = snapshotPrewarmTargetScroll();
         const summaryOpenState = snapshotPrewarmSummaryOpenState();
         const targetOpenState = snapshotPrewarmTargetOpenState();
+        const cityOpenState = snapshotPrewarmCityOpenState();
         latestPrewarmState = prewarm || {};
         const summary = prewarm?.summary || {};
         prewarmStatus.textContent = prewarm?.status || "-";
@@ -1634,7 +1775,7 @@
               ], summaryOpenState)}
               ${renderPrewarmFailureLine(prewarm)}
             </article>
-            ${renderPrewarmTargets(prewarm, targetOpenState)}
+            ${renderPrewarmTargets(prewarm, targetOpenState, cityOpenState)}
           </div>
         `;
         restorePrewarmTargetScroll(scrollSnapshot);
