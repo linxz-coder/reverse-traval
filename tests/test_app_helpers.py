@@ -1565,6 +1565,12 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert ".recent-table-wrap { display: none; }" in html
     assert ".recent-job-card-grid { grid-template-columns: 1fr; }" in html
     assert "prewarm-target-details" in html
+    assert "prewarm-summary-details" in html
+    assert "function renderPrewarmSummaryDetails(items, openState = null)" in html
+    assert "function snapshotPrewarmSummaryOpenState()" in html
+    assert "function isAdminMobileLayout()" in html
+    assert "const summaryOpenState = snapshotPrewarmSummaryOpenState()" in html
+    assert "renderPrewarmSummaryDetails([" in html
     assert "function renderPrewarmTargetCard(target, prewarm)" in html
     assert ".prewarm-target-table," in html
     assert ".review-table-wrap { display: none; }" in html

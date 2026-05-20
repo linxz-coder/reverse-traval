@@ -228,6 +228,50 @@
         border-bottom: 1px solid var(--line-soft);
         background: #fff;
       }
+      .prewarm-summary-details {
+        margin-top: 10px;
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+      }
+      .prewarm-summary-details summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 42px;
+        padding: 0 12px;
+        cursor: pointer;
+        list-style: none;
+      }
+      .prewarm-summary-details summary::-webkit-details-marker { display: none; }
+      .prewarm-summary-details summary:hover { background: #f7faff; }
+      .prewarm-summary-details[open] summary {
+        background: var(--primary-soft);
+      }
+      .prewarm-summary-title {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .prewarm-summary-toggle {
+        flex: 0 0 auto;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .prewarm-summary-toggle::before { content: "展开"; }
+      .prewarm-summary-details[open] .prewarm-summary-toggle::before { content: "收起"; }
+      .prewarm-summary-content {
+        border-top: 1px solid var(--line-soft);
+        padding: 12px;
+        background: #fff;
+      }
+      .prewarm-summary-content .kv {
+        margin-top: 0;
+      }
       .prewarm-target-details {
         border: 1px solid var(--line-soft);
         border-radius: 8px;
@@ -643,6 +687,12 @@
         .prewarm-target-content,
         .review-card-list { padding: 10px; }
         .prewarm-target-details summary {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 10px 12px;
+        }
+        .prewarm-summary-details summary {
           align-items: flex-start;
           flex-direction: column;
           justify-content: center;
@@ -1186,6 +1236,15 @@
         return node ? node.open : null;
       }
 
+      function snapshotPrewarmSummaryOpenState() {
+        const node = prewarmBody.querySelector(".prewarm-summary-details");
+        return node ? node.open : null;
+      }
+
+      function isAdminMobileLayout() {
+        return window.matchMedia("(max-width: 700px)").matches;
+      }
+
       function prewarmRunType(prewarm) {
         if (prewarm?.preset === "nightly") return "半夜定时预热";
         if (prewarm?.preset === "daily") return "每日推荐预热";
@@ -1251,6 +1310,24 @@
             <span class="prewarm-failure-cities">失败城市：${failed.map((item) => esc(item.city || "-")).join("、")}</span>
             <button class="text-btn" type="button" data-prewarm-failures>查看原因</button>
           </div>
+        `;
+      }
+
+      function renderPrewarmSummaryDetails(items, openState = null) {
+        const shouldOpen = openState === null ? !isAdminMobileLayout() : openState;
+        return `
+          <details class="prewarm-summary-details" ${shouldOpen ? "open" : ""}>
+            <summary>
+              <span class="prewarm-summary-title">
+                <strong>预热概览</strong>
+                <span class="muted">类型、时段、城市和任务统计</span>
+              </span>
+              <span class="prewarm-summary-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="prewarm-summary-content">
+              ${renderKeyValues(items)}
+            </div>
+          </details>
         `;
       }
 
@@ -1388,6 +1465,7 @@
 
       function renderPrewarm(prewarm) {
         const scrollSnapshot = snapshotPrewarmTargetScroll();
+        const summaryOpenState = snapshotPrewarmSummaryOpenState();
         const targetOpenState = snapshotPrewarmTargetOpenState();
         latestPrewarmState = prewarm || {};
         const summary = prewarm?.summary || {};
@@ -1402,7 +1480,7 @@
                 </div>
                 ${badge(prewarm?.status || "idle")}
               </div>
-              ${renderKeyValues([
+              ${renderPrewarmSummaryDetails([
                 `类型 ${prewarmRunType(prewarm)}`,
                 `日期 ${prewarm?.run_date || "-"}`,
                 `时段 ${prewarmPeriodText(prewarm)}`,
@@ -1413,7 +1491,7 @@
                 `已有缓存 ${prewarm?.cache_hits ?? 0}`,
                 `跳过 ${prewarm?.skipped_count ?? 0}`,
                 `缓存任务 ${summary.success_target_count ?? prewarm?.success_count ?? 0}/${prewarm?.total ?? 0}`,
-              ])}
+              ], summaryOpenState)}
               ${renderPrewarmFailureLine(prewarm)}
             </article>
             ${renderPrewarmTargets(prewarm, targetOpenState)}
