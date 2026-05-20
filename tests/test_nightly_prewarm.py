@@ -1,6 +1,19 @@
 import datetime as dt
+import json
 
 from scripts import nightly_prewarm
+
+
+def test_nightly_prewarm_defaults_to_nearest_holiday_only(monkeypatch, capsys):
+    monkeypatch.setattr(
+        "sys.argv",
+        ["nightly_prewarm.py", "--dry-run", "--cities", "深圳"],
+    )
+
+    nightly_prewarm.main()
+
+    output = json.loads(capsys.readouterr().out)
+    assert output["payload"]["holiday_codes"] == ["AUTO_FIRST_1_HOLIDAYS"]
 
 
 def test_nightly_prewarm_city_batch_keeps_priority_first_without_duplicates():

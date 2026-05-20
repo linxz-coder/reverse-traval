@@ -16,7 +16,7 @@
     <string>--batch-size</string>
     <string>5</string>
     <string>--holiday-count</string>
-    <string>3</string>
+    <string>1</string>
     <string>--profiles</string>
     <string>quality</string>
     <string>--delay-seconds</string>

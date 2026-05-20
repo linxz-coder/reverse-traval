@@ -114,6 +114,8 @@ INTERNATIONAL_CITIES = (
     "巴塞罗那",
 )
 
+DEFAULT_NIGHTLY_HOLIDAY_COUNT = 1
+
 
 def read_json(url: str) -> dict:
     with urlopen(url, timeout=20) as response:
@@ -251,7 +253,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Start a low-rate nightly reverse-travel cache prewarm batch.")
     parser.add_argument("--base-url", default="http://127.0.0.1:5012")
     parser.add_argument("--batch-size", type=int, default=5)
-    parser.add_argument("--holiday-count", type=int, default=3)
+    parser.add_argument("--holiday-count", type=int, default=DEFAULT_NIGHTLY_HOLIDAY_COUNT)
     parser.add_argument("--holiday-code", action="append", dest="holiday_codes")
     parser.add_argument("--profiles", default="quality")
     parser.add_argument("--delay-seconds", type=int, default=60)
