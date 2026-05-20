@@ -228,6 +228,98 @@
         border-bottom: 1px solid var(--line-soft);
         background: #fff;
       }
+      .prewarm-target-details {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+      }
+      .prewarm-target-details summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 52px;
+        padding: 0 14px;
+        cursor: pointer;
+        list-style: none;
+      }
+      .prewarm-target-details summary::-webkit-details-marker { display: none; }
+      .prewarm-target-details summary:hover { background: #f7faff; }
+      .prewarm-target-details[open] summary {
+        background: var(--primary-soft);
+      }
+      .prewarm-target-summary {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .prewarm-target-toggle {
+        flex: 0 0 auto;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .prewarm-target-toggle::before { content: "展开"; }
+      .prewarm-target-details[open] .prewarm-target-toggle::before { content: "收起"; }
+      .prewarm-target-content {
+        border-top: 1px solid var(--line-soft);
+        background: #fff;
+        padding: 12px;
+      }
+      .prewarm-target-cards,
+      .review-card-list {
+        display: none;
+        gap: 10px;
+      }
+      .prewarm-target-card,
+      .review-card {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: var(--panel-subtle);
+        padding: 12px;
+      }
+      .mobile-card-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .mobile-card-head strong {
+        display: block;
+        font-size: 14px;
+        line-height: 1.25;
+      }
+      .mobile-card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .mobile-card-field {
+        min-height: 54px;
+        padding: 8px;
+        border: 1px solid var(--line-soft);
+        border-radius: 7px;
+        background: #fff;
+      }
+      .mobile-card-field.wide {
+        grid-column: 1 / -1;
+      }
+      .mobile-card-label {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .mobile-card-value {
+        color: #263241;
+        font-size: 13px;
+        line-height: 1.42;
+        overflow-wrap: anywhere;
+      }
       .recent-job-cards {
         display: none;
         gap: 10px;
@@ -542,6 +634,20 @@
         .recent-job-cards { display: grid; }
         .recent-job-card-grid { grid-template-columns: 1fr; }
         .recent-job-field { min-height: 0; }
+        .prewarm-target-table,
+        .review-table-wrap { display: none; }
+        .prewarm-target-cards,
+        .review-card-list { display: grid; }
+        .mobile-card-grid { grid-template-columns: 1fr; }
+        .mobile-card-field { min-height: 0; }
+        .prewarm-target-content,
+        .review-card-list { padding: 10px; }
+        .prewarm-target-details summary {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 10px 12px;
+        }
       }
       @media (max-width: 540px) {
         .page { padding: 18px 12px 36px; }
@@ -653,7 +759,7 @@
                   <button class="text-btn batch-reject hidden" id="hotel-name-review-batch-reject" type="button" data-review-batch-section="hotelName" data-review-batch-action="reject">全部拒绝</button>
                   <button class="text-btn hidden" id="hotel-name-review-more" type="button" data-review-more="hotelName">查看全部</button>
                 </div>
-                <div class="table-wrap">
+                <div class="table-wrap review-table-wrap">
                   <table>
                     <thead>
                       <tr>
@@ -668,6 +774,7 @@
                     <tbody id="hotel-name-reviews"></tbody>
                   </table>
                 </div>
+                <div class="review-card-list" id="hotel-name-review-cards"></div>
               </div>
             </details>
 
@@ -685,7 +792,7 @@
                   <button class="text-btn batch-reject hidden" id="hotel-area-review-batch-reject" type="button" data-review-batch-section="hotelArea" data-review-batch-action="reject">全部拒绝</button>
                   <button class="text-btn hidden" id="hotel-area-review-more" type="button" data-review-more="hotelArea">查看全部</button>
                 </div>
-                <div class="table-wrap">
+                <div class="table-wrap review-table-wrap">
                   <table>
                     <thead>
                       <tr>
@@ -700,6 +807,7 @@
                     <tbody id="hotel-area-reviews"></tbody>
                   </table>
                 </div>
+                <div class="review-card-list" id="hotel-area-review-cards"></div>
               </div>
             </details>
 
@@ -717,7 +825,7 @@
                   <button class="text-btn batch-reject hidden" id="area-merge-review-batch-reject" type="button" data-review-batch-section="areaMerge" data-review-batch-action="reject">全部拒绝</button>
                   <button class="text-btn hidden" id="area-merge-review-more" type="button" data-review-more="areaMerge">查看全部</button>
                 </div>
-                <div class="table-wrap">
+                <div class="table-wrap review-table-wrap">
                   <table>
                     <thead>
                       <tr>
@@ -732,6 +840,7 @@
                     <tbody id="area-merge-reviews"></tbody>
                   </table>
                 </div>
+                <div class="review-card-list" id="area-merge-review-cards"></div>
               </div>
             </details>
           </div>
@@ -763,10 +872,13 @@
       const reviewCenterCount = document.getElementById("review-center-count");
       const hotelNameReviewCount = document.getElementById("hotel-name-review-count");
       const hotelNameReviews = document.getElementById("hotel-name-reviews");
+      const hotelNameReviewCards = document.getElementById("hotel-name-review-cards");
       const hotelAreaReviewCount = document.getElementById("hotel-area-review-count");
       const hotelAreaReviews = document.getElementById("hotel-area-reviews");
+      const hotelAreaReviewCards = document.getElementById("hotel-area-review-cards");
       const areaMergeReviewCount = document.getElementById("area-merge-review-count");
       const areaMergeReviews = document.getElementById("area-merge-reviews");
+      const areaMergeReviewCards = document.getElementById("area-merge-review-cards");
       const hotelNameReviewMore = document.getElementById("hotel-name-review-more");
       const hotelAreaReviewMore = document.getElementById("hotel-area-review-more");
       const areaMergeReviewMore = document.getElementById("area-merge-review-more");
@@ -1173,45 +1285,98 @@
         document.body.classList.add("modal-open");
       }
 
+      function prewarmTargetProgress(target, prewarm) {
+        return `${target.index || "-"}/${target.total || prewarm.total || "-"}`;
+      }
+
+      function renderPrewarmTargetRow(target, prewarm) {
+        return `
+          <tr>
+            <td>${esc(prewarmTargetProgress(target, prewarm))}</td>
+            <td>${esc(target.city || "-")}</td>
+            <td><div>${esc(target.holiday_name || "-")}</div><div class="muted">${esc(target.holiday_code || "")}</div></td>
+            <td>${esc(prewarmTargetCondition(target))}</td>
+            <td>${badge(target.status || "-")}</td>
+            <td>${esc(target.choice_count ?? "-")}</td>
+            <td>${esc(prewarmTargetSource(target))}</td>
+            <td>${esc(formatAdminDateTime(target.completed_at))}</td>
+          </tr>
+        `;
+      }
+
+      function renderPrewarmTargetCard(target, prewarm) {
+        return `
+          <article class="prewarm-target-card">
+            <div class="mobile-card-head">
+              <div>
+                <strong>${esc(target.city || "-")}</strong>
+                <div class="mono">${esc(prewarmTargetProgress(target, prewarm))}</div>
+              </div>
+              ${badge(target.status || "-")}
+            </div>
+            <div class="mobile-card-grid">
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">假期</span>
+                <div class="mobile-card-value">${esc(target.holiday_name || "-")}<br>${esc(target.holiday_code || "")}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">条件</span>
+                <div class="mobile-card-value">${esc(prewarmTargetCondition(target))}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">酒店数</span>
+                <div class="mobile-card-value">${esc(target.choice_count ?? "-")}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">完成时间</span>
+                <div class="mobile-card-value">${esc(formatAdminDateTime(target.completed_at))}</div>
+              </div>
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">来源</span>
+                <div class="mobile-card-value">${esc(prewarmTargetSource(target))}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
       function renderPrewarmTargets(prewarm) {
         const targets = sortedPrewarmTargets(prewarm);
         if (!targets.length) return "";
+        const shouldOpen = targets.length <= 8;
         return `
           <article class="job full">
-            <div class="job-title">
-              <strong>${esc(prewarm?.run_date || "今日")}预热清单</strong>
-              <span class="muted">最近完成在前 · 已记录 ${esc(targets.length)} 条</span>
-            </div>
-            <div class="prewarm-target-table">
-              <table>
-                <thead>
-                  <tr>
-                    <th style="width: 68px;">序号</th>
-                    <th style="width: 90px;">城市</th>
-                    <th style="width: 190px;">假期</th>
-                    <th style="width: 180px;">条件</th>
-                    <th style="width: 100px;">状态</th>
-                    <th style="width: 90px;">酒店数</th>
-                    <th style="width: 150px;">来源</th>
-                    <th style="width: 170px;">完成时间</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${targets.map((target) => `
-                    <tr>
-                      <td>${esc(target.index || "-")}/${esc(target.total || prewarm.total || "-")}</td>
-                      <td>${esc(target.city || "-")}</td>
-                      <td><div>${esc(target.holiday_name || "-")}</div><div class="muted">${esc(target.holiday_code || "")}</div></td>
-                      <td>${esc(prewarmTargetCondition(target))}</td>
-                      <td>${badge(target.status || "-")}</td>
-                      <td>${esc(target.choice_count ?? "-")}</td>
-                      <td>${esc(prewarmTargetSource(target))}</td>
-                      <td>${esc(formatAdminDateTime(target.completed_at))}</td>
-                    </tr>
-                  `).join("")}
-                </tbody>
-              </table>
-            </div>
+            <details class="prewarm-target-details" ${shouldOpen ? "open" : ""}>
+              <summary>
+                <span class="prewarm-target-summary">
+                  <strong>${esc(prewarm?.run_date || "今日")}预热清单</strong>
+                  <span class="muted">最近完成在前 · 已记录 ${esc(targets.length)} 条</span>
+                </span>
+                <span class="prewarm-target-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="prewarm-target-content">
+                <div class="prewarm-target-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style="width: 68px;">序号</th>
+                        <th style="width: 90px;">城市</th>
+                        <th style="width: 190px;">假期</th>
+                        <th style="width: 180px;">条件</th>
+                        <th style="width: 100px;">状态</th>
+                        <th style="width: 90px;">酒店数</th>
+                        <th style="width: 150px;">来源</th>
+                        <th style="width: 170px;">完成时间</th>
+                      </tr>
+                    </thead>
+                    <tbody>${targets.map((target) => renderPrewarmTargetRow(target, prewarm)).join("")}</tbody>
+                  </table>
+                </div>
+                <div class="prewarm-target-cards">
+                  ${targets.map((target) => renderPrewarmTargetCard(target, prewarm)).join("")}
+                </div>
+              </div>
+            </details>
           </article>
         `;
       }
@@ -1445,6 +1610,142 @@
         `;
       }
 
+      function reviewCardActionContent(buttons, item) {
+        return buttons || `<span class="muted">${esc(formatAdminDateTime(item.reviewed_at))}</span>`;
+      }
+
+      function emptyReviewCard(text) {
+        return `<div class="empty">${esc(text)}</div>`;
+      }
+
+      function renderHotelNameReviewCard(item) {
+        const buttons = hotelNameReviewButtons(item);
+        return `
+          <article class="review-card">
+            <div class="mobile-card-head">
+              <div>
+                <strong>${esc(item.suggested_hotel_name_zh || "-")}</strong>
+                <div class="mono">${esc(item.hotel_id || "-")}</div>
+              </div>
+              ${badge(item.status || "-")}
+            </div>
+            <div class="mobile-card-grid">
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">当前名称</span>
+                <div class="mobile-card-value">${esc(item.current_hotel_name_zh || "-")}</div>
+              </div>
+              ${item.hotel_name_original ? `
+                <div class="mobile-card-field wide">
+                  <span class="mobile-card-label">原名</span>
+                  <div class="mobile-card-value">${esc(item.hotel_name_original)}</div>
+                </div>
+              ` : ""}
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">城市片区</span>
+                <div class="mobile-card-value">${esc([item.city_name_zh, item.area_name_zh].filter(Boolean).join(" / ") || "-")}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">提交时间</span>
+                <div class="mobile-card-value">${esc(formatAdminDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
+              </div>
+              ${item.detail_url ? `
+                <div class="mobile-card-field wide">
+                  <span class="mobile-card-label">链接</span>
+                  <div class="mobile-card-value"><a href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">Trip.com</a></div>
+                </div>
+              ` : ""}
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">操作</span>
+                <div class="mobile-card-value">${reviewCardActionContent(buttons, item)}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderHotelAreaReviewCard(item) {
+        const buttons = hotelAreaReviewButtons(item);
+        return `
+          <article class="review-card">
+            <div class="mobile-card-head">
+              <div>
+                <strong>${esc(item.hotel_name_zh || item.hotel_name_original || "-")}</strong>
+                <div class="mono">${esc(item.hotel_id || "-")}</div>
+              </div>
+              ${badge(item.status || "-")}
+            </div>
+            <div class="mobile-card-grid">
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">当前片区</span>
+                <div class="mobile-card-value">${esc(item.current_area_name_zh || "-")}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">建议片区</span>
+                <div class="mobile-card-value">${esc(item.suggested_area_name_zh || "-")}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">城市</span>
+                <div class="mobile-card-value">${esc(item.city_name_zh || "-")}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">提交时间</span>
+                <div class="mobile-card-value">${esc(formatAdminDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
+              </div>
+              ${item.detail_url ? `
+                <div class="mobile-card-field wide">
+                  <span class="mobile-card-label">链接</span>
+                  <div class="mobile-card-value"><a href="${esc(item.detail_url)}" target="_blank" rel="noreferrer">Trip.com</a></div>
+                </div>
+              ` : ""}
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">操作</span>
+                <div class="mobile-card-value">${reviewCardActionContent(buttons, item)}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderAreaMergeReviewCard(item) {
+        const buttons = areaMergeReviewButtons(item);
+        const sourceNames = Array.isArray(item.source_area_names) ? item.source_area_names : [];
+        const hotels = Array.isArray(item.hotels) ? item.hotels : [];
+        const hotelNames = hotels.slice(0, 5).map((hotel) => hotel.hotel_name_zh || hotel.hotel_name_original || hotel.hotel_id).filter(Boolean);
+        return `
+          <article class="review-card">
+            <div class="mobile-card-head">
+              <div>
+                <strong>${esc(item.suggested_area_name_zh || "-")}</strong>
+                <div class="muted">${esc(item.hotel_count || hotels.length || 0)} 家酒店</div>
+              </div>
+              ${badge(item.status || "-")}
+            </div>
+            <div class="mobile-card-grid">
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">来源片区</span>
+                <div class="mobile-card-value">${esc(sourceNames.join("、") || "-")}</div>
+              </div>
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">酒店</span>
+                <div class="mobile-card-value">${esc(hotelNames.join("、") || "-")}${hotels.length > hotelNames.length ? ` 等 ${esc(hotels.length)} 家` : ""}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">城市</span>
+                <div class="mobile-card-value">${esc(item.city_name_zh || "-")}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">提交时间</span>
+                <div class="mobile-card-value">${esc(formatAdminDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
+              </div>
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">操作</span>
+                <div class="mobile-card-value">${reviewCardActionContent(buttons, item)}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
       function setReviewSection(sectionKey, config) {
         reviewSections[sectionKey] = config;
         config.countElement.textContent = reviewCountText(config.reviewState, config.rows);
@@ -1461,6 +1762,9 @@
         config.bodyElement.innerHTML = previewRows.length
           ? previewRows.map(config.renderRow).join("")
           : emptyReviewRow(config.emptyText);
+        config.cardElement.innerHTML = previewRows.length
+          ? previewRows.map(config.renderCard).join("")
+          : emptyReviewCard(config.emptyText);
       }
 
       function renderHotelNameReviews(reviewState) {
@@ -1469,6 +1773,7 @@
           reviewState,
           rows: reviewRows(reviewState),
           bodyElement: hotelNameReviews,
+          cardElement: hotelNameReviewCards,
           countElement: hotelNameReviewCount,
           moreButton: hotelNameReviewMore,
           batchApproveButton: hotelNameBatchApprove,
@@ -1476,6 +1781,7 @@
           batchUrl: "/api/admin/hotel-name-corrections/batch-review",
           tableHead: hotelNameReviewHead(),
           renderRow: renderHotelNameReviewRow,
+          renderCard: renderHotelNameReviewCard,
           emptyText: "暂无酒店名修改待审核",
         });
       }
@@ -1486,6 +1792,7 @@
           reviewState,
           rows: reviewRows(reviewState),
           bodyElement: hotelAreaReviews,
+          cardElement: hotelAreaReviewCards,
           countElement: hotelAreaReviewCount,
           moreButton: hotelAreaReviewMore,
           batchApproveButton: hotelAreaBatchApprove,
@@ -1493,6 +1800,7 @@
           batchUrl: "/api/admin/hotel-area-corrections/batch-review",
           tableHead: hotelAreaReviewHead(),
           renderRow: renderHotelAreaReviewRow,
+          renderCard: renderHotelAreaReviewCard,
           emptyText: "暂无片区修改待审核",
         });
       }
@@ -1503,6 +1811,7 @@
           reviewState,
           rows: reviewRows(reviewState),
           bodyElement: areaMergeReviews,
+          cardElement: areaMergeReviewCards,
           countElement: areaMergeReviewCount,
           moreButton: areaMergeReviewMore,
           batchApproveButton: areaMergeBatchApprove,
@@ -1510,6 +1819,7 @@
           batchUrl: "/api/admin/area-merge-corrections/batch-review",
           tableHead: areaMergeReviewHead(),
           renderRow: renderAreaMergeReviewRow,
+          renderCard: renderAreaMergeReviewCard,
           emptyText: "暂无合并片区待审核",
         });
       }
@@ -1519,12 +1829,17 @@
         if (!section) return;
         reviewModalTitle.textContent = `${section.title}（${section.rows.length} 条）`;
         reviewModalBody.innerHTML = `
-          <table>
-            <thead>${section.tableHead}</thead>
-            <tbody>
-              ${section.rows.length ? section.rows.map(section.renderRow).join("") : emptyReviewRow(section.emptyText)}
-            </tbody>
-          </table>
+          <div class="table-wrap review-table-wrap">
+            <table>
+              <thead>${section.tableHead}</thead>
+              <tbody>
+                ${section.rows.length ? section.rows.map(section.renderRow).join("") : emptyReviewRow(section.emptyText)}
+              </tbody>
+            </table>
+          </div>
+          <div class="review-card-list">
+            ${section.rows.length ? section.rows.map(section.renderCard).join("") : emptyReviewCard(section.emptyText)}
+          </div>
         `;
       }
 
@@ -1726,8 +2041,11 @@
         if (event.key === "Escape" && !reviewModal.classList.contains("hidden")) closeReviewModal();
       });
       hotelNameReviews.addEventListener("click", handleReviewActionClick);
+      hotelNameReviewCards.addEventListener("click", handleReviewActionClick);
       hotelAreaReviews.addEventListener("click", handleReviewActionClick);
+      hotelAreaReviewCards.addEventListener("click", handleReviewActionClick);
       areaMergeReviews.addEventListener("click", handleReviewActionClick);
+      areaMergeReviewCards.addEventListener("click", handleReviewActionClick);
       reviewModalBody.addEventListener("click", handleReviewActionClick);
     </script>
   </body>

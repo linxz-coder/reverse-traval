@@ -1564,6 +1564,16 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "function renderRecentJobCard(job)" in html
     assert ".recent-table-wrap { display: none; }" in html
     assert ".recent-job-card-grid { grid-template-columns: 1fr; }" in html
+    assert "prewarm-target-details" in html
+    assert "function renderPrewarmTargetCard(target, prewarm)" in html
+    assert ".prewarm-target-table," in html
+    assert ".review-table-wrap { display: none; }" in html
+    assert 'id="hotel-name-review-cards"' in html
+    assert 'id="hotel-area-review-cards"' in html
+    assert 'id="area-merge-review-cards"' in html
+    assert "function renderHotelNameReviewCard(item)" in html
+    assert "function renderHotelAreaReviewCard(item)" in html
+    assert "function renderAreaMergeReviewCard(item)" in html
     assert "RECENT_JOB_PREVIEW_LIMIT = 5" in html
     assert "function updateRecentJobs(recent)" in html
     assert "function openRecentJobsModal()" in html
