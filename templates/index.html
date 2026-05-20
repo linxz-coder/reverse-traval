@@ -1876,6 +1876,7 @@
       let areaMergeCorrectionToken = 0;
       let areaMergeNameTouched = false;
       let renderChoicesTimer = null;
+      const DAILY_RECOMMENDATION_REFRESH_MS = 6 * 60 * 60 * 1000;
       const HOTEL_NAME_PARTIAL_REFRESH_LIMIT = 18;
       const HOTEL_NAME_BATCH_SIZE = 8;
       const provinceCityOptions = {{ province_city_options|tojson }};
@@ -3585,7 +3586,8 @@
           featureLabel(hotel.has_pool, "有泳池", "无泳池", "泳池待确认"),
           featureLabel(hotel.has_child_facility, "有儿童设施", "无儿童设施", "儿童设施待确认"),
         ];
-        dailyMeta.textContent = `${data.city || "预热城市"} · ${holiday.name || "推荐假期"} · ${cacheAge}`;
+        const refreshText = data.refresh_hours ? `${data.refresh_hours}小时轮换` : "每日轮换";
+        dailyMeta.textContent = `${data.city || "预热城市"} · ${holiday.name || "推荐假期"} · ${cacheAge} · ${refreshText}`;
         dailyContent.innerHTML = `
           <article class="daily-hotel">
             ${dailyPhotoHtml(hotel, hotelName, data.city)}
@@ -4647,6 +4649,7 @@
       });
 
       loadDailyRecommendation();
+      window.setInterval(loadDailyRecommendation, DAILY_RECOMMENDATION_REFRESH_MS);
 
       priceButtons.forEach((button) => {
         button.addEventListener("click", () => {

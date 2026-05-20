@@ -126,6 +126,7 @@ PREWARM_FILTER_PROFILES = {
 
 DAILY_PREWARM_CITY_LIMIT = env_int("REVERSE_TRAVEL_DAILY_PREWARM_CITY_LIMIT", 12, min_value=1, max_value=40)
 DAILY_RECOMMENDATION_SCAN_LIMIT = 200
+DAILY_RECOMMENDATION_REFRESH_HOURS = 6
 
 CITY_COORDINATES = {
     "深圳": (22.5431, 114.0579),
@@ -1610,7 +1611,7 @@ def daily_prewarm_config(config: dict[str, Any] | None = None) -> dict[str, Any]
     config = dict(config or {})
     holiday_limit = parse_optional_int(config.get("holiday_limit"), "每日预热假期数量")
     if holiday_limit is None:
-        holiday_limit = 2
+        holiday_limit = 1
     holidays = finder.list_holidays()[: max(1, holiday_limit)]
     city_limit = parse_optional_int(config.get("city_limit"), "每日预热城市数量")
     if city_limit is None:
@@ -1772,6 +1773,17 @@ def is_daily_quality_choice(choice: dict[str, Any]) -> bool:
     )
 
 
+def daily_recommendation_slot_key(now: float | None = None) -> str:
+    current = time.time() if now is None else now
+    local_time = time.localtime(current)
+    slot_start = (local_time.tm_hour // DAILY_RECOMMENDATION_REFRESH_HOURS) * DAILY_RECOMMENDATION_REFRESH_HOURS
+    return f"{time.strftime('%Y-%m-%d', local_time)}T{slot_start:02d}"
+
+
+def daily_recommendation_holiday_codes(limit: int = 1) -> set[str]:
+    return {str(item.get("code") or "").strip() for item in finder.list_holidays()[: max(1, limit)] if item.get("code")}
+
+
 def fetch_daily_hotel_image_url(detail_url: str) -> str:
     url = str(detail_url or "").strip()
     if not url:
@@ -1829,8 +1841,13 @@ def daily_hotel_display_image_url(hotel: dict[str, Any]) -> str:
 def daily_recommendation_payload() -> dict[str, Any]:
     candidates: list[dict[str, Any]] = []
     now = time.time()
+    holiday_codes = daily_recommendation_holiday_codes()
     for record in cached_search_records():
         result = record.get("result") or {}
+        holiday = result.get("holiday") or {}
+        holiday_code = str(holiday.get("code") or "").strip()
+        if holiday_codes and holiday_code not in holiday_codes:
+            continue
         cache_key = record.get("cache_key") if isinstance(record.get("cache_key"), list) else []
         try:
             created_at = float(record.get("created_at") or 0)
@@ -1848,13 +1865,16 @@ def daily_recommendation_payload() -> dict[str, Any]:
                 holiday_value = int(choice.get("holiday_avg_nightly_tax_total_value") or 0)
             except (TypeError, ValueError):
                 continue
+            if diff >= 0:
+                continue
             display_name = finder._to_simplified_chinese(str(choice.get("hotel_name") or ""))
             has_chinese_name = finder._contains_chinese_text(display_name)
             image_url = choice_image_url(choice)
+            hotel_identity = str(choice.get("hotel_id") or choice.get("hotel_name") or "")
             candidates.append(
                 {
                     "city": finder._to_simplified_chinese(str(result.get("city") or "")),
-                    "holiday": result.get("holiday") or {},
+                    "holiday": holiday,
                     "feature_filters": result.get("feature_filters") or {},
                     "cache_key": cache_key,
                     "cache_created_at": finder._format_timestamp(created_at) if created_at else "",
@@ -1862,22 +1882,29 @@ def daily_recommendation_payload() -> dict[str, Any]:
                     "hotel": choice,
                     "has_chinese_name": has_chinese_name,
                     "image_url": image_url,
-                    "score": (diff, holiday_value, str(choice.get("hotel_id") or choice.get("hotel_name") or "")),
+                    "stable_key": (
+                        finder._to_simplified_chinese(str(result.get("city") or "")),
+                        hotel_identity,
+                        str((result.get("holiday") or {}).get("code") or ""),
+                        diff,
+                        holiday_value,
+                    ),
                 }
             )
 
     if not candidates:
         return {
             "available": False,
-            "message": "暂无高级、有泳池、有儿童设施的预热缓存。半夜预热完成后会自动显示每日推荐。",
+            "message": "暂无最近假期下高级、有泳池、有儿童设施且假期更优惠的预热缓存。半夜预热完成后会自动显示每日推荐。",
         }
 
-    candidates.sort(key=lambda item: item["score"])
+    candidates.sort(key=lambda item: item["stable_key"])
     chinese_candidates = [item for item in candidates if item.get("has_chinese_name")]
-    quality_pool = (chinese_candidates or candidates)[: min(20, len(chinese_candidates or candidates))]
+    quality_pool = chinese_candidates or candidates
     pool = [item for item in quality_pool if item.get("image_url")] or quality_pool
-    day_key = time.strftime("%Y-%m-%d", time.localtime())
-    index = int(hashlib.sha256(day_key.encode("utf-8")).hexdigest(), 16) % len(pool)
+    slot_key = daily_recommendation_slot_key(now)
+    day_key = slot_key.split("T", 1)[0]
+    index = int(hashlib.sha256(slot_key.encode("utf-8")).hexdigest(), 16) % len(pool)
     selected = pool[index]
     hotel = copy.deepcopy(selected["hotel"])
     finder._apply_cached_hotel_names_to_choices([hotel], str(selected.get("city") or ""))
@@ -1888,6 +1915,8 @@ def daily_recommendation_payload() -> dict[str, Any]:
     return {
         "available": True,
         "date": day_key,
+        "refresh_slot": slot_key,
+        "refresh_hours": DAILY_RECOMMENDATION_REFRESH_HOURS,
         "city": selected["city"],
         "holiday": selected["holiday"],
         "feature_filters": selected["feature_filters"],

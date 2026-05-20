@@ -1,3 +1,5 @@
+import datetime as dt
+import hashlib
 import json
 import threading
 import time
@@ -1745,6 +1747,9 @@ def test_frontend_loads_daily_recommendation_and_stage_labels():
     assert "酒店照片待更新" in html
     assert "daily-feature-row" in html
     assert "function featureLabel" in html
+    assert "DAILY_RECOMMENDATION_REFRESH_MS = 6 * 60 * 60 * 1000" in html
+    assert "window.setInterval(loadDailyRecommendation, DAILY_RECOMMENDATION_REFRESH_MS)" in html
+    assert "${data.refresh_hours}小时轮换" in html
 
 
 def test_daily_recommendation_reads_cached_search_records(tmp_path, monkeypatch):
@@ -1997,7 +2002,7 @@ def test_daily_recommendation_prefers_chinese_name_from_cache(tmp_path, monkeypa
                     "has_pool": True,
                     "has_child_facility": True,
                     "holiday_avg_nightly_tax_total_value": 700,
-                    "price_diff_nightly": 20,
+                    "price_diff_nightly": -20,
                 },
             ],
         },
@@ -2008,6 +2013,128 @@ def test_daily_recommendation_prefers_chinese_name_from_cache(tmp_path, monkeypa
 
     assert data["available"] is True
     assert data["hotel"]["hotel_name"] == "深圳中文推荐酒店"
+
+
+def test_daily_recommendation_rotates_every_six_hours():
+    assert app_module.daily_recommendation_slot_key(dt.datetime(2026, 5, 21, 5, 59).timestamp()) == "2026-05-21T00"
+    assert app_module.daily_recommendation_slot_key(dt.datetime(2026, 5, 21, 6, 0).timestamp()) == "2026-05-21T06"
+    assert app_module.DAILY_RECOMMENDATION_REFRESH_HOURS == 6
+
+
+def test_daily_recommendation_rotates_discounted_pool_instead_of_always_lowest(tmp_path, monkeypatch):
+    cache_dir = tmp_path / "cache"
+    search_dir = cache_dir / "search"
+    search_dir.mkdir(parents=True)
+    monkeypatch.setattr(app_module.finder, "cache_dir", cache_dir)
+    target_index = 1
+    slot_key = next(
+        f"test-slot-{index}"
+        for index in range(100)
+        if int(hashlib.sha256(f"test-slot-{index}".encode("utf-8")).hexdigest(), 16) % 3 == target_index
+    )
+    monkeypatch.setattr(app_module, "daily_recommendation_slot_key", lambda now=None: slot_key)
+    record = {
+        "cache_key": ["search", "深圳", "2026-06-19::端午节"],
+        "created_at": time.time(),
+        "result": {
+            "city": "深圳",
+            "holiday": {"code": "2026-06-19::端午节", "name": "端午节"},
+            "feature_filters": {},
+            "choices": [
+                {
+                    "hotel_id": "a-cheapest",
+                    "hotel_name": "深圳最低优惠酒店",
+                    "detail_url": "https://example.test/a-cheapest",
+                    "is_advanced": True,
+                    "has_pool": True,
+                    "has_child_facility": True,
+                    "holiday_avg_nightly_tax_total_value": 500,
+                    "price_diff_nightly": -300,
+                },
+                {
+                    "hotel_id": "b-rotated",
+                    "hotel_name": "深圳轮换推荐酒店",
+                    "detail_url": "https://example.test/b-rotated",
+                    "is_advanced": True,
+                    "has_pool": True,
+                    "has_child_facility": True,
+                    "holiday_avg_nightly_tax_total_value": 700,
+                    "price_diff_nightly": -30,
+                },
+                {
+                    "hotel_id": "c-positive",
+                    "hotel_name": "深圳无优惠酒店",
+                    "detail_url": "https://example.test/c-positive",
+                    "is_advanced": True,
+                    "has_pool": True,
+                    "has_child_facility": True,
+                    "holiday_avg_nightly_tax_total_value": 450,
+                    "price_diff_nightly": 20,
+                },
+                {
+                    "hotel_id": "c-other",
+                    "hotel_name": "深圳另一个优惠酒店",
+                    "detail_url": "https://example.test/c-other",
+                    "is_advanced": True,
+                    "has_pool": True,
+                    "has_child_facility": True,
+                    "holiday_avg_nightly_tax_total_value": 650,
+                    "price_diff_nightly": -80,
+                },
+            ],
+        },
+    }
+    (search_dir / "daily.json").write_text(json.dumps(record), encoding="utf-8")
+
+    data = app_module.daily_recommendation_payload()
+
+    assert data["available"] is True
+    assert data["refresh_hours"] == 6
+    assert data["refresh_slot"] == slot_key
+    assert data["hotel"]["hotel_id"] == "b-rotated"
+    assert data["hotel"]["price_diff_nightly"] < 0
+
+
+def test_daily_recommendation_uses_nearest_holiday_only(tmp_path, monkeypatch):
+    cache_dir = tmp_path / "cache"
+    search_dir = cache_dir / "search"
+    search_dir.mkdir(parents=True)
+    monkeypatch.setattr(app_module.finder, "cache_dir", cache_dir)
+    monkeypatch.setattr(
+        app_module.finder,
+        "list_holidays",
+        lambda: [
+            {"code": "2026-06-19::端午节"},
+            {"code": "2026-09-25::中秋节"},
+        ],
+    )
+    record = {
+        "cache_key": ["search", "深圳", "2026-09-25::中秋节"],
+        "created_at": time.time(),
+        "result": {
+            "city": "深圳",
+            "holiday": {"code": "2026-09-25::中秋节", "name": "中秋节"},
+            "feature_filters": {},
+            "choices": [
+                {
+                    "hotel_id": "mid-autumn",
+                    "hotel_name": "深圳中秋优惠酒店",
+                    "detail_url": "https://example.test/mid-autumn",
+                    "is_advanced": True,
+                    "has_pool": True,
+                    "has_child_facility": True,
+                    "holiday_avg_nightly_tax_total_value": 500,
+                    "price_diff_nightly": -300,
+                },
+            ],
+        },
+    }
+    (search_dir / "daily.json").write_text(json.dumps(record), encoding="utf-8")
+
+    data = app_module.daily_recommendation_payload()
+
+    assert data["available"] is False
+    assert "最近假期" in data["message"]
 
 
 def test_daily_recommendation_requires_quality_pool_and_child_facilities(tmp_path, monkeypatch):
@@ -2041,7 +2168,7 @@ def test_daily_recommendation_requires_quality_pool_and_child_facilities(tmp_pat
                     "has_pool": "true",
                     "has_child_facility": "是",
                     "holiday_avg_nightly_tax_total_value": 800,
-                    "price_diff_nightly": 10,
+                    "price_diff_nightly": -10,
                 },
             ],
         },
