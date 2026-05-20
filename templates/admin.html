@@ -313,6 +313,7 @@
         padding: 12px;
       }
       .prewarm-target-cards,
+      .prewarm-failure-cards,
       .review-card-list {
         display: none;
         gap: 10px;
@@ -322,6 +323,9 @@
         border: 1px solid var(--line-soft);
         border-radius: 8px;
         background: var(--panel-subtle);
+        padding: 12px;
+      }
+      .prewarm-failure-cards {
         padding: 12px;
       }
       .mobile-card-head {
@@ -674,13 +678,63 @@
         }
       }
       @media (max-width: 700px) {
+        body {
+          font-size: 13px;
+          line-height: 1.55;
+        }
+        .panel-head {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+          min-height: 0;
+          padding: 12px;
+        }
+        .panel-title-actions {
+          width: 100%;
+          justify-content: flex-start;
+        }
+        .panel-head > .muted,
+        .panel-title-actions > .muted,
+        .review-group-title .muted {
+          white-space: normal;
+          text-align: left;
+        }
+        .review-center-body {
+          padding: 10px;
+        }
+        .review-group summary {
+          gap: 8px;
+        }
+        .review-group-title,
+        .prewarm-summary-title,
+        .prewarm-target-summary {
+          gap: 6px;
+        }
+        .review-group-actions {
+          justify-content: stretch;
+          padding: 10px;
+        }
+        .review-group-actions .text-btn {
+          flex: 1 1 calc(50% - 4px);
+        }
+        .review-group-actions .text-btn[data-review-more] {
+          flex-basis: 100%;
+        }
+        .job-title {
+          align-items: flex-start;
+        }
+        .job-title > div {
+          min-width: 0;
+        }
         .recent-table-wrap { display: none; }
         .recent-job-cards { display: grid; }
         .recent-job-card-grid { grid-template-columns: 1fr; }
         .recent-job-field { min-height: 0; }
         .prewarm-target-table,
+        .prewarm-failure-table,
         .review-table-wrap { display: none; }
         .prewarm-target-cards,
+        .prewarm-failure-cards,
         .review-card-list { display: grid; }
         .mobile-card-grid { grid-template-columns: 1fr; }
         .mobile-card-field { min-height: 0; }
@@ -703,6 +757,42 @@
         .page { padding: 18px 12px 36px; }
         .metrics { grid-template-columns: 1fr; }
         .job-list { grid-template-columns: 1fr; padding: 10px; }
+        .status {
+          width: 100%;
+          min-height: 0;
+          justify-content: flex-start;
+          padding: 7px 10px;
+          text-align: left;
+          white-space: normal;
+        }
+        .topbar {
+          gap: 12px;
+        }
+        .topbar p {
+          display: none;
+        }
+        .metric {
+          min-height: 0;
+          padding: 12px;
+        }
+        .metric-value {
+          font-size: 24px;
+        }
+        .prewarm-summary-title .muted,
+        .prewarm-target-summary .muted {
+          display: none;
+        }
+        .prewarm-failure-line {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 7px;
+        }
+        .prewarm-failure-line .text-btn {
+          width: 100%;
+        }
+        .actions .action-btn {
+          flex: 1 1 116px;
+        }
       }
     </style>
   </head>
@@ -1057,6 +1147,15 @@
         return `<div class="kv">${items.map((item) => `<span>${esc(item)}</span>`).join("")}</div>`;
       }
 
+      function recentJobPreviewLimit() {
+        return isAdminMobileLayout() ? 3 : RECENT_JOB_PREVIEW_LIMIT;
+      }
+
+      function formatAdminCardDateTime(value) {
+        const formatted = formatAdminDateTime(value);
+        return isAdminMobileLayout() ? formatted.replace(/^\d{4}年/, "") : formatted;
+      }
+
       function renderActiveJob(job) {
         const progress = job.progress || {};
         const percent = progressPercent(progress);
@@ -1117,7 +1216,7 @@
               </div>
               <div class="recent-job-field">
                 <span class="recent-job-label">更新时间</span>
-                <div class="recent-job-value">${esc(formatAdminDateTime(job.updated_at))}</div>
+                <div class="recent-job-value">${esc(formatAdminCardDateTime(job.updated_at))}</div>
               </div>
               <div class="recent-job-field wide">
                 <span class="recent-job-label">条件</span>
@@ -1153,9 +1252,10 @@
       function updateRecentJobs(recent) {
         latestRecentJobs = Array.isArray(recent) ? recent : [];
         recentCount.textContent = `${latestRecentJobs.length} 条记录`;
-        const previewRows = latestRecentJobs.slice(0, RECENT_JOB_PREVIEW_LIMIT);
-        recentJobsMore.classList.toggle("hidden", latestRecentJobs.length <= RECENT_JOB_PREVIEW_LIMIT);
-        recentJobsMore.textContent = latestRecentJobs.length > RECENT_JOB_PREVIEW_LIMIT
+        const previewLimit = recentJobPreviewLimit();
+        const previewRows = latestRecentJobs.slice(0, previewLimit);
+        recentJobsMore.classList.toggle("hidden", latestRecentJobs.length <= previewLimit);
+        recentJobsMore.textContent = latestRecentJobs.length > previewLimit
           ? `查看全部 ${latestRecentJobs.length}`
           : "查看全部";
         recentJobs.innerHTML = previewRows.length
@@ -1302,12 +1402,20 @@
         }));
       }
 
+      function prewarmFailureCitySummary(failed) {
+        const names = failed.map((item) => item.city || "-").filter(Boolean);
+        if (isAdminMobileLayout() && names.length > 4) {
+          return `${names.slice(0, 4).join("、")} 等 ${names.length} 个`;
+        }
+        return names.join("、");
+      }
+
       function renderPrewarmFailureLine(prewarm) {
         const failed = prewarmFailedCities(prewarm);
         if (!failed.length) return `<div class="job-message muted prewarm-failure-line">失败城市：无</div>`;
         return `
           <div class="job-message prewarm-failure-line">
-            <span class="prewarm-failure-cities">失败城市：${failed.map((item) => esc(item.city || "-")).join("、")}</span>
+            <span class="prewarm-failure-cities">失败城市：${esc(prewarmFailureCitySummary(failed))}</span>
             <button class="text-btn" type="button" data-prewarm-failures>查看原因</button>
           </div>
         `;
@@ -1331,32 +1439,64 @@
         `;
       }
 
+      function renderPrewarmFailureCard(item) {
+        return `
+          <article class="review-card">
+            <div class="mobile-card-head">
+              <div>
+                <strong>${esc(item.city)}</strong>
+                <div class="muted">${esc(item.failedCount ? `失败 ${item.failedCount} 次` : item.condition)}</div>
+              </div>
+            </div>
+            <div class="mobile-card-grid">
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">假期</span>
+                <div class="mobile-card-value">${esc(item.holiday)}<br>${esc(item.holidayCode)}</div>
+              </div>
+              <div class="mobile-card-field">
+                <span class="mobile-card-label">完成时间</span>
+                <div class="mobile-card-value">${esc(formatAdminCardDateTime(item.completedAt))}</div>
+              </div>
+              <div class="mobile-card-field wide">
+                <span class="mobile-card-label">错误原因</span>
+                <div class="mobile-card-value">${esc(item.error)}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
       function renderPrewarmFailureModal() {
         const details = prewarmFailureDetails(latestPrewarmState);
         reviewModalTitle.textContent = `失败城市原因（${details.length} 条）`;
         reviewModalBody.innerHTML = `
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 90px;">城市</th>
-                <th style="width: 180px;">假期</th>
-                <th style="width: 160px;">条件</th>
-                <th>错误原因</th>
-                <th style="width: 170px;">完成时间</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${details.length ? details.map((item) => `
+          <div class="table-wrap prewarm-failure-table">
+            <table>
+              <thead>
                 <tr>
-                  <td>${esc(item.city)}</td>
-                  <td><div>${esc(item.holiday)}</div><div class="muted">${esc(item.holidayCode)}</div></td>
-                  <td>${esc(item.failedCount ? `失败 ${item.failedCount} 次` : item.condition)}</td>
-                  <td>${esc(item.error)}</td>
-                  <td>${esc(formatAdminDateTime(item.completedAt))}</td>
+                  <th style="width: 90px;">城市</th>
+                  <th style="width: 180px;">假期</th>
+                  <th style="width: 160px;">条件</th>
+                  <th>错误原因</th>
+                  <th style="width: 170px;">完成时间</th>
                 </tr>
-              `).join("") : `<tr><td colspan="5" class="empty">暂无失败原因</td></tr>`}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                ${details.length ? details.map((item) => `
+                  <tr>
+                    <td>${esc(item.city)}</td>
+                    <td><div>${esc(item.holiday)}</div><div class="muted">${esc(item.holidayCode)}</div></td>
+                    <td>${esc(item.failedCount ? `失败 ${item.failedCount} 次` : item.condition)}</td>
+                    <td>${esc(item.error)}</td>
+                    <td>${esc(formatAdminDateTime(item.completedAt))}</td>
+                  </tr>
+                `).join("") : `<tr><td colspan="5" class="empty">暂无失败原因</td></tr>`}
+              </tbody>
+            </table>
+          </div>
+          <div class="prewarm-failure-cards">
+            ${details.length ? details.map(renderPrewarmFailureCard).join("") : `<div class="empty">暂无失败原因</div>`}
+          </div>
         `;
       }
 
@@ -1411,7 +1551,7 @@
               </div>
               <div class="mobile-card-field">
                 <span class="mobile-card-label">完成时间</span>
-                <div class="mobile-card-value">${esc(formatAdminDateTime(target.completed_at))}</div>
+                <div class="mobile-card-value">${esc(formatAdminCardDateTime(target.completed_at))}</div>
               </div>
               <div class="mobile-card-field wide">
                 <span class="mobile-card-label">来源</span>
@@ -1531,7 +1671,7 @@
       }
 
       function reviewActionCell(buttons, item) {
-        return buttons || `<span class="muted">${esc(formatAdminDateTime(item.reviewed_at))}</span>`;
+        return buttons || `<span class="muted">${esc(formatAdminCardDateTime(item.reviewed_at))}</span>`;
       }
 
       function emptyReviewRow(text) {
@@ -1730,7 +1870,7 @@
               </div>
               <div class="mobile-card-field">
                 <span class="mobile-card-label">提交时间</span>
-                <div class="mobile-card-value">${esc(formatAdminDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
+                <div class="mobile-card-value">${esc(formatAdminCardDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
               </div>
               ${item.detail_url ? `
                 <div class="mobile-card-field wide">
@@ -1773,7 +1913,7 @@
               </div>
               <div class="mobile-card-field">
                 <span class="mobile-card-label">提交时间</span>
-                <div class="mobile-card-value">${esc(formatAdminDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
+                <div class="mobile-card-value">${esc(formatAdminCardDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
               </div>
               ${item.detail_url ? `
                 <div class="mobile-card-field wide">
@@ -1819,7 +1959,7 @@
               </div>
               <div class="mobile-card-field">
                 <span class="mobile-card-label">提交时间</span>
-                <div class="mobile-card-value">${esc(formatAdminDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
+                <div class="mobile-card-value">${esc(formatAdminCardDateTime(item.created_at))}<br>${esc((item.client_id || "").slice(0, 12))}</div>
               </div>
               <div class="mobile-card-field wide">
                 <span class="mobile-card-label">操作</span>

@@ -1562,8 +1562,11 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert 'id="recent-jobs-more"' in html
     assert 'id="recent-job-cards"' in html
     assert "function renderRecentJobCard(job)" in html
+    assert "function recentJobPreviewLimit()" in html
+    assert "function formatAdminCardDateTime(value)" in html
     assert ".recent-table-wrap { display: none; }" in html
     assert ".recent-job-card-grid { grid-template-columns: 1fr; }" in html
+    assert "const previewLimit = recentJobPreviewLimit()" in html
     assert "prewarm-target-details" in html
     assert "prewarm-summary-details" in html
     assert "function renderPrewarmSummaryDetails(items, openState = null)" in html
@@ -1628,6 +1631,10 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "失败城市：" in html
     assert "data-prewarm-failures" in html
     assert "查看原因" in html
+    assert "function prewarmFailureCitySummary(failed)" in html
+    assert "function renderPrewarmFailureCard(item)" in html
+    assert "prewarm-failure-cards" in html
+    assert "prewarm-failure-table" in html
     assert "function renderPrewarmFailureModal()" in html
     assert ".prewarm-failure-line" in html
     assert 'item.city || "-")}${item.error' not in html
