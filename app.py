@@ -16,10 +16,10 @@ import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Callable
-from urllib.parse import urlencode, urlparse
+from urllib.parse import quote, urlencode, urlparse
 from urllib.request import Request, urlopen
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, Response, jsonify, render_template, request
 from werkzeug.exceptions import HTTPException
 
 from holiday_helper import HolidayCalendar, HolidayCalendarError
@@ -1898,6 +1898,42 @@ def summarize_result(result: Any) -> dict[str, Any]:
     return summary
 
 
+def job_export_result(job: dict[str, Any]) -> tuple[dict[str, Any], str]:
+    source = "result" if isinstance(job.get("result"), dict) else "partial_result"
+    raw_result = job.get(source)
+    result = copy.deepcopy(raw_result) if isinstance(raw_result, dict) else {}
+    payload = job.get("payload") if isinstance(job.get("payload"), dict) else {}
+    city_name = str(
+        result.get("city")
+        or payload.get("city")
+        or payload.get("origin_city")
+        or ""
+    ).strip()
+    choices = result.get("choices") if isinstance(result.get("choices"), list) else []
+    if choices:
+        try:
+            finder._apply_cached_hotel_names_to_choices(choices, city_name)
+            finder._refresh_choice_area_names(choices, city_name)
+            result["area_recommendations"] = finder._build_area_recommendations(choices, city_name)
+        except Exception:  # noqa: BLE001
+            pass
+        result["choices"] = choices
+    return result, source
+
+
+def job_has_exportable_result(job: dict[str, Any]) -> bool:
+    for key in ("result", "partial_result"):
+        result = job.get(key)
+        if isinstance(result, dict) and isinstance(result.get("choices"), list) and result.get("choices"):
+            return True
+    return job.get("kind") in {"search", "nearby", "coverage"}
+
+
+def job_pdf_url(job: dict[str, Any]) -> str:
+    job_id = str(job.get("job_id") or "").strip()
+    return f"/api/admin/jobs/{job_id}/pdf" if job_id and job_has_exportable_result(job) else ""
+
+
 def admin_job_summary(job: dict[str, Any], now: float) -> dict[str, Any]:
     partial = job.get("partial_result")
     result = job.get("result")
@@ -1921,6 +1957,10 @@ def admin_job_summary(job: dict[str, Any], now: float) -> dict[str, Any]:
         data["error"] = job.get("error")
     if job.get("status_code"):
         data["status_code"] = job.get("status_code")
+    pdf_url = job_pdf_url(job)
+    data["pdf_available"] = bool(pdf_url)
+    if pdf_url:
+        data["pdf_url"] = pdf_url
     return data
 
 
@@ -1961,6 +2001,259 @@ def admin_status_payload() -> dict[str, Any]:
         "hotel_area_corrections": hotel_area_correction_admin_payload(),
         "area_merge_corrections": area_merge_correction_admin_payload(),
     }
+
+
+def html_escape(value: Any) -> str:
+    return html.escape(str(value if value is not None else ""), quote=True)
+
+
+def job_status_label(status: Any) -> str:
+    return {
+        "queued": "排队中",
+        "running": "运行中",
+        "succeeded": "成功",
+        "failed": "失败",
+    }.get(str(status or "").lower(), str(status or "-"))
+
+
+def job_kind_label(kind: Any) -> str:
+    return {
+        "search": "城市搜索",
+        "nearby": "周边搜索",
+        "coverage": "行政区补充",
+        "hotel_names": "酒店名刷新",
+        "areas": "片区刷新",
+    }.get(str(kind or ""), str(kind or "-"))
+
+
+def job_export_holiday(job: dict[str, Any], result: dict[str, Any]) -> dict[str, Any]:
+    holiday = result.get("holiday")
+    if isinstance(holiday, dict) and holiday:
+        return holiday
+    payload = job.get("payload") if isinstance(job.get("payload"), dict) else {}
+    holiday_code = str(payload.get("holiday_code") or "").strip()
+    if not holiday_code:
+        return {}
+    try:
+        return holiday_meta(holiday_code)
+    except Exception:  # noqa: BLE001
+        return {"code": holiday_code}
+
+
+def job_report_title(job: dict[str, Any], result: dict[str, Any]) -> str:
+    payload = job.get("payload") if isinstance(job.get("payload"), dict) else {}
+    city = (
+        result.get("city")
+        or payload.get("city")
+        or payload.get("origin_city")
+        or ""
+    )
+    holiday = job_export_holiday(job, result)
+    parts = ["反向旅游搜索任务"]
+    if city:
+        parts.append(str(city))
+    if holiday.get("name"):
+        parts.append(str(holiday.get("name")))
+    elif holiday.get("code"):
+        parts.append(str(holiday.get("code")))
+    return " - ".join(parts)
+
+
+def job_report_filter_text(job: dict[str, Any], result: dict[str, Any]) -> str:
+    payload = job.get("payload") if isinstance(job.get("payload"), dict) else {}
+    feature_filters = result.get("feature_filters") if isinstance(result.get("feature_filters"), dict) else {}
+    price_filter = result.get("price_filter") if isinstance(result.get("price_filter"), dict) else {}
+    parts: list[str] = []
+    for key in ("advanced", "pool", "child_facility"):
+        item = feature_filters.get(key)
+        if isinstance(item, dict) and item.get("label"):
+            parts.append(f"{item.get('name') or key}：{item.get('label')}")
+    min_price = payload.get("min_price") or price_filter.get("min_price")
+    max_price = payload.get("max_price") or price_filter.get("max_price")
+    if min_price not in ("", None) or max_price not in ("", None):
+        parts.append(f"价格：CNY {min_price or '不限'} - {max_price or '不限'}")
+    if payload.get("nearby_limit"):
+        parts.append(f"附近城市：{payload.get('nearby_limit')} 个")
+    return "，".join(parts) or "全部结果"
+
+
+def job_report_filename(job: dict[str, Any], result: dict[str, Any]) -> str:
+    raw = f"{job_report_title(job, result)}-{str(job.get('job_id') or '')[:8]}.pdf"
+    normalized = re.sub(r"[^\w\u3400-\u9fff.-]+", "-", raw, flags=re.UNICODE).strip("-")
+    return normalized or "reverse-travel-job.pdf"
+
+
+def job_area_rows_html(areas: list[dict[str, Any]]) -> str:
+    if not areas:
+        return '<tr><td colspan="6" class="empty">暂无推荐片区</td></tr>'
+    return "\n".join(
+        f"""
+        <tr>
+          <td>{html_escape(item.get("area_name") or "-")}</td>
+          <td>{html_escape(item.get("recommend_city") or item.get("city_label") or "-")}</td>
+          <td class="num">{html_escape(item.get("hotel_count") or 0)}</td>
+          <td class="num">{html_escape(item.get("lower_price_hotel_count") or 0)}</td>
+          <td class="num">{html_escape(item.get("average_holiday_nightly_tax_total_price") or "-")}</td>
+          <td class="num diff">{html_escape(item.get("average_price_diff_nightly_text") or "-")}</td>
+        </tr>
+        """
+        for item in areas
+    )
+
+
+def job_choice_rows_html(choices: list[dict[str, Any]]) -> str:
+    if not choices:
+        return '<tr><td colspan="7" class="empty">暂无酒店结果。任务还在排队或尚未产出可展示结果时，会先显示这条记录。</td></tr>'
+    rows = []
+    for index, item in enumerate(choices, start=1):
+        hotel_name = item.get("hotel_name_simplified") or item.get("hotel_name") or item.get("hotel_original_name") or "-"
+        area = " · ".join(
+            str(value)
+            for value in (item.get("recommend_city"), item.get("area_name"))
+            if value
+        ) or "-"
+        detail_url = str(item.get("detail_url") or "").strip()
+        detail_html = (
+            f'<div class="muted"><a href="{html_escape(detail_url)}">{html_escape(detail_url)}</a></div>'
+            if detail_url
+            else ""
+        )
+        rows.append(
+            f"""
+            <tr>
+              <td class="num">{index}</td>
+              <td><strong>{html_escape(hotel_name)}</strong>{detail_html}</td>
+              <td>{html_escape(area)}</td>
+              <td>{html_escape(item.get("room_type_label") or "-")}</td>
+              <td class="num">{html_escape(item.get("holiday_avg_nightly_tax_total_price") or "-")}</td>
+              <td class="num">{html_escape(item.get("comparison_average_nightly_tax_total_price") or "-")}</td>
+              <td class="num diff">{html_escape(item.get("price_diff_nightly_text") or "-")}</td>
+            </tr>
+            """
+        )
+    return "\n".join(rows)
+
+
+def build_job_pdf_html(job: dict[str, Any]) -> str:
+    result, source = job_export_result(job)
+    choices = result.get("choices") if isinstance(result.get("choices"), list) else []
+    areas = result.get("area_recommendations") if isinstance(result.get("area_recommendations"), list) else []
+    holiday = job_export_holiday(job, result)
+    title = job_report_title(job, result)
+    progress = job.get("progress") if isinstance(job.get("progress"), dict) else {}
+    generated_at = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    data_source = "最终结果" if source == "result" else "当前已显示结果"
+    comparison_count = len(result.get("comparison_windows") or []) if isinstance(result.get("comparison_windows"), list) else 0
+    events = job.get("progress_events") if isinstance(job.get("progress_events"), list) else []
+    event_rows = "\n".join(
+        f"<tr><td>{html_escape(event.get('time') or '-')}</td><td>{html_escape(event.get('message') or '-')}</td></tr>"
+        for event in events[-8:]
+        if isinstance(event, dict)
+    )
+    event_section = f"""
+      <h2>任务进度</h2>
+      <table>
+        <thead><tr><th style="width: 180px;">时间</th><th>进度</th></tr></thead>
+        <tbody>{event_rows or '<tr><td colspan="2" class="empty">暂无进度记录</td></tr>'}</tbody>
+      </table>
+    """
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>{html_escape(title)}</title>
+  <style>
+    @page {{ size: A4; margin: 14mm; }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      color: #152336;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }}
+    h1 {{ margin: 0 0 8px; font-size: 22px; letter-spacing: 0; }}
+    h2 {{ margin: 20px 0 8px; font-size: 15px; letter-spacing: 0; }}
+    a {{ color: #1657d8; text-decoration: none; word-break: break-all; }}
+    .summary {{ color: #405066; margin: 8px 0 14px; }}
+    .meta {{ display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 14px 0; }}
+    .stat {{ border: 1px solid #dce6ef; border-radius: 6px; padding: 8px; min-height: 56px; }}
+    .k {{ color: #66758a; font-size: 10px; font-weight: 700; }}
+    .v {{ margin-top: 3px; font-size: 13px; font-weight: 800; overflow-wrap: anywhere; }}
+    table {{ width: 100%; border-collapse: collapse; page-break-inside: auto; }}
+    tr {{ page-break-inside: avoid; page-break-after: auto; }}
+    th, td {{ border: 1px solid #dce6ef; padding: 7px 8px; text-align: left; vertical-align: top; }}
+    th {{ background: #f3f6fb; color: #405066; font-size: 11px; }}
+    .num {{ text-align: right; white-space: nowrap; }}
+    .diff {{ font-weight: 800; }}
+    .muted {{ color: #66758a; font-size: 10px; margin-top: 3px; overflow-wrap: anywhere; }}
+    .empty {{ color: #66758a; }}
+    @media print {{ body {{ print-color-adjust: exact; -webkit-print-color-adjust: exact; }} }}
+  </style>
+</head>
+<body>
+  <h1>{html_escape(title)}</h1>
+  <div class="summary">
+    {html_escape(data_source)} · {html_escape(job_kind_label(job.get("kind")))} · {html_escape(job_report_filter_text(job, result))}
+  </div>
+  <div class="meta">
+    <div class="stat"><div class="k">导出时间</div><div class="v">{html_escape(generated_at)}</div></div>
+    <div class="stat"><div class="k">任务状态</div><div class="v">{html_escape(job_status_label(job.get("status")))}</div></div>
+    <div class="stat"><div class="k">酒店数量</div><div class="v">{html_escape(len(choices))} 家</div></div>
+    <div class="stat"><div class="k">推荐片区</div><div class="v">{html_escape(len(areas))} 个</div></div>
+    <div class="stat"><div class="k">任务 ID</div><div class="v">{html_escape(job.get("job_id") or "-")}</div></div>
+    <div class="stat"><div class="k">假期</div><div class="v">{html_escape(holiday.get("name") or holiday.get("code") or "-")}</div></div>
+    <div class="stat"><div class="k">更新时间</div><div class="v">{html_escape(job.get("updated_at") or "-")}</div></div>
+    <div class="stat"><div class="k">代表时段</div><div class="v">{html_escape(comparison_count)} 个</div></div>
+  </div>
+  <div class="summary">{html_escape(progress.get("message") or "")}</div>
+
+  <h2>推荐旅游区域</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>片区</th>
+        <th>城市</th>
+        <th>酒店数</th>
+        <th>更低</th>
+        <th>假期均价</th>
+        <th>每晚差额</th>
+      </tr>
+    </thead>
+    <tbody>{job_area_rows_html(areas)}</tbody>
+  </table>
+
+  <h2>推荐酒店</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 36px;">#</th>
+        <th>酒店</th>
+        <th>片区</th>
+        <th>房型</th>
+        <th>假期每晚含税</th>
+        <th>代表时段每晚含税</th>
+        <th>每晚差额</th>
+      </tr>
+    </thead>
+    <tbody>{job_choice_rows_html(choices)}</tbody>
+  </table>
+  {event_section}
+</body>
+</html>"""
+
+
+def render_pdf_bytes(html_text: str) -> bytes:
+    from playwright.sync_api import sync_playwright
+
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        try:
+            page = browser.new_page(viewport={"width": 1280, "height": 1600})
+            page.set_content(html_text, wait_until="load")
+            return page.pdf(format="A4", print_background=True)
+        finally:
+            browser.close()
 
 
 def batch_review_pending_corrections(kind: str, action: str, reviewer_note: str = "") -> tuple[dict[str, Any], int]:
@@ -2850,6 +3143,43 @@ def admin_status():
     if not is_admin_request():
         return jsonify({"error": "后台状态仅允许本机查看；公网访问需要配置后台令牌"}), 403
     return jsonify(admin_status_payload())
+
+
+@app.get("/api/admin/jobs/<job_id>/pdf")
+def admin_job_pdf(job_id: str):
+    if not is_admin_request():
+        return jsonify({"error": "任务 PDF 仅允许后台下载"}), 403
+    cleanup_jobs()
+    with job_lock:
+        job = copy.deepcopy(jobs.get(job_id))
+    if not job:
+        return jsonify({"error": "查询任务不存在或已过期"}), 404
+    if not job_has_exportable_result(job):
+        return jsonify({"error": "这个任务还没有可下载的搜索结果"}), 409
+
+    result, _source = job_export_result(job)
+    html_text = build_job_pdf_html(job)
+    if str(request.args.get("format") or "").lower() == "html":
+        return Response(html_text, content_type="text/html; charset=utf-8")
+
+    try:
+        pdf_bytes = render_pdf_bytes(html_text)
+    except Exception as exc:  # noqa: BLE001
+        return jsonify(
+            {
+                "error": "PDF 生成失败，请确认服务器已安装 Playwright Chromium。",
+                "detail": str(exc),
+                "html_preview_url": f"/api/admin/jobs/{job_id}/pdf?format=html",
+            }
+        ), 503
+
+    filename = job_report_filename(job, result)
+    ascii_filename = re.sub(r"[^A-Za-z0-9_.-]+", "-", filename).strip("-") or "reverse-travel-job.pdf"
+    response = Response(pdf_bytes, mimetype="application/pdf")
+    response.headers["Content-Disposition"] = (
+        f"attachment; filename={ascii_filename}; filename*=UTF-8''{quote(filename)}"
+    )
+    return response
 
 
 @app.get("/api/admin/hotel-name-corrections")

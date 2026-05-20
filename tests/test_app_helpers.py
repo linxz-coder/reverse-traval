@@ -1544,6 +1544,10 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "酒店名审核" in html
     assert "片区审核" in html
     assert "合并片区审核" in html
+    assert "<th style=\"width: 96px;\">PDF</th>" in html
+    assert "function jobPdfLink(job" in html
+    assert "下载 PDF" in html
+    assert "pdf_available" in html
     assert "hotel-name-reviews" in html
     assert "hotel-area-reviews" in html
     assert "area-merge-reviews" in html
@@ -2015,6 +2019,91 @@ def test_admin_status_reports_jobs_and_memory():
     assert "summary" in data
     assert "jobs" in data
     assert set(data["jobs"]) == {"active", "recent"}
+
+
+def test_admin_status_exposes_job_pdf_download(monkeypatch):
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
+
+    monkeypatch.setattr(app_module.finder, "_apply_cached_hotel_names_to_choices", lambda choices, city_name="": None)
+    monkeypatch.setattr(app_module.finder, "_refresh_choice_area_names", lambda choices, city_name: None)
+    monkeypatch.setattr(
+        app_module.finder,
+        "_build_area_recommendations",
+        lambda choices, city_name: [
+            {
+                "area_name": "广州天河片区",
+                "recommend_city": "广州",
+                "hotel_count": len(choices),
+                "lower_price_hotel_count": 1,
+                "average_holiday_nightly_tax_total_price": "CNY 600",
+                "average_price_diff_nightly_text": "-CNY 80",
+            }
+        ],
+    )
+    now = time.time()
+    with app_module.job_lock:
+        app_module.jobs["pdf-job"] = {
+            "job_id": "pdf-job",
+            "kind": "search",
+            "status": "succeeded",
+            "created_at": "2026-05-20T10:00:00Z",
+            "updated_at": "2026-05-20T10:01:02Z",
+            "created_ts": now,
+            "updated_ts": now,
+            "payload": {"city": "广州", "holiday_code": "2026-06-19::端午节"},
+            "progress": {"stage": "succeeded", "message": "查询完成。", "percent": 100},
+            "progress_events": [{"time": "2026-05-20T10:01:02Z", "message": "查询完成。"}],
+            "result": {
+                "city": "广州",
+                "holiday": {"code": "2026-06-19::端午节", "name": "端午节", "days": 2},
+                "comparison_windows": [],
+                "choices": [
+                    {
+                        "hotel_id": "h1",
+                        "hotel_name": "测试酒店",
+                        "recommend_city": "广州",
+                        "area_name": "广州天河片区",
+                        "room_type_label": "高级房",
+                        "holiday_avg_nightly_tax_total_price": "CNY 600",
+                        "comparison_average_nightly_tax_total_price": "CNY 680",
+                        "price_diff_nightly_text": "-CNY 80",
+                    }
+                ],
+            },
+            "partial_result": None,
+        }
+
+    client = flask_app.test_client()
+    status_response = client.get("/api/admin/status")
+    status_data = status_response.get_json()
+    job = status_data["jobs"]["recent"][0]
+
+    assert status_response.status_code == 200
+    assert job["pdf_available"] is True
+    assert job["pdf_url"] == "/api/admin/jobs/pdf-job/pdf"
+
+    html_response = client.get("/api/admin/jobs/pdf-job/pdf?format=html")
+    html = html_response.get_data(as_text=True)
+
+    assert html_response.status_code == 200
+    assert "反向旅游搜索任务 - 广州 - 端午节" in html
+    assert "测试酒店" in html
+    assert "广州天河片区" in html
+    assert "最终结果" in html
+
+    monkeypatch.setattr(app_module, "render_pdf_bytes", lambda html_text: b"%PDF-1.4\nfake\n")
+    pdf_response = client.get("/api/admin/jobs/pdf-job/pdf")
+
+    assert pdf_response.status_code == 200
+    assert pdf_response.mimetype == "application/pdf"
+    assert pdf_response.data.startswith(b"%PDF")
+    assert "attachment;" in pdf_response.headers["Content-Disposition"]
+
+    with app_module.job_lock:
+        app_module.jobs.clear()
+        app_module.job_signature_index.clear()
 
 
 def test_admin_status_allows_public_host_without_token():

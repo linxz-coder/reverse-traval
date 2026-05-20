@@ -289,6 +289,19 @@
         border-color: rgba(22, 87, 216, 0.28);
         background: #f7faff;
       }
+      .pdf-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 74px;
+        text-decoration: none;
+      }
+      .job-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
       .text-btn.batch-approve {
         color: var(--good);
         border-color: rgba(17, 122, 69, 0.24);
@@ -412,6 +425,7 @@
                   <th style="width: 190px;">条件</th>
                   <th>进度</th>
                   <th style="width: 120px;">结果</th>
+                  <th style="width: 96px;">PDF</th>
                   <th style="width: 170px;">更新时间</th>
                 </tr>
               </thead>
@@ -636,6 +650,11 @@
         return parts.join(" / ") || "-";
       }
 
+      function jobPdfLink(job, label = "下载 PDF") {
+        if (!job?.pdf_available || !job?.pdf_url) return `<span class="muted">等待结果</span>`;
+        return `<a class="text-btn pdf-link" href="${esc(adminApiUrl(job.pdf_url))}" target="_blank" rel="noreferrer" download>${esc(label)}</a>`;
+      }
+
       function progressPercent(progress) {
         const value = Number(progress?.percent || 0);
         if (!Number.isFinite(value)) return 0;
@@ -667,6 +686,7 @@
             <div class="progress"><span style="width:${percent}%"></span></div>
             <div class="job-message">${esc(progress.message || "等待进度更新")}</div>
             ${renderKeyValues(details)}
+            <div class="job-actions">${jobPdfLink(job)}</div>
           </article>
         `;
       }
@@ -680,6 +700,7 @@
             <td>${payloadText(job.payload || {}).map(esc).join("<br>")}</td>
             <td>${esc(progress.message || "-")}</td>
             <td>${esc(resultText(job))}</td>
+            <td>${jobPdfLink(job, "下载")}</td>
             <td>${esc(formatAdminDateTime(job.updated_at))}</td>
           </tr>
         `;
@@ -1063,7 +1084,7 @@
           : `<div class="empty">暂无正在运行的任务</div>`;
         recentJobs.innerHTML = recent.length
           ? recent.map(renderRecentJob).join("")
-          : `<tr><td colspan="6" class="empty">暂无任务记录</td></tr>`;
+          : `<tr><td colspan="7" class="empty">暂无任务记录</td></tr>`;
         renderPrewarm(data.prewarm || {});
         renderHotelNameReviews(data.hotel_name_corrections || {});
         renderHotelAreaReviews(data.hotel_area_corrections || {});
