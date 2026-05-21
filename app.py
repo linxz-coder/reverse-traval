@@ -753,11 +753,11 @@ def mysql_price_preview_for_search_payload(payload: dict[str, Any]) -> dict[str,
             "source": "mysql_price",
             "source_label": "MySQL价格缓存",
             "age_seconds": 0,
-            "summary_label": f"MySQL价格缓存预览：先显示 {len(choices)} 家，后台刷新完整搜索",
+            "summary_label": f"MySQL价格缓存：{len(choices)} 家，完整搜索刷新中",
         },
         "partial": {
             "stage": "mysql_price_preview",
-            "message": "先显示 MySQL 价格缓存，后台正在刷新完整搜索和设施核验。",
+            "message": "MySQL价格缓存已显示，完整搜索和设施核验刷新中。",
             "preliminary": True,
             "displayed_choice_count": len(choices),
             "total_choice_count": len(choices),
@@ -831,11 +831,11 @@ def mysql_price_preview_for_nearby_payload(payload: dict[str, Any]) -> dict[str,
         "source": "mysql_price",
         "source_label": "MySQL价格缓存",
         "age_seconds": 0,
-        "summary_label": f"MySQL价格缓存预览：{cache_hits} 个城市先出结果，后台刷新完整搜索",
+        "summary_label": f"MySQL价格缓存：{cache_hits} 个城市，完整搜索刷新中",
     }
     result["partial"] = {
         "stage": "mysql_price_preview",
-        "message": "先显示 MySQL 价格缓存，后台正在刷新周边城市完整搜索。",
+        "message": "MySQL价格缓存已显示，周边城市搜索刷新中。",
         "preliminary": True,
         "displayed_choice_count": len(result.get("choices") or []),
         "total_choice_count": len(result.get("choices") or []),
@@ -1379,6 +1379,15 @@ def append_prewarm_target_result(record: dict[str, Any]) -> None:
         persist_prewarm_state(prewarm_state)
 
 
+def prewarm_task_label(preset: Any) -> str:
+    normalized = str(preset or "manual").strip()
+    if normalized == "nightly":
+        return "夜间预热"
+    if normalized == "daily":
+        return "每日推荐预热"
+    return "缓存预热"
+
+
 def run_cache_prewarm(config: dict[str, Any]) -> None:
     cities = normalize_prewarm_city_list(config.get("cities"))
     if not cities:
@@ -1404,6 +1413,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
     total = len(targets)
     started_at = time.time()
     preset = str(config.get("preset") or "manual").strip() or "manual"
+    task_label = prewarm_task_label(preset)
     success_count = 0
     cache_hits = 0
     live_count = 0
@@ -1423,7 +1433,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
         prewarm_state.update(
             {
                 "status": "running",
-                "message": "缓存预热已开始",
+                "message": f"{task_label}已开始",
                 "created_at": utc_timestamp(),
                 "updated_at": utc_timestamp(),
                 "run_date": time.strftime("%Y-%m-%d", time.localtime()),
@@ -1454,7 +1464,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 "target_result_count": 0,
             }
         )
-        append_prewarm_event(prewarm_state, "缓存预热已开始", total=total)
+        append_prewarm_event(prewarm_state, f"{task_label}已开始", total=total)
         persist_prewarm_state(prewarm_state)
 
     for index, (city, holiday_code, profile_name) in enumerate(targets, start=1):
@@ -1564,7 +1574,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
                 )
             )
         update_prewarm_state(
-            f"缓存预热达到夜间时间窗口（{period_label}）：已完成 {completed_count}/{total}，成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
+            f"{task_label}窗口结束（{period_label}）：完成 {completed_count}/{total}，成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
             status="succeeded",
             run_finished_at=utc_timestamp(),
             run_finished_local=local_timestamp(finished_at),
@@ -1582,7 +1592,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
         return
 
     update_prewarm_state(
-        f"缓存预热完成（{period_label}）：成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
+        f"{task_label}完成（{period_label}）：成功 {success_count}，缓存命中 {cache_hits}，新搜索 {live_count}，失败 {error_count}",
         status="succeeded",
         run_finished_at=utc_timestamp(),
         run_finished_local=local_timestamp(finished_at),
@@ -1600,6 +1610,7 @@ def run_cache_prewarm(config: dict[str, Any]) -> None:
 
 
 def start_cache_prewarm(config: dict[str, Any]) -> tuple[dict[str, Any], int]:
+    task_label = prewarm_task_label((config or {}).get("preset"))
     with prewarm_lock:
         if prewarm_state.get("status") == "running":
             return copy.deepcopy(prewarm_state), 202
@@ -1607,10 +1618,10 @@ def start_cache_prewarm(config: dict[str, Any]) -> tuple[dict[str, Any], int]:
         prewarm_state.update(
             {
                 "status": "queued",
-                "message": "缓存预热已排队",
+                "message": f"{task_label}已排队",
                 "created_at": utc_timestamp(),
                 "updated_at": utc_timestamp(),
-                "events": [{"time": utc_timestamp(), "message": "缓存预热已排队"}],
+                "events": [{"time": utc_timestamp(), "message": f"{task_label}已排队"}],
                 "target_results": [],
                 "target_result_count": 0,
             }
@@ -1908,7 +1919,7 @@ def daily_recommendation_payload() -> dict[str, Any]:
     if not candidates:
         return {
             "available": False,
-            "message": "暂无最近假期下高级、有泳池、有儿童设施且假期更优惠的预热缓存。半夜预热完成后会自动显示每日推荐。",
+            "message": "暂无最近假期的高端亲子泳池优惠酒店缓存。夜间预热完成后显示每日推荐。",
         }
 
     candidates.sort(key=lambda item: item["stable_key"])
@@ -2258,7 +2269,7 @@ def job_area_rows_html(areas: list[dict[str, Any]]) -> str:
 
 def job_choice_rows_html(choices: list[dict[str, Any]]) -> str:
     if not choices:
-        return '<tr><td colspan="7" class="empty">暂无酒店结果。任务还在排队或尚未产出可展示结果时，会先显示这条记录。</td></tr>'
+        return '<tr><td colspan="7" class="empty">暂无酒店结果。任务排队中或暂无可展示结果。</td></tr>'
     rows = []
     for index, item in enumerate(choices, start=1):
         hotel_name = item.get("hotel_name_simplified") or item.get("hotel_name") or item.get("hotel_original_name") or "-"
@@ -2620,7 +2631,7 @@ def stale_search_result_from_payload(payload: dict) -> tuple[dict[str, Any] | No
     if result is not None:
         result["partial"] = {
             "stage": "stale_cache_preview",
-            "message": "先显示旧缓存结果，后台正在刷新最新价格。",
+            "message": "旧缓存已显示，最新价格刷新中。",
             "preliminary": True,
             "displayed_choice_count": len(result.get("choices") or []),
             "total_choice_count": len(result.get("choices") or []),
@@ -3148,10 +3159,10 @@ def run_job(job_id: str, kind: str, payload: dict[str, Any]) -> None:
     elif kind == "nearby":
         result, status_code = nearby_search_result_from_payload(payload, progress_callback=progress_callback)
     elif kind == "coverage":
-        update_job_progress(job_id, {"stage": "coverage", "message": "基础结果已显示，正在后台补充缺失行政区。", "percent": 5})
+        update_job_progress(job_id, {"stage": "coverage", "message": "基础结果已显示，缺失行政区补充中。", "percent": 5})
         result, status_code = coverage_result_from_payload(payload, progress_callback=progress_callback)
     elif kind == "hotel_names":
-        update_job_progress(job_id, {"stage": "hotel_names", "message": "正在后台匹配简体中文酒店名。", "percent": 40})
+        update_job_progress(job_id, {"stage": "hotel_names", "message": "简体中文酒店名匹配中。", "percent": 40})
         result, status_code = hotel_name_result_from_payload(payload)
     else:
         update_job_progress(job_id, {"stage": "areas", "message": "正在规范化推荐旅游区域。", "percent": 40})
@@ -3231,9 +3242,9 @@ def start_background_job(kind: str, payload: dict[str, Any]):
 
     job_id = uuid.uuid4().hex
     initial_progress = (
-        {"stage": "stale_cache_preview", "message": "已先显示旧缓存，正在后台刷新最新价格。", "percent": 8}
+        {"stage": "stale_cache_preview", "message": "旧缓存已显示，最新价格刷新中。", "percent": 8}
         if stale_result is not None
-        else {"stage": "mysql_price_preview", "message": "已先显示 MySQL 价格缓存，正在后台刷新完整搜索。", "percent": 8}
+        else {"stage": "mysql_price_preview", "message": "MySQL价格缓存已显示，完整搜索刷新中。", "percent": 8}
         if mysql_preview_result is not None
         else {"stage": "queued", "message": "查询任务已创建，正在等待执行。"}
     )

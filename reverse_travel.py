@@ -1659,7 +1659,7 @@ class ReverseTravelFinder:
 
         cache_info = self._build_cache_info(source="stale_disk", created_at=created_at, hit=True)
         cache_info["stale"] = True
-        cache_info["summary_label"] = "先显示旧缓存，正在后台刷新最新价格"
+        cache_info["summary_label"] = "旧缓存已显示，最新价格刷新中"
         return copy.deepcopy(disk_record["result"]), cache_info
 
     def _store_search_cache(self, cache_key: tuple[str, ...], base_result: dict[str, Any], created_at: float) -> None:
@@ -2289,9 +2289,9 @@ class ReverseTravelFinder:
         if len(area_names) > 6:
             area_preview = f"{area_preview}等 {len(area_names)} 个片区"
         start_message = (
-            f"已显示基础结果，正在优先按行政区补充四星以上酒店：{area_preview}..."
+            f"基础结果已显示，四星以上酒店按行政区补充中：{area_preview}..."
             if advanced_priority_plan
-            else f"已显示基础结果，正在后台按行政区补充：{area_preview}..."
+            else f"基础结果已显示，按行政区补充中：{area_preview}..."
         )
         self._emit_progress(
             progress_callback,
@@ -2323,7 +2323,7 @@ class ReverseTravelFinder:
                 min_price=min_price,
                 max_price=max_price,
                 status=status,
-                message=f"已补充 {candidate.title}，酒店结果会继续增加。",
+                message=f"已补充 {candidate.title}，酒店结果持续更新。",
                 completed=completed,
                 total=total,
             )
@@ -2645,7 +2645,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                 compare_windows=fast_compare_windows,
                 choices=choices[:PARTIAL_RESULT_LIMIT],
                 partial_stage="fast_preview",
-                partial_message="首屏快速预览已生成，后台会继续完成全量酒店、更多代表时段和设施核验。",
+                partial_message="首屏快速预览已生成，全量酒店、代表时段和设施核验继续刷新。",
                 total_choice_count=len(choices),
                 scanned_hotel_limit=FAST_HOTEL_LIST_LIMIT,
             )
@@ -2664,7 +2664,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         except Exception as exc:  # noqa: BLE001
             self._emit_progress(
                 progress_callback,
-                f"快速预览暂未完成，继续完整搜索：{exc}",
+                f"快速预览未完成，转入完整搜索：{exc}",
                 "fast_preview_skipped",
                 percent=16,
             )
@@ -2916,7 +2916,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     )
                     emit_partial_choices(
                         stage="initial_verified_preview",
-                        message=f"首批设施核验后保留 {len(initial_verified_choices)} 家酒店，深扫更多酒店会继续更新。",
+                        message=f"首批设施核验后保留 {len(initial_verified_choices)} 家酒店，深扫结果持续更新。",
                         percent=80,
                         source_choices=initial_verified_choices,
                         scanned_hotel_limit=HOTEL_LIST_LIMIT,
@@ -3037,7 +3037,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
                     except Exception as exc:  # noqa: BLE001
                         self._emit_progress(
                             progress_callback,
-                            f"深扫暂未完成，继续使用首批结果：{exc}",
+                            f"深扫未完成，使用首批结果：{exc}",
                             "deep_search_skipped",
                             percent=85,
                             choice_count=len(choices),
@@ -3072,7 +3072,7 @@ Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3] });
         self._apply_cached_hotel_names_to_choices(choices, city_candidate.city_name)
         emit_partial_choices(
             stage="cached_names_preview",
-            message="酒店结果已显示，简体中文酒店名会在后台继续匹配更新。",
+            message="酒店结果已显示，简体中文酒店名匹配中。",
             percent=94,
             source_choices=choices,
             scanned_hotel_limit=scanned_hotel_limit,

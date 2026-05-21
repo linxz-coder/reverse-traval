@@ -2207,12 +2207,12 @@
       function loadingMessage(seconds) {
         if (currentRequestKind === "nearby") {
           if (currentUseCache) {
-            return "正在读取周边城市缓存；没有缓存会自动逐城新搜索。";
+            return "正在读取周边城市缓存；无缓存时转为逐城新搜索。";
           }
           return seconds > 45 ? "正在逐城比较周边城市价格，可能需要 5-15 分钟..." : "正在逐城新搜索周边城市，可能需要 5-15 分钟...";
         }
         if (currentUseCache) {
-          return "正在读取缓存；如未命中会自动新搜索。";
+          return "正在读取缓存；未命中时转为新搜索。";
         }
         return seconds > 45 ? "正在比较多个代表日期的含税均价..." : "正在进行新搜索，通常需要 2-5 分钟...";
       }
@@ -2821,7 +2821,7 @@
         lastTotalChoiceCount = Number(data.partial?.total_choice_count || lastChoices.length || 0);
         lastResultStage = resultStageFromData(data);
         if (data.partial?.preliminary) {
-          lastResultMeta = data.partial.message || "酒店在逐步显示中，最终结果会继续刷新";
+          lastResultMeta = data.partial.message || "酒店逐步显示中，最终结果持续刷新";
         } else if (isCompleteCoverageResult(data)) {
           lastResultMeta = data.coverage_supplement?.message || "";
         } else {
@@ -2893,7 +2893,7 @@
         if (!payload.city || !payload.holiday_code) return;
         const token = ++coverageRefreshToken;
         lastResultStage = "coverage";
-        lastResultMeta = "基础结果已显示，正在后台按行政区补充遗漏酒店...";
+        lastResultMeta = "基础结果已显示，遗漏酒店补充中...";
         scheduleRenderChoices();
         runAsyncJob("/api/coverage/start", payload, "行政区补充失败", {
           onProgress: (partial) => mergeCoverageResult(partial, token),
@@ -2911,7 +2911,7 @@
         if (!data || !(data.choices || []).length) return;
         if (data.city_results) return;
         const token = ++areaRefreshToken;
-        lastAreaRefreshMeta = "酒店结果已显示，正在后台规范化推荐区域...";
+        lastAreaRefreshMeta = "酒店结果已显示，推荐区域规范化中...";
         renderAreas(visibleChoices({ ignoreAreaFilter: true }));
         runSilentJob("/api/areas/start", {
           city: data.city || "",
@@ -3966,9 +3966,9 @@
         const sourceText = (info.sourceNames || []).length ? info.sourceNames.join("、") : "已选片区";
         const idText = info.correctionId ? ` #${info.correctionId}` : "";
         if (info.operation === "rename") {
-          return `已操作改名${idText}：${sourceText} → ${info.suggestedArea}，等待后台审核，请勿重复提交。`;
+          return `改名待审核${idText}：${sourceText} → ${info.suggestedArea}。`;
         }
-        return `已操作合并${idText}：${sourceText} → ${info.suggestedArea}，等待后台审核，请勿重复提交。`;
+        return `合并待审核${idText}：${sourceText} → ${info.suggestedArea}。`;
       }
 
       function markPendingAreaMerge(suggestedArea, selected, hotels, submitData) {
@@ -4238,7 +4238,7 @@
             const mergeSelected = !pendingMerge && selectedAreaMerges.has(key);
             const pendingLabel = pendingAreaMergeLabel(pendingMerge);
             const pendingNote = pendingAreaMergeNote(pendingMerge);
-            const mergeControlText = pendingMerge ? "已操作，等待审核" : "合并片区";
+            const mergeControlText = pendingMerge ? "合并待审核" : "合并片区";
             return `
             <article class="area-card${active ? " active" : ""}${mergeSelected ? " merge-selected" : ""}${pendingMerge ? " merge-pending" : ""}" role="button" tabindex="0" data-area-key="${esc(key)}" data-area-name="${esc(areaName)}" data-area-aliases="${esc(JSON.stringify(mergedAreaNames))}" data-recommend-city="${esc(recommendCity)}" data-hotel-count="${esc(area.hotel_count)}" data-area-merge-pending="${pendingMerge ? "1" : "0"}" aria-pressed="${active ? "true" : "false"}" title="查看该片区酒店">
               <div class="area-name">${esc(areaName)}</div>
@@ -4519,7 +4519,7 @@
           if (data.status === "succeeded") return data.result || jobResultState;
           if (data.status === "failed") throw new Error(data.error || fallbackMessage);
         }
-        throw new Error(`${fallbackMessage}：后台任务暂未完成。`);
+        throw new Error(`${fallbackMessage}：任务未完成。`);
       }
 
       async function loadHolidays() {

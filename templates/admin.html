@@ -1422,14 +1422,14 @@
       }
 
       function prewarmRunType(prewarm) {
-        if (prewarm?.preset === "nightly") return "半夜定时预热";
+        if (prewarm?.preset === "nightly") return "夜间预热";
         if (prewarm?.preset === "daily") return "每日推荐预热";
         return "手动预热";
       }
 
       function prewarmSummaryTitle(prewarm) {
-        if (prewarm?.preset === "nightly") return "安排在半夜的这次缓存预热";
-        if (prewarm?.preset === "daily") return "每日推荐缓存预热";
+        if (prewarm?.preset === "nightly") return "夜间预热";
+        if (prewarm?.preset === "daily") return "每日推荐预热";
         return "缓存预热";
       }
 

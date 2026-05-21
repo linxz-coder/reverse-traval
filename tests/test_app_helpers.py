@@ -1388,7 +1388,7 @@ def test_frontend_area_panel_uses_fixed_scroll_without_more_toggle():
     assert '"/api/area-merge-corrections"' in html
     assert "合并 ${esc(mergedCount + 1)} 个片区" in html
     assert "当前页已临时预览" in html
-    assert "已操作，等待审核" in html
+    assert "合并待审核" in html
     assert "已审核合并" not in html
     assert "后台已审核通过，当前按最新片区展示" not in html
     assert "activeAreaFilter.areas.has(itemArea)" in html
@@ -1635,7 +1635,7 @@ def test_admin_dashboard_includes_hotel_name_review_queue():
     assert "renderPrewarmTargets(prewarm, targetOpenState, cityOpenState)" in html
     assert "时段 ${prewarmPeriodText(prewarm)}" in html
     assert "实际新搜索" in html
-    assert "安排在半夜的这次缓存预热" in html
+    assert "夜间预热" in html
     assert "失败城市：" in html
     assert "data-prewarm-failures" in html
     assert "查看原因" in html
@@ -2610,7 +2610,7 @@ def test_cache_prewarm_respects_runtime_window(monkeypatch, tmp_path):
         time.sleep(0.02)
 
     assert final_state["status"] == "succeeded"
-    assert "缓存预热达到夜间时间窗口（" in final_state["message"]
+    assert "缓存预热窗口结束（" in final_state["message"]
     assert final_state["run_finished_local"]
     assert final_state["completed"] == 0
     assert final_state["target_result_count"] == 1
