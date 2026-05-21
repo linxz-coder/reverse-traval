@@ -1498,7 +1498,7 @@
       }
 
       function renderPrewarmSummaryDetails(items, openState = null) {
-        const shouldOpen = openState === null ? !isAdminMobileLayout() : openState;
+        const shouldOpen = openState === null ? false : openState;
         return `
           <details class="prewarm-summary-details" ${shouldOpen ? "open" : ""}>
             <summary>
