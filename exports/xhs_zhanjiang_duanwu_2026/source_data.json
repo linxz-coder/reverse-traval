@@ -1,64 +1,1894 @@
 {
   "city": "湛江",
-  "generated_at": "2026-05-12T12:24:43",
+  "generated_at": "2026-05-22T15:16:05",
   "lists": {
-    "star_no_rise": [],
-    "star_no_rise_all": [],
-    "family_no_rise": [],
-    "family_no_rise_all": [],
-    "discount_star": []
-  },
-  "latest_city_rank": [],
-  "latest_discount_rank": [],
-  "area_region_rank": [],
-  "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 1,
-    "candidate_count": 100,
-    "unique_hotel_count": 100,
-    "included_hotel_count": 0,
-    "matching_files": [
+    "star_no_rise": [
       {
-        "file": "b7a94469701b7ccd839e989f6ad6118e97425c8495c40b472e355346fe2a71f6.json",
-        "mtime": 1778494787.756477,
-        "choices": 100,
+        "hotel_id": "1007239",
+        "name": "金辉煌银利酒店（湛江鼎盛广场店）",
+        "area": "湛江市区片区",
+        "price": 198,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
         "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "120596133",
+        "name": "美豪丽致酒店（湛江明达寰宇天地店）",
+        "area": "湛江市区片区",
+        "price": 272,
+        "diff": -13,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "116908700",
+        "name": "湛江经开区戴斯温德姆酒店",
+        "area": "湛江市区片区",
+        "price": 286,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1007234",
+        "name": "湛江金辉煌酒店",
+        "area": "湛江市区片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "125216652",
+        "name": "湛江海滨智选假日酒店",
+        "area": "湛江市区片区",
+        "price": 308,
+        "diff": -16,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "125785919",
+        "name": "维也纳国际酒店（雷州茂德公鼓城店）",
+        "area": "湛江雷州片区",
+        "price": 313,
+        "diff": -69,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江雷州",
+        "note": "湛江雷州，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "133399741",
+        "name": "美豪丽致酒店（湛江吴川店）",
+        "area": "湛江吴川片区",
+        "price": 318,
+        "diff": -15,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江吴川",
+        "note": "湛江吴川，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "54858818",
+        "name": "湛江人民大道鼎盛广场亚朵酒店",
+        "area": "湛江市区片区",
+        "price": 352,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "114382732",
+        "name": "吴川华和国际酒店",
+        "area": "湛江市区片区",
+        "price": 375,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "26667478",
+        "name": "湛江人民大道希尔顿欢朋酒店",
+        "area": "湛江市区片区",
+        "price": 391,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "1007239",
+        "name": "金辉煌银利酒店（湛江鼎盛广场店）",
+        "area": "湛江市区片区",
+        "price": 198,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "120596133",
+        "name": "美豪丽致酒店（湛江明达寰宇天地店）",
+        "area": "湛江市区片区",
+        "price": 272,
+        "diff": -13,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "116908700",
+        "name": "湛江经开区戴斯温德姆酒店",
+        "area": "湛江市区片区",
+        "price": 286,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1007234",
+        "name": "湛江金辉煌酒店",
+        "area": "湛江市区片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "125216652",
+        "name": "湛江海滨智选假日酒店",
+        "area": "湛江市区片区",
+        "price": 308,
+        "diff": -16,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "125785919",
+        "name": "维也纳国际酒店（雷州茂德公鼓城店）",
+        "area": "湛江雷州片区",
+        "price": 313,
+        "diff": -69,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江雷州",
+        "note": "湛江雷州，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "133399741",
+        "name": "美豪丽致酒店（湛江吴川店）",
+        "area": "湛江吴川片区",
+        "price": 318,
+        "diff": -15,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江吴川",
+        "note": "湛江吴川，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "54858818",
+        "name": "湛江人民大道鼎盛广场亚朵酒店",
+        "area": "湛江市区片区",
+        "price": 352,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "114382732",
+        "name": "吴川华和国际酒店",
+        "area": "湛江市区片区",
+        "price": 375,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "26667478",
+        "name": "湛江人民大道希尔顿欢朋酒店",
+        "area": "湛江市区片区",
+        "price": 391,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "133947893",
+        "name": "湛江金沙湾旅游区万达广场城际酒店",
+        "area": "湛江金沙湾片区",
+        "price": 396,
+        "diff": -32,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江金沙湾",
+        "note": "湛江金沙湾，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "5175427",
+        "name": "华和国际酒店",
+        "area": "湛江市区片区",
+        "price": 399,
+        "diff": -7,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1005627",
+        "name": "湛江赞苏湾酒店",
+        "area": "湛江市区片区",
+        "price": 401,
+        "diff": -27,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "132002136",
+        "name": "化州华讯温德姆酒店",
+        "area": "湛江周边片区",
+        "price": 416,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江周边",
+        "note": "湛江周边，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "70971808",
+        "name": "湛江一城丽呈酒店",
+        "area": "湛江市区片区",
+        "price": 418,
+        "diff": -15,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "8573081",
+        "name": "银湾国际酒店",
+        "area": "湛江市区片区",
+        "price": 438,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "53236308",
+        "name": "湛江吴川龙之湾福朋喜来登酒店",
+        "area": "湛江吴川片区",
+        "price": 469,
+        "diff": -97,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江吴川",
+        "note": "湛江吴川，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "668210",
+        "name": "湛江君豪酒店",
+        "area": "湛江市区片区",
+        "price": 478,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "28474634",
+        "name": "湛江花园酒店",
+        "area": "湛江市区片区",
+        "price": 550,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "120177082",
+        "name": "湛江白天鹅酒店",
+        "area": "湛江市区片区",
+        "price": 612,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 5
+      }
+    ],
+    "family_no_rise": [
+      {
+        "hotel_id": "5175427",
+        "name": "华和国际酒店",
+        "area": "湛江市区片区",
+        "price": 399,
+        "diff": -7,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1005627",
+        "name": "湛江赞苏湾酒店",
+        "area": "湛江市区片区",
+        "price": 401,
+        "diff": -27,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "132002136",
+        "name": "化州华讯温德姆酒店",
+        "area": "湛江周边片区",
+        "price": 416,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江周边",
+        "note": "湛江周边，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "8573081",
+        "name": "银湾国际酒店",
+        "area": "湛江市区片区",
+        "price": 438,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "53236308",
+        "name": "湛江吴川龙之湾福朋喜来登酒店",
+        "area": "湛江吴川片区",
+        "price": 469,
+        "diff": -97,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江吴川",
+        "note": "湛江吴川，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "668210",
+        "name": "湛江君豪酒店",
+        "area": "湛江市区片区",
+        "price": 478,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "5175427",
+        "name": "华和国际酒店",
+        "area": "湛江市区片区",
+        "price": 399,
+        "diff": -7,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1005627",
+        "name": "湛江赞苏湾酒店",
+        "area": "湛江市区片区",
+        "price": 401,
+        "diff": -27,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "132002136",
+        "name": "化州华讯温德姆酒店",
+        "area": "湛江周边片区",
+        "price": 416,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江周边",
+        "note": "湛江周边，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "8573081",
+        "name": "银湾国际酒店",
+        "area": "湛江市区片区",
+        "price": 438,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "53236308",
+        "name": "湛江吴川龙之湾福朋喜来登酒店",
+        "area": "湛江吴川片区",
+        "price": 469,
+        "diff": -97,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江吴川",
+        "note": "湛江吴川，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "668210",
+        "name": "湛江君豪酒店",
+        "area": "湛江市区片区",
+        "price": 478,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:56:19+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "53236308",
+        "name": "湛江吴川龙之湾福朋喜来登酒店",
+        "area": "湛江吴川片区",
+        "price": 469,
+        "diff": -97,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江吴川",
+        "note": "湛江吴川，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "125785919",
+        "name": "维也纳国际酒店（雷州茂德公鼓城店）",
+        "area": "湛江雷州片区",
+        "price": 313,
+        "diff": -69,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江雷州",
+        "note": "湛江雷州，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "133947893",
+        "name": "湛江金沙湾旅游区万达广场城际酒店",
+        "area": "湛江金沙湾片区",
+        "price": 396,
+        "diff": -32,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江金沙湾",
+        "note": "湛江金沙湾，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1005627",
+        "name": "湛江赞苏湾酒店",
+        "area": "湛江市区片区",
+        "price": 401,
+        "diff": -27,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "125216652",
+        "name": "湛江海滨智选假日酒店",
+        "area": "湛江市区片区",
+        "price": 308,
+        "diff": -16,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "133399741",
+        "name": "美豪丽致酒店（湛江吴川店）",
+        "area": "湛江吴川片区",
+        "price": 318,
+        "diff": -15,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江吴川",
+        "note": "湛江吴川，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "70971808",
+        "name": "湛江一城丽呈酒店",
+        "area": "湛江市区片区",
+        "price": 418,
+        "diff": -15,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "120596133",
+        "name": "美豪丽致酒店（湛江明达寰宇天地店）",
+        "area": "湛江市区片区",
+        "price": 272,
+        "diff": -13,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "5175427",
+        "name": "华和国际酒店",
+        "area": "湛江市区片区",
+        "price": 399,
+        "diff": -7,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "114382732",
+        "name": "吴川华和国际酒店",
+        "area": "湛江市区片区",
+        "price": 375,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:53:36+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "湛江市区",
+        "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       }
     ]
   },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+  "latest_city_rank": [
+    {
+      "hotel_id": "1007239",
+      "name": "金辉煌银利酒店（湛江鼎盛广场店）",
+      "area": "湛江市区片区",
+      "price": 198,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "120596133",
+      "name": "美豪丽致酒店（湛江明达寰宇天地店）",
+      "area": "湛江市区片区",
+      "price": 272,
+      "diff": -13,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "116908700",
+      "name": "湛江经开区戴斯温德姆酒店",
+      "area": "湛江市区片区",
+      "price": 286,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "1007234",
+      "name": "湛江金辉煌酒店",
+      "area": "湛江市区片区",
+      "price": 298,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "125216652",
+      "name": "湛江海滨智选假日酒店",
+      "area": "湛江市区片区",
+      "price": 308,
+      "diff": -16,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "125785919",
+      "name": "维也纳国际酒店（雷州茂德公鼓城店）",
+      "area": "湛江雷州片区",
+      "price": 313,
+      "diff": -69,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江雷州",
+      "note": "湛江雷州，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "133399741",
+      "name": "美豪丽致酒店（湛江吴川店）",
+      "area": "湛江吴川片区",
+      "price": 318,
+      "diff": -15,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江吴川",
+      "note": "湛江吴川，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "54858818",
+      "name": "湛江人民大道鼎盛广场亚朵酒店",
+      "area": "湛江市区片区",
+      "price": 352,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "114382732",
+      "name": "吴川华和国际酒店",
+      "area": "湛江市区片区",
+      "price": 375,
+      "diff": -5,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "26667478",
+      "name": "湛江人民大道希尔顿欢朋酒店",
+      "area": "湛江市区片区",
+      "price": 391,
+      "diff": -1,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "133947893",
+      "name": "湛江金沙湾旅游区万达广场城际酒店",
+      "area": "湛江金沙湾片区",
+      "price": 396,
+      "diff": -32,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江金沙湾",
+      "note": "湛江金沙湾，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "5175427",
+      "name": "华和国际酒店",
+      "area": "湛江市区片区",
+      "price": 399,
+      "diff": -7,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "1005627",
+      "name": "湛江赞苏湾酒店",
+      "area": "湛江市区片区",
+      "price": 401,
+      "diff": -27,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "132002136",
+      "name": "化州华讯温德姆酒店",
+      "area": "湛江周边片区",
+      "price": 416,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江周边",
+      "note": "湛江周边，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "70971808",
+      "name": "湛江一城丽呈酒店",
+      "area": "湛江市区片区",
+      "price": 418,
+      "diff": -15,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "8573081",
+      "name": "银湾国际酒店",
+      "area": "湛江市区片区",
+      "price": 438,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "53236308",
+      "name": "湛江吴川龙之湾福朋喜来登酒店",
+      "area": "湛江吴川片区",
+      "price": 469,
+      "diff": -97,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江吴川",
+      "note": "湛江吴川，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "668210",
+      "name": "湛江君豪酒店",
+      "area": "湛江市区片区",
+      "price": 478,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "28474634",
+      "name": "湛江花园酒店",
+      "area": "湛江市区片区",
+      "price": 550,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "120177082",
+      "name": "湛江白天鹅酒店",
+      "area": "湛江市区片区",
+      "price": 612,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 5
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "53236308",
+      "name": "湛江吴川龙之湾福朋喜来登酒店",
+      "area": "湛江吴川片区",
+      "price": 469,
+      "diff": -97,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江吴川",
+      "note": "湛江吴川，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "125785919",
+      "name": "维也纳国际酒店（雷州茂德公鼓城店）",
+      "area": "湛江雷州片区",
+      "price": 313,
+      "diff": -69,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江雷州",
+      "note": "湛江雷州，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "133947893",
+      "name": "湛江金沙湾旅游区万达广场城际酒店",
+      "area": "湛江金沙湾片区",
+      "price": 396,
+      "diff": -32,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江金沙湾",
+      "note": "湛江金沙湾，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "1005627",
+      "name": "湛江赞苏湾酒店",
+      "area": "湛江市区片区",
+      "price": 401,
+      "diff": -27,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "125216652",
+      "name": "湛江海滨智选假日酒店",
+      "area": "湛江市区片区",
+      "price": 308,
+      "diff": -16,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "133399741",
+      "name": "美豪丽致酒店（湛江吴川店）",
+      "area": "湛江吴川片区",
+      "price": 318,
+      "diff": -15,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江吴川",
+      "note": "湛江吴川，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "70971808",
+      "name": "湛江一城丽呈酒店",
+      "area": "湛江市区片区",
+      "price": 418,
+      "diff": -15,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "120596133",
+      "name": "美豪丽致酒店（湛江明达寰宇天地店）",
+      "area": "湛江市区片区",
+      "price": 272,
+      "diff": -13,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "5175427",
+      "name": "华和国际酒店",
+      "area": "湛江市区片区",
+      "price": 399,
+      "diff": -7,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "114382732",
+      "name": "吴川华和国际酒店",
+      "area": "湛江市区片区",
+      "price": 375,
+      "diff": -5,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:53:36+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "湛江市区",
+      "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "湛江市区片区",
+      "hotel_count": 15,
+      "discount_hotel_count": 7,
+      "flat_hotel_count": 8,
+      "average_price": 385,
+      "average_diff": -6,
+      "price_range": [
+        198,
+        612
+      ],
+      "hotels": [
+        {
+          "hotel_id": "1005627",
+          "name": "湛江赞苏湾酒店",
+          "area": "湛江市区片区",
+          "price": 401,
+          "diff": -27,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "125216652",
+          "name": "湛江海滨智选假日酒店",
+          "area": "湛江市区片区",
+          "price": 308,
+          "diff": -16,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "70971808",
+          "name": "湛江一城丽呈酒店",
+          "area": "湛江市区片区",
+          "price": 418,
+          "diff": -15,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "120596133",
+          "name": "美豪丽致酒店（湛江明达寰宇天地店）",
+          "area": "湛江市区片区",
+          "price": 272,
+          "diff": -13,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "5175427",
+          "name": "华和国际酒店",
+          "area": "湛江市区片区",
+          "price": 399,
+          "diff": -7,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "114382732",
+          "name": "吴川华和国际酒店",
+          "area": "湛江市区片区",
+          "price": 375,
+          "diff": -5,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "26667478",
+          "name": "湛江人民大道希尔顿欢朋酒店",
+          "area": "湛江市区片区",
+          "price": 391,
+          "diff": -1,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "1007239",
+          "name": "金辉煌银利酒店（湛江鼎盛广场店）",
+          "area": "湛江市区片区",
+          "price": 198,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "116908700",
+          "name": "湛江经开区戴斯温德姆酒店",
+          "area": "湛江市区片区",
+          "price": 286,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "1007234",
+          "name": "湛江金辉煌酒店",
+          "area": "湛江市区片区",
+          "price": 298,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "54858818",
+          "name": "湛江人民大道鼎盛广场亚朵酒店",
+          "area": "湛江市区片区",
+          "price": 352,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "8573081",
+          "name": "银湾国际酒店",
+          "area": "湛江市区片区",
+          "price": 438,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "668210",
+          "name": "湛江君豪酒店",
+          "area": "湛江市区片区",
+          "price": 478,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "28474634",
+          "name": "湛江花园酒店",
+          "area": "湛江市区片区",
+          "price": 550,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "120177082",
+          "name": "湛江白天鹅酒店",
+          "area": "湛江市区片区",
+          "price": 612,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江市区",
+          "note": "湛江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 5
+        }
+      ],
+      "representative_hotels": [
+        "湛江赞苏湾酒店",
+        "湛江海滨智选假日酒店",
+        "湛江一城丽呈酒店"
+      ],
+      "summary": "15家四星/四钻以上酒店，7家降价，8家持平",
+      "rank": 1
+    },
+    {
+      "area": "湛江吴川片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 0,
+      "average_price": 394,
+      "average_diff": -56,
+      "price_range": [
+        318,
+        469
+      ],
+      "hotels": [
+        {
+          "hotel_id": "53236308",
+          "name": "湛江吴川龙之湾福朋喜来登酒店",
+          "area": "湛江吴川片区",
+          "price": 469,
+          "diff": -97,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江吴川",
+          "note": "湛江吴川，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "133399741",
+          "name": "美豪丽致酒店（湛江吴川店）",
+          "area": "湛江吴川片区",
+          "price": 318,
+          "diff": -15,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江吴川",
+          "note": "湛江吴川，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        }
+      ],
+      "representative_hotels": [
+        "湛江吴川龙之湾福朋喜来登酒店",
+        "美豪丽致酒店（湛江吴川店）"
+      ],
+      "summary": "2家四星/四钻以上酒店，2家降价，0家持平",
+      "rank": 2
+    },
+    {
+      "area": "湛江雷州片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 313,
+      "average_diff": -69,
+      "price_range": [
+        313,
+        313
+      ],
+      "hotels": [
+        {
+          "hotel_id": "125785919",
+          "name": "维也纳国际酒店（雷州茂德公鼓城店）",
+          "area": "湛江雷州片区",
+          "price": 313,
+          "diff": -69,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "湛江雷州",
+          "note": "湛江雷州，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        }
+      ],
+      "representative_hotels": [
+        "维也纳国际酒店（雷州茂德公鼓城店）"
+      ],
+      "summary": "1家四星/四钻以上酒店，1家降价，0家持平",
+      "rank": 3
+    },
+    {
+      "area": "湛江金沙湾片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 396,
+      "average_diff": -32,
+      "price_range": [
+        396,
+        396
+      ],
+      "hotels": [
+        {
+          "hotel_id": "133947893",
+          "name": "湛江金沙湾旅游区万达广场城际酒店",
+          "area": "湛江金沙湾片区",
+          "price": 396,
+          "diff": -32,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江金沙湾",
+          "note": "湛江金沙湾，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
+        }
+      ],
+      "representative_hotels": [
+        "湛江金沙湾旅游区万达广场城际酒店"
+      ],
+      "summary": "1家四星/四钻以上酒店，1家降价，0家持平",
+      "rank": 4
+    },
+    {
+      "area": "湛江周边片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 416,
+      "average_diff": 0,
+      "price_range": [
+        416,
+        416
+      ],
+      "hotels": [
+        {
+          "hotel_id": "132002136",
+          "name": "化州华讯温德姆酒店",
+          "area": "湛江周边片区",
+          "price": 416,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:53:36+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "湛江周边",
+          "note": "湛江周边，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
+        }
+      ],
+      "representative_hotels": [
+        "化州华讯温德姆酒店"
+      ],
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 5
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
-    "matching_file_count": 1,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
     "candidate_count": 100,
     "unique_hotel_count": 100,
-    "included_hotel_count": 0,
+    "included_hotel_count": 20,
+    "excluded_hotel_count": 45,
+    "excluded_hotels": [
+      {
+        "hotel_id": "90192840",
+        "name": "Zhigao Academy Homestay (Lingnan Normal University)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "128122436",
+        "name": "Yabo Hotel (Zhanjiang Central People's Hospital High-speed Railway West Station Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "130973502",
+        "name": "Yue TA X Esports Hotel (Jinshawan Branch, Zhanjiang)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "131575072",
+        "name": "Blue Whale Bay Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1093087",
+        "name": "Echarm Hotel (Zhanjiang Seaside Avenue Zhong Jiangnan Shijia)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "6820150",
+        "name": "Wuchuan Wanhe Holiday Hotel (Haigang Avenue Wanhe City)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "92463616",
+        "name": "Junting International Apartment (Zhanjiang Fishing Port Park Guanhai Longlang Shop)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1758516",
+        "name": "Rili Hostel",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "80920984",
+        "name": "Xana Lite Hotelle(Zhanjiang Haibin Dadao Wanda Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "56216594",
+        "name": "Wanpeng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "684857",
+        "name": "湛江海滨宾馆",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "5384880",
+        "name": "Jiasihua Business Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "131945485",
+        "name": "EMPIRE   HOTEL",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "18410470",
+        "name": "Bafang Park Lane Hotel (Zhanjiang Suixi Quanfeng Plaza Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "118938424",
+        "name": "Echarm Hotel (Zhanjiang Suixi Quanfengguangchang)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "66664311",
+        "name": "Zhanjiang City Hotel (Zhanjiang High speed Railway Station Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "7143257",
+        "name": "Ding Sheng Yun Tian Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "128151970",
+        "name": "Junting· J Hotel Zhanjiang Wanda Plaza",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "131314662",
+        "name": "Zhanjiang Baiyun Hotel (Zhanjiang Wanda Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "856420",
+        "name": "Alarun Hotel (Zhanjiang Shimao Mansion)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1011166",
+        "name": "Vienna Hotel (Zhanjiang Haibin Avenue Jinshawan)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "100997275",
+        "name": "Qinyuan Apartment (Zhanjiang High-speed Railway West Station Branch)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "113019846",
+        "name": "Borrman Hotel (Zhanjiang Mazhang Pedestrian Street West Railway Station)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2301653",
+        "name": "Lianjiang Libo Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1115082",
+        "name": "Dongchen Smart Hotel (Suixi Quanfeng Plaza Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "85586768",
+        "name": "Echarm Hotel (Zhanjiang Shenchuan Dadao Wanda Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "29826947",
+        "name": "Cajdo The Inn Boutique Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "6751959",
+        "name": "Luo'er Hostel",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "106557290",
+        "name": "Borrman Hotel (Zhanjiang Yingzhan Plaza Chikan Republic Style Street)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "8857474",
+        "name": "Fudeng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "67684529",
+        "name": "Vienna Hotel (Zhanjiang Mazhang High-speed Railway Station Store)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "107849409",
+        "name": "FONTOO Hotel Zhanjiang Lianjiang Shuangde",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "106578395",
+        "name": "Zhanjiang Techeng Island YuChu Homestay",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1198996",
+        "name": "Diy Bai Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "7106145",
+        "name": "Yu Da Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1758548",
+        "name": "Nanhai Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "132011329",
+        "name": "BOSON Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133572542",
+        "name": "LONGJOIN MUSIC HOTEL",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "92343587",
+        "name": "Lavande Hotel Golden Sand Bay of Zhenjiang",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "430263",
+        "name": "Zhanjiang Shanhe Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "123850710",
+        "name": "Elong Hotel (Zhanjiang Bay Bridge Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "7123953",
+        "name": "The Ming's Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "78144069",
+        "name": "维也纳国际酒店（湛江保利御典广场渔人码头店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "117875645",
+        "name": "维也纳国际酒店（湛江遂溪孔圣山景区店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "64991065",
+        "name": "维也纳国际酒店（湛江西高铁站店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
     "matching_files": [
       {
-        "file": "b7a94469701b7ccd839e989f6ad6118e97425c8495c40b472e355346fe2a71f6.json",
-        "mtime": 1778494787.756477,
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:53:36+08:00",
         "choices": 100,
         "advanced": true,
         "filters": {
@@ -77,16 +1907,327 @@
             "label": "全部",
             "name": "儿童设施"
           }
-        }
+        },
+        "elapsed_seconds": 174.0
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:56:19+08:00",
+        "choices": 10,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 163.0
       }
     ],
-    "source": "search_cache"
+    "area_count": 5,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
   },
-  "city_wikipedia_intro": {
-    "city": "湛江",
-    "text": "湛江可重点看湖光岩、赤坎老街、金沙湾、硇洲岛和特呈岛；海湾城市、火山湖景和海岛度假适合分片区安排。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/湛江",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 100,
+    "unique_hotel_count": 100,
+    "included_hotel_count": 20,
+    "excluded_hotel_count": 45,
+    "excluded_hotels": [
+      {
+        "hotel_id": "90192840",
+        "name": "Zhigao Academy Homestay (Lingnan Normal University)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "128122436",
+        "name": "Yabo Hotel (Zhanjiang Central People's Hospital High-speed Railway West Station Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "130973502",
+        "name": "Yue TA X Esports Hotel (Jinshawan Branch, Zhanjiang)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "131575072",
+        "name": "Blue Whale Bay Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1093087",
+        "name": "Echarm Hotel (Zhanjiang Seaside Avenue Zhong Jiangnan Shijia)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "6820150",
+        "name": "Wuchuan Wanhe Holiday Hotel (Haigang Avenue Wanhe City)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "92463616",
+        "name": "Junting International Apartment (Zhanjiang Fishing Port Park Guanhai Longlang Shop)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1758516",
+        "name": "Rili Hostel",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "80920984",
+        "name": "Xana Lite Hotelle(Zhanjiang Haibin Dadao Wanda Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "56216594",
+        "name": "Wanpeng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "684857",
+        "name": "湛江海滨宾馆",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "5384880",
+        "name": "Jiasihua Business Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "131945485",
+        "name": "EMPIRE   HOTEL",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "18410470",
+        "name": "Bafang Park Lane Hotel (Zhanjiang Suixi Quanfeng Plaza Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "118938424",
+        "name": "Echarm Hotel (Zhanjiang Suixi Quanfengguangchang)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "66664311",
+        "name": "Zhanjiang City Hotel (Zhanjiang High speed Railway Station Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "7143257",
+        "name": "Ding Sheng Yun Tian Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "128151970",
+        "name": "Junting· J Hotel Zhanjiang Wanda Plaza",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "131314662",
+        "name": "Zhanjiang Baiyun Hotel (Zhanjiang Wanda Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "856420",
+        "name": "Alarun Hotel (Zhanjiang Shimao Mansion)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1011166",
+        "name": "Vienna Hotel (Zhanjiang Haibin Avenue Jinshawan)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "100997275",
+        "name": "Qinyuan Apartment (Zhanjiang High-speed Railway West Station Branch)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "113019846",
+        "name": "Borrman Hotel (Zhanjiang Mazhang Pedestrian Street West Railway Station)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2301653",
+        "name": "Lianjiang Libo Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1115082",
+        "name": "Dongchen Smart Hotel (Suixi Quanfeng Plaza Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "85586768",
+        "name": "Echarm Hotel (Zhanjiang Shenchuan Dadao Wanda Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "29826947",
+        "name": "Cajdo The Inn Boutique Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "6751959",
+        "name": "Luo'er Hostel",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "106557290",
+        "name": "Borrman Hotel (Zhanjiang Yingzhan Plaza Chikan Republic Style Street)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "8857474",
+        "name": "Fudeng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "67684529",
+        "name": "Vienna Hotel (Zhanjiang Mazhang High-speed Railway Station Store)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "107849409",
+        "name": "FONTOO Hotel Zhanjiang Lianjiang Shuangde",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "106578395",
+        "name": "Zhanjiang Techeng Island YuChu Homestay",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1198996",
+        "name": "Diy Bai Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "7106145",
+        "name": "Yu Da Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1758548",
+        "name": "Nanhai Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "132011329",
+        "name": "BOSON Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133572542",
+        "name": "LONGJOIN MUSIC HOTEL",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "92343587",
+        "name": "Lavande Hotel Golden Sand Bay of Zhenjiang",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "430263",
+        "name": "Zhanjiang Shanhe Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "123850710",
+        "name": "Elong Hotel (Zhanjiang Bay Bridge Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "7123953",
+        "name": "The Ming's Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "78144069",
+        "name": "维也纳国际酒店（湛江保利御典广场渔人码头店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "117875645",
+        "name": "维也纳国际酒店（湛江遂溪孔圣山景区店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "64991065",
+        "name": "维也纳国际酒店（湛江西高铁站店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:53:36+08:00",
+        "choices": 100,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 174.0
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:56:19+08:00",
+        "choices": 10,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 163.0
+      }
+    ],
+    "area_count": 5,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
+  },
+  "city_wikipedia_intro": "湛江可重点看湖光岩、赤坎老街、金沙湾、硇洲岛和特呈岛；海湾城市、火山湖景和海岛度假适合分片区安排。"
 }

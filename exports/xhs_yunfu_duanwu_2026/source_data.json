@@ -1,527 +1,189 @@
 {
   "city": "云浮",
-  "generated_at": "2026-05-12T12:24:34",
+  "generated_at": "2026-05-22T15:16:05",
   "lists": {
     "star_no_rise": [
       {
-        "hotel_id": "1307298",
-        "name": "云浮柏豪商務酒店（市政府店）",
-        "area": "云浮Yunfu People'S Square片区",
-        "price": 66,
+        "hotel_id": "2079550",
+        "name": "达瑞斯国际酒店（蟠龙洞店）",
+        "area": "云浮蟠龙洞片区",
+        "price": 223,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "云浮Yunfu People'S Square",
-        "note": "云浮Yunfu People'S Square，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "云浮蟠龙洞",
+        "note": "云浮蟠龙洞，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "67723420",
-        "name": "云浮豪庭精品公寓",
+        "hotel_id": "2200402",
+        "name": "金龙国际酒店",
+        "area": "云浮市区片区",
+        "price": 276,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "云浮市区",
+        "note": "云浮市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "2244836",
+        "name": "罗定国际酒店",
+        "area": "云浮罗定片区",
+        "price": 308,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "云浮罗定",
+        "note": "云浮罗定，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "129212547",
+        "name": "云浮罗定泰德天润广场亚朵酒店",
+        "area": "云浮罗定片区",
+        "price": 314,
+        "diff": -14,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "云浮罗定",
+        "note": "云浮罗定，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "445883",
+        "name": "云浮碧桂园凤悦凤凰酒店",
         "area": "云浮待确认片区",
-        "price": 92,
+        "price": 323,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备泳池，适合短途度假。"
-      },
-      {
-        "hotel_id": "38419023",
-        "name": "新兴优居乐主題酒店",
-        "area": "XinxingLimuyang House片区",
-        "price": 92,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingLimuyang House",
-        "note": "XinxingLimuyang House，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "26579878",
-        "name": "云浮逸途商務公寓",
-        "area": "云浮Xiadong Market片区",
-        "price": 99,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Xiadong Market",
-        "note": "云浮Xiadong Market，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "22816301",
-        "name": "金月湾酒店（筠城国际广场温氏科技园店）",
-        "area": "XinxingXincheng Town片区",
-        "price": 100,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingXincheng Town",
-        "note": "XinxingXincheng Town，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "3203681",
-        "name": "云浮欧亞商務酒店（市政府店）",
-        "area": "云浮Former Residence Of Dengfa片区",
-        "price": 102,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Former Residence Of Dengfa",
-        "note": "云浮Former Residence Of Dengfa，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1207867",
-        "name": "雄威酒店（云浮南山公园店）",
-        "area": "云浮Yunfu People'S Square片区",
-        "price": 121,
-        "diff": -27,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Yunfu People'S Square",
-        "note": "云浮Yunfu People'S Square，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "133684006",
-        "name": "康州国际大酒店",
-        "area": "云浮待确认片区",
-        "price": 146,
-        "diff": -2,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "云浮待确认",
+        "note": "云浮待确认，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
       },
       {
-        "hotel_id": "2219287",
-        "name": "恒暉皇城酒店（云浮新兴汽車站筠城广场店）",
-        "area": "XinxingXincheng Town片区",
-        "price": 152,
+        "hotel_id": "122458846",
+        "name": "云浮云安凤悦假日酒店（云安区店）",
+        "area": "云浮云安片区",
+        "price": 347,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": true,
+        "pool": true,
         "advanced": true,
-        "display_area": "XinxingXincheng Town",
-        "note": "XinxingXincheng Town，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "云浮云安",
+        "note": "云浮云安，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "1345461",
-        "name": "柏曼酒店（新兴汽車站店）",
-        "area": "XinxingPassenger Transport Terminal片区",
-        "price": 164,
-        "diff": -8,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
+        "hotel_id": "133465604",
+        "name": "云浮新兴三业温泉酒店",
+        "area": "云浮新兴片区",
+        "price": 398,
+        "diff": -12,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": true,
         "pool": false,
         "advanced": true,
-        "display_area": "XinxingPassenger Transport Terminal",
-        "note": "XinxingPassenger Transport Terminal，端午每晚含税均价低于平日代表价。"
+        "display_area": "云浮新兴",
+        "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "29729085",
+        "name": "云浮新兴喜来登酒店",
+        "area": "云浮新兴片区",
+        "price": 439,
+        "diff": -63,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "云浮新兴",
+        "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       }
     ],
     "star_no_rise_all": [
       {
-        "hotel_id": "1307298",
-        "name": "云浮柏豪商務酒店（市政府店）",
-        "area": "云浮Yunfu People'S Square片区",
-        "price": 66,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Yunfu People'S Square",
-        "note": "云浮Yunfu People'S Square，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "67723420",
-        "name": "云浮豪庭精品公寓",
-        "area": "云浮待确认片区",
-        "price": 92,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备泳池，适合短途度假。"
-      },
-      {
-        "hotel_id": "38419023",
-        "name": "新兴优居乐主題酒店",
-        "area": "XinxingLimuyang House片区",
-        "price": 92,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingLimuyang House",
-        "note": "XinxingLimuyang House，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "26579878",
-        "name": "云浮逸途商務公寓",
-        "area": "云浮Xiadong Market片区",
-        "price": 99,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Xiadong Market",
-        "note": "云浮Xiadong Market，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "22816301",
-        "name": "金月湾酒店（筠城国际广场温氏科技园店）",
-        "area": "XinxingXincheng Town片区",
-        "price": 100,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingXincheng Town",
-        "note": "XinxingXincheng Town，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "3203681",
-        "name": "云浮欧亞商務酒店（市政府店）",
-        "area": "云浮Former Residence Of Dengfa片区",
-        "price": 102,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Former Residence Of Dengfa",
-        "note": "云浮Former Residence Of Dengfa，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1207867",
-        "name": "雄威酒店（云浮南山公园店）",
-        "area": "云浮Yunfu People'S Square片区",
-        "price": 121,
-        "diff": -27,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Yunfu People'S Square",
-        "note": "云浮Yunfu People'S Square，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "133684006",
-        "name": "康州国际大酒店",
-        "area": "云浮待确认片区",
-        "price": 146,
-        "diff": -2,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "2219287",
-        "name": "恒暉皇城酒店（云浮新兴汽車站筠城广场店）",
-        "area": "XinxingXincheng Town片区",
-        "price": 152,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingXincheng Town",
-        "note": "XinxingXincheng Town，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1345461",
-        "name": "柏曼酒店（新兴汽車站店）",
-        "area": "XinxingPassenger Transport Terminal片区",
-        "price": 164,
-        "diff": -8,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingPassenger Transport Terminal",
-        "note": "XinxingPassenger Transport Terminal，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "1767288",
-        "name": "新兴悦港酒店",
-        "area": "XinxingXincheng Town片区",
-        "price": 168,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingXincheng Town",
-        "note": "XinxingXincheng Town，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "2239511",
-        "name": "龙湖岛大酒店（德庆龙母大街店）",
-        "area": "云浮待确认片区",
-        "price": 168,
-        "diff": 0,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "71950371",
-        "name": "维也纳智好酒店（新兴南站沿江南路店）",
-        "area": "XinxingXincheng Town片区",
-        "price": 178,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingXincheng Town",
-        "note": "XinxingXincheng Town，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "2601965",
-        "name": "南湾国际酒店（云浮汽車總站蟠龙天湖店）",
-        "area": "云浮Yunfu Bus片区",
-        "price": 193,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮Yunfu Bus",
-        "note": "云浮Yunfu Bus，具备泳池，适合短途度假。"
-      },
-      {
         "hotel_id": "2079550",
         "name": "达瑞斯国际酒店（蟠龙洞店）",
-        "area": "云浮Yunfu Bus片区",
-        "price": 224,
+        "area": "云浮蟠龙洞片区",
+        "price": 223,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "云浮Yunfu Bus",
-        "note": "云浮Yunfu Bus，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "云浮蟠龙洞",
+        "note": "云浮蟠龙洞，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "23742172",
-        "name": "佛云国际酒店",
-        "area": "云浮Silao Town片区",
-        "price": 229,
+        "hotel_id": "2200402",
+        "name": "金龙国际酒店",
+        "area": "云浮市区片区",
+        "price": 276,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "云浮Silao Town",
-        "note": "云浮Silao Town，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "云浮市区",
+        "note": "云浮市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "1434946",
-        "name": "维也纳国际酒店（云浮市中心益华广场店）",
-        "area": "云浮待确认片区",
-        "price": 235,
+        "hotel_id": "2244836",
+        "name": "罗定国际酒店",
+        "area": "云浮罗定片区",
+        "price": 308,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "云浮罗定",
+        "note": "云浮罗定，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "2103117",
-        "name": "花築·云浮金采萊酒店",
-        "area": "云浮待确认片区",
-        "price": 236,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备泳池，适合短途度假。"
-      },
-      {
-        "hotel_id": "70914651",
-        "name": "罗定星际酒店",
-        "area": "云浮Tianhecheng Buxingjie片区",
-        "price": 239,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "hotel_id": "129212547",
+        "name": "云浮罗定泰德天润广场亚朵酒店",
+        "area": "云浮罗定片区",
+        "price": 314,
+        "diff": -14,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "云浮Tianhecheng Buxingjie",
-        "note": "云浮Tianhecheng Buxingjie，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1767274",
-        "name": "銘泉·輕竹酒店（云浮新兴汽車站筠城广场店）",
-        "area": "XinxingLicheng International Plaza片区",
-        "price": 244,
-        "diff": -2,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingLicheng International Plaza",
-        "note": "XinxingLicheng International Plaza，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "118878520",
-        "name": "鉑顿国际公寓（云浮高新区管委会店）",
-        "area": "云浮Ailin Garden片区",
-        "price": 246,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Ailin Garden",
-        "note": "云浮Ailin Garden，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "122393816",
-        "name": "云浮云安凤祺酒店式公寓（云浮高新区管委会店）",
-        "area": "云浮Yunju Garden片区",
-        "price": 253,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Yunju Garden",
-        "note": "云浮Yunju Garden，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "133585005",
-        "name": "罗定瀧喜大酒店",
-        "area": "云浮Fengyang Ancient Village片区",
-        "price": 259,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Fengyang Ancient Village",
-        "note": "云浮Fengyang Ancient Village，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "16194789",
-        "name": "维也纳国际酒店（新兴新城市广场店）",
-        "area": "XinxingNo.片区",
-        "price": 272,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingNo.",
-        "note": "XinxingNo.，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "4533382",
-        "name": "长州酒店（云浮益华广场蟠龙天湖店）",
-        "area": "云浮Yunfu Bus片区",
-        "price": 284,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Yunfu Bus",
-        "note": "云浮Yunfu Bus，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "125208335",
-        "name": "云浮鴻鑫精品酒店（云浮吾悦广场店）",
-        "area": "云浮待确认片区",
-        "price": 293,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "101041347",
-        "name": "维也纳国际酒店（云浮体育公园店）",
-        "area": "云浮Xiangyun Plaza片区",
-        "price": 300,
-        "diff": -4,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Xiangyun Plaza",
-        "note": "云浮Xiangyun Plaza，端午每晚含税均价低于平日代表价。"
+        "display_area": "云浮罗定",
+        "note": "云浮罗定，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "445883",
@@ -529,955 +191,1031 @@
         "area": "云浮待确认片区",
         "price": 323,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "686124",
-        "name": "新兴悦和庄酒店",
-        "area": "XinxingLiuzuguli Tourism片区",
-        "price": 339,
-        "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingLiuzuguli Tourism",
-        "note": "XinxingLiuzuguli Tourism，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "云浮待确认",
+        "note": "云浮待确认，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
       },
       {
         "hotel_id": "122458846",
         "name": "云浮云安凤悦假日酒店（云安区店）",
-        "area": "云浮待确认片区",
+        "area": "云浮云安片区",
         "price": 347,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "云浮云安",
+        "note": "云浮云安，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "133465604",
+        "name": "云浮新兴三业温泉酒店",
+        "area": "云浮新兴片区",
+        "price": 398,
+        "diff": -12,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "云浮新兴",
+        "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "29729085",
+        "name": "云浮新兴喜来登酒店",
+        "area": "云浮新兴片区",
+        "price": 439,
+        "diff": -63,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "云浮新兴",
+        "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       }
     ],
     "family_no_rise": [
       {
-        "hotel_id": "133684006",
-        "name": "康州国际大酒店",
-        "area": "云浮待确认片区",
-        "price": 146,
-        "diff": -2,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "2239511",
-        "name": "龙湖岛大酒店（德庆龙母大街店）",
-        "area": "云浮待确认片区",
-        "price": 168,
-        "diff": 0,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
         "hotel_id": "445883",
         "name": "云浮碧桂园凤悦凤凰酒店",
         "area": "云浮待确认片区",
         "price": 323,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:50:42+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "云浮待确认",
+        "note": "云浮待确认，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
       },
       {
         "hotel_id": "122458846",
         "name": "云浮云安凤悦假日酒店（云安区店）",
-        "area": "云浮待确认片区",
+        "area": "云浮云安片区",
         "price": 347,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:50:42+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "云浮云安",
+        "note": "云浮云安，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       }
     ],
     "family_no_rise_all": [
       {
-        "hotel_id": "133684006",
-        "name": "康州国际大酒店",
-        "area": "云浮待确认片区",
-        "price": 146,
-        "diff": -2,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "2239511",
-        "name": "龙湖岛大酒店（德庆龙母大街店）",
-        "area": "云浮待确认片区",
-        "price": 168,
-        "diff": 0,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
         "hotel_id": "445883",
         "name": "云浮碧桂园凤悦凤凰酒店",
         "area": "云浮待确认片区",
         "price": 323,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:50:42+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "云浮待确认",
+        "note": "云浮待确认，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
       },
       {
         "hotel_id": "122458846",
         "name": "云浮云安凤悦假日酒店（云安区店）",
-        "area": "云浮待确认片区",
+        "area": "云浮云安片区",
         "price": 347,
         "diff": 0,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:50:42+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "云浮云安",
+        "note": "云浮云安，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       }
     ],
     "discount_star": [
       {
-        "hotel_id": "1207867",
-        "name": "雄威酒店（云浮南山公园店）",
-        "area": "云浮Yunfu People'S Square片区",
-        "price": 121,
-        "diff": -27,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "hotel_id": "29729085",
+        "name": "云浮新兴喜来登酒店",
+        "area": "云浮新兴片区",
+        "price": 439,
+        "diff": -63,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Yunfu People'S Square",
-        "note": "云浮Yunfu People'S Square，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "1345461",
-        "name": "柏曼酒店（新兴汽車站店）",
-        "area": "XinxingPassenger Transport Terminal片区",
-        "price": 164,
-        "diff": -8,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "XinxingPassenger Transport Terminal",
-        "note": "XinxingPassenger Transport Terminal，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "101041347",
-        "name": "维也纳国际酒店（云浮体育公园店）",
-        "area": "云浮Xiangyun Plaza片区",
-        "price": 300,
-        "diff": -4,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "云浮Xiangyun Plaza",
-        "note": "云浮Xiangyun Plaza，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "133684006",
-        "name": "康州国际大酒店",
-        "area": "云浮待确认片区",
-        "price": 146,
-        "diff": -2,
-        "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "source_cached_at": "2026-05-06T17:18:03",
-        "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "云浮",
-        "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "云浮新兴",
+        "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       },
       {
-        "hotel_id": "1767274",
-        "name": "銘泉·輕竹酒店（云浮新兴汽車站筠城广场店）",
-        "area": "XinxingLicheng International Plaza片区",
-        "price": 244,
-        "diff": -2,
-        "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "source_cached_at": "2026-05-07T15:33:03",
+        "hotel_id": "129212547",
+        "name": "云浮罗定泰德天润广场亚朵酒店",
+        "area": "云浮罗定片区",
+        "price": 314,
+        "diff": -14,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "XinxingLicheng International Plaza",
-        "note": "XinxingLicheng International Plaza，端午每晚含税均价低于平日代表价。"
+        "display_area": "云浮罗定",
+        "note": "云浮罗定，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "133465604",
+        "name": "云浮新兴三业温泉酒店",
+        "area": "云浮新兴片区",
+        "price": 398,
+        "diff": -12,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:47:26+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "云浮新兴",
+        "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       }
     ]
   },
   "latest_city_rank": [
     {
-      "hotel_id": "1307298",
-      "name": "云浮柏豪商務酒店（市政府店）",
-      "area": "云浮Yunfu People'S Square片区",
-      "price": 66,
+      "hotel_id": "2079550",
+      "name": "达瑞斯国际酒店（蟠龙洞店）",
+      "area": "云浮蟠龙洞片区",
+      "price": 223,
       "diff": 0,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "云浮Yunfu People'S Square",
-      "note": "云浮Yunfu People'S Square，端午价格保持平稳，适合周边短途度假。"
+      "display_area": "云浮蟠龙洞",
+      "note": "云浮蟠龙洞，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "67723420",
-      "name": "云浮豪庭精品公寓",
+      "hotel_id": "2200402",
+      "name": "金龙国际酒店",
+      "area": "云浮市区片区",
+      "price": 276,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "云浮市区",
+      "note": "云浮市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "2244836",
+      "name": "罗定国际酒店",
+      "area": "云浮罗定片区",
+      "price": 308,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "云浮罗定",
+      "note": "云浮罗定，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "129212547",
+      "name": "云浮罗定泰德天润广场亚朵酒店",
+      "area": "云浮罗定片区",
+      "price": 314,
+      "diff": -14,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "云浮罗定",
+      "note": "云浮罗定，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "445883",
+      "name": "云浮碧桂园凤悦凤凰酒店",
       "area": "云浮待确认片区",
-      "price": 92,
+      "price": 323,
       "diff": 0,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": true,
-      "advanced": true,
-      "display_area": "云浮",
-      "note": "云浮，具备泳池，适合短途度假。"
-    },
-    {
-      "hotel_id": "38419023",
-      "name": "新兴优居乐主題酒店",
-      "area": "XinxingLimuyang House片区",
-      "price": 92,
-      "diff": 0,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "XinxingLimuyang House",
-      "note": "XinxingLimuyang House，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "26579878",
-      "name": "云浮逸途商務公寓",
-      "area": "云浮Xiadong Market片区",
-      "price": 99,
-      "diff": 0,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "云浮Xiadong Market",
-      "note": "云浮Xiadong Market，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "22816301",
-      "name": "金月湾酒店（筠城国际广场温氏科技园店）",
-      "area": "XinxingXincheng Town片区",
-      "price": 100,
-      "diff": 0,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": true,
-      "pool": false,
-      "advanced": true,
-      "display_area": "XinxingXincheng Town",
-      "note": "XinxingXincheng Town，具备儿童设施，适合亲子短途。"
-    },
-    {
-      "hotel_id": "3203681",
-      "name": "云浮欧亞商務酒店（市政府店）",
-      "area": "云浮Former Residence Of Dengfa片区",
-      "price": 102,
-      "diff": 0,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "云浮Former Residence Of Dengfa",
-      "note": "云浮Former Residence Of Dengfa，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "1207867",
-      "name": "雄威酒店（云浮南山公园店）",
-      "area": "云浮Yunfu People'S Square片区",
-      "price": 121,
-      "diff": -27,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "云浮Yunfu People'S Square",
-      "note": "云浮Yunfu People'S Square，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "133684006",
-      "name": "康州国际大酒店",
-      "area": "云浮待确认片区",
-      "price": 146,
-      "diff": -2,
-      "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-      "source_cached_at": "2026-05-06T17:18:03",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
       "child": true,
       "pool": true,
       "advanced": true,
-      "display_area": "云浮",
-      "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+      "display_area": "云浮待确认",
+      "note": "云浮待确认，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
     },
     {
-      "hotel_id": "2219287",
-      "name": "恒暉皇城酒店（云浮新兴汽車站筠城广场店）",
-      "area": "XinxingXincheng Town片区",
-      "price": 152,
+      "hotel_id": "122458846",
+      "name": "云浮云安凤悦假日酒店（云安区店）",
+      "area": "云浮云安片区",
+      "price": 347,
       "diff": 0,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": false,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
+      "child": true,
+      "pool": true,
       "advanced": true,
-      "display_area": "XinxingXincheng Town",
-      "note": "XinxingXincheng Town，端午价格保持平稳，适合周边短途度假。"
+      "display_area": "云浮云安",
+      "note": "云浮云安，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "1345461",
-      "name": "柏曼酒店（新兴汽車站店）",
-      "area": "XinxingPassenger Transport Terminal片区",
-      "price": 164,
-      "diff": -8,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
+      "hotel_id": "133465604",
+      "name": "云浮新兴三业温泉酒店",
+      "area": "云浮新兴片区",
+      "price": 398,
+      "diff": -12,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
+      "child": true,
       "pool": false,
       "advanced": true,
-      "display_area": "XinxingPassenger Transport Terminal",
-      "note": "XinxingPassenger Transport Terminal，端午每晚含税均价低于平日代表价。"
+      "display_area": "云浮新兴",
+      "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "29729085",
+      "name": "云浮新兴喜来登酒店",
+      "area": "云浮新兴片区",
+      "price": 439,
+      "diff": -63,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "云浮新兴",
+      "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
     }
   ],
   "latest_discount_rank": [
     {
-      "hotel_id": "1207867",
-      "name": "雄威酒店（云浮南山公园店）",
-      "area": "云浮Yunfu People'S Square片区",
-      "price": 121,
-      "diff": -27,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
+      "hotel_id": "29729085",
+      "name": "云浮新兴喜来登酒店",
+      "area": "云浮新兴片区",
+      "price": 439,
+      "diff": -63,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
       "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "云浮Yunfu People'S Square",
-      "note": "云浮Yunfu People'S Square，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "1345461",
-      "name": "柏曼酒店（新兴汽車站店）",
-      "area": "XinxingPassenger Transport Terminal片区",
-      "price": 164,
-      "diff": -8,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "XinxingPassenger Transport Terminal",
-      "note": "XinxingPassenger Transport Terminal，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "101041347",
-      "name": "维也纳国际酒店（云浮体育公园店）",
-      "area": "云浮Xiangyun Plaza片区",
-      "price": 300,
-      "diff": -4,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "云浮Xiangyun Plaza",
-      "note": "云浮Xiangyun Plaza，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "133684006",
-      "name": "康州国际大酒店",
-      "area": "云浮待确认片区",
-      "price": 146,
-      "diff": -2,
-      "source_file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-      "source_cached_at": "2026-05-06T17:18:03",
-      "child": true,
       "pool": true,
       "advanced": true,
-      "display_area": "云浮",
-      "note": "云浮，具备儿童设施和泳池，适合亲子短途。"
+      "display_area": "云浮新兴",
+      "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
     },
     {
-      "hotel_id": "1767274",
-      "name": "銘泉·輕竹酒店（云浮新兴汽車站筠城广场店）",
-      "area": "XinxingLicheng International Plaza片区",
-      "price": 244,
-      "diff": -2,
-      "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-      "source_cached_at": "2026-05-07T15:33:03",
+      "hotel_id": "129212547",
+      "name": "云浮罗定泰德天润广场亚朵酒店",
+      "area": "云浮罗定片区",
+      "price": 314,
+      "diff": -14,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "XinxingLicheng International Plaza",
-      "note": "XinxingLicheng International Plaza，端午每晚含税均价低于平日代表价。"
+      "display_area": "云浮罗定",
+      "note": "云浮罗定，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "133465604",
+      "name": "云浮新兴三业温泉酒店",
+      "area": "云浮新兴片区",
+      "price": 398,
+      "diff": -12,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:47:26+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "云浮新兴",
+      "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
     }
   ],
   "area_region_rank": [
     {
-      "area": "XinxingXincheng Town片区",
-      "hotel_count": 4,
-      "discount_hotel_count": 0,
-      "flat_hotel_count": 4,
-      "average_price": 150,
-      "average_diff": 0,
+      "area": "云浮新兴片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 0,
+      "average_price": 418,
+      "average_diff": -38,
       "price_range": [
-        100,
-        178
+        398,
+        439
       ],
       "hotels": [
         {
-          "hotel_id": "22816301",
-          "name": "金月湾酒店（筠城国际广场温氏科技园店）",
-          "area": "XinxingXincheng Town片区",
-          "price": 100,
-          "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "hotel_id": "29729085",
+          "name": "云浮新兴喜来登酒店",
+          "area": "云浮新兴片区",
+          "price": 439,
+          "diff": -63,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "云浮新兴",
+          "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
         },
         {
-          "hotel_id": "2219287",
-          "name": "恒暉皇城酒店（云浮新兴汽車站筠城广场店）",
-          "area": "XinxingXincheng Town片区",
-          "price": 152,
-          "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        },
-        {
-          "hotel_id": "1767288",
-          "name": "新兴悦港酒店",
-          "area": "XinxingXincheng Town片区",
-          "price": 168,
-          "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        },
-        {
-          "hotel_id": "71950371",
-          "name": "维也纳智好酒店（新兴南站沿江南路店）",
-          "area": "XinxingXincheng Town片区",
-          "price": 178,
-          "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "hotel_id": "133465604",
+          "name": "云浮新兴三业温泉酒店",
+          "area": "云浮新兴片区",
+          "price": 398,
+          "diff": -12,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "云浮新兴",
+          "note": "云浮新兴，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
         }
       ],
       "representative_hotels": [
-        "金月湾酒店（筠城国际广场温氏科技园店）",
-        "恒暉皇城酒店（云浮新兴汽車站筠城广场店）",
-        "新兴悦港酒店"
+        "云浮新兴喜来登酒店",
+        "云浮新兴三业温泉酒店"
       ],
-      "rank": 1,
-      "summary": "4家高级酒店，0家降价，4家持平"
+      "summary": "2家四星/四钻以上酒店，2家降价，0家持平",
+      "rank": 1
     },
     {
-      "area": "云浮Yunfu Bus片区",
-      "hotel_count": 3,
-      "discount_hotel_count": 0,
-      "flat_hotel_count": 3,
-      "average_price": 234,
-      "average_diff": 0,
-      "price_range": [
-        193,
-        284
-      ],
-      "hotels": [
-        {
-          "hotel_id": "2601965",
-          "name": "南湾国际酒店（云浮汽車總站蟠龙天湖店）",
-          "area": "云浮Yunfu Bus片区",
-          "price": 193,
-          "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        },
-        {
-          "hotel_id": "2079550",
-          "name": "达瑞斯国际酒店（蟠龙洞店）",
-          "area": "云浮Yunfu Bus片区",
-          "price": 224,
-          "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        },
-        {
-          "hotel_id": "4533382",
-          "name": "长州酒店（云浮益华广场蟠龙天湖店）",
-          "area": "云浮Yunfu Bus片区",
-          "price": 284,
-          "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        }
-      ],
-      "representative_hotels": [
-        "南湾国际酒店（云浮汽車總站蟠龙天湖店）",
-        "达瑞斯国际酒店（蟠龙洞店）",
-        "长州酒店（云浮益华广场蟠龙天湖店）"
-      ],
-      "rank": 2,
-      "summary": "3家高级酒店，0家降价，3家持平"
-    },
-    {
-      "area": "云浮Yunfu People'S Square片区",
+      "area": "云浮罗定片区",
       "hotel_count": 2,
       "discount_hotel_count": 1,
       "flat_hotel_count": 1,
-      "average_price": 94,
-      "average_diff": -14,
+      "average_price": 311,
+      "average_diff": -7,
       "price_range": [
-        66,
-        121
+        308,
+        314
       ],
       "hotels": [
         {
-          "hotel_id": "1207867",
-          "name": "雄威酒店（云浮南山公园店）",
-          "area": "云浮Yunfu People'S Square片区",
-          "price": 121,
-          "diff": -27,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "hotel_id": "129212547",
+          "name": "云浮罗定泰德天润广场亚朵酒店",
+          "area": "云浮罗定片区",
+          "price": 314,
+          "diff": -14,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "云浮罗定",
+          "note": "云浮罗定，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
         },
         {
-          "hotel_id": "1307298",
-          "name": "云浮柏豪商務酒店（市政府店）",
-          "area": "云浮Yunfu People'S Square片区",
-          "price": 66,
+          "hotel_id": "2244836",
+          "name": "罗定国际酒店",
+          "area": "云浮罗定片区",
+          "price": 308,
           "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "云浮罗定",
+          "note": "云浮罗定，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         }
       ],
       "representative_hotels": [
-        "雄威酒店（云浮南山公园店）",
-        "云浮柏豪商務酒店（市政府店）"
+        "云浮罗定泰德天润广场亚朵酒店",
+        "罗定国际酒店"
       ],
-      "rank": 3,
-      "summary": "2家高级酒店，1家降价，1家持平"
+      "summary": "2家四星/四钻以上酒店，1家降价，1家持平",
+      "rank": 2
     },
     {
-      "area": "XinxingPassenger Transport Terminal片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 164,
-      "average_diff": -8,
-      "price_range": [
-        164,
-        164
-      ],
-      "hotels": [
-        {
-          "hotel_id": "1345461",
-          "name": "柏曼酒店（新兴汽車站店）",
-          "area": "XinxingPassenger Transport Terminal片区",
-          "price": 164,
-          "diff": -8,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        }
-      ],
-      "representative_hotels": [
-        "柏曼酒店（新兴汽車站店）"
-      ],
-      "rank": 4,
-      "summary": "1家高级酒店，1家降价"
-    },
-    {
-      "area": "云浮Xiangyun Plaza片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 300,
-      "average_diff": -4,
-      "price_range": [
-        300,
-        300
-      ],
-      "hotels": [
-        {
-          "hotel_id": "101041347",
-          "name": "维也纳国际酒店（云浮体育公园店）",
-          "area": "云浮Xiangyun Plaza片区",
-          "price": 300,
-          "diff": -4,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        }
-      ],
-      "representative_hotels": [
-        "维也纳国际酒店（云浮体育公园店）"
-      ],
-      "rank": 5,
-      "summary": "1家高级酒店，1家降价"
-    },
-    {
-      "area": "XinxingLicheng International Plaza片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 244,
-      "average_diff": -2,
-      "price_range": [
-        244,
-        244
-      ],
-      "hotels": [
-        {
-          "hotel_id": "1767274",
-          "name": "銘泉·輕竹酒店（云浮新兴汽車站筠城广场店）",
-          "area": "XinxingLicheng International Plaza片区",
-          "price": 244,
-          "diff": -2,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
-        }
-      ],
-      "representative_hotels": [
-        "銘泉·輕竹酒店（云浮新兴汽車站筠城广场店）"
-      ],
-      "rank": 6,
-      "summary": "1家高级酒店，1家降价"
-    },
-    {
-      "area": "XinxingLimuyang House片区",
+      "area": "云浮蟠龙洞片区",
       "hotel_count": 1,
       "discount_hotel_count": 0,
       "flat_hotel_count": 1,
-      "average_price": 92,
+      "average_price": 223,
       "average_diff": 0,
       "price_range": [
-        92,
-        92
+        223,
+        223
       ],
       "hotels": [
         {
-          "hotel_id": "38419023",
-          "name": "新兴优居乐主題酒店",
-          "area": "XinxingLimuyang House片区",
-          "price": 92,
+          "hotel_id": "2079550",
+          "name": "达瑞斯国际酒店（蟠龙洞店）",
+          "area": "云浮蟠龙洞片区",
+          "price": 223,
           "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "云浮蟠龙洞",
+          "note": "云浮蟠龙洞，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         }
       ],
       "representative_hotels": [
-        "新兴优居乐主題酒店"
+        "达瑞斯国际酒店（蟠龙洞店）"
       ],
-      "rank": 7,
-      "summary": "1家高级酒店，0家降价，1家持平"
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 3
     },
     {
-      "area": "云浮Xiadong Market片区",
+      "area": "云浮市区片区",
       "hotel_count": 1,
       "discount_hotel_count": 0,
       "flat_hotel_count": 1,
-      "average_price": 99,
+      "average_price": 276,
       "average_diff": 0,
       "price_range": [
-        99,
-        99
+        276,
+        276
       ],
       "hotels": [
         {
-          "hotel_id": "26579878",
-          "name": "云浮逸途商務公寓",
-          "area": "云浮Xiadong Market片区",
-          "price": 99,
+          "hotel_id": "2200402",
+          "name": "金龙国际酒店",
+          "area": "云浮市区片区",
+          "price": 276,
           "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "云浮市区",
+          "note": "云浮市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         }
       ],
       "representative_hotels": [
-        "云浮逸途商務公寓"
+        "金龙国际酒店"
       ],
-      "rank": 8,
-      "summary": "1家高级酒店，0家降价，1家持平"
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 4
     },
     {
-      "area": "云浮Former Residence Of Dengfa片区",
+      "area": "云浮待确认片区",
       "hotel_count": 1,
       "discount_hotel_count": 0,
       "flat_hotel_count": 1,
-      "average_price": 102,
+      "average_price": 323,
       "average_diff": 0,
       "price_range": [
-        102,
-        102
+        323,
+        323
       ],
       "hotels": [
         {
-          "hotel_id": "3203681",
-          "name": "云浮欧亞商務酒店（市政府店）",
-          "area": "云浮Former Residence Of Dengfa片区",
-          "price": 102,
+          "hotel_id": "445883",
+          "name": "云浮碧桂园凤悦凤凰酒店",
+          "area": "云浮待确认片区",
+          "price": 323,
           "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "云浮待确认",
+          "note": "云浮待确认，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
         }
       ],
       "representative_hotels": [
-        "云浮欧亞商務酒店（市政府店）"
+        "云浮碧桂园凤悦凤凰酒店"
       ],
-      "rank": 9,
-      "summary": "1家高级酒店，0家降价，1家持平"
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 5
     },
     {
-      "area": "云浮Silao Town片区",
+      "area": "云浮云安片区",
       "hotel_count": 1,
       "discount_hotel_count": 0,
       "flat_hotel_count": 1,
-      "average_price": 229,
+      "average_price": 347,
       "average_diff": 0,
       "price_range": [
-        229,
-        229
+        347,
+        347
       ],
       "hotels": [
         {
-          "hotel_id": "23742172",
-          "name": "佛云国际酒店",
-          "area": "云浮Silao Town片区",
-          "price": 229,
+          "hotel_id": "122458846",
+          "name": "云浮云安凤悦假日酒店（云安区店）",
+          "area": "云浮云安片区",
+          "price": 347,
           "diff": 0,
-          "source_file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-          "source_cached_at": "2026-05-07T15:33:03"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:47:26+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "云浮云安",
+          "note": "云浮云安，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 4
         }
       ],
       "representative_hotels": [
-        "佛云国际酒店"
+        "云浮云安凤悦假日酒店（云安区店）"
       ],
-      "rank": 10,
-      "summary": "1家高级酒店，0家降价，1家持平"
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 6
     }
   ],
   "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
-    "matching_file_count": 3,
-    "candidate_count": 73,
-    "unique_hotel_count": 36,
-    "included_hotel_count": 30,
-    "matching_files": [
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 54,
+    "unique_hotel_count": 54,
+    "included_hotel_count": 8,
+    "excluded_hotel_count": 32,
+    "excluded_hotels": [
       {
-        "file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "mtime": 1778139183.225704,
-        "choices": 82,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "28025477",
+        "name": "天露山无忧谷酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "mtime": 1778059083.691803,
-        "choices": 6,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "1345461",
+        "name": "柏曼酒店（新兴汽車站店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "9b13867515147c870bbd0791053cef70b6609d94e58efe6b3a91d4a8588d1cef.json",
-        "mtime": 1778056748.577659,
-        "choices": 79,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
-      }
-    ]
-  },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 3,
-    "candidate_count": 73,
-    "unique_hotel_count": 36,
-    "included_hotel_count": 30,
-    "matching_files": [
-      {
-        "file": "d00e257096ab386ccf1e6b108c09d6b83abe913196222c6a34fd04586fd016bc.json",
-        "mtime": 1778139183.225704,
-        "choices": 82,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "1767274",
+        "name": "銘泉·輕竹酒店（云浮新兴汽車站筠城广场店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "948ff353fa472878e2b472b0bb80a715cee3fc78b19d4d0ad8a8dcb0af24cbb3.json",
-        "mtime": 1778059083.691803,
-        "choices": 6,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "818742",
+        "name": "Jinxiu Preferred Hotel (Yunfu City Government Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "9b13867515147c870bbd0791053cef70b6609d94e58efe6b3a91d4a8588d1cef.json",
-        "mtime": 1778056748.577659,
-        "choices": 79,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "114310294",
+        "name": "Happy Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "67723420",
+        "name": "云浮豪庭精品公寓",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "26579878",
+        "name": "云浮逸途商務公寓",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "2247759",
+        "name": "Jinshengyuan Business Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "810361",
+        "name": "Zuiranju Holiday Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2303868",
+        "name": "Yunxiang Business Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1593635",
+        "name": "Junyue Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2219287",
+        "name": "恒暉皇城酒店（云浮新兴汽車站筠城广场店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "819255",
+        "name": "Xin Zhuocheng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "69043015",
+        "name": "City Comfort Inn Yunfu Bus Station",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1767288",
+        "name": "新兴悦港酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "56383773",
+        "name": "Sidun Siji Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2103117",
+        "name": "花築·云浮金采萊酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "70914651",
+        "name": "罗定星际酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "4533382",
+        "name": "长州酒店（云浮益华广场蟠龙天湖店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "125208335",
+        "name": "云浮鴻鑫精品酒店（云浮吾悦广场店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "55207325",
+        "name": "云浮新兴翔顺君州酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "115651085",
+        "name": "Yunfu Xinxing XANA Deluxe Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "686124",
+        "name": "新兴悦和庄酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "122391036",
+        "name": "新兴筒顺酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "22816301",
+        "name": "金月湾酒店（筠城国际广场温氏科技园店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2239511",
+        "name": "龙湖岛大酒店（德庆龙母大街店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2601965",
+        "name": "南湾国际酒店（云浮汽车总站蟠龙天湖店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1434946",
+        "name": "维也纳国际酒店（云浮市中心益华广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "23742172",
+        "name": "佛云国际酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "16194789",
+        "name": "维也纳国际酒店（新兴新城市广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133585005",
+        "name": "罗定瀧喜大酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "101041347",
+        "name": "维也纳国际酒店（云浮体育公园店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
       }
     ],
-    "source": "search_cache"
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:47:26+08:00",
+        "choices": 54,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 161.6
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:50:42+08:00",
+        "choices": 8,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 195.8
+      }
+    ],
+    "area_count": 6,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
   },
-  "city_wikipedia_intro": {
-    "city": "云浮",
-    "text": "云浮可重点看国恩寺、蟠龙洞、天露山和六祖故里旅游度假区；禅文化、山地自然和温泉休闲适合周边短途。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/云浮",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 54,
+    "unique_hotel_count": 54,
+    "included_hotel_count": 8,
+    "excluded_hotel_count": 32,
+    "excluded_hotels": [
+      {
+        "hotel_id": "28025477",
+        "name": "天露山无忧谷酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1345461",
+        "name": "柏曼酒店（新兴汽車站店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1767274",
+        "name": "銘泉·輕竹酒店（云浮新兴汽車站筠城广场店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "818742",
+        "name": "Jinxiu Preferred Hotel (Yunfu City Government Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "114310294",
+        "name": "Happy Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "67723420",
+        "name": "云浮豪庭精品公寓",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "26579878",
+        "name": "云浮逸途商務公寓",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "2247759",
+        "name": "Jinshengyuan Business Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "810361",
+        "name": "Zuiranju Holiday Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2303868",
+        "name": "Yunxiang Business Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1593635",
+        "name": "Junyue Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2219287",
+        "name": "恒暉皇城酒店（云浮新兴汽車站筠城广场店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "819255",
+        "name": "Xin Zhuocheng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "69043015",
+        "name": "City Comfort Inn Yunfu Bus Station",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1767288",
+        "name": "新兴悦港酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "56383773",
+        "name": "Sidun Siji Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2103117",
+        "name": "花築·云浮金采萊酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "70914651",
+        "name": "罗定星际酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "4533382",
+        "name": "长州酒店（云浮益华广场蟠龙天湖店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "125208335",
+        "name": "云浮鴻鑫精品酒店（云浮吾悦广场店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "55207325",
+        "name": "云浮新兴翔顺君州酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "115651085",
+        "name": "Yunfu Xinxing XANA Deluxe Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "686124",
+        "name": "新兴悦和庄酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "122391036",
+        "name": "新兴筒顺酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "22816301",
+        "name": "金月湾酒店（筠城国际广场温氏科技园店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2239511",
+        "name": "龙湖岛大酒店（德庆龙母大街店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2601965",
+        "name": "南湾国际酒店（云浮汽车总站蟠龙天湖店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1434946",
+        "name": "维也纳国际酒店（云浮市中心益华广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "23742172",
+        "name": "佛云国际酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "16194789",
+        "name": "维也纳国际酒店（新兴新城市广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133585005",
+        "name": "罗定瀧喜大酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "101041347",
+        "name": "维也纳国际酒店（云浮体育公园店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:47:26+08:00",
+        "choices": 54,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 161.6
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:50:42+08:00",
+        "choices": 8,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 195.8
+      }
+    ],
+    "area_count": 6,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
+  },
+  "city_wikipedia_intro": "云浮可重点看国恩寺、蟠龙洞、天露山和六祖故里旅游度假区；禅文化、山地自然和温泉休闲适合周边短途。"
 }

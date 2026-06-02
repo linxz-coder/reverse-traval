@@ -1,597 +1,142 @@
 {
   "city": "韶关",
-  "generated_at": "2026-05-12T12:24:35",
+  "generated_at": "2026-05-22T15:16:04",
   "lists": {
     "star_no_rise": [
-      {
-        "hotel_id": "63434975",
-        "name": "宜捷酒店",
-        "area": "韶关待确认片区",
-        "price": 80,
-        "diff": -20,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "3122317",
-        "name": "华汇通酒店（武江区店）",
-        "area": "韶关市区片区",
-        "price": 104,
-        "diff": -10,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "5797260",
-        "name": "广和商務酒店（韶关風采實驗学校店）",
-        "area": "韶关待确认片区",
-        "price": 115,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1046635",
-        "name": "和园 · 精品酒店（韶关高铁站店）",
-        "area": "韶关市区片区",
-        "price": 118,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1066094",
-        "name": "德源酒店（韶关南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 126,
-        "diff": 0,
-        "source_file": "7b7961f565f9ac0525aabc0a005b673a60003d7a3e0b41d056920aebd7b846c6.json",
-        "source_cached_at": "2026-05-07T15:54:33",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "96201972",
-        "name": "芸枫酒店（韶关南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 135,
-        "diff": -36,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "1050333",
-        "name": "城市便捷酒店（韶关高铁站西联考场店）",
-        "area": "韶关市区片区",
-        "price": 143,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "116696181",
-        "name": "都市花园酒店（韶关曲江店）",
-        "area": "韶关曲江片区",
-        "price": 148,
-        "diff": -177,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关曲江",
-        "note": "韶关曲江，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "1767742",
-        "name": "城市便捷酒店（韶关东站百年东街店）",
-        "area": "韶关市区片区",
-        "price": 149,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1639708",
-        "name": "韶关圣藍酒店（西河体育中心店）",
-        "area": "韶关待确认片区",
-        "price": 155,
-        "diff": -4,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午每晚含税均价低于平日代表价。"
-      }
-    ],
-    "star_no_rise_all": [
-      {
-        "hotel_id": "63434975",
-        "name": "宜捷酒店",
-        "area": "韶关待确认片区",
-        "price": 80,
-        "diff": -20,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "3122317",
-        "name": "华汇通酒店（武江区店）",
-        "area": "韶关市区片区",
-        "price": 104,
-        "diff": -10,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "5797260",
-        "name": "广和商務酒店（韶关風采實驗学校店）",
-        "area": "韶关待确认片区",
-        "price": 115,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1046635",
-        "name": "和园 · 精品酒店（韶关高铁站店）",
-        "area": "韶关市区片区",
-        "price": 118,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1066094",
-        "name": "德源酒店（韶关南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 126,
-        "diff": 0,
-        "source_file": "7b7961f565f9ac0525aabc0a005b673a60003d7a3e0b41d056920aebd7b846c6.json",
-        "source_cached_at": "2026-05-07T15:54:33",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "96201972",
-        "name": "芸枫酒店（韶关南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 135,
-        "diff": -36,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "1050333",
-        "name": "城市便捷酒店（韶关高铁站西联考场店）",
-        "area": "韶关市区片区",
-        "price": 143,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "116696181",
-        "name": "都市花园酒店（韶关曲江店）",
-        "area": "韶关曲江片区",
-        "price": 148,
-        "diff": -177,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关曲江",
-        "note": "韶关曲江，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "1767742",
-        "name": "城市便捷酒店（韶关东站百年东街店）",
-        "area": "韶关市区片区",
-        "price": 149,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1639708",
-        "name": "韶关圣藍酒店（西河体育中心店）",
-        "area": "韶关待确认片区",
-        "price": 155,
-        "diff": -4,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "72816350",
-        "name": "如家商旅酒店（韶关百年东街風采楼店）",
-        "area": "韶关市区片区",
-        "price": 156,
-        "diff": -3,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "2988187",
-        "name": "韶关佳缘旅馆（南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 158,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "99041026",
-        "name": "顺发民宿",
-        "area": "韶关待确认片区",
-        "price": 158,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "56357210",
-        "name": "维也纳国际酒店（韶关高铁站店）",
-        "area": "韶关市区片区",
-        "price": 166,
-        "diff": -4,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "48534703",
-        "name": "H·品酒店（韶关曲江旗艦店）",
-        "area": "韶关曲江片区",
-        "price": 173,
-        "diff": -7,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关曲江",
-        "note": "韶关曲江，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "25485112",
-        "name": "维也纳国际酒店·韶关佰旺广场近水楼台店",
-        "area": "韶关待确认片区",
-        "price": 175,
-        "diff": -13,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "130930179",
-        "name": "丽庭酒店（韶关曲江店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 176,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "66872275",
-        "name": "宜和 · 精品酒店（韶关沙洲尾店）",
-        "area": "韶关待确认片区",
-        "price": 178,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1748496",
-        "name": "嘉华商務酒店（韶关东站森林公园店）",
-        "area": "韶关待确认片区",
-        "price": 182,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "2301048",
-        "name": "柏曼酒店（韶关百年东街風采楼店）",
-        "area": "韶关市区片区",
-        "price": 185,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "110599704",
-        "name": "城市便捷酒店（韶关沙洲尾碧水花城店）",
-        "area": "韶关待确认片区",
-        "price": 192,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "1812724",
-        "name": "H·品酒店（韶关西河体育中心店）",
-        "area": "韶关待确认片区",
-        "price": 198,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "27174194",
-        "name": "山水靜苑（韶关南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 202,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "85542078",
-        "name": "丽枫酒店（韶关摩尔城店）",
-        "area": "韶关市区片区",
-        "price": 208,
-        "diff": -5,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "67854779",
-        "name": "丽枫酒店（韶关高铁站店）",
-        "area": "韶关市区片区",
-        "price": 221,
-        "diff": -2,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施，适合亲子短途。"
-      },
       {
         "hotel_id": "535517",
         "name": "韶关萊斯大酒店",
         "area": "韶关待确认片区",
-        "price": 224,
-        "diff": -2,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "price": 198,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": false,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备泳池，适合短途度假。"
+        "display_area": "韶关待确认",
+        "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "127503629",
         "name": "美豪丽致酒店（韶关曲江南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 226,
+        "area": "韶关曲江片区",
+        "price": 209,
         "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "韶关曲江",
+        "note": "韶关曲江，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "133534842",
-        "name": "韶关君逸安澜酒店",
-        "area": "韶关待确认片区",
-        "price": 226,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
+        "hotel_id": "123094216",
+        "name": "维也纳国际酒店（韶关高铁站广场店）",
+        "area": "韶关高铁站片区",
+        "price": 222,
+        "diff": -7,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
         "pool": false,
         "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "韶关高铁站",
+        "note": "韶关高铁站，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "78349298",
-        "name": "乳源遇見·過山瑤酒店",
-        "area": "韶关乳源大峡谷片区",
-        "price": 230,
-        "diff": -29,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关乳源大峡谷",
-        "note": "韶关乳源大峡谷，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "85901397",
-        "name": "拳头電競酒店（韶关礦山公园摩尔城店）",
+        "hotel_id": "54386073",
+        "name": "曼哈顿国际酒店",
         "area": "韶关市区片区",
-        "price": 236,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "price": 223,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
         "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "110902388",
-        "name": "全季酒店（韶关站店）",
+        "hotel_id": "731075",
+        "name": "乐昌碧桂园凤凰酒店",
+        "area": "韶关乐昌片区",
+        "price": 228,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "韶关乐昌",
+        "note": "韶关乐昌，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "128563166",
+        "name": "韶关万豪酒店",
         "area": "韶关市区片区",
-        "price": 267,
-        "diff": -60,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "price": 234,
+        "diff": -38,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "969585",
+        "name": "华城国际酒店",
+        "area": "韶关市区片区",
+        "price": 242,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
         "display_area": "韶关市区",
-        "note": "韶关市区，端午每晚含税均价低于平日代表价。"
+        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "437261",
         "name": "韶关曹溪温泉假日度假村",
-        "area": "韶关南华寺曹溪片区",
-        "price": 268,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "area": "韶关曲江片区",
+        "price": 266,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "韶关曲江",
+        "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "23652918",
+        "name": "韶关摩尔城假日酒店",
+        "area": "韶关武江片区",
+        "price": 271,
+        "diff": -96,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "韶关武江",
+        "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "1546242",
@@ -599,41 +144,181 @@
         "area": "韶关待确认片区",
         "price": 284,
         "diff": -8,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": true,
         "pool": false,
         "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备儿童设施，适合亲子短途。"
-      },
+        "display_area": "韶关待确认",
+        "note": "韶关待确认，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      }
+    ],
+    "star_no_rise_all": [
       {
-        "hotel_id": "1111499",
-        "name": "韶关凯悦酒店",
+        "hotel_id": "535517",
+        "name": "韶关萊斯大酒店",
         "area": "韶关待确认片区",
-        "price": 294,
+        "price": 198,
         "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": true,
         "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备儿童设施，适合亲子短途。"
+        "display_area": "韶关待确认",
+        "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "4630133",
-        "name": "丹霞山烏有·同金寨",
-        "area": "韶关丹霞山片区",
-        "price": 298,
+        "hotel_id": "127503629",
+        "name": "美豪丽致酒店（韶关曲江南华寺店）",
+        "area": "韶关曲江片区",
+        "price": 209,
         "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关曲江",
+        "note": "韶关曲江，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "123094216",
+        "name": "维也纳国际酒店（韶关高铁站广场店）",
+        "area": "韶关高铁站片区",
+        "price": 222,
+        "diff": -7,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": true,
         "pool": false,
         "advanced": true,
-        "display_area": "韶关丹霞山",
-        "note": "韶关丹霞山，具备儿童设施，适合亲子短途。"
+        "display_area": "韶关高铁站",
+        "note": "韶关高铁站，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "54386073",
+        "name": "曼哈顿国际酒店",
+        "area": "韶关市区片区",
+        "price": 223,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "731075",
+        "name": "乐昌碧桂园凤凰酒店",
+        "area": "韶关乐昌片区",
+        "price": 228,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "韶关乐昌",
+        "note": "韶关乐昌，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "128563166",
+        "name": "韶关万豪酒店",
+        "area": "韶关市区片区",
+        "price": 234,
+        "diff": -38,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "969585",
+        "name": "华城国际酒店",
+        "area": "韶关市区片区",
+        "price": 242,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "437261",
+        "name": "韶关曹溪温泉假日度假村",
+        "area": "韶关曲江片区",
+        "price": 266,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "韶关曲江",
+        "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "23652918",
+        "name": "韶关摩尔城假日酒店",
+        "area": "韶关武江片区",
+        "price": 271,
+        "diff": -96,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "韶关武江",
+        "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1546242",
+        "name": "韶关汇展酒店",
+        "area": "韶关待确认片区",
+        "price": 284,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关待确认",
+        "note": "韶关待确认，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "437260",
+        "name": "韶关碧桂园凤凰酒店（百年东街店）",
+        "area": "韶关市区片区",
+        "price": 298,
+        "diff": -84,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       },
       {
         "hotel_id": "79647620",
@@ -641,55 +326,29 @@
         "area": "韶关市区片区",
         "price": 298,
         "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
         "display_area": "韶关市区",
-        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
+        "note": "韶关市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "72222560",
-        "name": "韶关南华雅苑酒店",
-        "area": "韶关南华寺曹溪片区",
-        "price": 299,
-        "diff": -41,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "80625553",
-        "name": "宜尚酒店（韶关大学路店）",
-        "area": "韶关待确认片区",
-        "price": 299,
-        "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "23652918",
-        "name": "韶关摩尔城假日酒店",
+        "hotel_id": "1711986",
+        "name": "韶关碧桂园太阳城凤凰酒店",
         "area": "韶关市区片区",
-        "price": 323,
-        "diff": -57,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "price": 321,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": true,
-        "pool": true,
+        "pool": false,
         "advanced": true,
         "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施和泳池，适合亲子短途。"
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       },
       {
         "hotel_id": "2173243",
@@ -697,27 +356,14 @@
         "area": "韶关待确认片区",
         "price": 328,
         "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": true,
         "pool": false,
         "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "437260",
-        "name": "韶关碧桂园凤凰酒店（百年东街店）",
-        "area": "韶关市区片区",
-        "price": 338,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，具备泳池，适合短途度假。"
+        "display_area": "韶关待确认",
+        "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "458382",
@@ -725,734 +371,639 @@
         "area": "韶关待确认片区",
         "price": 377,
         "diff": 0,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": false,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备泳池，适合短途度假。"
-      },
-      {
-        "hotel_id": "132010602",
-        "name": "韶关韶州城假日酒店",
-        "area": "韶关南华寺曹溪片区",
-        "price": 389,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "82251272",
-        "name": "韶关丹霞靈溪阁民宿",
-        "area": "韶关丹霞山片区",
-        "price": 480,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关丹霞山",
-        "note": "韶关丹霞山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "60990225",
-        "name": "韶关丹霞丰源温泉酒店",
-        "area": "韶关丹霞山片区",
-        "price": 579,
-        "diff": 0,
-        "source_file": "153a0b6889da39748bddfb222bad91c24dba991c003827110813a2cc0f008673.json",
-        "source_cached_at": "2026-05-06T16:36:49",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关丹霞山",
-        "note": "韶关丹霞山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "124122127",
-        "name": "菩樹山舍民宿（南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 698,
-        "diff": -38,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，具备泳池，适合短途度假。"
+        "display_area": "韶关待确认",
+        "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 5
       }
     ],
     "family_no_rise": [
       {
-        "hotel_id": "437261",
-        "name": "韶关曹溪温泉假日度假村",
-        "area": "韶关南华寺曹溪片区",
-        "price": 268,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
         "hotel_id": "23652918",
         "name": "韶关摩尔城假日酒店",
-        "area": "韶关市区片区",
-        "price": 323,
-        "diff": -57,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "area": "韶关武江片区",
+        "price": 271,
+        "diff": -96,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:39:19+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "韶关武江",
+        "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "82251272",
-        "name": "韶关丹霞靈溪阁民宿",
-        "area": "韶关丹霞山片区",
-        "price": 480,
+        "hotel_id": "437261",
+        "name": "韶关曹溪温泉假日度假村",
+        "area": "韶关曲江片区",
+        "price": 273,
         "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:39:19+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关丹霞山",
-        "note": "韶关丹霞山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "60990225",
-        "name": "韶关丹霞丰源温泉酒店",
-        "area": "韶关丹霞山片区",
-        "price": 579,
-        "diff": 0,
-        "source_file": "153a0b6889da39748bddfb222bad91c24dba991c003827110813a2cc0f008673.json",
-        "source_cached_at": "2026-05-06T16:36:49",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关丹霞山",
-        "note": "韶关丹霞山，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "韶关曲江",
+        "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       }
     ],
     "family_no_rise_all": [
       {
-        "hotel_id": "437261",
-        "name": "韶关曹溪温泉假日度假村",
-        "area": "韶关南华寺曹溪片区",
-        "price": 268,
-        "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
         "hotel_id": "23652918",
         "name": "韶关摩尔城假日酒店",
-        "area": "韶关市区片区",
-        "price": 323,
-        "diff": -57,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "area": "韶关武江片区",
+        "price": 271,
+        "diff": -96,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:39:19+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "韶关武江",
+        "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "82251272",
-        "name": "韶关丹霞靈溪阁民宿",
-        "area": "韶关丹霞山片区",
-        "price": 480,
+        "hotel_id": "437261",
+        "name": "韶关曹溪温泉假日度假村",
+        "area": "韶关曲江片区",
+        "price": 273,
         "diff": 0,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:39:19+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关丹霞山",
-        "note": "韶关丹霞山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "60990225",
-        "name": "韶关丹霞丰源温泉酒店",
-        "area": "韶关丹霞山片区",
-        "price": 579,
-        "diff": 0,
-        "source_file": "153a0b6889da39748bddfb222bad91c24dba991c003827110813a2cc0f008673.json",
-        "source_cached_at": "2026-05-06T16:36:49",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关丹霞山",
-        "note": "韶关丹霞山，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "韶关曲江",
+        "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       }
     ],
     "discount_star": [
       {
-        "hotel_id": "116696181",
-        "name": "都市花园酒店（韶关曲江店）",
-        "area": "韶关曲江片区",
-        "price": 148,
-        "diff": -177,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关曲江",
-        "note": "韶关曲江，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "110902388",
-        "name": "全季酒店（韶关站店）",
-        "area": "韶关市区片区",
-        "price": 267,
-        "diff": -60,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，端午每晚含税均价低于平日代表价。"
-      },
-      {
         "hotel_id": "23652918",
         "name": "韶关摩尔城假日酒店",
-        "area": "韶关市区片区",
-        "price": 323,
-        "diff": -57,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "area": "韶关武江片区",
+        "price": 271,
+        "diff": -96,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "韶关武江",
+        "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "72222560",
-        "name": "韶关南华雅苑酒店",
-        "area": "韶关南华寺曹溪片区",
-        "price": 299,
-        "diff": -41,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "hotel_id": "437260",
+        "name": "韶关碧桂园凤凰酒店（百年东街店）",
+        "area": "韶关市区片区",
+        "price": 298,
+        "diff": -84,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": false,
-        "pool": false,
+        "pool": true,
         "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       },
       {
-        "hotel_id": "124122127",
-        "name": "菩樹山舍民宿（南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 698,
+        "hotel_id": "128563166",
+        "name": "韶关万豪酒店",
+        "area": "韶关市区片区",
+        "price": 234,
         "diff": -38,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
-        "pool": true,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，具备泳池，适合短途度假。"
-      },
-      {
-        "hotel_id": "96201972",
-        "name": "芸枫酒店（韶关南华寺店）",
-        "area": "韶关南华寺曹溪片区",
-        "price": 135,
-        "diff": -36,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关南华寺曹溪",
-        "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "78349298",
-        "name": "乳源遇見·過山瑤酒店",
-        "area": "韶关乳源大峡谷片区",
-        "price": 230,
-        "diff": -29,
-        "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "source_cached_at": "2026-05-11T17:53:29",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关乳源大峡谷",
-        "note": "韶关乳源大峡谷，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "63434975",
-        "name": "宜捷酒店",
-        "area": "韶关待确认片区",
-        "price": 80,
-        "diff": -20,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "25485112",
-        "name": "维也纳国际酒店·韶关佰旺广场近水楼台店",
-        "area": "韶关待确认片区",
-        "price": 175,
-        "diff": -13,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "韶关",
-        "note": "韶关，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "3122317",
-        "name": "华汇通酒店（武江区店）",
-        "area": "韶关市区片区",
-        "price": 104,
-        "diff": -10,
-        "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "source_cached_at": "2026-05-11T18:00:11",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
         "child": true,
         "pool": false,
         "advanced": true,
         "display_area": "韶关市区",
-        "note": "韶关市区，具备儿童设施，适合亲子短途。"
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1546242",
+        "name": "韶关汇展酒店",
+        "area": "韶关待确认片区",
+        "price": 284,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关待确认",
+        "note": "韶关待确认，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1711986",
+        "name": "韶关碧桂园太阳城凤凰酒店",
+        "area": "韶关市区片区",
+        "price": 321,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "123094216",
+        "name": "维也纳国际酒店（韶关高铁站广场店）",
+        "area": "韶关高铁站片区",
+        "price": 222,
+        "diff": -7,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关高铁站",
+        "note": "韶关高铁站，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "437261",
+        "name": "韶关曹溪温泉假日度假村",
+        "area": "韶关曲江片区",
+        "price": 266,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "韶关曲江",
+        "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "54386073",
+        "name": "曼哈顿国际酒店",
+        "area": "韶关市区片区",
+        "price": 223,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:38:13+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "韶关市区",
+        "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       }
     ]
   },
   "latest_city_rank": [
     {
-      "hotel_id": "63434975",
-      "name": "宜捷酒店",
+      "hotel_id": "535517",
+      "name": "韶关萊斯大酒店",
       "area": "韶关待确认片区",
-      "price": 80,
-      "diff": -20,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关",
-      "note": "韶关，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "3122317",
-      "name": "华汇通酒店（武江区店）",
-      "area": "韶关市区片区",
-      "price": 104,
-      "diff": -10,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": true,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关市区",
-      "note": "韶关市区，具备儿童设施，适合亲子短途。"
-    },
-    {
-      "hotel_id": "5797260",
-      "name": "广和商務酒店（韶关風采實驗学校店）",
-      "area": "韶关待确认片区",
-      "price": 115,
+      "price": 198,
       "diff": 0,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
       "child": false,
-      "pool": false,
+      "pool": true,
       "advanced": true,
-      "display_area": "韶关",
-      "note": "韶关，端午价格保持平稳，适合周边短途度假。"
+      "display_area": "韶关待确认",
+      "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "1046635",
-      "name": "和园 · 精品酒店（韶关高铁站店）",
-      "area": "韶关市区片区",
-      "price": 118,
-      "diff": 0,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关市区",
-      "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "1066094",
-      "name": "德源酒店（韶关南华寺店）",
-      "area": "韶关南华寺曹溪片区",
-      "price": 126,
-      "diff": 0,
-      "source_file": "7b7961f565f9ac0525aabc0a005b673a60003d7a3e0b41d056920aebd7b846c6.json",
-      "source_cached_at": "2026-05-07T15:54:33",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关南华寺曹溪",
-      "note": "韶关南华寺曹溪，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "96201972",
-      "name": "芸枫酒店（韶关南华寺店）",
-      "area": "韶关南华寺曹溪片区",
-      "price": 135,
-      "diff": -36,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关南华寺曹溪",
-      "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "1050333",
-      "name": "城市便捷酒店（韶关高铁站西联考场店）",
-      "area": "韶关市区片区",
-      "price": 143,
-      "diff": 0,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关市区",
-      "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "116696181",
-      "name": "都市花园酒店（韶关曲江店）",
+      "hotel_id": "127503629",
+      "name": "美豪丽致酒店（韶关曲江南华寺店）",
       "area": "韶关曲江片区",
-      "price": 148,
-      "diff": -177,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": true,
+      "price": 209,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": false,
       "pool": false,
       "advanced": true,
       "display_area": "韶关曲江",
-      "note": "韶关曲江，具备儿童设施，适合亲子短途。"
+      "note": "韶关曲江，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "1767742",
-      "name": "城市便捷酒店（韶关东站百年东街店）",
-      "area": "韶关市区片区",
-      "price": 149,
-      "diff": 0,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关市区",
-      "note": "韶关市区，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "1639708",
-      "name": "韶关圣藍酒店（西河体育中心店）",
-      "area": "韶关待确认片区",
-      "price": 155,
-      "diff": -4,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关",
-      "note": "韶关，端午每晚含税均价低于平日代表价。"
-    }
-  ],
-  "latest_discount_rank": [
-    {
-      "hotel_id": "116696181",
-      "name": "都市花园酒店（韶关曲江店）",
-      "area": "韶关曲江片区",
-      "price": 148,
-      "diff": -177,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
+      "hotel_id": "123094216",
+      "name": "维也纳国际酒店（韶关高铁站广场店）",
+      "area": "韶关高铁站片区",
+      "price": 222,
+      "diff": -7,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
       "child": true,
       "pool": false,
       "advanced": true,
-      "display_area": "韶关曲江",
-      "note": "韶关曲江，具备儿童设施，适合亲子短途。"
+      "display_area": "韶关高铁站",
+      "note": "韶关高铁站，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "110902388",
-      "name": "全季酒店（韶关站店）",
+      "hotel_id": "54386073",
+      "name": "曼哈顿国际酒店",
       "area": "韶关市区片区",
-      "price": 267,
-      "diff": -60,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
+      "price": 223,
+      "diff": -1,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
       "display_area": "韶关市区",
-      "note": "韶关市区，端午每晚含税均价低于平日代表价。"
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "731075",
+      "name": "乐昌碧桂园凤凰酒店",
+      "area": "韶关乐昌片区",
+      "price": 228,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "韶关乐昌",
+      "note": "韶关乐昌，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "128563166",
+      "name": "韶关万豪酒店",
+      "area": "韶关市区片区",
+      "price": 234,
+      "diff": -38,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "969585",
+      "name": "华城国际酒店",
+      "area": "韶关市区片区",
+      "price": 242,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "437261",
+      "name": "韶关曹溪温泉假日度假村",
+      "area": "韶关曲江片区",
+      "price": 266,
+      "diff": -5,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "韶关曲江",
+      "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
     },
     {
       "hotel_id": "23652918",
       "name": "韶关摩尔城假日酒店",
-      "area": "韶关市区片区",
-      "price": 323,
-      "diff": -57,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
+      "area": "韶关武江片区",
+      "price": 271,
+      "diff": -96,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
       "child": true,
       "pool": true,
       "advanced": true,
-      "display_area": "韶关市区",
-      "note": "韶关市区，具备儿童设施和泳池，适合亲子短途。"
+      "display_area": "韶关武江",
+      "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "72222560",
-      "name": "韶关南华雅苑酒店",
-      "area": "韶关南华寺曹溪片区",
-      "price": 299,
-      "diff": -41,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
+      "hotel_id": "1546242",
+      "name": "韶关汇展酒店",
+      "area": "韶关待确认片区",
+      "price": 284,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关待确认",
+      "note": "韶关待确认，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "437260",
+      "name": "韶关碧桂园凤凰酒店（百年东街店）",
+      "area": "韶关市区片区",
+      "price": 298,
+      "diff": -84,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "79647620",
+      "name": "韶关印雪酒店（高铁站店）",
+      "area": "韶关市区片区",
+      "price": 298,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "韶关南华寺曹溪",
-      "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "124122127",
-      "name": "菩樹山舍民宿（南华寺店）",
-      "area": "韶关南华寺曹溪片区",
-      "price": 698,
+      "hotel_id": "1711986",
+      "name": "韶关碧桂园太阳城凤凰酒店",
+      "area": "韶关市区片区",
+      "price": 321,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "2173243",
+      "name": "韶关荷花园酒店",
+      "area": "韶关待确认片区",
+      "price": 328,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关待确认",
+      "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "458382",
+      "name": "韶关風度华美达广场酒店",
+      "area": "韶关待确认片区",
+      "price": 377,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "韶关待确认",
+      "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 5
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "23652918",
+      "name": "韶关摩尔城假日酒店",
+      "area": "韶关武江片区",
+      "price": 271,
+      "diff": -96,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "韶关武江",
+      "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "437260",
+      "name": "韶关碧桂园凤凰酒店（百年东街店）",
+      "area": "韶关市区片区",
+      "price": 298,
+      "diff": -84,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "128563166",
+      "name": "韶关万豪酒店",
+      "area": "韶关市区片区",
+      "price": 234,
       "diff": -38,
-      "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-      "source_cached_at": "2026-05-11T17:53:29",
-      "child": false,
-      "pool": true,
-      "advanced": true,
-      "display_area": "韶关南华寺曹溪",
-      "note": "韶关南华寺曹溪，具备泳池，适合短途度假。"
-    },
-    {
-      "hotel_id": "96201972",
-      "name": "芸枫酒店（韶关南华寺店）",
-      "area": "韶关南华寺曹溪片区",
-      "price": 135,
-      "diff": -36,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关南华寺曹溪",
-      "note": "韶关南华寺曹溪，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "78349298",
-      "name": "乳源遇見·過山瑤酒店",
-      "area": "韶关乳源大峡谷片区",
-      "price": 230,
-      "diff": -29,
-      "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-      "source_cached_at": "2026-05-11T17:53:29",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关乳源大峡谷",
-      "note": "韶关乳源大峡谷，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "63434975",
-      "name": "宜捷酒店",
-      "area": "韶关待确认片区",
-      "price": 80,
-      "diff": -20,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关",
-      "note": "韶关，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "25485112",
-      "name": "维也纳国际酒店·韶关佰旺广场近水楼台店",
-      "area": "韶关待确认片区",
-      "price": 175,
-      "diff": -13,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
-      "child": true,
-      "pool": false,
-      "advanced": true,
-      "display_area": "韶关",
-      "note": "韶关，具备儿童设施，适合亲子短途。"
-    },
-    {
-      "hotel_id": "3122317",
-      "name": "华汇通酒店（武江区店）",
-      "area": "韶关市区片区",
-      "price": 104,
-      "diff": -10,
-      "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-      "source_cached_at": "2026-05-11T18:00:11",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
       "child": true,
       "pool": false,
       "advanced": true,
       "display_area": "韶关市区",
-      "note": "韶关市区，具备儿童设施，适合亲子短途。"
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "1546242",
+      "name": "韶关汇展酒店",
+      "area": "韶关待确认片区",
+      "price": 284,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关待确认",
+      "note": "韶关待确认，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "1711986",
+      "name": "韶关碧桂园太阳城凤凰酒店",
+      "area": "韶关市区片区",
+      "price": 321,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "123094216",
+      "name": "维也纳国际酒店（韶关高铁站广场店）",
+      "area": "韶关高铁站片区",
+      "price": 222,
+      "diff": -7,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关高铁站",
+      "note": "韶关高铁站，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "437261",
+      "name": "韶关曹溪温泉假日度假村",
+      "area": "韶关曲江片区",
+      "price": 266,
+      "diff": -5,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "韶关曲江",
+      "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "54386073",
+      "name": "曼哈顿国际酒店",
+      "area": "韶关市区片区",
+      "price": 223,
+      "diff": -1,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:38:13+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "韶关市区",
+      "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
     }
   ],
   "area_region_rank": [
     {
       "area": "韶关市区片区",
-      "hotel_count": 14,
-      "discount_hotel_count": 7,
-      "flat_hotel_count": 7,
-      "average_price": 208,
-      "average_diff": -10,
+      "hotel_count": 6,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 2,
+      "average_price": 269,
+      "average_diff": -22,
       "price_range": [
-        104,
-        338
+        223,
+        321
       ],
       "hotels": [
         {
-          "hotel_id": "110902388",
-          "name": "全季酒店（韶关站店）",
+          "hotel_id": "437260",
+          "name": "韶关碧桂园凤凰酒店（百年东街店）",
           "area": "韶关市区片区",
-          "price": 267,
-          "diff": -60,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "price": 298,
+          "diff": -84,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "韶关市区",
+          "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
         },
         {
-          "hotel_id": "23652918",
-          "name": "韶关摩尔城假日酒店",
+          "hotel_id": "128563166",
+          "name": "韶关万豪酒店",
           "area": "韶关市区片区",
-          "price": 323,
-          "diff": -57,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "price": 234,
+          "diff": -38,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关市区",
+          "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
         },
         {
-          "hotel_id": "3122317",
-          "name": "华汇通酒店（武江区店）",
+          "hotel_id": "1711986",
+          "name": "韶关碧桂园太阳城凤凰酒店",
           "area": "韶关市区片区",
-          "price": 104,
-          "diff": -10,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "price": 321,
+          "diff": -8,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关市区",
+          "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
         },
         {
-          "hotel_id": "85542078",
-          "name": "丽枫酒店（韶关摩尔城店）",
+          "hotel_id": "54386073",
+          "name": "曼哈顿国际酒店",
           "area": "韶关市区片区",
-          "price": 208,
-          "diff": -5,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "price": 223,
+          "diff": -1,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关市区",
+          "note": "韶关市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
         },
         {
-          "hotel_id": "56357210",
-          "name": "维也纳国际酒店（韶关高铁站店）",
+          "hotel_id": "969585",
+          "name": "华城国际酒店",
           "area": "韶关市区片区",
-          "price": 166,
-          "diff": -4,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "72816350",
-          "name": "如家商旅酒店（韶关百年东街風采楼店）",
-          "area": "韶关市区片区",
-          "price": 156,
-          "diff": -3,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "67854779",
-          "name": "丽枫酒店（韶关高铁站店）",
-          "area": "韶关市区片区",
-          "price": 221,
-          "diff": -2,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "1046635",
-          "name": "和园 · 精品酒店（韶关高铁站店）",
-          "area": "韶关市区片区",
-          "price": 118,
+          "price": 242,
           "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "1050333",
-          "name": "城市便捷酒店（韶关高铁站西联考场店）",
-          "area": "韶关市区片区",
-          "price": 143,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "1767742",
-          "name": "城市便捷酒店（韶关东站百年东街店）",
-          "area": "韶关市区片区",
-          "price": 149,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "2301048",
-          "name": "柏曼酒店（韶关百年东街風采楼店）",
-          "area": "韶关市区片区",
-          "price": 185,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "85901397",
-          "name": "拳头電競酒店（韶关礦山公园摩尔城店）",
-          "area": "韶关市区片区",
-          "price": 236,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关市区",
+          "note": "韶关市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         },
         {
           "hotel_id": "79647620",
@@ -1460,389 +1011,65 @@
           "area": "韶关市区片区",
           "price": 298,
           "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "437260",
-          "name": "韶关碧桂园凤凰酒店（百年东街店）",
-          "area": "韶关市区片区",
-          "price": 338,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关市区",
+          "note": "韶关市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         }
       ],
       "representative_hotels": [
-        "全季酒店（韶关站店）",
-        "韶关摩尔城假日酒店",
-        "华汇通酒店（武江区店）"
+        "韶关碧桂园凤凰酒店（百年东街店）",
+        "韶关万豪酒店",
+        "韶关碧桂园太阳城凤凰酒店"
       ],
-      "rank": 1,
-      "summary": "14家高级酒店，7家降价，7家持平"
-    },
-    {
-      "area": "韶关南华寺曹溪片区",
-      "hotel_count": 10,
-      "discount_hotel_count": 3,
-      "flat_hotel_count": 7,
-      "average_price": 268,
-      "average_diff": -12,
-      "price_range": [
-        126,
-        698
-      ],
-      "hotels": [
-        {
-          "hotel_id": "72222560",
-          "name": "韶关南华雅苑酒店",
-          "area": "韶关南华寺曹溪片区",
-          "price": 299,
-          "diff": -41,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "124122127",
-          "name": "菩樹山舍民宿（南华寺店）",
-          "area": "韶关南华寺曹溪片区",
-          "price": 698,
-          "diff": -38,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "96201972",
-          "name": "芸枫酒店（韶关南华寺店）",
-          "area": "韶关南华寺曹溪片区",
-          "price": 135,
-          "diff": -36,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "1066094",
-          "name": "德源酒店（韶关南华寺店）",
-          "area": "韶关南华寺曹溪片区",
-          "price": 126,
-          "diff": 0,
-          "source_file": "7b7961f565f9ac0525aabc0a005b673a60003d7a3e0b41d056920aebd7b846c6.json",
-          "source_cached_at": "2026-05-07T15:54:33"
-        },
-        {
-          "hotel_id": "2988187",
-          "name": "韶关佳缘旅馆（南华寺店）",
-          "area": "韶关南华寺曹溪片区",
-          "price": 158,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "130930179",
-          "name": "丽庭酒店（韶关曲江店）",
-          "area": "韶关南华寺曹溪片区",
-          "price": 176,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "27174194",
-          "name": "山水靜苑（韶关南华寺店）",
-          "area": "韶关南华寺曹溪片区",
-          "price": 202,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "127503629",
-          "name": "美豪丽致酒店（韶关曲江南华寺店）",
-          "area": "韶关南华寺曹溪片区",
-          "price": 226,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "437261",
-          "name": "韶关曹溪温泉假日度假村",
-          "area": "韶关南华寺曹溪片区",
-          "price": 268,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "132010602",
-          "name": "韶关韶州城假日酒店",
-          "area": "韶关南华寺曹溪片区",
-          "price": 389,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        }
-      ],
-      "representative_hotels": [
-        "韶关南华雅苑酒店",
-        "菩樹山舍民宿（南华寺店）",
-        "芸枫酒店（韶关南华寺店）"
-      ],
-      "rank": 2,
-      "summary": "10家高级酒店，3家降价，7家持平"
-    },
-    {
-      "area": "韶关丹霞山片区",
-      "hotel_count": 3,
-      "discount_hotel_count": 0,
-      "flat_hotel_count": 3,
-      "average_price": 452,
-      "average_diff": 0,
-      "price_range": [
-        298,
-        579
-      ],
-      "hotels": [
-        {
-          "hotel_id": "4630133",
-          "name": "丹霞山烏有·同金寨",
-          "area": "韶关丹霞山片区",
-          "price": 298,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "82251272",
-          "name": "韶关丹霞靈溪阁民宿",
-          "area": "韶关丹霞山片区",
-          "price": 480,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "60990225",
-          "name": "韶关丹霞丰源温泉酒店",
-          "area": "韶关丹霞山片区",
-          "price": 579,
-          "diff": 0,
-          "source_file": "153a0b6889da39748bddfb222bad91c24dba991c003827110813a2cc0f008673.json",
-          "source_cached_at": "2026-05-06T16:36:49"
-        }
-      ],
-      "representative_hotels": [
-        "丹霞山烏有·同金寨",
-        "韶关丹霞靈溪阁民宿",
-        "韶关丹霞丰源温泉酒店"
-      ],
-      "rank": 3,
-      "summary": "3家高级酒店，0家降价，3家持平"
-    },
-    {
-      "area": "韶关曲江片区",
-      "hotel_count": 2,
-      "discount_hotel_count": 2,
-      "flat_hotel_count": 0,
-      "average_price": 160,
-      "average_diff": -92,
-      "price_range": [
-        148,
-        173
-      ],
-      "hotels": [
-        {
-          "hotel_id": "116696181",
-          "name": "都市花园酒店（韶关曲江店）",
-          "area": "韶关曲江片区",
-          "price": 148,
-          "diff": -177,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "48534703",
-          "name": "H·品酒店（韶关曲江旗艦店）",
-          "area": "韶关曲江片区",
-          "price": 173,
-          "diff": -7,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        }
-      ],
-      "representative_hotels": [
-        "都市花园酒店（韶关曲江店）",
-        "H·品酒店（韶关曲江旗艦店）"
-      ],
-      "rank": 4,
-      "summary": "2家高级酒店，2家降价"
-    },
-    {
-      "area": "韶关乳源大峡谷片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 230,
-      "average_diff": -29,
-      "price_range": [
-        230,
-        230
-      ],
-      "hotels": [
-        {
-          "hotel_id": "78349298",
-          "name": "乳源遇見·過山瑤酒店",
-          "area": "韶关乳源大峡谷片区",
-          "price": 230,
-          "diff": -29,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        }
-      ],
-      "representative_hotels": [
-        "乳源遇見·過山瑤酒店"
-      ],
-      "rank": 5,
-      "summary": "1家高级酒店，1家降价"
+      "summary": "6家四星/四钻以上酒店，4家降价，2家持平",
+      "rank": 1
     },
     {
       "area": "韶关待确认片区",
-      "hotel_count": 16,
-      "discount_hotel_count": 5,
-      "flat_hotel_count": 11,
-      "average_price": 217,
-      "average_diff": -3,
+      "hotel_count": 4,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 3,
+      "average_price": 297,
+      "average_diff": -2,
       "price_range": [
-        80,
+        198,
         377
       ],
       "hotels": [
-        {
-          "hotel_id": "63434975",
-          "name": "宜捷酒店",
-          "area": "韶关待确认片区",
-          "price": 80,
-          "diff": -20,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "25485112",
-          "name": "维也纳国际酒店·韶关佰旺广场近水楼台店",
-          "area": "韶关待确认片区",
-          "price": 175,
-          "diff": -13,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
         {
           "hotel_id": "1546242",
           "name": "韶关汇展酒店",
           "area": "韶关待确认片区",
           "price": 284,
           "diff": -8,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "1639708",
-          "name": "韶关圣藍酒店（西河体育中心店）",
-          "area": "韶关待确认片区",
-          "price": 155,
-          "diff": -4,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关待确认",
+          "note": "韶关待确认，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
         },
         {
           "hotel_id": "535517",
           "name": "韶关萊斯大酒店",
           "area": "韶关待确认片区",
-          "price": 224,
-          "diff": -2,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "5797260",
-          "name": "广和商務酒店（韶关風采實驗学校店）",
-          "area": "韶关待确认片区",
-          "price": 115,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "99041026",
-          "name": "顺发民宿",
-          "area": "韶关待确认片区",
-          "price": 158,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "66872275",
-          "name": "宜和 · 精品酒店（韶关沙洲尾店）",
-          "area": "韶关待确认片区",
-          "price": 178,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "1748496",
-          "name": "嘉华商務酒店（韶关东站森林公园店）",
-          "area": "韶关待确认片区",
-          "price": 182,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "110599704",
-          "name": "城市便捷酒店（韶关沙洲尾碧水花城店）",
-          "area": "韶关待确认片区",
-          "price": 192,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "1812724",
-          "name": "H·品酒店（韶关西河体育中心店）",
-          "area": "韶关待确认片区",
           "price": 198,
           "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "133534842",
-          "name": "韶关君逸安澜酒店",
-          "area": "韶关待确认片区",
-          "price": 226,
-          "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
-        },
-        {
-          "hotel_id": "1111499",
-          "name": "韶关凯悦酒店",
-          "area": "韶关待确认片区",
-          "price": 294,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
-        },
-        {
-          "hotel_id": "80625553",
-          "name": "宜尚酒店（韶关大学路店）",
-          "area": "韶关待确认片区",
-          "price": 299,
-          "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "韶关待确认",
+          "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         },
         {
           "hotel_id": "2173243",
@@ -1850,8 +1077,14 @@
           "area": "韶关待确认片区",
           "price": 328,
           "diff": 0,
-          "source_file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-          "source_cached_at": "2026-05-11T17:53:29"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关待确认",
+          "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         },
         {
           "hotel_id": "458382",
@@ -1859,279 +1092,718 @@
           "area": "韶关待确认片区",
           "price": 377,
           "diff": 0,
-          "source_file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-          "source_cached_at": "2026-05-11T18:00:11"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "韶关待确认",
+          "note": "韶关待确认，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 5
         }
       ],
       "representative_hotels": [
-        "宜捷酒店",
-        "维也纳国际酒店·韶关佰旺广场近水楼台店",
-        "韶关汇展酒店"
+        "韶关汇展酒店",
+        "韶关萊斯大酒店",
+        "韶关荷花园酒店"
       ],
-      "rank": 6,
-      "summary": "16家高级酒店，5家降价，11家持平"
+      "summary": "4家四星/四钻以上酒店，1家降价，3家持平",
+      "rank": 2
+    },
+    {
+      "area": "韶关曲江片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 1,
+      "average_price": 238,
+      "average_diff": -2,
+      "price_range": [
+        209,
+        266
+      ],
+      "hotels": [
+        {
+          "hotel_id": "437261",
+          "name": "韶关曹溪温泉假日度假村",
+          "area": "韶关曲江片区",
+          "price": 266,
+          "diff": -5,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "韶关曲江",
+          "note": "韶关曲江，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "127503629",
+          "name": "美豪丽致酒店（韶关曲江南华寺店）",
+          "area": "韶关曲江片区",
+          "price": 209,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关曲江",
+          "note": "韶关曲江，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        }
+      ],
+      "representative_hotels": [
+        "韶关曹溪温泉假日度假村",
+        "美豪丽致酒店（韶关曲江南华寺店）"
+      ],
+      "summary": "2家四星/四钻以上酒店，1家降价，1家持平",
+      "rank": 3
+    },
+    {
+      "area": "韶关武江片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 271,
+      "average_diff": -96,
+      "price_range": [
+        271,
+        271
+      ],
+      "hotels": [
+        {
+          "hotel_id": "23652918",
+          "name": "韶关摩尔城假日酒店",
+          "area": "韶关武江片区",
+          "price": 271,
+          "diff": -96,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "韶关武江",
+          "note": "韶关武江，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 4
+        }
+      ],
+      "representative_hotels": [
+        "韶关摩尔城假日酒店"
+      ],
+      "summary": "1家四星/四钻以上酒店，1家降价，0家持平",
+      "rank": 4
+    },
+    {
+      "area": "韶关高铁站片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 222,
+      "average_diff": -7,
+      "price_range": [
+        222,
+        222
+      ],
+      "hotels": [
+        {
+          "hotel_id": "123094216",
+          "name": "维也纳国际酒店（韶关高铁站广场店）",
+          "area": "韶关高铁站片区",
+          "price": 222,
+          "diff": -7,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "韶关高铁站",
+          "note": "韶关高铁站，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        }
+      ],
+      "representative_hotels": [
+        "维也纳国际酒店（韶关高铁站广场店）"
+      ],
+      "summary": "1家四星/四钻以上酒店，1家降价，0家持平",
+      "rank": 5
+    },
+    {
+      "area": "韶关乐昌片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 228,
+      "average_diff": 0,
+      "price_range": [
+        228,
+        228
+      ],
+      "hotels": [
+        {
+          "hotel_id": "731075",
+          "name": "乐昌碧桂园凤凰酒店",
+          "area": "韶关乐昌片区",
+          "price": 228,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:38:13+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "韶关乐昌",
+          "note": "韶关乐昌，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        }
+      ],
+      "representative_hotels": [
+        "乐昌碧桂园凤凰酒店"
+      ],
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 6
     }
   ],
   "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
-    "matching_file_count": 5,
-    "candidate_count": 259,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 99,
     "unique_hotel_count": 99,
-    "included_hotel_count": 46,
-    "matching_files": [
+    "included_hotel_count": 15,
+    "excluded_hotel_count": 41,
+    "excluded_hotels": [
       {
-        "file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "mtime": 1778493611.4716735,
-        "choices": 63,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "112900976",
+        "name": "韶关乳源璞悦依山民宿",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
       },
       {
-        "file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "mtime": 1778493209.9840565,
-        "choices": 108,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "96201972",
+        "name": "芸枫酒店（韶关南华寺店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "7b7961f565f9ac0525aabc0a005b673a60003d7a3e0b41d056920aebd7b846c6.json",
-        "mtime": 1778140473.0301611,
-        "choices": 95,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "2988187",
+        "name": "韶关佳缘旅馆（南华寺店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
       },
       {
-        "file": "153a0b6889da39748bddfb222bad91c24dba991c003827110813a2cc0f008673.json",
-        "mtime": 1778056609.371101,
-        "choices": 13,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "101132820",
+        "name": "Jiyue Hotel (Nanxiong RT-Mart)",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "a8ab943b3bcb6e7e96f6888b7d232da9ca1277783669c9e3920da28d25daed8d.json",
-        "mtime": 1778056351.581471,
-        "choices": 12,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
-      }
-    ]
-  },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 5,
-    "candidate_count": 259,
-    "unique_hotel_count": 99,
-    "included_hotel_count": 46,
-    "matching_files": [
-      {
-        "file": "ddeb95129d61cdd35c4ae4fa843db599227f6d66060653575167d38dfd64f1fd.json",
-        "mtime": 1778493611.4716735,
-        "choices": 63,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "123704212",
+        "name": "JO&JOE Hotel Shaoguan High speed Railway Station",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "68f4af05c0444b68fd3dfe1cfe6a6d290a624ce20a45f153a5482ba4cd8cb319.json",
-        "mtime": 1778493209.9840565,
-        "choices": 108,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "102530022",
+        "name": "Metropolo Hotels",
+        "reason": "未确认四星/四钻或高端品牌口径"
       },
       {
-        "file": "7b7961f565f9ac0525aabc0a005b673a60003d7a3e0b41d056920aebd7b846c6.json",
-        "mtime": 1778140473.0301611,
-        "choices": 95,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "125437504",
+        "name": "HanTing Hotel (Shaoguan Wujiang People's Government)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
       },
       {
-        "file": "153a0b6889da39748bddfb222bad91c24dba991c003827110813a2cc0f008673.json",
-        "mtime": 1778056609.371101,
-        "choices": 13,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "65385060",
+        "name": "Vienna Hotel (Shaoguan Shiliting)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
       },
       {
-        "file": "a8ab943b3bcb6e7e96f6888b7d232da9ca1277783669c9e3920da28d25daed8d.json",
-        "mtime": 1778056351.581471,
-        "choices": 12,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "3122317",
+        "name": "华汇通酒店（武江区店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "114006729",
+        "name": "Juxianlou Homestay (Nanhua Branch)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "63434975",
+        "name": "宜捷酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1639708",
+        "name": "韶关圣藍酒店（西河体育中心店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "128910430",
+        "name": "Fei'an Hotel (Shaoguan Century East Street Fengcai Building Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "55943809",
+        "name": "Vienna Hotel (Shaoguan Zhenjiang Avenue)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "124755400",
+        "name": "Dimension Hotel (Shaoguan Jiefang Road Pedestrian Street Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "6480210",
+        "name": "Homeinn Pebble Homestay (Shaoguan Qujiang District Dongfeng Road)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "5797260",
+        "name": "广和商務酒店（韶关風采實驗学校店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1046635",
+        "name": "和园 · 精品酒店（韶关高铁站店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1050333",
+        "name": "城市便捷酒店（韶关高铁站西联考场店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1066094",
+        "name": "德源酒店（韶关南华寺店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2298920",
+        "name": "Friendly Hotel (Shaoguan Nanhua Temple)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "104425675",
+        "name": "Yuandawu Apartment (Shaoguan Poly Plaza)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1767742",
+        "name": "城市便捷酒店（韶关东站百年东街店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "48534703",
+        "name": "H·品酒店（韶关曲江旗艦店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "99041026",
+        "name": "顺发民宿",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "130930179",
+        "name": "丽庭酒店（韶关曲江店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "66872275",
+        "name": "宜和 · 精品酒店（韶关沙洲尾店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1748496",
+        "name": "嘉华商務酒店（韶关东站森林公园店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "110599704",
+        "name": "城市便捷酒店（韶关沙洲尾碧水花城店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "71653663",
+        "name": "Mando Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "27174194",
+        "name": "山水靜苑（韶关南华寺店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "105297029",
+        "name": "Shaoguan College Development Center Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "85901397",
+        "name": "拳头電競酒店（韶关礦山公园摩尔城店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "125314883",
+        "name": "Jiao Tong Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1812724",
+        "name": "H·品酒店（韶关西河体育中心店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1056259",
+        "name": "Danxia Mountain Jincheng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133341041",
+        "name": "韶关新丰雅致酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "56357210",
+        "name": "维也纳国际酒店（韶关高铁站店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "125334417",
+        "name": "维也纳国际酒店（韶关矿山公园摩尔城店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "70867334",
+        "name": "韶关清和温泉酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1111499",
+        "name": "韶关凯悦酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
       }
     ],
-    "source": "search_cache"
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:38:13+08:00",
+        "choices": 99,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 167.8
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:39:19+08:00",
+        "choices": 16,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 66.1
+      }
+    ],
+    "area_count": 6,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
   },
-  "city_wikipedia_intro": {
-    "city": "韶关",
-    "text": "韶关可重点看丹霞山、南华寺、乳源大峡谷、珠玑古巷和梅关古道；自然地貌、禅宗文化和古道历史适合组合。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/韶关",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 99,
+    "unique_hotel_count": 99,
+    "included_hotel_count": 15,
+    "excluded_hotel_count": 41,
+    "excluded_hotels": [
+      {
+        "hotel_id": "112900976",
+        "name": "韶关乳源璞悦依山民宿",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "96201972",
+        "name": "芸枫酒店（韶关南华寺店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2988187",
+        "name": "韶关佳缘旅馆（南华寺店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "101132820",
+        "name": "Jiyue Hotel (Nanxiong RT-Mart)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "123704212",
+        "name": "JO&JOE Hotel Shaoguan High speed Railway Station",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "102530022",
+        "name": "Metropolo Hotels",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "125437504",
+        "name": "HanTing Hotel (Shaoguan Wujiang People's Government)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "65385060",
+        "name": "Vienna Hotel (Shaoguan Shiliting)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "3122317",
+        "name": "华汇通酒店（武江区店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "114006729",
+        "name": "Juxianlou Homestay (Nanhua Branch)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "63434975",
+        "name": "宜捷酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1639708",
+        "name": "韶关圣藍酒店（西河体育中心店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "128910430",
+        "name": "Fei'an Hotel (Shaoguan Century East Street Fengcai Building Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "55943809",
+        "name": "Vienna Hotel (Shaoguan Zhenjiang Avenue)",
+        "reason": "普通维也纳，未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "124755400",
+        "name": "Dimension Hotel (Shaoguan Jiefang Road Pedestrian Street Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "6480210",
+        "name": "Homeinn Pebble Homestay (Shaoguan Qujiang District Dongfeng Road)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "5797260",
+        "name": "广和商務酒店（韶关風采實驗学校店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1046635",
+        "name": "和园 · 精品酒店（韶关高铁站店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1050333",
+        "name": "城市便捷酒店（韶关高铁站西联考场店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1066094",
+        "name": "德源酒店（韶关南华寺店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2298920",
+        "name": "Friendly Hotel (Shaoguan Nanhua Temple)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "104425675",
+        "name": "Yuandawu Apartment (Shaoguan Poly Plaza)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1767742",
+        "name": "城市便捷酒店（韶关东站百年东街店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "48534703",
+        "name": "H·品酒店（韶关曲江旗艦店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "99041026",
+        "name": "顺发民宿",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "130930179",
+        "name": "丽庭酒店（韶关曲江店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "66872275",
+        "name": "宜和 · 精品酒店（韶关沙洲尾店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1748496",
+        "name": "嘉华商務酒店（韶关东站森林公园店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "110599704",
+        "name": "城市便捷酒店（韶关沙洲尾碧水花城店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "71653663",
+        "name": "Mando Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "27174194",
+        "name": "山水靜苑（韶关南华寺店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "105297029",
+        "name": "Shaoguan College Development Center Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "85901397",
+        "name": "拳头電競酒店（韶关礦山公园摩尔城店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "125314883",
+        "name": "Jiao Tong Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1812724",
+        "name": "H·品酒店（韶关西河体育中心店）",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1056259",
+        "name": "Danxia Mountain Jincheng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133341041",
+        "name": "韶关新丰雅致酒店",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "56357210",
+        "name": "维也纳国际酒店（韶关高铁站店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "125334417",
+        "name": "维也纳国际酒店（韶关矿山公园摩尔城店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "70867334",
+        "name": "韶关清和温泉酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1111499",
+        "name": "韶关凯悦酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:38:13+08:00",
+        "choices": 99,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 167.8
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:39:19+08:00",
+        "choices": 16,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 66.1
+      }
+    ],
+    "area_count": 6,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
+  },
+  "city_wikipedia_intro": "韶关可重点看丹霞山、南华寺、乳源大峡谷、珠玑古巷和梅关古道；自然地貌、禅宗文化和古道历史适合组合。"
 }

@@ -1,276 +1,1205 @@
 {
   "city": "揭阳",
-  "generated_at": "2026-05-12T12:24:39",
+  "generated_at": "2026-05-22T15:51:05",
   "lists": {
     "star_no_rise": [
       {
-        "hotel_id": "14813791",
-        "name": "普宁冠盛国际酒店",
-        "area": "揭阳待确认片区",
-        "price": 280,
+        "hotel_id": "97714013",
+        "name": "丽枫酒店(潮汕高铁站揭阳潮汕国际机场店)",
+        "area": "揭阳潮汕机场片区",
+        "price": 254,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
-        "child": true,
-        "pool": true,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": false,
+        "pool": false,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳潮汕机场",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳潮汕机场，端午价格保持平稳，适合周边短途度假。"
       },
       {
-        "hotel_id": "29866756",
-        "name": "凯利雅德酒店（普宁广场万泰汇店）",
-        "area": "揭阳待确认片区",
-        "price": 298,
+        "hotel_id": "133572524",
+        "name": "揭阳世贸大酒店",
+        "area": "揭阳市区片区",
+        "price": 269,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "14813791",
+        "name": "普宁冠盛国际酒店",
+        "area": "揭阳普宁片区",
+        "price": 280,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳普宁",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳普宁，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133581551",
+        "name": "揭阳古城进贤门丽柏酒店",
+        "area": "揭阳榕城片区",
+        "price": 301,
+        "diff": -3,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳榕城",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1702490",
+        "name": "揭阳榕江大酒店",
+        "area": "揭阳市区片区",
+        "price": 306,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124231597",
+        "name": "全季酒店（揭阳楼店）",
+        "area": "揭阳榕城片区",
+        "price": 370,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳榕城",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124208062",
+        "name": "揭阳万豪酒店",
+        "area": "揭阳市区片区",
+        "price": 618,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
       }
     ],
     "star_no_rise_all": [
       {
-        "hotel_id": "14813791",
-        "name": "普宁冠盛国际酒店",
-        "area": "揭阳待确认片区",
-        "price": 280,
+        "hotel_id": "97714013",
+        "name": "丽枫酒店(潮汕高铁站揭阳潮汕国际机场店)",
+        "area": "揭阳潮汕机场片区",
+        "price": 254,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
-        "child": true,
-        "pool": true,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": false,
+        "pool": false,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳潮汕机场",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳潮汕机场，端午价格保持平稳，适合周边短途度假。"
       },
       {
-        "hotel_id": "29866756",
-        "name": "凯利雅德酒店（普宁广场万泰汇店）",
-        "area": "揭阳待确认片区",
-        "price": 298,
+        "hotel_id": "133572524",
+        "name": "揭阳世贸大酒店",
+        "area": "揭阳市区片区",
+        "price": 269,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "14813791",
+        "name": "普宁冠盛国际酒店",
+        "area": "揭阳普宁片区",
+        "price": 280,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳普宁",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳普宁，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133581551",
+        "name": "揭阳古城进贤门丽柏酒店",
+        "area": "揭阳榕城片区",
+        "price": 301,
+        "diff": -3,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳榕城",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1702490",
+        "name": "揭阳榕江大酒店",
+        "area": "揭阳市区片区",
+        "price": 306,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124231597",
+        "name": "全季酒店（揭阳楼店）",
+        "area": "揭阳榕城片区",
+        "price": 370,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳榕城",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124208062",
+        "name": "揭阳万豪酒店",
+        "area": "揭阳市区片区",
+        "price": 618,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
       }
     ],
     "family_no_rise": [
       {
         "hotel_id": "14813791",
         "name": "普宁冠盛国际酒店",
-        "area": "揭阳待确认片区",
+        "area": "揭阳普宁片区",
         "price": 280,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳普宁",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳普宁，具备儿童设施和泳池，适合亲子短途。"
       },
       {
-        "hotel_id": "29866756",
-        "name": "凯利雅德酒店（普宁广场万泰汇店）",
-        "area": "揭阳待确认片区",
-        "price": 298,
+        "hotel_id": "1702490",
+        "name": "揭阳榕江大酒店",
+        "area": "揭阳市区片区",
+        "price": 306,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124208062",
+        "name": "揭阳万豪酒店",
+        "area": "揭阳市区片区",
+        "price": 618,
+        "diff": -5,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
       }
     ],
     "family_no_rise_all": [
       {
         "hotel_id": "14813791",
         "name": "普宁冠盛国际酒店",
-        "area": "揭阳待确认片区",
+        "area": "揭阳普宁片区",
         "price": 280,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳普宁",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳普宁，具备儿童设施和泳池，适合亲子短途。"
       },
       {
-        "hotel_id": "29866756",
-        "name": "凯利雅德酒店（普宁广场万泰汇店）",
-        "area": "揭阳待确认片区",
-        "price": 298,
+        "hotel_id": "1702490",
+        "name": "揭阳榕江大酒店",
+        "area": "揭阳市区片区",
+        "price": 306,
         "diff": 0,
-        "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "source_cached_at": "2026-05-11T18:07:25",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "揭阳",
-        "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "124208062",
+        "name": "揭阳万豪酒店",
+        "area": "揭阳市区片区",
+        "price": 618,
+        "diff": -5,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:28:13+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
       }
     ],
-    "discount_star": []
+    "discount_star": [
+      {
+        "hotel_id": "124231597",
+        "name": "全季酒店（揭阳楼店）",
+        "area": "揭阳榕城片区",
+        "price": 370,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳榕城",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "124208062",
+        "name": "揭阳万豪酒店",
+        "area": "揭阳市区片区",
+        "price": 618,
+        "diff": -5,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "揭阳市区",
+        "trip_hotel_star_rating": 5,
+        "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133581551",
+        "name": "揭阳古城进贤门丽柏酒店",
+        "area": "揭阳榕城片区",
+        "price": 301,
+        "diff": -3,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:23:24+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "揭阳榕城",
+        "trip_hotel_star_rating": 4,
+        "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+      }
+    ]
   },
   "latest_city_rank": [
     {
-      "hotel_id": "14813791",
-      "name": "普宁冠盛国际酒店",
-      "area": "揭阳待确认片区",
-      "price": 280,
+      "hotel_id": "97714013",
+      "name": "丽枫酒店(潮汕高铁站揭阳潮汕国际机场店)",
+      "area": "揭阳潮汕机场片区",
+      "price": 254,
       "diff": 0,
-      "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-      "source_cached_at": "2026-05-11T18:07:25",
-      "child": true,
-      "pool": true,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": false,
+      "pool": false,
       "advanced": true,
-      "display_area": "揭阳",
-      "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+      "display_area": "揭阳潮汕机场",
+      "trip_hotel_star_rating": 4,
+      "note": "揭阳潮汕机场，端午价格保持平稳，适合周边短途度假。"
     },
     {
-      "hotel_id": "29866756",
-      "name": "凯利雅德酒店（普宁广场万泰汇店）",
-      "area": "揭阳待确认片区",
-      "price": 298,
+      "hotel_id": "133572524",
+      "name": "揭阳世贸大酒店",
+      "area": "揭阳市区片区",
+      "price": 269,
       "diff": 0,
-      "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-      "source_cached_at": "2026-05-11T18:07:25",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "揭阳市区",
+      "trip_hotel_star_rating": 4,
+      "note": "揭阳市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "14813791",
+      "name": "普宁冠盛国际酒店",
+      "area": "揭阳普宁片区",
+      "price": 280,
+      "diff": 0,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:28:13+08:00",
       "child": true,
       "pool": true,
       "advanced": true,
-      "display_area": "揭阳",
-      "note": "揭阳，具备儿童设施和泳池，适合亲子短途。"
+      "display_area": "揭阳普宁",
+      "trip_hotel_star_rating": 4,
+      "note": "揭阳普宁，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "133581551",
+      "name": "揭阳古城进贤门丽柏酒店",
+      "area": "揭阳榕城片区",
+      "price": 301,
+      "diff": -3,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "揭阳榕城",
+      "trip_hotel_star_rating": 4,
+      "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "1702490",
+      "name": "揭阳榕江大酒店",
+      "area": "揭阳市区片区",
+      "price": 306,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "揭阳市区",
+      "trip_hotel_star_rating": 5,
+      "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "124231597",
+      "name": "全季酒店（揭阳楼店）",
+      "area": "揭阳榕城片区",
+      "price": 370,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "揭阳榕城",
+      "trip_hotel_star_rating": 4,
+      "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "124208062",
+      "name": "揭阳万豪酒店",
+      "area": "揭阳市区片区",
+      "price": 618,
+      "diff": -5,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "揭阳市区",
+      "trip_hotel_star_rating": 5,
+      "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
     }
   ],
-  "latest_discount_rank": [],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "124231597",
+      "name": "全季酒店（揭阳楼店）",
+      "area": "揭阳榕城片区",
+      "price": 370,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "揭阳榕城",
+      "trip_hotel_star_rating": 4,
+      "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "124208062",
+      "name": "揭阳万豪酒店",
+      "area": "揭阳市区片区",
+      "price": 618,
+      "diff": -5,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "揭阳市区",
+      "trip_hotel_star_rating": 5,
+      "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "133581551",
+      "name": "揭阳古城进贤门丽柏酒店",
+      "area": "揭阳榕城片区",
+      "price": 301,
+      "diff": -3,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:23:24+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "揭阳榕城",
+      "trip_hotel_star_rating": 4,
+      "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+    }
+  ],
   "area_region_rank": [
     {
-      "area": "揭阳待确认片区",
-      "hotel_count": 2,
-      "discount_hotel_count": 0,
+      "area": "揭阳市区片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 1,
       "flat_hotel_count": 2,
-      "average_price": 289,
+      "average_price": 398,
+      "average_diff": -2,
+      "price_range": [
+        269,
+        618
+      ],
+      "hotels": [
+        {
+          "hotel_id": "124208062",
+          "name": "揭阳万豪酒店",
+          "area": "揭阳市区片区",
+          "price": 618,
+          "diff": -5,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:23:24+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "揭阳市区",
+          "trip_hotel_star_rating": 5,
+          "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+        },
+        {
+          "hotel_id": "133572524",
+          "name": "揭阳世贸大酒店",
+          "area": "揭阳市区片区",
+          "price": 269,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:23:24+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "揭阳市区",
+          "trip_hotel_star_rating": 4,
+          "note": "揭阳市区，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "1702490",
+          "name": "揭阳榕江大酒店",
+          "area": "揭阳市区片区",
+          "price": 306,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:23:24+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "揭阳市区",
+          "trip_hotel_star_rating": 5,
+          "note": "揭阳市区，具备儿童设施和泳池，适合亲子短途。"
+        }
+      ],
+      "representative_hotels": [
+        "揭阳万豪酒店",
+        "揭阳世贸大酒店",
+        "揭阳榕江大酒店"
+      ],
+      "summary": "3家四星/四钻以上酒店，1家降价，2家持平",
+      "rank": 1
+    },
+    {
+      "area": "揭阳榕城片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 2,
+      "flat_hotel_count": 0,
+      "average_price": 336,
+      "average_diff": -6,
+      "price_range": [
+        301,
+        370
+      ],
+      "hotels": [
+        {
+          "hotel_id": "124231597",
+          "name": "全季酒店（揭阳楼店）",
+          "area": "揭阳榕城片区",
+          "price": 370,
+          "diff": -8,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:23:24+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "揭阳榕城",
+          "trip_hotel_star_rating": 4,
+          "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+        },
+        {
+          "hotel_id": "133581551",
+          "name": "揭阳古城进贤门丽柏酒店",
+          "area": "揭阳榕城片区",
+          "price": 301,
+          "diff": -3,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:23:24+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "揭阳榕城",
+          "trip_hotel_star_rating": 4,
+          "note": "揭阳榕城，端午每晚含税均价低于平日代表价。"
+        }
+      ],
+      "representative_hotels": [
+        "全季酒店（揭阳楼店）",
+        "揭阳古城进贤门丽柏酒店"
+      ],
+      "summary": "2家四星/四钻以上酒店，2家降价，0家持平",
+      "rank": 2
+    },
+    {
+      "area": "揭阳潮汕机场片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 254,
+      "average_diff": 0,
+      "price_range": [
+        254,
+        254
+      ],
+      "hotels": [
+        {
+          "hotel_id": "97714013",
+          "name": "丽枫酒店(潮汕高铁站揭阳潮汕国际机场店)",
+          "area": "揭阳潮汕机场片区",
+          "price": 254,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:23:24+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "揭阳潮汕机场",
+          "trip_hotel_star_rating": 4,
+          "note": "揭阳潮汕机场，端午价格保持平稳，适合周边短途度假。"
+        }
+      ],
+      "representative_hotels": [
+        "丽枫酒店(潮汕高铁站揭阳潮汕国际机场店)"
+      ],
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 3
+    },
+    {
+      "area": "揭阳普宁片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 280,
       "average_diff": 0,
       "price_range": [
         280,
-        298
+        280
       ],
       "hotels": [
         {
           "hotel_id": "14813791",
           "name": "普宁冠盛国际酒店",
-          "area": "揭阳待确认片区",
+          "area": "揭阳普宁片区",
           "price": 280,
           "diff": 0,
-          "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-          "source_cached_at": "2026-05-11T18:07:25"
-        },
-        {
-          "hotel_id": "29866756",
-          "name": "凯利雅德酒店（普宁广场万泰汇店）",
-          "area": "揭阳待确认片区",
-          "price": 298,
-          "diff": 0,
-          "source_file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-          "source_cached_at": "2026-05-11T18:07:25"
+          "source_file": "live_refresh/quality.json",
+          "source_cached_at": "2026-05-22T15:28:13+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "揭阳普宁",
+          "trip_hotel_star_rating": 4,
+          "note": "揭阳普宁，具备儿童设施和泳池，适合亲子短途。"
         }
       ],
       "representative_hotels": [
-        "普宁冠盛国际酒店",
-        "凯利雅德酒店（普宁广场万泰汇店）"
+        "普宁冠盛国际酒店"
       ],
-      "rank": 1,
-      "summary": "2家高级酒店，0家降价，2家持平"
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 4
     }
   ],
   "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
-    "matching_file_count": 1,
-    "candidate_count": 84,
-    "unique_hotel_count": 84,
-    "included_hotel_count": 2,
-    "matching_files": [
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除低星级、公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及城市归属不符的酒店。",
+    "included_hotel_count": 7,
+    "excluded_hotel_count": 48,
+    "excluded_hotels": [
       {
-        "file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "mtime": 1778494045.7627256,
-        "choices": 84,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
-      }
-    ]
-  },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 1,
-    "candidate_count": 84,
-    "unique_hotel_count": 84,
-    "included_hotel_count": 2,
-    "matching_files": [
+        "hotel_id": "129765803",
+        "name": "Jieyang Fengjiang E-sports Hotel",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
       {
-        "file": "1070413324775711ab39fc658d43d8f0623045e51d5da4e9f18a01ceec788068.json",
-        "mtime": 1778494045.7627256,
-        "choices": 84,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "84594093",
+        "name": "潮州湘桥美居酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "104350015",
+        "name": "颐濠智能酒店（汕头潮阳关埠店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "1732083",
+        "name": "揭阳维多丽亚假日商务酒店（广百广场实验中学店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1727846",
+        "name": "汕头金新花园酒店（潮阳谷饶店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "5152626",
+        "name": "维也纳国际酒店(揭阳潮汕机场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "131576773",
+        "name": "锦呈酒店（揭阳榕城区建阳路店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "114937002",
+        "name": "铂宸丽致酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "126903373",
+        "name": "潮州古城牌坊街漫心酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "2918670",
+        "name": "揭阳巢汇酒店（仁义路店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133470612",
+        "name": "Huanman Hotel (Jieyang Ancient City Jinxian Branch)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115647247",
+        "name": "丽枫酒店（揭阳榕城区建设大道店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "16028565",
+        "name": "维也纳酒店（揭阳榕城进贤门城楼店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "117681923",
+        "name": "非繁城品酒店(揭阳站榕城店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115733858",
+        "name": "潮州愉羽酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "133272325",
+        "name": "全季酒店（潮州绿榕北路店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "131799075",
+        "name": "潮州古城牌坊街桔子水晶酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "133470371",
+        "name": "全季酒店(揭阳阳美玉都店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "100340494",
+        "name": "Bokewan Light Luxury Room (Jieyang Qiaonan Stainless Steel Center)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115539827",
+        "name": "得州花园设计师酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "924407",
+        "name": "骏怡连锁酒店（揭阳马牙路店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "113586838",
+        "name": "美濠轻居酒店（揭阳砲台镇潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2916224",
+        "name": "岐山美途酒店（揭阳岐山森林公园店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "101535306",
+        "name": "遇见拾光酒店(揭阳广百广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "116711893",
+        "name": "拾忆酒店（揭阳阳美玉都店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133541284",
+        "name": "凯纳德酒店（揭阳揭东人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "101115323",
+        "name": "新一方酒店（揭阳进贤门店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "112975702",
+        "name": "星雨酒店（揭阳榕城广百广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "132916819",
+        "name": "星璨·朗轩酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "73671543",
+        "name": "希亚途国际酒店(揭阳高铁站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "123569513",
+        "name": "亦可栖宿酒店（揭阳进贤门大道中骏世界城店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "132358720",
+        "name": "铂菲锐致酒店（揭阳潮汕国际机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "49528337",
+        "name": "维也纳国际酒店(揭阳高铁站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "60927838",
+        "name": "商之都酒店(揭阳阳美玉都店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "116777258",
+        "name": "丽枫酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2230806",
+        "name": "天鹏酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "112737454",
+        "name": "万斯吉国际酒店（潮汕高铁站店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "109455104",
+        "name": "揭阳半岛星季国际酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6606060",
+        "name": "维也纳国际酒店(揭阳阳美玉都店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2303609",
+        "name": "悦季酒店（揭阳阳美玉都店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133470229",
+        "name": "铂宸·锐致Bochen Rui zhi酒店(揭阳榕城建阳路店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "15093003",
+        "name": "维纳斯国际酒店(丰顺华茂温泉店)",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "535195",
+        "name": "潮州宾馆（潮州古城牌坊街店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "55241463",
+        "name": "汕头凯思汀酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
       }
     ],
-    "source": "search_cache"
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_east_20260522.json"
   },
-  "city_wikipedia_intro": {
-    "city": "揭阳",
-    "text": "揭阳可重点看进贤门、揭阳学宫、黄岐山、望天湖和惠来海滨；古城人文、城市山景和滨海休闲适合短途组合。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/揭阳",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除低星级、公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及城市归属不符的酒店。",
+    "included_hotel_count": 7,
+    "area_count": 4,
+    "excluded_hotel_count": 48,
+    "excluded_hotels": [
+      {
+        "hotel_id": "129765803",
+        "name": "Jieyang Fengjiang E-sports Hotel",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "84594093",
+        "name": "潮州湘桥美居酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "104350015",
+        "name": "颐濠智能酒店（汕头潮阳关埠店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "1732083",
+        "name": "揭阳维多丽亚假日商务酒店（广百广场实验中学店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1727846",
+        "name": "汕头金新花园酒店（潮阳谷饶店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "5152626",
+        "name": "维也纳国际酒店(揭阳潮汕机场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "131576773",
+        "name": "锦呈酒店（揭阳榕城区建阳路店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "114937002",
+        "name": "铂宸丽致酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "126903373",
+        "name": "潮州古城牌坊街漫心酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "2918670",
+        "name": "揭阳巢汇酒店（仁义路店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133470612",
+        "name": "Huanman Hotel (Jieyang Ancient City Jinxian Branch)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115647247",
+        "name": "丽枫酒店（揭阳榕城区建设大道店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "16028565",
+        "name": "维也纳酒店（揭阳榕城进贤门城楼店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "117681923",
+        "name": "非繁城品酒店(揭阳站榕城店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115733858",
+        "name": "潮州愉羽酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "133272325",
+        "name": "全季酒店（潮州绿榕北路店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "131799075",
+        "name": "潮州古城牌坊街桔子水晶酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "133470371",
+        "name": "全季酒店(揭阳阳美玉都店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "100340494",
+        "name": "Bokewan Light Luxury Room (Jieyang Qiaonan Stainless Steel Center)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115539827",
+        "name": "得州花园设计师酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "924407",
+        "name": "骏怡连锁酒店（揭阳马牙路店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "113586838",
+        "name": "美濠轻居酒店（揭阳砲台镇潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2916224",
+        "name": "岐山美途酒店（揭阳岐山森林公园店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "101535306",
+        "name": "遇见拾光酒店(揭阳广百广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "116711893",
+        "name": "拾忆酒店（揭阳阳美玉都店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133541284",
+        "name": "凯纳德酒店（揭阳揭东人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "101115323",
+        "name": "新一方酒店（揭阳进贤门店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "112975702",
+        "name": "星雨酒店（揭阳榕城广百广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "132916819",
+        "name": "星璨·朗轩酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "73671543",
+        "name": "希亚途国际酒店(揭阳高铁站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "123569513",
+        "name": "亦可栖宿酒店（揭阳进贤门大道中骏世界城店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "132358720",
+        "name": "铂菲锐致酒店（揭阳潮汕国际机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "49528337",
+        "name": "维也纳国际酒店(揭阳高铁站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "60927838",
+        "name": "商之都酒店(揭阳阳美玉都店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "116777258",
+        "name": "丽枫酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2230806",
+        "name": "天鹏酒店（揭阳潮汕机场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "112737454",
+        "name": "万斯吉国际酒店（潮汕高铁站店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "109455104",
+        "name": "揭阳半岛星季国际酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6606060",
+        "name": "维也纳国际酒店(揭阳阳美玉都店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2303609",
+        "name": "悦季酒店（揭阳阳美玉都店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133470229",
+        "name": "铂宸·锐致Bochen Rui zhi酒店(揭阳榕城建阳路店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "15093003",
+        "name": "维纳斯国际酒店(丰顺华茂温泉店)",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "535195",
+        "name": "潮州宾馆（潮州古城牌坊街店）",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "55241463",
+        "name": "汕头凯思汀酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "reason": "酒店归属不属于揭阳榜单"
+      }
+    ],
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_east_20260522.json"
+  },
+  "city_wikipedia_intro": ""
 }

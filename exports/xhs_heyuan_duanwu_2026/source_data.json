@@ -1,1886 +1,1668 @@
 {
   "city": "河源",
-  "generated_at": "2026-05-12T12:24:29",
+  "generated_at": "2026-05-22T15:16:04",
   "lists": {
     "star_no_rise": [
       {
-        "hotel_id": "1424210",
-        "name": "星河觀影電競民宿（河源亞洲第一高噴泉店）",
-        "area": "河源源城片区",
-        "price": 63,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源源城",
-        "note": "河源源城，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "26451766",
-        "name": "堅居精品公寓（河源堅基购物中心沃尔瑪广场店）",
-        "area": "河源Building B片区",
-        "price": 74,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Building B",
-        "note": "河源Building B，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "5256212",
-        "name": "城市快捷酒店（河源火車站店）",
-        "area": "河源Youli Commercial Mansion片区",
-        "price": 78,
-        "diff": -17,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Youli Commercial Mansion",
-        "note": "河源Youli Commercial Mansion，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "100003272",
-        "name": "都市商旅酒店（河源火車站店）",
-        "area": "河源No.片区",
-        "price": 79,
-        "diff": -7,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源No.",
-        "note": "河源No.，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "5336835",
-        "name": "河源海悦商務酒店（河源火車站店）",
-        "area": "河源Heyuan Haiyue Business片区",
-        "price": 86,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Haiyue Business",
-        "note": "河源Heyuan Haiyue Business，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1729697",
-        "name": "好利来大酒店（河源火車站店）",
-        "area": "河源Xinshi District片区",
-        "price": 91,
-        "diff": -3,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Xinshi District",
-        "note": "河源Xinshi District，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "6982137",
-        "name": "如家驛居（河源亞洲第一高噴泉店）",
-        "area": "河源Heyuan Railway片区",
-        "price": 95,
-        "diff": -6,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "130401910",
-        "name": "河源輕悦酒店（亞洲第一高噴泉店）",
-        "area": "河源Light Joyhotel Light Joyhotel No.片区",
-        "price": 97,
-        "diff": -11,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Light Joyhotel Light Joyhotel No.",
-        "note": "河源Light Joyhotel Light Joyhotel No.，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "100004340",
-        "name": "四季优品酒店（河源巴伐利亞店）",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 98,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "80848070",
-        "name": "曼丽酒店（河源巴伐利亞店）",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 99,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午价格保持平稳，适合周边短途度假。"
-      }
-    ],
-    "star_no_rise_all": [
-      {
-        "hotel_id": "1424210",
-        "name": "星河觀影電競民宿（河源亞洲第一高噴泉店）",
-        "area": "河源源城片区",
-        "price": 63,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源源城",
-        "note": "河源源城，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "26451766",
-        "name": "堅居精品公寓（河源堅基购物中心沃尔瑪广场店）",
-        "area": "河源Building B片区",
-        "price": 74,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Building B",
-        "note": "河源Building B，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "5256212",
-        "name": "城市快捷酒店（河源火車站店）",
-        "area": "河源Youli Commercial Mansion片区",
-        "price": 78,
-        "diff": -17,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Youli Commercial Mansion",
-        "note": "河源Youli Commercial Mansion，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "100003272",
-        "name": "都市商旅酒店（河源火車站店）",
-        "area": "河源No.片区",
-        "price": 79,
-        "diff": -7,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源No.",
-        "note": "河源No.，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "5336835",
-        "name": "河源海悦商務酒店（河源火車站店）",
-        "area": "河源Heyuan Haiyue Business片区",
-        "price": 86,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Haiyue Business",
-        "note": "河源Heyuan Haiyue Business，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1729697",
-        "name": "好利来大酒店（河源火車站店）",
-        "area": "河源Xinshi District片区",
-        "price": 91,
-        "diff": -3,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Xinshi District",
-        "note": "河源Xinshi District，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "6982137",
-        "name": "如家驛居（河源亞洲第一高噴泉店）",
-        "area": "河源Heyuan Railway片区",
-        "price": 95,
-        "diff": -6,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "130401910",
-        "name": "河源輕悦酒店（亞洲第一高噴泉店）",
-        "area": "河源Light Joyhotel Light Joyhotel No.片区",
-        "price": 97,
-        "diff": -11,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Light Joyhotel Light Joyhotel No.",
-        "note": "河源Light Joyhotel Light Joyhotel No.，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "100004340",
-        "name": "四季优品酒店（河源巴伐利亞店）",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 98,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "80848070",
-        "name": "曼丽酒店（河源巴伐利亞店）",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 99,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "1501351",
-        "name": "如家酒店NEO（河源火車站店）",
-        "area": "河源万绿湖片区",
-        "price": 100,
-        "diff": -5,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源万绿湖",
-        "note": "河源万绿湖，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "939772",
-        "name": "河源紅星酒店（火車站店）",
-        "area": "河源源城片区",
-        "price": 101,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源源城",
-        "note": "河源源城，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "51797040",
-        "name": "利亞湾酒店（河源巴伐利亞庄园店）",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 103,
-        "diff": -3,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "91671702",
-        "name": "艺天瑞云酒店（河源亞洲第一高噴泉店）",
-        "area": "河源源城片区",
-        "price": 103,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源源城",
-        "note": "河源源城，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "6786907",
-        "name": "如家商旅酒店（河源亞洲第一高噴泉店）",
-        "area": "河源Heyuan Railway片区",
-        "price": 110,
-        "diff": -5,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "40836218",
-        "name": "城市便捷酒店（河源堅基购物中心万达店）",
-        "area": "河源Building M片区",
-        "price": 116,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Building M",
-        "note": "河源Building M，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "28761774",
-        "name": "河源明和公寓",
-        "area": "河源Heyuan Railway片区",
-        "price": 117,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "99315385",
-        "name": "IU酒店（河源万隆城店）",
-        "area": "河源万绿湖片区",
-        "price": 127,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源万绿湖",
-        "note": "河源万绿湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "972031",
-        "name": "华云酒店（河源万隆城店）",
-        "area": "河源Huayun片区",
-        "price": 131,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Huayun",
-        "note": "河源Huayun，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "946751",
-        "name": "柏曼酒店（河源亞洲第一高噴泉万隆城店）",
-        "area": "河源Heyuan Institute Of Socialism片区",
-        "price": 134,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Institute Of Socialism",
-        "note": "河源Heyuan Institute Of Socialism，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "131739795",
-        "name": "悟空電競酒店（河源万隆城购物中心店）",
-        "area": "河源Dianxin Square Vitality City片区",
-        "price": 138,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Dianxin Square Vitality City",
-        "note": "河源Dianxin Square Vitality City，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "15249953",
-        "name": "河源鉑悦斯国际酒店（亞洲第一高噴泉万隆城店）",
-        "area": "河源Heyuan Railway片区",
-        "price": 144,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "78214294",
-        "name": "河源宇景酒店",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 158,
-        "diff": -6,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午每晚含税均价低于平日代表价。"
-      },
-      {
         "hotel_id": "9316077",
-        "name": "和航伯尔盛国际酒店（河源亞洲第一高噴泉店）",
-        "area": "河源Heyuan Railway片区",
+        "name": "和航伯尔盛国际酒店（河源亚洲第一高喷泉店）",
+        "area": "河源源城片区",
         "price": 164,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "62659542",
-        "name": "丽枫酒店（河源高铁站碧桂园店）",
-        "area": "河源待确认片区",
-        "price": 166,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源",
-        "note": "河源，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "28012934",
-        "name": "合生酒店（河源高新一路店）",
-        "area": "河源万绿湖片区",
-        "price": 166,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源万绿湖",
-        "note": "河源万绿湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "6533081",
-        "name": "鉑萊顿度假酒店（河源巴伐利亞店）",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 172,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "940281",
-        "name": "丽呈睿軒酒店（河源亞洲第一高噴泉万隆城店）",
-        "area": "河源源城片区",
-        "price": 173,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
         "pool": false,
         "advanced": true,
         "display_area": "河源源城",
-        "note": "河源源城，具备儿童设施，适合亲子短途。"
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "78300635",
-        "name": "河源麥客达温德姆酒店",
-        "area": "河源Mingzhu Industrial Zone片区",
-        "price": 179,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Mingzhu Industrial Zone",
-        "note": "河源Mingzhu Industrial Zone，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "54859581",
-        "name": "深海酒店（河源店）",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 179,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "hotel_id": "57048982",
+        "name": "凯里亚德酒店（紫金万汇店）",
+        "area": "河源紫金片区",
+        "price": 199,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "9824333",
-        "name": "东岸酒店（河源高铁东站十里东岸店）",
-        "area": "河源Jiangdong New Area片区",
-        "price": 197,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Jiangdong New Area",
-        "note": "河源Jiangdong New Area，具备儿童设施，适合亲子短途。"
+        "display_area": "河源紫金",
+        "note": "河源紫金，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "26090554",
         "name": "河源万朵酒店",
-        "area": "河源Wtour片区",
-        "price": 210,
-        "diff": -6,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Wtour",
-        "note": "河源Wtour，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "134333680",
-        "name": "怡致酒店（万隆城亞洲音乐噴泉店）",
-        "area": "河源Yizhi片区",
-        "price": 210,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Yizhi",
-        "note": "河源Yizhi，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "29401304",
-        "name": "凯里亞德酒店（河源万隆城店）",
-        "area": "河源Kyriad Marvelous片区",
-        "price": 215,
-        "diff": -5,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Kyriad Marvelous",
-        "note": "河源Kyriad Marvelous，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "664437",
-        "name": "河源滨江金利大酒店（亞洲第一高噴泉店）",
         "area": "河源源城片区",
-        "price": 216,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "price": 210,
+        "diff": -4,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": true,
         "pool": false,
         "advanced": true,
         "display_area": "河源源城",
-        "note": "河源源城，具备儿童设施，适合亲子短途。"
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "134333680",
+        "name": "怡致酒店（万隆城亚洲音乐喷泉店）",
+        "area": "河源源城片区",
+        "price": 210,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "127224746",
+        "name": "河源渼居空中汤泉酒店（河源站店）",
+        "area": "河源源城片区",
+        "price": 212,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "664437",
+        "name": "河源滨江金利大酒店（亚洲第一高喷泉店）",
+        "area": "河源源城片区",
+        "price": 216,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "81071592",
         "name": "河源巴蜀国际美豪丽致酒店",
-        "area": "河源待确认片区",
+        "area": "河源源城片区",
         "price": 220,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "5398941",
-        "name": "丽枫酒店（河源万隆城店）",
-        "area": "河源No.片区",
-        "price": 224,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "hotel_id": "29401304",
+        "name": "凯里亚德酒店（河源万隆城店）",
+        "area": "河源源城片区",
+        "price": 229,
+        "diff": -7,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源No.",
-        "note": "河源No.，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "58323774",
-        "name": "凯里亞德酒店（河源堅基万达广场店）",
-        "area": "河源Taoyuan International Building片区",
-        "price": 235,
+        "name": "凯里亚德酒店（河源坚基万达广场店）",
+        "area": "河源源城片区",
+        "price": 248,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源Taoyuan International Building",
-        "note": "河源Taoyuan International Building，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "127224746",
-        "name": "河源渼居空中湯泉酒店（河源站店）",
-        "area": "河源待确认片区",
-        "price": 248,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "81161654",
-        "name": "云天酒店（河源高新区店）",
-        "area": "河源万绿湖片区",
-        "price": 258,
-        "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源万绿湖",
-        "note": "河源万绿湖，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "112411991",
-        "name": "维港薈国际酒店",
-        "area": "河源待确认片区",
-        "price": 258,
-        "diff": 0,
-        "source_file": "48d8ae3ec2e02403d2a5c36099766d237556540960d26f7cfb5492b2a4bcf1aa.json",
-        "source_cached_at": "2026-05-06T16:03:35",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "80266305",
-        "name": "宜尚酒店（河源堅基万达广场店）",
-        "area": "河源No.片区",
-        "price": 268,
-        "diff": -71,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源No.",
-        "note": "河源No.，具备儿童设施，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "70514592",
-        "name": "河源時代云端国际酒店",
-        "area": "河源待确认片区",
+        "name": "河源时代云端国际酒店",
+        "area": "河源源城片区",
         "price": 303,
-        "diff": -39,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "diff": -4,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，端午每晚含税均价低于平日代表价。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "9316077",
+        "name": "和航伯尔盛国际酒店（河源亚洲第一高喷泉店）",
+        "area": "河源源城片区",
+        "price": 164,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "57048982",
+        "name": "凯里亚德酒店（紫金万汇店）",
+        "area": "河源紫金片区",
+        "price": 199,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源紫金",
+        "note": "河源紫金，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "26090554",
+        "name": "河源万朵酒店",
+        "area": "河源源城片区",
+        "price": 210,
+        "diff": -4,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "134333680",
+        "name": "怡致酒店（万隆城亚洲音乐喷泉店）",
+        "area": "河源源城片区",
+        "price": 210,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "127224746",
+        "name": "河源渼居空中汤泉酒店（河源站店）",
+        "area": "河源源城片区",
+        "price": 212,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "664437",
+        "name": "河源滨江金利大酒店（亚洲第一高喷泉店）",
+        "area": "河源源城片区",
+        "price": 216,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "81071592",
+        "name": "河源巴蜀国际美豪丽致酒店",
+        "area": "河源源城片区",
+        "price": 220,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "29401304",
+        "name": "凯里亚德酒店（河源万隆城店）",
+        "area": "河源源城片区",
+        "price": 229,
+        "diff": -7,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "58323774",
+        "name": "凯里亚德酒店（河源坚基万达广场店）",
+        "area": "河源源城片区",
+        "price": 248,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "70514592",
+        "name": "河源时代云端国际酒店",
+        "area": "河源源城片区",
+        "price": 303,
+        "diff": -4,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       },
       {
         "hotel_id": "126272694",
         "name": "河源美居酒店",
-        "area": "河源待确认片区",
+        "area": "河源源城片区",
         "price": 325,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": true,
         "pool": false,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "82708834",
-        "name": "河源客家文化公园希尔顿欢朋酒店",
-        "area": "河源待确认片区",
-        "price": 335,
-        "diff": -3,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "535344",
         "name": "河源翔丰国际酒店",
-        "area": "河源待确认片区",
-        "price": 340,
+        "area": "河源源城片区",
+        "price": 336,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1507833",
+        "name": "河源汇景希尔顿逸林酒店",
+        "area": "河源源城片区",
+        "price": 365,
+        "diff": -39,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "437205",
+        "name": "河源御临门温泉度假村",
+        "area": "河源紫金片区",
+        "price": 382,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "河源紫金",
+        "note": "河源紫金，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
       }
     ],
     "family_no_rise": [
       {
         "hotel_id": "127224746",
-        "name": "河源渼居空中湯泉酒店（河源站店）",
-        "area": "河源待确认片区",
-        "price": 248,
+        "name": "河源渼居空中汤泉酒店（河源站店）",
+        "area": "河源源城片区",
+        "price": 212,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:26:10+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "112411991",
-        "name": "维港薈国际酒店",
-        "area": "河源待确认片区",
-        "price": 258,
-        "diff": 0,
-        "source_file": "48d8ae3ec2e02403d2a5c36099766d237556540960d26f7cfb5492b2a4bcf1aa.json",
-        "source_cached_at": "2026-05-06T16:03:35",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "535344",
         "name": "河源翔丰国际酒店",
-        "area": "河源待确认片区",
-        "price": 340,
+        "area": "河源源城片区",
+        "price": 336,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:26:10+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1507833",
+        "name": "河源汇景希尔顿逸林酒店",
+        "area": "河源源城片区",
+        "price": 365,
+        "diff": -39,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:26:10+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
       }
     ],
     "family_no_rise_all": [
       {
         "hotel_id": "127224746",
-        "name": "河源渼居空中湯泉酒店（河源站店）",
-        "area": "河源待确认片区",
-        "price": 248,
+        "name": "河源渼居空中汤泉酒店（河源站店）",
+        "area": "河源源城片区",
+        "price": 212,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:26:10+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "112411991",
-        "name": "维港薈国际酒店",
-        "area": "河源待确认片区",
-        "price": 258,
-        "diff": 0,
-        "source_file": "48d8ae3ec2e02403d2a5c36099766d237556540960d26f7cfb5492b2a4bcf1aa.json",
-        "source_cached_at": "2026-05-06T16:03:35",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "535344",
         "name": "河源翔丰国际酒店",
-        "area": "河源待确认片区",
-        "price": 340,
+        "area": "河源源城片区",
+        "price": 336,
         "diff": 0,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:26:10+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1507833",
+        "name": "河源汇景希尔顿逸林酒店",
+        "area": "河源源城片区",
+        "price": 365,
+        "diff": -39,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:26:10+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
       }
     ],
     "discount_star": [
       {
-        "hotel_id": "80266305",
-        "name": "宜尚酒店（河源堅基万达广场店）",
-        "area": "河源No.片区",
-        "price": 268,
-        "diff": -71,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源No.",
-        "note": "河源No.，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "70514592",
-        "name": "河源時代云端国际酒店",
-        "area": "河源待确认片区",
-        "price": 303,
+        "hotel_id": "1507833",
+        "name": "河源汇景希尔顿逸林酒店",
+        "area": "河源源城片区",
+        "price": 365,
         "diff": -39,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "河源源城",
+        "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "57048982",
+        "name": "凯里亚德酒店（紫金万汇店）",
+        "area": "河源紫金片区",
+        "price": 199,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源",
-        "note": "河源，端午每晚含税均价低于平日代表价。"
+        "display_area": "河源紫金",
+        "note": "河源紫金，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "5256212",
-        "name": "城市快捷酒店（河源火車站店）",
-        "area": "河源Youli Commercial Mansion片区",
-        "price": 78,
-        "diff": -17,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Youli Commercial Mansion",
-        "note": "河源Youli Commercial Mansion，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "130401910",
-        "name": "河源輕悦酒店（亞洲第一高噴泉店）",
-        "area": "河源Light Joyhotel Light Joyhotel No.片区",
-        "price": 97,
-        "diff": -11,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Light Joyhotel Light Joyhotel No.",
-        "note": "河源Light Joyhotel Light Joyhotel No.，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "100003272",
-        "name": "都市商旅酒店（河源火車站店）",
-        "area": "河源No.片区",
-        "price": 79,
+        "hotel_id": "29401304",
+        "name": "凯里亚德酒店（河源万隆城店）",
+        "area": "河源源城片区",
+        "price": 229,
         "diff": -7,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源No.",
-        "note": "河源No.，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "6982137",
-        "name": "如家驛居（河源亞洲第一高噴泉店）",
-        "area": "河源Heyuan Railway片区",
-        "price": 95,
-        "diff": -6,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "78214294",
-        "name": "河源宇景酒店",
-        "area": "河源巴伐利亚庄园片区",
-        "price": 158,
-        "diff": -6,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源巴伐利亚庄园",
-        "note": "河源巴伐利亚庄园，端午每晚含税均价低于平日代表价。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
         "hotel_id": "26090554",
         "name": "河源万朵酒店",
-        "area": "河源Wtour片区",
+        "area": "河源源城片区",
         "price": 210,
-        "diff": -6,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "diff": -4,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": true,
         "pool": false,
         "advanced": true,
-        "display_area": "河源Wtour",
-        "note": "河源Wtour，具备儿童设施，适合亲子短途。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
       },
       {
-        "hotel_id": "1501351",
-        "name": "如家酒店NEO（河源火車站店）",
-        "area": "河源万绿湖片区",
-        "price": 100,
-        "diff": -5,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "河源万绿湖",
-        "note": "河源万绿湖，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "6786907",
-        "name": "如家商旅酒店（河源亞洲第一高噴泉店）",
-        "area": "河源Heyuan Railway片区",
-        "price": 110,
-        "diff": -5,
-        "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "source_cached_at": "2026-05-07T15:46:24",
+        "hotel_id": "70514592",
+        "name": "河源时代云端国际酒店",
+        "area": "河源源城片区",
+        "price": 303,
+        "diff": -4,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:25:46+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "河源Heyuan Railway",
-        "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
+        "display_area": "河源源城",
+        "note": "河源源城，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       }
     ]
   },
   "latest_city_rank": [
     {
-      "hotel_id": "1424210",
-      "name": "星河觀影電競民宿（河源亞洲第一高噴泉店）",
+      "hotel_id": "9316077",
+      "name": "和航伯尔盛国际酒店（河源亚洲第一高喷泉店）",
       "area": "河源源城片区",
-      "price": 63,
+      "price": 164,
       "diff": 0,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
       "display_area": "河源源城",
-      "note": "河源源城，端午价格保持平稳，适合周边短途度假。"
+      "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "26451766",
-      "name": "堅居精品公寓（河源堅基购物中心沃尔瑪广场店）",
-      "area": "河源Building B片区",
-      "price": 74,
-      "diff": 0,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": true,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Building B",
-      "note": "河源Building B，具备儿童设施，适合亲子短途。"
-    },
-    {
-      "hotel_id": "5256212",
-      "name": "城市快捷酒店（河源火車站店）",
-      "area": "河源Youli Commercial Mansion片区",
-      "price": 78,
-      "diff": -17,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
+      "hotel_id": "57048982",
+      "name": "凯里亚德酒店（紫金万汇店）",
+      "area": "河源紫金片区",
+      "price": 199,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "河源Youli Commercial Mansion",
-      "note": "河源Youli Commercial Mansion，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "100003272",
-      "name": "都市商旅酒店（河源火車站店）",
-      "area": "河源No.片区",
-      "price": 79,
-      "diff": -7,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源No.",
-      "note": "河源No.，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "5336835",
-      "name": "河源海悦商務酒店（河源火車站店）",
-      "area": "河源Heyuan Haiyue Business片区",
-      "price": 86,
-      "diff": 0,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Heyuan Haiyue Business",
-      "note": "河源Heyuan Haiyue Business，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "1729697",
-      "name": "好利来大酒店（河源火車站店）",
-      "area": "河源Xinshi District片区",
-      "price": 91,
-      "diff": -3,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Xinshi District",
-      "note": "河源Xinshi District，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "6982137",
-      "name": "如家驛居（河源亞洲第一高噴泉店）",
-      "area": "河源Heyuan Railway片区",
-      "price": 95,
-      "diff": -6,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Heyuan Railway",
-      "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "130401910",
-      "name": "河源輕悦酒店（亞洲第一高噴泉店）",
-      "area": "河源Light Joyhotel Light Joyhotel No.片区",
-      "price": 97,
-      "diff": -11,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Light Joyhotel Light Joyhotel No.",
-      "note": "河源Light Joyhotel Light Joyhotel No.，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "100004340",
-      "name": "四季优品酒店（河源巴伐利亞店）",
-      "area": "河源巴伐利亚庄园片区",
-      "price": 98,
-      "diff": 0,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源巴伐利亚庄园",
-      "note": "河源巴伐利亚庄园，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "80848070",
-      "name": "曼丽酒店（河源巴伐利亞店）",
-      "area": "河源巴伐利亚庄园片区",
-      "price": 99,
-      "diff": 0,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源巴伐利亚庄园",
-      "note": "河源巴伐利亚庄园，端午价格保持平稳，适合周边短途度假。"
-    }
-  ],
-  "latest_discount_rank": [
-    {
-      "hotel_id": "80266305",
-      "name": "宜尚酒店（河源堅基万达广场店）",
-      "area": "河源No.片区",
-      "price": 268,
-      "diff": -71,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": true,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源No.",
-      "note": "河源No.，具备儿童设施，适合亲子短途。"
-    },
-    {
-      "hotel_id": "70514592",
-      "name": "河源時代云端国际酒店",
-      "area": "河源待确认片区",
-      "price": 303,
-      "diff": -39,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源",
-      "note": "河源，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "5256212",
-      "name": "城市快捷酒店（河源火車站店）",
-      "area": "河源Youli Commercial Mansion片区",
-      "price": 78,
-      "diff": -17,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Youli Commercial Mansion",
-      "note": "河源Youli Commercial Mansion，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "130401910",
-      "name": "河源輕悦酒店（亞洲第一高噴泉店）",
-      "area": "河源Light Joyhotel Light Joyhotel No.片区",
-      "price": 97,
-      "diff": -11,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Light Joyhotel Light Joyhotel No.",
-      "note": "河源Light Joyhotel Light Joyhotel No.，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "100003272",
-      "name": "都市商旅酒店（河源火車站店）",
-      "area": "河源No.片区",
-      "price": 79,
-      "diff": -7,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源No.",
-      "note": "河源No.，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "6982137",
-      "name": "如家驛居（河源亞洲第一高噴泉店）",
-      "area": "河源Heyuan Railway片区",
-      "price": 95,
-      "diff": -6,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源Heyuan Railway",
-      "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "78214294",
-      "name": "河源宇景酒店",
-      "area": "河源巴伐利亚庄园片区",
-      "price": 158,
-      "diff": -6,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源巴伐利亚庄园",
-      "note": "河源巴伐利亚庄园，端午每晚含税均价低于平日代表价。"
+      "display_area": "河源紫金",
+      "note": "河源紫金，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
     },
     {
       "hotel_id": "26090554",
       "name": "河源万朵酒店",
-      "area": "河源Wtour片区",
+      "area": "河源源城片区",
       "price": 210,
-      "diff": -6,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
+      "diff": -4,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
       "child": true,
       "pool": false,
       "advanced": true,
-      "display_area": "河源Wtour",
-      "note": "河源Wtour，具备儿童设施，适合亲子短途。"
+      "display_area": "河源源城",
+      "note": "河源源城，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
     },
     {
-      "hotel_id": "1501351",
-      "name": "如家酒店NEO（河源火車站店）",
-      "area": "河源万绿湖片区",
-      "price": 100,
-      "diff": -5,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
-      "child": true,
-      "pool": false,
-      "advanced": true,
-      "display_area": "河源万绿湖",
-      "note": "河源万绿湖，具备儿童设施，适合亲子短途。"
-    },
-    {
-      "hotel_id": "6786907",
-      "name": "如家商旅酒店（河源亞洲第一高噴泉店）",
-      "area": "河源Heyuan Railway片区",
-      "price": 110,
-      "diff": -5,
-      "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-      "source_cached_at": "2026-05-07T15:46:24",
+      "hotel_id": "134333680",
+      "name": "怡致酒店（万隆城亚洲音乐喷泉店）",
+      "area": "河源源城片区",
+      "price": 210,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "河源Heyuan Railway",
-      "note": "河源Heyuan Railway，端午每晚含税均价低于平日代表价。"
+      "display_area": "河源源城",
+      "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "127224746",
+      "name": "河源渼居空中汤泉酒店（河源站店）",
+      "area": "河源源城片区",
+      "price": 212,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "664437",
+      "name": "河源滨江金利大酒店（亚洲第一高喷泉店）",
+      "area": "河源源城片区",
+      "price": 216,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "81071592",
+      "name": "河源巴蜀国际美豪丽致酒店",
+      "area": "河源源城片区",
+      "price": 220,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "29401304",
+      "name": "凯里亚德酒店（河源万隆城店）",
+      "area": "河源源城片区",
+      "price": 229,
+      "diff": -7,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "58323774",
+      "name": "凯里亚德酒店（河源坚基万达广场店）",
+      "area": "河源源城片区",
+      "price": 248,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "70514592",
+      "name": "河源时代云端国际酒店",
+      "area": "河源源城片区",
+      "price": 303,
+      "diff": -4,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "126272694",
+      "name": "河源美居酒店",
+      "area": "河源源城片区",
+      "price": 325,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "535344",
+      "name": "河源翔丰国际酒店",
+      "area": "河源源城片区",
+      "price": 336,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "1507833",
+      "name": "河源汇景希尔顿逸林酒店",
+      "area": "河源源城片区",
+      "price": 365,
+      "diff": -39,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "437205",
+      "name": "河源御临门温泉度假村",
+      "area": "河源紫金片区",
+      "price": 382,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "河源紫金",
+      "note": "河源紫金，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "1507833",
+      "name": "河源汇景希尔顿逸林酒店",
+      "area": "河源源城片区",
+      "price": 365,
+      "diff": -39,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "57048982",
+      "name": "凯里亚德酒店（紫金万汇店）",
+      "area": "河源紫金片区",
+      "price": 199,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源紫金",
+      "note": "河源紫金，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "29401304",
+      "name": "凯里亚德酒店（河源万隆城店）",
+      "area": "河源源城片区",
+      "price": 229,
+      "diff": -7,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "26090554",
+      "name": "河源万朵酒店",
+      "area": "河源源城片区",
+      "price": 210,
+      "diff": -4,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "70514592",
+      "name": "河源时代云端国际酒店",
+      "area": "河源源城片区",
+      "price": 303,
+      "diff": -4,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:25:46+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "河源源城",
+      "note": "河源源城，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
     }
   ],
   "area_region_rank": [
     {
-      "area": "河源巴伐利亚庄园片区",
-      "hotel_count": 6,
-      "discount_hotel_count": 2,
-      "flat_hotel_count": 4,
-      "average_price": 135,
-      "average_diff": -2,
-      "price_range": [
-        98,
-        179
-      ],
-      "hotels": [
-        {
-          "hotel_id": "78214294",
-          "name": "河源宇景酒店",
-          "area": "河源巴伐利亚庄园片区",
-          "price": 158,
-          "diff": -6,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "51797040",
-          "name": "利亞湾酒店（河源巴伐利亞庄园店）",
-          "area": "河源巴伐利亚庄园片区",
-          "price": 103,
-          "diff": -3,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "100004340",
-          "name": "四季优品酒店（河源巴伐利亞店）",
-          "area": "河源巴伐利亚庄园片区",
-          "price": 98,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "80848070",
-          "name": "曼丽酒店（河源巴伐利亞店）",
-          "area": "河源巴伐利亚庄园片区",
-          "price": 99,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "6533081",
-          "name": "鉑萊顿度假酒店（河源巴伐利亞店）",
-          "area": "河源巴伐利亚庄园片区",
-          "price": 172,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "54859581",
-          "name": "深海酒店（河源店）",
-          "area": "河源巴伐利亚庄园片区",
-          "price": 179,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "河源宇景酒店",
-        "利亞湾酒店（河源巴伐利亞庄园店）",
-        "四季优品酒店（河源巴伐利亞店）"
-      ],
-      "rank": 1,
-      "summary": "6家高级酒店，2家降价，4家持平"
-    },
-    {
-      "area": "河源Heyuan Railway片区",
-      "hotel_count": 5,
-      "discount_hotel_count": 2,
-      "flat_hotel_count": 3,
-      "average_price": 126,
-      "average_diff": -2,
-      "price_range": [
-        95,
-        164
-      ],
-      "hotels": [
-        {
-          "hotel_id": "6982137",
-          "name": "如家驛居（河源亞洲第一高噴泉店）",
-          "area": "河源Heyuan Railway片区",
-          "price": 95,
-          "diff": -6,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "6786907",
-          "name": "如家商旅酒店（河源亞洲第一高噴泉店）",
-          "area": "河源Heyuan Railway片区",
-          "price": 110,
-          "diff": -5,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "28761774",
-          "name": "河源明和公寓",
-          "area": "河源Heyuan Railway片区",
-          "price": 117,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "15249953",
-          "name": "河源鉑悦斯国际酒店（亞洲第一高噴泉万隆城店）",
-          "area": "河源Heyuan Railway片区",
-          "price": 144,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "9316077",
-          "name": "和航伯尔盛国际酒店（河源亞洲第一高噴泉店）",
-          "area": "河源Heyuan Railway片区",
-          "price": 164,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "如家驛居（河源亞洲第一高噴泉店）",
-        "如家商旅酒店（河源亞洲第一高噴泉店）",
-        "河源明和公寓"
-      ],
-      "rank": 2,
-      "summary": "5家高级酒店，2家降价，3家持平"
-    },
-    {
       "area": "河源源城片区",
-      "hotel_count": 5,
-      "discount_hotel_count": 0,
-      "flat_hotel_count": 5,
-      "average_price": 131,
-      "average_diff": 0,
+      "hotel_count": 12,
+      "discount_hotel_count": 4,
+      "flat_hotel_count": 8,
+      "average_price": 253,
+      "average_diff": -4,
       "price_range": [
-        63,
-        216
+        164,
+        365
       ],
       "hotels": [
         {
-          "hotel_id": "1424210",
-          "name": "星河觀影電競民宿（河源亞洲第一高噴泉店）",
+          "hotel_id": "1507833",
+          "name": "河源汇景希尔顿逸林酒店",
           "area": "河源源城片区",
-          "price": 63,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
+          "price": 365,
+          "diff": -39,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
         },
         {
-          "hotel_id": "939772",
-          "name": "河源紅星酒店（火車站店）",
+          "hotel_id": "29401304",
+          "name": "凯里亚德酒店（河源万隆城店）",
           "area": "河源源城片区",
-          "price": 101,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "91671702",
-          "name": "艺天瑞云酒店（河源亞洲第一高噴泉店）",
-          "area": "河源源城片区",
-          "price": 103,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "940281",
-          "name": "丽呈睿軒酒店（河源亞洲第一高噴泉万隆城店）",
-          "area": "河源源城片区",
-          "price": 173,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "664437",
-          "name": "河源滨江金利大酒店（亞洲第一高噴泉店）",
-          "area": "河源源城片区",
-          "price": 216,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "星河觀影電競民宿（河源亞洲第一高噴泉店）",
-        "河源紅星酒店（火車站店）",
-        "艺天瑞云酒店（河源亞洲第一高噴泉店）"
-      ],
-      "rank": 3,
-      "summary": "5家高级酒店，0家降价，5家持平"
-    },
-    {
-      "area": "河源万绿湖片区",
-      "hotel_count": 4,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 3,
-      "average_price": 163,
-      "average_diff": -1,
-      "price_range": [
-        100,
-        258
-      ],
-      "hotels": [
-        {
-          "hotel_id": "1501351",
-          "name": "如家酒店NEO（河源火車站店）",
-          "area": "河源万绿湖片区",
-          "price": 100,
-          "diff": -5,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "99315385",
-          "name": "IU酒店（河源万隆城店）",
-          "area": "河源万绿湖片区",
-          "price": 127,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "28012934",
-          "name": "合生酒店（河源高新一路店）",
-          "area": "河源万绿湖片区",
-          "price": 166,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "81161654",
-          "name": "云天酒店（河源高新区店）",
-          "area": "河源万绿湖片区",
-          "price": 258,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "如家酒店NEO（河源火車站店）",
-        "IU酒店（河源万隆城店）",
-        "合生酒店（河源高新一路店）"
-      ],
-      "rank": 4,
-      "summary": "4家高级酒店，1家降价，3家持平"
-    },
-    {
-      "area": "河源No.片区",
-      "hotel_count": 3,
-      "discount_hotel_count": 2,
-      "flat_hotel_count": 1,
-      "average_price": 190,
-      "average_diff": -26,
-      "price_range": [
-        79,
-        268
-      ],
-      "hotels": [
-        {
-          "hotel_id": "80266305",
-          "name": "宜尚酒店（河源堅基万达广场店）",
-          "area": "河源No.片区",
-          "price": 268,
-          "diff": -71,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        },
-        {
-          "hotel_id": "100003272",
-          "name": "都市商旅酒店（河源火車站店）",
-          "area": "河源No.片区",
-          "price": 79,
+          "price": 229,
           "diff": -7,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
         },
-        {
-          "hotel_id": "5398941",
-          "name": "丽枫酒店（河源万隆城店）",
-          "area": "河源No.片区",
-          "price": 224,
-          "diff": 0,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "宜尚酒店（河源堅基万达广场店）",
-        "都市商旅酒店（河源火車站店）",
-        "丽枫酒店（河源万隆城店）"
-      ],
-      "rank": 5,
-      "summary": "3家高级酒店，2家降价，1家持平"
-    },
-    {
-      "area": "河源Youli Commercial Mansion片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 78,
-      "average_diff": -17,
-      "price_range": [
-        78,
-        78
-      ],
-      "hotels": [
-        {
-          "hotel_id": "5256212",
-          "name": "城市快捷酒店（河源火車站店）",
-          "area": "河源Youli Commercial Mansion片区",
-          "price": 78,
-          "diff": -17,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "城市快捷酒店（河源火車站店）"
-      ],
-      "rank": 6,
-      "summary": "1家高级酒店，1家降价"
-    },
-    {
-      "area": "河源Light Joyhotel Light Joyhotel No.片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 97,
-      "average_diff": -11,
-      "price_range": [
-        97,
-        97
-      ],
-      "hotels": [
-        {
-          "hotel_id": "130401910",
-          "name": "河源輕悦酒店（亞洲第一高噴泉店）",
-          "area": "河源Light Joyhotel Light Joyhotel No.片区",
-          "price": 97,
-          "diff": -11,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "河源輕悦酒店（亞洲第一高噴泉店）"
-      ],
-      "rank": 7,
-      "summary": "1家高级酒店，1家降价"
-    },
-    {
-      "area": "河源Wtour片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 210,
-      "average_diff": -6,
-      "price_range": [
-        210,
-        210
-      ],
-      "hotels": [
         {
           "hotel_id": "26090554",
           "name": "河源万朵酒店",
-          "area": "河源Wtour片区",
+          "area": "河源源城片区",
           "price": 210,
-          "diff": -6,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
+          "diff": -4,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "70514592",
+          "name": "河源时代云端国际酒店",
+          "area": "河源源城片区",
+          "price": 303,
+          "diff": -4,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "9316077",
+          "name": "和航伯尔盛国际酒店（河源亚洲第一高喷泉店）",
+          "area": "河源源城片区",
+          "price": 164,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "134333680",
+          "name": "怡致酒店（万隆城亚洲音乐喷泉店）",
+          "area": "河源源城片区",
+          "price": 210,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "127224746",
+          "name": "河源渼居空中汤泉酒店（河源站店）",
+          "area": "河源源城片区",
+          "price": 212,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "664437",
+          "name": "河源滨江金利大酒店（亚洲第一高喷泉店）",
+          "area": "河源源城片区",
+          "price": 216,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "81071592",
+          "name": "河源巴蜀国际美豪丽致酒店",
+          "area": "河源源城片区",
+          "price": 220,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "58323774",
+          "name": "凯里亚德酒店（河源坚基万达广场店）",
+          "area": "河源源城片区",
+          "price": 248,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "126272694",
+          "name": "河源美居酒店",
+          "area": "河源源城片区",
+          "price": 325,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "535344",
+          "name": "河源翔丰国际酒店",
+          "area": "河源源城片区",
+          "price": 336,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "河源源城",
+          "note": "河源源城，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
         }
       ],
       "representative_hotels": [
+        "河源汇景希尔顿逸林酒店",
+        "凯里亚德酒店（河源万隆城店）",
         "河源万朵酒店"
       ],
-      "rank": 8,
-      "summary": "1家高级酒店，1家降价"
+      "summary": "12家四星/四钻以上酒店，4家降价，8家持平",
+      "rank": 1
     },
     {
-      "area": "河源Kyriad Marvelous片区",
-      "hotel_count": 1,
+      "area": "河源紫金片区",
+      "hotel_count": 2,
       "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 215,
-      "average_diff": -5,
+      "flat_hotel_count": 1,
+      "average_price": 290,
+      "average_diff": -4,
       "price_range": [
-        215,
-        215
+        199,
+        382
       ],
       "hotels": [
         {
-          "hotel_id": "29401304",
-          "name": "凯里亞德酒店（河源万隆城店）",
-          "area": "河源Kyriad Marvelous片区",
-          "price": 215,
-          "diff": -5,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
-        }
-      ],
-      "representative_hotels": [
-        "凯里亞德酒店（河源万隆城店）"
-      ],
-      "rank": 9,
-      "summary": "1家高级酒店，1家降价"
-    },
-    {
-      "area": "河源Xinshi District片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 91,
-      "average_diff": -3,
-      "price_range": [
-        91,
-        91
-      ],
-      "hotels": [
+          "hotel_id": "57048982",
+          "name": "凯里亚德酒店（紫金万汇店）",
+          "area": "河源紫金片区",
+          "price": 199,
+          "diff": -8,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "河源紫金",
+          "note": "河源紫金，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
         {
-          "hotel_id": "1729697",
-          "name": "好利来大酒店（河源火車站店）",
-          "area": "河源Xinshi District片区",
-          "price": 91,
-          "diff": -3,
-          "source_file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-          "source_cached_at": "2026-05-07T15:46:24"
+          "hotel_id": "437205",
+          "name": "河源御临门温泉度假村",
+          "area": "河源紫金片区",
+          "price": 382,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:25:46+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "河源紫金",
+          "note": "河源紫金，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
         }
       ],
       "representative_hotels": [
-        "好利来大酒店（河源火車站店）"
+        "凯里亚德酒店（紫金万汇店）",
+        "河源御临门温泉度假村"
       ],
-      "rank": 10,
-      "summary": "1家高级酒店，1家降价"
+      "summary": "2家四星/四钻以上酒店，1家降价，1家持平",
+      "rank": 2
     }
   ],
   "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
     "matching_file_count": 2,
-    "candidate_count": 68,
-    "unique_hotel_count": 65,
-    "included_hotel_count": 46,
-    "matching_files": [
+    "candidate_count": 92,
+    "unique_hotel_count": 92,
+    "included_hotel_count": 14,
+    "excluded_hotel_count": 44,
+    "excluded_hotels": [
       {
-        "file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "mtime": 1778139984.3933067,
-        "choices": 76,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "939772",
+        "name": "河源紅星酒店（火車站店）",
+        "reason": "未纳入四星/四钻口径"
       },
       {
-        "file": "48d8ae3ec2e02403d2a5c36099766d237556540960d26f7cfb5492b2a4bcf1aa.json",
-        "mtime": 1778054615.5151334,
-        "choices": 6,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
-      }
-    ]
-  },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 2,
-    "candidate_count": 68,
-    "unique_hotel_count": 65,
-    "included_hotel_count": 46,
-    "matching_files": [
-      {
-        "file": "08e109e7e82772fc9828c0dd04ded61e1e0c287555b95e1460c01ac357423f5b.json",
-        "mtime": 1778139984.3933067,
-        "choices": 76,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "100004340",
+        "name": "四季优品酒店（河源巴伐利亞店）",
+        "reason": "未纳入四星/四钻口径"
       },
       {
-        "file": "48d8ae3ec2e02403d2a5c36099766d237556540960d26f7cfb5492b2a4bcf1aa.json",
-        "mtime": 1778054615.5151334,
-        "choices": 6,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "81161654",
+        "name": "云天酒店（河源高新区店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "130401910",
+        "name": "河源輕悦酒店（亞洲第一高噴泉店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "1729706",
+        "name": "Lavande Hotel (Heyuan Avenue Top Fountain of Asia)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "78214294",
+        "name": "河源宇景酒店",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "100003272",
+        "name": "都市商旅酒店（河源火車站店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "5256212",
+        "name": "城市快捷酒店（河源火車站店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "6982137",
+        "name": "如家驛居（河源亞洲第一高噴泉店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1501351",
+        "name": "如家酒店NEO（河源火車站店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "6786907",
+        "name": "如家商旅酒店（河源亞洲第一高噴泉店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "125207540",
+        "name": "Lilian Hidden World Hotel (Wanlvhu Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "1729697",
+        "name": "好利来大酒店（河源火車站店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "51797040",
+        "name": "利亞湾酒店（河源巴伐利亞庄园店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "69272381",
+        "name": "Jiayue Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "1424210",
+        "name": "星河觀影電競民宿（河源亞洲第一高噴泉店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "4389600",
+        "name": "Fan She Fashion Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "972031",
+        "name": "华云酒店（河源万隆城店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "80848070",
+        "name": "曼丽酒店（河源巴伐利亞店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "5336835",
+        "name": "河源海悦商務酒店（河源火車站店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "28761774",
+        "name": "河源明和公寓",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "53014389",
+        "name": "Junyi Select Hotel (Dongyuan Wanda Jianji Agile Branch)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "133473935",
+        "name": "Heyuan Yiduo Time Boutique Stay (Heyuan East Station)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "125330459",
+        "name": "Hantai International Hotel (Heyuan Railway Station Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "40836218",
+        "name": "城市便捷酒店（河源堅基购物中心万达店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "6822263",
+        "name": "Jinshawan River View Hotel (Heyuan Dinosaur Museum)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "99315385",
+        "name": "IU酒店（河源万隆城店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "15998979",
+        "name": "Nice Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "131739795",
+        "name": "悟空電競酒店（河源万隆城购物中心店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "946751",
+        "name": "柏曼酒店（河源亞洲第一高噴泉万隆城店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "844210",
+        "name": "Artland Peninsula Hotel（Heyuan Bandung City Asian Music Fountain Store)）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "133202867",
+        "name": "Chaoman Hotel (Heyuan Wanlong City Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "54859581",
+        "name": "深海酒店（河源店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "78041385",
+        "name": "Vienna Hotel (Heyuan Dongyuan)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "62659542",
+        "name": "丽枫酒店（河源高铁站碧桂园店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "30005197",
+        "name": "Lavande Hotel (Heyuan Bavaria Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "6638565",
+        "name": "Yufeng International Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "9824333",
+        "name": "东岸酒店（河源高铁东站十里东岸店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "5640515",
+        "name": "Heyuan wanlvhu Lake View Inn",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "2239049",
+        "name": "Dongfang Mingyuan Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "6533081",
+        "name": "铂莱顿度假酒店（河源巴伐利亚店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "78300635",
+        "name": "河源麦客达温德姆酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "91457478",
+        "name": "维也纳国际酒店（河源东源万达店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6128846",
+        "name": "维也纳国际酒店（河源雅居乐坚基购物中心店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
       }
     ],
-    "source": "search_cache"
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:25:46+08:00",
+        "choices": 92,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 176.2
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:26:10+08:00",
+        "choices": 8,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 24.1
+      }
+    ],
+    "reference_sources": [
+      "https://hotels.ctrip.com/hotel/heyuan693/star4",
+      "https://hotels.ctrip.com/hotel/heyuan693/star5",
+      "https://www.trip.com/hotels/heyuan-hotel-detail-1507833/doubletree-by-hilton-hotel/",
+      "https://www.hilton.com/zh-hans/hotels/huzhadi-doubletree-heyuan/"
+    ],
+    "area_count": 2,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
   },
-  "city_wikipedia_intro": {
-    "city": "河源",
-    "text": "河源可重点看万绿湖、桂山、镜花缘、霍山和河源恐龙博物馆；湖景度假、山地自然和亲子行程适合搭配。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/河源",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 92,
+    "unique_hotel_count": 92,
+    "included_hotel_count": 14,
+    "excluded_hotel_count": 44,
+    "excluded_hotels": [
+      {
+        "hotel_id": "939772",
+        "name": "河源紅星酒店（火車站店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "100004340",
+        "name": "四季优品酒店（河源巴伐利亞店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "81161654",
+        "name": "云天酒店（河源高新区店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "130401910",
+        "name": "河源輕悦酒店（亞洲第一高噴泉店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "1729706",
+        "name": "Lavande Hotel (Heyuan Avenue Top Fountain of Asia)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "78214294",
+        "name": "河源宇景酒店",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "100003272",
+        "name": "都市商旅酒店（河源火車站店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "5256212",
+        "name": "城市快捷酒店（河源火車站店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "6982137",
+        "name": "如家驛居（河源亞洲第一高噴泉店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1501351",
+        "name": "如家酒店NEO（河源火車站店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "6786907",
+        "name": "如家商旅酒店（河源亞洲第一高噴泉店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "125207540",
+        "name": "Lilian Hidden World Hotel (Wanlvhu Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "1729697",
+        "name": "好利来大酒店（河源火車站店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "51797040",
+        "name": "利亞湾酒店（河源巴伐利亞庄园店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "69272381",
+        "name": "Jiayue Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "1424210",
+        "name": "星河觀影電競民宿（河源亞洲第一高噴泉店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "4389600",
+        "name": "Fan She Fashion Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "972031",
+        "name": "华云酒店（河源万隆城店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "80848070",
+        "name": "曼丽酒店（河源巴伐利亞店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "5336835",
+        "name": "河源海悦商務酒店（河源火車站店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "28761774",
+        "name": "河源明和公寓",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "53014389",
+        "name": "Junyi Select Hotel (Dongyuan Wanda Jianji Agile Branch)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "133473935",
+        "name": "Heyuan Yiduo Time Boutique Stay (Heyuan East Station)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "125330459",
+        "name": "Hantai International Hotel (Heyuan Railway Station Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "40836218",
+        "name": "城市便捷酒店（河源堅基购物中心万达店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "6822263",
+        "name": "Jinshawan River View Hotel (Heyuan Dinosaur Museum)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "99315385",
+        "name": "IU酒店（河源万隆城店）",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "15998979",
+        "name": "Nice Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "131739795",
+        "name": "悟空電競酒店（河源万隆城购物中心店）",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "946751",
+        "name": "柏曼酒店（河源亞洲第一高噴泉万隆城店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "844210",
+        "name": "Artland Peninsula Hotel（Heyuan Bandung City Asian Music Fountain Store)）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "133202867",
+        "name": "Chaoman Hotel (Heyuan Wanlong City Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "54859581",
+        "name": "深海酒店（河源店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "78041385",
+        "name": "Vienna Hotel (Heyuan Dongyuan)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "62659542",
+        "name": "丽枫酒店（河源高铁站碧桂园店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "30005197",
+        "name": "Lavande Hotel (Heyuan Bavaria Branch)",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "6638565",
+        "name": "Yufeng International Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "9824333",
+        "name": "东岸酒店（河源高铁东站十里东岸店）",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "5640515",
+        "name": "Heyuan wanlvhu Lake View Inn",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "2239049",
+        "name": "Dongfang Mingyuan Hotel",
+        "reason": "未纳入四星/四钻口径"
+      },
+      {
+        "hotel_id": "6533081",
+        "name": "铂莱顿度假酒店（河源巴伐利亚店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "78300635",
+        "name": "河源麦客达温德姆酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "91457478",
+        "name": "维也纳国际酒店（河源东源万达店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6128846",
+        "name": "维也纳国际酒店（河源雅居乐坚基购物中心店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:25:46+08:00",
+        "choices": 92,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 176.2
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:26:10+08:00",
+        "choices": 8,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 24.1
+      }
+    ],
+    "reference_sources": [
+      "https://hotels.ctrip.com/hotel/heyuan693/star4",
+      "https://hotels.ctrip.com/hotel/heyuan693/star5",
+      "https://www.trip.com/hotels/heyuan-hotel-detail-1507833/doubletree-by-hilton-hotel/",
+      "https://www.hilton.com/zh-hans/hotels/huzhadi-doubletree-heyuan/"
+    ],
+    "area_count": 2,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
+  },
+  "city_wikipedia_intro": "河源可重点看万绿湖、桂山、镜花缘、霍山和河源恐龙博物馆；湖景度假、山地自然和亲子行程适合搭配。"
 }

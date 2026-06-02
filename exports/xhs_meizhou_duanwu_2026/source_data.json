@@ -1,166 +1,1568 @@
 {
   "city": "梅州",
-  "generated_at": "2026-05-12T12:24:41",
+  "generated_at": "2026-05-22T15:51:06",
   "lists": {
     "star_no_rise": [
       {
-        "hotel_id": "23984005",
-        "name": "美爵酒店",
-        "area": "梅州待确认片区",
-        "price": 129,
+        "hotel_id": "2269338",
+        "name": "梅州金德宝国际酒店",
+        "area": "梅州市区片区",
+        "price": 145,
         "diff": 0,
-        "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
-        "source_cached_at": "2026-05-11T18:10:32",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "梅州",
-        "note": "梅州，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "752300",
+        "name": "梅州华美达酒店（万达广场店）",
+        "area": "梅州市区片区",
+        "price": 168,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "643248",
+        "name": "梅州皇家名典酒店（嘉应古城店）",
+        "area": "梅州市区片区",
+        "price": 196,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "7849322",
+        "name": "诚御酒店（梅州客家博物馆店）",
+        "area": "梅州市区片区",
+        "price": 209,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 258,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "80267413",
+        "name": "梅州强华陋室酒店",
+        "area": "梅州市区片区",
+        "price": 278,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "14219925",
+        "name": "梅州客天下艺术家园酒店",
+        "area": "梅州市区片区",
+        "price": 328,
+        "diff": -7,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1258061",
+        "name": "梅州昌盛豪生大酒店",
+        "area": "梅州市区片区",
+        "price": 338,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 5,
+        "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "2303820",
+        "name": "梅州白天鹅迎宾馆",
+        "area": "梅州市区片区",
+        "price": 343,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
       }
     ],
     "star_no_rise_all": [
       {
-        "hotel_id": "23984005",
-        "name": "美爵酒店",
-        "area": "梅州待确认片区",
-        "price": 129,
+        "hotel_id": "2269338",
+        "name": "梅州金德宝国际酒店",
+        "area": "梅州市区片区",
+        "price": 145,
         "diff": 0,
-        "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
-        "source_cached_at": "2026-05-11T18:10:32",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "梅州",
-        "note": "梅州，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "752300",
+        "name": "梅州华美达酒店（万达广场店）",
+        "area": "梅州市区片区",
+        "price": 168,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "643248",
+        "name": "梅州皇家名典酒店（嘉应古城店）",
+        "area": "梅州市区片区",
+        "price": 196,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "7849322",
+        "name": "诚御酒店（梅州客家博物馆店）",
+        "area": "梅州市区片区",
+        "price": 209,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 258,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "80267413",
+        "name": "梅州强华陋室酒店",
+        "area": "梅州市区片区",
+        "price": 278,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "14219925",
+        "name": "梅州客天下艺术家园酒店",
+        "area": "梅州市区片区",
+        "price": 328,
+        "diff": -7,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1258061",
+        "name": "梅州昌盛豪生大酒店",
+        "area": "梅州市区片区",
+        "price": 338,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 5,
+        "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "2303820",
+        "name": "梅州白天鹅迎宾馆",
+        "area": "梅州市区片区",
+        "price": 343,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "109456571",
+        "name": "梅州金叶戴斯温德姆酒店",
+        "area": "梅州市区片区",
+        "price": 382,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "6865289",
+        "name": "韩山硒湖云顶度假酒店（梅州丰顺店）",
+        "area": "梅州丰顺片区",
+        "price": 414,
+        "diff": -13,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "125761536",
+        "name": "梅州梅江财盛中心希尔顿欢朋酒店",
+        "area": "梅州市区片区",
+        "price": 431,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "968063",
+        "name": "梅州金沙湾国际大酒店（嘉应古城店）",
+        "area": "梅州市区片区",
+        "price": 438,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 5,
+        "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
       }
     ],
-    "family_no_rise": [],
-    "family_no_rise_all": [],
-    "discount_star": []
-  },
-  "latest_city_rank": [
-    {
-      "hotel_id": "23984005",
-      "name": "美爵酒店",
-      "area": "梅州待确认片区",
-      "price": 129,
-      "diff": 0,
-      "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
-      "source_cached_at": "2026-05-11T18:10:32",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "梅州",
-      "note": "梅州，端午价格保持平稳，适合周边短途度假。"
-    }
-  ],
-  "latest_discount_rank": [],
-  "area_region_rank": [
-    {
-      "area": "梅州待确认片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 0,
-      "flat_hotel_count": 1,
-      "average_price": 129,
-      "average_diff": 0,
-      "price_range": [
-        129,
-        129
-      ],
-      "hotels": [
-        {
-          "hotel_id": "23984005",
-          "name": "美爵酒店",
-          "area": "梅州待确认片区",
-          "price": 129,
-          "diff": 0,
-          "source_file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
-          "source_cached_at": "2026-05-11T18:10:32"
-        }
-      ],
-      "representative_hotels": [
-        "美爵酒店"
-      ],
-      "rank": 1,
-      "summary": "1家高级酒店，0家降价，1家持平"
-    }
-  ],
-  "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 1,
-    "candidate_count": 72,
-    "unique_hotel_count": 72,
-    "included_hotel_count": 1,
-    "matching_files": [
+    "family_no_rise": [
       {
-        "file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
-        "mtime": 1778494232.6146839,
-        "choices": 72,
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 258,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
         "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "80267413",
+        "name": "梅州强华陋室酒店",
+        "area": "梅州市区片区",
+        "price": 278,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "14219925",
+        "name": "梅州客天下艺术家园酒店",
+        "area": "梅州市区片区",
+        "price": 328,
+        "diff": -7,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6865289",
+        "name": "韩山硒湖云顶度假酒店（梅州丰顺店）",
+        "area": "梅州丰顺片区",
+        "price": 414,
+        "diff": -13,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "1520239",
+        "name": "丰顺宝丰温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 258,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "80267413",
+        "name": "梅州强华陋室酒店",
+        "area": "梅州市区片区",
+        "price": 278,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "995245",
+        "name": "丰顺千江温泉酒店",
+        "area": "梅州丰顺片区",
+        "price": 298,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "14219925",
+        "name": "梅州客天下艺术家园酒店",
+        "area": "梅州市区片区",
+        "price": 328,
+        "diff": -7,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "6865289",
+        "name": "韩山硒湖云顶度假酒店（梅州丰顺店）",
+        "area": "梅州丰顺片区",
+        "price": 414,
+        "diff": -13,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "6865289",
+        "name": "韩山硒湖云顶度假酒店（梅州丰顺店）",
+        "area": "梅州丰顺片区",
+        "price": 414,
+        "diff": -13,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州丰顺",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "14219925",
+        "name": "梅州客天下艺术家园酒店",
+        "area": "梅州市区片区",
+        "price": 328,
+        "diff": -7,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T15:39:20+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "1258061",
+        "name": "梅州昌盛豪生大酒店",
+        "area": "梅州市区片区",
+        "price": 338,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 5,
+        "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "125761536",
+        "name": "梅州梅江财盛中心希尔顿欢朋酒店",
+        "area": "梅州市区片区",
+        "price": 431,
+        "diff": -1,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T15:34:51+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "梅州市区",
+        "trip_hotel_star_rating": 4,
+        "note": "梅州市区，端午每晚含税均价低于平日代表价。"
       }
     ]
   },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+  "latest_city_rank": [
+    {
+      "hotel_id": "2269338",
+      "name": "梅州金德宝国际酒店",
+      "area": "梅州市区片区",
+      "price": 145,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "752300",
+      "name": "梅州华美达酒店（万达广场店）",
+      "area": "梅州市区片区",
+      "price": 168,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "643248",
+      "name": "梅州皇家名典酒店（嘉应古城店）",
+      "area": "梅州市区片区",
+      "price": 196,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "7849322",
+      "name": "诚御酒店（梅州客家博物馆店）",
+      "area": "梅州市区片区",
+      "price": 209,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "1520239",
+      "name": "丰顺宝丰温泉酒店",
+      "area": "梅州丰顺片区",
+      "price": 258,
+      "diff": 0,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:39:20+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州丰顺",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "80267413",
+      "name": "梅州强华陋室酒店",
+      "area": "梅州市区片区",
+      "price": 278,
+      "diff": 0,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:39:20+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "995245",
+      "name": "丰顺千江温泉酒店",
+      "area": "梅州丰顺片区",
+      "price": 298,
+      "diff": 0,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:39:20+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州丰顺",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "14219925",
+      "name": "梅州客天下艺术家园酒店",
+      "area": "梅州市区片区",
+      "price": 328,
+      "diff": -7,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:39:20+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "1258061",
+      "name": "梅州昌盛豪生大酒店",
+      "area": "梅州市区片区",
+      "price": 338,
+      "diff": -1,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 5,
+      "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "2303820",
+      "name": "梅州白天鹅迎宾馆",
+      "area": "梅州市区片区",
+      "price": 343,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "109456571",
+      "name": "梅州金叶戴斯温德姆酒店",
+      "area": "梅州市区片区",
+      "price": 382,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "6865289",
+      "name": "韩山硒湖云顶度假酒店（梅州丰顺店）",
+      "area": "梅州丰顺片区",
+      "price": 414,
+      "diff": -13,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:39:20+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州丰顺",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "125761536",
+      "name": "梅州梅江财盛中心希尔顿欢朋酒店",
+      "area": "梅州市区片区",
+      "price": 431,
+      "diff": -1,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "968063",
+      "name": "梅州金沙湾国际大酒店（嘉应古城店）",
+      "area": "梅州市区片区",
+      "price": 438,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 5,
+      "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "6865289",
+      "name": "韩山硒湖云顶度假酒店（梅州丰顺店）",
+      "area": "梅州丰顺片区",
+      "price": 414,
+      "diff": -13,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:39:20+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州丰顺",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "14219925",
+      "name": "梅州客天下艺术家园酒店",
+      "area": "梅州市区片区",
+      "price": 328,
+      "diff": -7,
+      "source_file": "live_refresh/quality.json",
+      "source_cached_at": "2026-05-22T15:39:20+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
+      "hotel_id": "1258061",
+      "name": "梅州昌盛豪生大酒店",
+      "area": "梅州市区片区",
+      "price": 338,
+      "diff": -1,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 5,
+      "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "125761536",
+      "name": "梅州梅江财盛中心希尔顿欢朋酒店",
+      "area": "梅州市区片区",
+      "price": 431,
+      "diff": -1,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T15:34:51+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "梅州市区",
+      "trip_hotel_star_rating": 4,
+      "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "梅州市区片区",
+      "hotel_count": 11,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 8,
+      "average_price": 296,
+      "average_diff": -1,
+      "price_range": [
+        145,
+        438
+      ],
+      "hotels": [
+        {
+          "hotel_id": "14219925",
+          "name": "梅州客天下艺术家园酒店",
+          "area": "梅州市区片区",
+          "price": 328,
+          "diff": -7,
+          "source_file": "live_refresh/quality.json",
+          "source_cached_at": "2026-05-22T15:39:20+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+        },
+        {
+          "hotel_id": "1258061",
+          "name": "梅州昌盛豪生大酒店",
+          "area": "梅州市区片区",
+          "price": 338,
+          "diff": -1,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 5,
+          "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+        },
+        {
+          "hotel_id": "125761536",
+          "name": "梅州梅江财盛中心希尔顿欢朋酒店",
+          "area": "梅州市区片区",
+          "price": 431,
+          "diff": -1,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，端午每晚含税均价低于平日代表价。"
+        },
+        {
+          "hotel_id": "2269338",
+          "name": "梅州金德宝国际酒店",
+          "area": "梅州市区片区",
+          "price": 145,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "752300",
+          "name": "梅州华美达酒店（万达广场店）",
+          "area": "梅州市区片区",
+          "price": 168,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "643248",
+          "name": "梅州皇家名典酒店（嘉应古城店）",
+          "area": "梅州市区片区",
+          "price": 196,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "7849322",
+          "name": "诚御酒店（梅州客家博物馆店）",
+          "area": "梅州市区片区",
+          "price": 209,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "80267413",
+          "name": "梅州强华陋室酒店",
+          "area": "梅州市区片区",
+          "price": 278,
+          "diff": 0,
+          "source_file": "live_refresh/quality.json",
+          "source_cached_at": "2026-05-22T15:39:20+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，具备儿童设施和泳池，适合亲子短途。"
+        },
+        {
+          "hotel_id": "2303820",
+          "name": "梅州白天鹅迎宾馆",
+          "area": "梅州市区片区",
+          "price": 343,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "109456571",
+          "name": "梅州金叶戴斯温德姆酒店",
+          "area": "梅州市区片区",
+          "price": 382,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "968063",
+          "name": "梅州金沙湾国际大酒店（嘉应古城店）",
+          "area": "梅州市区片区",
+          "price": 438,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T15:34:51+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州市区",
+          "trip_hotel_star_rating": 5,
+          "note": "梅州市区，端午价格保持平稳，适合周边短途度假。"
+        }
+      ],
+      "representative_hotels": [
+        "梅州客天下艺术家园酒店",
+        "梅州昌盛豪生大酒店",
+        "梅州梅江财盛中心希尔顿欢朋酒店"
+      ],
+      "summary": "11家四星/四钻以上酒店，3家降价，8家持平",
+      "rank": 1
+    },
+    {
+      "area": "梅州丰顺片区",
+      "hotel_count": 3,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 2,
+      "average_price": 323,
+      "average_diff": -4,
+      "price_range": [
+        258,
+        414
+      ],
+      "hotels": [
+        {
+          "hotel_id": "6865289",
+          "name": "韩山硒湖云顶度假酒店（梅州丰顺店）",
+          "area": "梅州丰顺片区",
+          "price": 414,
+          "diff": -13,
+          "source_file": "live_refresh/quality.json",
+          "source_cached_at": "2026-05-22T15:39:20+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州丰顺",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+        },
+        {
+          "hotel_id": "1520239",
+          "name": "丰顺宝丰温泉酒店",
+          "area": "梅州丰顺片区",
+          "price": 258,
+          "diff": 0,
+          "source_file": "live_refresh/quality.json",
+          "source_cached_at": "2026-05-22T15:39:20+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州丰顺",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+        },
+        {
+          "hotel_id": "995245",
+          "name": "丰顺千江温泉酒店",
+          "area": "梅州丰顺片区",
+          "price": 298,
+          "diff": 0,
+          "source_file": "live_refresh/quality.json",
+          "source_cached_at": "2026-05-22T15:39:20+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "梅州丰顺",
+          "trip_hotel_star_rating": 4,
+          "note": "梅州丰顺，具备儿童设施和泳池，适合亲子短途。"
+        }
+      ],
+      "representative_hotels": [
+        "韩山硒湖云顶度假酒店（梅州丰顺店）",
+        "丰顺宝丰温泉酒店",
+        "丰顺千江温泉酒店"
+      ],
+      "summary": "3家四星/四钻以上酒店，1家降价，2家持平",
+      "rank": 2
+    }
+  ],
+  "latest_rank_source": {
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
-    "matching_file_count": 1,
-    "candidate_count": 72,
-    "unique_hotel_count": 72,
-    "included_hotel_count": 1,
-    "matching_files": [
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除低星级、公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及城市归属不符的酒店。",
+    "included_hotel_count": 14,
+    "excluded_hotel_count": 43,
+    "excluded_hotels": [
       {
-        "file": "e2b1fc72d6418d9ce77e236cd53d33a449491e920ed109e2d00a64522cc02639.json",
-        "mtime": 1778494232.6146839,
-        "choices": 72,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "29784878",
+        "name": "MeiZhou JZL  B & B",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "116551787",
+        "name": "梅州泊林度假精品客栈（梅江区嘉应学院店）",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "70869795",
+        "name": "梅州游行迹演艺酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "106976119",
+        "name": "汉庭梅州院士广场酒店",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "123570999",
+        "name": "龙岩武平百家大院雅途酒店",
+        "reason": "酒店归属不属于梅州榜单"
+      },
+      {
+        "hotel_id": "6299648",
+        "name": "梅州毅新酒店（人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115582207",
+        "name": "绿舟酒店（梅州江北老街店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "85468876",
+        "name": "梅州有权国际大酒店（梅江区嘉应古城店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "5816239",
+        "name": "乾坤润酒店(梅州人民广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "5250167",
+        "name": "Meizhou Lujia Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "28366996",
+        "name": "梅州朋儒文化精品酒店（客家博物馆店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "99121312",
+        "name": "菲繁臻品酒店（梅州梅江区火车站店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1812180",
+        "name": "延龄宾馆（梅州市梅县人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1942208",
+        "name": "维也纳国际酒店(梅州锭子桥店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1420951",
+        "name": "森工酒店（梅州江北老街店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6422466",
+        "name": "梅州希悦酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "35923295",
+        "name": "梅州金鑫逸享酒店（梅县区店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "807156",
+        "name": "嘉园酒店（梅州梅江区客都汇商业广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6522487",
+        "name": "Diya Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "5246530",
+        "name": "365 Apartment Hotel (Meizhou Wanda Plaza store)",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "54847795",
+        "name": "中悦酒店（梅州市客都汇商业文化广场学艺中学店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1456314",
+        "name": "嘉州假日酒店(梅州市中心嘉印拾光乐园店)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "29492564",
+        "name": "博泰酒店（梅县区人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1402946",
+        "name": "梅州慢城酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1732150",
+        "name": "雅瑞斯酒店（梅州梅江区万达广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "23984005",
+        "name": "梅州美居尚品酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2215262",
+        "name": "梅州联邦酒店(中国客家博物馆客都汇商业文化广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "14248914",
+        "name": "梅州栢琚酒店(人民广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133855768",
+        "name": "SOVIS Suoweisi Art Home Hotel (Meizhou Meijiang District Central Branch)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "70868884",
+        "name": "博尔曼酒店 （梅江区嘉应大学店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2215257",
+        "name": "柏曼酒店(梅州梅县机场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "23224128",
+        "name": "世纪金郡酒店（梅州梅县区人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1732653",
+        "name": "城市云途酒店（梅州市区万达广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2298821",
+        "name": "客都大酒店（梅州市区丽都西路店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "4056954",
+        "name": "梅州朵米酒店（梅县区人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1500484",
+        "name": "如家酒店(梅州市区中心店)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1378618",
+        "name": "365 City Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "112224455",
+        "name": "企程AI酒店（梅州畲江广梅产业园店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "46590874",
+        "name": "凯里亚德酒店(梅州高铁站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2535898",
+        "name": "Zuimei Shuyuan Boutique Guesthouse",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "81473376",
+        "name": "龙岩龙湖读旅·亲水度假民宿",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "54476758",
+        "name": "艺龙瑞云酒店（梅州丰顺佳百惠店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "48260406",
+        "name": "Heduli Paddy Field Homestay",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
       }
     ],
-    "source": "search_cache"
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_east_20260522.json"
   },
-  "city_wikipedia_intro": {
-    "city": "梅州",
-    "text": "梅州可重点看客天下、雁南飞、叶剑英纪念园、松口古镇和五指石；客家文化、茶田山景和古镇线路适合组合。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/梅州",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除低星级、公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及城市归属不符的酒店。",
+    "included_hotel_count": 14,
+    "area_count": 2,
+    "excluded_hotel_count": 43,
+    "excluded_hotels": [
+      {
+        "hotel_id": "29784878",
+        "name": "MeiZhou JZL  B & B",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "116551787",
+        "name": "梅州泊林度假精品客栈（梅江区嘉应学院店）",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "70869795",
+        "name": "梅州游行迹演艺酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "106976119",
+        "name": "汉庭梅州院士广场酒店",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "123570999",
+        "name": "龙岩武平百家大院雅途酒店",
+        "reason": "酒店归属不属于梅州榜单"
+      },
+      {
+        "hotel_id": "6299648",
+        "name": "梅州毅新酒店（人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "115582207",
+        "name": "绿舟酒店（梅州江北老街店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "85468876",
+        "name": "梅州有权国际大酒店（梅江区嘉应古城店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "5816239",
+        "name": "乾坤润酒店(梅州人民广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "5250167",
+        "name": "Meizhou Lujia Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "28366996",
+        "name": "梅州朋儒文化精品酒店（客家博物馆店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "99121312",
+        "name": "菲繁臻品酒店（梅州梅江区火车站店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1812180",
+        "name": "延龄宾馆（梅州市梅县人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1942208",
+        "name": "维也纳国际酒店(梅州锭子桥店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1420951",
+        "name": "森工酒店（梅州江北老街店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6422466",
+        "name": "梅州希悦酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "35923295",
+        "name": "梅州金鑫逸享酒店（梅县区店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "807156",
+        "name": "嘉园酒店（梅州梅江区客都汇商业广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "6522487",
+        "name": "Diya Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "5246530",
+        "name": "365 Apartment Hotel (Meizhou Wanda Plaza store)",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "54847795",
+        "name": "中悦酒店（梅州市客都汇商业文化广场学艺中学店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1456314",
+        "name": "嘉州假日酒店(梅州市中心嘉印拾光乐园店)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "29492564",
+        "name": "博泰酒店（梅县区人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1402946",
+        "name": "梅州慢城酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1732150",
+        "name": "雅瑞斯酒店（梅州梅江区万达广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "23984005",
+        "name": "梅州美居尚品酒店",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2215262",
+        "name": "梅州联邦酒店(中国客家博物馆客都汇商业文化广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "14248914",
+        "name": "梅州栢琚酒店(人民广场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "133855768",
+        "name": "SOVIS Suoweisi Art Home Hotel (Meizhou Meijiang District Central Branch)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "70868884",
+        "name": "博尔曼酒店 （梅江区嘉应大学店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2215257",
+        "name": "柏曼酒店(梅州梅县机场店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "23224128",
+        "name": "世纪金郡酒店（梅州梅县区人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1732653",
+        "name": "城市云途酒店（梅州市区万达广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2298821",
+        "name": "客都大酒店（梅州市区丽都西路店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "4056954",
+        "name": "梅州朵米酒店（梅县区人民广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1500484",
+        "name": "如家酒店(梅州市区中心店)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "1378618",
+        "name": "365 City Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "112224455",
+        "name": "企程AI酒店（梅州畲江广梅产业园店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "46590874",
+        "name": "凯里亚德酒店(梅州高铁站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2535898",
+        "name": "Zuimei Shuyuan Boutique Guesthouse",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "81473376",
+        "name": "龙岩龙湖读旅·亲水度假民宿",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "54476758",
+        "name": "艺龙瑞云酒店（梅州丰顺佳百惠店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "48260406",
+        "name": "Heduli Paddy Field Homestay",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      }
+    ],
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_east_20260522.json"
+  },
+  "city_wikipedia_intro": ""
 }

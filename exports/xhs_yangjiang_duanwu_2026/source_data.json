@@ -1,139 +1,1306 @@
 {
   "city": "阳江",
-  "generated_at": "2026-05-12T12:24:41",
+  "generated_at": "2026-05-22T15:16:04",
   "lists": {
     "star_no_rise": [
       {
-        "hotel_id": "133947768",
-        "name": "鲸喜优选公寓(阳江东汇城广场店)",
-        "area": "阳江东汇城广场片区",
-        "price": 239,
-        "diff": 0,
-        "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
-        "source_cached_at": "2026-05-11T18:13:38",
+        "hotel_id": "123338927",
+        "name": "铂顿元世纪酒店（阳江金山路店）",
+        "area": "阳江市区片区",
+        "price": 188,
+        "diff": -14,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "54852703",
+        "name": "阳江中瀛国际大酒店",
+        "area": "阳江市区片区",
+        "price": 240,
+        "diff": -48,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "阳江东汇城广场",
-        "note": "阳江东汇城广场，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "83249105",
+        "name": "阳江中心智选假日酒店",
+        "area": "阳江市区片区",
+        "price": 251,
+        "diff": -39,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "111115458",
+        "name": "阳江高铁站雅阁酒店（国际金融中心店）",
+        "area": "阳江市区片区",
+        "price": 257,
+        "diff": -21,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "837073",
+        "name": "长江国际酒店",
+        "area": "阳江市区片区",
+        "price": 273,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1748113",
+        "name": "阳江江城君怡广场亚朵X酒店",
+        "area": "阳江市区片区",
+        "price": 278,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1069207",
+        "name": "维纳斯皇家温泉酒店（阳西店）",
+        "area": "阳江阳西片区",
+        "price": 295,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江阳西",
+        "note": "阳江阳西，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "890286",
+        "name": "东湖国际酒店",
+        "area": "阳江市区片区",
+        "price": 332,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "112974896",
+        "name": "阳江市中心福朋喜来登酒店",
+        "area": "阳江市区片区",
+        "price": 467,
+        "diff": -12,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1273081",
+        "name": "阳江中心华邑酒店",
+        "area": "阳江市区片区",
+        "price": 488,
+        "diff": -3,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       }
     ],
     "star_no_rise_all": [
       {
-        "hotel_id": "133947768",
-        "name": "鲸喜优选公寓(阳江东汇城广场店)",
-        "area": "阳江东汇城广场片区",
-        "price": 239,
-        "diff": 0,
-        "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
-        "source_cached_at": "2026-05-11T18:13:38",
+        "hotel_id": "123338927",
+        "name": "铂顿元世纪酒店（阳江金山路店）",
+        "area": "阳江市区片区",
+        "price": 188,
+        "diff": -14,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "54852703",
+        "name": "阳江中瀛国际大酒店",
+        "area": "阳江市区片区",
+        "price": 240,
+        "diff": -48,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "阳江东汇城广场",
-        "note": "阳江东汇城广场，端午价格保持平稳，适合周边短途度假。"
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "83249105",
+        "name": "阳江中心智选假日酒店",
+        "area": "阳江市区片区",
+        "price": 251,
+        "diff": -39,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "111115458",
+        "name": "阳江高铁站雅阁酒店（国际金融中心店）",
+        "area": "阳江市区片区",
+        "price": 257,
+        "diff": -21,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "837073",
+        "name": "长江国际酒店",
+        "area": "阳江市区片区",
+        "price": 273,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1748113",
+        "name": "阳江江城君怡广场亚朵X酒店",
+        "area": "阳江市区片区",
+        "price": 278,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "1069207",
+        "name": "维纳斯皇家温泉酒店（阳西店）",
+        "area": "阳江阳西片区",
+        "price": 295,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江阳西",
+        "note": "阳江阳西，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "890286",
+        "name": "东湖国际酒店",
+        "area": "阳江市区片区",
+        "price": 332,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "112974896",
+        "name": "阳江市中心福朋喜来登酒店",
+        "area": "阳江市区片区",
+        "price": 467,
+        "diff": -12,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1273081",
+        "name": "阳江中心华邑酒店",
+        "area": "阳江市区片区",
+        "price": 488,
+        "diff": -3,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "103959619",
+        "name": "阳春DS温泉度假酒店",
+        "area": "阳江阳春片区",
+        "price": 699,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江阳春",
+        "note": "阳江阳春，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "17263605",
+        "name": "仙境度假酒店",
+        "area": "阳江市区片区",
+        "price": 714,
+        "diff": -34,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       }
     ],
-    "family_no_rise": [],
-    "family_no_rise_all": [],
-    "discount_star": []
-  },
-  "latest_city_rank": [
-    {
-      "hotel_id": "133947768",
-      "name": "鲸喜优选公寓(阳江东汇城广场店)",
-      "area": "阳江东汇城广场片区",
-      "price": 239,
-      "diff": 0,
-      "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
-      "source_cached_at": "2026-05-11T18:13:38",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "阳江东汇城广场",
-      "note": "阳江东汇城广场，端午价格保持平稳，适合周边短途度假。"
-    }
-  ],
-  "latest_discount_rank": [],
-  "area_region_rank": [
-    {
-      "area": "阳江东汇城广场片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 0,
-      "flat_hotel_count": 1,
-      "average_price": 239,
-      "average_diff": 0,
-      "price_range": [
-        239,
-        239
-      ],
-      "hotels": [
-        {
-          "hotel_id": "133947768",
-          "name": "鲸喜优选公寓(阳江东汇城广场店)",
-          "area": "阳江东汇城广场片区",
-          "price": 239,
-          "diff": 0,
-          "source_file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
-          "source_cached_at": "2026-05-11T18:13:38"
-        }
-      ],
-      "representative_hotels": [
-        "鲸喜优选公寓(阳江东汇城广场店)"
-      ],
-      "rank": 1,
-      "summary": "1家高级酒店，0家降价，1家持平"
-    }
-  ],
-  "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 1,
-    "candidate_count": 73,
-    "unique_hotel_count": 73,
-    "included_hotel_count": 1,
-    "matching_files": [
+    "family_no_rise": [
       {
-        "file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
-        "mtime": 1778494418.5771387,
-        "choices": 73,
+        "hotel_id": "1069207",
+        "name": "维纳斯皇家温泉酒店（阳西店）",
+        "area": "阳江阳西片区",
+        "price": 295,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:44:45+08:00",
+        "child": true,
+        "pool": true,
         "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "display_area": "阳江阳西",
+        "note": "阳江阳西，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "112974896",
+        "name": "阳江市中心福朋喜来登酒店",
+        "area": "阳江市区片区",
+        "price": 467,
+        "diff": -12,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:44:45+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "103959619",
+        "name": "阳春DS温泉度假酒店",
+        "area": "阳江阳春片区",
+        "price": 699,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:44:45+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江阳春",
+        "note": "阳江阳春，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      }
+    ],
+    "family_no_rise_all": [
+      {
+        "hotel_id": "1069207",
+        "name": "维纳斯皇家温泉酒店（阳西店）",
+        "area": "阳江阳西片区",
+        "price": 295,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:44:45+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江阳西",
+        "note": "阳江阳西，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "112974896",
+        "name": "阳江市中心福朋喜来登酒店",
+        "area": "阳江市区片区",
+        "price": 467,
+        "diff": -12,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:44:45+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "103959619",
+        "name": "阳春DS温泉度假酒店",
+        "area": "阳江阳春片区",
+        "price": 699,
+        "diff": 0,
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-05-22T14:44:45+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江阳春",
+        "note": "阳江阳春，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      }
+    ],
+    "discount_star": [
+      {
+        "hotel_id": "54852703",
+        "name": "阳江中瀛国际大酒店",
+        "area": "阳江市区片区",
+        "price": 240,
+        "diff": -48,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "83249105",
+        "name": "阳江中心智选假日酒店",
+        "area": "阳江市区片区",
+        "price": 251,
+        "diff": -39,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "17263605",
+        "name": "仙境度假酒店",
+        "area": "阳江市区片区",
+        "price": 714,
+        "diff": -34,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "111115458",
+        "name": "阳江高铁站雅阁酒店（国际金融中心店）",
+        "area": "阳江市区片区",
+        "price": 257,
+        "diff": -21,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "123338927",
+        "name": "铂顿元世纪酒店（阳江金山路店）",
+        "area": "阳江市区片区",
+        "price": 188,
+        "diff": -14,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 4
+      },
+      {
+        "hotel_id": "112974896",
+        "name": "阳江市中心福朋喜来登酒店",
+        "area": "阳江市区片区",
+        "price": 467,
+        "diff": -12,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+        "trip_hotel_star_rating": 5
+      },
+      {
+        "hotel_id": "1273081",
+        "name": "阳江中心华邑酒店",
+        "area": "阳江市区片区",
+        "price": 488,
+        "diff": -3,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-05-22T14:42:01+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "阳江市区",
+        "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+        "trip_hotel_star_rating": 5
       }
     ]
   },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
+  "latest_city_rank": [
+    {
+      "hotel_id": "123338927",
+      "name": "铂顿元世纪酒店（阳江金山路店）",
+      "area": "阳江市区片区",
+      "price": 188,
+      "diff": -14,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "54852703",
+      "name": "阳江中瀛国际大酒店",
+      "area": "阳江市区片区",
+      "price": 240,
+      "diff": -48,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "83249105",
+      "name": "阳江中心智选假日酒店",
+      "area": "阳江市区片区",
+      "price": 251,
+      "diff": -39,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "111115458",
+      "name": "阳江高铁站雅阁酒店（国际金融中心店）",
+      "area": "阳江市区片区",
+      "price": 257,
+      "diff": -21,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "837073",
+      "name": "长江国际酒店",
+      "area": "阳江市区片区",
+      "price": 273,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "1748113",
+      "name": "阳江江城君怡广场亚朵X酒店",
+      "area": "阳江市区片区",
+      "price": 278,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "1069207",
+      "name": "维纳斯皇家温泉酒店（阳西店）",
+      "area": "阳江阳西片区",
+      "price": 295,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江阳西",
+      "note": "阳江阳西，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "890286",
+      "name": "东湖国际酒店",
+      "area": "阳江市区片区",
+      "price": 332,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "112974896",
+      "name": "阳江市中心福朋喜来登酒店",
+      "area": "阳江市区片区",
+      "price": 467,
+      "diff": -12,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "1273081",
+      "name": "阳江中心华邑酒店",
+      "area": "阳江市区片区",
+      "price": 488,
+      "diff": -3,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "103959619",
+      "name": "阳春DS温泉度假酒店",
+      "area": "阳江阳春片区",
+      "price": 699,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江阳春",
+      "note": "阳江阳春，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "17263605",
+      "name": "仙境度假酒店",
+      "area": "阳江市区片区",
+      "price": 714,
+      "diff": -34,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "54852703",
+      "name": "阳江中瀛国际大酒店",
+      "area": "阳江市区片区",
+      "price": 240,
+      "diff": -48,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "83249105",
+      "name": "阳江中心智选假日酒店",
+      "area": "阳江市区片区",
+      "price": 251,
+      "diff": -39,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "17263605",
+      "name": "仙境度假酒店",
+      "area": "阳江市区片区",
+      "price": 714,
+      "diff": -34,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "111115458",
+      "name": "阳江高铁站雅阁酒店（国际金融中心店）",
+      "area": "阳江市区片区",
+      "price": 257,
+      "diff": -21,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "123338927",
+      "name": "铂顿元世纪酒店（阳江金山路店）",
+      "area": "阳江市区片区",
+      "price": 188,
+      "diff": -14,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 4
+    },
+    {
+      "hotel_id": "112974896",
+      "name": "阳江市中心福朋喜来登酒店",
+      "area": "阳江市区片区",
+      "price": 467,
+      "diff": -12,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+      "trip_hotel_star_rating": 5
+    },
+    {
+      "hotel_id": "1273081",
+      "name": "阳江中心华邑酒店",
+      "area": "阳江市区片区",
+      "price": 488,
+      "diff": -3,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-05-22T14:42:01+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "阳江市区",
+      "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+      "trip_hotel_star_rating": 5
+    }
+  ],
+  "area_region_rank": [
+    {
+      "area": "阳江市区片区",
+      "hotel_count": 10,
+      "discount_hotel_count": 7,
+      "flat_hotel_count": 3,
+      "average_price": 349,
+      "average_diff": -17,
+      "price_range": [
+        188,
+        714
+      ],
+      "hotels": [
+        {
+          "hotel_id": "54852703",
+          "name": "阳江中瀛国际大酒店",
+          "area": "阳江市区片区",
+          "price": 240,
+          "diff": -48,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "83249105",
+          "name": "阳江中心智选假日酒店",
+          "area": "阳江市区片区",
+          "price": 251,
+          "diff": -39,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "17263605",
+          "name": "仙境度假酒店",
+          "area": "阳江市区片区",
+          "price": 714,
+          "diff": -34,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "111115458",
+          "name": "阳江高铁站雅阁酒店（国际金融中心店）",
+          "area": "阳江市区片区",
+          "price": 257,
+          "diff": -21,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "123338927",
+          "name": "铂顿元世纪酒店（阳江金山路店）",
+          "area": "阳江市区片区",
+          "price": 188,
+          "diff": -14,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "112974896",
+          "name": "阳江市中心福朋喜来登酒店",
+          "area": "阳江市区片区",
+          "price": 467,
+          "diff": -12,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "1273081",
+          "name": "阳江中心华邑酒店",
+          "area": "阳江市区片区",
+          "price": 488,
+          "diff": -3,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午每晚含税均价低于平日代表价。",
+          "trip_hotel_star_rating": 5
+        },
+        {
+          "hotel_id": "837073",
+          "name": "长江国际酒店",
+          "area": "阳江市区片区",
+          "price": 273,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "1748113",
+          "name": "阳江江城君怡广场亚朵X酒店",
+          "area": "阳江市区片区",
+          "price": 278,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 4
+        },
+        {
+          "hotel_id": "890286",
+          "name": "东湖国际酒店",
+          "area": "阳江市区片区",
+          "price": 332,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "阳江市区",
+          "note": "阳江市区，端午价格保持平稳，适合周边短途度假。",
+          "trip_hotel_star_rating": 5
+        }
+      ],
+      "representative_hotels": [
+        "阳江中瀛国际大酒店",
+        "阳江中心智选假日酒店",
+        "仙境度假酒店"
+      ],
+      "summary": "10家四星/四钻以上酒店，7家降价，3家持平",
+      "rank": 1
+    },
+    {
+      "area": "阳江阳西片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 295,
+      "average_diff": 0,
+      "price_range": [
+        295,
+        295
+      ],
+      "hotels": [
+        {
+          "hotel_id": "1069207",
+          "name": "维纳斯皇家温泉酒店（阳西店）",
+          "area": "阳江阳西片区",
+          "price": 295,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "阳江阳西",
+          "note": "阳江阳西，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 4
+        }
+      ],
+      "representative_hotels": [
+        "维纳斯皇家温泉酒店（阳西店）"
+      ],
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 2
+    },
+    {
+      "area": "阳江阳春片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 699,
+      "average_diff": 0,
+      "price_range": [
+        699,
+        699
+      ],
+      "hotels": [
+        {
+          "hotel_id": "103959619",
+          "name": "阳春DS温泉度假酒店",
+          "area": "阳江阳春片区",
+          "price": 699,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-05-22T14:42:01+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "阳江阳春",
+          "note": "阳江阳春，具备儿童设施和泳池，适合亲子短途。",
+          "trip_hotel_star_rating": 5
+        }
+      ],
+      "representative_hotels": [
+        "阳春DS温泉度假酒店"
+      ],
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 3
+    }
+  ],
+  "latest_rank_source": {
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
-    "matching_file_count": 1,
-    "candidate_count": 73,
-    "unique_hotel_count": 73,
-    "included_hotel_count": 1,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 88,
+    "unique_hotel_count": 88,
+    "included_hotel_count": 12,
+    "excluded_hotel_count": 43,
+    "excluded_hotels": [
+      {
+        "hotel_id": "72966013",
+        "name": "Hailing Island agile Gold Coast Xin'an sea view Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "60984284",
+        "name": "ECHENG Hotel Yangjiang Baili Plaza",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "125214523",
+        "name": "Crystal Orange Yangjiang Jiangcheng Jinshan Road",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "36148652",
+        "name": "Hao Ye Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "71580409",
+        "name": "Yangjiang Feili Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "30838649",
+        "name": "Yuefeng Hotel (Yangjiang Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "55135196",
+        "name": "City Comfort Inn (Yangjiang High-tech Zone Pinggang)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "133241301",
+        "name": "Lavande Hotel Yang Jiang Convention&Exhibition Center.Road",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "72180597",
+        "name": "Yangdong Shangxuan Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "60984704",
+        "name": "Mantuolun Smart Hotel (Yangjiang Xindacheng)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "21012861",
+        "name": "JI Hotel (Yangjiang Jiangcheng Junyi Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "879524",
+        "name": "Yangjiang Naqiaorui Hotel (Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2309915",
+        "name": "Lanli Lily Hotel (Xindacheng Times Square North Lake Park Store)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2302148",
+        "name": "Jindun Holiday Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "86054624",
+        "name": "Yangjiang Yaofeng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "134114261",
+        "name": "Minyi Express Hotel (Yangjiang Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1502703",
+        "name": "Yangjiang Haiyi Hotel (Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "8918743",
+        "name": "Mingyang Hotel (Yangjiang Pinggang)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "4826047",
+        "name": "Elong ME Hotel (Yangjiang Transportation Hub Jinshan Road)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "31531160",
+        "name": "Lexuan Holiday Hotel (Yangjiang Jingyuan City Shopping Center)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133207863",
+        "name": "Yunfeng Hotel (Yangjiang Xindachengshidaiguangchangdian)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1413854",
+        "name": "City Comfort Inn (Yangjiang  Municipal GovernmentBaili Plaza)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "117623761",
+        "name": "Yanjiang Hotel (Yangjiang)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "114304775",
+        "name": "Hailing Island Haizhiguang Holiday Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "112376827",
+        "name": "Fangqi Hotel (Yangjiang High-Speed Railway Station)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "128668689",
+        "name": "Xiaomi Hotel (Yangjiang Wanxiang Industrial Park Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "113605568",
+        "name": "Elong ETANG Hotel (Yangchun Donghu)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "972433",
+        "name": "Yangjiang Minghao Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "66743647",
+        "name": "Poltton International Apartments (Yangjiang Donghuicheng Plaza)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "131576436",
+        "name": "BORRMAN Hotel (Yangjiang Yangdong)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "130403907",
+        "name": "Vienna Hotel (Yangjiang Youth Palace Branch)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "102608154",
+        "name": "Yangjiang Yangdong Yudangjia Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "14805160",
+        "name": "KingStay Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133947768",
+        "name": "鲸喜优选公寓(阳江东汇城广场店)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "127061911",
+        "name": "Elong R.Yun Hotel (Yangjiang Baili Square Yuanyanghu Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133537400",
+        "name": "JI Hotel (Yangjiang Municipal Government)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "88966063",
+        "name": "EAST LAKE HOLIDAY HOTEL",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "72745624",
+        "name": "Hailing Island Sea House",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "9055895",
+        "name": "Nanhaiwan Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "130838977",
+        "name": "Xinghua Resort Hotel (Yangjiang Hailing Island Shili Yintan)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1246483",
+        "name": "阳江金泰酒店（碧桂园奥特莱斯店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "33618260",
+        "name": "维也纳国际酒店（阳江东汇城国际店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "8198082",
+        "name": "维也纳国际酒店（阳江海陵岛大角湾景区店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
     "matching_files": [
       {
-        "file": "c2d825a834a476144b8e529369dcb7a6bc436842817dd5398aab986f7d5f4030.json",
-        "mtime": 1778494418.5771387,
-        "choices": 73,
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:42:01+08:00",
+        "choices": 88,
         "advanced": true,
         "filters": {
           "advanced": {
@@ -151,16 +1318,317 @@
             "label": "全部",
             "name": "儿童设施"
           }
-        }
+        },
+        "elapsed_seconds": 161.8
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:44:45+08:00",
+        "choices": 13,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 163.8
       }
     ],
-    "source": "search_cache"
+    "area_count": 3,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
   },
-  "city_wikipedia_intro": {
-    "city": "阳江",
-    "text": "阳江可重点看海陵岛、闸坡、大角湾、十里银滩和凌霄岩；滨海度假、海鲜美食和喀斯特洞景适合短途安排。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/阳江",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "cache_dir": "/Users/lxz/.local/share/reverse-traval/.cache/search",
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及详情页星级低于4星的酒店。",
+    "matching_file_count": 2,
+    "candidate_count": 88,
+    "unique_hotel_count": 88,
+    "included_hotel_count": 12,
+    "excluded_hotel_count": 43,
+    "excluded_hotels": [
+      {
+        "hotel_id": "72966013",
+        "name": "Hailing Island agile Gold Coast Xin'an sea view Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "60984284",
+        "name": "ECHENG Hotel Yangjiang Baili Plaza",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "125214523",
+        "name": "Crystal Orange Yangjiang Jiangcheng Jinshan Road",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "36148652",
+        "name": "Hao Ye Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "71580409",
+        "name": "Yangjiang Feili Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "30838649",
+        "name": "Yuefeng Hotel (Yangjiang Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "55135196",
+        "name": "City Comfort Inn (Yangjiang High-tech Zone Pinggang)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "133241301",
+        "name": "Lavande Hotel Yang Jiang Convention&Exhibition Center.Road",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "72180597",
+        "name": "Yangdong Shangxuan Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "60984704",
+        "name": "Mantuolun Smart Hotel (Yangjiang Xindacheng)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "21012861",
+        "name": "JI Hotel (Yangjiang Jiangcheng Junyi Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "879524",
+        "name": "Yangjiang Naqiaorui Hotel (Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2309915",
+        "name": "Lanli Lily Hotel (Xindacheng Times Square North Lake Park Store)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "2302148",
+        "name": "Jindun Holiday Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "86054624",
+        "name": "Yangjiang Yaofeng Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "134114261",
+        "name": "Minyi Express Hotel (Yangjiang Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1502703",
+        "name": "Yangjiang Haiyi Hotel (Baili Plaza)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "8918743",
+        "name": "Mingyang Hotel (Yangjiang Pinggang)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "4826047",
+        "name": "Elong ME Hotel (Yangjiang Transportation Hub Jinshan Road)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "31531160",
+        "name": "Lexuan Holiday Hotel (Yangjiang Jingyuan City Shopping Center)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133207863",
+        "name": "Yunfeng Hotel (Yangjiang Xindachengshidaiguangchangdian)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "1413854",
+        "name": "City Comfort Inn (Yangjiang  Municipal GovernmentBaili Plaza)",
+        "reason": "快捷/经济型品牌，不放入四星/四钻榜"
+      },
+      {
+        "hotel_id": "117623761",
+        "name": "Yanjiang Hotel (Yangjiang)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "114304775",
+        "name": "Hailing Island Haizhiguang Holiday Apartment",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "112376827",
+        "name": "Fangqi Hotel (Yangjiang High-Speed Railway Station)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "128668689",
+        "name": "Xiaomi Hotel (Yangjiang Wanxiang Industrial Park Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "113605568",
+        "name": "Elong ETANG Hotel (Yangchun Donghu)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "972433",
+        "name": "Yangjiang Minghao Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "66743647",
+        "name": "Poltton International Apartments (Yangjiang Donghuicheng Plaza)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "131576436",
+        "name": "BORRMAN Hotel (Yangjiang Yangdong)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "130403907",
+        "name": "Vienna Hotel (Yangjiang Youth Palace Branch)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "102608154",
+        "name": "Yangjiang Yangdong Yudangjia Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "14805160",
+        "name": "KingStay Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133947768",
+        "name": "鲸喜优选公寓(阳江东汇城广场店)",
+        "reason": "公寓/民宿/客栈/电竞等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "127061911",
+        "name": "Elong R.Yun Hotel (Yangjiang Baili Square Yuanyanghu Branch)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "133537400",
+        "name": "JI Hotel (Yangjiang Municipal Government)",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "88966063",
+        "name": "EAST LAKE HOLIDAY HOTEL",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "72745624",
+        "name": "Hailing Island Sea House",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "9055895",
+        "name": "Nanhaiwan Hotel",
+        "reason": "未确认四星/四钻或高端品牌口径"
+      },
+      {
+        "hotel_id": "130838977",
+        "name": "Xinghua Resort Hotel (Yangjiang Hailing Island Shili Yintan)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1246483",
+        "name": "阳江金泰酒店（碧桂园奥特莱斯店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "33618260",
+        "name": "维也纳国际酒店（阳江东汇城国际店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "8198082",
+        "name": "维也纳国际酒店（阳江海陵岛大角湾景区店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
+    "matching_files": [
+      {
+        "file": "live_refresh/star.json",
+        "created_at": "2026-05-22T14:42:01+08:00",
+        "choices": 88,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "all",
+            "label": "全部",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "all",
+            "label": "全部",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 161.8
+      },
+      {
+        "file": "live_refresh/quality.json",
+        "created_at": "2026-05-22T14:44:45+08:00",
+        "choices": 13,
+        "advanced": true,
+        "filters": {
+          "advanced": {
+            "value": "yes",
+            "label": "是",
+            "name": "高级酒店（四钻/四星级以上）"
+          },
+          "pool": {
+            "value": "yes",
+            "label": "是",
+            "name": "游泳池"
+          },
+          "child_facility": {
+            "value": "yes",
+            "label": "是",
+            "name": "儿童设施"
+          }
+        },
+        "elapsed_seconds": 163.8
+      }
+    ],
+    "area_count": 3,
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_20260522.json"
+  },
+  "city_wikipedia_intro": "阳江可重点看海陵岛、闸坡、大角湾、十里银滩和凌霄岩；滨海度假、海鲜美食和喀斯特洞景适合短途安排。"
 }

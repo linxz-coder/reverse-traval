@@ -1,1217 +1,1269 @@
 {
   "city": "肇庆",
-  "generated_at": "2026-05-12T12:24:31",
+  "generated_at": "2026-06-02T10:46:32",
   "lists": {
     "star_no_rise": [
       {
-        "hotel_id": "1736736",
-        "name": "城市便捷酒店（肇庆七星巖風景区星湖牌坊店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 137,
+        "hotel_id": "810361",
+        "name": "德庆醉然居假日酒店",
+        "area": "肇庆德庆片区",
+        "price": 124,
         "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "114110294",
-        "name": "肇庆璞石·曼酒店（ 鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 146,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "3642925",
-        "name": "晨曦風情酒店（肇庆七星巖星湖景区店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 163,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "72316131",
-        "name": "中智盛酒店（鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 167,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "126094852",
-        "name": "沐山民宿（七星巖景区店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 175,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "112800997",
-        "name": "云棲星曜酒店（肇庆学院店）",
-        "area": "肇庆待确认片区",
-        "price": 197,
-        "diff": -9,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "1743159",
-        "name": "潮漫酒店(肇庆高要区政府店)",
-        "area": "肇庆高要片区",
-        "price": 208,
-        "diff": -10,
-        "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-        "source_cached_at": "2026-05-06T16:20:19",
-        "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "肇庆高要",
-        "note": "肇庆高要，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "82123914",
-        "name": "品臻酒店（肇庆火車站店）",
-        "area": "肇庆待确认片区",
-        "price": 228,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "62500007",
-        "name": "花築·肇庆伴月民宿（星湖牌坊七星巖店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 233,
-        "diff": -33,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午每晚含税均价低于平日代表价。"
+        "display_area": "肇庆德庆",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
       },
       {
         "hotel_id": "133232552",
-        "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
+        "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+        "area": "肇庆鼎湖片区",
         "price": 234,
         "diff": -32,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-      }
-    ],
-    "star_no_rise_all": [
-      {
-        "hotel_id": "1736736",
-        "name": "城市便捷酒店（肇庆七星巖風景区星湖牌坊店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 137,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "114110294",
-        "name": "肇庆璞石·曼酒店（ 鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 146,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "3642925",
-        "name": "晨曦風情酒店（肇庆七星巖星湖景区店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 163,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "72316131",
-        "name": "中智盛酒店（鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 167,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "126094852",
-        "name": "沐山民宿（七星巖景区店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 175,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-      },
-      {
-        "hotel_id": "112800997",
-        "name": "云棲星曜酒店（肇庆学院店）",
-        "area": "肇庆待确认片区",
-        "price": 197,
-        "diff": -9,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "1743159",
-        "name": "潮漫酒店(肇庆高要区政府店)",
-        "area": "肇庆高要片区",
-        "price": 208,
-        "diff": -10,
-        "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-        "source_cached_at": "2026-05-06T16:20:19",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆高要",
-        "note": "肇庆高要，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "82123914",
-        "name": "品臻酒店（肇庆火車站店）",
-        "area": "肇庆待确认片区",
-        "price": 228,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": true,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，具备儿童设施，适合亲子短途。"
-      },
-      {
-        "hotel_id": "62500007",
-        "name": "花築·肇庆伴月民宿（星湖牌坊七星巖店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 233,
-        "diff": -33,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午每晚含税均价低于平日代表价。"
-      },
-      {
-        "hotel_id": "133232552",
-        "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 234,
-        "diff": -32,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "113050202",
-        "name": "方酒店（鼎湖山景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 241,
-        "diff": -5,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，端午每晚含税均价低于平日代表价。"
+        "display_area": "肇庆鼎湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
       },
       {
         "hotel_id": "2253916",
-        "name": "懷集燕城大酒店",
+        "name": "怀集燕城大酒店",
         "area": "肇庆怀集片区",
-        "price": 262,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "price": 245,
+        "diff": -9,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
         "display_area": "肇庆怀集",
-        "note": "肇庆怀集，端午价格保持平稳，适合周边短途度假。"
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆怀集，端午每晚含税均价低于平日代表价。"
       },
       {
-        "hotel_id": "118349147",
-        "name": "陌上民宿（肇庆鼎湖山店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 322,
+        "hotel_id": "133464273",
+        "name": "四会大旺华美达酒店（中兴商业广场店）",
+        "area": "肇庆四会片区",
+        "price": 245,
         "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "25776993",
+        "name": "紫荆莱馨酒店（肇庆四会大旺站店）",
+        "area": "肇庆四会片区",
+        "price": 247,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "85458753",
+        "name": "丽枫酒店（四会高新开发区大旺广场店）",
+        "area": "肇庆四会片区",
+        "price": 256,
+        "diff": -2,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "29867257",
+        "name": "维也纳国际酒店（肇庆市中心湖景店）",
+        "area": "肇庆星湖片区",
+        "price": 260,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆星湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆星湖，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "2200402",
+        "name": "锦龙国际酒店（德庆龙母广场店）",
+        "area": "肇庆德庆片区",
+        "price": 276,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆德庆",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1526091",
+        "name": "肇庆金凤凰国际酒店",
+        "area": "肇庆市区片区",
+        "price": 283,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆市区",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2298780",
+        "name": "广宁华侨大酒店",
+        "area": "肇庆广宁片区",
+        "price": 297,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "肇庆广宁",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆广宁，端午价格保持平稳，适合周边短途度假。"
+      }
+    ],
+    "star_no_rise_all": [
+      {
+        "hotel_id": "810361",
+        "name": "德庆醉然居假日酒店",
+        "area": "肇庆德庆片区",
+        "price": 124,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "肇庆德庆",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "133232552",
+        "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+        "area": "肇庆鼎湖片区",
+        "price": 234,
+        "diff": -32,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "肇庆鼎湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
       },
       {
-        "hotel_id": "122458846",
-        "name": "云浮云安凤悦假日酒店（云安区店）",
-        "area": "肇庆待确认片区",
-        "price": 347,
+        "hotel_id": "2253916",
+        "name": "怀集燕城大酒店",
+        "area": "肇庆怀集片区",
+        "price": 245,
+        "diff": -9,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆怀集",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆怀集，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "133464273",
+        "name": "四会大旺华美达酒店（中兴商业广场店）",
+        "area": "肇庆四会片区",
+        "price": 245,
         "diff": 0,
-        "source_file": "4713b46a2e5f3012e03540e4b6ce309443ee44134cf9e3ce6d67903fc7e7c49d.json",
-        "source_cached_at": "2026-05-06T16:17:03",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "25776993",
+        "name": "紫荆莱馨酒店（肇庆四会大旺站店）",
+        "area": "肇庆四会片区",
+        "price": 247,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "85458753",
+        "name": "丽枫酒店（四会高新开发区大旺广场店）",
+        "area": "肇庆四会片区",
+        "price": 256,
+        "diff": -2,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "29867257",
+        "name": "维也纳国际酒店（肇庆市中心湖景店）",
+        "area": "肇庆星湖片区",
+        "price": 260,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆星湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆星湖，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "2200402",
+        "name": "锦龙国际酒店（德庆龙母广场店）",
+        "area": "肇庆德庆片区",
+        "price": 276,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆德庆",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "1526091",
+        "name": "肇庆金凤凰国际酒店",
+        "area": "肇庆市区片区",
+        "price": 283,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆市区",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆市区，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "2298780",
+        "name": "广宁华侨大酒店",
+        "area": "肇庆广宁片区",
+        "price": 297,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": true,
+        "advanced": true,
+        "display_area": "肇庆广宁",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆广宁，端午价格保持平稳，适合周边短途度假。"
+      },
+      {
+        "hotel_id": "897052",
+        "name": "四会岭南东方酒店",
+        "area": "肇庆四会片区",
+        "price": 314,
+        "diff": -61,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，具备儿童设施和泳池，适合亲子短途。"
       },
       {
         "hotel_id": "132551668",
         "name": "四会智选假日酒店",
         "area": "肇庆四会片区",
-        "price": 357,
-        "diff": -33,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "price": 343,
+        "diff": -15,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
         "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
         "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "1441753",
+        "name": "悦凯国际酒店（肇庆四会大旺广场国潮小镇店）",
+        "area": "肇庆四会片区",
+        "price": 348,
+        "diff": 0,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": false,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
       }
     ],
     "family_no_rise": [
       {
-        "hotel_id": "1743159",
-        "name": "潮漫酒店(肇庆高要区政府店)",
-        "area": "肇庆高要片区",
-        "price": 208,
-        "diff": -10,
-        "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-        "source_cached_at": "2026-05-06T16:20:19",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆高要",
-        "note": "肇庆高要，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
         "hotel_id": "133232552",
-        "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
+        "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+        "area": "肇庆鼎湖片区",
         "price": 234,
         "diff": -32,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-06-02T10:42:48+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "118349147",
-        "name": "陌上民宿（肇庆鼎湖山店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 322,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "122458846",
-        "name": "云浮云安凤悦假日酒店（云安区店）",
-        "area": "肇庆待确认片区",
-        "price": 347,
-        "diff": 0,
-        "source_file": "4713b46a2e5f3012e03540e4b6ce309443ee44134cf9e3ce6d67903fc7e7c49d.json",
-        "source_cached_at": "2026-05-06T16:17:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "肇庆鼎湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
       }
     ],
     "family_no_rise_all": [
       {
-        "hotel_id": "1743159",
-        "name": "潮漫酒店(肇庆高要区政府店)",
-        "area": "肇庆高要片区",
-        "price": 208,
-        "diff": -10,
-        "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-        "source_cached_at": "2026-05-06T16:20:19",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆高要",
-        "note": "肇庆高要，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
         "hotel_id": "133232552",
-        "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
+        "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+        "area": "肇庆鼎湖片区",
         "price": 234,
         "diff": -32,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "source_file": "live_refresh/quality.json",
+        "source_cached_at": "2026-06-02T10:42:48+08:00",
         "child": true,
         "pool": true,
         "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "118349147",
-        "name": "陌上民宿（肇庆鼎湖山店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 322,
-        "diff": 0,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "122458846",
-        "name": "云浮云安凤悦假日酒店（云安区店）",
-        "area": "肇庆待确认片区",
-        "price": 347,
-        "diff": 0,
-        "source_file": "4713b46a2e5f3012e03540e4b6ce309443ee44134cf9e3ce6d67903fc7e7c49d.json",
-        "source_cached_at": "2026-05-06T16:17:03",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，具备儿童设施和泳池，适合亲子短途。"
+        "display_area": "肇庆鼎湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
       }
     ],
     "discount_star": [
       {
-        "hotel_id": "62500007",
-        "name": "花築·肇庆伴月民宿（星湖牌坊七星巖店）",
-        "area": "肇庆七星岩星湖片区",
-        "price": 233,
-        "diff": -33,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": false,
-        "pool": false,
+        "hotel_id": "897052",
+        "name": "四会岭南东方酒店",
+        "area": "肇庆四会片区",
+        "price": 314,
+        "diff": -61,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": true,
         "advanced": true,
-        "display_area": "肇庆七星岩星湖",
-        "note": "肇庆七星岩星湖，端午每晚含税均价低于平日代表价。"
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，具备儿童设施和泳池，适合亲子短途。"
+      },
+      {
+        "hotel_id": "133232552",
+        "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+        "area": "肇庆鼎湖片区",
+        "price": 234,
+        "diff": -32,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": true,
+        "advanced": true,
+        "display_area": "肇庆鼎湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
       },
       {
         "hotel_id": "132551668",
         "name": "四会智选假日酒店",
         "area": "肇庆四会片区",
-        "price": 357,
-        "diff": -33,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "price": 343,
+        "diff": -15,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
         "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
         "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
       },
       {
-        "hotel_id": "133232552",
-        "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 234,
-        "diff": -32,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "1743159",
-        "name": "潮漫酒店(肇庆高要区政府店)",
-        "area": "肇庆高要片区",
-        "price": 208,
-        "diff": -10,
-        "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-        "source_cached_at": "2026-05-06T16:20:19",
-        "child": true,
-        "pool": true,
-        "advanced": true,
-        "display_area": "肇庆高要",
-        "note": "肇庆高要，具备儿童设施和泳池，适合亲子短途。"
-      },
-      {
-        "hotel_id": "112800997",
-        "name": "云棲星曜酒店（肇庆学院店）",
-        "area": "肇庆待确认片区",
-        "price": 197,
+        "hotel_id": "2253916",
+        "name": "怀集燕城大酒店",
+        "area": "肇庆怀集片区",
+        "price": 245,
         "diff": -9,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "肇庆",
-        "note": "肇庆，端午每晚含税均价低于平日代表价。"
+        "display_area": "肇庆怀集",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆怀集，端午每晚含税均价低于平日代表价。"
       },
       {
-        "hotel_id": "113050202",
-        "name": "方酒店（鼎湖山景区店）",
-        "area": "肇庆鼎湖山片区",
-        "price": 241,
-        "diff": -5,
-        "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "source_cached_at": "2026-05-07T17:08:04",
+        "hotel_id": "29867257",
+        "name": "维也纳国际酒店（肇庆市中心湖景店）",
+        "area": "肇庆星湖片区",
+        "price": 260,
+        "diff": -8,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
+        "child": true,
+        "pool": false,
+        "advanced": true,
+        "display_area": "肇庆星湖",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆星湖，端午每晚含税均价低于平日代表价。"
+      },
+      {
+        "hotel_id": "85458753",
+        "name": "丽枫酒店（四会高新开发区大旺广场店）",
+        "area": "肇庆四会片区",
+        "price": 256,
+        "diff": -2,
+        "source_file": "live_refresh/star.json",
+        "source_cached_at": "2026-06-02T10:40:22+08:00",
         "child": false,
         "pool": false,
         "advanced": true,
-        "display_area": "肇庆鼎湖山",
-        "note": "肇庆鼎湖山，端午每晚含税均价低于平日代表价。"
+        "display_area": "肇庆四会",
+        "trip_hotel_star_rating": 4,
+        "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
       }
     ]
   },
   "latest_city_rank": [
     {
-      "hotel_id": "1736736",
-      "name": "城市便捷酒店（肇庆七星巖風景区星湖牌坊店）",
-      "area": "肇庆七星岩星湖片区",
-      "price": 137,
+      "hotel_id": "810361",
+      "name": "德庆醉然居假日酒店",
+      "area": "肇庆德庆片区",
+      "price": 124,
       "diff": 0,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
       "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆七星岩星湖",
-      "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "114110294",
-      "name": "肇庆璞石·曼酒店（ 鼎湖山風景区店）",
-      "area": "肇庆鼎湖山片区",
-      "price": 146,
-      "diff": 0,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆鼎湖山",
-      "note": "肇庆鼎湖山，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "3642925",
-      "name": "晨曦風情酒店（肇庆七星巖星湖景区店）",
-      "area": "肇庆七星岩星湖片区",
-      "price": 163,
-      "diff": 0,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆七星岩星湖",
-      "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "72316131",
-      "name": "中智盛酒店（鼎湖山風景区店）",
-      "area": "肇庆鼎湖山片区",
-      "price": 167,
-      "diff": 0,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆鼎湖山",
-      "note": "肇庆鼎湖山，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "126094852",
-      "name": "沐山民宿（七星巖景区店）",
-      "area": "肇庆七星岩星湖片区",
-      "price": 175,
-      "diff": 0,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆七星岩星湖",
-      "note": "肇庆七星岩星湖，端午价格保持平稳，适合周边短途度假。"
-    },
-    {
-      "hotel_id": "112800997",
-      "name": "云棲星曜酒店（肇庆学院店）",
-      "area": "肇庆待确认片区",
-      "price": 197,
-      "diff": -9,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆",
-      "note": "肇庆，端午每晚含税均价低于平日代表价。"
-    },
-    {
-      "hotel_id": "1743159",
-      "name": "潮漫酒店(肇庆高要区政府店)",
-      "area": "肇庆高要片区",
-      "price": 208,
-      "diff": -10,
-      "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-      "source_cached_at": "2026-05-06T16:20:19",
-      "child": true,
       "pool": true,
       "advanced": true,
-      "display_area": "肇庆高要",
-      "note": "肇庆高要，具备儿童设施和泳池，适合亲子短途。"
-    },
-    {
-      "hotel_id": "82123914",
-      "name": "品臻酒店（肇庆火車站店）",
-      "area": "肇庆待确认片区",
-      "price": 228,
-      "diff": 0,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
-      "child": true,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆",
-      "note": "肇庆，具备儿童设施，适合亲子短途。"
-    },
-    {
-      "hotel_id": "62500007",
-      "name": "花築·肇庆伴月民宿（星湖牌坊七星巖店）",
-      "area": "肇庆七星岩星湖片区",
-      "price": 233,
-      "diff": -33,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
-      "child": false,
-      "pool": false,
-      "advanced": true,
-      "display_area": "肇庆七星岩星湖",
-      "note": "肇庆七星岩星湖，端午每晚含税均价低于平日代表价。"
+      "display_area": "肇庆德庆",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
     },
     {
       "hotel_id": "133232552",
-      "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-      "area": "肇庆鼎湖山片区",
+      "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+      "area": "肇庆鼎湖片区",
       "price": 234,
       "diff": -32,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
       "child": true,
       "pool": true,
       "advanced": true,
-      "display_area": "肇庆鼎湖山",
-      "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
-    }
-  ],
-  "latest_discount_rank": [
+      "display_area": "肇庆鼎湖",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
+    },
     {
-      "hotel_id": "62500007",
-      "name": "花築·肇庆伴月民宿（星湖牌坊七星巖店）",
-      "area": "肇庆七星岩星湖片区",
-      "price": 233,
-      "diff": -33,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
+      "hotel_id": "2253916",
+      "name": "怀集燕城大酒店",
+      "area": "肇庆怀集片区",
+      "price": 245,
+      "diff": -9,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "肇庆七星岩星湖",
-      "note": "肇庆七星岩星湖，端午每晚含税均价低于平日代表价。"
+      "display_area": "肇庆怀集",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆怀集，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "133464273",
+      "name": "四会大旺华美达酒店（中兴商业广场店）",
+      "area": "肇庆四会片区",
+      "price": 245,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "25776993",
+      "name": "紫荆莱馨酒店（肇庆四会大旺站店）",
+      "area": "肇庆四会片区",
+      "price": 247,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "85458753",
+      "name": "丽枫酒店（四会高新开发区大旺广场店）",
+      "area": "肇庆四会片区",
+      "price": 256,
+      "diff": -2,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "29867257",
+      "name": "维也纳国际酒店（肇庆市中心湖景店）",
+      "area": "肇庆星湖片区",
+      "price": 260,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆星湖",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆星湖，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "2200402",
+      "name": "锦龙国际酒店（德庆龙母广场店）",
+      "area": "肇庆德庆片区",
+      "price": 276,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆德庆",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "1526091",
+      "name": "肇庆金凤凰国际酒店",
+      "area": "肇庆市区片区",
+      "price": 283,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆市区",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆市区，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "2298780",
+      "name": "广宁华侨大酒店",
+      "area": "肇庆广宁片区",
+      "price": 297,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": false,
+      "pool": true,
+      "advanced": true,
+      "display_area": "肇庆广宁",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆广宁，端午价格保持平稳，适合周边短途度假。"
+    },
+    {
+      "hotel_id": "897052",
+      "name": "四会岭南东方酒店",
+      "area": "肇庆四会片区",
+      "price": 314,
+      "diff": -61,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，具备儿童设施和泳池，适合亲子短途。"
     },
     {
       "hotel_id": "132551668",
       "name": "四会智选假日酒店",
       "area": "肇庆四会片区",
-      "price": 357,
-      "diff": -33,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
+      "price": 343,
+      "diff": -15,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
       "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
       "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
     },
     {
+      "hotel_id": "1441753",
+      "name": "悦凯国际酒店（肇庆四会大旺广场国潮小镇店）",
+      "area": "肇庆四会片区",
+      "price": 348,
+      "diff": 0,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": false,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+    }
+  ],
+  "latest_discount_rank": [
+    {
+      "hotel_id": "897052",
+      "name": "四会岭南东方酒店",
+      "area": "肇庆四会片区",
+      "price": 314,
+      "diff": -61,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": true,
+      "pool": true,
+      "advanced": true,
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，具备儿童设施和泳池，适合亲子短途。"
+    },
+    {
       "hotel_id": "133232552",
-      "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-      "area": "肇庆鼎湖山片区",
+      "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+      "area": "肇庆鼎湖片区",
       "price": 234,
       "diff": -32,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
       "child": true,
       "pool": true,
       "advanced": true,
-      "display_area": "肇庆鼎湖山",
-      "note": "肇庆鼎湖山，具备儿童设施和泳池，适合亲子短途。"
+      "display_area": "肇庆鼎湖",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
     },
     {
-      "hotel_id": "1743159",
-      "name": "潮漫酒店(肇庆高要区政府店)",
-      "area": "肇庆高要片区",
-      "price": 208,
-      "diff": -10,
-      "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-      "source_cached_at": "2026-05-06T16:20:19",
-      "child": true,
-      "pool": true,
+      "hotel_id": "132551668",
+      "name": "四会智选假日酒店",
+      "area": "肇庆四会片区",
+      "price": 343,
+      "diff": -15,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": false,
+      "pool": false,
       "advanced": true,
-      "display_area": "肇庆高要",
-      "note": "肇庆高要，具备儿童设施和泳池，适合亲子短途。"
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
     },
     {
-      "hotel_id": "112800997",
-      "name": "云棲星曜酒店（肇庆学院店）",
-      "area": "肇庆待确认片区",
-      "price": 197,
+      "hotel_id": "2253916",
+      "name": "怀集燕城大酒店",
+      "area": "肇庆怀集片区",
+      "price": 245,
       "diff": -9,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "肇庆",
-      "note": "肇庆，端午每晚含税均价低于平日代表价。"
+      "display_area": "肇庆怀集",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆怀集，端午每晚含税均价低于平日代表价。"
     },
     {
-      "hotel_id": "113050202",
-      "name": "方酒店（鼎湖山景区店）",
-      "area": "肇庆鼎湖山片区",
-      "price": 241,
-      "diff": -5,
-      "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-      "source_cached_at": "2026-05-07T17:08:04",
+      "hotel_id": "29867257",
+      "name": "维也纳国际酒店（肇庆市中心湖景店）",
+      "area": "肇庆星湖片区",
+      "price": 260,
+      "diff": -8,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
+      "child": true,
+      "pool": false,
+      "advanced": true,
+      "display_area": "肇庆星湖",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆星湖，端午每晚含税均价低于平日代表价。"
+    },
+    {
+      "hotel_id": "85458753",
+      "name": "丽枫酒店（四会高新开发区大旺广场店）",
+      "area": "肇庆四会片区",
+      "price": 256,
+      "diff": -2,
+      "source_file": "live_refresh/star.json",
+      "source_cached_at": "2026-06-02T10:40:22+08:00",
       "child": false,
       "pool": false,
       "advanced": true,
-      "display_area": "肇庆鼎湖山",
-      "note": "肇庆鼎湖山，端午每晚含税均价低于平日代表价。"
+      "display_area": "肇庆四会",
+      "trip_hotel_star_rating": 4,
+      "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
     }
   ],
   "area_region_rank": [
     {
-      "area": "肇庆鼎湖山片区",
-      "hotel_count": 5,
-      "discount_hotel_count": 2,
-      "flat_hotel_count": 3,
-      "average_price": 222,
-      "average_diff": -7,
-      "price_range": [
-        146,
-        322
-      ],
-      "hotels": [
-        {
-          "hotel_id": "133232552",
-          "name": "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-          "area": "肇庆鼎湖山片区",
-          "price": 234,
-          "diff": -32,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "113050202",
-          "name": "方酒店（鼎湖山景区店）",
-          "area": "肇庆鼎湖山片区",
-          "price": 241,
-          "diff": -5,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "114110294",
-          "name": "肇庆璞石·曼酒店（ 鼎湖山風景区店）",
-          "area": "肇庆鼎湖山片区",
-          "price": 146,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "72316131",
-          "name": "中智盛酒店（鼎湖山風景区店）",
-          "area": "肇庆鼎湖山片区",
-          "price": 167,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "118349147",
-          "name": "陌上民宿（肇庆鼎湖山店）",
-          "area": "肇庆鼎湖山片区",
-          "price": 322,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        }
-      ],
-      "representative_hotels": [
-        "美豪丽致酒店（肇庆东站鼎湖山風景区店）",
-        "方酒店（鼎湖山景区店）",
-        "肇庆璞石·曼酒店（ 鼎湖山風景区店）"
-      ],
-      "rank": 1,
-      "summary": "5家高级酒店，2家降价，3家持平"
-    },
-    {
-      "area": "肇庆七星岩星湖片区",
-      "hotel_count": 4,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 3,
-      "average_price": 177,
-      "average_diff": -8,
-      "price_range": [
-        137,
-        233
-      ],
-      "hotels": [
-        {
-          "hotel_id": "62500007",
-          "name": "花築·肇庆伴月民宿（星湖牌坊七星巖店）",
-          "area": "肇庆七星岩星湖片区",
-          "price": 233,
-          "diff": -33,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "1736736",
-          "name": "城市便捷酒店（肇庆七星巖風景区星湖牌坊店）",
-          "area": "肇庆七星岩星湖片区",
-          "price": 137,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "3642925",
-          "name": "晨曦風情酒店（肇庆七星巖星湖景区店）",
-          "area": "肇庆七星岩星湖片区",
-          "price": 163,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "126094852",
-          "name": "沐山民宿（七星巖景区店）",
-          "area": "肇庆七星岩星湖片区",
-          "price": 175,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        }
-      ],
-      "representative_hotels": [
-        "花築·肇庆伴月民宿（星湖牌坊七星巖店）",
-        "城市便捷酒店（肇庆七星巖風景区星湖牌坊店）",
-        "晨曦風情酒店（肇庆七星巖星湖景区店）"
-      ],
-      "rank": 2,
-      "summary": "4家高级酒店，1家降价，3家持平"
-    },
-    {
       "area": "肇庆四会片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 357,
-      "average_diff": -33,
+      "hotel_count": 6,
+      "discount_hotel_count": 3,
+      "flat_hotel_count": 3,
+      "average_price": 292,
+      "average_diff": -13,
       "price_range": [
-        357,
-        357
+        245,
+        348
       ],
       "hotels": [
+        {
+          "hotel_id": "897052",
+          "name": "四会岭南东方酒店",
+          "area": "肇庆四会片区",
+          "price": 314,
+          "diff": -61,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "肇庆四会",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆四会，具备儿童设施和泳池，适合亲子短途。"
+        },
         {
           "hotel_id": "132551668",
           "name": "四会智选假日酒店",
           "area": "肇庆四会片区",
-          "price": 357,
-          "diff": -33,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
+          "price": 343,
+          "diff": -15,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆四会",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
+        },
+        {
+          "hotel_id": "85458753",
+          "name": "丽枫酒店（四会高新开发区大旺广场店）",
+          "area": "肇庆四会片区",
+          "price": 256,
+          "diff": -2,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆四会",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆四会，端午每晚含税均价低于平日代表价。"
+        },
+        {
+          "hotel_id": "133464273",
+          "name": "四会大旺华美达酒店（中兴商业广场店）",
+          "area": "肇庆四会片区",
+          "price": 245,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆四会",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "25776993",
+          "name": "紫荆莱馨酒店（肇庆四会大旺站店）",
+          "area": "肇庆四会片区",
+          "price": 247,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆四会",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "1441753",
+          "name": "悦凯国际酒店（肇庆四会大旺广场国潮小镇店）",
+          "area": "肇庆四会片区",
+          "price": 348,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆四会",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆四会，端午价格保持平稳，适合周边短途度假。"
         }
       ],
       "representative_hotels": [
-        "四会智选假日酒店"
+        "四会岭南东方酒店",
+        "四会智选假日酒店",
+        "丽枫酒店（四会高新开发区大旺广场店）"
       ],
-      "rank": 3,
-      "summary": "1家高级酒店，1家降价"
+      "summary": "6家四星/四钻以上酒店，3家降价，3家持平",
+      "rank": 1
     },
     {
-      "area": "肇庆高要片区",
-      "hotel_count": 1,
-      "discount_hotel_count": 1,
-      "flat_hotel_count": 0,
-      "average_price": 208,
-      "average_diff": -10,
+      "area": "肇庆德庆片区",
+      "hotel_count": 2,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 2,
+      "average_price": 200,
+      "average_diff": 0,
       "price_range": [
-        208,
-        208
+        124,
+        276
       ],
       "hotels": [
         {
-          "hotel_id": "1743159",
-          "name": "潮漫酒店(肇庆高要区政府店)",
-          "area": "肇庆高要片区",
-          "price": 208,
-          "diff": -10,
-          "source_file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-          "source_cached_at": "2026-05-06T16:20:19"
+          "hotel_id": "810361",
+          "name": "德庆醉然居假日酒店",
+          "area": "肇庆德庆片区",
+          "price": 124,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "肇庆德庆",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
+        },
+        {
+          "hotel_id": "2200402",
+          "name": "锦龙国际酒店（德庆龙母广场店）",
+          "area": "肇庆德庆片区",
+          "price": 276,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆德庆",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆德庆，端午价格保持平稳，适合周边短途度假。"
         }
       ],
       "representative_hotels": [
-        "潮漫酒店(肇庆高要区政府店)"
+        "德庆醉然居假日酒店",
+        "锦龙国际酒店（德庆龙母广场店）"
       ],
-      "rank": 4,
-      "summary": "1家高级酒店，1家降价"
+      "summary": "2家四星/四钻以上酒店，0家降价，2家持平",
+      "rank": 2
+    },
+    {
+      "area": "肇庆鼎湖片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 234,
+      "average_diff": -32,
+      "price_range": [
+        234,
+        234
+      ],
+      "hotels": [
+        {
+          "hotel_id": "133232552",
+          "name": "美豪丽致酒店（肇庆东站鼎湖山风景区店）",
+          "area": "肇庆鼎湖片区",
+          "price": 234,
+          "diff": -32,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": true,
+          "pool": true,
+          "advanced": true,
+          "display_area": "肇庆鼎湖",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆鼎湖，具备儿童设施和泳池，适合亲子短途。"
+        }
+      ],
+      "representative_hotels": [
+        "美豪丽致酒店（肇庆东站鼎湖山风景区店）"
+      ],
+      "summary": "1家四星/四钻以上酒店，1家降价，0家持平",
+      "rank": 3
     },
     {
       "area": "肇庆怀集片区",
       "hotel_count": 1,
-      "discount_hotel_count": 0,
-      "flat_hotel_count": 1,
-      "average_price": 262,
-      "average_diff": 0,
+      "discount_hotel_count": 1,
+      "flat_hotel_count": 0,
+      "average_price": 245,
+      "average_diff": -9,
       "price_range": [
-        262,
-        262
+        245,
+        245
       ],
       "hotels": [
         {
           "hotel_id": "2253916",
-          "name": "懷集燕城大酒店",
+          "name": "怀集燕城大酒店",
           "area": "肇庆怀集片区",
-          "price": 262,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
+          "price": 245,
+          "diff": -9,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆怀集",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆怀集，端午每晚含税均价低于平日代表价。"
         }
       ],
       "representative_hotels": [
-        "懷集燕城大酒店"
+        "怀集燕城大酒店"
       ],
-      "rank": 5,
-      "summary": "1家高级酒店，0家降价，1家持平"
+      "summary": "1家四星/四钻以上酒店，1家降价，0家持平",
+      "rank": 4
     },
     {
-      "area": "肇庆待确认片区",
-      "hotel_count": 3,
+      "area": "肇庆星湖片区",
+      "hotel_count": 1,
       "discount_hotel_count": 1,
-      "flat_hotel_count": 2,
-      "average_price": 257,
-      "average_diff": -3,
+      "flat_hotel_count": 0,
+      "average_price": 260,
+      "average_diff": -8,
       "price_range": [
-        197,
-        347
+        260,
+        260
       ],
       "hotels": [
         {
-          "hotel_id": "112800997",
-          "name": "云棲星曜酒店（肇庆学院店）",
-          "area": "肇庆待确认片区",
-          "price": 197,
-          "diff": -9,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "82123914",
-          "name": "品臻酒店（肇庆火車站店）",
-          "area": "肇庆待确认片区",
-          "price": 228,
-          "diff": 0,
-          "source_file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-          "source_cached_at": "2026-05-07T17:08:04"
-        },
-        {
-          "hotel_id": "122458846",
-          "name": "云浮云安凤悦假日酒店（云安区店）",
-          "area": "肇庆待确认片区",
-          "price": 347,
-          "diff": 0,
-          "source_file": "4713b46a2e5f3012e03540e4b6ce309443ee44134cf9e3ce6d67903fc7e7c49d.json",
-          "source_cached_at": "2026-05-06T16:17:03"
+          "hotel_id": "29867257",
+          "name": "维也纳国际酒店（肇庆市中心湖景店）",
+          "area": "肇庆星湖片区",
+          "price": 260,
+          "diff": -8,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆星湖",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆星湖，端午每晚含税均价低于平日代表价。"
         }
       ],
       "representative_hotels": [
-        "云棲星曜酒店（肇庆学院店）",
-        "品臻酒店（肇庆火車站店）",
-        "云浮云安凤悦假日酒店（云安区店）"
+        "维也纳国际酒店（肇庆市中心湖景店）"
       ],
-      "rank": 6,
-      "summary": "3家高级酒店，1家降价，2家持平"
+      "summary": "1家四星/四钻以上酒店，1家降价，0家持平",
+      "rank": 5
+    },
+    {
+      "area": "肇庆市区片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 283,
+      "average_diff": 0,
+      "price_range": [
+        283,
+        283
+      ],
+      "hotels": [
+        {
+          "hotel_id": "1526091",
+          "name": "肇庆金凤凰国际酒店",
+          "area": "肇庆市区片区",
+          "price": 283,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": true,
+          "pool": false,
+          "advanced": true,
+          "display_area": "肇庆市区",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆市区，端午价格保持平稳，适合周边短途度假。"
+        }
+      ],
+      "representative_hotels": [
+        "肇庆金凤凰国际酒店"
+      ],
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 6
+    },
+    {
+      "area": "肇庆广宁片区",
+      "hotel_count": 1,
+      "discount_hotel_count": 0,
+      "flat_hotel_count": 1,
+      "average_price": 297,
+      "average_diff": 0,
+      "price_range": [
+        297,
+        297
+      ],
+      "hotels": [
+        {
+          "hotel_id": "2298780",
+          "name": "广宁华侨大酒店",
+          "area": "肇庆广宁片区",
+          "price": 297,
+          "diff": 0,
+          "source_file": "live_refresh/star.json",
+          "source_cached_at": "2026-06-02T10:40:22+08:00",
+          "child": false,
+          "pool": true,
+          "advanced": true,
+          "display_area": "肇庆广宁",
+          "trip_hotel_star_rating": 4,
+          "note": "肇庆广宁，端午价格保持平稳，适合周边短途度假。"
+        }
+      ],
+      "representative_hotels": [
+        "广宁华侨大酒店"
+      ],
+      "summary": "1家四星/四钻以上酒店，0家降价，1家持平",
+      "rank": 7
     }
   ],
   "latest_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
     "holiday_contains": "2026-06-19",
     "advanced_only": true,
     "max_rise": 0,
-    "matching_file_count": 3,
-    "candidate_count": 71,
-    "unique_hotel_count": 62,
-    "included_hotel_count": 15,
-    "matching_files": [
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除低星级、公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及城市归属不符的酒店。",
+    "candidate_count": 26,
+    "included_hotel_count": 13,
+    "excluded_hotel_count": 14,
+    "excluded_hotels": [
       {
-        "file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "mtime": 1778144884.6945658,
-        "choices": 74,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "15882176",
+        "name": "Vienna Hotel (Zhaoqing Qixingyan Dongmen)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
       },
       {
-        "file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-        "mtime": 1778055619.7891579,
-        "choices": 5,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "36705522",
+        "name": "Bo'erte Business Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
       },
       {
-        "file": "4713b46a2e5f3012e03540e4b6ce309443ee44134cf9e3ce6d67903fc7e7c49d.json",
-        "mtime": 1778055423.8076994,
-        "choices": 7,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
-      }
-    ]
-  },
-  "area_region_rank_source": {
-    "cache_dir": "/Users/linxiaozhong/development/reverse-travel-good-choice/.cache/search",
-    "holiday_contains": "2026-06-19",
-    "advanced_only": true,
-    "max_rise": 0,
-    "matching_file_count": 3,
-    "candidate_count": 71,
-    "unique_hotel_count": 62,
-    "included_hotel_count": 15,
-    "matching_files": [
-      {
-        "file": "a28e3b39347dcbeceb4e9908af9a23473669c0343dc75f28e1ce05c0d8a1dbaa.json",
-        "mtime": 1778144884.6945658,
-        "choices": 74,
-        "advanced": false,
-        "filters": {
-          "advanced": {
-            "value": "all",
-            "label": "全部",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "all",
-            "label": "全部",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "all",
-            "label": "全部",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "119841405",
+        "name": "Cheermay Hotels (Zhaoqing Qixingyan East Gate Plaza Branch)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
       },
       {
-        "file": "c62e4168e042472365f6e8c6ff2f0b5d93a353729a86f5c97282e8af01073af8.json",
-        "mtime": 1778055619.7891579,
-        "choices": 5,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "1839098",
+        "name": "Xinghu Yipin Resort Hotel (Zhaoqing Railway Station)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
       },
       {
-        "file": "4713b46a2e5f3012e03540e4b6ce309443ee44134cf9e3ce6d67903fc7e7c49d.json",
-        "mtime": 1778055423.8076994,
-        "choices": 7,
-        "advanced": true,
-        "filters": {
-          "advanced": {
-            "value": "yes",
-            "label": "是",
-            "name": "高级酒店（四钻/四星级以上）"
-          },
-          "pool": {
-            "value": "yes",
-            "label": "是",
-            "name": "游泳池"
-          },
-          "child_facility": {
-            "value": "yes",
-            "label": "是",
-            "name": "儿童设施"
-          }
-        }
+        "hotel_id": "80962802",
+        "name": "Zhaoqing Mido Homestay",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "113050202",
+        "name": "方酒店（鼎湖山景区店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "71650457",
+        "name": "小璐智能酒店（肇庆七星岩风景区东门广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2381464",
+        "name": "肇庆金源酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "3642925",
+        "name": "晨曦风情酒店(肇庆七星岩星湖景区店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1743159",
+        "name": "Cheermay Hotels Zhaoqing Gaoyao District Government Polytechnic College Branch",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "85489081",
+        "name": "Xingan Huacheng Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "82123914",
+        "name": "品臻酒店(肇庆火车站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "118349147",
+        "name": "Moshang Homestay (Zhaoqing Dinghu Mountain)",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1743159",
+        "name": "Cheermay Hotels Zhaoqing Gaoyao District Government Polytechnic College Branch",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
       }
     ],
-    "source": "search_cache"
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_cache.json"
   },
-  "city_wikipedia_intro": {
-    "city": "肇庆",
-    "text": "肇庆可重点看七星岩、鼎湖山、宋城墙、阅江楼和砚洲岛；山水景区、老城文化和亲子休闲适合短途组合。",
-    "source": "维基百科",
-    "source_url": "https://zh.wikipedia.org/wiki/肇庆",
-    "updated_at": ""
-  }
+  "area_region_rank_source": {
+    "holiday_contains": "2026-06-19",
+    "advanced_only": true,
+    "max_rise": 0,
+    "qualification_rule": "Trip.com/携程酒店星级核验为4星及以上，或明确四钻以上；剔除低星级、公寓、民宿、客栈、青旅、电竞、快捷/经济型酒店，以及城市归属不符的酒店。",
+    "candidate_count": 26,
+    "included_hotel_count": 13,
+    "area_count": 7,
+    "excluded_hotel_count": 14,
+    "excluded_hotels": [
+      {
+        "hotel_id": "15882176",
+        "name": "Vienna Hotel (Zhaoqing Qixingyan Dongmen)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "36705522",
+        "name": "Bo'erte Business Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "119841405",
+        "name": "Cheermay Hotels (Zhaoqing Qixingyan East Gate Plaza Branch)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1839098",
+        "name": "Xinghu Yipin Resort Hotel (Zhaoqing Railway Station)",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "80962802",
+        "name": "Zhaoqing Mido Homestay",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "113050202",
+        "name": "方酒店（鼎湖山景区店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "71650457",
+        "name": "小璐智能酒店（肇庆七星岩风景区东门广场店）",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "2381464",
+        "name": "肇庆金源酒店",
+        "reason": "Trip.com Hotel Star Rating 为 2，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "3642925",
+        "name": "晨曦风情酒店(肇庆七星岩星湖景区店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "1743159",
+        "name": "Cheermay Hotels Zhaoqing Gaoyao District Government Polytechnic College Branch",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "85489081",
+        "name": "Xingan Huacheng Hotel",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "82123914",
+        "name": "品臻酒店(肇庆火车站店)",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      },
+      {
+        "hotel_id": "118349147",
+        "name": "Moshang Homestay (Zhaoqing Dinghu Mountain)",
+        "reason": "公寓/民宿/客栈/电竞/营地等非星级酒店榜口径"
+      },
+      {
+        "hotel_id": "1743159",
+        "name": "Cheermay Hotels Zhaoqing Gaoyao District Government Polytechnic College Branch",
+        "reason": "Trip.com Hotel Star Rating 为 3，低于四星/四钻榜口径"
+      }
+    ],
+    "star_rating_audit": "/Users/lxz/.local/share/reverse-traval/exports/xhs_star_rating_audit_cache.json"
+  },
+  "city_wikipedia_intro": ""
 }
